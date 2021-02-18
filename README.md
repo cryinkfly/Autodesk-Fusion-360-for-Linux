@@ -85,3 +85,5 @@ Which workspaces I have tested:
     production (seems to work at first glance)
 
 Further changes to Fusion 360 will be made and further tests will be carried out as well.
+
+Here You can see the installation of Fusion360 on Linux: https://youtu.be/-BktJspJKgs
