@@ -56,7 +56,7 @@ I proceeded as follows:
 
     Run: wine setup/streamer.exe -p deploy -g -f log.txt --quiet
 
-    Run Fusion 360: "env WINEPREFIX =" / home / steve / .wine "wine C: \ windows \ command \ start.exe / Unix /home/YOUR-USER-NAME/.wine/dosdevices/c: / ProgramData / Microsoft / Windows / Start \ Menu / Programs / Autodesk / Autodesk \ Fusion \ 360.lnk "
+    Run Fusion 360: "env WINEPREFIX ="env WINEPREFIX="/home/steve/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk"
 
     Login with your account data
 
@@ -71,7 +71,7 @@ I proceeded as follows:
     d3d9 = builtin
     dxgi = native
 
-    Open Fusion again: "env WINEPREFIX="/home/steve/.wine" wine C:\\windows\\command\\start.exe /Unix /home/steve/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk"
+    Open Fusion again: "env WINEPREFIX="/home/steve/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk"
 
     Now everything should work so far.
 
