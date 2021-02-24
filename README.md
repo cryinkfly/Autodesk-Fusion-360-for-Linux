@@ -40,11 +40,12 @@ I proceeded as follows:
 
     Close winetricks, when You install manual.
 
-    Run "winecfg" -> set Windows 8
+    Run: winecfg
+    Set the windows version to Windows 8
 
     Close this window
 
-    Run "clear"
+    Run: clear
 
     Run: cd Downloads && mkdir fusion360 && cd fusion360
 
@@ -52,11 +53,12 @@ I proceeded as follows:
 
     Run: 7z x -osetup/ "Fusion 360 Admin Install.exe" && curl -Lo setup/platform.py github.com/python/cpython/raw/3.5/Lib/platform.py && sed -i 's/winver._platform_version or //' setup/platform.py
 
-    Run: "winecfg" -> set Windows 8
+    Run: winecfg
+    Set the windows version to Windows 8
 
     Run: wine setup/streamer.exe -p deploy -g -f log.txt --quiet
 
-    Run Fusion 360: "env WINEPREFIX ="env WINEPREFIX="/home/steve/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk"
+    Run Fusion 360: env WINEPREFIX="/home/steve/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk
 
     Login with your account data
 
@@ -71,7 +73,7 @@ I proceeded as follows:
     d3d9 = builtin
     dxgi = native
 
-    Open Fusion again: "env WINEPREFIX="/home/steve/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk"
+    Open Fusion again: env WINEPREFIX="/home/steve/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk
 
     Now everything should work so far.
 
