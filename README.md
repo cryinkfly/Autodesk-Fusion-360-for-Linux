@@ -29,55 +29,63 @@ Memory: 32GB
 
 Wine version: wine-5.0 (WINEARCH = win64)
 
+________________________________________________
+
 I proceeded as follows:
 
-    Open Yast -> Install Software -> "wine" & "p7zip-full"
+    1.) Open Yast -> Install Software -> Install these packages: wine & p7zip-full
 
-    Reboot the system
+    2.) Reboot the system
 
-    Open a Terminal -> Run: winetricks corefonts vcrun2017 msxml3 msxml4 msxml6 dxvk
-    or install these packages manual with "winetricks" (minimum requirement for running Fusion 360)
+    3.) Open a Terminal -> Run this command: winetricks corefonts vcrun2017 msxml4 dxvk (minimum requirement for running Fusion 360)
 
-    Close winetricks, when You install manual.
+    4.) Run this command: winecfg
+    5.) Set the windows version to Windows 8
 
-    Run: winecfg
-    Set the windows version to Windows 8
+    5.) Close this window
 
-    Close this window
+    6.) Run this command: clear (It's better to see, what happens, when we clear the terminal.)
 
-    Run: clear
+    7.) Run this command(s): cd Downloads && mkdir fusion360 && cd fusion360
 
-    Run: cd Downloads && mkdir fusion360 && cd fusion360
+    8.) Run this command: wget https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe (Here we downloading the installer of Fusion 360.)
 
-    Run: wget https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe
+    9.) Run this command: 7z x -osetup/ "Fusion 360 Admin Install.exe" && curl -Lo setup/platform.py github.com/python/cpython/raw/3.5/Lib/platform.py && sed -i 's/winver._platform_version or //' setup/platform.py
 
-    Run: 7z x -osetup/ "Fusion 360 Admin Install.exe" && curl -Lo setup/platform.py github.com/python/cpython/raw/3.5/Lib/platform.py && sed -i 's/winver._platform_version or //' setup/platform.py
 
-    Run: winecfg
-    Set the windows version to Windows 8
 
-    Run: wine setup/streamer.exe -p deploy -g -f log.txt --quiet
+    10.) Run this command: winecfg
+    11.) Set the windows version to Windows 8
 
-    Run Fusion 360: env WINEPREFIX="/home/steve/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk
+    12.) Run this command: wine setup/streamer.exe -p deploy -g -f log.txt --quiet (Run this command 2x)
 
-    Login with your account data
+    13.) Run this command: env WINEPREFIX="/home/YOUR_USER_NAME/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk (Here we opening the program Fusion 360.)
 
-    Then go to preferences and in General under Graphics driver select DirectX 9.
+    14.) Login with your account data
 
-    Close Fusion 360
+    15.) Then go to preferences and in General under Graphics driver, select DirectX 9.
 
-    winecfg -> libraries -> change:
+    16.) Close Fusion 360
+
+    
+
+    17.) Run this command: winecfg -> Go to libraries -> Change these options:
 
     d3d10core = disabled
     d3d11 = native
     d3d9 = builtin
     dxgi = native
 
-    Open Fusion again: env WINEPREFIX="/home/steve/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk
+    
+    18.) Open Fusion again with this command: env WINEPREFIX="/home/YOUR_USER_NAME/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk
 
-    Now everything should work so far.
+    19.) Now everything should work so far.
 
-    Note: simply ignore errors that occur during installation. The installation of Fusion 360 was repeated several times to ensure that it really worked.
+    
+
+
+
+Note: Simply ignore errors that occur during installation. The installation of Fusion 360 was repeated several times to ensure that it really worked.
 
 Which workspaces I have tested:
 
@@ -88,4 +96,4 @@ Which workspaces I have tested:
 
 Further changes to Fusion 360 will be made and further tests will be carried out as well.
 
-Here You can see the installation of Fusion360 on a Linux system: https://youtu.be/-BktJspJKgs
+Here You can see the installation of Fusion360 on my Linux system: https://youtu.be/-BktJspJKgs and on my YouTube-Channel can You see more about this program, how it works on Linux.
