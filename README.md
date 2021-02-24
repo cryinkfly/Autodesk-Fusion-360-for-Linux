@@ -61,17 +61,17 @@ I proceeded as follows:
 
     13.) Run this command(s): cd $HOME && mkdir .Fusion360 && cd .Fusion360
 
-    13.) Run this command: env WINEPREFIX="/home/YOUR_USER_NAME/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk (Here we opening the program Fusion 360 and this creating some files in our .Fusion360 folder.)
+    14.) Run this command: env WINEPREFIX="/home/YOUR_USER_NAME/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk (Here we opening the program Fusion 360 and this creating some files in our .Fusion360 folder.)
 
-    14.) Login with your account data
+    15.) Login with your account data
 
-    15.) Then go to preferences and in General under Graphics driver, select DirectX 9.
+    16.) Then go to preferences and in General under Graphics driver, select DirectX 9.
 
-    16.) Close Fusion 360
+    17.) Close Fusion 360
 
     
 
-    17.) Run this command: winecfg -> Go to libraries -> Change these options:
+    18.) Run this command: winecfg -> Go to libraries -> Change these options:
 
     d3d10core = disabled
     d3d11 = native
@@ -79,9 +79,9 @@ I proceeded as follows:
     dxgi = native
 
     
-    18.) Open Fusion again with this command: env WINEPREFIX="/home/YOUR_USER_NAME/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk (It's important, that your changing to your .Fusion360 folder in our home-directory and run then this command now & in the future here.)
+    19.) Open Fusion again with this command: env WINEPREFIX="/home/YOUR_USER_NAME/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk (It's important, that your changing to your .Fusion360 folder in our home-directory and run then this command now & in the future here.)
 
-    19.) Now everything should work so far.
+    20.) Now everything should work so far.
 
     
 
