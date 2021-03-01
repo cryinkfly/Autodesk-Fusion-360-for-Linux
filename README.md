@@ -94,7 +94,7 @@ Which workspaces I have tested:
     construction (works)
     animation (works)
     rendering (works with problems - The problem is, when you will saving a rendered file, then you must kill Fusion 360. After this you can see a window, where you can save this file.
-    production (seems to work at first glance)
+    production (works)
 
 Further changes to Fusion 360 will be made and further tests will be carried out as well.
 
