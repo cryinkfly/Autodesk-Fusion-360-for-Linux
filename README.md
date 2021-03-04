@@ -65,13 +65,14 @@ I proceeded as follows:
 
     15.) Login with your account data
 
-    16.) Then go to preferences and in General under Graphics driver, select DirectX 9.
+    16.) Then go to preferences and in General under Graphics driver, select DirectX 9. <-- Don't use DirectX!_
+    16.) Then go to preferences and in General under Graphics driver, select OpenGL <-- This is now the best choise for Fusion 360!
 
     17.) Close Fusion 360
 
     
 
-    18.) Run this command: winecfg -> Go to libraries -> Change these options:
+    18.) Run this command: winecfg -> Go to libraries -> Change these options: <-- We don't need this one, now!
 
     d3d10core = disabled
     d3d11 = native
@@ -83,18 +84,17 @@ I proceeded as follows:
 
     20.) Now everything should work so far.
 
-    
 
+* Note: simply ignore errors that occur during installation. The installation of Fusion 360 was repeated several times to ensure that it really worked.
 
-
-Note: Simply ignore errors that occur during installation. The installation of Fusion 360 was repeated several times to ensure that it really worked.
+__________________________________________________________________________________________
 
 Which workspaces I have tested:
 
-    construction (works)
-    animation (works)
-    rendering (works with problems - The problem is, when you will saving a rendered file, then you must kill Fusion 360. After this you can see a window, where you can save this file.
-    production (works)
+- construction (works)
+- animation (works)
+- rendering (works with problems - The problem is, when you will saving a rendered file, then you must kill Fusion 360. After this you can see a window, where you can save this file.
+-  production (works) <-- NEW
 
 Further changes to Fusion 360 will be made and further tests will be carried out as well.
 
