@@ -101,3 +101,5 @@ Which workspaces I have tested:
 Further changes to Fusion 360 will be made and further tests will be carried out as well.
 
 Here You can see the installation of Fusion360 on my Linux system: https://youtu.be/-BktJspJKgs and on my YouTube-Channel can You see more about this program, how it works on Linux.
+
+Also you can find my way to run Fusion 360 on Ubuntu 20.04.2 : https://youtu.be/NJTV_enR6io
