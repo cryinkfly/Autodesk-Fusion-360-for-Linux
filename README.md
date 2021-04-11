@@ -35,6 +35,8 @@ I proceeded as follows:
 
     1.) Open Yast -> Install Software -> Install these packages: wine & p7zip-full
 
+       -> On some system need Fusion 360 also the "winbind" package!
+
     2.) Reboot the system
 
     3.) Open a Terminal -> Run this command: winetricks corefonts vcrun2017 msxml4 dxvk (minimum requirement for running Fusion 360)
