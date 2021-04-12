@@ -28,21 +28,18 @@ GPU: NVIDIA GeForce GTX 1060 Mobile 6G (Community Repository Nvidia)
 Memory: 32GB
 
 Wine version: wine-5.0 (WINEARCH = win64)
+              wine-6.6 (WINEARCH = win64)
 
-________________________________________________
+________________________________________________________________________________________________
 
-I proceeded as follows:
+Installation for openSUSE Leap & Tumbleweed:
 
-    1.) Open Yast -> Install Software -> Install these packages: wine & p7zip-full
+    1.) Open Yast -> Install Software -> Install these packages: wine & p7zip-full -> Reboot your system
+    
+    2.) Open a Terminal -> Run this command: winetricks corefonts vcrun2017 msxml4 dxvk (minimum requirement for running Fusion 360)
 
-       -> On some systems need Fusion 360 also the "winbind" package!
-
-    2.) Reboot the system
-
-    3.) Open a Terminal -> Run this command: winetricks corefonts vcrun2017 msxml4 dxvk (minimum requirement for running Fusion 360)
-
-    4.) Run this command: winecfg
-    5.) Set the windows version to Windows 8
+    3.) Run this command: winecfg 
+    4.) Set the windows version to Windows 8 or 10
 
     5.) Close this window
 
@@ -54,27 +51,20 @@ I proceeded as follows:
 
     9.) Run this command: 7z x -osetup/ "Fusion 360 Admin Install.exe" && curl -Lo setup/platform.py github.com/python/cpython/raw/3.5/Lib/platform.py && sed -i 's/winver._platform_version or //' setup/platform.py
 
+    10.) Run this command: wine setup/streamer.exe -p deploy -g -f log.txt --quiet (Run this command 2x)
 
+    11.) Run this command(s): cd $HOME && mkdir .Fusion360 && cd .Fusion360
 
-    10.) Run this command: winecfg
-    11.) Set the windows version to Windows 8
+    12.) Run this command: env WINEPREFIX="/home/YOUR_USER_NAME/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk (Here we opening the program Fusion 360 and this creating some files in our .Fusion360 folder.)
 
-    12.) Run this command: wine setup/streamer.exe -p deploy -g -f log.txt --quiet (Run this command 2x)
+    13.) Login with your account data
 
-    13.) Run this command(s): cd $HOME && mkdir .Fusion360 && cd .Fusion360
+    14.) Then go to preferences and in General under Graphics driver, select DirectX 9. <-- OR -->
+    15.) Then go to preferences and in General under Graphics driver, select OpenGL <-- This is now the best choise for Fusion 360!
 
-    14.) Run this command: env WINEPREFIX="/home/YOUR_USER_NAME/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk (Here we opening the program Fusion 360 and this creating some files in our .Fusion360 folder.)
+    16.) Close Fusion 360
 
-    15.) Login with your account data
-
-    16.) Then go to preferences and in General under Graphics driver, select DirectX 9. <-- Don't use DirectX!_
-    16.) Then go to preferences and in General under Graphics driver, select OpenGL <-- This is now the best choise for Fusion 360!
-
-    17.) Close Fusion 360
-
-    
-
-    18.) Run this command: winecfg -> Go to libraries -> Change these options: <-- We don't need this one, now!
+    17.) Run this command: winecfg -> Go to libraries -> Change these options: <-- We don't need this one, now!
 
     d3d10core = disabled
     d3d11 = native
@@ -82,24 +72,28 @@ I proceeded as follows:
     dxgi = native
 
     
-    19.) Open Fusion again with this command: env WINEPREFIX="/home/YOUR_USER_NAME/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk (It's important, that your changing to your .Fusion360 folder in our home-directory and run then this command now & in the future here.)
+    18.) Open Fusion again with this command: env WINEPREFIX="/home/YOUR_USER_NAME/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk (It's important, that your changing to your .Fusion360 folder in our home-directory and run then this command now & in the future here.)
 
-    20.) Now everything should work so far.
+    19.) Now everything should work so far.
 
 
-* Note: simply ignore errors that occur during installation. The installation of Fusion 360 was repeated several times to ensure that it really worked.
+* Note: Simply ignore errors that occur during installation. The installation of Fusion 360 was repeated several times to ensure that it really worked.
+*       Here can you see my way to install Fusion 360 on openSUSE Leap 15.2: https://youtu.be/-BktJspJKgs
 
-__________________________________________________________________________________________
+________________________________________________________________________________________________
+
+
+Installation for Ubuntu, Linux Mint, ...:   Still in progress!!! -> https://youtu.be/NJTV_enR6io & https://www.youtube.com/watch?v=R-ev3dhNM98
+
+________________________________________________________________________________________________
+________________________________________________________________________________________________
 
 Which workspaces I have tested:
 
 - construction (works)
 - animation (works)
-- rendering (works with problems - The problem is, when you will saving a rendered file, then you must kill Fusion 360. After this you can see a window, where you can save this file.
--  production (works) <-- NEW
+- rendering (works , but when you will saving a rendered file, then you must changing something: https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/releases/tag/v1.2
+-  production (works)
+-  simulation (Local calculation dosn't work at the moment)
 
 Further changes to Fusion 360 will be made and further tests will be carried out as well.
-
-Here You can see the installation of Fusion360 on my Linux system: https://youtu.be/-BktJspJKgs and on my YouTube-Channel can You see more about this program, how it works on Linux.
-
-Also you can find my way to run Fusion 360 on Ubuntu 20.04.2 : https://youtu.be/NJTV_enR6io
