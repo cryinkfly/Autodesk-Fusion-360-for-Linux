@@ -78,7 +78,7 @@ Installation for openSUSE Leap & Tumbleweed:
 
 
 * Note: Simply ignore errors that occur during installation. The installation of Fusion 360 was repeated several times to ensure that it really worked.
-*       Here can you see my way to install Fusion 360 on openSUSE Leap 15.2: https://youtu.be/-BktJspJKgs
+        Here can you see my way to install Fusion 360 on openSUSE Leap 15.2: https://youtu.be/-BktJspJKgs
 
 ________________________________________________________________________________________________
 
