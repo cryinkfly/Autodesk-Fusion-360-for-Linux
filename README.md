@@ -30,7 +30,7 @@ Memory: 32GB
 Wine version: wine-5.0 (WINEARCH = win64)
               wine-6.6 (WINEARCH = win64)
 
-________________________________________________________________________________________________
+________________________________________________
 
 Installation for openSUSE Leap & Tumbleweed:
 
