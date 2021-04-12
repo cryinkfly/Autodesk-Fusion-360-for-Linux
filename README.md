@@ -27,8 +27,8 @@ CPU: Intel i7-7700HQ (8) @ 3.800GHz
 GPU: NVIDIA GeForce GTX 1060 Mobile 6G (Community Repository Nvidia)
 Memory: 32GB
 
-Wine version: wine-5.0 (WINEARCH = win64)
-              wine-6.6 (WINEARCH = win64)
+Wine version: wine-5.0 (WINEARCH = win64)<br/>
+Wine version: wine-6.6 (WINEARCH = win64)
 
 ________________________________________________
 
