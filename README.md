@@ -39,7 +39,7 @@ Installation on openSUSE Leap & Tumbleweed:
     2.) Open a Terminal -> Run this command: winetricks corefonts vcrun2017 msxml4 dxvk (minimum requirement for running Fusion 360)
 
     3.) Run this command: winecfg 
-    4.) Set the windows version to Windows 8 or 10
+    4.) Set the windows version to Windows 8 or 10 (only when you use the wine version 6.6 -> At the moment)
 
     5.) Close this window
 
