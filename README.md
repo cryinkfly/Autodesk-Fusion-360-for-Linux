@@ -32,7 +32,7 @@ Wine version: wine-5.0 (WINEARCH = win64)
 
 ________________________________________________
 
-Installation for openSUSE Leap & Tumbleweed:
+Installation on openSUSE Leap & Tumbleweed:
 
     1.) Open Yast -> Install Software -> Install these packages: wine & p7zip-full -> Reboot your system
     
@@ -83,7 +83,7 @@ Installation for openSUSE Leap & Tumbleweed:
 ________________________________________________________________________________________________
 
 
-Installation for Ubuntu, Linux Mint, ...:   Still in progress!!! -> https://youtu.be/NJTV_enR6io & https://www.youtube.com/watch?v=R-ev3dhNM98
+Installation on Ubuntu, Linux Mint, ...:   Still in progress!!! -> https://youtu.be/NJTV_enR6io & https://www.youtube.com/watch?v=R-ev3dhNM98
 
 ________________________________________________________________________________________________
 ________________________________________________________________________________________________
