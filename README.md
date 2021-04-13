@@ -1,5 +1,8 @@
 <h1>Fusion-360 - Linux (Wine Version)</h1>
 
+![Spannung](https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/Spannung.png)
+
+
 I decided to use WINE to run this program just as well under Linux as it did under Windows, so that you no longer have to run two operating systems just to be able to use Fusion 360.
 
 As a Linux distribution I use openSuse Leap 15.2 with the desktop environment Xfce and the Wine version from the standard repositories. I also use an Nvidia graphics card and use the drivers from the community repository.
