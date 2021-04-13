@@ -37,7 +37,7 @@ ________________________________________________
 
 ##### Installation on openSUSE Leap & Tumbleweed:
 
-    1.) Open Yast -> Install Software -> Install these packages: wine & p7zip-full -> Reboot your system
+    1.) Open Yast -> Install Software -> Install these packages: wine & p7zip-full (And it's important that have installed the newest graphics driver!) -> Reboot your system
     
     2.) Open a Terminal -> Run this command: winetricks corefonts vcrun2017 msxml4 dxvk (minimum requirement for running Fusion 360)
 
@@ -87,7 +87,7 @@ ________________________________________________________________________________
 
 #### Installation on Ubuntu, Linux Mint, ...: 
 
-    1.) Check if your system is up to date: Open a Termial -> Run these commands: sudo apt-get update && sudo apt-get upgrade
+    1.) Check if your system is up to date: Open a Termial -> Run these commands: sudo apt-get update && sudo apt-get upgrade (And it's important that have installed the newest graphics driver!)
     
     2.) Then run these commands (install wine): sudo dpkg --add-architecture i386  && wget -nc https://dl.winehq.org/wine-builds/winehq.key && sudo apt-key add winehq.key && sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main' && sudo apt-get update && sudo apt install --install-recommends winehq-staging && sudo apt install winetricks
     
@@ -147,8 +147,8 @@ ________________________________________________________________________________
 
 ________________________________________________________________________________________________
 
-##### Note: Simply ignore errors that occur during installation. The installation of Fusion 360 was repeated several times to ensure that it really worked.
-
+##### Note: Simply ignore errors that occur during installation. 
+#####       The installation of Fusion 360 was repeated several times to ensure that it really worked.
 ________________________________________________________________________________________________
 
 #### Which workspaces I have tested:
