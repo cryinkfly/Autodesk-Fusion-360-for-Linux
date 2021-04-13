@@ -32,7 +32,7 @@ Wine version: wine-6.6 (WINEARCH = win64)
 
 ________________________________________________
 
-Installation on openSUSE Leap & Tumbleweed:
+##### Installation on openSUSE Leap & Tumbleweed:
 
     1.) Open Yast -> Install Software -> Install these packages: wine & p7zip-full -> Reboot your system
     
@@ -82,7 +82,7 @@ Installation on openSUSE Leap & Tumbleweed:
 ________________________________________________________________________________________________
 
 
-Installation on Ubuntu, Linux Mint, ...: 
+#### Installation on Ubuntu, Linux Mint, ...: 
 
     1.) Check if your system is up to date: Open a Termial -> Run these commands: sudo apt-get update && sudo apt-get upgrade
     
@@ -134,11 +134,11 @@ Installation on Ubuntu, Linux Mint, ...:
 
 ________________________________________________________________________________________________
 
-Note: Simply ignore errors that occur during installation. The installation of Fusion 360 was repeated several times to ensure that it really worked.
+##### Note: Simply ignore errors that occur during installation. The installation of Fusion 360 was repeated several times to ensure that it really worked.
 
 ________________________________________________________________________________________________
 
-Which workspaces I have tested:
+#### Which workspaces I have tested:
 
 - construction (works)
 - animation (works)
