@@ -88,7 +88,7 @@ ________________________________________________________________________________
     
     2.) Then run these commands (install wine): sudo dpkg --add-architecture i386  && wget -nc https://dl.winehq.org/wine-builds/winehq.key && sudo apt-key add winehq.key && sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main' && sudo apt-get update && sudo apt install --install-recommends winehq-staging && sudo apt install winetricks
     
-    3.) Run these commands: sudo apt-get install p7zip p7zip-full p7zip-rar && sudo apt-get install curl
+    3.) Run these commands: sudo apt-get install p7zip p7zip-full p7zip-rar && sudo apt-get install curl && sudo apt-get install winbind
     
     4.) Run this command: winetricks corefonts vcrun2017 msxml4 dxvk (minimum requirement for running Fusion 360)
 
