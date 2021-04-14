@@ -219,7 +219,7 @@ ________________________________________________________________________________
     3.) Run this command: winetricks corefonts vcrun2017 msxml4 dxvk (minimum requirement for running Fusion 360)
 
     4.) Run this command: winecfg 
-    5.) Set the windows version to Windows 8 or 10 (only when you use the wine version 6.6 -> At the moment)
+    5.) Set the windows version to Windows 8 or 10
 
     6.) Close this window
 
