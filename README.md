@@ -210,8 +210,54 @@ ________________________________________________________________________________
 ________________________________________________________________________________________________
 
 
-#### Installation on Arch Linux: Still in Progress ;-) 
+#### Installation on Manjaro (based on Arch Linux): 
 
+    1.) Check if your system is up to date. (And it's important that have installed the newest graphics driver!)
+
+    2.) Open a terminal -> Run this command: pacman -S wine winetricks wine-mono wine_gecko
+    
+    3.) Run this command: winetricks corefonts vcrun2017 msxml4 dxvk (minimum requirement for running Fusion 360)
+
+    4.) Run this command: winecfg 
+    5.) Set the windows version to Windows 8 or 10 (only when you use the wine version 6.6 -> At the moment)
+
+    6.) Close this window
+
+    7.) Run this command: clear (It's better to see, what happens, when we clear the terminal.)
+
+    8.) Run this command: cd Downloads && mkdir fusion360 && cd fusion360
+
+    9.) Run this command: wget https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe (Here we downloading the installer of Fusion 360.)
+
+    10.) Run this commands: 7z x -osetup/ "Fusion 360 Admin Install.exe" && curl -Lo setup/platform.py github.com/python/cpython/raw/3.5/Lib/platform.py && sed -i 's/winver._platform_version or //' setup/platform.py
+
+    11.) Run this command: wine setup/streamer.exe -p deploy -g -f log.txt --quiet (Run this command 2x)
+
+    12.) Run this command: cd $HOME && mkdir .Fusion360 && cd .Fusion360
+
+    13.) Run this command: env WINEPREFIX="/home/YOUR_USER_NAME/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk (Here we opening the program Fusion 360 and this creating some files in our .Fusion360 folder.)
+
+    14.) Login with your account data
+
+    15.) Then go to preferences and in General under Graphics driver, select DirectX 9. <-- OR -->
+    16.) Then go to preferences and in General under Graphics driver, select OpenGL <-- This is now the best choise for Fusion 360!
+
+    17.) Close Fusion 360
+
+    18.) Run this command: winecfg -> Go to libraries -> Change these options: <-- We don't need this one, now!
+
+    d3d10core = disabled
+    d3d11 = native
+    d3d9 = builtin
+    dxgi = native
+
+    
+    19.) Open Fusion again with this command: env WINEPREFIX="/home/YOUR_USER_NAME/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk (It's important, that your changing to your .Fusion360 folder in our home-directory and run then this command now & in the future here.)
+
+    20.) Now everything should work so far.
+
+
+* Here can you see more about Fusion 360 on Fedora: Still in Progress!
 ________________________________________________________________________________________________
 
 ##### Note: Simply ignore errors that occur during installation. 
