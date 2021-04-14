@@ -210,7 +210,7 @@ ________________________________________________________________________________
 
     27.) Now everything should work so far.
 
-* Here can you see more about Fusion 360 on Fedora: Still in Progress ;-)
+* Here can you see more about Fusion 360 on Fedora: https://youtu.be/JRu-OaGsv3A
 ________________________________________________________________________________________________
 
 
