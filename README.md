@@ -11,7 +11,6 @@ The program is actually already running, but I go a step further and have added 
 
 You find here instructions for openSUSE Leap & Tumbleweed, Ubuntu, Fedora, ... and so on.
 
-
 ________________________________________________
 
 Also you can find more informations, when you visit my other channels!
@@ -217,6 +216,8 @@ ________________________________________________________________________________
 
 ##### Note: Simply ignore errors that occur during installation. 
 #####       The installation of Fusion 360 was repeated several times to ensure that it really worked.
+
+####        Special thanks to https://github.com/probonopd for his old guide here: https://gist.github.com/probonopd/0fab254aa0b6fc371d8db641822bd530 ! :-)
 ________________________________________________________________________________________________
 
 #### Which workspaces I have tested:
