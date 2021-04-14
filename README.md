@@ -1,6 +1,6 @@
 <h1>Fusion-360 - Linux (Wine Version)</h1>
 
-![image](https://user-images.githubusercontent.com/79079633/114744478-07467500-9d4e-11eb-99a9-11596a78ccf1.png))
+![image](https://user-images.githubusercontent.com/79079633/114744478-07467500-9d4e-11eb-99a9-11596a78ccf1.png)
 
 
 I use WINE for running this program on Linux, so you don't need longer two operating systems just to be able to use Fusion 360.
