@@ -3,31 +3,28 @@
 ![Spannung](https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/Spannung.png)
 
 
-I decided to use WINE to run this program just as well under Linux as it did under Windows, so that you no longer have to run two operating systems just to be able to use Fusion 360.
+I use WINE for running this program on Linux, so you don't need longer two operating systems just to be able to use Fusion 360.
 
-As a Linux distribution I use openSuse Leap 15.2 with the desktop environment Xfce and the Wine version from the standard repositories. I also use an Nvidia graphics card and use the drivers from the community repository.
+On my system I use openSUSE Leap 15.2 with the desktop environment Xfce.
 
-The program is actually already running, but I go a step further and have added the CUDA repository from Nvidia to use the CUDA toolkits.
+The program is actually already running, but I go a step further and have added the CUDA repository from Nvidia to use the CUDA toolkits, because I think this gives me more performance for Fusion 360.
 
-This gives me more performance for Fusion 360 and my other programs that I use.
-
-Of course you can also use another Linux distribution, because on most of these systems you also get access to the programs and packages I use.
+You find here instructions for openSUSE Leap & Tumbleweed, Ubuntu, Fedora, ... and so on.
 
 
 ________________________________________________
 
-Here and on my other channels, as well as on my website, I will not only create instructions for installation, but also publish test reports on the respective working environments (simulation, animation, ...).
-
+Also you can find more informations, when you visit my other channels!
 
 ________________________________________________
 
 My system:
 
-OS: openSUSE Leap 15.2 x86_64
-Kernel: 5.3.18-lp152.63-default
-DE: Xfce
-CPU: Intel i7-7700HQ (8) @ 3.800GHz
-GPU: NVIDIA GeForce GTX 1060 Mobile 6G (Community Repository Nvidia)
+OS: openSUSE Leap 15.2 x86_64<br/>
+Kernel: 5.3.18-lp152.63-default<br/>
+DE: Xfce<br/>
+CPU: Intel i7-7700HQ (8) @ 3.800GHz<br/>
+GPU: NVIDIA GeForce GTX 1060 Mobile 6G (Community Repository Nvidia & CUDA Repository)<br/>
 Memory: 32GB
 
 Wine version: wine-5.0 (WINEARCH = win64)<br/>
