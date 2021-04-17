@@ -278,7 +278,6 @@ ________________________________________________________________________________
     20.) Now everything should work so far.
 
 
-* Here can you see more about Fusion 360 on Fedora: Still in Progress!
 ________________________________________________________________________________________________
 
 ##### Note: Simply ignore errors that occur during installation. 
