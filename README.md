@@ -7,13 +7,27 @@ I use WINE for running this program on Linux, so you don't need longer two opera
 
 On my system I use openSUSE Leap 15.2 with the desktop environment Xfce.
 
-The program is actually already running, but I go a step further and have added the CUDA repository from Nvidia to use the CUDA toolkits, because I think this gives me more performance for Fusion 360.
-
-You find here instructions for openSUSE Leap & Tumbleweed, Ubuntu, Fedora, ... and so on.
+Fusion 360 is actually already running, but I go a step further and have added the CUDA repository from Nvidia to use the CUDA toolkits, because I think this gives me more performance for Fusion 360.
 
 ________________________________________________
 
-Also you can find more informations, when you visit my other channels!
+You can find here instructions for openSUSE Leap & Tumbleweed, Ubuntu and for another Linux distributions.
+
+________________________________________________
+
+With this link you come to the original website of Autodesk Fusion 360, where you can also get more information about this program: https://www.autodesk.com/products/fusion-360/features
+
+________________________________________________
+
+Also you can find more informations about Fusion 360, when you visit my other channels:
+
+  - Facebook:  https://www.facebook.com/cryinkfly/
+  - Instagram: https://www.instagram.com/cryinkfly/
+  - YouTube:   https://www.youtube.com/channel/UCJO-EOBPtlVv5OycHkFPcRg
+
+
+![YouTube_channel](https://user-images.githubusercontent.com/79079633/115113000-5d066180-9f88-11eb-89c4-fd4ddea305ed.png)
+
 
 ________________________________________________
 
@@ -32,6 +46,8 @@ Wine version: wine-6.6 (WINEARCH = win64)
 ________________________________________________
 
 ##### Installation on openSUSE Leap & Tumbleweed:
+
+![openSUSE Leap 15.3](https://user-images.githubusercontent.com/79079633/115074681-53ceb380-9efa-11eb-92ea-7047f781ee8a.png)
 
     1.) Open Yast -> Install Software -> Install these packages: wine & p7zip-full (And it's important that have installed the newest graphics driver!) -> Reboot your system
     
@@ -81,7 +97,9 @@ ________________________________________________
 ________________________________________________________________________________________________
 
 
-#### Installation on Ubuntu, Linux Mint, ...: 
+#### Installation on Ubuntu, Linux Mint, ...:
+
+![Ubuntu](https://user-images.githubusercontent.com/79079633/115113193-6ba14880-9f89-11eb-8d88-b927a80939cd.png)
 
     1.) Check if your system is up to date: Open a Termial -> Run this command: sudo apt-get update && sudo apt-get upgrade (And it's important that have installed the newest graphics driver!)
     
@@ -135,6 +153,8 @@ ________________________________________________________________________________
 
 
 #### Installation on Fedora:
+
+![Fedora](https://user-images.githubusercontent.com/79079633/114680044-0d683180-9d0d-11eb-9aff-ed747060a5d4.png)
 
     1.) Open a Terminal and run this command sudo nano /etc/hosts (Change this file!)
 
@@ -212,6 +232,8 @@ ________________________________________________________________________________
 
 #### Installation on Manjaro (based on Arch Linux): 
 
+![Manjaro](https://user-images.githubusercontent.com/79079633/114720618-75803d00-9d38-11eb-99f3-f668f320eca3.png)
+
     1.) Check if your system is up to date. (And it's important that have installed the newest graphics driver!)
 
     2.) Open a terminal -> Run this command: pacman -S wine winetricks wine-mono wine_gecko
@@ -273,5 +295,3 @@ ________________________________________________________________________________
 - rendering (works , but when you will saving a rendered file, then you must changing something: https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/releases/tag/v1.2
 -  production (works)
 -  simulation (Local calculation dosn't work at the moment)
-
-Further changes to Fusion 360 will be made and further tests will be carried out as well.
