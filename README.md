@@ -19,7 +19,7 @@ With this link you come to the original website of Autodesk Fusion 360, where yo
 
 ________________________________________________
 
-Also you can find more informations about Fusion 360, when you visit my other channels:
+Also you can get more informations about Fusion 360, when you visit my other channels:
 
   - Facebook:  https://www.facebook.com/cryinkfly/
   - Instagram: https://www.instagram.com/cryinkfly/
