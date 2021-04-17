@@ -231,7 +231,7 @@ ________________________________________________________________________________
 
 #### Installation on Manjaro (based on Arch Linux): 
 
-![Manjaro](https://user-images.githubusercontent.com/79079633/114720618-75803d00-9d38-11eb-99f3-f668f320eca3.png)
+![Manjaro](https://user-images.githubusercontent.com/79079633/114720624-76b16a00-9d38-11eb-84f9-9096f0bbbbc7.png)
 
     1.) Check if your system is up to date. (And it's important that have installed the newest graphics driver!)
 
