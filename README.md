@@ -33,14 +33,13 @@ ________________________________________________
 
 My system:
 
-OS: openSUSE Leap 15.2 x86_64<br/>
-Kernel: 5.3.18-lp152.63-default<br/>
+OS: openSUSE Leap 15.3 Beta x86_64<br/>
+Kernel: 5.3.18-52-default<br/>
 DE: Xfce<br/>
 CPU: Intel i7-7700HQ (8) @ 3.800GHz<br/>
 GPU: NVIDIA GeForce GTX 1060 Mobile 6G (Community Repository Nvidia & CUDA Repository)<br/>
 Memory: 32GB
 
-Wine version: wine-5.0 (WINEARCH = win64)<br/>
 Wine version: wine-6.6 (WINEARCH = win64)
 
 ________________________________________________
