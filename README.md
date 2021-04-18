@@ -5,7 +5,7 @@
 
 I use WINE for running this program on Linux, so you don't need longer two operating systems just to be able to use Fusion 360.
 
-On my system I use openSUSE Leap 15.2 with the desktop environment Xfce.
+On my system I use openSUSE Leap 15.3 with the desktop environment Xfce.
 
 Fusion 360 is actually already running, but I go a step further and have added the CUDA repository from Nvidia to use the CUDA toolkits, because I think this gives me more performance for Fusion 360.
 
@@ -78,7 +78,7 @@ ________________________________________________
 
     16.) Close Fusion 360
 
-    17.) Run this command: winecfg -> Go to libraries -> Change these options: <-- We don't need this one, now!
+    17.) Run this command: winecfg -> Go to libraries -> Change these options:
 
     d3d10core = disabled
     d3d11 = native
@@ -134,7 +134,7 @@ ________________________________________________________________________________
 
     18) Close Fusion 360
 
-    19.) Run this command: winecfg -> Go to libraries -> Change these options: <-- We don't need this one, now!
+    19.) Run this command: winecfg -> Go to libraries -> Change these options:
 
     d3d10core = disabled
     d3d11 = native
@@ -213,7 +213,7 @@ ________________________________________________________________________________
 
     24) Close Fusion 360
 
-    25.) Run this command: winecfg -> Go to libraries -> Change these options: <-- We don't need this one, now!
+    25.) Run this command: winecfg -> Go to libraries -> Change these options:
 
     d3d10core = disabled
     d3d11 = native
@@ -265,7 +265,7 @@ ________________________________________________________________________________
 
     17.) Close Fusion 360
 
-    18.) Run this command: winecfg -> Go to libraries -> Change these options: <-- We don't need this one, now!
+    18.) Run this command: winecfg -> Go to libraries -> Change these options:
 
     d3d10core = disabled
     d3d11 = native
