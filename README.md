@@ -81,9 +81,9 @@ ________________________________________________
     17.) Run this command: winecfg -> Go to libraries -> Change these options:
 
     d3d10core = disabled
-    d3d11 = native
+    d3d11 = builtin
     d3d9 = builtin
-    dxgi = native
+    dxgi = builtin
 
     
     18.) Open Fusion again with this command: env WINEPREFIX="/home/YOUR_USER_NAME/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk (It's important, that your changing to your .Fusion360 folder in our home-directory and run then this command now & in the future here.)
@@ -137,9 +137,9 @@ ________________________________________________________________________________
     19.) Run this command: winecfg -> Go to libraries -> Change these options:
 
     d3d10core = disabled
-    d3d11 = native
+    d3d11 = builtin
     d3d9 = builtin
-    dxgi = native
+    dxgi = builtin
 
     
     20.) Open Fusion again with this command: env WINEPREFIX="/home/YOUR_USER_NAME/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk (It's important, that your changing to your .Fusion360 folder in our home-directory and run then this command now & in the future here.)
@@ -216,9 +216,9 @@ ________________________________________________________________________________
     25.) Run this command: winecfg -> Go to libraries -> Change these options:
 
     d3d10core = disabled
-    d3d11 = native
+    d3d11 = builtin
     d3d9 = builtin
-    dxgi = native
+    dxgi = builtin
 
     
     26.) Open Fusion again with this command: env WINEPREFIX="/home/YOUR_USER_NAME/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk (It's important, that your changing to your .Fusion360 folder in our home-directory and run then this command now & in the future here.)
@@ -268,22 +268,39 @@ ________________________________________________________________________________
     18.) Run this command: winecfg -> Go to libraries -> Change these options:
 
     d3d10core = disabled
-    d3d11 = native
+    d3d11 = builtin
     d3d9 = builtin
-    dxgi = native
+    dxgi = builtin
 
     
     19.) Open Fusion again with this command: env WINEPREFIX="/home/YOUR_USER_NAME/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk (It's important, that your changing to your .Fusion360 folder in our home-directory and run then this command now & in the future here.)
 
     20.) Now everything should work so far.
 
+________________________________________________________________________________________________
+
+#### If you use Wine under XWayland, you can activate the option for "Emulating a virtual desktop" in the Graphics Tab in winecfg, to avoid problems with:
+
+- flickering
+- wrong window location
+- wrong mouse cursor location and clicks
+- keyboard detection
 
 ________________________________________________________________________________________________
 
 ##### Note: Simply ignore errors that occur during installation. 
 #####       The installation of Fusion 360 was repeated several times to ensure that it really worked.
 
+________________________________________________________________________________________________
+
 #####        Special thanks to https://github.com/probonopd for his old guide here: https://gist.github.com/probonopd/0fab254aa0b6fc371d8db641822bd530 ! :-)
+
+________________________________________________________________________________________________
+
+#####        Development team:
+
+- @cryinkfly (Administrator & Project Manager)
+- @dreamcat4
 ________________________________________________________________________________________________
 
 #### Which workspaces I have tested:
