@@ -279,6 +279,96 @@ ________________________________________________________________________________
 
 ________________________________________________________________________________________________
 
+#### Installation with Flatpak - EXPERIMENTAL:
+
+1. Check if your system is up to date: Open a Termial -> Run this command: sudo apt-get update && sudo apt-get upgrade (And it's important that have installed the newest graphics driver!)
+
+2. Run this command: sudo apt-get install p7zip p7zip-full p7zip-rar && sudo apt-get install curl 
+
+3. Run this command (install flatpak): sudo apt install flatpak
+
+4. Run this command: flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+5. Run this command sudo nano /etc/hosts (Change this file!)
+
+         127.0.0.1     localhost
+         127.0.1.1     EXAMPLE-NAME
+         
+         ::1 ip6-localhost ip6-loopback
+         fe00::0 ip6-localnet
+         ff00::0 ip6-mcastprefix
+         ff02::1 ip6-allnodes
+         ff02::2 ip6-allrouters
+         ff02::3 ip6-allhosts
+
+6. Run this command: sudo nano /etc/hostname (Change this file!)
+
+        EXAMPLE-NAME
+
+7. Reboot your system!
+
+8. Open a Terminal -> Run this command: flatpak install flathub org.phoenicis.playonlinux
+
+10. Run this command: cd Downloads && mkdir fusion360 && cd fusion360
+
+11. Run this command: wget https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe (Here we downloading the installer of Fusion 360.)
+
+12. Run this command: 7z x -osetup/ "Fusion 360 Admin Install.exe" && curl -Lo setup/platform.py github.com/python/cpython/raw/3.5/Lib/platform.py && sed -i 's/winver._platform_version or //' setup/platform.py
+
+13. Close the terminal
+
+14. Then you must look to my instruction: https://github.com/PhoenicisOrg/phoenicis/issues/2389
+      (Safe your winetricks (file) here: /home/YOUR-USER/Downloads/ winetricks)
+
+15. Now, you can continue with the installation of Fusion 360.
+
+![2](https://user-images.githubusercontent.com/79079633/115906698-26d55000-a468-11eb-861f-2d3432cb9727.png)
+![3](https://user-images.githubusercontent.com/79079633/115906701-26d55000-a468-11eb-8a01-4ab5138cac2d.png)
+![4](https://user-images.githubusercontent.com/79079633/115906702-276de680-a468-11eb-85e4-67a002883ace.png)
+
+16. Open the terminal:
+
+![5](https://user-images.githubusercontent.com/79079633/115906705-276de680-a468-11eb-8f1a-c53e9b88a325.png)
+
+17. Run this command: cd $HOME/Downloads/ && sh winetricks corefonts vcrun2017 msxml4
+
+18. Run this command: winecfg 
+19. Set the windows version to Windows 10
+
+20. Run this command: cd fusion360 && wine setup/streamer.exe -p deploy -g -f log.txt --quiet (Run this command 2x)
+
+21. Close the Terminal.
+
+22. Open your Filebrowser (for example Thunar) -> Go to this path: /home/YOUR-USER/.var/app/org.phoenicis.playonlinux/.Phoenicis/containers/wineprefix/Fusion/drive_c/users/steve/Application Data/Autodesk/Neutron Platform/
+
+23. Create a new folder: Options
+24. Create a new file: NMachineSpecificOptions.xml
+25. Insert this text:
+
+`<?xml version="1.0" encoding="UTF-16" standalone="no" ?>
+<OptionGroups>
+  <BootstrapOptionsGroup SchemaVersion="2" ToolTip="Special preferences that require the application to be restarted after a change." UserName="Bootstrap">
+    <driverOptionId ToolTip="The driver used to display the graphics" UserName="Graphics driver" Value="VirtualDeviceGLCore"/></BootstrapOptionsGroup>
+</OptionGroups>`
+
+... safe this file, close the editor and your file-browser.
+
+26. Open the terminal:
+
+![5](https://user-images.githubusercontent.com/79079633/115906705-276de680-a468-11eb-8f1a-c53e9b88a325.png)
+
+27. Run this command: cd drive_c/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/ && wine Autodesk\ Fusion\ 360.Ink
+
+![#1_Phoenicis PlayOnLinux](https://user-images.githubusercontent.com/79079633/115911821-dca39d00-a46e-11eb-8547-5a53007178e1.png)
+
+
+#### Fusion 360 dosn't work at the moment with this method! Only the installation of Fusion 360 works!
+
+But you can see now, that I search for a solution, so that Fusion 360 works on all Linux distributions.
+This is just one of my ways to get Fusion 360 up and running using Flatpak.
+
+________________________________________________________________________________________________
+
 #### If you use Wine under XWayland, you can activate the option for "Emulating a virtual desktop" in the Graphics Tab in winecfg, to avoid problems with:
 
 - flickering
