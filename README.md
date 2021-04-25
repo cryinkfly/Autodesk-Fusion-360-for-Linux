@@ -29,6 +29,10 @@ Also you get more informations about Fusion 360, when you visit my other channel
 ![YouTube_channel](https://user-images.githubusercontent.com/79079633/115113000-5d066180-9f88-11eb-89c4-fd4ddea305ed.png)
 
 
+  - WineHQ:    https://appdb.winehq.org/objectManager.php?sClass=version&iId=36468
+
+![WineHQ](https://user-images.githubusercontent.com/79079633/115982085-ac581d80-a598-11eb-853b-dcf35795dfce.jpeg)
+
 ________________________________________________
 
 My system:
