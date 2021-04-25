@@ -2,20 +2,16 @@
 
 ![image](https://user-images.githubusercontent.com/79079633/114744478-07467500-9d4e-11eb-99a9-11596a78ccf1.png)
 
+Hello and Welcome on my GitHub-Channel "Crinkfly"!
 
-I use WINE for running this program on Linux, so you don't need longer two operating systems just to be able to use Fusion 360.
+In this repository you can find some instructions for Autodesk Fusion 360, where you get a way to install this program on your system.
+I will give you a feedback at different intervals, when there is something new.
 
-On my system I use openSUSE Leap 15.3 with the desktop environment Xfce.
-
-Fusion 360 is actually already running, but I go a step further and have added the CUDA repository from Nvidia to use the CUDA toolkits, because I think this gives me more performance for Fusion 360.
-
-________________________________________________
-
-You can find here instructions for openSUSE Leap & Tumbleweed, Ubuntu and for another Linux distributions.
+My goal is that we can also use Autodesk Fusion 360 on Linux and so we don't need longer two operating systems for this program, when we use this for our projects. I think this is a fantastic idea!
 
 ________________________________________________
 
-With this link you come to the original website of Autodesk Fusion 360, where you can also get more information about this program: https://www.autodesk.com/products/fusion-360/features
+You will get more information about this program, then you can visit the original website of Autodesk Fusion 360 with this link: https://www.autodesk.com/products/fusion-360/features
 
 ________________________________________________
 
@@ -27,11 +23,6 @@ Also you get more informations about Fusion 360, when you visit my other channel
 
 
 ![YouTube_channel](https://user-images.githubusercontent.com/79079633/115113000-5d066180-9f88-11eb-89c4-fd4ddea305ed.png)
-
-
-  - WineHQ:    https://appdb.winehq.org/objectManager.php?sClass=version&iId=36468
-
-![WineHQ](https://user-images.githubusercontent.com/79079633/115982085-ac581d80-a598-11eb-853b-dcf35795dfce.jpeg)
 
 ________________________________________________
 
@@ -54,7 +45,7 @@ ________________________________________________
 
     1.) Open Yast -> Install Software -> Install these packages: wine & p7zip-full (And it's important that have installed the newest graphics driver!) -> Reboot your system
     
-    2.) Open a Terminal -> Run this command: winetricks corefonts vcrun2017 msxml4 dxvk (minimum requirement for running Fusion 360)
+    2.) Open a Terminal -> Run this command: winetricks -q corefonts vcrun2017 msxml4 dxvk (minimum requirement for running Fusion 360)
 
     3.) Run this command: winecfg 
     4.) Set the windows version to Windows 8 or 10 (only when you use the wine version 6.6 -> At the moment)
@@ -110,7 +101,7 @@ ________________________________________________________________________________
     
     3.) Run this command: sudo apt-get install p7zip p7zip-full p7zip-rar && sudo apt-get install curl && sudo apt-get install winbind
     
-    4.) Run this command: winetricks corefonts vcrun2017 msxml4 dxvk (minimum requirement for running Fusion 360)
+    4.) Run this command: winetricks -q corefonts vcrun2017 msxml4 dxvk (minimum requirement for running Fusion 360)
 
     5.) Run this command: winecfg 
     6.) Set the windows version to Windows 8 or 10 (only when you use the wine version 6.6 -> At the moment)
@@ -185,7 +176,7 @@ ________________________________________________________________________________
 
     7.) Reboot your system
 
-    8.) Open a Terminal -> Run this command: winetricks corefonts vcrun2017 msxml4 dxvk (minimum requirement for running Fusion 360)
+    8.) Open a Terminal -> Run this command: winetricks -q corefonts vcrun2017 msxml4 dxvk (minimum requirement for running Fusion 360)
 
     9.) Run this command: winecfg 
     10.) Set the windows version to Windows 8 or 10 (only when you use the wine version 6.6 -> At the moment)
@@ -241,7 +232,7 @@ ________________________________________________________________________________
 
     2.) Open a terminal -> Run this command: pacman -S wine winetricks wine-mono wine_gecko
     
-    3.) Run this command: winetricks corefonts vcrun2017 msxml4 dxvk (minimum requirement for running Fusion 360)
+    3.) Run this command: winetricks -q corefonts vcrun2017 msxml4 dxvk (minimum requirement for running Fusion 360)
 
     4.) Run this command: winecfg 
     5.) Set the windows version to Windows 8 or 10
@@ -334,7 +325,7 @@ ________________________________________________________________________________
 
 ![5](https://user-images.githubusercontent.com/79079633/115906705-276de680-a468-11eb-8f1a-c53e9b88a325.png)
 
-17. Run this command: cd $HOME/Downloads/ && sh winetricks corefonts vcrun2017 msxml4
+17. Run this command: cd $HOME/Downloads/ && sh winetricks -q corefonts vcrun2017 msxml4
 
 18. Run this command: winecfg 
 19. Set the windows version to Windows 10
@@ -388,6 +379,10 @@ ________________________________________________________________________________
 ________________________________________________________________________________________________
 
 #####        Special thanks to https://github.com/probonopd for his old guide here: https://gist.github.com/probonopd/0fab254aa0b6fc371d8db641822bd530 ! :-)
+
+________________________________________________________________________________________________
+
+##### Application Maintainer (WineHQ): https://appdb.winehq.org/objectManager.php?sClass=version&iId=36468
 
 ________________________________________________________________________________________________
 
