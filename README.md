@@ -384,6 +384,8 @@ ________________________________________________________________________________
 
 ##### Application Maintainer (WineHQ): https://appdb.winehq.org/objectManager.php?sClass=version&iId=36468
 
+- @cryinkfly (Administrator & Project Manager)
+
 ________________________________________________________________________________________________
 
 #####        Development team:
