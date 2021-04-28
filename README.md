@@ -86,12 +86,7 @@ ________________________________________________
 
     18.) Login with your account data
 
-    19.) Close Fusion 360
-
-    
-    20.) Open Fusion again with this command: env WINEPREFIX="/home/YOUR_USER_NAME/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk (It's important, that your changing to your .Fusion360 folder in our home-directory and run then this command now & in the future here.)
-
-    21.) Now everything should work so far.
+    19.) Now everything should work so far.
 
 
 * Here can you see my way to install Fusion 360 on openSUSE Leap 15.2: https://youtu.be/-BktJspJKgs
@@ -147,12 +142,7 @@ ________________________________________________________________________________
 
     19.) Login with your account data
 
-    20.) Close Fusion 360
-
-    
-    21.) Open Fusion again with this command: env WINEPREFIX="/home/YOUR_USER_NAME/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk (It's important, that your changing to your .Fusion360 folder in our home-directory and run then this command now & in the future here.)
-
-    22.) Now everything should work so far.
+    20.) Now everything should work so far.
 
 * Here can you see more about Fusion 360 on Ubuntu: https://youtu.be/NJTV_enR6io & https://www.youtube.com/watch?v=R-ev3dhNM98
 
@@ -227,12 +217,7 @@ ________________________________________________________________________________
 
     23.) Login with your account data
 
-    24.) Close Fusion 360
-
-    
-    25.) Open Fusion again with this command: env WINEPREFIX="/home/YOUR_USER_NAME/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk (It's important, that your changing to your .Fusion360 folder in our home-directory and run then this command now & in the future here.)
-
-    26.) Now everything should work so far.
+    24.) Now everything should work so far.
 
 * Here can you see more about Fusion 360 on Fedora: https://youtu.be/JRu-OaGsv3A
 ________________________________________________________________________________________________
@@ -284,12 +269,7 @@ ________________________________________________________________________________
 
     18.) Login with your account data
 
-    19.) Close Fusion 360
-
-    
-    20.) Open Fusion again with this command: env WINEPREFIX="/home/YOUR_USER_NAME/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk (It's important, that your changing to your .Fusion360 folder in our home-directory and run then this command now & in the future here.)
-
-    21.) Now everything should work so far.
+    19.) Now everything should work so far.
 
 ________________________________________________________________________________________________
 
