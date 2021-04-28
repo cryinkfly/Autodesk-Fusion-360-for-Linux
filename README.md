@@ -427,9 +427,9 @@ ________________________________________________________________________________
 - Run this command: winetricks -q corefonts vcrun2017 msxml4 dxvk (Then you must install also dxvk!)
 - Run this command: winecfg -> Go to libraries -> Change these options:
 
-d3d10core = disabled
-d3d11 = builtin
-d3d9 = builtin
-dxgi = builtin
+    - d3d10core = disabled
+    - d3d11 = builtin
+    - d3d9 = builtin
+    - dxgi = builtin
 
-When you open Fusion 360 -> Then go to preferences and in General under Graphics driver, select DirectX 9.
+When you have opened Fusion 360 -> Go to preferences and in General under Graphics driver, select DirectX 9.
