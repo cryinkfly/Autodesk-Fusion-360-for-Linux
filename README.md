@@ -35,7 +35,7 @@ CPU: Intel i7-7700HQ (8) @ 3.800GHz<br/>
 GPU: NVIDIA GeForce GTX 1060 Mobile 6G (Community Repository Nvidia & CUDA Repository)<br/>
 Memory: 32GB
 
-Wine version: wine-6.6 (WINEARCH = win64)
+Wine version: wine-6.7 (WINEARCH = win64)
 
 ________________________________________________
 
@@ -43,47 +43,55 @@ ________________________________________________
 
 ![openSUSE Leap 15.3](https://user-images.githubusercontent.com/79079633/115074681-53ceb380-9efa-11eb-92ea-7047f781ee8a.png)
 
-    1.) Open Yast -> Install Software -> Install these packages: wine & p7zip-full (And it's important that have installed the newest graphics driver!) -> Reboot your system
+    1.) Check if your system is up to date!!! (With YaST or open a Terminal and run this commands: su (input your root password!) and then: zypper up )
+
+    2a.) Install these packages with YaST: wine & p7zip-full (winetricks, winbind, ... will be installed automatically!) -> OR
+    2b.) Add this Repo: https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.2/ and install these packages with YaST: wine & p7zip-full
     
-    2.) Open a Terminal -> Run this command: winetricks -q corefonts vcrun2017 msxml4 dxvk (minimum requirement for running Fusion 360)
+    3.) Reboot your system!
+    
+    4a.) Open a Terminal -> Run this command: cd Downloads && winetricks -q corefonts vcrun2017 msxml4 (minimum requirement for running Fusion 360) -> OR
+    4b.) Run this command: cd Downloads && wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks && chmod +x winetricks && sh winetricks -q corefonts vcrun2017 msxml4 (With this option you get the newest winetricks version!)
 
-    3.) Run this command: winecfg 
-    4.) Set the windows version to Windows 8 or 10 (only when you use the wine version 6.6 -> At the moment)
+    5.) Run this command: winecfg 
+    6.) Set the windows version to Windows 8 or 10 (Only when you use the wine version 6.6 or newer at the moment!)
 
-    5.) Close this window
+    7.) Close this window
 
-    6.) Run this command: clear (It's better to see, what happens, when we clear the terminal.)
+    8.) Run this command: mkdir fusion360 && cd fusion360
 
-    7.) Run this command: cd Downloads && mkdir fusion360 && cd fusion360
+    9.) Run this command: wget https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe (Here we downloading the installer of Fusion 360.)
 
-    8.) Run this command: wget https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe (Here we downloading the installer of Fusion 360.)
+    10.) Run this commands: 7z x -osetup/ "Fusion 360 Admin Install.exe" && curl -Lo setup/platform.py github.com/python/cpython/raw/3.5/Lib/platform.py && sed -i 's/winver._platform_version or //' setup/platform.py
 
-    9.) Run this commands: 7z x -osetup/ "Fusion 360 Admin Install.exe" && curl -Lo setup/platform.py github.com/python/cpython/raw/3.5/Lib/platform.py && sed -i 's/winver._platform_version or //' setup/platform.py
+    11.) Run this command: wine setup/streamer.exe -p deploy -g -f log.txt --quiet (Run this command 2x)
 
-    10.) Run this command: wine setup/streamer.exe -p deploy -g -f log.txt --quiet (Run this command 2x)
+    12.) Run this command: cd $HOME && mkdir .Fusion360 && cd .Fusion360
 
-    11.) Run this command: cd $HOME && mkdir .Fusion360 && cd .Fusion360
+    13.) Open your Filebrowser (for example Thunar) -> Go to this path: /home/YOUR-USER/.wine/drive_c/users/steve/Application Data/Autodesk/Neutron Platform/
 
-    12.) Run this command: env WINEPREFIX="/home/YOUR_USER_NAME/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk (Here we opening the program Fusion 360 and this creating some files in our .Fusion360 folder.)
+    14.) Create a new folder: Options
+    15.) Create a new file: NMachineSpecificOptions.xml
+    16.) Insert this text:
 
-    13.) Login with your account data
+`<?xml version="1.0" encoding="UTF-16" standalone="no" ?>
+<OptionGroups>
+  <BootstrapOptionsGroup SchemaVersion="2" ToolTip="Special preferences that require the application to be restarted after a change." UserName="Bootstrap">
+    <driverOptionId ToolTip="The driver used to display the graphics" UserName="Graphics driver" Value="VirtualDeviceGLCore"/></BootstrapOptionsGroup>
+</OptionGroups>`
 
-    14.) Then go to preferences and in General under Graphics driver, select DirectX 9. <-- OR -->
-    15.) Then go to preferences and in General under Graphics driver, select OpenGL <-- This is now the best choise for Fusion 360!
+    ... safe this file, close the editor and your file-browser. (With this method we selected openGL and so we dosn't need DXVK for the future!)
 
-    16.) Close Fusion 360
+    17.) Run this command: env WINEPREFIX="/home/YOUR_USER_NAME/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk (Here we opening the program Fusion 360 and this creating some files in our .Fusion360 folder.)
 
-    17.) Run this command: winecfg -> Go to libraries -> Change these options:
+    18.) Login with your account data
 
-    d3d10core = disabled
-    d3d11 = builtin
-    d3d9 = builtin
-    dxgi = builtin
+    19.) Close Fusion 360
 
     
-    18.) Open Fusion again with this command: env WINEPREFIX="/home/YOUR_USER_NAME/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk (It's important, that your changing to your .Fusion360 folder in our home-directory and run then this command now & in the future here.)
+    20.) Open Fusion again with this command: env WINEPREFIX="/home/YOUR_USER_NAME/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk (It's important, that your changing to your .Fusion360 folder in our home-directory and run then this command now & in the future here.)
 
-    19.) Now everything should work so far.
+    21.) Now everything should work so far.
 
 
 * Here can you see my way to install Fusion 360 on openSUSE Leap 15.2: https://youtu.be/-BktJspJKgs
@@ -95,51 +103,56 @@ ________________________________________________________________________________
 
 ![Ubuntu](https://user-images.githubusercontent.com/79079633/115113193-6ba14880-9f89-11eb-8d88-b927a80939cd.png)
 
-    1.) Check if your system is up to date: Open a Termial -> Run this command: sudo apt-get update && sudo apt-get upgrade (And it's important that have installed the newest graphics driver!)
+    1.) Check if your system is up to date!!! (You can do that, when you open a Termial -> Run this command: sudo apt-get update && sudo apt-get upgrade
     
-    2.) Then run this command (install wine): sudo dpkg --add-architecture i386  && wget -nc https://dl.winehq.org/wine-builds/winehq.key && sudo apt-key add winehq.key && sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main' && sudo apt-get update && sudo apt install --install-recommends winehq-staging && sudo apt install winetricks
+    2.) Open a Terminal -> Run this command: sudo apt.get install -y p7zip p7zip-full p7zip-rar curl winbind
     
-    3.) Run this command: sudo apt.get install -y p7zip p7zip-full p7zip-rar curl winbind
+    3.) Run this command (install wine): sudo dpkg --add-architecture i386  && wget -nc https://dl.winehq.org/wine-builds/winehq.key && sudo apt-key add winehq.key && sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main' && sudo apt-get update && sudo apt install --install-recommends winehq-staging
     
-    4.) Run this command: winetricks -q corefonts vcrun2017 msxml4 dxvk (minimum requirement for running Fusion 360)
+    4.) Reboot your system!
+    
+    5a.) Run this command: sudo apt install -y winetricks && cd Downloads && winetricks -q corefonts vcrun2017 msxml4 (minimum requirement for running Fusion 360) -> OR
+    5b.) Run this command: cd Downloads && wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks && chmod +x winetricks && sh winetricks -q corefonts vcrun2017 msxml4 (With this option you get the newest winetricks version!)
 
-    5.) Run this command: winecfg 
-    6.) Set the windows version to Windows 8 or 10 (only when you use the wine version 6.6 -> At the moment)
+    6.) Run this command: winecfg 
+    7.) Set the windows version to Windows 8 or 10 (Only when you use the wine version 6.6 or newer at the moment!)
 
-    7.) Close this window
+    8.) Close this window
 
-    8.) Run this command: clear (It's better to see, what happens, when we clear the terminal.)
-
-    9.) Run this command: cd Downloads && mkdir fusion360 && cd fusion360
+    9.) Run this command: mkdir fusion360 && cd fusion360
 
     10.) Run this command: wget https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe (Here we downloading the installer of Fusion 360.)
 
-    11.) Run this command: 7z x -osetup/ "Fusion 360 Admin Install.exe" && curl -Lo setup/platform.py github.com/python/cpython/raw/3.5/Lib/platform.py && sed -i 's/winver._platform_version or //' setup/platform.py
+    11.) Run this commands: 7z x -osetup/ "Fusion 360 Admin Install.exe" && curl -Lo setup/platform.py github.com/python/cpython/raw/3.5/Lib/platform.py && sed -i 's/winver._platform_version or //' setup/platform.py
 
     12.) Run this command: wine setup/streamer.exe -p deploy -g -f log.txt --quiet (Run this command 2x)
 
     13.) Run this command: cd $HOME && mkdir .Fusion360 && cd .Fusion360
 
-    14.) Run this command: env WINEPREFIX="/home/YOUR_USER_NAME/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk (Here we opening the program Fusion 360 and this creating some files in our .Fusion360 folder.)
+    14.) Open your Filebrowser (for example Thunar) -> Go to this path: /home/YOUR-USER/.wine/drive_c/users/steve/Application Data/Autodesk/Neutron Platform/
 
-    15.) Login with your account data
+    15.) Create a new folder: Options
+    16.) Create a new file: NMachineSpecificOptions.xml
+    17.) Insert this text:
 
-    16.) Then go to preferences and in General under Graphics driver, select DirectX 9. <-- OR -->
-    17.) Then go to preferences and in General under Graphics driver, select OpenGL <-- This is now the best choise for Fusion 360!
+`<?xml version="1.0" encoding="UTF-16" standalone="no" ?>
+<OptionGroups>
+  <BootstrapOptionsGroup SchemaVersion="2" ToolTip="Special preferences that require the application to be restarted after a change." UserName="Bootstrap">
+    <driverOptionId ToolTip="The driver used to display the graphics" UserName="Graphics driver" Value="VirtualDeviceGLCore"/></BootstrapOptionsGroup>
+</OptionGroups>`
 
-    18) Close Fusion 360
+    ... safe this file, close the editor and your file-browser. (With this method we selected openGL and so we dosn't need DXVK for the future!)
 
-    19.) Run this command: winecfg -> Go to libraries -> Change these options:
+    18.) Run this command: env WINEPREFIX="/home/YOUR_USER_NAME/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk (Here we opening the program Fusion 360 and this creating some files in our .Fusion360 folder.)
 
-    d3d10core = disabled
-    d3d11 = builtin
-    d3d9 = builtin
-    dxgi = builtin
+    19.) Login with your account data
+
+    20.) Close Fusion 360
 
     
-    20.) Open Fusion again with this command: env WINEPREFIX="/home/YOUR_USER_NAME/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk (It's important, that your changing to your .Fusion360 folder in our home-directory and run then this command now & in the future here.)
+    21.) Open Fusion again with this command: env WINEPREFIX="/home/YOUR_USER_NAME/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk (It's important, that your changing to your .Fusion360 folder in our home-directory and run then this command now & in the future here.)
 
-    21.) Now everything should work so far.
+    22.) Now everything should work so far.
 
 * Here can you see more about Fusion 360 on Ubuntu: https://youtu.be/NJTV_enR6io & https://www.youtube.com/watch?v=R-ev3dhNM98
 
@@ -152,73 +165,74 @@ ________________________________________________________________________________
 
     1.) Open a Terminal and run this command sudo nano /etc/hosts (Change this file!)
 
-             127.0.0.1     localhost
-             127.0.1.1     EXAMPLE-NAME
-             
-             ::1 ip6-localhost ip6-loopback
-             fe00::0 ip6-localnet
-             ff00::0 ip6-mcastprefix
-             ff02::1 ip6-allnodes
-             ff02::2 ip6-allrouters
-             ff02::3 ip6-allhosts
-    
+         127.0.0.1     localhost
+         127.0.1.1     EXAMPLE-NAME
+         
+         ::1 ip6-localhost ip6-loopback
+         fe00::0 ip6-localnet
+         ff00::0 ip6-mcastprefix
+         ff02::1 ip6-allnodes
+         ff02::2 ip6-allrouters
+         ff02::3 ip6-allhosts
+
     2.) Run this command: sudo nano /etc/hostname (Change this file!)
+
+        EXAMPLE-NAME
+
+    3.) Check if your system is up to date!!! (With Gnome-Software-Center or open a Terminal and run this commands: sudo dnf update && sudo dnf upgrade
+
+    4.) Run this command: sudo dnf install p7zip p7zip-plugins && sudo dnf install curl
+
+    5.) Open a Terminal -> Add a Repo (RPM) with this command: sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm && sudo dnf update && sudo dnf upgrade
+
+    6.) Run this command (install wine): sudo dnf install wine && sudo dnf install winetricks (It's important that you use the standard wine version from the fedora repository, because only this version works perfectly with winetricks and this one we need for the step 8a!)
+
+    7.) Reboot your system!
+
+    8a.) Open a Terminal -> Run this command: cd Downloads && winetricks -q corefonts vcrun2017 msxml4 (minimum requirement for running Fusion 360) -> OR
+    8b.) Run this command: cd Downloads && wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks && chmod +x winetricks && sh winetricks -q corefonts vcrun2017 msxml4 (With this option you get the newest winetricks version!)
     
-            EXAMPLE-NAME
+    9.) Change the wine version (devel): sudo dnf config-manager --add-repo https://dl.winehq.org/wine-builds/fedora/33/winehq.repo && sudo dnf install winehq-devel --allowerasing (Now you must install the devel version of wine, because with this version you get the internet connection!)
 
-    3.) Check if your system is up to date: Open the Gnome-Software-Center -> Update your system and change to the Termial -> Run this command: sudo dnf update && sudo dnf upgrade -> Reboot your system (And it's important that have installed the newest graphics driver!)
-    
-    4.) Open a Terminal -> Add a Repo (RPM) with this command: sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm && sudo dnf update && sudo dnf upgrade
-    
-    5.) Then run this command (install wine): sudo dnf install wine && sudo dnf install winetricks (It's important that you use the standard wine version from the fedora repository, because only this version works perfectly with winetricks and this one we need for the step 6. !)
+    10.) Run this command: winecfg 
+    11.) Set the windows version to Windows 8 or 10 (Only when you use the wine version 6.6 or newer at the moment!)
 
-    6.) Run this command: sudo dnf install p7zip p7zip-plugins && sudo dnf install curl
+    12.) Close this window
 
-    7.) Reboot your system
-
-    8.) Open a Terminal -> Run this command: winetricks -q corefonts vcrun2017 msxml4 dxvk (minimum requirement for running Fusion 360)
-
-    9.) Run this command: winecfg 
-    10.) Set the windows version to Windows 8 or 10 (only when you use the wine version 6.6 -> At the moment)
-
-    11.) Close this window
-
-    12.) Run this command: clear (It's better to see, what happens, when we clear the terminal.)
-
-    13.) Run this command: cd Downloads && mkdir fusion360 && cd fusion360
+    13.) Run this command: mkdir fusion360 && cd fusion360
 
     14.) Run this command: wget https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe (Here we downloading the installer of Fusion 360.)
 
-    15.) Run this command: 7z x -osetup/ "Fusion 360 Admin Install.exe" && curl -Lo setup/platform.py github.com/python/cpython/raw/3.5/Lib/platform.py && sed -i 's/winver._platform_version or //' setup/platform.py
+    15.) Run this commands: 7z x -osetup/ "Fusion 360 Admin Install.exe" && curl -Lo setup/platform.py github.com/python/cpython/raw/3.5/Lib/platform.py && sed -i 's/winver._platform_version or //' setup/platform.py
 
     16.) Run this command: wine setup/streamer.exe -p deploy -g -f log.txt --quiet (Run this command 2x)
+
+    17.) Run this command: cd $HOME && mkdir .Fusion360 && cd .Fusion360
+
+    18.) Open your Filebrowser (for example Thunar) -> Go to this path: /home/YOUR-USER/.wine/drive_c/users/steve/Application Data/Autodesk/Neutron Platform/
+
+    19.) Create a new folder: Options
+    20.) Create a new file: NMachineSpecificOptions.xml
+    21.) Insert this text:
+
+`<?xml version="1.0" encoding="UTF-16" standalone="no" ?>
+<OptionGroups>
+  <BootstrapOptionsGroup SchemaVersion="2" ToolTip="Special preferences that require the application to be restarted after a change." UserName="Bootstrap">
+    <driverOptionId ToolTip="The driver used to display the graphics" UserName="Graphics driver" Value="VirtualDeviceGLCore"/></BootstrapOptionsGroup>
+</OptionGroups>`
+
+    ... safe this file, close the editor and your file-browser. (With this method we selected openGL and so we dosn't need DXVK for the future!)
+
+    22.) Run this command: env WINEPREFIX="/home/YOUR_USER_NAME/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk (Here we opening the program Fusion 360 and this creating some files in our .Fusion360 folder.)
+
+    23.) Login with your account data
+
+    24.) Close Fusion 360
+
     
-    17.) Change the wine version (devel): sudo dnf config-manager --add-repo https://dl.winehq.org/wine-builds/fedora/33/winehq.repo && sudo dnf install winehq-devel --allowerasing (Now you must install the devel version of wine, because with this version you get the internet connection!)
-    
-    18.) Reboot your system
+    25.) Open Fusion again with this command: env WINEPREFIX="/home/YOUR_USER_NAME/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk (It's important, that your changing to your .Fusion360 folder in our home-directory and run then this command now & in the future here.)
 
-    19.) Open a Terminal -> Run this command: cd $HOME && mkdir .Fusion360 && cd .Fusion360
-    
-    20.) Run this command: env WINEPREFIX="/home/YOUR_USER_NAME/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk (Here we opening the program Fusion 360 and this creating some files in our .Fusion360 folder.)
-
-    21.) Login with your account data
-
-    22.) Then go to preferences and in General under Graphics driver, select DirectX 9. <-- OR -->
-    23.) Then go to preferences and in General under Graphics driver, select OpenGL <-- This is now the best choise for Fusion 360!
-
-    24) Close Fusion 360
-
-    25.) Run this command: winecfg -> Go to libraries -> Change these options:
-
-    d3d10core = disabled
-    d3d11 = builtin
-    d3d9 = builtin
-    dxgi = builtin
-
-    
-    26.) Open Fusion again with this command: env WINEPREFIX="/home/YOUR_USER_NAME/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk (It's important, that your changing to your .Fusion360 folder in our home-directory and run then this command now & in the future here.)
-
-    27.) Now everything should work so far.
+    26.) Now everything should work so far.
 
 * Here can you see more about Fusion 360 on Fedora: https://youtu.be/JRu-OaGsv3A
 ________________________________________________________________________________________________
@@ -228,20 +242,21 @@ ________________________________________________________________________________
 
 ![Manjaro](https://user-images.githubusercontent.com/79079633/114720624-76b16a00-9d38-11eb-84f9-9096f0bbbbc7.png)
 
-    1.) Check if your system is up to date. (And it's important that have installed the newest graphics driver!)
+    1.) Check if your system is up to date!!! (With Pamac or open a Terminal and run this commands: sudo pacman -Syu or sudo pacman -Syyu)
 
-    2.) Open a terminal -> Run this command: pacman -S wine winetricks wine-mono wine_gecko
+    2.) Open a terminal -> Run this command: pacman -S wine wine-mono wine_gecko winetricks
+
+    3.) Reboot your system!
     
-    3.) Run this command: winetricks -q corefonts vcrun2017 msxml4 dxvk (minimum requirement for running Fusion 360)
+    4a.) Run this command: cd Downloads && winetricks -q corefonts vcrun2017 msxml4 (minimum requirement for running Fusion 360)
+    4b.) Run this command: cd Downloads && wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks && chmod +x winetricks && sh winetricks -q corefonts vcrun2017 msxml4 (With this option you get the newest winetricks version!)
 
-    4.) Run this command: winecfg 
-    5.) Set the windows version to Windows 8 or 10
+    5.) Run this command: winecfg 
+    6.) Set the windows version to Windows 8 or 10 (Only when you use the wine version 6.6 or newer at the moment!)
 
-    6.) Close this window
+    7.) Close this window
 
-    7.) Run this command: clear (It's better to see, what happens, when we clear the terminal.)
-
-    8.) Run this command: cd Downloads && mkdir fusion360 && cd fusion360
+    8.) Run this command: mkdir fusion360 && cd fusion360
 
     9.) Run this command: wget https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe (Here we downloading the installer of Fusion 360.)
 
@@ -251,30 +266,34 @@ ________________________________________________________________________________
 
     12.) Run this command: cd $HOME && mkdir .Fusion360 && cd .Fusion360
 
-    13.) Run this command: env WINEPREFIX="/home/YOUR_USER_NAME/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk (Here we opening the program Fusion 360 and this creating some files in our .Fusion360 folder.)
+    13.) Open your Filebrowser (for example Thunar) -> Go to this path: /home/YOUR-USER/.wine/drive_c/users/steve/Application Data/Autodesk/Neutron Platform/
 
-    14.) Login with your account data
+    14.) Create a new folder: Options
+    15.) Create a new file: NMachineSpecificOptions.xml
+    16.) Insert this text:
 
-    15.) Then go to preferences and in General under Graphics driver, select DirectX 9. <-- OR -->
-    16.) Then go to preferences and in General under Graphics driver, select OpenGL <-- This is now the best choise for Fusion 360!
+`<?xml version="1.0" encoding="UTF-16" standalone="no" ?>
+<OptionGroups>
+  <BootstrapOptionsGroup SchemaVersion="2" ToolTip="Special preferences that require the application to be restarted after a change." UserName="Bootstrap">
+    <driverOptionId ToolTip="The driver used to display the graphics" UserName="Graphics driver" Value="VirtualDeviceGLCore"/></BootstrapOptionsGroup>
+</OptionGroups>`
 
-    17.) Close Fusion 360
+    ... safe this file, close the editor and your file-browser. (With this method we selected openGL and so we dosn't need DXVK for the future!)
 
-    18.) Run this command: winecfg -> Go to libraries -> Change these options:
+    17.) Run this command: env WINEPREFIX="/home/YOUR_USER_NAME/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk (Here we opening the program Fusion 360 and this creating some files in our .Fusion360 folder.)
 
-    d3d10core = disabled
-    d3d11 = builtin
-    d3d9 = builtin
-    dxgi = builtin
+    18.) Login with your account data
+
+    19.) Close Fusion 360
 
     
-    19.) Open Fusion again with this command: env WINEPREFIX="/home/YOUR_USER_NAME/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk (It's important, that your changing to your .Fusion360 folder in our home-directory and run then this command now & in the future here.)
+    20.) Open Fusion again with this command: env WINEPREFIX="/home/YOUR_USER_NAME/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk (It's important, that your changing to your .Fusion360 folder in our home-directory and run then this command now & in the future here.)
 
-    20.) Now everything should work so far.
+    21.) Now everything should work so far.
 
 ________________________________________________________________________________________________
 
-#### Installation with Flatpak - EXPERIMENTAL:
+#### Installation with Flatpak (Ubuntu) - EXPERIMENTAL:
 
 1. Check if your system is up to date: Open a Termial -> Run this command: sudo apt-get update && sudo apt-get upgrade (And it's important that have installed the newest graphics driver!)
 
@@ -401,3 +420,16 @@ ________________________________________________________________________________
 - rendering (works , but when you will saving a rendered file, then you must changing something: https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/releases/tag/v1.2
 -  production (works)
 -  simulation (Local calculation dosn't work at the moment)
+________________________________________________________________________________________________
+
+#### When you will dosn't use openGL:
+
+- Run this command: winetricks -q corefonts vcrun2017 msxml4 dxvk (Then you must install also dxvk!)
+- Run this command: winecfg -> Go to libraries -> Change these options:
+
+d3d10core = disabled
+d3d11 = builtin
+d3d9 = builtin
+dxgi = builtin
+
+When you open Fusion 360 -> Then go to preferences and in General under Graphics driver, select DirectX 9.
