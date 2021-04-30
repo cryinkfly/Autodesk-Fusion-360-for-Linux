@@ -66,13 +66,11 @@ ________________________________________________
 
     11.) Run this command: wine setup/streamer.exe -p deploy -g -f log.txt --quiet (Run this command 2x)
 
-    12.) Run this command: cd $HOME && mkdir .Fusion360 && cd .Fusion360
+    12.) Open your Filebrowser (for example Thunar) -> Go to this path: /home/YOUR-USER/.wine/drive_c/users/steve/Application Data/Autodesk/Neutron Platform/
 
-    13.) Open your Filebrowser (for example Thunar) -> Go to this path: /home/YOUR-USER/.wine/drive_c/users/steve/Application Data/Autodesk/Neutron Platform/
-
-    14.) Create a new folder: Options
-    15.) Create a new file: NMachineSpecificOptions.xml
-    16.) Insert this text:
+    13.) Create a new folder: Options
+    14.) Create a new file: NMachineSpecificOptions.xml
+    15.) Insert this text:
 
 `<?xml version="1.0" encoding="UTF-16" standalone="no" ?>
 <OptionGroups>
@@ -82,11 +80,11 @@ ________________________________________________
 
     ... safe this file, close the editor and your file-browser. (With this method we selected openGL and so we dosn't need DXVK for the future!)
 
-    17.) Run this command: env WINEPREFIX="/home/YOUR_USER_NAME/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk (Here we opening the program Fusion 360 and this creating some files in our .Fusion360 folder.)
+    16.) Run this command: env WINEPREFIX="/home/YOUR_USER_NAME/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk (Here we opening the program Fusion 360 and this creating some files in our .Fusion360 folder.)
 
-    18.) Login with your account data
+    17.) Login with your account data
 
-    19.) Now everything should work so far.
+    18.) Now everything should work so far.
 
 
 * Here can you see my way to install Fusion 360 on openSUSE Leap 15.2: https://youtu.be/-BktJspJKgs
@@ -122,13 +120,11 @@ ________________________________________________________________________________
 
     12.) Run this command: wine setup/streamer.exe -p deploy -g -f log.txt --quiet (Run this command 2x)
 
-    13.) Run this command: cd $HOME && mkdir .Fusion360 && cd .Fusion360
+    13.) Open your Filebrowser (for example Thunar) -> Go to this path: /home/YOUR-USER/.wine/drive_c/users/steve/Application Data/Autodesk/Neutron Platform/
 
-    14.) Open your Filebrowser (for example Thunar) -> Go to this path: /home/YOUR-USER/.wine/drive_c/users/steve/Application Data/Autodesk/Neutron Platform/
-
-    15.) Create a new folder: Options
-    16.) Create a new file: NMachineSpecificOptions.xml
-    17.) Insert this text:
+    14.) Create a new folder: Options
+    15.) Create a new file: NMachineSpecificOptions.xml
+    16.) Insert this text:
 
 `<?xml version="1.0" encoding="UTF-16" standalone="no" ?>
 <OptionGroups>
@@ -138,11 +134,11 @@ ________________________________________________________________________________
 
     ... safe this file, close the editor and your file-browser. (With this method we selected openGL and so we dosn't need DXVK for the future!)
 
-    18.) Run this command: env WINEPREFIX="/home/YOUR_USER_NAME/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk (Here we opening the program Fusion 360 and this creating some files in our .Fusion360 folder.)
+    17.) Run this command: env WINEPREFIX="/home/YOUR_USER_NAME/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk (Here we opening the program Fusion 360 and this creating some files in our .Fusion360 folder.)
 
-    19.) Login with your account data
+    18.) Login with your account data
 
-    20.) Now everything should work so far.
+    19.) Now everything should work so far.
 
 * Here can you see more about Fusion 360 on Ubuntu: https://youtu.be/NJTV_enR6io & https://www.youtube.com/watch?v=R-ev3dhNM98
 
@@ -197,13 +193,11 @@ ________________________________________________________________________________
 
     16.) Run this command: wine setup/streamer.exe -p deploy -g -f log.txt --quiet (Run this command 2x)
 
-    17.) Run this command: cd $HOME && mkdir .Fusion360 && cd .Fusion360
+    17.) Open your Filebrowser (for example Thunar) -> Go to this path: /home/YOUR-USER/.wine/drive_c/users/steve/Application Data/Autodesk/Neutron Platform/
 
-    18.) Open your Filebrowser (for example Thunar) -> Go to this path: /home/YOUR-USER/.wine/drive_c/users/steve/Application Data/Autodesk/Neutron Platform/
-
-    19.) Create a new folder: Options
-    20.) Create a new file: NMachineSpecificOptions.xml
-    21.) Insert this text:
+    18.) Create a new folder: Options
+    19.) Create a new file: NMachineSpecificOptions.xml
+    20.) Insert this text:
 
 `<?xml version="1.0" encoding="UTF-16" standalone="no" ?>
 <OptionGroups>
@@ -213,11 +207,11 @@ ________________________________________________________________________________
 
     ... safe this file, close the editor and your file-browser. (With this method we selected openGL and so we dosn't need DXVK for the future!)
 
-    22.) Run this command: env WINEPREFIX="/home/YOUR_USER_NAME/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk (Here we opening the program Fusion 360 and this creating some files in our .Fusion360 folder.)
+    21.) Run this command: env WINEPREFIX="/home/YOUR_USER_NAME/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk (Here we opening the program Fusion 360 and this creating some files in our .Fusion360 folder.)
 
-    23.) Login with your account data
+    22.) Login with your account data
 
-    24.) Now everything should work so far.
+    23.) Now everything should work so far.
 
 * Here can you see more about Fusion 360 on Fedora: https://youtu.be/JRu-OaGsv3A
 ________________________________________________________________________________________________
@@ -249,13 +243,11 @@ ________________________________________________________________________________
 
     11.) Run this command: wine setup/streamer.exe -p deploy -g -f log.txt --quiet (Run this command 2x)
 
-    12.) Run this command: cd $HOME && mkdir .Fusion360 && cd .Fusion360
+    12.) Open your Filebrowser (for example Thunar) -> Go to this path: /home/YOUR-USER/.wine/drive_c/users/steve/Application Data/Autodesk/Neutron Platform/
 
-    13.) Open your Filebrowser (for example Thunar) -> Go to this path: /home/YOUR-USER/.wine/drive_c/users/steve/Application Data/Autodesk/Neutron Platform/
-
-    14.) Create a new folder: Options
-    15.) Create a new file: NMachineSpecificOptions.xml
-    16.) Insert this text:
+    13.) Create a new folder: Options
+    14.) Create a new file: NMachineSpecificOptions.xml
+    15.) Insert this text:
 
 `<?xml version="1.0" encoding="UTF-16" standalone="no" ?>
 <OptionGroups>
@@ -265,11 +257,11 @@ ________________________________________________________________________________
 
     ... safe this file, close the editor and your file-browser. (With this method we selected openGL and so we dosn't need DXVK for the future!)
 
-    17.) Run this command: env WINEPREFIX="/home/YOUR_USER_NAME/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk (Here we opening the program Fusion 360 and this creating some files in our .Fusion360 folder.)
+    16.) Run this command: env WINEPREFIX="/home/YOUR_USER_NAME/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk (Here we opening the program Fusion 360 and this creating some files in our .Fusion360 folder.)
 
-    18.) Login with your account data
+    17.) Login with your account data
 
-    19.) Now everything should work so far.
+    18.) Now everything should work so far.
 
 ________________________________________________________________________________________________
 
