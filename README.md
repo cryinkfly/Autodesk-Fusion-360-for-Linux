@@ -87,7 +87,7 @@ ________________________________________________
     18.) Now everything should work so far.
 
 
-* Here can you see my way to install Fusion 360 on openSUSE Leap 15.2: https://youtu.be/-BktJspJKgs
+* Here can you see my way to install Fusion 360 on openSUSE Leap 15.2: https://youtu.be/-BktJspJKgs & https://youtu.be/awagsBxY6Eo
 
 ________________________________________________________________________________________________
 
