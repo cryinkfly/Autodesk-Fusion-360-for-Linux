@@ -35,7 +35,7 @@ CPU: Intel i7-7700HQ (8) @ 3.800GHz<br/>
 GPU: NVIDIA GeForce GTX 1060 Mobile 6G (Community Repository Nvidia & CUDA Repository)<br/>
 Memory: 32GB
 
-Wine version: wine-6.7 (WINEARCH = win64)
+Wine version: wine-6.8 (WINEARCH = win64)
 
 ________________________________________________
 
@@ -62,15 +62,13 @@ ________________________________________________
 
     9.) Run this command: wget https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe (Here we downloading the installer of Fusion 360.)
 
-    10.) Run this commands: 7z x -osetup/ "Fusion 360 Admin Install.exe" && curl -Lo setup/platform.py github.com/python/cpython/raw/3.5/Lib/platform.py && sed -i 's/winver._platform_version or //' setup/platform.py
+    10.) Run this command: wine Fusion\ 360\ Admin\ Install.exe -p deploy -g -f log.txt --quiet (Run this command 2x)
 
-    11.) Run this command: wine setup/streamer.exe -p deploy -g -f log.txt --quiet (Run this command 2x)
+    11.) Open your Filebrowser (for example Thunar) -> Go to this path: /home/YOUR-USER/.wine/drive_c/users/steve/Application Data/Autodesk/Neutron Platform/
 
-    12.) Open your Filebrowser (for example Thunar) -> Go to this path: /home/YOUR-USER/.wine/drive_c/users/steve/Application Data/Autodesk/Neutron Platform/
-
-    13.) Create a new folder: Options
-    14.) Create a new file: NMachineSpecificOptions.xml
-    15.) Insert this text:
+    12.) Create a new folder: Options
+    13.) Create a new file: NMachineSpecificOptions.xml
+    14.) Insert this text:
 
 `<?xml version="1.0" encoding="UTF-16" standalone="no" ?>
 <OptionGroups>
@@ -80,11 +78,11 @@ ________________________________________________
 
     ... safe this file, close the editor and your file-browser. (With this method we selected openGL and so we dosn't need DXVK for the future!)
 
-    16.) Run this command: env WINEPREFIX="/home/YOUR_USER_NAME/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk (Here we opening the program Fusion 360 and this creating some files in our .Fusion360 folder.)
+    15.) Run this command: env WINEPREFIX="/home/YOUR_USER_NAME/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk (Here we opening the program Fusion 360 and this creating some files in our .Fusion360 folder.)
 
-    17.) Login with your account data
+    16.) Login with your account data
 
-    18.) Now everything should work so far.
+    17.) Now everything should work so far.
 
 
 * Here can you see my way to install Fusion 360 on openSUSE Leap 15.2: https://youtu.be/-BktJspJKgs & https://youtu.be/awagsBxY6Eo
@@ -116,15 +114,13 @@ ________________________________________________________________________________
 
     10.) Run this command: wget https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe (Here we downloading the installer of Fusion 360.)
 
-    11.) Run this commands: 7z x -osetup/ "Fusion 360 Admin Install.exe" && curl -Lo setup/platform.py github.com/python/cpython/raw/3.5/Lib/platform.py && sed -i 's/winver._platform_version or //' setup/platform.py
+    11.) Run this command: wine Fusion\ 360\ Admin\ Install.exe -p deploy -g -f log.txt --quiet (Run this command 2x)
 
-    12.) Run this command: wine setup/streamer.exe -p deploy -g -f log.txt --quiet (Run this command 2x)
+    12.) Open your Filebrowser (for example Thunar) -> Go to this path: /home/YOUR-USER/.wine/drive_c/users/steve/Application Data/Autodesk/Neutron Platform/
 
-    13.) Open your Filebrowser (for example Thunar) -> Go to this path: /home/YOUR-USER/.wine/drive_c/users/steve/Application Data/Autodesk/Neutron Platform/
-
-    14.) Create a new folder: Options
-    15.) Create a new file: NMachineSpecificOptions.xml
-    16.) Insert this text:
+    13.) Create a new folder: Options
+    14.) Create a new file: NMachineSpecificOptions.xml
+    15.) Insert this text:
 
 `<?xml version="1.0" encoding="UTF-16" standalone="no" ?>
 <OptionGroups>
@@ -134,11 +130,11 @@ ________________________________________________________________________________
 
     ... safe this file, close the editor and your file-browser. (With this method we selected openGL and so we dosn't need DXVK for the future!)
 
-    17.) Run this command: env WINEPREFIX="/home/YOUR_USER_NAME/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk (Here we opening the program Fusion 360 and this creating some files in our .Fusion360 folder.)
+    16.) Run this command: env WINEPREFIX="/home/YOUR_USER_NAME/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk (Here we opening the program Fusion 360 and this creating some files in our .Fusion360 folder.)
 
-    18.) Login with your account data
+    17) Login with your account data
 
-    19.) Now everything should work so far.
+    18.) Now everything should work so far.
 
 * Here can you see more about Fusion 360 on Ubuntu: https://youtu.be/NJTV_enR6io & https://www.youtube.com/watch?v=R-ev3dhNM98
 
@@ -189,15 +185,13 @@ ________________________________________________________________________________
 
     14.) Run this command: wget https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe (Here we downloading the installer of Fusion 360.)
 
-    15.) Run this commands: 7z x -osetup/ "Fusion 360 Admin Install.exe" && curl -Lo setup/platform.py github.com/python/cpython/raw/3.5/Lib/platform.py && sed -i 's/winver._platform_version or //' setup/platform.py
+    15.) Run this command: wine Fusion\ 360\ Admin\ Install.exe -p deploy -g -f log.txt --quiet (Run this command 2x)
 
-    16.) Run this command: wine setup/streamer.exe -p deploy -g -f log.txt --quiet (Run this command 2x)
+    16.) Open your Filebrowser (for example Thunar) -> Go to this path: /home/YOUR-USER/.wine/drive_c/users/steve/Application Data/Autodesk/Neutron Platform/
 
-    17.) Open your Filebrowser (for example Thunar) -> Go to this path: /home/YOUR-USER/.wine/drive_c/users/steve/Application Data/Autodesk/Neutron Platform/
-
-    18.) Create a new folder: Options
-    19.) Create a new file: NMachineSpecificOptions.xml
-    20.) Insert this text:
+    17.) Create a new folder: Options
+    18.) Create a new file: NMachineSpecificOptions.xml
+    19.) Insert this text:
 
 `<?xml version="1.0" encoding="UTF-16" standalone="no" ?>
 <OptionGroups>
@@ -207,11 +201,11 @@ ________________________________________________________________________________
 
     ... safe this file, close the editor and your file-browser. (With this method we selected openGL and so we dosn't need DXVK for the future!)
 
-    21.) Run this command: env WINEPREFIX="/home/YOUR_USER_NAME/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk (Here we opening the program Fusion 360 and this creating some files in our .Fusion360 folder.)
+    20.) Run this command: env WINEPREFIX="/home/YOUR_USER_NAME/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk (Here we opening the program Fusion 360 and this creating some files in our .Fusion360 folder.)
 
-    22.) Login with your account data
+    21.) Login with your account data
 
-    23.) Now everything should work so far.
+    22.) Now everything should work so far.
 
 * Here can you see more about Fusion 360 on Fedora: https://youtu.be/JRu-OaGsv3A
 ________________________________________________________________________________________________
@@ -239,15 +233,13 @@ ________________________________________________________________________________
 
     9.) Run this command: wget https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe (Here we downloading the installer of Fusion 360.)
 
-    10.) Run this commands: 7z x -osetup/ "Fusion 360 Admin Install.exe" && curl -Lo setup/platform.py github.com/python/cpython/raw/3.5/Lib/platform.py && sed -i 's/winver._platform_version or //' setup/platform.py
+    10.) Run this command: wine Fusion\ 360\ Admin\ Install.exe -p deploy -g -f log.txt --quiet (Run this command 2x)
 
-    11.) Run this command: wine setup/streamer.exe -p deploy -g -f log.txt --quiet (Run this command 2x)
+    11.) Open your Filebrowser (for example Thunar) -> Go to this path: /home/YOUR-USER/.wine/drive_c/users/steve/Application Data/Autodesk/Neutron Platform/
 
-    12.) Open your Filebrowser (for example Thunar) -> Go to this path: /home/YOUR-USER/.wine/drive_c/users/steve/Application Data/Autodesk/Neutron Platform/
-
-    13.) Create a new folder: Options
-    14.) Create a new file: NMachineSpecificOptions.xml
-    15.) Insert this text:
+    12.) Create a new folder: Options
+    13.) Create a new file: NMachineSpecificOptions.xml
+    14.) Insert this text:
 
 `<?xml version="1.0" encoding="UTF-16" standalone="no" ?>
 <OptionGroups>
@@ -257,11 +249,11 @@ ________________________________________________________________________________
 
     ... safe this file, close the editor and your file-browser. (With this method we selected openGL and so we dosn't need DXVK for the future!)
 
-    16.) Run this command: env WINEPREFIX="/home/YOUR_USER_NAME/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk (Here we opening the program Fusion 360 and this creating some files in our .Fusion360 folder.)
+    15.) Run this command: env WINEPREFIX="/home/YOUR_USER_NAME/.wine" wine C:\\windows\\command\\start.exe /Unix /home/YOUR_USER_NAME/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk (Here we opening the program Fusion 360 and this creating some files in our .Fusion360 folder.)
 
-    17.) Login with your account data
+    16.) Login with your account data
 
-    18.) Now everything should work so far.
+    17.) Now everything should work so far.
 
 ________________________________________________________________________________________________
 
@@ -299,37 +291,35 @@ ________________________________________________________________________________
 
 11. Run this command: wget https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe (Here we downloading the installer of Fusion 360.)
 
-12. Run this command: 7z x -osetup/ "Fusion 360 Admin Install.exe" && curl -Lo setup/platform.py github.com/python/cpython/raw/3.5/Lib/platform.py && sed -i 's/winver._platform_version or //' setup/platform.py
+12. Close the terminal
 
-13. Close the terminal
-
-14. Then you must look to my instruction: https://github.com/PhoenicisOrg/phoenicis/issues/2389
+13. Then you must look to my instruction: https://github.com/PhoenicisOrg/phoenicis/issues/2389
       (Safe your winetricks (file) here: /home/YOUR-USER/Downloads/ winetricks)
 
-15. Now, you can continue with the installation of Fusion 360.
+14. Now, you can continue with the installation of Fusion 360.
 
 ![2](https://user-images.githubusercontent.com/79079633/115906698-26d55000-a468-11eb-861f-2d3432cb9727.png)
 ![3](https://user-images.githubusercontent.com/79079633/115906701-26d55000-a468-11eb-8a01-4ab5138cac2d.png)
 ![4](https://user-images.githubusercontent.com/79079633/115906702-276de680-a468-11eb-85e4-67a002883ace.png)
 
-16. Open the terminal:
+15. Open the terminal:
 
 ![5](https://user-images.githubusercontent.com/79079633/115906705-276de680-a468-11eb-8f1a-c53e9b88a325.png)
 
-17. Run this command: cd $HOME/Downloads/ && sh winetricks -q corefonts vcrun2017 msxml4
+16. Run this command: cd $HOME/Downloads/ && sh winetricks -q corefonts vcrun2017 msxml4
 
-18. Run this command: winecfg 
-19. Set the windows version to Windows 10
+17. Run this command: winecfg 
+18. Set the windows version to Windows 10
 
-20. Run this command: cd fusion360 && wine setup/streamer.exe -p deploy -g -f log.txt --quiet (Run this command 2x)
+19. Run this command: cd fusion360 && wine Fusion\ 360\ Admin\ Install.exe -p deploy -g -f log.txt --quiet (Run this command 2x)
 
-21. Close the Terminal.
+20. Close the Terminal.
 
-22. Open your Filebrowser (for example Thunar) -> Go to this path: /home/YOUR-USER/.var/app/org.phoenicis.playonlinux/.Phoenicis/containers/wineprefix/Fusion/drive_c/users/steve/Application Data/Autodesk/Neutron Platform/
+21. Open your Filebrowser (for example Thunar) -> Go to this path: /home/YOUR-USER/.var/app/org.phoenicis.playonlinux/.Phoenicis/containers/wineprefix/Fusion/drive_c/users/steve/Application Data/Autodesk/Neutron Platform/
 
-23. Create a new folder: Options
-24. Create a new file: NMachineSpecificOptions.xml
-25. Insert this text:
+22. Create a new folder: Options
+23. Create a new file: NMachineSpecificOptions.xml
+24. Insert this text:
 
 `<?xml version="1.0" encoding="UTF-16" standalone="no" ?>
 <OptionGroups>
@@ -339,11 +329,11 @@ ________________________________________________________________________________
 
 ... safe this file, close the editor and your file-browser.
 
-26. Open the terminal:
+25. Open the terminal:
 
 ![5](https://user-images.githubusercontent.com/79079633/115906705-276de680-a468-11eb-8f1a-c53e9b88a325.png)
 
-27. Run this command: cd drive_c/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/ && wine Autodesk\ Fusion\ 360.Ink
+26. Run this command: cd drive_c/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/ && wine Autodesk\ Fusion\ 360.Ink
 
 ![#1_Phoenicis PlayOnLinux](https://user-images.githubusercontent.com/79079633/115911821-dca39d00-a46e-11eb-8547-5a53007178e1.png)
 
@@ -391,7 +381,7 @@ ________________________________________________________________________________
 - animation (works)
 - rendering (works , but when you will saving a rendered file, then you must changing something: https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/releases/tag/v1.2
 - production (works)
-- simulation (Local calculation dosn't work at the moment)
+- simulation (works)
 - documentation (dosn't work correctly)
 ________________________________________________________________________________________________
 
