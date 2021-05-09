@@ -369,10 +369,12 @@ ________________________________________________________________________________
 
 ________________________________________________________________________________________________
 
-#####        Development team:
+#####        Special thanks go to these users:
 
-- @cryinkfly (Administrator & Project Manager)
 - @dreamcat4
+- @Tony763
+
+... they help me to get work Fusion 360 on Linux!!!
 ________________________________________________________________________________________________
 
 #### Which workspaces I have tested:
