@@ -390,8 +390,9 @@ ________________________________________________________________________________
 - construction (works)
 - animation (works)
 - rendering (works , but when you will saving a rendered file, then you must changing something: https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/releases/tag/v1.2
--  production (works)
--  simulation (Local calculation dosn't work at the moment)
+- production (works)
+- simulation (Local calculation dosn't work at the moment)
+- documentation (dosn't work correctly)
 ________________________________________________________________________________________________
 
 #### When you will dosn't use openGL:
