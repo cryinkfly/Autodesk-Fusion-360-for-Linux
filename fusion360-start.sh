@@ -10,4 +10,4 @@
 # 1. Step: Open a Terminal and run this command: cd Downloads && chmod +x fusion360-install.sh
 # 2. Step: Now you can run Autodesk Fusion 360 with this file in the future.
 
-env WINEPREFIX="/$HOME/$USER/.fusion360" wine C:\\windows\\command\\start.exe /Unix /$HOME/$USER/.fusion360/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk
+env WINEPREFIX="/$HOME/.fusion360" wine C:\\windows\\command\\start.exe /Unix /$HOME/$USER/.fusion360/dosdevices/c:/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/Autodesk\ Fusion\ 360.lnk
