@@ -49,7 +49,7 @@ ________________________________________________
     
 3.) Follow my instructions in my files "fusion360-install.sh" & "fusion360-start.sh" !
 
-*Notice: Check if you have installed the newest graphics driveron your system!
+*Notice: Check if you have installed the newest graphics driver on your system!
 
 ________________________________________________________________________________________________
 
@@ -64,7 +64,7 @@ ________________________________________________________________________________
     
 3.) Follow my instructions in my files "fusion360-install.sh" & "fusion360-start.sh" !
 
-*Notice: Check if you have installed the newest graphics driveron your system!
+*Notice: Check if you have installed the newest graphics driver on your system!
 
 ________________________________________________________________________________________________
 
@@ -95,7 +95,7 @@ ________________________________________________________________________________
 
 5.) Follow my instructions in my files "fusion360-install.sh" & "fusion360-start.sh" !
 
-*Notice: Check if you have installed the newest graphics driveron your system!
+*Notice: Check if you have installed the newest graphics driver on your system!
  
 ________________________________________________________________________________________________
 
@@ -109,7 +109,7 @@ ________________________________________________________________________________
 
 2.) Follow my instructions in my files "fusion360-install.sh" & "fusion360-start.sh" !
 
-*Notice: Check if you have installed the newest graphics driveron your system!
+*Notice: Check if you have installed the newest graphics driver on your system!
 
 ________________________________________________________________________________________________
 
