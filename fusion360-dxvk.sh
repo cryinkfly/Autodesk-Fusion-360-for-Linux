@@ -68,7 +68,7 @@ if [[ 1 -ne $# ]]; then
    echo "dxgi = builtin"
    WINEPREFIX=~/.fusion360 winecfg &&
    echo "Now we open wine regedit and go to HKEY_CURRENT_USER\Software\Wine\Direct3D"
-   echo "And here we must change this option: renderer to vulkan"
+   echo "And here we can change this option (Experimental): renderer to vulkan"
    WINEPREFIX=~/.fusion360 wine regedit
 
    echo "The installation of Autodesk Fusion 360 is completed."
