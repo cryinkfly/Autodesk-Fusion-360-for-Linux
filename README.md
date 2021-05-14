@@ -141,41 +141,29 @@ ________________________________________________________________________________
 
 7. Reboot your system!
 
-8. Open a Terminal -> Run this command: flatpak install flathub org.phoenicis.playonlinux
+8. Go to this project: https://github.com/fastrizwaan/flatpak-wine
 
-10. Run this command: cd Downloads && mkdir fusion360 && cd fusion360
+9. Download this file "org.winehq.flatpak-proton-68-ge-1" or newer one, when they come out.
 
-11. Run this command: wget https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe (Here we downloading the installer of Fusion 360.)
+10. Open a Terminal -> Run this command: flatpak install --user flathub org.winehq.flatpak-proton-68-ge-1
 
-12. Close the terminal
+11. Run this command: flatpak run org.winehq.flatpak-proton-68-ge-1 winetricks -q corefonts vcrun2017 msxml4 win10
 
-13. Then you must look to my instruction: https://github.com/PhoenicisOrg/phoenicis/issues/2389
-      (Safe your winetricks (file) here: /home/YOUR-USER/Downloads/ winetricks)
+12. Run this command: flatpak run org.winehq.flatpak-proton-68-ge-1 bash
+
+13. Run this command: cd $HOME && cd Downloads && mkdir fusion360 && cd fusion360
+
+14. Run this command: wget https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe (Here we downloading the installer of Fusion 360.)
+
+15. Run this command: wine Fusion\ 360\ Admin\ Install.exe -p deploy -g -f log.txt --quiet
 
 14. Now, you can continue with the installation of Fusion 360.
 
-![2](https://user-images.githubusercontent.com/79079633/115906698-26d55000-a468-11eb-861f-2d3432cb9727.png)
-![3](https://user-images.githubusercontent.com/79079633/115906701-26d55000-a468-11eb-8a01-4ab5138cac2d.png)
-![4](https://user-images.githubusercontent.com/79079633/115906702-276de680-a468-11eb-85e4-67a002883ace.png)
+15. Open your Filebrowser (for example Thunar) -> Go to this path: /home/YOUR-USER-NAME/.local/share/flatpak-proton-68-ge-1/default/drive_c/users/steamuser/Application Data/Autodesk/Neutron Platform/
 
-15. Open the terminal:
-
-![5](https://user-images.githubusercontent.com/79079633/115906705-276de680-a468-11eb-8f1a-c53e9b88a325.png)
-
-16. Run this command: cd $HOME/Downloads/ && sh winetricks -q corefonts vcrun2017 msxml4
-
-17. Run this command: winecfg 
-18. Set the windows version to Windows 10
-
-19. Run this command: cd fusion360 && wine Fusion\ 360\ Admin\ Install.exe -p deploy -g -f log.txt --quiet (Run this command 2x)
-
-20. Close the Terminal.
-
-21. Open your Filebrowser (for example Thunar) -> Go to this path: /home/YOUR-USER/.var/app/org.phoenicis.playonlinux/.Phoenicis/containers/wineprefix/Fusion/drive_c/users/steve/Application Data/Autodesk/Neutron Platform/
-
-22. Create a new folder: Options
-23. Create a new file: NMachineSpecificOptions.xml
-24. Insert this text:
+16. Create a new folder: Options
+17. Create a new file: NMachineSpecificOptions.xml
+18. Insert this text:
 
 `<?xml version="1.0" encoding="UTF-16" standalone="no" ?>
 <OptionGroups>
@@ -185,19 +173,9 @@ ________________________________________________________________________________
 
 ... safe this file, close the editor and your file-browser.
 
-25. Open the terminal:
+19. Run this command: cd $HOME && cd .local && cd share && cd flatpak-proton-68-ge-1 && cd default && cd drive_c/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/ && wine Autodesk\ Fusion\ 360.Ink
 
-![5](https://user-images.githubusercontent.com/79079633/115906705-276de680-a468-11eb-8f1a-c53e9b88a325.png)
-
-26. Run this command: cd drive_c/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/ && wine Autodesk\ Fusion\ 360.Ink
-
-![#1_Phoenicis PlayOnLinux](https://user-images.githubusercontent.com/79079633/115911821-dca39d00-a46e-11eb-8547-5a53007178e1.png)
-
-
-#### Fusion 360 dosn't work at the moment with this method! Only the installation of Fusion 360 works!
-
-But you can see now, that I search for a solution, so that Fusion 360 works on all Linux distributions.
-This is just one of my ways to get Fusion 360 up and running using Flatpak.
+![Login Screen](https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/images/flatpak/org.winehq.flatpak-proton-68-ge-1/%2310_Flatpak_Autodesk_Fusion_360.png)
 
 ________________________________________________________________________________________________
 
