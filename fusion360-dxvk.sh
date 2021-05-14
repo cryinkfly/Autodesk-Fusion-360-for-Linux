@@ -67,6 +67,10 @@ if [[ 1 -ne $# ]]; then
    echo "d3d9 = builtin"
    echo "dxgi = builtin"
    WINEPREFIX=~/.fusion360 winecfg &&
+
+
+# Autodesk Fusion 360 works also, when you skip the next step!!!
+
    echo "Now we open wine regedit and go to HKEY_CURRENT_USER\Software\Wine\Direct3D"
    echo "And here we can change this option (Experimental): renderer to vulkan"
    WINEPREFIX=~/.fusion360 wine regedit
