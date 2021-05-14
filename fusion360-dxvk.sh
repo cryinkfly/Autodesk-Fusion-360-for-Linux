@@ -7,7 +7,7 @@
 # Time/Date:    15:00/14.05.2021
 # Version:      0.1
 
-# 1. Step: Open a Terminal and run this command: cd Downloads && chmod +x fusion360-install.sh && sh fusion360-dxvk.sh
+# 1. Step: Open a Terminal and run this command: cd Downloads && chmod +x fusion360-dxvk.sh && sh fusion360-dxvk.sh
 # 2. Step: The installation will now start and set up everything for you automatically.
 # 3. Step: Now you can use my other file "fusion360-start.sh" for running Autodesk Fusion 360 on your system.
 # 4. Step: When you have opened Fusion 360 -> Go to preferences and in General under Graphics driver, select DirectX 9.
