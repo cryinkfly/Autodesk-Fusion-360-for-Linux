@@ -129,7 +129,7 @@ ________________________________________________________________________________
 
 6. Download this file "org.winehq.flatpak-proton-68-ge-1" or newer one, when they come out.
 
-7. Open a Terminal -> Run this command: flatpak install --user flathub org.winehq.flatpak-proton-68-ge-1
+7. Open a Terminal -> Run this command: cd Downloads && flatpak install --user flathub org.winehq.flatpak-proton-68-ge-1
 
 8. Run this command: flatpak run org.winehq.flatpak-proton-68-ge-1 winetricks -q corefonts vcrun2017 msxml4 win10
 
