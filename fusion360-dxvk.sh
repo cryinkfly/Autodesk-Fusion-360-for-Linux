@@ -4,7 +4,7 @@
 # Description:  With this file you can install Autodesk Fusion 360 on Linux.
 # Author:       Steve Zabka
 # Author URI:   https://cryinkfly.de
-# Time/Date:    14:00/11.05.2021
+# Time/Date:    15:00/14.05.2021
 # Version:      0.1
 
 # 1. Step: Open a Terminal and run this command: cd Downloads && chmod +x fusion360-install.sh && sh fusion360-dxvk.sh
