@@ -115,6 +115,8 @@ ________________________________________________________________________________
 
 #### Installation with Flatpak - EXPERIMENTAL:
 
+![Login Screen](https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/images/flatpak/org.winehq.flatpak-proton-68-ge-1/%2310_Flatpak_Autodesk_Fusion_360.png)
+
 1. Look into my file [fusion360-install.sh](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/fusion360-install.sh) and install the the minimum requirements! (Check also your graphics driver!)
 
 2. Install Flatpak on your system: https://flatpak.org/setup/ (More information about FLatpak: https://youtu.be/SavmR9ZtHg0)
@@ -156,8 +158,6 @@ ________________________________________________________________________________
 ... safe this file, close the editor and your file-browser.
 
 18. Run this command: cd $HOME && cd .local && cd share && cd flatpak-proton-68-ge-1 && cd default && cd drive_c/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/ && wine Autodesk\ Fusion\ 360.Ink
-
-![Login Screen](https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/images/flatpak/org.winehq.flatpak-proton-68-ge-1/%2310_Flatpak_Autodesk_Fusion_360.png)
 
 ________________________________________________________________________________________________
 
