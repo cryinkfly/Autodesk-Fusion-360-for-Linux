@@ -113,57 +113,39 @@ ________________________________________________________________________________
 
 ________________________________________________________________________________________________
 
-#### Installation with Flatpak (Ubuntu) - EXPERIMENTAL:
+#### Installation with Flatpak - EXPERIMENTAL:
 
-1. Check if your system is up to date: Open a Termial -> Run this command: sudo apt-get update && sudo apt-get upgrade (And it's important that have installed the newest graphics driver!)
+1. Look into my file [fusion360-install.sh](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/fusion360-install.sh) and install the the minimum requirements! (Check also your graphics driver!)
 
-2. Run this command: sudo apt-get install p7zip p7zip-full p7zip-rar && sudo apt-get install curl 
+2. Install Flatpak on your system: https://flatpak.org/setup/ (More information about FLatpak: https://youtu.be/SavmR9ZtHg0)
 
-3. Run this command (install flatpak): sudo apt install flatpak
+3. Run this command: flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
-4. Run this command: flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+4. Reboot your system!
 
-5. Run this command sudo nano /etc/hosts (Change this file!)
+5. Go to this project: https://github.com/fastrizwaan/flatpak-wine
 
-         127.0.0.1     localhost
-         127.0.1.1     EXAMPLE-NAME
-         
-         ::1 ip6-localhost ip6-loopback
-         fe00::0 ip6-localnet
-         ff00::0 ip6-mcastprefix
-         ff02::1 ip6-allnodes
-         ff02::2 ip6-allrouters
-         ff02::3 ip6-allhosts
+6. Download this file "org.winehq.flatpak-proton-68-ge-1" or newer one, when they come out.
 
-6. Run this command: sudo nano /etc/hostname (Change this file!)
+7. Open a Terminal -> Run this command: flatpak install --user flathub org.winehq.flatpak-proton-68-ge-1
 
-        EXAMPLE-NAME
+8. Run this command: flatpak run org.winehq.flatpak-proton-68-ge-1 winetricks -q corefonts vcrun2017 msxml4 win10
 
-7. Reboot your system!
+9. Run this command: flatpak run org.winehq.flatpak-proton-68-ge-1 bash
 
-8. Go to this project: https://github.com/fastrizwaan/flatpak-wine
+10. Run this command: cd $HOME && cd Downloads && mkdir fusion360 && cd fusion360
 
-9. Download this file "org.winehq.flatpak-proton-68-ge-1" or newer one, when they come out.
+11. Run this command: wget https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe (Here we downloading the installer of Fusion 360.)
 
-10. Open a Terminal -> Run this command: flatpak install --user flathub org.winehq.flatpak-proton-68-ge-1
+12. Run this command: wine Fusion\ 360\ Admin\ Install.exe -p deploy -g -f log.txt --quiet
 
-11. Run this command: flatpak run org.winehq.flatpak-proton-68-ge-1 winetricks -q corefonts vcrun2017 msxml4 win10
+13. Now, you can continue with the installation of Fusion 360.
 
-12. Run this command: flatpak run org.winehq.flatpak-proton-68-ge-1 bash
+14. Open your Filebrowser (for example Thunar) -> Go to this path: /home/YOUR-USER-NAME/.local/share/flatpak-proton-68-ge-1/default/drive_c/users/steamuser/Application Data/Autodesk/Neutron Platform/
 
-13. Run this command: cd $HOME && cd Downloads && mkdir fusion360 && cd fusion360
-
-14. Run this command: wget https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe (Here we downloading the installer of Fusion 360.)
-
-15. Run this command: wine Fusion\ 360\ Admin\ Install.exe -p deploy -g -f log.txt --quiet
-
-14. Now, you can continue with the installation of Fusion 360.
-
-15. Open your Filebrowser (for example Thunar) -> Go to this path: /home/YOUR-USER-NAME/.local/share/flatpak-proton-68-ge-1/default/drive_c/users/steamuser/Application Data/Autodesk/Neutron Platform/
-
-16. Create a new folder: Options
-17. Create a new file: NMachineSpecificOptions.xml
-18. Insert this text:
+15. Create a new folder: Options
+16. Create a new file: NMachineSpecificOptions.xml
+17. Insert this text:
 
 `<?xml version="1.0" encoding="UTF-16" standalone="no" ?>
 <OptionGroups>
@@ -173,7 +155,7 @@ ________________________________________________________________________________
 
 ... safe this file, close the editor and your file-browser.
 
-19. Run this command: cd $HOME && cd .local && cd share && cd flatpak-proton-68-ge-1 && cd default && cd drive_c/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/ && wine Autodesk\ Fusion\ 360.Ink
+18. Run this command: cd $HOME && cd .local && cd share && cd flatpak-proton-68-ge-1 && cd default && cd drive_c/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/ && wine Autodesk\ Fusion\ 360.Ink
 
 ![Login Screen](https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/images/flatpak/org.winehq.flatpak-proton-68-ge-1/%2310_Flatpak_Autodesk_Fusion_360.png)
 
