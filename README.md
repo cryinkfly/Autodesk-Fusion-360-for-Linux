@@ -49,6 +49,8 @@ ________________________________________________
     
 3.) Follow my instructions in my files "fusion360-install.sh" & "fusion360-start.sh" !
 
+*Notice: Check if you have installed the newest graphics driveron your system!
+
 ________________________________________________________________________________________________
 
 
@@ -61,6 +63,8 @@ ________________________________________________________________________________
 2.) When you system use a newer based Ubuntu version as like Ubuntu (Focal Fossa), then you must change the wine-Repository in my file "fusion360-install.sh (Visit this site: https://wiki.winehq.org/Ubuntu)!
     
 3.) Follow my instructions in my files "fusion360-install.sh" & "fusion360-start.sh" !
+
+*Notice: Check if you have installed the newest graphics driveron your system!
 
 ________________________________________________________________________________________________
 
@@ -90,6 +94,8 @@ ________________________________________________________________________________
 4.) Download my scripts: [Installation-Script](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/fusion360-install.sh) & [Start-Script](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/fusion360-start.sh)
 
 5.) Follow my instructions in my files "fusion360-install.sh" & "fusion360-start.sh" !
+
+*Notice: Check if you have installed the newest graphics driveron your system!
  
 ________________________________________________________________________________________________
 
@@ -102,6 +108,8 @@ ________________________________________________________________________________
 1.) Download my scripts: [Installation-Script](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/fusion360-install.sh) & [Start-Script](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/fusion360-start.sh)
 
 2.) Follow my instructions in my files "fusion360-install.sh" & "fusion360-start.sh" !
+
+*Notice: Check if you have installed the newest graphics driveron your system!
 
 ________________________________________________________________________________________________
 
