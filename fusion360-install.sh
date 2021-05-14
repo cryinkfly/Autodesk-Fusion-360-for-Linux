@@ -11,6 +11,8 @@
 # 2. Step: The installation will now start and set up everything for you automatically.
 # 3. Step: Now you can use my other file "fusion360-start.sh" for running Autodesk Fusion 360 on your system.
 
+# Optional: You can also install Autodesk Fusion 360 with DXVK, when you use the file: fusion360-dxvk.sh
+
 
 # Find your correct package manager and install some packages (the minimum requirements), what you need for the installation of Autodesk Fusion 360!
 if VERB="$( which apt-get )" 2> /dev/null; then
