@@ -236,18 +236,19 @@ ________________________________________________________________________________
 
 #### Which workspaces I have tested:
 
-- construction (works)
-- animation (works)
-- rendering (works , but when you will saving a rendered file, then you must changing something: https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/releases/tag/v1.2
-- production (works)
-- simulation (works)
-- documentation (dosn't work correctly)
+- Construction (works)
+- Animation (works)
+- Rendering (works , but when you will saving a rendered file, then you must changing something: https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/releases/tag/v1.2
+- Production (works)
+- Simulation (works)
+- Generative Design (works)
+- Documentation (dosn't work correctly)
 ________________________________________________________________________________________________
 
 #### When you will dosn't use openGL:
 
-- Run this command: winetricks -q corefonts vcrun2017 msxml4 dxvk (Then you must install also dxvk!)
-- Run this command: winecfg -> Go to libraries -> Change these options:
+- Run this command: WINEPREFIX=~/.fusion360 sh winetricks -q corefonts vcrun2017 msxml4 dxvk (Then you must install also dxvk!)
+- Run this command: WINEPREFIX=~/.fusion360 winecfg -> Go to libraries -> Change these options:
 
     - d3d10core = disabled
     - d3d11 = builtin
@@ -255,3 +256,9 @@ ________________________________________________________________________________
     - dxgi = builtin
 
 When you have opened Fusion 360 -> Go to preferences and in General under Graphics driver, select DirectX 9.
+
+________________________________________________________________________________________________
+
+#### If you have some problems or a question:
+
+https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues
