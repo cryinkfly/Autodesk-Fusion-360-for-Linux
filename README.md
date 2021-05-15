@@ -15,7 +15,7 @@ You will get more information about this program, then you can visit the origina
 
 ________________________________________________
 
-You might want to use other CAD programs, then you can find more programs here:
+You might want to use another CAD programs, then you can find more programs here:
 
 - SOLIDWORKS: https://github.com/cryinkfly/SOLIDWORKS-Linux-Wine-Version-
 ________________________________________________
