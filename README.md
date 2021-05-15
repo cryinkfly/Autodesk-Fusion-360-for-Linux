@@ -4,7 +4,7 @@
 
 Hello and Welcome on my GitHub-Channel "Crinkfly"!
 
-In this repository you can find some instructions for Autodesk Fusion 360, where you get a way to install this program on your system.
+My name is Steve and in this repository you can find some instructions for Autodesk Fusion 360, where you get a way to install this program on your system.
 I will give you a feedback at different intervals, when there is something new.
 
 My goal is that we can also use Autodesk Fusion 360 on Linux and so we don't need longer two operating systems for this program, when we use this for our projects. I think this is a fantastic idea!
