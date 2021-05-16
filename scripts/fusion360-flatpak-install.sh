@@ -14,6 +14,27 @@
 
 # Optional: You can also install Autodesk Fusion 360 with DXVK, when you use the file: fusion360-flatpak-dxvk-install.sh
 
+####################################################################
+# The next two steps are also very important for you, because on some Linux Distrubition you dosn't get to work Flatpak without these steps!!!
+####################################################################
+
+# 1. Step: Open a Terminal and run this command sudo nano /etc/hosts (Change this file wihtout # !)
+
+#     127.0.0.1     localhost
+#     127.0.1.1     EXAMPLE-NAME
+     
+#     ::1 ip6-localhost ip6-loopback
+#     fe00::0 ip6-localnet
+#     ff00::0 ip6-mcastprefix
+#     ff02::1 ip6-allnodes
+#     ff02::2 ip6-allrouters
+#     ff02::3 ip6-allhosts
+
+# 2. Step: Run this command: sudo nano /etc/hostname (Change this file wihtout # !)
+
+#    EXAMPLE-NAME
+
+####################################################################
 
 # Add the Flathub repository for your current user!!!
 echo "Add the Flathub repository"
