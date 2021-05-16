@@ -123,47 +123,15 @@ ________________________________________________________________________________
 
 ![Login Screen](https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/images/flatpak/org.winehq.flatpak-proton-68-ge-1/%2310_Flatpak_Autodesk_Fusion_360.png)
 
-1. Look into my file [fusion360-install.sh](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/fusion360-install.sh) and install the the minimum requirements! (Check also your graphics driver!)
+1. Look into my file [fusion360-install.sh](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/scripts/fusion360-install.sh) and install the the minimum requirements!
 
 2. Install Flatpak on your system: https://flatpak.org/setup/ (More information about FLatpak: https://youtu.be/SavmR9ZtHg0)
 
-3. Run this command: flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+3.) Download my scripts: [Installation-Script](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/scripts/fusion360-flatpak-install.sh) & [Start-Script](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/scripts/fusion360-flatpak-start.sh)
 
-4. Reboot your system!
+2.) Follow my instructions in my files "fusion360-flatpak-install.sh" & "fusion360-flatpak-start.sh" !
 
-5. Go to this project: https://github.com/fastrizwaan/flatpak-wine
-
-6. Download this file "org.winehq.flatpak-proton-68-ge-1" or newer one, when they come out.
-
-7. Open a Terminal -> Run this command: cd Downloads && flatpak install --user flathub org.winehq.flatpak-proton-68-ge-1
-
-8. Run this command: flatpak run org.winehq.flatpak-proton-68-ge-1 winetricks -q corefonts vcrun2017 msxml4 win10
-
-9. Run this command: flatpak run org.winehq.flatpak-proton-68-ge-1 bash
-
-10. Run this command: cd $HOME && cd Downloads && mkdir fusion360 && cd fusion360
-
-11. Run this command: wget https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe (Here we downloading the installer of Fusion 360.)
-
-12. Run this command: wine Fusion\ 360\ Admin\ Install.exe -p deploy -g -f log.txt --quiet
-
-13. Now, you can continue with the installation of Fusion 360.
-
-14. Open your Filebrowser (for example Thunar) -> Go to this path: /home/YOUR-USER-NAME/.local/share/flatpak-proton-68-ge-1/default/drive_c/users/steamuser/Application Data/Autodesk/Neutron Platform/
-
-15. Create a new folder: Options
-16. Create a new file: NMachineSpecificOptions.xml
-17. Insert this text:
-
-`<?xml version="1.0" encoding="UTF-16" standalone="no" ?>
-<OptionGroups>
-  <BootstrapOptionsGroup SchemaVersion="2" ToolTip="Special preferences that require the application to be restarted after a change." UserName="Bootstrap">
-    <driverOptionId ToolTip="The driver used to display the graphics" UserName="Graphics driver" Value="VirtualDeviceGLCore"/></BootstrapOptionsGroup>
-</OptionGroups>`
-
-... safe this file, close the editor and your file-browser.
-
-18. Run this command: cd $HOME && cd .local && cd share && cd flatpak-proton-68-ge-1 && cd default && cd drive_c/ProgramData/Microsoft/Windows/Start\ Menu/Programs/Autodesk/ && wine Autodesk\ Fusion\ 360.Ink
+*Notice: Check if you have installed the newest graphics driver on your system!
 
 ________________________________________________________________________________________________
 
