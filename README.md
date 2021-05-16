@@ -182,16 +182,10 @@ ________________________________________________________________________________
 
 #### When you will dosn't use openGL:
 
-- Run this command: WINEPREFIX=~/.fusion360 sh winetricks -q corefonts vcrun2017 msxml4 dxvk (Then you must install also dxvk!)
-- Run this command: WINEPREFIX=~/.fusion360 winecfg -> Go to libraries -> Change these options:
+Then you can install Autodesk Fusion 360 with these scripts: 
 
-    - d3d10core = disabled
-    - d3d11 = builtin
-    - d3d9 = builtin
-    - dxgi = builtin
-
-When you have opened Fusion 360 -> Go to preferences and in General under Graphics driver, select DirectX 9.
-
+- [fusion360-dxvk-install.sh](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/scripts/fusion360-dxvk-install.sh)
+- [fusion360-flatpak-dxvk-install.sh](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/scripts/fusion360-flatpak-dxvk-install.sh)
 ________________________________________________________________________________________________
 
 #### If you have some problems or a question:
