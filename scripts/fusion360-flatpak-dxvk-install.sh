@@ -4,8 +4,8 @@
 # Description:  With this file you can install Autodesk Fusion 360 on Linux.
 # Author:       Steve Zabka
 # Author URI:   https://cryinkfly.de
-# Time/Date:    11:00/16.05.2021
-# Version:      0.1
+# Time/Date:    12:00/16.05.2021
+# Version:      0.2
 
 # 1. Step: Install Flatpak on your system: https://flatpak.org/setup/ (More information about FLatpak: https://youtu.be/SavmR9ZtHg0)
 # 2. Step: Open a Terminal and run this command: cd Downloads && chmod +x fusion360-flatpak-dxvk-install.sh && sh fusion360-flatpak-dxvk-install.sh
