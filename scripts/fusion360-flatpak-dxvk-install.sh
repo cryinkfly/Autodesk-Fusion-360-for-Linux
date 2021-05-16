@@ -13,7 +13,29 @@
 # 4. Step: Now you can use my other file "fusion360-flatpak-start.sh" for running Autodesk Fusion 360 on your system.
 # 5. Step: When you have opened Fusion 360 -> Go to preferences and in General under Graphics driver, select DirectX 9.
 
+####################################################################
+# The next two steps are also very important for you, because on some Linux Distrubition you dosn't get to work Flatpak without these steps!!!
+####################################################################
 
+# 1. Step: Open a Terminal and run this command sudo nano /etc/hosts (Change this file wihtout # !)
+
+#     127.0.0.1     localhost
+#     127.0.1.1     EXAMPLE-NAME
+     
+#     ::1 ip6-localhost ip6-loopback
+#     fe00::0 ip6-localnet
+#     ff00::0 ip6-mcastprefix
+#     ff02::1 ip6-allnodes
+#     ff02::2 ip6-allrouters
+#     ff02::3 ip6-allhosts
+
+# 2. Step: Run this command: sudo nano /etc/hostname (Change this file wihtout # !)
+
+#    EXAMPLE-NAME
+
+# 3. Step: Reboot your system!
+
+####################################################################
 
 # Add the Flathub repository for your current user!!!
 echo "Add the Flathub repository"
