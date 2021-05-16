@@ -209,7 +209,7 @@ ________________________________________________________________________________
 - Production (works)
 - Simulation (works)
 - Generative Design (works)
-- Documentation (dosn't work correctly)
+- Documentation / Drawing (dosn't work correctly)
 ________________________________________________________________________________________________
 
 #### When you will dosn't use openGL:
