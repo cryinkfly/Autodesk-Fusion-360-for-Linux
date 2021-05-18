@@ -31,7 +31,7 @@ elif VERB="$( which dnf )" 2> /dev/null; then
    sudo dnf config-manager --add-repo https://dl.winehq.org/wine-builds/fedora/34/winehq.repo
    sudo dnf update &&
    sudo dnf upgrade &&
-   sudo dnf install p7zip p7zip-plugins curl wine
+   sudo dnf install p7zip p7zip-plugins curl wine cabextract
 elif VERB="$( which pacman )" 2> /dev/null; then
    echo "Arch-based"
    sudo pacman -Syu &&
