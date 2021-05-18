@@ -4,8 +4,8 @@
 # Description:  With this file you can install Autodesk Fusion 360 on Linux.
 # Author:       Steve Zabka
 # Author URI:   https://cryinkfly.de
-# Time/Date:    15:00/16.05.2021
-# Version:      0.3
+# Time/Date:    15:00/18.05.2021
+# Version:      0.4
 
 # 1. Step: Open a Terminal and run this command: cd Downloads && chmod +x fusion360-install.sh && sh fusion360-install.sh
 # 2. Step: The installation will now start and set up everything for you automatically.
@@ -51,7 +51,7 @@ if [[ 1 -ne $# ]]; then
    echo "The latest version of wintricks will be downloaded and executed."
    wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks &&
    chmod +x winetricks &&
-   WINEPREFIX=~/.fusion360 sh winetricks -q corefonts vcrun2017 msxml4 win10 &&
+   WINEPREFIX=~/.fusion360 sh winetricks -q corefonts vcrun2017 msxml4 fontsmooth=rgb win10 &&
 
    echo "Autodesk Fusion 360 will be installed and set up."
    mkdir fusion360 &&
