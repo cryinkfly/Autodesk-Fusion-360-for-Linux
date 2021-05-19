@@ -149,17 +149,17 @@ ________________________________________________________________________________
 
 ________________________________________________________________________________________________
 
-#####        Special thanks to https://github.com/probonopd for his old guide here: https://gist.github.com/probonopd/0fab254aa0b6fc371d8db641822bd530 ! :-)
+##### Special thanks to https://github.com/probonopd for his old guide here: https://gist.github.com/probonopd/0fab254aa0b6fc371d8db641822bd530 ! :-)
 
 ________________________________________________________________________________________________
 
-##### Application Maintainer (WineHQ): https://appdb.winehq.org/objectManager.php?sClass=version&iId=36468
+##### Super Application Maintainer (WineHQ): https://appdb.winehq.org/objectManager.php?sClass=application&iId=15617
 
 - @cryinkfly (Administrator & Project Manager)
 
 ________________________________________________________________________________________________
 
-#####        Special thanks go to these users:
+##### Special thanks go to these users:
 
 - @dreamcat4
 - @mike-lloyd03
