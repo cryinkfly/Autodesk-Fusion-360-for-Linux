@@ -4,11 +4,11 @@
 # Description:  With this file you can install Autodesk Fusion 360 on Linux.
 # Author:       Steve Zabka
 # Author URI:   https://cryinkfly.de
-# Time/Date:    15:00/18.05.2021
+# Time/Date:    20:00/21.05.2021
 # Version:      0.3
 
 # 1. Step: Install Flatpak on your system: https://flatpak.org/setup/ (More information about FLatpak: https://youtu.be/SavmR9ZtHg0)
-# 2. Step: Open a Terminal and run this command: cd Downloads && chmod +x fusion360-flatpak-dxvk-install.sh && sh fusion360-flatpak-dxvk-install.sh
+# 2. Step: Open a Terminal and run this command: cd Downloads && chmod +x fusion360-flatpak-dxvk-install.sh && bash fusion360-flatpak-dxvk-install.sh
 # 3. Step: The installation will now start and set up everything for you automatically.
 # 4. Step: Now you can use my other file "fusion360-flatpak-start.sh" for running Autodesk Fusion 360 on your system.
 # 5. Step: When you have opened Fusion 360 -> Go to preferences and in General under Graphics driver, select DirectX 9.
