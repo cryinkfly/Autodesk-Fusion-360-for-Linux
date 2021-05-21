@@ -22,7 +22,7 @@ if VERB="$( which apt-get )" 2> /dev/null; then
    sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main' &&
    sudo apt-get update &&
    sudo apt-get upgrade &&
-   sudo apt-get install p7zip p7zip-full p7zip-rar curl winbind &&
+   sudo apt-get install p7zip p7zip-full p7zip-rar curl winbind cabextract &&
    sudo apt-get install --install-recommends winehq-staging
 elif VERB="$( which dnf )" 2> /dev/null; then
    echo "RedHat-based"
