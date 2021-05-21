@@ -65,10 +65,8 @@ ________________________________________________________________________________
 ![Ubuntu](https://user-images.githubusercontent.com/79079633/115113193-6ba14880-9f89-11eb-8d88-b927a80939cd.png)
 
 1.) Download my scripts: [Installation-Script](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/scripts/fusion360-install.sh) & [Start-Script](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/scripts/fusion360-start.sh)
-
-2.) When you system use a newer based Ubuntu version as like Ubuntu (Focal Fossa), then you must change the wine-Repository in my file "fusion360-install.sh (Visit this site: https://wiki.winehq.org/Ubuntu)!
     
-3.) Follow my instructions in my files "fusion360-install.sh" & "fusion360-start.sh" !
+2.) Follow my instructions in my files "fusion360-install.sh" & "fusion360-start.sh" !
 
 *Notice: Check if you have installed the newest graphics driver on your system!
 
