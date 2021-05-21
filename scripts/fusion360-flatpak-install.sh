@@ -8,7 +8,7 @@
 # Version:      0.3
 
 # 1. Step: Install Flatpak on your system: https://flatpak.org/setup/ (More information about FLatpak: https://youtu.be/SavmR9ZtHg0)
-# 2. Step: Open a Terminal and run this command: cd Downloads && chmod +x fusion360-flatpak-install.sh && sh fusion360-flatpak-install.sh
+# 2. Step: Open a Terminal and run this command: cd Downloads && chmod +x fusion360-flatpak-install.sh && bash fusion360-flatpak-install.sh
 # 3. Step: The installation will now start and set up everything for you automatically.
 # 4. Step: Now you can use my other file "fusion360-flatpak-start.sh" for running Autodesk Fusion 360 on your system.
 
