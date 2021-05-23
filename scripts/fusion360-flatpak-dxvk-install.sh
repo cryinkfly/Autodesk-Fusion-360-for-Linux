@@ -72,7 +72,7 @@ flatpak run org.winehq.flatpak-proton-68-ge-1 winetricks -q corefonts vcrun2017 
 flatpak run org.winehq.flatpak-proton-68-ge-1 bash &&
 cd $HOME &&
 cd Downloads &&
-mkdir fusion360 &&
+mkdir -p fusion360 &&
 cd fusion360 &&
 wget https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe &&
 
