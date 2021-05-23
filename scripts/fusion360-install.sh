@@ -89,7 +89,7 @@ if [[ 1 -ne $# ]]; then
    WINEPREFIX=~/.fusion360 sh winetricks -q corefonts vcrun2017 msxml4 fontsmooth=rgb win10 &&
 
    echo "Autodesk Fusion 360 will be installed and set up."
-   mkdir fusion360 &&
+   mkdir -p fusion360 &&
    cd fusion360 &&
    wget https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe &&
 
