@@ -18,6 +18,7 @@ ________________________________________________
 You might want to use other CAD programs, then you can find more programs here:
 
 - SOLIDWORKS: https://github.com/cryinkfly/SOLIDWORKS-Linux-Wine-Version-
+- Rhino 3D: https://github.com/cryinkfly/Rhino-3D---Linux-Wine-Version-
 - ...
 ________________________________________________
 
@@ -41,7 +42,7 @@ CPU: Intel i7-7700HQ (8) @ 3.800GHz<br/>
 GPU: NVIDIA GeForce GTX 1060 Mobile 6G (Community Repository Nvidia & CUDA Repository)<br/>
 Memory: 32GB
 
-Wine version: wine-6.8 (WINEARCH = win64)
+Wine version: wine-6.9 (WINEARCH = win64)
 
 ________________________________________________
 
