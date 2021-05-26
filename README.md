@@ -29,7 +29,7 @@ Also you get more informations about Fusion 360, when you visit my other channel
   - YouTube:   https://www.youtube.com/channel/UCJO-EOBPtlVv5OycHkFPcRg
 
 
-![YouTube_channel](https://user-images.githubusercontent.com/79079633/115113000-5d066180-9f88-11eb-89c4-fd4ddea305ed.png)
+![YouTube_channel](https://user-images.githubusercontent.com/79079633/119709635-b9994e00-be5d-11eb-976a-fca87b572af1.png)
 
 ________________________________________________
 
