@@ -46,6 +46,16 @@ Wine version: wine-6.9 (WINEARCH = win64)
 
 ________________________________________________
 
+#### Supported Graphics Cards
+
+![graphics-cards](https://user-images.githubusercontent.com/79079633/120801279-42d91080-c541-11eb-9c1e-02261edf5d4a.png)
+
+Check this site before you install Autodesk Fusion 360 on your system:
+
+- https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/wiki/Supported-Graphics-Cards
+
+________________________________________________
+
 #### Installation on openSUSE Leap & Tumbleweed:
 
 ![openSUSE Leap 15.3](https://user-images.githubusercontent.com/79079633/115074681-53ceb380-9efa-11eb-92ea-7047f781ee8a.png)
