@@ -42,7 +42,7 @@ CPU: Intel i7-7700HQ (8) @ 3.800GHz<br/>
 GPU: NVIDIA GeForce GTX 1060 Mobile 6G (Community Repository Nvidia & CUDA Repository)<br/>
 Memory: 32GB
 
-Wine version: wine-6.9 (WINEARCH = win64)
+Wine version: wine-6.10 (WINEARCH = win64)
 
 ________________________________________________
 
@@ -53,6 +53,14 @@ ________________________________________________
 Check this site before you install Autodesk Fusion 360 on your system:
 
 - https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/wiki/Supported-Graphics-Cards
+
+________________________________________________
+
+#### Graphical Installer in progress!
+
+![graphical-installer](https://user-images.githubusercontent.com/79079633/121415538-246f7c80-c968-11eb-8ef3-bfbc9709ac0b.png)
+
+- https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/releases/tag/v2.8
 
 ________________________________________________
 
