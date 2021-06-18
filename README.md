@@ -22,8 +22,9 @@ You might want to use other CAD programs, then you can find more programs here:
 - ...
 ________________________________________________
 
-Also you get more informations about Fusion 360, when you visit my other channels:
+Also you get more informations about Fusion 360, when you visit my website or other channels:
 
+  - Website:   https://www.cryinkfly.com
   - Facebook:  https://www.facebook.com/cryinkfly/
   - Instagram: https://www.instagram.com/cryinkfly/
   - YouTube:   https://www.youtube.com/channel/UCJO-EOBPtlVv5OycHkFPcRg
