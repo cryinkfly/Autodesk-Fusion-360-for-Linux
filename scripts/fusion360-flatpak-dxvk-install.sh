@@ -4,8 +4,8 @@
 # Description:  With this file you can install Autodesk Fusion 360 on Linux.
 # Author:       Steve Zabka
 # Author URI:   https://cryinkfly.de
-# Time/Date:    20:00/21.05.2021
-# Version:      0.3
+# Time/Date:    12:30/26.06.2021
+# Version:      0.4
 
 # 1. Step: Install Flatpak on your system: https://flatpak.org/setup/ (More information about FLatpak: https://youtu.be/SavmR9ZtHg0)
 # 2. Step: Open a Terminal and run this command: cd Downloads && chmod +x fusion360-flatpak-dxvk-install.sh && bash fusion360-flatpak-dxvk-install.sh
@@ -66,7 +66,7 @@ wget https://github.com/fastrizwaan/flatpak-wine-releases/releases/download/6.8-
 flatpak -y --user install flathub org.winehq.flatpak-proton-68-ge-1 &&
 
 echo "Winetricks isntall some packages for you!"
-flatpak run org.winehq.flatpak-proton-68-ge-1 winetricks -q corefonts vcrun2017 msxml4 dxvk fontsmooth=rgb win10 &&
+flatpak run org.winehq.flatpak-proton-68-ge-1 winetricks -q corefonts msxml4 vcrun2017 dxvk fontsmooth=rgb win10 &&
 
  echo "Autodesk Fusion 360 will be installed and set up."
 flatpak run org.winehq.flatpak-proton-68-ge-1 bash &&
@@ -79,13 +79,14 @@ wget https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20A
 wine Fusion\ 360\ Admin\ Install.exe -p deploy -g -f log.txt --quiet &&
 wine Fusion\ 360\ Admin\ Install.exe -p deploy -g -f log.txt --quiet &&
 
-echo "Change the DLL's with winecfg"
-  echo "---------------------------------"
-  echo "d3d10core = disabled"
-  echo "d3d11 = builtin"
-  echo "d3d9 = builtin"
-  echo "dxgi = builtin"
-  winecfg &&
+echo "Change the DLL's"
+   echo "---------------------------------"
+   echo "d3d10core = disabled"
+   echo "d3d11 = builtin"
+   echo "d3d9 = builtin"
+   echo "dxgi = builtin"
+   cd .. &&
+   WINEPREFIX=~/.fusion360 sh winetricks d3d10core=disabled d3d11=builtin d3d9=builtin dxgi=builtin
 
 
 # Autodesk Fusion 360 works also, when you skip the next step!!!
