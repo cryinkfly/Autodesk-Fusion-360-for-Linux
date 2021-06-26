@@ -59,7 +59,8 @@ ________________________________________________
 
 #### Graphical Installer in progress!
 
-![graphical-installer](https://user-images.githubusercontent.com/79079633/121415538-246f7c80-c968-11eb-8ef3-bfbc9709ac0b.png)
+![welcome_setup-wizard](https://user-images.githubusercontent.com/79079633/123509675-1d8a7e80-d677-11eb-82a5-7858ee206e24.png)
+
 
 - https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/releases/tag/v2.8
 
