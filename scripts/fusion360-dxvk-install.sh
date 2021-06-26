@@ -4,8 +4,8 @@
 # Description:  With this file you can install Autodesk Fusion 360 on Linux.
 # Author:       Steve Zabka
 # Author URI:   https://cryinkfly.de
-# Time/Date:    22:15/21.05.2021
-# Version:      0.6
+# Time/Date:    12:30/26.06.2021
+# Version:      0.7
 
 # 1. Step: Open a Terminal and run this command: cd Downloads && chmod +x fusion360-dxvk-install.sh && bash fusion360-dxvk-install.sh
 # 2. Step: The installation will now start and set up everything for you automatically.
@@ -72,7 +72,7 @@ elif VERB="$( which pacman )" 2> /dev/null; then
 # openSUSE Leap & Tumbleweed, SUSE Linux, ... versions
 elif VERB="$( which zypper )" 2> /dev/null; then
    echo "openSUSE-based"
-   su -c 'zypper up && zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.2/ wine && zypper install p7zip-full curl wine'
+   su -c 'zypper up && zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.2/ wine && zypper install p7zip-full curl wine cabextract'
 # su -c 'zypper install xdotool' (experimental)
 else
    echo "Non-compatible Linux distribution version was found!" >&2
@@ -87,7 +87,7 @@ if [[ 1 -ne $# ]]; then
    echo "The latest version of wintricks will be downloaded and executed."
    wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks &&
    chmod +x winetricks &&
-   WINEPREFIX=~/.fusion360 sh winetricks -q corefonts vcrun2017 msxml4 dxvk fontsmooth=rgb win10 &&
+   WINEPREFIX=~/.fusion360 sh winetricks -q corefonts msxml4 vcrun2017 dxvk fontsmooth=rgb win10 &&
 
    echo "Autodesk Fusion 360 will be installed and set up."
    mkdir -p fusion360 &&
@@ -97,13 +97,14 @@ if [[ 1 -ne $# ]]; then
    WINEPREFIX=~/.fusion360 wine Fusion\ 360\ Admin\ Install.exe -p deploy -g -f log.txt --quiet &&
    WINEPREFIX=~/.fusion360 wine Fusion\ 360\ Admin\ Install.exe -p deploy -g -f log.txt --quiet &&
 
-   echo "Change the DLL's with winecfg"
+   echo "Change the DLL's"
    echo "---------------------------------"
    echo "d3d10core = disabled"
    echo "d3d11 = builtin"
    echo "d3d9 = builtin"
    echo "dxgi = builtin"
-   WINEPREFIX=~/.fusion360 winecfg &&
+   cd .. &&
+   WINEPREFIX=~/.fusion360 sh winetricks d3d10core=disabled d3d11=builtin d3d9=builtin dxgi=builtin
 
 
 # Autodesk Fusion 360 works also, when you skip the next step!!!
