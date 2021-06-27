@@ -4,8 +4,8 @@
 # Description:  With this file you can install Autodesk Fusion 360 on Linux.
 # Author:       Steve Zabka
 # Author URI:   https://cryinkfly.de
-# Time/Date:    20:00/21.05.2021
-# Version:      0.4
+# Time/Date:    07:45/27.06.2021
+# Version:      0.5
 
 # 1. Step: Install Flatpak on your system: https://flatpak.org/setup/ (More information about FLatpak: https://youtu.be/SavmR9ZtHg0)
 # 2. Step: Open a Terminal and run this command: cd Downloads && chmod +x fusion360-flatpak-install.sh && bash fusion360-flatpak-install.sh
@@ -67,7 +67,9 @@ wget https://github.com/fastrizwaan/flatpak-wine-releases/releases/download/6.8-
 flatpak -y --user install flathub org.winehq.flatpak-proton-68-ge-1 &&
 
 echo "Winetricks isntall some packages for you!"
-flatpak run org.winehq.flatpak-proton-68-ge-1 winetricks -q corefonts vcrun2017 msxml4 fontsmooth=rgb win10 &&
+flatpak run org.winehq.flatpak-proton-68-ge-1 winetricks -q corefonts msxml4 msxml6 vcrun2019 fontsmooth=rgb win8 &&
+
+# Windows Version 10 make some problems at the moment with wine 6.11 !!!
 
  echo "Autodesk Fusion 360 will be installed and set up."
 flatpak run org.winehq.flatpak-proton-68-ge-1 bash &&
