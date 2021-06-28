@@ -202,6 +202,7 @@ ________________________________________________________________________________
 - Production (works)
 - Simulation (works)
 - Generative Design (works)
+- Online- & Offline-Mode (works) 
 - Documentation / Drawing (dosn't work correctly)
 ________________________________________________________________________________________________
 
