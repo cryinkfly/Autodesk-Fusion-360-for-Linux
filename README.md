@@ -40,7 +40,7 @@ OS: openSUSE Leap 15.3 x86_64<br/>
 Kernel: 5.3.18-57-default<br/>
 DE: Xfce<br/>
 CPU: Intel i7-7700HQ (8) @ 3.800GHz<br/>
-GPU: NVIDIA GeForce GTX 1060 Mobile 6G (Community Repository Nvidia & CUDA Repository)<br/>
+GPU: NVIDIA GeForce GTX 1060 Mobile 6G (Nvidia CUDA Repository)<br/><br/>
 Memory: 32GB
 
 Wine version: wine-6.12 (WINEARCH = win64)
