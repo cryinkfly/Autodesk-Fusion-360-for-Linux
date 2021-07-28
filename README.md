@@ -32,6 +32,19 @@ You will get more information about this program, then you can visit the origina
 
 ---
 
+## Screenshots
+<div>
+<img src="https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/images/production/%231.1_adapter-plate.png" width="450" height="300">
+<img src="https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/images/generative-design/%231.4_generative_design.png" width="450" height="300">
+</div>
+<div>
+<img src="https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/images/rendering/%231_water_pump.png" width="450" height="300">
+<img src="https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/images/simulation/%231_study_displacement.png" width="450" height="300">
+</div>
+
+---
+
+
 # README-FILE: STILL IN PROGRESS!!!
 
 ---
