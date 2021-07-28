@@ -44,6 +44,13 @@ You will get more information about this program, then you can visit the origina
 
 ---
 
+## Downloads
+
+There are some script releases available, built from the release targets. (Still in Progress!)
+
+It's recommended that if you're new you start with the stable builds. Nightly builds are available every day from the v1.x branch here if you need it, but correspondingly may be less stable. (Still in Progress!)
+
+---
 
 # README-FILE: STILL IN PROGRESS!!!
 
