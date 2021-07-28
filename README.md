@@ -1,62 +1,40 @@
-<h1>Fusion-360 - Linux (Wine Version)</h1>
+![banner-fusion360](https://user-images.githubusercontent.com/79079633/127371623-6b50b591-1b12-466d-9c96-b5b6d6314f31.png)
 
-![image](https://user-images.githubusercontent.com/79079633/114744478-07467500-9d4e-11eb-99a9-11596a78ccf1.png)
+![GitHub last commit](https://img.shields.io/github/last-commit/cryinkfly/Fusion-360---Linux-Wine-Version-?style=for-the-badge)
+![GitHub issues](https://img.shields.io/github/issues-raw/cryinkfly/Fusion-360---Linux-Wine-Version-?style=for-the-badge)
 
-Hello and Welcome on my GitHub-Channel "Crinkfly"!
+Fusion 360 is a cloud-based 3D modeling, CAD, CAM, and PCB software platform for product design and manufacturing, what you can use on Windows and macOS.
 
-My name is Steve and in this repository you can find some instructions for Autodesk Fusion 360, where you get a way to install this program on your system.
-I will give you a feedback at different intervals, when there is something new.
+But the problem is that there are also people like me who don't want to use either of these two operating systems on there systems. Then these users have installed a Linux distribution such as openSUSE Leap, Ubuntu or Fedora.
 
-My goal is that we can also use Autodesk Fusion 360 on Linux and so we don't need longer two operating systems for this program, when we use this for our projects. I think this is a fantastic idea!
+And so I got the idea to start this project here to find a way to solve this problem. 
 
-________________________________________________
+I started looking at different tools and my choice was Wine! 
+
+With this nice tool we don't need longer two operating systems for Fusion 360, when we will create a fantastic project in the future or if you want to work on a project with other people.
+
+Is that a great idea for the future?
+
+Personally, I think this idea is good and for this reason I will do my best to give you the opportunity to use it on Linux as well!
+
+---
 
 You will get more information about this program, then you can visit the original website of Autodesk Fusion 360 with this link: https://www.autodesk.com/products/fusion-360/features
 
-________________________________________________
+---
 
-You might want to use other CAD programs, then you can find more programs here:
+  - 📂 Downloads: Stable and nightly builds: Still in Progress!
+  - 📔 Documentation: https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/wiki/Documentation
+  - 💬 Would You like to get in touch with me?
+  - 📫 Then You can contact me via my ![contact form](https://cryinkfly.com/contact/)!
+  - 📜 Code of Conduct: Contributor Covenant
+  - 📖 Information for contributors: All contribution information, Compilation instructions, Roadmap
 
-  - SOLIDWORKS: https://github.com/cryinkfly/SOLIDWORKS-Linux-Wine-Version-
-  - Rhino 3D: https://github.com/cryinkfly/Rhino-3D---Linux-Wine-Version-
-  - DesignSpark Mechanical: https://github.com/cryinkfly/DesignSpark-Mechanical---Linux-Wine-Version-
-  - ...
-________________________________________________
+---
 
-Also you get more informations about Fusion 360, when you visit my website or other channels:
+# README-FILE: STILL IN PROGRESS!!!
 
-  - Website:   https://www.cryinkfly.com
-  - Facebook:  https://www.facebook.com/cryinkfly/
-  - Instagram: https://www.instagram.com/cryinkfly/
-  - YouTube:   https://www.youtube.com/channel/UCJO-EOBPtlVv5OycHkFPcRg
-
-
-![YouTube_channel](https://user-images.githubusercontent.com/79079633/119709635-b9994e00-be5d-11eb-976a-fca87b572af1.png)
-
-________________________________________________
-
-My system:
-
-OS: openSUSE Leap 15.3 x86_64<br/>
-Kernel: 5.3.18-59.13-default<br/>
-DE: Xfce<br/>
-CPU: Intel i7-7700HQ (8) @ 3.800GHz<br/>
-GPU: NVIDIA GeForce GTX 1060 Mobile 6G (Nvidia CUDA Repository)<br/><br/>
-Memory: 32GB
-
-Wine version: wine-6.12 (WINEARCH = win64)
-
-________________________________________________
-
-#### Supported Graphics Cards
-
-![graphics-cards](https://user-images.githubusercontent.com/79079633/120801279-42d91080-c541-11eb-9c1e-02261edf5d4a.png)
-
-Check this site before you install Autodesk Fusion 360 on your system:
-
-- https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/wiki/Supported-Graphics-Cards
-
-________________________________________________
+---
 
 #### Graphical Installer in progress!
 
@@ -222,4 +200,4 @@ ________________________________________________________________________________
 
 #### If you have some problems or a question:
 
-https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues
+If You have any questions, suggestions or problems then You can create an ![issue](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues) here on GitHub or You can contact me via my ![contact form](https://cryinkfly.com/contact/)!
