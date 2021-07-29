@@ -35,6 +35,11 @@ You will get more information about this program, then you can visit the origina
 
 ---
 
+#### Super Application Maintainer (WineHQ): https://appdb.winehq.org/objectManager.php?sClass=application&iId=15617
+- @cryinkfly (Administrator & Project Manager)
+
+---
+
 ## Screenshots
 <div>
 <img src="https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/images/production/%231.1_adapter-plate.png" width="300px" height="200px">
@@ -212,17 +217,6 @@ ________________________________________________________________________________
 </tbody>
 </table>
 
----
 
-#### If you use Wine under XWayland, you can activate the option for "Emulating a virtual desktop" in the Graphics Tab in winecfg, to avoid problems with:
 
-- flickering
-- wrong window location
-- wrong mouse cursor location and clicks
-- keyboard detection
-
----
-
-##### Super Application Maintainer (WineHQ): https://appdb.winehq.org/objectManager.php?sClass=application&iId=15617
-- @cryinkfly (Administrator & Project Manager)
 
