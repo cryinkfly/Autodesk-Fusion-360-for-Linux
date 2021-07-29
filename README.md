@@ -27,8 +27,8 @@ You will get more information about this program, then you can visit the origina
 
   - 📂 Downloads: Stable and nightly builds: Still in Progress!
   - 📔 Documentation: https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/wiki/Documentation
-  - 💬 Would You like to get in touch with me?
-  - 📫 Then You can contact me via my ![contact form](https://cryinkfly.com/contact/)!
+  - 💬 Would You like to get in touch with me? Or if You have any questions, suggestions or problems?
+  - 📫 Then You can create an ![issue](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues) here on GitHub or You can contact me via my ![contact form](https://cryinkfly.com/contact/)!
   - 📜 Code of Conduct: Contributor Covenant
   - 📖 Information for contributors: All contribution information, Compilation instructions, Roadmap
 
@@ -48,7 +48,7 @@ You will get more information about this program, then you can visit the origina
 
 ## Downloads
 
-There are some script releases available, built from the release targets. (Still in Progress!)
+There are some ![script releases](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/tree/main/scripts) available, built from the release targets. (Still in Progress!)
 
 It's recommended that if you're new you start with the stable builds. Nightly builds are available every day from the v1.x branch here if you need it, but correspondingly may be less stable. (Still in Progress!)
 
@@ -57,15 +57,6 @@ It's recommended that if you're new you start with the stable builds. Nightly bu
 # README-FILE: STILL IN PROGRESS!!!
 
 ---
-
-#### Graphical Installer in progress!
-
-![welcome_setup-wizard](https://user-images.githubusercontent.com/79079633/123509675-1d8a7e80-d677-11eb-82a5-7858ee206e24.png)
-
-
-- https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/releases/tag/v2.8
-
-________________________________________________
 
 #### Installation on openSUSE Leap & Tumbleweed:
 
@@ -210,16 +201,3 @@ ________________________________________________________________________________
 - Generative Design (works)
 - Online- & Offline-Mode (works) 
 - Documentation / Drawing (dosn't work correctly)
-________________________________________________________________________________________________
-
-#### When you will dosn't use openGL:
-
-Then you can install Autodesk Fusion 360 with these scripts: 
-
-- [fusion360-dxvk-install.sh](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/scripts/fusion360-dxvk-install.sh)
-- [fusion360-flatpak-dxvk-install.sh](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/scripts/fusion360-flatpak-dxvk-install.sh)
-________________________________________________________________________________________________
-
-#### If you have some problems or a question:
-
-If You have any questions, suggestions or problems then You can create an ![issue](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues) here on GitHub or You can contact me via my ![contact form](https://cryinkfly.com/contact/)!
