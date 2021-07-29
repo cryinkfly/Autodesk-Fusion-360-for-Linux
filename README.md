@@ -31,6 +31,7 @@ You will get more information about this program, then you can visit the origina
   - 📫 Then You can create an ![issue](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues) here on GitHub or You can contact me via my ![contact form](https://cryinkfly.com/contact/)!
   - 📜 Code of Conduct: Contributor Covenant
   - 📖 Information for contributors: All contribution information, Compilation instructions, Roadmap
+  - ❤️ All the people who support me in getting Fusion 360 to work on Linux will be added to this list!
 
 ---
 
@@ -222,30 +223,6 @@ ________________________________________________________________________________
 
 ---
 
-##### Special thanks to https://github.com/probonopd for his old guide here: https://gist.github.com/probonopd/0fab254aa0b6fc371d8db641822bd530 ! :-)
-
----
-
 ##### Super Application Maintainer (WineHQ): https://appdb.winehq.org/objectManager.php?sClass=application&iId=15617
 - @cryinkfly (Administrator & Project Manager)
 
----
-
-##### Special thanks go to these users:
-
-- @dreamcat4
-- @mike-lloyd03
-- @Tony763
-- @fastrizwaan
-- @DD1984
-- @madurani
-- @kpatel122
-- @TheCatster
-- @mcbb2001
-- @vintagepc
-- @Patschke
-- @hopkuba
-- @suryanisaac
-- @paukstelis
-
-... they help me to get work Fusion 360 on Linux!!!
