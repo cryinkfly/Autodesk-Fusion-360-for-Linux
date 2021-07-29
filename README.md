@@ -31,7 +31,7 @@ You will get more information about this program, then you can visit the origina
   - 📫 Then You can create an ![issue](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues) here on GitHub or You can contact me via my ![contact form](https://cryinkfly.com/contact/)!
   - 📜 Code of Conduct: Contributor Covenant
   - 📖 Information for contributors: All contribution information, Compilation instructions, Roadmap
-  - ❤️ All the people who support me in getting Fusion 360 to work on Linux will be added to this list!
+  - ❤️ I'd like to thank everyone who has ![helped]((https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/SPONSORS.md)) me to get Fusion 360 up and running on Linux!
 
 ---
 
