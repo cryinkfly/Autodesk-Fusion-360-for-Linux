@@ -1,5 +1,7 @@
 ##### Special thanks to https://github.com/probonopd for his old guide here: https://gist.github.com/probonopd/0fab254aa0b6fc371d8db641822bd530 ! :-)
 
+---
+
 ##### Special thanks go to these users:
 
 - @dreamcat4
