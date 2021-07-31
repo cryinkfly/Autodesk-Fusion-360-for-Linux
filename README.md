@@ -52,14 +52,6 @@ You will get more information about this program, then you can visit the origina
 
 ---
 
-## Downloads
-
-There are some ![script releases](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/tree/main/scripts) available, built from the release targets. (Still in Progress!)
-
-It's recommended that if you're new you start with the stable builds. Development builds are available here if you need it, but correspondingly may be less stable.
-
----
-
 ## Which work areas and functions can You use:
 
 <table>
@@ -124,6 +116,14 @@ It's recommended that if you're new you start with the stable builds. Developmen
 
 ---
 
+## Downloads
+
+There are some ![script releases](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/tree/main/scripts) available, built from the release targets. (Still in Progress!)
+
+It's recommended that if you're new you start with the stable builds. Development builds are available here if you need it, but correspondingly may be less stable.
+
+---
+
 ## Which Linux distributions are supported (Stable branch):
 
 <table>
@@ -176,98 +176,11 @@ It's recommended that if you're new you start with the stable builds. Developmen
 </tbody>
 </table>
 
+---
+
 # README-FILE: STILL IN PROGRESS!!!
 
 ---
-
-#### Installation on openSUSE Leap & Tumbleweed:
-
-![openSUSE Leap 15.3](https://user-images.githubusercontent.com/79079633/115074681-53ceb380-9efa-11eb-92ea-7047f781ee8a.png)
-
-1.) Download my scripts: [Installation-Script](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/scripts/fusion360-install.sh) & [Start-Script](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/scripts/fusion360-start.sh)
-
-2.) On openSUSE Tumbleweed you must delete the steps for adding the wine-Repository in my file "fusion360-install.sh"!
-    
-3.) Follow my instructions in my files "fusion360-install.sh" & "fusion360-start.sh" !
-
-*Notice: Check if you have installed the newest graphics driver on your system!
-
-________________________________________________________________________________________________
-
-
-#### Installation on Ubuntu, Linux Mint, ...:
-
-![Ubuntu](https://user-images.githubusercontent.com/79079633/115113193-6ba14880-9f89-11eb-8d88-b927a80939cd.png)
-
-1.) Download my scripts: [Installation-Script](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/scripts/fusion360-install.sh) & [Start-Script](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/scripts/fusion360-start.sh)
-    
-2.) Follow my instructions in my files "fusion360-install.sh" & "fusion360-start.sh" !
-
-*Notice: Check if you have installed the newest graphics driver on your system!
-
-________________________________________________________________________________________________
-
-
-#### Installation on Fedora:
-
-![Fedora](https://user-images.githubusercontent.com/79079633/114680044-0d683180-9d0d-11eb-9aff-ed747060a5d4.png)
-
-1.) Open a Terminal and run this command sudo nano /etc/hosts (Change this file!)
-
-         127.0.0.1     localhost
-         127.0.1.1     EXAMPLE-NAME
-         
-         ::1 ip6-localhost ip6-loopback
-         fe00::0 ip6-localnet
-         ff00::0 ip6-mcastprefix
-         ff02::1 ip6-allnodes
-         ff02::2 ip6-allrouters
-         ff02::3 ip6-allhosts
-
-2.) Run this command: sudo nano /etc/hostname (Change this file!)
-
-        EXAMPLE-NAME
-
-3.) Reboot your system
-
-4.) Download my scripts: [Installation-Script](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/scripts/fusion360-install.sh) & [Start-Script](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/scripts/fusion360-start.sh)
-
-5.) Follow my instructions in my files "fusion360-install.sh" & "fusion360-start.sh" !
-
-*Notice: Check if you have installed the newest graphics driver on your system!
- 
-________________________________________________________________________________________________
-
-
-#### Installation on Manjaro (based on Arch Linux): 
-
-![Manjaro](https://user-images.githubusercontent.com/79079633/114720624-76b16a00-9d38-11eb-84f9-9096f0bbbbc7.png)
-
-
-1.) Download my scripts: [Installation-Script](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/scripts/fusion360-install.sh) & [Start-Script](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/scripts/fusion360-start.sh)
-
-2.) Follow my instructions in my files "fusion360-install.sh" & "fusion360-start.sh" !
-
-*Notice: Check if you have installed the newest graphics driver on your system!
-
-________________________________________________________________________________________________
-
-#### Installation with Flatpak - EXPERIMENTAL:
-
-![Login Screen](https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/images/flatpak/org.winehq.flatpak-proton-68-ge-1/%2310_Flatpak_Autodesk_Fusion_360.png)
-
-##### You must install Autodesk Fusion 360 itself, because my script doesn't work correctly at the moment!
-
-1.) Look into my file [fusion360-install.sh](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/scripts/fusion360-install.sh) and install the the minimum requirements!
-
-2.) Install Flatpak on your system: https://flatpak.org/setup/ (More information about FLatpak: https://youtu.be/SavmR9ZtHg0)
-
-3.) Download my scripts: [Installation-Script](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/scripts/fusion360-flatpak-install.sh) & [Start-Script](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/scripts/fusion360-flatpak-start.sh)
-
-2.) Follow my instructions in my files "fusion360-flatpak-install.sh" & "fusion360-flatpak-start.sh" !
-
-*Notice: Check if you have installed the newest graphics driver on your system!
-
 
 
 
