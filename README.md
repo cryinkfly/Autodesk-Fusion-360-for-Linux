@@ -32,11 +32,7 @@ You will get more information about this program, then you can visit the origina
   - 📜 Code of Conduct: Contributor Covenant (Still in Progress!)
   - 📖 Information for contributors: All contribution information, Compilation instructions, Roadmap (Still in Progress!)
   - ❤️ I'd like to thank everyone who has ![helped](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/SPONSORS.md) me to get Fusion 360 up and running on Linux!
-
----
-
-#### Super Application Maintainer (WineHQ): https://appdb.winehq.org/objectManager.php?sClass=application&iId=15617
-- @cryinkfly (Administrator & Project Manager)
+  - 🍷 Super Application Maintainer (WineHQ): https://appdb.winehq.org/objectManager.php?sClass=application&iId=15617
 
 ---
 
