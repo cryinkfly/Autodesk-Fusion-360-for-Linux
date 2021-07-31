@@ -48,6 +48,36 @@ You will get more information about this program, then you can visit the origina
 
 ---
 
+## Downloads
+
+There are some ![script releases](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/tree/main/scripts) available, built from the release targets.
+
+It's recommended that if you're new you start with the stable builds. Development builds are available here if you need it, but correspondingly may be less stable.
+
+---
+
+## Hardware and Software Requirements
+
+- Internet connection (Cable/DSL speeds recommended)
+- Latest Ubuntu LTS, Fedora, Debian, Manjaro, openSUSE Leap or Tumbleweed, fully updated
+- Latest graphics driver, see ![here](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/wiki/Supported-Graphics-Cards)
+- Some packages (p7zip, p7zip-full, p7zip-rar, curl, wget, winbind, cabextract, wine, wine-mono, wine_gecko & winetricks)
+
+---
+
+## Getting Started
+
+Install Fusion 360 for Linux client:
+
+1.) Download the installer package from this ![location](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/tree/main/scripts/stable-branch).
+
+2.) Open a terminal and run this command:
+
+    cd Downloads && chmod +x fusion360-install.sh && bash fusion360-install.sh
+
+
+---
+
 ## Which work areas and functions can You use:
 
 <table>
@@ -112,67 +142,7 @@ You will get more information about this program, then you can visit the origina
 
 ---
 
-## Downloads
 
-There are some ![script releases](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/tree/main/scripts) available, built from the release targets.
-
-It's recommended that if you're new you start with the stable builds. Development builds are available here if you need it, but correspondingly may be less stable.
-
----
-
-## Which Linux distributions are supported (Stable branch):
-
-<table>
-<thead>
-<tr>
-<th>Linux distribution</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Debian 10</td>
-<td style="text-align: center;"><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
-<tr>
-<td>Debian 11</td>
-<td><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
-</tr>
-<tr>
-<td>Ubuntu 20.04</td>
-<td><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
-</tr>
-<tr>
-<td>Ubuntu 20.10</td>
-<td><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
-</tr>
-<tr>
-<td>Ubuntu 21.04</td>
-<td style="text-align: center;"><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
-</tr>
-<tr>
-<td>Fedora 33</td>
-<td style="text-align: center;"><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
-</tr>
-<tr>
-<td>Fedora 34</td>
-<td style="text-align: center;"><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
-</tr>
-<tr>
-<td>Manjaro 21.0.7</td>
-<td style="text-align: center;"><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
-</tr>
-<td>openSUSE Leap 15.2</td>
-<td style="text-align: center;"><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
-  </tr>
-<td>openSUSE Leap 15.3</td>
-<td style="text-align: center;"><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
-</tr>
-<td>openSUSE Tumbleweed</td>
-<td style="text-align: center;"><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
-</tbody>
-</table>
-
----
 
 # README-FILE: STILL IN PROGRESS!!!
 
