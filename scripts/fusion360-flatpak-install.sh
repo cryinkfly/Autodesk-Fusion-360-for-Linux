@@ -63,7 +63,7 @@ echo "Installation of some packages for your graphics card is completed!"
 
 #Install a special Wine-Version (org.winehq.flatpak-proton-68-ge-1)
 echo "Install a special Wine-Version!"
-wget https://github.com/fastrizwaan/flatpak-wine-releases/releases/download/6.8-20210510/org.winehq.flatpak-proton-68-ge-1-6.8-20210510.flatpak &&
+wget -N https://github.com/fastrizwaan/flatpak-wine-releases/releases/download/6.8-20210510/org.winehq.flatpak-proton-68-ge-1-6.8-20210510.flatpak &&
 flatpak -y --user install flathub org.winehq.flatpak-proton-68-ge-1 &&
 
 echo "Winetricks isntall some packages for you!"
