@@ -4,8 +4,8 @@
 # Description:  With this file you can install Autodesk Fusion 360 on Linux.
 # Author:       Steve Zabka
 # Author URI:   https://cryinkfly.de
-# Time/Date:    07:45/27.06.2021
-# Version:      0.5
+# Time/Date:    07:45/31.07.2021
+# Version:      0.6
 
 # 1. Step: Install Flatpak on your system: https://flatpak.org/setup/ (More information about FLatpak: https://youtu.be/SavmR9ZtHg0)
 # 2. Step: Open a Terminal and run this command: cd Downloads && chmod +x fusion360-flatpak-dxvk-install.sh && bash fusion360-flatpak-dxvk-install.sh
@@ -62,7 +62,7 @@ echo "Installation of some packages for your graphics card is completed!"
 
 #Install a special Wine-Version (org.winehq.flatpak-proton-68-ge-1)
 echo "Install a special Wine-Version!"
-wget https://github.com/fastrizwaan/flatpak-wine-releases/releases/download/6.8-20210510/org.winehq.flatpak-proton-68-ge-1-6.8-20210510.flatpak &&
+wget -N https://github.com/fastrizwaan/flatpak-wine-releases/releases/download/6.8-20210510/org.winehq.flatpak-proton-68-ge-1-6.8-20210510.flatpak &&
 flatpak -y --user install flathub org.winehq.flatpak-proton-68-ge-1 &&
 
 echo "Winetricks isntall some packages for you!"
@@ -76,7 +76,7 @@ cd $HOME &&
 cd Downloads &&
 mkdir -p fusion360 &&
 cd fusion360 &&
-wget https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe &&
+wget -N https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe &&
 
 wine Fusion\ 360\ Admin\ Install.exe -p deploy -g -f log.txt --quiet &&
 wine Fusion\ 360\ Admin\ Install.exe -p deploy -g -f log.txt --quiet &&
