@@ -4,15 +4,11 @@
 # Description:  With this file you can install Autodesk Fusion 360 on Linux.
 # Author:       Steve Zabka
 # Author URI:   https://cryinkfly.de
-# Time/Date:    07:45/31.07.2021
-# Version:      1.1
+# Time/Date:    21:30/31.07.2021
+# Version:      2.0
 
 # 1. Step: Open a Terminal and run this command: cd Downloads && chmod +x fusion360-install.sh && bash fusion360-install.sh
 # 2. Step: The installation will now start and set up everything for you automatically.
-# 3. Step: Now you can use my other file "fusion360-start.sh" for running Autodesk Fusion 360 on your system.
-
-# Optional: You can also install Autodesk Fusion 360 with DXVK, when you use the file: fusion360-dxvk-install.sh
-
 
 # Find your correct package manager and install some packages (the minimum requirements), what you need for the installation of Autodesk Fusion 360!
 
@@ -32,7 +28,7 @@ elif [[ $(lsb_release -rs) == "11" ]]; then
     sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/debian/ bullseye main'
 
 
-# Ubuntu, Linux Mint, ... versions
+# Ubuntu versions
 elif [[ $(lsb_release -rs) == "20.04" ]]; then
    echo "Ubuntu 20.04 based system"
    sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main'
@@ -50,7 +46,7 @@ elif VERB="$( which apt-get )" 2> /dev/null; then
   sudo apt-get install --install-recommends winehq-staging
 
 
-# Fedora versions
+# Fedora 34 version
 elif VERB="$( which dnf )" 2> /dev/null; then
    echo "RedHat-based"
    sudo dnf update &&
@@ -61,7 +57,7 @@ elif VERB="$( which dnf )" 2> /dev/null; then
 # sudo dnf install xdotool (experimental)
 
 
-# Arch Linux, Manjaro, ... versions
+# Manjaro versions
 elif VERB="$( which pacman )" 2> /dev/null; then
    echo "Arch-based"
    sudo pacman -Syu &&
@@ -69,17 +65,17 @@ elif VERB="$( which pacman )" 2> /dev/null; then
 # sudo pacman -S xdotool (experimental)
 
 
-# openSUSE Leap & Tumbleweed, SUSE Linux, ... versions
+# openSUSE Leap 15.3 version
 elif VERB="$( which zypper )" 2> /dev/null; then
    echo "openSUSE-based"
-   su -c 'zypper up && zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.2/ wine && zypper install p7zip-full curl wine cabextract'
+   su -c 'zypper up && zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.3/ wine && zypper install p7zip-full curl wine cabextract'
 # su -c 'zypper install xdotool' (experimental)
 else
-   echo "Non-compatible Linux distribution version was found!" >&2
+   echo "Non-compatible Linux distribution version was found!"
    exit 1
 fi
 if [[ 1 -ne $# ]]; then
-   echo "Minimum requirements have been installed and set up for your system! "
+   echo "Minimum requirements have been installed and set up for your system!"
 
 # Installation of Autodesk Fusion 360:
 
@@ -88,7 +84,7 @@ if [[ 1 -ne $# ]]; then
    chmod +x winetricks &&
    WINEPREFIX=~/.fusion360 sh winetricks -q corefonts msxml4 msxml6 vcrun2019 fontsmooth=rgb win8 &&
 
-# Windows Version 10 make some problems at the moment with wine 6.11 !!!
+# Windows Version 10 make some problems at the moment!
 
    echo "Autodesk Fusion 360 will be installed and set up."
    mkdir -p fusion360 &&
