@@ -3,7 +3,7 @@
 # Name:         Autodesk Fusion 360 - Installationsskript (Linux)
 # Description:  With this file you can install Autodesk Fusion 360 on Linux.
 # Author:       Steve Zabka
-# Author URI:   https://cryinkfly.de
+# Author URI:   https://cryinkfly.com
 # Time/Date:    21:30/31.07.2021
 # Version:      2.0
 
