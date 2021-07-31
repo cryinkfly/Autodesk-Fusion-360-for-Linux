@@ -114,7 +114,7 @@ You will get more information about this program, then you can visit the origina
 
 ## Downloads
 
-There are some ![script releases](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/tree/main/scripts) available, built from the release targets. (Still in Progress!)
+There are some ![script releases](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/tree/main/scripts) available, built from the release targets.
 
 It's recommended that if you're new you start with the stable builds. Development builds are available here if you need it, but correspondingly may be less stable.
 
@@ -175,8 +175,6 @@ It's recommended that if you're new you start with the stable builds. Developmen
 ---
 
 # README-FILE: STILL IN PROGRESS!!!
-
----
 
 
 
