@@ -25,7 +25,7 @@ You will get more information about this program, then you can visit the origina
 
 ---
 
-  - 📂 Downloads: Stable and development builds
+  - 📂 Downloads: ![Stable](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/tree/main/scripts/stable-branch) and ![development builds](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/tree/main/scripts/development-branch)
   - 📔 Documentation: ![GitHub-Documentation](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/wiki/Documentation) & ![Videos](https://www.youtube.com/watch?v=-BktJspJKgs&list=PLzwMdS5iu_BIsO6RTy7Hy1MbzLMrQE2xe)
   - 💬 Would You like to get in touch with me? Or if You have any questions, suggestions or problems?
   - 📫 Then You can create an ![issue](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues) here on GitHub or You can contact me via my ![contact form](https://cryinkfly.com/contact/)!
