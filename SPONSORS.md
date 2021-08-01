@@ -21,4 +21,4 @@
 - @suryanisaac
 - @paukstelis
 
-... they help me to get work Fusion 360 on Linux!!!
+... they help me with reports to get work Fusion 360 on Linux!!!
