@@ -142,9 +142,9 @@ Install Fusion 360 for Linux client:
 
 ---
 
+## License
 
-
-# README-FILE: STILL IN PROGRESS!!!
+All my scripts are released under the MIT license, see LICENSE.md for full text.
 
 
 
