@@ -70,7 +70,7 @@ It's recommended that if you're new you start with the stable builds. Developmen
 
 Install Fusion 360 for Linux client:
 
-1.) Download the installer package from this ![location](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/tree/main/scripts/stable-branch).
+1.) Check my ![documentation](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/wiki/Documentation) and my ![videos](https://www.youtube.com/watch?v=-BktJspJKgs&list=PLzwMdS5iu_BIsO6RTy7Hy1MbzLMrQE2xe) before You install Autodesk Fusion 360!
 
 2.) Open a terminal and run this command:
 
