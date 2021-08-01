@@ -74,7 +74,7 @@ Install Fusion 360 for Linux client:
 
 2.) Open a terminal and run this command:
 
-    cd Downloads && chmod +x fusion360-install.sh && bash fusion360-install.sh
+    cd Downloads && wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/scripts/stable-branch/fusion360-install.sh && chmod +x fusion360-install.sh && bash fusion360-install.sh
 
 
 ---
