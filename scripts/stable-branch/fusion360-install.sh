@@ -94,7 +94,7 @@ case $CHOICE in
             winetricks
             ;;
         2)
-            su -c 'zypper up && zypper install p7zip-full curl wget wine cabextract' &&
+            su -c 'zypper up && zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.3/ wine && zypper install p7zip-full curl wget wine cabextract' &&
             winetricks
             ;;
         3)
