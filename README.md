@@ -144,7 +144,7 @@ Install Fusion 360 for Linux client:
 
 ## License
 
-All my scripts are released under the MIT license, see LICENSE.md for full text.
+All my scripts are released under the MIT license, see ![LICENSE.md](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/LICENSE.md) for full text.
 
 
 
