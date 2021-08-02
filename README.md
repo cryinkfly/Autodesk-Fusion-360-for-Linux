@@ -80,7 +80,7 @@ Install Fusion 360 for Linux client:
 
 ---
 
-## Which work areas and functions can You use:
+## Which work areas and functions have I tested:
 
 <table>
 <thead>
