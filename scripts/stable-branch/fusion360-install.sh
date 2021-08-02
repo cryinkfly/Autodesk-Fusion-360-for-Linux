@@ -26,6 +26,15 @@
 # 2. Step: The installation will now start and set up everything for you automatically.
 ############################################################################################################################################################
 
+function requirement_check {
+
+if ! command -v dialog &> /dev/null
+then
+    echo "Requirement check failed!"
+    echo "Package "dialog" could not be found. Please install dialog with your favorite package-manager in order to run this script."
+    exit
+fi
+}
 
 
 function welcome_screen {
@@ -203,4 +212,5 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 
+requirement_check
 welcome_screen
