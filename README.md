@@ -76,6 +76,7 @@ Install Fusion 360 for Linux client:
 
     cd Downloads && wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/scripts/stable-branch/fusion360-install.sh && chmod +x fusion360-install.sh && bash fusion360-install.sh
 
+3.) Now, You can ![use](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues/44#issuecomment-890552181) Autodesk Fusion 360 on your Linux system!
 
 ---
 
@@ -145,8 +146,10 @@ Install Fusion 360 for Linux client:
 
 ## Important Notice
 
-With the help of my script, You get a way to install the Autodesk Fusion 360 on your Linux system. 
-Certain packages and programs that are required will be set up for You, but it's important to know, that my script only helps You to get the program to run and nothing more! And so, You must to purchase the licenses directly from the manufacturer of the program Autodesk Fusion 360!
+With the help of my script, You get a way to install Autodesk Fusion 360 on your Linux system. 
+Certain packages and programs that are required will be set up for You, but it's important to know, that my script only helps You to get the program to run and nothing more! 
+
+And so, You must to purchase the licenses directly from the manufacturer of the program Autodesk Fusion 360!
 
 ---
 
