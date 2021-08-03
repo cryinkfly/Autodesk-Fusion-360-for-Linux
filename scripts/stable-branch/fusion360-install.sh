@@ -244,8 +244,8 @@ case $CHOICE in
             exit
             ;;
         2)
-            echo "[multilib]" >> /etc/pacman.conf
-            echo "Include = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
+            sudo echo "[multilib]" >> /etc/pacman.conf
+            sudo echo "Include = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
             ;;
 esac
 }
