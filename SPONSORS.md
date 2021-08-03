@@ -20,6 +20,8 @@
 - @hopkuba
 - @suryanisaac
 - @paukstelis
+- @marrobHD
 - @ReubenBTalbott
+- @ConorIA
 
 ... they help me with reports to get work Fusion 360 on Linux!!!
