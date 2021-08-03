@@ -52,7 +52,7 @@ elif VERB="$( which pacman )" 2> /dev/null; then
 elif VERB="$( which zypper )" 2> /dev/null; then
    echo "openSUSE-based"
    su -c 'zypper up && zypper install dialog'
-elif VERB="$( xbps-install )" 2> /dev/null; then
+elif VERB="$( which xbps-install )" 2> /dev/null; then
    echo "Void-based"
    sudo xbps-install -Sy dialog
 else
