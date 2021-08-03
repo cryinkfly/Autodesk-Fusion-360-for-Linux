@@ -59,11 +59,11 @@ It's recommended that if you're new you start with the stable builds. Developmen
 
 ## Hardware and Software Requirements
 
-- Internet connection (Cable/DSL speeds recommended)
-- Latest Ubuntu LTS, Fedora, Debian, Manjaro, openSUSE Leap, fully updated
+- Internet connection (Cable/DSL speeds recommended)!
+- Latest Ubuntu LTS, Fedora, Debian, Manjaro, Arch Linux, Void Linux, openSUSE Leap, fully updated!
 - Latest graphics driver, see ![here](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/wiki/Supported-Graphics-Cards)
 - The script fails silently on some Linux distributions if the package „dialog" isn't installed!
-- Some packages (dialog, p7zip, p7zip-full, p7zip-rar, curl, wget, winbind, cabextract, wine, wine-mono, wine_gecko & winetricks)
+- My script install some packages (dialog, p7zip, p7zip-full, p7zip-rar, curl, wget, winbind, cabextract, wine, wine-mono, wine_gecko, winetricks, ...)!
 
 ---
 
