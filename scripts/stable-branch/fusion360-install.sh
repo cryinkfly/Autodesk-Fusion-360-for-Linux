@@ -66,7 +66,7 @@ function welcome_screen {
 HEIGHT=15
 WIDTH=60
 CHOICE_HEIGHT=2
-BACKTITLE="Installation of Autodesk Fusion360 - Version 2.1"
+BACKTITLE="Installation of Autodesk Fusion360 - Version 2.2"
 TITLE="Do you wish to install Autodesk Fusion 360?"
 MENU="Choose one of the following options:"
 
@@ -96,7 +96,7 @@ function select_your_os {
 HEIGHT=15
 WIDTH=60
 CHOICE_HEIGHT=10
-BACKTITLE="Installation of Autodesk Fusion360 - Version 2.1"
+BACKTITLE="Installation of Autodesk Fusion360 - Version 2.2"
 TITLE="Select your Linux distribution"
 MENU="Choose one of the following options:"
 
@@ -223,7 +223,7 @@ function archlinux_1 {
 HEIGHT=15
 WIDTH=60
 CHOICE_HEIGHT=2
-BACKTITLE="Installation of Autodesk Fusion360 - Version 2.1"
+BACKTITLE="Installation of Autodesk Fusion360 - Version 2.2"
 TITLE="If you have enabled multilib repository?"
 MENU="Choose one of the following options:"
 
