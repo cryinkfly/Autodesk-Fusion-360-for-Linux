@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com
 # License:      MIT
 # Copyright (c) 2020-2021
-# Time/Date:    18:00/01.08.2021
-# Version:      2.1
+# Time/Date:    21:00/03.08.2021
+# Version:      2.2
 ##############################################################################
 
 # DESCRIPTION
@@ -26,16 +26,40 @@
 # 2. Step: The installation will now start and set up everything for you automatically.
 ############################################################################################################################################################
 
-function requirement_check {
-
-if ! command -v dialog &> /dev/null
-then
-    echo "Requirement check failed!"
-    echo "Package "dialog" could not be found. Please install dialog with your favorite package-manager in order to run this script."
-    exit
+function requirement-check-dialog {
+echo "Find your correct package manager and install the package dialog, what you need for the installation of Autodesk Fusion 360!"
+echo -n "Do you wish to install this package (y/n)?"
+read answer
+if [ "$answer" != "${answer#[Yy]}" ] ;then
+    install-dialog
+else
+    exit;
 fi
 }
 
+function install-dialog {
+if VERB="$( which apt-get )" 2> /dev/null; then
+   echo "Debian-based"
+   sudo apt-get update &&
+   sudo apt-get install dialog
+elif VERB="$( which dnf )" 2> /dev/null; then
+   echo "RedHat-based"
+   sudo dnf update &&
+   sudo dnf install dialog
+elif VERB="$( which pacman )" 2> /dev/null; then
+   echo "Arch-based"
+   sudo pacman -Sy dialog
+elif VERB="$( which zypper )" 2> /dev/null; then
+   echo "openSUSE-based"
+   su -c 'zypper up && zypper install dialog'
+elif VERB="$( xbps-install )" 2> /dev/null; then
+   echo "Void-based"
+   sudo xbps-install -Sy dialog
+else
+   echo "I can't find your package manager!"
+   exit;
+fi
+}
 
 function welcome_screen {
 
@@ -86,7 +110,9 @@ OPTIONS=(1 "openSUSE Leap 15.2"
          8 "Ubuntu 21.04"
          9 "Fedora 33"
          10 "Fedora 34"
-         11 "Manjaro 19.0 & newer")
+         11 "Manjaro 19.0 & newer"
+         12 "Arch Linux"
+         13 "Void Linux")
 
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
@@ -152,11 +178,18 @@ case $CHOICE in
             fedora_based_2 &&
             winetricks
             ;;
-        11)
-            sudo pacman -Syu &&
-            sudo pacman -S wine wine-mono wine_gecko &&
+        11) archlinux_1 &&
+            archlinux_2 &&
             winetricks
             ;;
+        12) archlinux_1 &&
+            archlinux_2 &&
+            winetricks
+            ;;
+        13) void-linux &&
+            winetricks
+            ;;
+
 esac
 }
 
@@ -185,6 +218,46 @@ function fedora_based_2 {
     sudo dnf install p7zip p7zip-plugins curl wget wine cabextract
 }
 
+function archlinux_1 {
+
+HEIGHT=15
+WIDTH=60
+CHOICE_HEIGHT=2
+BACKTITLE="Installation of Autodesk Fusion360 - Version 2.1"
+TITLE="If you have enabled multilib repository?"
+MENU="Choose one of the following options:"
+
+OPTIONS=(1 "Yes"
+         2 "No")
+
+CHOICE=$(dialog --clear \
+                --backtitle "$BACKTITLE" \
+                --title "$TITLE" \
+                --menu "$MENU" \
+                $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                "${OPTIONS[@]}" \
+                2>&1 >/dev/tty)
+
+clear
+case $CHOICE in
+        1)
+            exit
+            ;;
+        2)
+            echo "[multilib]" >> /etc/pacman.conf
+            echo "Include = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
+            ;;
+esac
+}
+
+function archlinux_2 {
+   sudo pacman -Sy wine wine-mono wine_gecko winetricks p7zip curl cabextract samba ppp
+}
+   
+function void-linux {
+   sudo xbps-install -Sy wine wine-mono wine-gecko winetricks p7zip curl cabextract samba ppp
+}
+
 function winetricks {
    clear
    echo "Enter the path for your Fusion 360 (For examlble: /run/media/user/usb-drive/wine/fusion360":
@@ -196,9 +269,9 @@ function winetricks {
    WINEPREFIX=$filename sh winetricks -q corefonts msxml4 msxml6 vcrun2017 fontsmooth=rgb win8 &&
    mkdir -p fusion360-download &&
    cd fusion360-download &&
-   wget -N https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe &&
-   WINEPREFIX=$filename wine Fusion\ 360\ Admin\ Install.exe -p deploy -g -f log.txt --quiet &&
-   WINEPREFIX=$filename wine Fusion\ 360\ Admin\ Install.exe -p deploy -g -f log.txt --quiet &&
+   wget -N https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe -O Fusion360.exe &&
+   WINEPREFIX=$filename wine Fusion360.exe -p deploy -g -f log.txt --quiet &&
+   WINEPREFIX=$filename wine Fusion360.exe -p deploy -g -f log.txt --quiet &&
    cd "$filename/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform" &&
    mkdir -p Options &&
    cd Options
@@ -212,5 +285,6 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 
-requirement_check
+clear
+requirement-check-dialog
 welcome_screen
