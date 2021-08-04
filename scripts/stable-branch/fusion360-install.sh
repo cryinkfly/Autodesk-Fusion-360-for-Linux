@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com
 # License:      MIT
 # Copyright (c) 2020-2021
-# Time/Date:    21:00/03.08.2021
-# Version:      2.2
+# Time/Date:    20:00/04.08.2021
+# Version:      2.3
 ##############################################################################
 
 # DESCRIPTION
@@ -66,7 +66,7 @@ function welcome_screen {
 HEIGHT=15
 WIDTH=60
 CHOICE_HEIGHT=2
-BACKTITLE="Installation of Autodesk Fusion360 - Version 2.2"
+BACKTITLE="Installation of Autodesk Fusion360 - Version 2.3"
 TITLE="Do you wish to install Autodesk Fusion 360?"
 MENU="Choose one of the following options:"
 
@@ -96,7 +96,7 @@ function select_your_os {
 HEIGHT=15
 WIDTH=60
 CHOICE_HEIGHT=10
-BACKTITLE="Installation of Autodesk Fusion360 - Version 2.2"
+BACKTITLE="Installation of Autodesk Fusion360 - Version 2.3"
 TITLE="Select your Linux distribution"
 MENU="Choose one of the following options:"
 
@@ -178,15 +178,14 @@ case $CHOICE in
             fedora_based_2 &&
             winetricks
             ;;
-        11) archlinux_1 &&
-            archlinux_2 &&
-            winetricks
+        11) 
+            archlinux_1
             ;;
-        12) archlinux_1 &&
-            archlinux_2 &&
-            winetricks
+        12) 
+            archlinux_1
             ;;
-        13) void-linux &&
+        13) 
+            void-linux &&
             winetricks
             ;;
 
@@ -223,7 +222,7 @@ function archlinux_1 {
 HEIGHT=15
 WIDTH=60
 CHOICE_HEIGHT=2
-BACKTITLE="Installation of Autodesk Fusion360 - Version 2.2"
+BACKTITLE="Installation of Autodesk Fusion360 - Version 2.3"
 TITLE="If you have enabled multilib repository?"
 MENU="Choose one of the following options:"
 
@@ -241,11 +240,14 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         1)
-            exit
+            archlinux_2 &&
+            winetricks
             ;;
         2)
-            sudo echo "[multilib]" >> /etc/pacman.conf
-            sudo echo "Include = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
+            sudo echo "[multilib]" >> /etc/pacman.conf &&
+            sudo echo "Include = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf &&
+            archlinux_2 &&
+            winetricks
             ;;
 esac
 }
