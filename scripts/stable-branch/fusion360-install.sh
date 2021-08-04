@@ -8,7 +8,7 @@
 # License:      MIT
 # Copyright (c) 2020-2021
 # Time/Date:    20:00/04.08.2021
-# Version:      2.3
+# Version:      2.4
 ##############################################################################
 
 # DESCRIPTION
@@ -66,7 +66,7 @@ function welcome_screen {
 HEIGHT=15
 WIDTH=60
 CHOICE_HEIGHT=2
-BACKTITLE="Installation of Autodesk Fusion360 - Version 2.3"
+BACKTITLE="Installation of Autodesk Fusion360 - Version 2.4"
 TITLE="Do you wish to install Autodesk Fusion 360?"
 MENU="Choose one of the following options:"
 
@@ -96,7 +96,7 @@ function select_your_os {
 HEIGHT=15
 WIDTH=60
 CHOICE_HEIGHT=10
-BACKTITLE="Installation of Autodesk Fusion360 - Version 2.3"
+BACKTITLE="Installation of Autodesk Fusion360 - Version 2.4"
 TITLE="Select your Linux distribution"
 MENU="Choose one of the following options:"
 
@@ -125,11 +125,11 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         1)
-            su -c 'zypper up && zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.2/ wine && zypper install p7zip-full curl wget wine cabextract' &&
+            su -c 'zypper up && zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.2/ wine && zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.2/ wine && zypper install p7zip-full curl wget wine cabextract' &&
             winetricks
             ;;
         2)
-            su -c 'zypper up && zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.3/ wine && zypper install p7zip-full curl wget wine cabextract' &&
+            su -c 'zypper up && zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.3/ wine && zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.3/ wine && zypper install p7zip-full curl wget wine cabextract' &&
             winetricks
             ;;
         3)
@@ -222,7 +222,7 @@ function archlinux_1 {
 HEIGHT=15
 WIDTH=60
 CHOICE_HEIGHT=2
-BACKTITLE="Installation of Autodesk Fusion360 - Version 2.3"
+BACKTITLE="Installation of Autodesk Fusion360 - Version 2.4"
 TITLE="If you have enabled multilib repository?"
 MENU="Choose one of the following options:"
 
