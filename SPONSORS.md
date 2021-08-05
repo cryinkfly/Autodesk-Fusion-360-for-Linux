@@ -24,5 +24,6 @@
 - @ReubenBTalbott
 - @ConorIA
 - @Le0xFF
+- @Druco
 
 ... they help me with reports to get work Fusion 360 on Linux!!!
