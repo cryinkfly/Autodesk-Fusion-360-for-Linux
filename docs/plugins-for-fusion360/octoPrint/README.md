@@ -36,7 +36,7 @@ You will get more information about OctoPrint, then you can visit the original w
 
 ## Getting Started
 
-Install Fusion 360 for Linux client:
+Install OctoPrint for Autodesk® Fusion 360™ for Autodesk Fusion 360:
 
 1.) You can only download the installation program when you have previously logged into with your account on: https://apps.autodesk.com!
 
