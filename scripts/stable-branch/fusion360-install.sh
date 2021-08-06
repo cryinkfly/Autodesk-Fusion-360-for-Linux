@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com
 # License:      MIT
 # Copyright (c) 2020-2021
-# Time/Date:    08:20/06.08.2021
-# Version:      2.6
+# Time/Date:    19:00/06.08.2021
+# Version:      2.7
 ##############################################################################
 
 # DESCRIPTION
@@ -66,7 +66,7 @@ function welcome_screen {
 HEIGHT=15
 WIDTH=60
 CHOICE_HEIGHT=2
-BACKTITLE="Installation of Autodesk Fusion360 - Version 2.6"
+BACKTITLE="Installation of Autodesk Fusion360 - Version 2.7"
 TITLE="Do you wish to install Autodesk Fusion 360?"
 MENU="Choose one of the following options:"
 
@@ -96,7 +96,7 @@ function select_your_os {
 HEIGHT=15
 WIDTH=60
 CHOICE_HEIGHT=10
-BACKTITLE="Installation of Autodesk Fusion360 - Version 2.6"
+BACKTITLE="Installation of Autodesk Fusion360 - Version 2.7"
 TITLE="Select your Linux distribution"
 MENU="Choose one of the following options:"
 
@@ -204,11 +204,19 @@ esac
 }
 
 function select_your_path {
-    dialog --backtitle "Installation of Autodesk Fusion360 - Version 2.6" \
+    dialog --backtitle "Installation of Autodesk Fusion360 - Version 2.7" \
     --title "Description - Configure the installation location" \
     --msgbox 'Now you have to determine where you want to install Fusion 360 and then the .fusion360 folder will be created for you automatically. For examlble you can install it on a external usb-drive: /run/media/user/usb-drive/wine/.fusion360 or you install it into your home folder: /home/user/.fusion360).' 14 200
 
-    filename=$(dialog --stdout --title "Enter the installation path for Fusion 360:" --backtitle "Installation of Autodesk Fusion360 - Version 2.6" --fselect $HOME/ 14 100)
+    filename=$(dialog --stdout --title "Enter the installation path for Fusion 360:" --backtitle "Installation of Autodesk Fusion360 - Version 2.7" --fselect $HOME/ 14 100)
+}
+
+function program_exit {
+    dialog --backtitle "Installation of Autodesk Fusion360 - Version 2.7" \
+    --title "TAutodesk Fusion 360 is completed." \
+    --msgbox 'The installation of Autodesk Fusion 360 is completed and you use it for your projects.' 14 200
+    
+    exit
 }
 
 function debian_based_1 {
@@ -241,7 +249,7 @@ function archlinux_1 {
 HEIGHT=15
 WIDTH=60
 CHOICE_HEIGHT=2
-BACKTITLE="Installation of Autodesk Fusion360 - Version 2.6"
+BACKTITLE="Installation of Autodesk Fusion360 - Version 2.7"
 TITLE="If you have enabled multilib repository?"
 MENU="Choose one of the following options:"
 
@@ -295,10 +303,9 @@ function winetricks {
    WINEPREFIX=$filename wine Fusion360.exe -p deploy -g -f log.txt --quiet &&
    cd "$filename/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform" &&
    mkdir -p Options &&
-   cd Options
-   wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/NMachineSpecificOptions.xml
-   echo "The installation of Autodesk Fusion 360 is completed."
-   exit
+   cd Options &&
+   wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/NMachineSpecificOptions.xml &&
+   program_exit
 }
 
 # ---------------------------------------------------------------------
