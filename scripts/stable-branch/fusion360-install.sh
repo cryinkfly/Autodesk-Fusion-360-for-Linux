@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com
 # License:      MIT
 # Copyright (c) 2020-2021
-# Time/Date:    20:00/04.08.2021
-# Version:      2.4
+# Time/Date:    07:00/06.08.2021
+# Version:      2.5
 ##############################################################################
 
 # DESCRIPTION
@@ -66,7 +66,7 @@ function welcome_screen {
 HEIGHT=15
 WIDTH=60
 CHOICE_HEIGHT=2
-BACKTITLE="Installation of Autodesk Fusion360 - Version 2.4"
+BACKTITLE="Installation of Autodesk Fusion360 - Version 2.5"
 TITLE="Do you wish to install Autodesk Fusion 360?"
 MENU="Choose one of the following options:"
 
@@ -96,7 +96,7 @@ function select_your_os {
 HEIGHT=15
 WIDTH=60
 CHOICE_HEIGHT=10
-BACKTITLE="Installation of Autodesk Fusion360 - Version 2.4"
+BACKTITLE="Installation of Autodesk Fusion360 - Version 2.5"
 TITLE="Select your Linux distribution"
 MENU="Choose one of the following options:"
 
@@ -222,7 +222,7 @@ function archlinux_1 {
 HEIGHT=15
 WIDTH=60
 CHOICE_HEIGHT=2
-BACKTITLE="Installation of Autodesk Fusion360 - Version 2.4"
+BACKTITLE="Installation of Autodesk Fusion360 - Version 2.5"
 TITLE="If you have enabled multilib repository?"
 MENU="Choose one of the following options:"
 
@@ -262,7 +262,7 @@ function void-linux {
 
 function winetricks {
    clear
-   echo "Enter the path for your Fusion 360 (For examlble: /run/media/user/usb-drive/wine/fusion360":
+   echo "Enter the installation path for your Fusion 360 (For examlble you can install it on a external usb-drive: /run/media/user/usb-drive/wine/fusion360 or you install it into your home folder: /home/user/.fusion360):"
    read filename
    mkdir -p $filename &&
    cd $filename &&
