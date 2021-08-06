@@ -26,13 +26,14 @@ You will get more information about this program, then you can visit the origina
 
 ---
 
-  - 📂 Downloads: ![Stable](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/tree/main/scripts/stable-branch) and ![development builds](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/tree/main/scripts/development-branch)
-  - 📔 Documentation: ![GitHub-Documentation](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/wiki/Documentation) & ![Videos](https://www.youtube.com/watch?v=-BktJspJKgs&list=PLzwMdS5iu_BIsO6RTy7Hy1MbzLMrQE2xe)
+  - 📂 Downloads: 
+<a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/tree/main/scripts/stable-branch">Stable</a> and <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/tree/main/scripts/development-branch">development builds</a>
+  - 📔 Documentation: <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/wiki/Documentation">GitHub-Documentation</a> & <a href="https://www.youtube.com/watch?v=-BktJspJKgs&list=PLzwMdS5iu_BIsO6RTy7Hy1MbzLMrQE2xe">Videos</a>
   - 💬 Would You like to get in touch with me? Or if You have any questions, suggestions or problems?
-  - 📫 Then You can create an ![issue](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues) here on GitHub or You can contact me via my ![contact form](https://cryinkfly.com/contact/)!
+  - 📫 Then You can create an <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues">issue</a> here on GitHub or You can contact me via my <a href="https://cryinkfly.com/contact/">contact form</a>!
   - 📜 Code of Conduct: Contributor Covenant (Still in Progress!)
   - 📖 Information for contributors: All contribution information, Compilation instructions, Roadmap (Still in Progress!)
-  - ❤️ I'd like to thank everyone who has ![helped](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/SPONSORS.md) me to get Fusion 360 up and running on Linux!
+  - ❤️ I'd like to thank everyone who has <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/SPONSORS.md">helped</a> me to get Fusion 360 up and running on Linux!
   - 🍷 Super Application Maintainer (WineHQ): https://appdb.winehq.org/objectManager.php?sClass=application&iId=15617
 
 ---
@@ -51,7 +52,7 @@ You will get more information about this program, then you can visit the origina
 
 ## Downloads
 
-There are some ![script releases](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/tree/main/scripts) available, built from the release targets.
+There are some <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/tree/main/scripts">script releases</a> available, built from the release targets.
 
 It's recommended that if you're new you start with the stable builds. Development builds are available here if you need it, but correspondingly may be less stable.
 
@@ -61,7 +62,7 @@ It's recommended that if you're new you start with the stable builds. Developmen
 
 - Internet connection (Cable/DSL speeds recommended)!
 - Latest Ubuntu LTS, Fedora, Debian, Manjaro, Arch Linux, Void Linux, openSUSE Leap & Tumbleweed, fully updated!
-- Latest graphics driver, see ![here](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/wiki/Supported-Graphics-Cards)!
+- Latest graphics driver, see <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/wiki/Supported-Graphics-Cards">here</a>!
 - The script fails silently on some Linux distributions if the package „dialog" isn't installed!
 - My script install some packages (dialog, p7zip, p7zip-full, p7zip-rar, curl, wget, winbind, cabextract, wine, wine-mono, wine_gecko, winetricks, ...)!
 
@@ -71,13 +72,13 @@ It's recommended that if you're new you start with the stable builds. Developmen
 
 Install Fusion 360 for Linux client:
 
-1.) Check my ![documentation](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/wiki/Documentation) and my ![videos](https://www.youtube.com/watch?v=-BktJspJKgs&list=PLzwMdS5iu_BIsO6RTy7Hy1MbzLMrQE2xe) before You install Autodesk Fusion 360!
+1.) Check my <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/wiki/Documentation">GitHub-Documentation</a> & <a href="https://www.youtube.com/watch?v=-BktJspJKgs&list=PLzwMdS5iu_BIsO6RTy7Hy1MbzLMrQE2xe">Videos</a> before you install Autodesk Fusion 360 on your system!
 
 2.) Open a terminal and run this command:
 
     cd Downloads && wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/scripts/stable-branch/fusion360-install.sh && chmod +x fusion360-install.sh && bash fusion360-install.sh
 
-3.) Now, You can ![use](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues/44#issuecomment-890552181) Autodesk Fusion 360 on your Linux system!
+3.) Now, You can <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues/44#issuecomment-890552181">use</a> Autodesk Fusion 360 on your Linux system!
 
 ---
 
@@ -169,7 +170,7 @@ And so, You must to purchase the licenses directly from the manufacturer of the 
 
 ## License
 
-All my scripts are released under the MIT license, see ![LICENSE.md](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/LICENSE.md) for full text.
+All my scripts are released under the MIT license, see <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/LICENSE.md">LICENSE.md</a> for full text.
 
 
 
