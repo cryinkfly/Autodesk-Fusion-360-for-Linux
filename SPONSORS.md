@@ -26,4 +26,4 @@
 - @Le0xFF
 - @Druco
 
-... they help me with reports to get work Fusion 360 on Linux!!!
+... they help me with reports and code to get work Fusion 360 on Linux!!!
