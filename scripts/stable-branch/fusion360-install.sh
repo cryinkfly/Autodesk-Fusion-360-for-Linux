@@ -214,7 +214,7 @@ function select_your_path {
 function program_exit {
     dialog --backtitle "Installation of Autodesk Fusion360 - Version 2.7" \
     --title "TAutodesk Fusion 360 is completed." \
-    --msgbox 'The installation of Autodesk Fusion 360 is completed and you use it for your projects.' 14 200
+    --msgbox 'The installation of Autodesk Fusion 360 is completed and you can use it for your projects.' 14 200
     
     exit
 }
