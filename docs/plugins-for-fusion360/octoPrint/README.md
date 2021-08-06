@@ -6,7 +6,7 @@
 ![GitHub forks](https://img.shields.io/github/forks/cryinkfly/Fusion-360---Linux-Wine-Version-?style=for-the-badge)
 ![GitHub](https://img.shields.io/github/license/cryinkfly/Fusion-360---Linux-Wine-Version-?style=for-the-badge)
 
-<a href="https://apps.autodesk.com/FUSION/en/Detail/Index?id=5679198834514673847&appLang=en&os=Win64">OctoPrint for Autodesk® Fusion 360™</a> is a plugin where you can send directly the G-code of your created model to the OctoPrint server via Autodesk Fusion 360 and then it will be printed for you.
+<a href="https://apps.autodesk.com/FUSION/en/Detail/Index?id=5679198834514673847&appLang=en&os=Win64">OctoPrint for Autodesk® Fusion 360™</a> is a plugin where you can send directly the G-code of your created model to the OctoPrint server via Autodesk Fusion 360 and then it will be printed for you a physical model with a 3D-Printer.
 
 The publisher of this plugin is <a href="/en/Publisher/PublisherHomepage?ID=QP9QKVEMEAC3" target="_blank"><span class="seller">Autodesk, Inc.</span></a>!
 
