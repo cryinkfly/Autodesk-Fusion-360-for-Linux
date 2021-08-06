@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com
 # License:      MIT
 # Copyright (c) 2020-2021
-# Time/Date:    07:00/06.08.2021
-# Version:      2.5
+# Time/Date:    08:20/06.08.2021
+# Version:      2.6
 ##############################################################################
 
 # DESCRIPTION
@@ -66,7 +66,7 @@ function welcome_screen {
 HEIGHT=15
 WIDTH=60
 CHOICE_HEIGHT=2
-BACKTITLE="Installation of Autodesk Fusion360 - Version 2.5"
+BACKTITLE="Installation of Autodesk Fusion360 - Version 2.6"
 TITLE="Do you wish to install Autodesk Fusion 360?"
 MENU="Choose one of the following options:"
 
@@ -96,7 +96,7 @@ function select_your_os {
 HEIGHT=15
 WIDTH=60
 CHOICE_HEIGHT=10
-BACKTITLE="Installation of Autodesk Fusion360 - Version 2.5"
+BACKTITLE="Installation of Autodesk Fusion360 - Version 2.6"
 TITLE="Select your Linux distribution"
 MENU="Choose one of the following options:"
 
@@ -126,56 +126,66 @@ clear
 case $CHOICE in
         1)
             su -c 'zypper up && zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.2/ wine && zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.2/ wine && zypper install p7zip-full curl wget wine cabextract' &&
+            select_your_path &&
             winetricks
             ;;
         2)
             su -c 'zypper up && zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.3/ wine && zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.3/ wine && zypper install p7zip-full curl wget wine cabextract' &&
+            select_your_path &&
             winetricks
             ;;
         3)
             su -c 'zypper up && zypper install p7zip-full curl wget wine cabextract' &&
+            select_your_path &&
             winetricks
             ;;     
         4)
             debian_based_1 &&
             sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/debian/ buster main' &&
             debian_based_2 &&
+            select_your_path &&
             winetricks
             ;;   
         5)
             debian_based_1 &&
             sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/debian/ bullseye main' &&
             debian_based_2 &&
+            select_your_path &&
             winetricks
             ;;  
         6)    
             debian_based_1 &&
             sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main' &&
             debian_based_2 &&
+            select_your_path &&
             winetricks
             ;;   
         7)
             debian_based_1 &&
             sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ groovy main' &&
             debian_based_2 &&
+            select_your_path &&
             winetricks
             ;;    
         8)
             debian_based_1 &&
             sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ hirsute main' &&
             debian_based_2 &&
+            select_your_path &&
             winetricks
             ;;    
         9)
             fedora_based_1 &&
             sudo dnf config-manager --add-repo https://dl.winehq.org/wine-builds/fedora/33/winehq.repo &&
             fedora_based_2 &&
+            select_your_path &&
             winetricks
             ;;
         10)
             fedora_based_1 &&
             sudo dnf config-manager --add-repo https://dl.winehq.org/wine-builds/fedora/34/winehq.repo &&
             fedora_based_2 &&
+            select_your_path &&
             winetricks
             ;;
         11) 
@@ -186,10 +196,19 @@ case $CHOICE in
             ;;
         13) 
             void-linux &&
+            select_your_path &&
             winetricks
             ;;
 
 esac
+}
+
+function select_your_path {
+    dialog --backtitle "Installation of Autodesk Fusion360 - Version 2.6" \
+    --title "Description - Configure the installation location" \
+    --msgbox 'Now you have to determine where you want to install Fusion 360 and then the .fusion360 folder will be created for you automatically. For examlble you can install it on a external usb-drive: /run/media/user/usb-drive/wine/.fusion360 or you install it into your home folder: /home/user/.fusion360).' 14 200
+
+    filename=$(dialog --stdout --title "Enter the installation path for Fusion 360:" --backtitle "Installation of Autodesk Fusion360 - Version 2.6" --fselect $HOME/ 14 100)
 }
 
 function debian_based_1 {
@@ -222,7 +241,7 @@ function archlinux_1 {
 HEIGHT=15
 WIDTH=60
 CHOICE_HEIGHT=2
-BACKTITLE="Installation of Autodesk Fusion360 - Version 2.5"
+BACKTITLE="Installation of Autodesk Fusion360 - Version 2.6"
 TITLE="If you have enabled multilib repository?"
 MENU="Choose one of the following options:"
 
@@ -241,12 +260,14 @@ clear
 case $CHOICE in
         1)
             archlinux_2 &&
+            select_your_path &&
             winetricks
             ;;
         2)
             sudo echo "[multilib]" >> /etc/pacman.conf &&
             sudo echo "Include = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf &&
             archlinux_2 &&
+            select_your_path &&
             winetricks
             ;;
 esac
@@ -262,8 +283,6 @@ function void-linux {
 
 function winetricks {
    clear
-   echo " (Now you have to determine where you want to install Fusion 360 and then the .fusion360 folder will be created for you automatically. For examlble you can install it on a external usb-drive: /run/media/user/usb-drive/wine/.fusion360 or you install it into your home folder: /home/user/.fusion360). Enter the installation path for your Fusion 360:"
-   read filename
    mkdir -p $filename &&
    cd $filename &&
    wget -N https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks &&
