@@ -262,7 +262,7 @@ function void-linux {
 
 function winetricks {
    clear
-   echo "Enter the installation path for your Fusion 360 (For examlble you can install it on a external usb-drive: /run/media/user/usb-drive/wine/fusion360 or you install it into your home folder: /home/user/.fusion360):"
+   echo " (Now you have to determine where you want to install Fusion 360 and then the .fusion360 folder will be created for you automatically. For examlble you can install it on a external usb-drive: /run/media/user/usb-drive/wine/.fusion360 or you install it into your home folder: /home/user/.fusion360). Enter the installation path for your Fusion 360:"
    read filename
    mkdir -p $filename &&
    cd $filename &&
