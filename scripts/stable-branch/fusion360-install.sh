@@ -197,6 +197,7 @@ function select_your_path {
 HEIGHT=15
 WIDTH=700
 CHOICE_HEIGHT=2
+CHOICE_WIDTH=700
 BACKTITLE="Installation of Autodesk Fusion360 - Version 2.8"
 TITLE="Choose setup type"
 MENU="Choose the kind of setup that best suits your needs."
