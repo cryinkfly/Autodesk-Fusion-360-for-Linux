@@ -320,9 +320,9 @@ function winetricks-standard {
    WINEPREFIX=/home/$USER/.wine-prefixes/fusion360 sh winetricks -q corefonts msxml4 msxml6 vcrun2017 fontsmooth=rgb win8 &&
    mkdir -p fusion360-download &&
    cd fusion360-download &&
-   wget -N https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe -O Fusion360.exe &&
-   WINEPREFIX=/home/$USER/.wine-prefixes/fusion360 wine Fusion360.exe -p deploy -g -f log.txt --quiet &&
-   WINEPREFIX=/home/$USER/.wine-prefixes/fusion360 wine Fusion360.exe -p deploy -g -f log.txt --quiet &&
+   wget -N https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe &&
+   WINEPREFIX=/home/$USER/.wine-prefixes/fusion360 wine Fusion%20360%20Admin%20Install.exe -p deploy -g -f log.txt --quiet &&
+   WINEPREFIX=/home/$USER/.wine-prefixes/fusion360 wine Fusion%20360%20Admin%20Install.exe -p deploy -g -f log.txt --quiet &&
    mkdir -p "/home/$USER/.wine-prefixes/fusion360/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform" &&
    cd "/home/$USER/.wine-prefixes/fusion360/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform" &&
    mkdir -p Options &&
@@ -346,9 +346,9 @@ function winetricks-custom {
    WINEPREFIX=$filename sh winetricks -q corefonts msxml4 msxml6 vcrun2017 fontsmooth=rgb win8 &&
    mkdir -p fusion360-download &&
    cd fusion360-download &&
-   wget -N https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe -O Fusion360.exe &&
-   WINEPREFIX=$filename wine Fusion360.exe -p deploy -g -f log.txt --quiet &&
-   WINEPREFIX=$filename wine Fusion360.exe -p deploy -g -f log.txt --quiet &&
+   wget -N https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe &&
+   WINEPREFIX=$filename wine Fusion%20360%20Admin%20Install.exe -p deploy -g -f log.txt --quiet &&
+   WINEPREFIX=$filename wine Fusion%20360%20Admin%20Install.exe -p deploy -g -f log.txt --quiet &&
    mkdir -p "$filename/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform" &&
    cd "$filename/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform" &&
    mkdir -p Options &&
