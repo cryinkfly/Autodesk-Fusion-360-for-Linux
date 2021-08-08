@@ -319,7 +319,7 @@ function winetricks-standard {
    chmod +x winetricks &&
    WINEPREFIX=/home/$USER/.wineprefixes/fusion360 sh winetricks -q corefonts msxml4 msxml6 vcrun2017 fontsmooth=rgb win8 &&
    mkdir -p fusion360download &&
-   cd fusion360-download &&
+   cd fusion360download &&
    wget https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe -O Fusion360.exe &&
    WINEPREFIX=/home/$USER/.wineprefixes/fusion360 wine Fusion360.exe -p deploy -g -f log.txt --quiet &&
    WINEPREFIX=/home/$USER/.wineprefixes/fusion360 wine Fusion360.exe -p deploy -g -f log.txt --quiet &&
