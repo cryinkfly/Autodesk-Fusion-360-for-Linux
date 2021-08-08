@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com
 # License:      MIT
 # Copyright (c) 2020-2021
-# Time/Date:    14:00/08.08.2021
-# Version:      2.8
+# Time/Date:    18:00/08.08.2021
+# Version:      2.9
 ##############################################################################
 
 # DESCRIPTION
@@ -26,35 +26,35 @@
 # 2. Step: The installation will now start and set up everything for you automatically.
 ############################################################################################################################################################
 
-function requirement-check-dialog {
-echo "Find your correct package manager and install the package dialog, what you need for the installation of Autodesk Fusion 360!"
+function requirement-check-dialog+wmctrl {
+echo "Find your correct package manager and install the package dialog and wmctrl, what you need for the installation of Autodesk Fusion 360!"
 echo -n "Do you wish to install this package (y/n)?"
 read answer
 if [ "$answer" != "${answer#[Yy]}" ] ;then
-    install-dialog
+    install-dialog+wmctrl
 else
     exit;
 fi
 }
 
-function install-dialog {
+function install-dialog+wmctrl {
 if VERB="$( which apt-get )" 2> /dev/null; then
    echo "Debian-based"
    sudo apt-get update &&
-   sudo apt-get install dialog
+   sudo apt-get install dialog wmctrl
 elif VERB="$( which dnf )" 2> /dev/null; then
    echo "RedHat-based"
    sudo dnf update &&
-   sudo dnf install dialog
+   sudo dnf install dialog wmctrl
 elif VERB="$( which pacman )" 2> /dev/null; then
    echo "Arch-based"
-   sudo pacman -Sy dialog
+   sudo pacman -Sy dialog wmctrl
 elif VERB="$( which zypper )" 2> /dev/null; then
    echo "openSUSE-based"
-   su -c 'zypper up && zypper install dialog'
+   su -c 'zypper up && zypper install dialog wmctrl'
 elif VERB="$( which xbps-install )" 2> /dev/null; then
    echo "Void-based"
-   sudo xbps-install -Sy dialog
+   sudo xbps-install -Sy dialog wmctrl
 else
    echo "I can't find your package manager!"
    exit;
@@ -66,7 +66,7 @@ function welcome_screen {
 HEIGHT=15
 WIDTH=60
 CHOICE_HEIGHT=2
-BACKTITLE="Installation of Autodesk Fusion360 - Version 2.8"
+BACKTITLE="Installation of Autodesk Fusion360 - Version 2.9"
 TITLE="Do you wish to install Autodesk Fusion 360?"
 MENU="Choose one of the following options:"
 
@@ -96,7 +96,7 @@ function select_your_os {
 HEIGHT=15
 WIDTH=60
 CHOICE_HEIGHT=10
-BACKTITLE="Installation of Autodesk Fusion360 - Version 2.8"
+BACKTITLE="Installation of Autodesk Fusion360 - Version 2.9"
 TITLE="Select your Linux distribution"
 MENU="Choose one of the following options:"
 
@@ -198,7 +198,7 @@ HEIGHT=15
 WIDTH=200
 CHOICE_HEIGHT=2
 CHOICE_WIDTH=200
-BACKTITLE="Installation of Autodesk Fusion360 - Version 2.8"
+BACKTITLE="Installation of Autodesk Fusion360 - Version 2.9"
 TITLE="Choose setup type"
 MENU="Choose the kind of setup that best suits your needs."
 
@@ -227,15 +227,15 @@ esac
 
 
 function select_your_path_custom {
-    dialog --backtitle "Installation of Autodesk Fusion360 - Version 2.8" \
+    dialog --backtitle "Installation of Autodesk Fusion360 - Version 2.9" \
     --title "Description - Configure the installation location" \
     --msgbox 'Now you have to determine where you want to install Fusion 360 and then the .fusion360 folder will be created for you automatically. For examlble you can install it on a external usb-drive: /run/media/user/usb-drive/wine/.fusion360 or you install it into your home folder: /home/YOUR-USERNAME/.wine-prefixes/fusion360).' 14 200
 
-    filename=$(dialog --stdout --title "Enter the installation path for Fusion 360:" --backtitle "Installation of Autodesk Fusion360 - Version 2.8" --fselect $HOME/ 14 100)
+    filename=$(dialog --stdout --title "Enter the installation path for Fusion 360:" --backtitle "Installation of Autodesk Fusion360 - Version 2.9" --fselect $HOME/ 14 100)
 }
 
 function program_exit {
-    dialog --backtitle "Installation of Autodesk Fusion360 - Version 2.8" \
+    dialog --backtitle "Installation of Autodesk Fusion360 - Version 2.9" \
     --title "Autodesk Fusion 360 is completed." \
     --msgbox 'The installation of Autodesk Fusion 360 is completed and you can use it for your projects.' 14 200
     
@@ -273,7 +273,7 @@ function archlinux_1 {
 HEIGHT=15
 WIDTH=60
 CHOICE_HEIGHT=2
-BACKTITLE="Installation of Autodesk Fusion360 - Version 2.8"
+BACKTITLE="Installation of Autodesk Fusion360 - Version 2.9"
 TITLE="If you have enabled multilib repository?"
 MENU="Choose one of the following options:"
 
@@ -369,5 +369,6 @@ export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 
 clear
-requirement-check-dialog
+requirement-check-dialog+wmctrl
+wmctrl -r ':ACTIVE:' -b toggle,fullscreen
 welcome_screen
