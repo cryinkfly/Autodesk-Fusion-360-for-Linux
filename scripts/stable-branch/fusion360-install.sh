@@ -344,8 +344,8 @@ function winetricks-custom {
    wget -N https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks &&
    chmod +x winetricks &&
    WINEPREFIX=$filename sh winetricks -q corefonts msxml4 msxml6 vcrun2017 fontsmooth=rgb win8 &&
-   mkdir -p fusion360-download &&
-   cd fusion360-download &&
+   mkdir -p fusion360download &&
+   cd fusion360download &&
    wget https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe -O Fusion360.exe &&
    WINEPREFIX=$filename wine Fusion360.exe -p deploy -g -f log.txt --quiet &&
    WINEPREFIX=$filename wine Fusion360.exe -p deploy -g -f log.txt --quiet &&
