@@ -236,9 +236,10 @@ function select_your_path_custom {
 
 function program_exit {
     dialog --backtitle "Installation of Autodesk Fusion360 - Version 2.8" \
-    --title "TAutodesk Fusion 360 is completed." \
+    --title "Autodesk Fusion 360 is completed." \
     --msgbox 'The installation of Autodesk Fusion 360 is completed and you can use it for your projects.' 14 200
     
+    clear
     exit
 }
 
