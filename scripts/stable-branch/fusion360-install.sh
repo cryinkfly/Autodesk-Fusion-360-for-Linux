@@ -195,7 +195,7 @@ esac
 function select_your_path {
 
 HEIGHT=15
-WIDTH=60
+WIDTH=200
 CHOICE_HEIGHT=2
 BACKTITLE="Installation of Autodesk Fusion360 - Version 2.8"
 TITLE="Choose setup type"
