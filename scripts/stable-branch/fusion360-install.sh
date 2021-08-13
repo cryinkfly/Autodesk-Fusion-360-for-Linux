@@ -202,7 +202,7 @@ case $CHOICE in
         11) 
         
             debian_based_1 &&
-            sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ bionic main' &&
+            sudo apt-add-repository -r 'deb https://dl.winehq.org/wine-builds/ubuntu/ bionic main' &&
             wget -q https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_18.04/Release.key -O Release.key -O- | sudo apt-key add - &&
             sudo apt-add-repository 'deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_18.04/ ./' &&
             debian_based_2 &&
