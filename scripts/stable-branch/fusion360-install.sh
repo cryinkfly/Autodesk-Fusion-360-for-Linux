@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com
 # License:      MIT
 # Copyright (c) 2020-2021
-# Time/Date:    21:00/09.08.2021
-# Version:      3.1
+# Time/Date:    10:00/13.08.2021
+# Version:      3.2
 ##############################################################################
 
 # DESCRIPTION
@@ -69,7 +69,7 @@ function welcome_screen {
 HEIGHT=15
 WIDTH=60
 CHOICE_HEIGHT=2
-BACKTITLE="Installation of Autodesk Fusion360 - Version 3.1"
+BACKTITLE="Installation of Autodesk Fusion360 - Version 3.2"
 TITLE="Do you wish to install Autodesk Fusion 360?"
 MENU="Choose one of the following options:"
 
@@ -99,7 +99,7 @@ function select_your_os {
 HEIGHT=15
 WIDTH=200
 CHOICE_HEIGHT=10
-BACKTITLE="Installation of Autodesk Fusion360 - Version 3.1"
+BACKTITLE="Installation of Autodesk Fusion360 - Version 3.2"
 TITLE="Select your Linux distribution"
 MENU="Choose one of the following options:"
 
@@ -203,6 +203,8 @@ case $CHOICE in
         
             debian_based_1 &&
             sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ bionic main' &&
+            wget -q https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_18.04/Release.key -O Release.key -O- | sudo apt-key add - &&
+            sudo apt-add-repository 'deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_18.04/ ./' &&
             debian_based_2 &&
             select_your_path
             ;;
@@ -246,7 +248,7 @@ HEIGHT=15
 WIDTH=200
 CHOICE_HEIGHT=2
 CHOICE_WIDTH=200
-BACKTITLE="Installation of Autodesk Fusion360 - Version 3.1"
+BACKTITLE="Installation of Autodesk Fusion360 - Version 3.2"
 TITLE="Choose setup type"
 MENU="Choose the kind of setup that best suits your needs."
 
@@ -275,15 +277,15 @@ esac
 
 
 function select_your_path_custom {
-    dialog --backtitle "Installation of Autodesk Fusion360 - Version 3.1" \
+    dialog --backtitle "Installation of Autodesk Fusion360 - Version 3.2" \
     --title "Description - Configure the installation location" \
     --msgbox 'Now you have to determine where you want to install Fusion 360 and then the .fusion360 folder will be created for you automatically. For examlble you can install it on a external usb-drive: /run/media/user/usb-drive/wine/.fusion360 or you install it into your home folder: /home/YOUR-USERNAME/.wineprefixes/fusion360).' 14 200
 
-    filename=$(dialog --stdout --title "Enter the installation path for Fusion 360:" --backtitle "Installation of Autodesk Fusion360 - Version 3.1" --fselect $HOME/ 14 100)
+    filename=$(dialog --stdout --title "Enter the installation path for Fusion 360:" --backtitle "Installation of Autodesk Fusion360 - Version 3.2" --fselect $HOME/ 14 100)
 }
 
 function program_exit {
-    dialog --backtitle "Installation of Autodesk Fusion360 - Version 3.1" \
+    dialog --backtitle "Installation of Autodesk Fusion360 - Version 3.2" \
     --title "Autodesk Fusion 360 is completed." \
     --msgbox 'The installation of Autodesk Fusion 360 is completed and you can use it for your projects.' 14 200
     
@@ -296,7 +298,7 @@ function archlinux_1 {
 HEIGHT=15
 WIDTH=60
 CHOICE_HEIGHT=2
-BACKTITLE="Installation of Autodesk Fusion360 - Version 3.1"
+BACKTITLE="Installation of Autodesk Fusion360 - Version 3.2"
 TITLE="If you have enabled multilib repository?"
 MENU="Choose one of the following options:"
 
