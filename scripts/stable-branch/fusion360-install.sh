@@ -212,7 +212,9 @@ case $CHOICE in
         12) 
             
             debian_based_1 &&
-            sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main' &&
+            sudo add-apt-repository -r 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main' &&
+            wget -q https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_20.04/Release.key -O Release.key -O- | sudo apt-key add - &&
+            sudo apt-add-repository 'deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_20.04/ ./' &&
             debian_based_2 &&
             select_your_path
             ;;
@@ -220,7 +222,9 @@ case $CHOICE in
         13) 
         
             debian_based_1 &&
-            sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ groovy main' &&
+            sudo add-apt-repository -r 'deb https://dl.winehq.org/wine-builds/ubuntu/ groovy main' &&
+            wget -q https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_20.10/Release.key -O Release.key -O- | sudo apt-key add - &&
+            sudo apt-add-repository 'deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_20.10/ ./' &&
             debian_based_2 &&
             select_your_path
             ;;
@@ -228,7 +232,9 @@ case $CHOICE in
         14)
         
             debian_based_1 &&
-            sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ hirsute main' &&
+            sudo add-apt-repository -r 'deb https://dl.winehq.org/wine-builds/ubuntu/ hirsute main' &&
+            wget -q https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_21.04/Release.key -O Release.key -O- | sudo apt-key add - &&
+            sudo apt-add-repository 'deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_21.04/ ./' &&
             debian_based_2 &&
             select_your_path
             ;;
