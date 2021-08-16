@@ -11,6 +11,16 @@
 # Version:      1.0
 ##############################################################################
 
+# DESCRIPTION
+
+# With the help of my script, you get a way to install and use OctoPrint on your Linux system (Debian-based). 
+# Certain packages and programs that are required will be set up on your system.
+
+############################################################################################################################################################
+# 1. Step: Open a Terminal and run this command: cd Downloads && chmod +x octoprint-install.shh && bash octoprint-install.sh
+# 2. Step: The installation will now start and set up everything for you automatically.
+############################################################################################################################################################
+
 function requirement-check {
 echo "Installation of Octoprint!"
 echo -n "Do you wish to install this on your Linux distribution (y/n)?"
