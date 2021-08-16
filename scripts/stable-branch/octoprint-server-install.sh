@@ -22,7 +22,7 @@
 ############################################################################################################################################################
 
 function requirement-check {
-echo "Installation of Octoprint!"
+echo "Installation of Octoprint (Server)!"
 echo -n "Do you wish to install this on your Linux distribution (y/n)?"
 read answer
 if [ "$answer" != "${answer#[Yy]}" ] ;then
