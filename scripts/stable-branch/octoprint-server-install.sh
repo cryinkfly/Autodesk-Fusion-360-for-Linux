@@ -50,10 +50,11 @@ if VERB="$( which apt-get )" 2> /dev/null; then
 
    wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/octoprint.service && 
    sudo mv octoprint.service /etc/systemd/system/octoprint.service &&
+   
+   clear &&
 
-   sudo service octoprint start
-   echo "Now you can use this command for manage OctoPrint on your system: sudo service octoprint {start|stop|restart}"
-   echo "The installation of OctoPrint is completed and you can use it for your projects."
+   echo "The installation of OctoPrint (Server) is completed and you can use it for your projects."
+   echo "Now you can use this command for manage OctoPrint (Server) on your system: sudo service octoprint {start|stop|restart}"
 else
    echo "I can't find your package manager!"
    exit;
