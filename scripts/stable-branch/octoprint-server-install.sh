@@ -58,3 +58,5 @@ else
    exit;
 fi
 }
+
+requirement-check
