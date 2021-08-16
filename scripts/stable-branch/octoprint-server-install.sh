@@ -1,23 +1,23 @@
 #!/bin/bash
 
 ##############################################################################
-# Name:         OctoPrint - Installationsskript (Linux)
-# Description:  With this file you can install OctoPrint on your Linux distribution (Debian-based).
+# Name:         OctoPrint (Server) - Installationsskript (Linux)
+# Description:  With this file you can install OctoPrint (Server) on your Linux distribution (Debian-based).
 # Author:       Steve Zabka
 # Author URI:   https://cryinkfly.com
 # License:      MIT
 # Copyright (c) 2020-2021
-# Time/Date:    22:00/16.08.2021
-# Version:      1.0
+# Time/Date:    22:15/16.08.2021
+# Version:      1.1
 ##############################################################################
 
 # DESCRIPTION
 
-# With the help of my script, you get a way to install and use OctoPrint on your Linux system (Debian-based). 
+# With the help of my script, you get a way to install and use OctoPrint (Server) on your Linux system (Debian-based). 
 # Certain packages and programs that are required will be set up on your system.
 
 ############################################################################################################################################################
-# 1. Step: Open a Terminal and run this command: cd Downloads && chmod +x octoprint-install.shh && bash octoprint-install.sh
+# 1. Step: Open a Terminal and run this command: cd Downloads && chmod +x octoprint-server-install.shh && bash octoprint-server-install.sh
 # 2. Step: The installation will now start and set up everything for you automatically.
 ############################################################################################################################################################
 
