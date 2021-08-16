@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com
 # License:      MIT
 # Copyright (c) 2020-2021
-# Time/Date:    22:15/16.08.2021
-# Version:      1.1
+# Time/Date:    22:30/16.08.2021
+# Version:      1.2
 ##############################################################################
 
 # DESCRIPTION
@@ -51,6 +51,8 @@ if VERB="$( which apt-get )" 2> /dev/null; then
    wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/octoprint.service && 
    sudo mv octoprint.service /etc/systemd/system/octoprint.service &&
    
+   sudo systemctl enable octoprint.service &&
+
    clear &&
 
    echo "The installation of OctoPrint (Server) is completed and you can use it for your projects."
