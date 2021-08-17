@@ -98,6 +98,8 @@ But you can configure a lot more and so I recommend reading this post here:
 
 > https://community.octoprint.org/t/setting-up-octoprint-on-a-raspberry-pi-running-raspbian-or-raspberry-pi-os/2337
 
+*Notice: My script only works on Debian-based Linux distributions!
+
 ---
 
 ## Important Notice
