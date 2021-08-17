@@ -76,6 +76,30 @@ Install OctoPrint for Autodesk® Fusion 360™ for Autodesk Fusion 360:
 
 ---
 
+## Would you like to installt the OctoPrint server on your old computer or Raspberry Pi?
+
+Then you have the option here to install it with this command:
+
+    cd Downloads && wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/scripts/stable-branch/octoprint-server-install.sh && chmod +x octoprint-server-install.sh && bash octoprint-server-install.sh && exit
+
+After the installation you can start, stop or restart the server with changing the option of this command:
+
+    sudo service octoprint {start|stop|restart}
+    
+For example, you want to start the server:
+
+    sudo service octoprint start
+
+Then you can access the server by heading to http://YOUR-IP-ADDRESS:5000 and you should be greeted with the OctoPrint UI.
+
+![octoprint_vm](https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/images/fusion-360-apps/octoprint/octoprint_vm.png)
+
+But you can configure a lot more and so I recommend reading this post here:
+
+> https://community.octoprint.org/t/setting-up-octoprint-on-a-raspberry-pi-running-raspbian-or-raspberry-pi-os/2337
+
+---
+
 ## Important Notice
 
 With the help of my manual, You get a way to use OctoPrint for Autodesk® Fusion 360™ under Autodesk Fusion 360 and nothing more!
