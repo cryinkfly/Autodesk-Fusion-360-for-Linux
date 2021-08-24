@@ -40,6 +40,6 @@
 - @cooked
 - @SuibianP
 - @nitro2k01
-- MrEdd123
+- @MrEdd123
 
 ... they help me with reports and code to get work Fusion 360 on Linux!!!
