@@ -48,7 +48,7 @@ elif VERB="$( which dnf )" 2> /dev/null; then
    sudo dnf install dialog wmctrl
 elif VERB="$( which pacman )" 2> /dev/null; then
    echo "Arch-based"
-   sudo pacman -Sy dialog wmctrl
+   sudo pacman -Sy --needed dialog wmctrl
 elif VERB="$( which zypper )" 2> /dev/null; then
    echo "openSUSE-based"
    su -c 'zypper up && zypper install dialog wmctrl'
@@ -335,7 +335,7 @@ esac
 }
 
 function archlinux_2 {
-   sudo pacman -Sy wine wine-mono wine_gecko winetricks p7zip curl cabextract samba ppp
+   sudo pacman -Sy --needed wine wine-mono wine_gecko winetricks p7zip curl cabextract samba ppp
 }
    
 function debian_based_1 {
