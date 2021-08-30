@@ -41,5 +41,9 @@
 - @SuibianP
 - @nitro2k01
 - @MrEdd123
+- @ManuGithubSteam
+- @bwrsandman
+- @roboticsmick
+- @blazej222
 
 ... they help me with reports and code to get work Fusion 360 on Linux!!!
