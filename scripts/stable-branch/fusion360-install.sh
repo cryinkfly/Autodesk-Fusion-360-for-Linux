@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com
 # License:      MIT
 # Copyright (c) 2020-2021
-# Time/Date:    20:30/16.08.2021
-# Version:      3.4
+# Time/Date:    13:15/30.08.2021
+# Version:      3.5
 ##############################################################################
 
 # DESCRIPTION
@@ -69,7 +69,7 @@ function welcome_screen {
 HEIGHT=15
 WIDTH=60
 CHOICE_HEIGHT=2
-BACKTITLE="Installation of Autodesk Fusion360 - Version 3.4"
+BACKTITLE="Installation of Autodesk Fusion360 - Version 3.5"
 TITLE="Do you wish to install Autodesk Fusion 360?"
 MENU="Choose one of the following options:"
 
@@ -99,7 +99,7 @@ function select_your_os {
 HEIGHT=15
 WIDTH=200
 CHOICE_HEIGHT=10
-BACKTITLE="Installation of Autodesk Fusion360 - Version 3.4"
+BACKTITLE="Installation of Autodesk Fusion360 - Version 3.5"
 TITLE="Select your Linux distribution"
 MENU="Choose one of the following options:"
 
@@ -254,7 +254,7 @@ HEIGHT=15
 WIDTH=200
 CHOICE_HEIGHT=2
 CHOICE_WIDTH=200
-BACKTITLE="Installation of Autodesk Fusion360 - Version 3.4"
+BACKTITLE="Installation of Autodesk Fusion360 - Version 3.5"
 TITLE="Choose setup type"
 MENU="Choose the kind of setup that best suits your needs."
 
@@ -283,15 +283,15 @@ esac
 
 
 function select_your_path_custom {
-    dialog --backtitle "Installation of Autodesk Fusion360 - Version 3.4" \
+    dialog --backtitle "Installation of Autodesk Fusion360 - Version 3.5" \
     --title "Description - Configure the installation location" \
     --msgbox 'Now you have to determine where you want to install Fusion 360 and then the .fusion360 folder will be created for you automatically. For examlble you can install it on a external usb-drive: /run/media/user/usb-drive/wine/.fusion360 or you install it into your home folder: /home/YOUR-USERNAME/.wineprefixes/fusion360).' 14 200
 
-    filename=$(dialog --stdout --title "Enter the installation path for Fusion 360:" --backtitle "Installation of Autodesk Fusion360 - Version 3.4" --fselect $HOME/ 14 100)
+    filename=$(dialog --stdout --title "Enter the installation path for Fusion 360:" --backtitle "Installation of Autodesk Fusion360 - Version 3.5" --fselect $HOME/ 14 100)
 }
 
 function program_exit {
-    dialog --backtitle "Installation of Autodesk Fusion360 - Version 3.4" \
+    dialog --backtitle "Installation of Autodesk Fusion360 - Version 3.5" \
     --title "Autodesk Fusion 360 is completed." \
     --msgbox 'The installation of Autodesk Fusion 360 is completed and you can use it for your projects.' 14 200
     
@@ -304,7 +304,7 @@ function archlinux_1 {
 HEIGHT=15
 WIDTH=60
 CHOICE_HEIGHT=2
-BACKTITLE="Installation of Autodesk Fusion360 - Version 3.4"
+BACKTITLE="Installation of Autodesk Fusion360 - Version 3.5"
 TITLE="If you have enabled multilib repository?"
 MENU="Choose one of the following options:"
 
@@ -389,9 +389,9 @@ function winetricks-standard {
    WINEPREFIX=/home/$USER/.wineprefixes/fusion360 sh winetricks -q cjkfonts &&
    mkdir -p fusion360download &&
    cd fusion360download &&
-   wget https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe -O Fusion360.exe &&
-   WINEPREFIX=/home/$USER/.wineprefixes/fusion360 wine Fusion360.exe -p deploy -g -f log.txt --quiet &&
-   WINEPREFIX=/home/$USER/.wineprefixes/fusion360 wine Fusion360.exe -p deploy -g -f log.txt --quiet &&
+   wget https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe -O Fusion360installer.exe &&
+   WINEPREFIX=/home/$USER/.wineprefixes/fusion360 wine Fusion360installer.exe -p deploy -g -f log.txt --quiet &&
+   WINEPREFIX=/home/$USER/.wineprefixes/fusion360 wine Fusion360installer.exe -p deploy -g -f log.txt --quiet &&
    mkdir -p "/home/$USER/.wineprefixes/fusion360/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform" &&
    cd "/home/$USER/.wineprefixes/fusion360/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform" &&
    mkdir -p Options &&
@@ -417,9 +417,9 @@ function winetricks-custom {
    WINEPREFIX=$filename sh winetricks -q cjkfonts &&
    mkdir -p fusion360download &&
    cd fusion360download &&
-   wget https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe -O Fusion360.exe &&
-   WINEPREFIX=$filename wine Fusion360.exe -p deploy -g -f log.txt --quiet &&
-   WINEPREFIX=$filename wine Fusion360.exe -p deploy -g -f log.txt --quiet &&
+   wget https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe -O Fusion360installer.exe &&
+   WINEPREFIX=$filename wine Fusion360installer.exe -p deploy -g -f log.txt --quiet &&
+   WINEPREFIX=$filename wine Fusion360installer.exe -p deploy -g -f log.txt --quiet &&
    mkdir -p "$filename/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform" &&
    cd "$filename/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform" &&
    mkdir -p Options &&
