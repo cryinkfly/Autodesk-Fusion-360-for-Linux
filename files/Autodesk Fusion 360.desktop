@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Autodesk Fusion 360
+Comment=This program launcher only works if you selected the standard installation when installing Autodesk Fusion 360!
+Exec=cd "$(find /$HOME -name Fusion360.exe -printf %h -quit 2>/dev/null)" && WINEPREFIX="/$HOME/$USER/.wineprefixes/fusion360" wine Fusion360.exe
+Type=Application
+Categories=Development;Graphics;Science
+StartupNotify=true
+Icon=E76B_Fusion360.0
