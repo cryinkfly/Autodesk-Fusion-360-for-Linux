@@ -388,8 +388,7 @@ function void-linux {
 }
 
 function gentoo-linux {
-    sudo emerge -av virtual/wine app-emulation/winetricks app-emulation/wine-mono app-emulation/wine-gecko app-arch/p7zip app-arch/cabextract 
-net-misc/curl net-fs/samba net-dialup/ppp
+    sudo emerge -av virtual/wine app-emulation/winetricks app-emulation/wine-mono app-emulation/wine-gecko app-arch/p7zip app-arch/cabextract net-misc/curl net-fs/samba net-dialup/ppp
 }
 
 function winetricks-standard {
