@@ -70,8 +70,7 @@ It's recommended that if you're new you start with the stable builds. Developmen
 - My script install some packages (dialog, p7zip, p7zip-full, p7zip-rar, curl, wget, winbind, cabextract, wine, wine-mono, wine_gecko, winetricks, ...)!
 - Supported Linux distributions:
 
-![supported_os](https://user-images.githubusercontent.com/79079633/128761122-8260b019-dca5-476f-9946-4d5b72e5a6f5.png)
-
+![supported_os](https://user-images.githubusercontent.com/79079633/131452835-5566a255-f0cb-4703-bded-ef0fb30d603b.png)
 
 ---
 
