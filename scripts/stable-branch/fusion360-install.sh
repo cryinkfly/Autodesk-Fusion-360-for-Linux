@@ -58,6 +58,9 @@ elif VERB="$( which xbps-install )" 2> /dev/null; then
 elif VERB="$( which eopkg )" 2> /dev/null; then
    echo "Solus-based"
    sudo eopkg install dialog wmctrl
+elif VERB="$( which emerge )" 2> /dev/null; then
+    echo "Gentoo-based"
+    sudo emerge -av dev-utils/dialog x11-misc/wmctrl
 else
    echo "I can't find your package manager!"
    exit;
@@ -118,7 +121,8 @@ OPTIONS=(1 "Arch Linux, Manjaro Linux, EndeavourOS, ..."
          13 "Ubuntu 20.10"
          14 "Ubuntu 21.04, Pop!_OS 21.04, ..."
          15 "Void Linux"
-              
+         16 "Gentoo Linux"
+
          )
 
 CHOICE=$(dialog --clear \
@@ -242,6 +246,11 @@ case $CHOICE in
         15)
         
             void-linux &&
+            select_your_path
+            ;;
+
+        16)
+            gentoo-linux &&
             select_your_path
             ;;
 
@@ -376,6 +385,10 @@ function solus-linux {
 
 function void-linux {
    sudo xbps-install -Sy wine wine-mono wine-gecko winetricks p7zip curl cabextract samba ppp
+}
+
+function gentoo-linux {
+    sudo emerge -av virtual/wine app-emulation/winetricks app-emulation/wine-mono app-emulation/wine-gecko app-arch/p7zip app-arch/cabextract net-misc/curl net-fs/samba net-dialup/ppp
 }
 
 function winetricks-standard {
