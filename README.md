@@ -48,7 +48,7 @@ You will get more information about this program, then you can visit the origina
 <img src="https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/images/simulation/%231_study_displacement.png" width="300px" height="200px">
 </div>
 <div>
-<img src="https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/images/drawing/drawing_bearing.png" width="300px" height="200px">
+<img src="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/images/drawing/drawing_oil_case.png" width="300px" height="200px">
 <img src="https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/images/electronics/%231.1_electronics_library.png" width="300px" height="200px">
 </div>
 
