@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com
 # License:      MIT
 # Copyright (c) 2020-2021
-# Time/Date:    09:00/31.08.2021
-# Version:      3.7
+# Time/Date:    12:30/02.09.2021
+# Version:      3.8
 ##############################################################################
 
 # DESCRIPTION
@@ -26,18 +26,20 @@
 # 2. Step: The installation will now start and set up everything for you automatically.
 ############################################################################################################################################################
 
-function requirement-check-dialog+wmctrl {
+function requirement-check {
 echo "Find your correct package manager and install the package dialog and wmctrl, what you need for the installation of Autodesk Fusion 360!"
 echo -n "Do you wish to install this package (y/n)?"
 read answer
 if [ "$answer" != "${answer#[Yy]}" ] ;then
-    install-dialog+wmctrl
+    install-requirement &&
+    wmctrl -r ':ACTIVE:' -b toggle,fullscreen &&
+    check-if-fusion360-exists
 else
     exit;
 fi
 }
 
-function install-dialog+wmctrl {
+function install-requirement {
 if VERB="$( which apt-get )" 2> /dev/null; then
    echo "Debian-based"
    sudo apt-get update &&
@@ -67,12 +69,21 @@ else
 fi
 }
 
-function welcome_screen {
+function check-if-fusion360-exists {
+FILE=/$HOME/.local/share/fusion360log/log.txt
+if [ -f "$FILE" ]; then
+    welcome-screen-2
+else 
+    welcome-screen-1
+fi
+}
+
+function welcome-screen-1 {
 
 HEIGHT=15
 WIDTH=60
 CHOICE_HEIGHT=2
-BACKTITLE="Installation of Autodesk Fusion360 - Version 3.7"
+BACKTITLE="Installation of Autodesk Fusion360 - Version 3.8"
 TITLE="Do you wish to install Autodesk Fusion 360?"
 MENU="Choose one of the following options:"
 
@@ -98,11 +109,63 @@ case $CHOICE in
 esac
 }
 
+function welcome-screen-2 {
+
+HEIGHT=15
+WIDTH=180
+CHOICE_HEIGHT=3
+BACKTITLE="Installation of Autodesk Fusion360 - Version 3.8"
+TITLE="This Setup has checked your system for a existing Autodesk Fusion 360 components and it was found that Autodesk Fusion 360 already exists on your system!"
+MENU="Choose one of the following options:"
+
+OPTIONS=(1 "New installation of some or all components"
+         2 "Update existing installation"
+         3 "Uninstall all Autodesk Fusion 360 components")
+
+CHOICE=$(dialog --clear \
+                --backtitle "$BACKTITLE" \
+                --title "$TITLE" \
+                --menu "$MENU" \
+                $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                "${OPTIONS[@]}" \
+                2>&1 >/dev/tty)
+
+clear
+case $CHOICE in
+        1)
+            select_your_os
+            ;;
+        2)
+            update_autodesk_fusion360_info &&
+            update_autodesk_fusion360_select &&
+            cd $filename/fusion360download &&
+            WINEPREFIX=$filename wine Fusion360installer.exe -p deploy -g -f log.txt --quiet &&
+            WINEPREFIX=$filename wine Fusion360installer.exe -p deploy -g -f log.txt --quiet &&
+            program_exit
+            ;;
+        3)
+            update_autodesk_fusion360_info &&
+            update_autodesk_fusion360_select &&
+            rmdir "$filename" &&
+            program_exit_uninstall
+            ;;
+esac
+}
+
+
+function update_autodesk_fusion360_info {
+    dialog --title "Make a note of the path to your Autodesk Fusion 360 installation so that you can use it in the next step!" --textbox "/$HOME/TEST.txt" 14 180
+}
+
+function update_autodesk_fusion360_select {
+    filename=$(dialog --stdout --title "Enter the installation path for Fusion 360:" --backtitle "Installation of Autodesk Fusion360 - Version 3.8" --fselect $HOME/ 14 100)
+}
+
 function select_your_os {
 HEIGHT=15
 WIDTH=200
 CHOICE_HEIGHT=10
-BACKTITLE="Installation of Autodesk Fusion360 - Version 3.7"
+BACKTITLE="Installation of Autodesk Fusion360 - Version 3.8"
 TITLE="Select your Linux distribution"
 MENU="Choose one of the following options:"
 
@@ -263,7 +326,7 @@ HEIGHT=15
 WIDTH=200
 CHOICE_HEIGHT=2
 CHOICE_WIDTH=200
-BACKTITLE="Installation of Autodesk Fusion360 - Version 3.7"
+BACKTITLE="Installation of Autodesk Fusion360 - Version 3.8"
 TITLE="Choose setup type"
 MENU="Choose the kind of setup that best suits your needs."
 
@@ -292,17 +355,26 @@ esac
 
 
 function select_your_path_custom {
-    dialog --backtitle "Installation of Autodesk Fusion360 - Version 3.7" \
+    dialog --backtitle "Installation of Autodesk Fusion360 - Version 3.8" \
     --title "Description - Configure the installation location" \
     --msgbox 'Now you have to determine where you want to install Fusion 360 and then the .fusion360 folder will be created for you automatically. For examlble you can install it on a external usb-drive: /run/media/user/usb-drive/wine/.fusion360 or you install it into your home folder: /home/YOUR-USERNAME/.wineprefixes/fusion360).' 14 200
 
-    filename=$(dialog --stdout --title "Enter the installation path for Fusion 360:" --backtitle "Installation of Autodesk Fusion360 - Version 3.7" --fselect $HOME/ 14 100)
+    filename=$(dialog --stdout --title "Enter the installation path for Fusion 360:" --backtitle "Installation of Autodesk Fusion360 - Version 3.8" --fselect $HOME/ 14 100)
 }
 
 function program_exit {
-    dialog --backtitle "Installation of Autodesk Fusion360 - Version 3.7" \
+    dialog --backtitle "Installation of Autodesk Fusion360 - Version 3.8" \
     --title "Autodesk Fusion 360 is completed." \
     --msgbox 'The installation of Autodesk Fusion 360 is completed and you can use it for your projects.' 14 200
+    
+    clear
+    exit
+}
+
+function program_exit_uninstall {
+    dialog --backtitle "Installation of Autodesk Fusion360 - Version 3.8" \
+    --title "Uninstalling Autodesk Fusion 360!" \
+    --msgbox 'Autodesk Fusion 360 uninstallation is complete!' 14 200
     
     clear
     exit
@@ -313,7 +385,7 @@ function archlinux_1 {
 HEIGHT=15
 WIDTH=60
 CHOICE_HEIGHT=2
-BACKTITLE="Installation of Autodesk Fusion360 - Version 3.7"
+BACKTITLE="Installation of Autodesk Fusion360 - Version 3.8"
 TITLE="If you have enabled multilib repository?"
 MENU="Choose one of the following options:"
 
@@ -419,6 +491,9 @@ function winetricks-standard {
    #Set up the program launcher for you!
    cd "/$HOME/.local/share/applications" &&
    wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/Autodesk%20Fusion%20360.desktop
+   mkdir -p "/$HOME/.local/share/fusion360log" &&
+   cd "/$HOME/.local/share/fusion360log" &&
+   echo "/home/$USER/.wineprefixes/fusion360" > log.txt &&
    program_exit
 }
 
@@ -447,6 +522,9 @@ function winetricks-custom {
    mkdir -p Options &&
    cd Options &&
    wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/NMachineSpecificOptions.xml &&
+   mkdir -p "/$HOME/.local/share/fusion360log" &&
+   cd "/$HOME/.local/share/fusion360log" &&
+   echo "$filename" > log.txt &&
    program_exit
 }
 
@@ -456,6 +534,5 @@ export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 
 clear
-requirement-check-dialog+wmctrl
-wmctrl -r ':ACTIVE:' -b toggle,fullscreen
-welcome_screen
+requirement-check
+
