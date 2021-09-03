@@ -579,9 +579,9 @@ function winetricks-custom {
    WINEPREFIX=$filename sh winetricks -q cjkfonts &&
    #Download and install DXVK if selected
    if [ $driver_used -eq 2 ]; then
-      WINEPREFIX=/home/$USER/.wineprefixes/fusion360 sh winetricks -q dxvk &&
+      WINEPREFIX=$filename sh winetricks -q dxvk &&
       wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.reg &&
-      WINEPREFIX=/home/$USER/.wineprefixes/fusion360 wine regedit.exe DXVK.reg
+      WINEPREFIX=$filename wine regedit.exe DXVK.reg
    fi
    mkdir -p fusion360download &&
    cd fusion360download &&
