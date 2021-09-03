@@ -1,0 +1,7 @@
+REGEDIT4
+
+[HKEY_CURRENT_USER\Software\Wine\DllOverrides]
+"*d3d10core"=""
+"*d3d11"="native"
+"*d3d9"="builtin"
+"*dxgi"="native"
