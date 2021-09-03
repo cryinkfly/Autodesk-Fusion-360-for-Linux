@@ -297,11 +297,24 @@ case $CHOICE in
             ;;
             
         14)
-        
-            debian_based_1 &&
+            # Note: This installs the public key to trusted.gpg.d - While this is "acceptable" behaviour it is not best practice.
+            # It is infinitely better than using apt-key add though.
+            # For more information and for instructions to utalise best practices, see:
+            # https://askubuntu.com/questions/1286545/what-commands-exactly-should-replace-the-deprecated-apt-key
+            
+            sudo apt update &&
+            sudo apt upgrade &&
+            sudo dpkg --add-architecture i386  &&
+            mkdir -p /tmp/360 && cd /tmp/360 &&
+            wget https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_21.04/Release.key &&
+            wget https://dl.winehq.org/wine-builds/winehq.key &&
+            gpg --no-default-keyring --keyring ./temp-keyring.gpg --import Release.key &&
+            gpg --no-default-keyring --keyring ./temp-keyring.gpg --export --output opensuse-wine.gpg && rm temp-keyring.gpg &&
+            gpg --no-default-keyring --keyring ./temp-keyring.gpg --import winehq.key &&
+            gpg --no-default-keyring --keyring ./temp-keyring.gpg --export --output winehq.gpg &&
+            sudo mv *.gpg /etc/apt/trusted.gpg.d/ && cd /tmp && sudo rm -rf 360 &&
+            echo "deb [signed-by=/etc/apt/trusted.gpg.d/opensuse-wine.gpg] https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_21.04/ ./" | sudo tee -a /etc/apt/sources.list.d/opensuse-wine.list
             sudo add-apt-repository -r 'deb https://dl.winehq.org/wine-builds/ubuntu/ hirsute main' &&
-            wget -q https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_21.04/Release.key -O Release.key -O- | sudo apt-key add - &&
-            sudo apt-add-repository 'deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_21.04/ ./' &&
             debian_based_2 &&
             select_your_path
             ;;
