@@ -46,5 +46,7 @@
 - @roboticsmick
 - @blazej222
 - @Azkali
+- @TN-1
+- @apopticon
 
 ... they help me with reports and code to get work Fusion 360 on Linux!!!
