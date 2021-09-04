@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com
 # License:      MIT
 # Copyright (c) 2020-2021
-# Time/Date:    12:30/02.09.2021
-# Version:      3.8
+# Time/Date:    20:40/03.09.2021
+# Version:      3.9
 ##############################################################################
 
 # DESCRIPTION
@@ -25,6 +25,8 @@
 # 1. Step: Open a Terminal and run this command: cd Downloads && chmod +x fusion360-install.sh && bash fusion360-install.sh
 # 2. Step: The installation will now start and set up everything for you automatically.
 ############################################################################################################################################################
+
+driver_used=0
 
 function requirement-check {
 echo "Find your correct package manager and install the package dialog and wmctrl, what you need for the installation of Autodesk Fusion 360!"
@@ -83,7 +85,7 @@ function welcome-screen-1 {
 HEIGHT=15
 WIDTH=60
 CHOICE_HEIGHT=2
-BACKTITLE="Installation of Autodesk Fusion360 - Version 3.8"
+BACKTITLE="Installation of Autodesk Fusion360 - Version 3.9"
 TITLE="Do you wish to install Autodesk Fusion 360?"
 MENU="Choose one of the following options:"
 
@@ -101,7 +103,7 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         1)
-            select_your_os
+            select_dxvk_or_opengl
             ;;
         2)
             exit
@@ -114,7 +116,7 @@ function welcome-screen-2 {
 HEIGHT=15
 WIDTH=180
 CHOICE_HEIGHT=3
-BACKTITLE="Installation of Autodesk Fusion360 - Version 3.8"
+BACKTITLE="Installation of Autodesk Fusion360 - Version 3.9"
 TITLE="This Setup has checked your system for a existing Autodesk Fusion 360 components and it was found that Autodesk Fusion 360 already exists on your system!"
 MENU="Choose one of the following options:"
 
@@ -133,7 +135,7 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         1)
-            select_your_os
+            select_dxvk_or_opengl
             ;;
         2)
             update_autodesk_fusion360_info &&
@@ -158,14 +160,52 @@ function update_autodesk_fusion360_info {
 }
 
 function update_autodesk_fusion360_select {
-    filename=$(dialog --stdout --title "Enter the installation path for Fusion 360:" --backtitle "Installation of Autodesk Fusion360 - Version 3.8" --fselect $HOME/ 14 100)
+    filename=$(dialog --stdout --title "Enter the installation path for Fusion 360:" --backtitle "Installation of Autodesk Fusion360 - Version 3.9" --fselect $HOME/ 14 100)
+}
+
+function select_dxvk_or_opengl {
+HEIGHT=15
+WIDTH=200
+CHOICE_HEIGHT=10
+BACKTITLE="Installation of Autodesk Fusion360 - Version 3.9"
+TITLE="Select preferred driver"
+MENU="Choose one of the following options:"
+
+OPTIONS=(1 "OpenGL (default, choose this if you're not sure)"
+         2 "DXVK (choose this if you want to use Intel GPU)"
+
+        )
+
+CHOICE=$(dialog --clear \
+                --backtitle "$BACKTITLE" \
+                --title "$TITLE" \
+                --menu "$MENU" \
+                $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                "${OPTIONS[@]}" \
+                2>&1 >/dev/tty)
+
+clear
+
+case $CHOICE in         
+        1)
+
+            driver_used=1 &&
+            select_your_os
+            ;;
+            
+        2)
+        
+            driver_used=2 &&
+            select_your_os
+            ;;  
+esac     
 }
 
 function select_your_os {
 HEIGHT=15
 WIDTH=200
 CHOICE_HEIGHT=10
-BACKTITLE="Installation of Autodesk Fusion360 - Version 3.8"
+BACKTITLE="Installation of Autodesk Fusion360 - Version 3.9"
 TITLE="Select your Linux distribution"
 MENU="Choose one of the following options:"
 
@@ -339,7 +379,7 @@ HEIGHT=15
 WIDTH=200
 CHOICE_HEIGHT=2
 CHOICE_WIDTH=200
-BACKTITLE="Installation of Autodesk Fusion360 - Version 3.8"
+BACKTITLE="Installation of Autodesk Fusion360 - Version 3.9"
 TITLE="Choose setup type"
 MENU="Choose the kind of setup that best suits your needs."
 
@@ -368,15 +408,15 @@ esac
 
 
 function select_your_path_custom {
-    dialog --backtitle "Installation of Autodesk Fusion360 - Version 3.8" \
+    dialog --backtitle "Installation of Autodesk Fusion360 - Version 3.9" \
     --title "Description - Configure the installation location" \
     --msgbox 'Now you have to determine where you want to install Fusion 360 and then the .fusion360 folder will be created for you automatically. For examlble you can install it on a external usb-drive: /run/media/user/usb-drive/wine/.fusion360 or you install it into your home folder: /home/YOUR-USERNAME/.wineprefixes/fusion360).' 14 200
 
-    filename=$(dialog --stdout --title "Enter the installation path for Fusion 360:" --backtitle "Installation of Autodesk Fusion360 - Version 3.8" --fselect $HOME/ 14 100)
+    filename=$(dialog --stdout --title "Enter the installation path for Fusion 360:" --backtitle "Installation of Autodesk Fusion360 - Version 3.9" --fselect $HOME/ 14 100)
 }
 
 function program_exit {
-    dialog --backtitle "Installation of Autodesk Fusion360 - Version 3.8" \
+    dialog --backtitle "Installation of Autodesk Fusion360 - Version 3.9" \
     --title "Autodesk Fusion 360 is completed." \
     --msgbox 'The installation of Autodesk Fusion 360 is completed and you can use it for your projects.' 14 200
     
@@ -385,7 +425,7 @@ function program_exit {
 }
 
 function program_exit_uninstall {
-    dialog --backtitle "Installation of Autodesk Fusion360 - Version 3.8" \
+    dialog --backtitle "Installation of Autodesk Fusion360 - Version 3.9" \
     --title "Uninstalling Autodesk Fusion 360!" \
     --msgbox 'Autodesk Fusion 360 uninstallation is complete!' 14 200
     
@@ -398,7 +438,7 @@ function archlinux_1 {
 HEIGHT=15
 WIDTH=60
 CHOICE_HEIGHT=2
-BACKTITLE="Installation of Autodesk Fusion360 - Version 3.8"
+BACKTITLE="Installation of Autodesk Fusion360 - Version 3.9"
 TITLE="If you have enabled multilib repository?"
 MENU="Choose one of the following options:"
 
@@ -485,6 +525,12 @@ function winetricks-standard {
    WINEPREFIX=/home/$USER/.wineprefixes/fusion360 sh winetricks -q corefonts cjkfonts msxml4 msxml6 vcrun2017 fontsmooth=rgb win8 &&
    # We must install cjkfonts again then sometimes it doesn't work the first time!
    WINEPREFIX=/home/$USER/.wineprefixes/fusion360 sh winetricks -q cjkfonts &&
+   # Download and install DXVK if selected
+   if [ $driver_used -eq 2 ]; then
+      WINEPREFIX=/home/$USER/.wineprefixes/fusion360 sh winetricks -q dxvk &&
+      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.reg &&
+      WINEPREFIX=/home/$USER/.wineprefixes/fusion360 wine regedit.exe DXVK.reg
+   fi
    mkdir -p fusion360download &&
    cd fusion360download &&
    wget https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe -O Fusion360installer.exe &&
@@ -494,13 +540,25 @@ function winetricks-standard {
    cd "/home/$USER/.wineprefixes/fusion360/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform" &&
    mkdir -p Options &&
    cd Options &&
-   wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/NMachineSpecificOptions.xml &&
+   # Set DX9 as default renderer if selected DXVK
+   if [ $driver_used -eq 2 ]; then
+      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.xml &&
+      mv DXVK.xml NMachineSpecificOptions.xml
+   else
+      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/NMachineSpecificOptions.xml
+   fi
    # Because the location varies depending on the Linux distro!
    mkdir -p "/home/$USER/.wineprefixes/fusion360/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform" &&
    cd "/home/$USER/.wineprefixes/fusion360/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform" &&
    mkdir -p Options &&
    cd Options &&
-   wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/NMachineSpecificOptions.xml &&
+   # Set DX9 as default renderer if selected DXVK
+   if [ $driver_used -eq 2 ]; then
+      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.xml &&
+      mv DXVK.xml NMachineSpecificOptions.xml
+   else
+      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/NMachineSpecificOptions.xml
+   fi
    #Set up the program launcher for you!
    cd "/$HOME/.local/share/applications" &&
    wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/Autodesk%20Fusion%20360.desktop
@@ -519,6 +577,12 @@ function winetricks-custom {
    WINEPREFIX=$filename sh winetricks -q corefonts cjkfonts msxml4 msxml6 vcrun2017 fontsmooth=rgb win8 &&
    # We must install cjkfonts again then sometimes it doesn't work the first time!
    WINEPREFIX=$filename sh winetricks -q cjkfonts &&
+   #Download and install DXVK if selected
+   if [ $driver_used -eq 2 ]; then
+      WINEPREFIX=$filename sh winetricks -q dxvk &&
+      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.reg &&
+      WINEPREFIX=$filename wine regedit.exe DXVK.reg
+   fi
    mkdir -p fusion360download &&
    cd fusion360download &&
    wget https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe -O Fusion360installer.exe &&
@@ -528,13 +592,25 @@ function winetricks-custom {
    cd "$filename/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform" &&
    mkdir -p Options &&
    cd Options &&
-   wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/NMachineSpecificOptions.xml &&
+   # Set DX9 as default renderer if selected DXVK
+   if [ $driver_used -eq 2 ]; then
+      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.xml &&
+      mv DXVK.xml NMachineSpecificOptions.xml
+   else
+      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/NMachineSpecificOptions.xml
+   fi
    # Because the location varies depending on the Linux distro!
    mkdir -p "$filename/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform" &&
    cd "$filename/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform" &&
    mkdir -p Options &&
    cd Options &&
-   wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/NMachineSpecificOptions.xml &&
+   # Set DX9 as default renderer if selected DXVK
+   if [ $driver_used -eq 2 ]; then
+      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.xml &&
+      mv DXVK.xml NMachineSpecificOptions.xml
+   else
+      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/NMachineSpecificOptions.xml
+   fi
    mkdir -p "/$HOME/.local/share/fusion360log" &&
    cd "/$HOME/.local/share/fusion360log" &&
    echo "$filename" > log.txt &&
@@ -548,4 +624,3 @@ export LANGUAGE=en_US.UTF-8
 
 clear
 requirement-check
-
