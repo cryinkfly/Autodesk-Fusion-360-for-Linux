@@ -670,7 +670,7 @@ function change-fusion360-2 {
 
 # A log file will now be created here so that it can be checked in the future whether an installation of Autodesk Fusion 360 already exists on your system.
 
-function logfile-installation {
+function logfile-installation-standard {
    mkdir -p "/$HOME/.local/share/fusion360/logfiles/path-log.txt" &&
    cd "/$HOME/.local/share/fusion360/logfiles/path-log.txt" &&
    echo "/home/$USER/.wineprefixes/fusion360" >> path-log.txt
