@@ -130,7 +130,7 @@ case $CHOICE in
         1)
             
             driver_used=0 &&
-            select_dxvk_or_opengl
+            select-dxvk-or-opengl
             ;;
         2)
             exit
