@@ -5,8 +5,8 @@
 # Author URI:   https://cryinkfly.com                                        #
 # License:      MIT                                                          #
 # Copyright (c) 2020-2021                                                    #
-# Time/Date:    03:15/11.09.2021                                             #
-# Version:      4.2                                                          #
+# Time/Date:    14:00/11.09.2021                                             #
+# Version:      4.3                                                          #
 ##############################################################################
 
 ##############################################################################
@@ -31,12 +31,13 @@
 # ALL FUNCTIONS ARE ARRANGED HERE:
 ##############################################################################
 
-# Here you can select the language for the installation! (Is still in process!)
+# Here all languages are called up via an extra language file for the installation!
 
-function select-language {
-    export LC_ALL=en_US.UTF-8
-    export LANG=en_US.UTF-8
-    export LANGUAGE=en_US.UTF-8
+function languages {
+    wget https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/raw/main/scripts/stable-branch/languages.sh &&
+    chmod +x languages.sh &&
+    clear &&
+    . languages.sh
 }
 
 ##############################################################################
@@ -44,10 +45,10 @@ function select-language {
 # The minimum requirements for installing Autodesk Fusion 360 will be installed here!
 
 function check-requirement {
-echo "Find your correct package manager and install the package dialog and wmctrl, what you need for the installation of Autodesk Fusion 360!"
-echo -n "Do you wish to install this package (y/n)?"
+echo "$text_1"
+echo -n "$text_1_1"
 read answer
-if [ "$answer" != "${answer#[Yy]}" ] ;then
+if [ "$answer" != "${answer#[YyJj]}" ] ;then
     install-requirement &&
     wmctrl -r ':ACTIVE:' -b toggle,fullscreen &&
     check-if-fusion360-exists
@@ -108,12 +109,12 @@ function welcome-screen-1 {
 HEIGHT=15
 WIDTH=60
 CHOICE_HEIGHT=2
-BACKTITLE="Installation of Autodesk Fusion360 - Version 4.2"
-TITLE="Do you wish to install Autodesk Fusion 360?"
-MENU="Choose one of the following options:"
+BACKTITLE="$text_2"
+TITLE="$text_2_1"
+MENU="$text_2_2"
 
-OPTIONS=(1 "Yes"
-         2 "No")
+OPTIONS=(1 "$text_2_3"
+         2 "$text_2_4")
 
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
@@ -145,13 +146,13 @@ function welcome-screen-2 {
 HEIGHT=15
 WIDTH=180
 CHOICE_HEIGHT=3
-BACKTITLE="Installation of Autodesk Fusion360 - Version 4.2"
-TITLE="This Setup has checked your system for a existing Autodesk Fusion 360 components and it was found that Autodesk Fusion 360 already exists on your system!"
-MENU="Choose one of the following options:"
+BACKTITLE="$text_3"
+TITLE="$text_3_1"
+MENU="$text_3_2"
 
-OPTIONS=(1 "New installation of some or all components"
-         2 "Update existing installation"
-         3 "Uninstall all Autodesk Fusion 360 components")
+OPTIONS=(1 "$text_3_3"
+         2 "$text_3_4"
+         3 "$text_3_5")
 
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
@@ -193,12 +194,12 @@ function select-dxvk-or-opengl {
 HEIGHT=15
 WIDTH=200
 CHOICE_HEIGHT=10
-BACKTITLE="Installation of Autodesk Fusion360 - Version 4.2"
-TITLE="Select preferred driver"
-MENU="Choose one of the following options:"
+BACKTITLE="$text_4"
+TITLE="$text_4_1"
+MENU="$text_4_2"
 
-OPTIONS=(1 "OpenGL (default, choose this if you're not sure)"
-         2 "DXVK (choose this if you want to use Intel GPU)")
+OPTIONS=(1 "$text_4_3"
+         2 "$text_4_4")
 
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
@@ -291,9 +292,9 @@ function select-your-os {
 HEIGHT=15
 WIDTH=200
 CHOICE_HEIGHT=10
-BACKTITLE="Installation of Autodesk Fusion360 - Version 4.2"
-TITLE="Select your Linux distribution"
-MENU="Choose one of the following options:"
+BACKTITLE="$text_5"
+TITLE="$text_5_1"
+MENU="$text_5_2"
 
 OPTIONS=(1 "Arch Linux, Manjaro Linux, EndeavourOS, ..."
          2 "Debian 10, MX Linux 19.4, Raspberry Pi Desktop, ..."
@@ -459,12 +460,12 @@ function archlinux-1 {
 HEIGHT=15
 WIDTH=60
 CHOICE_HEIGHT=2
-BACKTITLE="Installation of Autodesk Fusion360 - Version 4.2"
-TITLE="If you have enabled multilib repository?"
-MENU="Choose one of the following options:"
+BACKTITLE="$text_6"
+TITLE="$text_6_1"
+MENU="$text_6_2"
 
-OPTIONS=(1 "Yes"
-         2 "No")
+OPTIONS=(1 "$text_6_3"
+         2 "$text_6_4")
 
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
@@ -549,12 +550,12 @@ HEIGHT=15
 WIDTH=200
 CHOICE_HEIGHT=2
 CHOICE_WIDTH=200
-BACKTITLE="Installation of Autodesk Fusion360 - Version 4.2"
-TITLE="Choose setup type"
-MENU="Choose the kind of setup that best suits your needs."
+BACKTITLE="$text_7"
+TITLE="$text_7_1"
+MENU="$text_7_2"
 
-OPTIONS=(1 "Standard - Install Autodesk Fusion 360 into your home folder. (/home/YOUR-USERNAME/.wineprefixes/fusion360)"
-         2 "Custom - Install Autodesk Fusion 360 to another place.")
+OPTIONS=(1 "$text_7_3"
+         2 "$text_7_4")
 
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
@@ -578,11 +579,11 @@ esac
 
 
 function select-your-path-custom {
-    dialog --backtitle "Installation of Autodesk Fusion360 - Version 4.2" \
-    --title "Description - Configure the installation location" \
-    --msgbox 'Now you have to determine where you want to install Fusion 360 and then the .fusion360 folder will be created for you automatically. For examlble you can install it on a external usb-drive: /run/media/user/usb-drive/wine/.fusion360 or you install it into your home folder: /home/YOUR-USERNAME/.wineprefixes/fusion360).' 14 200
+    dialog --backtitle "$text_8" \
+    --title "$text_8_1" \
+    --msgbox "$text_8_2" 14 200
 
-    filename=$(dialog --stdout --title "Enter the installation path for Fusion 360:" --backtitle "Installation of Autodesk Fusion360 - Version 4.2" --fselect $HOME/ 14 100)
+    filename=$(dialog --stdout --title "$text_8_3" --backtitle "$text_8_4" --fselect $HOME/ 14 100)
 }
 
 ##############################################################################
@@ -657,11 +658,11 @@ function winetricks-custom {
 # Update/Repair existing installation of Autodesk Fusion 360 on your system!
 
 function change-fusion360-1 {
-    dialog --title "Make a note of the path to your Autodesk Fusion 360 installation so that you can use it in the next step!" --textbox "/$HOME/.local/share/fusion360log/log.txt" 14 180
+    dialog --title "$text_9" --backtitle "$text_9_1" --textbox "$HOME/.local/share/fusion360log/log.txt" 14 180
 }
 
 function change-fusion360-2 {
-    filename=$(dialog --stdout --title "Enter the installation path for Fusion 360:" --backtitle "Installation of Autodesk Fusion360 - Version 4.2" --fselect $HOME/ 14 100)
+    filename=$(dialog --stdout --title "$text_9_2" --backtitle "$text_9_3" --fselect $HOME/ 14 100)
 }
 
 ##############################################################################
@@ -692,9 +693,9 @@ function logfile-installation-custom {
 # The uninstallation is complete and will be terminated.
 
 function program-exit-uninstall {
-    dialog --backtitle "Installation of Autodesk Fusion360 - Version 4.2" \
-    --title "Uninstalling Autodesk Fusion 360!" \
-    --msgbox 'Autodesk Fusion 360 uninstallation is complete!' 14 200
+    dialog --backtitle "$text_10" \
+    --title "$text_10_1" \
+    --msgbox "$text_10_2" 14 200
     
     clear
     exit
@@ -705,9 +706,9 @@ function program-exit-uninstall {
 # The installation is complete and will be terminated.
 
 function program-exit {
-    dialog --backtitle "Installation of Autodesk Fusion360 - Version 4.2" \
-    --title "Autodesk Fusion 360 is completed." \
-    --msgbox 'The installation of Autodesk Fusion 360 is completed and you can use it for your projects.' 14 200
+    dialog --backtitle "$text_11" \
+    --title "$text_11_1" \
+    --msgbox "$text_11_2" 14 200
     
     clear
     exit
@@ -719,7 +720,7 @@ function program-exit {
 
 logfile-installation &&
 clear &&
-select-language &&
+languages &&
 check-requirement
 
 ############################################################################################################################################################
