@@ -5,8 +5,8 @@
 # Author URI:   https://cryinkfly.com                                        #
 # License:      MIT                                                          #
 # Copyright (c) 2020-2021                                                    #
-# Time/Date:    08:15/08.09.2021                                             #
-# Version:      4.1                                                          #
+# Time/Date:    03:15/11.09.2021                                             #
+# Version:      4.2                                                          #
 ##############################################################################
 
 ##############################################################################
@@ -108,7 +108,7 @@ function welcome-screen-1 {
 HEIGHT=15
 WIDTH=60
 CHOICE_HEIGHT=2
-BACKTITLE="Installation of Autodesk Fusion360 - Version 4.1"
+BACKTITLE="Installation of Autodesk Fusion360 - Version 4.2"
 TITLE="Do you wish to install Autodesk Fusion 360?"
 MENU="Choose one of the following options:"
 
@@ -145,7 +145,7 @@ function welcome-screen-2 {
 HEIGHT=15
 WIDTH=180
 CHOICE_HEIGHT=3
-BACKTITLE="Installation of Autodesk Fusion360 - Version 4.1"
+BACKTITLE="Installation of Autodesk Fusion360 - Version 4.2"
 TITLE="This Setup has checked your system for a existing Autodesk Fusion 360 components and it was found that Autodesk Fusion 360 already exists on your system!"
 MENU="Choose one of the following options:"
 
@@ -193,7 +193,7 @@ function select-dxvk-or-opengl {
 HEIGHT=15
 WIDTH=200
 CHOICE_HEIGHT=10
-BACKTITLE="Installation of Autodesk Fusion360 - Version 4.1"
+BACKTITLE="Installation of Autodesk Fusion360 - Version 4.2"
 TITLE="Select preferred driver"
 MENU="Choose one of the following options:"
 
@@ -291,7 +291,7 @@ function select-your-os {
 HEIGHT=15
 WIDTH=200
 CHOICE_HEIGHT=10
-BACKTITLE="Installation of Autodesk Fusion360 - Version 4.1"
+BACKTITLE="Installation of Autodesk Fusion360 - Version 4.2"
 TITLE="Select your Linux distribution"
 MENU="Choose one of the following options:"
 
@@ -459,7 +459,7 @@ function archlinux-1 {
 HEIGHT=15
 WIDTH=60
 CHOICE_HEIGHT=2
-BACKTITLE="Installation of Autodesk Fusion360 - Version 4.1"
+BACKTITLE="Installation of Autodesk Fusion360 - Version 4.2"
 TITLE="If you have enabled multilib repository?"
 MENU="Choose one of the following options:"
 
@@ -509,13 +509,13 @@ function debian-based-2 {
     select-your-path
 }
 
-function fedora-based_1 {
+function fedora-based-1 {
     sudo dnf update &&
     sudo dnf upgrade &&
     sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 }
 
-function fedora_based_2 {
+function fedora-based-2 {
     sudo dnf install p7zip p7zip-plugins curl wget wine cabextract &&
     select-your-path
 }
@@ -549,7 +549,7 @@ HEIGHT=15
 WIDTH=200
 CHOICE_HEIGHT=2
 CHOICE_WIDTH=200
-BACKTITLE="Installation of Autodesk Fusion360 - Version 4.1"
+BACKTITLE="Installation of Autodesk Fusion360 - Version 4.2"
 TITLE="Choose setup type"
 MENU="Choose the kind of setup that best suits your needs."
 
@@ -578,11 +578,11 @@ esac
 
 
 function select-your-path-custom {
-    dialog --backtitle "Installation of Autodesk Fusion360 - Version 4.1" \
+    dialog --backtitle "Installation of Autodesk Fusion360 - Version 4.2" \
     --title "Description - Configure the installation location" \
     --msgbox 'Now you have to determine where you want to install Fusion 360 and then the .fusion360 folder will be created for you automatically. For examlble you can install it on a external usb-drive: /run/media/user/usb-drive/wine/.fusion360 or you install it into your home folder: /home/YOUR-USERNAME/.wineprefixes/fusion360).' 14 200
 
-    filename=$(dialog --stdout --title "Enter the installation path for Fusion 360:" --backtitle "Installation of Autodesk Fusion360 - Version 4.1" --fselect $HOME/ 14 100)
+    filename=$(dialog --stdout --title "Enter the installation path for Fusion 360:" --backtitle "Installation of Autodesk Fusion360 - Version 4.2" --fselect $HOME/ 14 100)
 }
 
 ##############################################################################
@@ -661,7 +661,7 @@ function change-fusion360-1 {
 }
 
 function change-fusion360-2 {
-    filename=$(dialog --stdout --title "Enter the installation path for Fusion 360:" --backtitle "Installation of Autodesk Fusion360 - Version 4.0" --fselect $HOME/ 14 100)
+    filename=$(dialog --stdout --title "Enter the installation path for Fusion 360:" --backtitle "Installation of Autodesk Fusion360 - Version 4.2" --fselect $HOME/ 14 100)
 }
 
 ##############################################################################
@@ -692,7 +692,7 @@ function logfile-installation-custom {
 # The uninstallation is complete and will be terminated.
 
 function program-exit-uninstall {
-    dialog --backtitle "Installation of Autodesk Fusion360 - Version 4.0" \
+    dialog --backtitle "Installation of Autodesk Fusion360 - Version 4.2" \
     --title "Uninstalling Autodesk Fusion 360!" \
     --msgbox 'Autodesk Fusion 360 uninstallation is complete!' 14 200
     
@@ -705,7 +705,7 @@ function program-exit-uninstall {
 # The installation is complete and will be terminated.
 
 function program-exit {
-    dialog --backtitle "Installation of Autodesk Fusion360 - Version 4.0" \
+    dialog --backtitle "Installation of Autodesk Fusion360 - Version 4.2" \
     --title "Autodesk Fusion 360 is completed." \
     --msgbox 'The installation of Autodesk Fusion 360 is completed and you can use it for your projects.' 14 200
     
