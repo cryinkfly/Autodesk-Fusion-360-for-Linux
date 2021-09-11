@@ -5,7 +5,7 @@
 # Author URI:   https://cryinkfly.com                                                  #
 # License:      MIT                                                                    #
 # Copyright (c) 2020-2021                                                              #
-# Time/Date:    13:45/11.09.2021                                                       #
+# Time/Date:    14:00/11.09.2021                                                       #
 # Version:      1.0                                                                    #
 ########################################################################################
 
@@ -50,7 +50,7 @@
     text_1_1="Do you wish to install these packages (y/n)?"
 
     #welcome-screen-1
-    text_2="Installation of Autodesk Fusion360 - Version 4.2"
+    text_2="Installation of Autodesk Fusion360 - Version 4.3"
     text_2_1="Do you wish to install Autodesk Fusion 360?"
     text_2_2="Choose one of the following options:"
     text_2_3="Yes"
@@ -129,7 +129,7 @@
     text_1_1="Möchten Sie diese Pakete installieren (j/n)?"
 
     #welcome-screen-1
-    text_2="Installation von Autodesk Fusion360 - Version 4.2"
+    text_2="Installation von Autodesk Fusion360 - Version 4.3"
     text_2_1="Möchten Sie Autodesk Fusion 360 installieren?"
     text_2_2="Wählen Sie eine der folgenden Optionen:"
     text_2_3="Ja"
