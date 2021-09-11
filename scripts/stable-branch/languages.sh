@@ -25,8 +25,10 @@
         read answer
 
         if [ "$answer" != "${answer#[en]}" ] ;then
+          clear &&
           language-en_US
         elif [ "$answer" != "${answer#[de]}" ] ;then
+          clear &&
           language-de_DE
         elif [ "$answer" != "${answer#[q]}" ] ;then
           exit;
@@ -197,7 +199,6 @@
 # THE INSTALLATION PROGRAM IS STARTED HERE:
 ##############################################################################
 
-clear &&
 select-language
 
 ############################################################################################################################################################
