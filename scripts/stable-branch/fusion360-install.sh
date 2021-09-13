@@ -80,7 +80,7 @@ elif VERB="$( which eopkg )" 2> /dev/null; then
    sudo eopkg install dialog wmctrl
 elif VERB="$( which emerge )" 2> /dev/null; then
     echo "Gentoo-based"
-    sudo emerge -av dev-utils/dialog x11-misc/wmctrl
+    sudo emerge -av dev-util/dialog x11-misc/wmctrl
 else
    echo "I can't find your package manager!"
    exit;
