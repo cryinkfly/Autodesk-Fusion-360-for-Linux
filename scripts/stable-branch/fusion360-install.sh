@@ -1,3 +1,5 @@
+#!/bin/bash
+
 ##############################################################################
 # Name:         Autodesk Fusion 360 - Installationsskript (Linux)            #
 # Description:  With this file you can install Autodesk Fusion 360 on Linux. #
