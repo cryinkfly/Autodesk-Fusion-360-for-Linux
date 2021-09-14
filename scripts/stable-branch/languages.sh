@@ -1,3 +1,5 @@
+#!/bin/bash
+
 ########################################################################################
 # Name:         Autodesk Fusion 360 - Language file of the Installationsskript (Linux) #
 # Description:  The different languages are loaded with this file!                     #
