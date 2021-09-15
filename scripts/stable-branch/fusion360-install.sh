@@ -33,6 +33,7 @@ read answer
 if [ "$answer" != "${answer#[Yy]}" ] ;then
     install-requirement &&
     wmctrl -r ':ACTIVE:' -b toggle,fullscreen &&
+    echo " "
     check-if-fusion360-exists
 else
     exit;
