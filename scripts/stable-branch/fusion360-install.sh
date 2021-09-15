@@ -36,7 +36,7 @@
 # Here all languages are called up via an extra language file for the installation!
 
 function languages {
-    wget https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/raw/main/scripts/stable-branch/languages.sh &&
+    wget -N https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/raw/main/scripts/stable-branch/languages.sh &&
     chmod +x languages.sh &&
     clear &&
     . languages.sh
