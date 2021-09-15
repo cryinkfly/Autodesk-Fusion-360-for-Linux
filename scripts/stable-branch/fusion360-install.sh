@@ -53,6 +53,7 @@ read answer
 if [ "$answer" != "${answer#[YyJj]}" ] ;then
     install-requirement &&
     wmctrl -r ':ACTIVE:' -b toggle,fullscreen &&
+    echo " "
     check-if-fusion360-exists
 else
     exit;
@@ -433,7 +434,7 @@ case $CHOICE in
             gpg --no-default-keyring --keyring ./temp-keyring.gpg --import winehq.key &&
             gpg --no-default-keyring --keyring ./temp-keyring.gpg --export --output winehq.gpg && rm temp-keyring.gpg &&
             sudo mv *.gpg /etc/apt/trusted.gpg.d/ && cd /tmp && sudo rm -rf 360 &&
-            echo "deb [signed-by=/etc/apt/trusted.gpg.d/opensuse-wine.gpg] https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_21.04/ ./" | sudo tee -a /etc/apt/sources.list.d/opensuse-wine.list
+            echo "deb [signed-by=/etc/apt/trusted.gpg.d/opensuse-wine.gpg] https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_21.04/ ./" | sudo tee -a /etc/apt/sources.list.d/opensuse-wine.list &&
             sudo add-apt-repository -r 'deb https://dl.winehq.org/wine-builds/ubuntu/ hirsute main' &&
             debian-based-2
             ;;
