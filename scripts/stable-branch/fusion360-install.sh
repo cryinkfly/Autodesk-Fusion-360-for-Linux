@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                        #
 # License:      MIT                                                          #
 # Copyright (c) 2020-2021                                                    #
-# Time/Date:    14:00/11.09.2021                                             #
-# Version:      4.3                                                          #
+# Time/Date:    16:30/12.09.2021                                             #
+# Version:      4.4                                                          #
 ##############################################################################
 
 ##############################################################################
@@ -53,7 +53,7 @@ read answer
 if [ "$answer" != "${answer#[YyJj]}" ] ;then
     install-requirement &&
     wmctrl -r ':ACTIVE:' -b toggle,fullscreen &&
-    echo " "
+    echo "No Error!"
     check-if-fusion360-exists
 else
     exit;
