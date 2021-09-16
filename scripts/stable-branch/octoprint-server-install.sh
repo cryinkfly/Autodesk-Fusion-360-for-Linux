@@ -8,7 +8,7 @@
 # License:      MIT
 # Copyright (c) 2020-2021
 # Time/Date:    19:00/16.09.2021
-# Version:      1.4
+# Version:      1.5
 ##############################################################################
 
 # DESCRIPTION
@@ -42,9 +42,11 @@ function install-requirement-check {
    source venv/bin/activate &&
    pip install pip --upgrade &&
    pip install octoprint &&
-   username="$(echo "$USER")" &&
-   sudo usermod -a -G tty "$username" &&
-   sudo usermod -a -G dialout "$username" &&
+   
+   sudo usermod -a -G tty $USER &&
+   sudo usermod -a -G dialout $USER &&
+   
+   ~/OctoPrint/venv/bin/octoprint serve &&
 
    wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/octoprint.service && 
    sudo mv octoprint.service /etc/systemd/system/octoprint.service &&
