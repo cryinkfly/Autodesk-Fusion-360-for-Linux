@@ -36,6 +36,7 @@ fi
 function install-requirement-check {
    sudo apt-get update &&
    sudo apt-get install python3-pip python3-dev python3-setuptools python3-venv git libyaml-dev build-essential &&
+   cd $HOME
    mkdir OctoPrint && 
    cd OctoPrint &&
    python3 -m venv venv &&
