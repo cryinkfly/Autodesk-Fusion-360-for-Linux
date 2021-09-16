@@ -56,8 +56,6 @@ function install-requirement-check {
    echo "The installation of OctoPrint (Server) is completed and you can use it for your projects."
    echo "Now you can use this command for manage OctoPrint (Server) on your system: sudo service octoprint {start|stop|restart}"
 
-   exit;
-
 }
 
 requirement-check
