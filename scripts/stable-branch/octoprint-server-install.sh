@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com
 # License:      MIT
 # Copyright (c) 2020-2021
-# Time/Date:    17:00/16.09.2021
-# Version:      1.3
+# Time/Date:    19:00/16.09.2021
+# Version:      1.4
 ##############################################################################
 
 # DESCRIPTION
@@ -36,16 +36,15 @@ fi
 function install-requirement-check {
    sudo apt-get update &&
    sudo apt-get install python3-pip python3-dev python3-setuptools python3-venv git libyaml-dev build-essential &&
-   cd $HOME
-   mkdir OctoPrint && 
-   cd OctoPrint &&
+   mkdir -p "/$HOME/OctoPrint" &&
+   cd "/$HOME/OctoPrint" &&
    python3 -m venv venv &&
    source venv/bin/activate &&
    pip install pip --upgrade &&
    pip install octoprint &&
-   
-   sudo usermod -a -G tty $USER &&
-   sudo usermod -a -G dialout $USER &&
+   username="$(echo "$USER")" &&
+   sudo usermod -a -G tty "$username" &&
+   sudo usermod -a -G dialout "$username" &&
 
    wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/octoprint.service && 
    sudo mv octoprint.service /etc/systemd/system/octoprint.service &&
