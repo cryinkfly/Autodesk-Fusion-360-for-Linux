@@ -51,5 +51,6 @@
 - @pulponair
 - @ThisIsTheOnlyUsernameAvailable
 - @alexswerner
+- @watzon
 
 ... they help me with reports and code to get work Fusion 360 on Linux!!!
