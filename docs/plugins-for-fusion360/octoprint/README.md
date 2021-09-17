@@ -52,7 +52,7 @@ Install OctoPrint for Autodesk® Fusion 360™ for Autodesk Fusion 360:
 
 4.) Open a terminal and run this command (For example if you have Autodesk Fusion 360 installed into your home directory!):
 
-    cd Downloads && WINEPREFIX=~/.fusion360 wine OctoPrint_for_Fusion360-win64.msi
+    cd Downloads && WINEPREFIX=/$HOME/.wineprefixes/fusion360 wine OctoPrint_for_Fusion360-win64.msi
 
 4.1.) Install the OctoPrint for Autodesk® Fusion 360™ plugin:
 
