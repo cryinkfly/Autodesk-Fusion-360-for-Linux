@@ -313,8 +313,9 @@ OPTIONS=(1 "Arch Linux, Manjaro Linux, EndeavourOS, ..."
          12 "Ubuntu 20.04, Linux Mint 20.x, Pop!_OS 20.04, ..."
          13 "Ubuntu 20.10"
          14 "Ubuntu 21.04, Pop!_OS 21.04, ..."
-         15 "Void Linux"
-         16 "Gentoo Linux")
+         15 "Ubuntu 21.10"
+         16 "Void Linux"
+         17 "Gentoo Linux")
 
 CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
@@ -438,14 +439,45 @@ case $CHOICE in
             sudo add-apt-repository -r 'deb https://dl.winehq.org/wine-builds/ubuntu/ hirsute main' &&
             debian-based-2
             ;;
-            
+
         15)
+
+            # Note: This installs the public key to trusted.gpg.d - While this is "acceptable" behaviour it is not best practice.
+            # It is infinitely better than using apt-key add though.
+            # For more information and for instructions to utalise best practices, see:
+            # https://askubuntu.com/questions/1286545/what-commands-exactly-should-replace-the-deprecated-apt-key
+            
+            sudo apt update &&
+            sudo apt upgrade &&
+            sudo dpkg --add-architecture i386  &&
+            mkdir -p /tmp/360 && cd /tmp/360 &&
+            wget https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_21.04/Release.key &&
+            wget https://dl.winehq.org/wine-builds/winehq.key &&
+            gpg --no-default-keyring --keyring ./temp-keyring.gpg --import Release.key &&
+            gpg --no-default-keyring --keyring ./temp-keyring.gpg --export --output opensuse-wine.gpg && rm temp-keyring.gpg &&
+            gpg --no-default-keyring --keyring ./temp-keyring.gpg --import winehq.key &&
+            gpg --no-default-keyring --keyring ./temp-keyring.gpg --export --output winehq.gpg && rm temp-keyring.gpg &&
+            sudo mv *.gpg /etc/apt/trusted.gpg.d/ && cd /tmp && sudo rm -rf 360 &&
+
+            # Use 21.04 software prior to 21.10 release. Replace this with the below block after release.
+            echo "deb [signed-by=/etc/apt/trusted.gpg.d/opensuse-wine.gpg] https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_21.04/ ./" | sudo tee -a /etc/apt/sources.list.d/opensuse-wine.list &&
+            sudo add-apt-repository -r 'deb https://dl.winehq.org/wine-builds/ubuntu/ hirsute main' &&
+            
+            # Verify the below repos exist and uncomment this block to replace the above after 21.10 release
+            # echo "deb [signed-by=/etc/apt/trusted.gpg.d/opensuse-wine.gpg] https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_21.10/ ./" | sudo tee -a /etc/apt/sources.list.d/opensuse-wine.list &&
+            # sudo add-apt-repository -r 'deb https://dl.winehq.org/wine-builds/ubuntu/ impish main' &&
+
+            debian-based-2
+            ;;
+
+            
+        16)
         
             void-linux &&
             select-your-path
             ;;
 
-        16)
+        17)
 
             gentoo-linux &&
             select-your-path
