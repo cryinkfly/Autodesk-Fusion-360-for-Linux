@@ -9,6 +9,9 @@
 - [ ] Updated tests for this change.
 - [ ] Tested the changes locally.
 - [ ] Updated documentation.
+- [ ] Change version number.
+- [ ] Change the time and date.
+
 
 ### 📸 Screenshots (if available)
 <!--- Add screenshots here -->
