@@ -31,7 +31,7 @@ You will get more information about this program, then you can visit the origina
   - 📔 Documentation: <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/wiki/Documentation">GitHub-Documentation</a> & <a href="https://www.youtube.com/watch?v=-BktJspJKgs&list=PLzwMdS5iu_BIsO6RTy7Hy1MbzLMrQE2xe">Videos</a>
   - 💬 Would You like to get in touch with me? Or if You have any questions, suggestions or problems?
   - 📫 Then You can create an <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues">issue</a> here on GitHub or You can contact me via my <a href="https://cryinkfly.com/contact/">contact form</a>!
-  - 📜 Code of Conduct: Contributor Covenant (Still in Progress!)
+  - 📜 Code of Conduct: [Contributor Covenant](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/CODE_OF_CONDUCT.md)
   - 📖 Information for contributors: All contribution information, Compilation instructions, Roadmap (Still in Progress!)
   - ❤️ I'd like to thank everyone who has <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/COMMUNITY.md">helped</a> me to get Fusion 360 up and running on Linux!
   - ☕️ Discussion: https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/discussions
