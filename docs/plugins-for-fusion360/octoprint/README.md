@@ -38,7 +38,9 @@ You will get more information about OctoPrint, then you can visit the original w
 
 Install OctoPrint for Autodesk® Fusion 360™ for Autodesk Fusion 360:
 
-<!--[![Watch the video](https://user-images.githubusercontent.com/79079633/133907714-44b8d898-9c44-4bca-a668-aa6136608d2c.png)](https://www.youtube.com/watch?v=E4OUfwAEfj4) -->
+[![Watch the video](https://user-images.githubusercontent.com/79079633/133934603-9889a162-bc44-4968-aee1-6217cf05e160.png)](https://youtu.be/01lnwcE1ieg)
+
+
 
 1.) You can only download the installation program when you have previously logged into with your account on: https://apps.autodesk.com!
 
