@@ -52,5 +52,6 @@
 - @ThisIsTheOnlyUsernameAvailable
 - @alexswerner
 - @watzon
+- @Lik3Hackdev
 
 ... they help me with reports and code to get work Fusion 360 on Linux!!!
