@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                  #
 # License:      MIT                                                                    #
 # Copyright (c) 2020-2021                                                              #
-# Time/Date:    19:00/17.09.2021                                                       #
-# Version:      1.2                                                                    #
+# Time/Date:    10:00/21.09.2021                                                       #
+# Version:      1.3                                                                    #
 ########################################################################################
 
 ##############################################################################
@@ -174,7 +174,7 @@
     #select-your-path-custom
     text_8="$text_2"
     text_8_1="Beschreibung - Konfigurieren Sie den Installationsort!"
-    text_8_2="Jetzt müssen Sie festlegen, wohin Sie Autodesk Fusion 360 installieren möchten, und dann wird der .fusion360-Ordner automatisch für Sie erstellt. Sie können es beispielsweise auf einem externen USB-Laufwerk installieren: /run/media/user/usb-drive/wine/.fusion360 oder Sie installieren es in Ihrem Home-Ordner: /home/IHR-BENUTZERNAME/.wineprefixes/fusion360)."
+    text_8_2="Jetzt müssen Sie festlegen, wohin Sie Autodesk Fusion 360 installieren möchten, und dann wird der Ordner .fusion360 automatisch für Sie erstellt. Sie können es beispielsweise auf einem externen USB-Laufwerk installieren: /run/media/user/usb-drive/wine/.fusion360 oder Sie installieren es in Ihrem Home-Ordner: /home/IHR-BENUTZERNAME/.wineprefixes/fusion360)."
     text_8_3="Geben Sie den Installationspfad für Autodesk Fusion 360 ein:"
     text_8_4="$text_2"
 
