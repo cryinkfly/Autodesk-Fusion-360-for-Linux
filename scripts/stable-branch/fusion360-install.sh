@@ -491,42 +491,30 @@ esac
 # For the installation of Autodesk Fusion 360 one of the supported Linux distributions must be selected! - Part 2
 
 function archlinux-1 {
-
-HEIGHT=15
-WIDTH=60
-CHOICE_HEIGHT=2
-BACKTITLE="$text_6"
-TITLE="$text_6_1"
-MENU="$text_6_2"
-
-OPTIONS=(1 "$text_6_3"
-         2 "$text_6_4")
-
-CHOICE=$(dialog --clear \
-                --backtitle "$BACKTITLE" \
-                --title "$TITLE" \
-                --menu "$MENU" \
-                $HEIGHT $WIDTH $CHOICE_HEIGHT \
-                "${OPTIONS[@]}" \
-                2>&1 >/dev/tty)
-
-clear
-case $CHOICE in
-        1)
-            archlinux-2 &&
-            select-your-path
-            ;;
-        2)
-            sudo echo "[multilib]" >> /etc/pacman.conf &&
-            sudo echo "Include = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf &&
-            archlinux-2 &&
-            select-your-path
-            ;;
-esac
+    echo "Checking for multilib..."
+    if archlinux-verify-multilib ; then
+        echo "multilib found. Continuing..."
+        archlinux-2 &&
+        select-your-path
+    else
+        echo "Enabling multilib..."
+        echo "[multilib]" | sudo tee -a /etc/pacman.conf &&
+        echo "Include = /etc/pacman.d/mirrorlist" | sudo tee -a /etc/pacman.conf &&
+        archlinux-2 &&
+        select-your-path
+    fi
 }
 
 function archlinux-2 {
    sudo pacman -Sy --needed wine wine-mono wine_gecko winetricks p7zip curl cabextract samba ppp
+}
+
+function archlinux-verify-multilib {
+    if cat /etc/pacman.conf | grep -q '^\[multilib\]$' ; then
+        true
+    else
+        false
+    fi
 }
    
 function debian-based-1 {
