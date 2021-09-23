@@ -498,8 +498,8 @@ function archlinux-1 {
         select-your-path
     else
         echo "Enabling multilib..."
-        sudo echo "[multilib]" >> /etc/pacman.conf &&
-        sudo echo "Include = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf &&
+        echo "[multilib]" | sudo tee -a /etc/pacman.conf &&
+        echo "Include = /etc/pacman.d/mirrorlist" | sudo tee -a /etc/pacman.conf &&
         archlinux-2 &&
         select-your-path
     fi
