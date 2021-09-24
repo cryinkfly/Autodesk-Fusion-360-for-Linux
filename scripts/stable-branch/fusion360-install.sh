@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                        #
 # License:      MIT                                                          #
 # Copyright (c) 2020-2021                                                    #
-# Time/Date:    14:30/23.09.2021                                             #
-# Version:      4.6                                                          #
+# Time/Date:    10:30/24.09.2021                                             #
+# Version:      4.7                                                          #
 ##############################################################################
 
 ##############################################################################
@@ -45,21 +45,22 @@ function languages {
 ##############################################################################
 
 # The minimum requirements for installing Autodesk Fusion 360 will be installed here!
-
+# Prompt user to consent to required packages: dialog, wmctrl
 function check-requirement {
-echo "$text_1"
-echo -n "$text_1_1"
+echo "$text_1" # State packages to be installed
+echo -n "$text_1_1" # Prompt yes/no
 read answer
 if [ "$answer" != "${answer#[YyJj]}" ] ;then
-    install-requirement &&
-    wmctrl -r ':ACTIVE:' -b toggle,fullscreen &&
-    echo "No Error!"
-    check-if-fusion360-exists
+    install-requirement && # Call function to install packages
+    wmctrl -r ':ACTIVE:' -b toggle,fullscreen && # Maximize the window of the terminal
+    echo "No Error!" # This is in place to allow the script to continue (Workaround for a bug)
+    check-if-fusion360-exists # Next stage in the process
 else
     exit;
 fi
 }
 
+# Decide which package manager is in use, and install the packages
 function install-requirement {
 if VERB="$( which apt-get )" 2> /dev/null; then
    echo "Debian-based"
@@ -95,14 +96,241 @@ fi
 # It will check whether Autodesk Fusion 360 is already installed on your system or not!
 
 function check-if-fusion360-exists {
-FILE=/$HOME/.local/share/fusion360/logfiles/path-log.txt
+FILE=/$HOME/.local/share/fusion360/logfiles/path-log.txt # Search for log files indicting install
 if [ -f "$FILE" ]; then
-    welcome-screen-2
+    welcome-screen-2 # Exists - Modify install
 else 
-    welcome-screen-1
+    welcome-screen-1 # New install
 fi
 }
 
+##############################################################################
+
+# Here you have to decide whether you want to use Autodesk Fusion 360 with DXVK (DirectX 9) or OpenGL! - Part 2
+
+function configure-dxvk-or-opengl-standard-1 {
+  if [ $driver_used -eq 2 ]; then
+      WINEPREFIX=/home/$USER/.wineprefixes/fusion360 sh winetricks -q dxvk &&
+      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.reg &&
+      WINEPREFIX=/home/$USER/.wineprefixes/fusion360 wine regedit.exe DXVK.reg
+   fi
+}
+
+function configure-dxvk-or-opengl-standard-2 {
+if [ $driver_used -eq 2 ]; then
+      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.xml &&
+      mv DXVK.xml NMachineSpecificOptions.xml
+   else
+      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/NMachineSpecificOptions.xml
+   fi
+}
+
+function configure-dxvk-or-opengl-standard-3 {
+if [ $driver_used -eq 2 ]; then
+      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.xml &&
+      mv DXVK.xml NMachineSpecificOptions.xml
+   else
+      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/NMachineSpecificOptions.xml
+   fi
+}
+
+function configure-dxvk-or-opengl-custom-1 {
+   if [ $driver_used -eq 2 ]; then
+      WINEPREFIX=$filename sh winetricks -q dxvk &&
+      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.reg &&
+      WINEPREFIX=$filename wine regedit.exe DXVK.reg
+   else
+      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/NMachineSpecificOptions.xml
+   fi
+}
+
+function configure-dxvk-or-opengl-custom-2 {
+if [ $driver_used -eq 2 ]; then
+      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.xml &&
+      mv DXVK.xml NMachineSpecificOptions.xml
+   else
+      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/NMachineSpecificOptions.xml
+   fi
+}
+
+function configure-dxvk-or-opengl-custom-3 {
+if [ $driver_used -eq 2 ]; then
+      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.xml &&
+      mv DXVK.xml NMachineSpecificOptions.xml
+   else
+      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/NMachineSpecificOptions.xml
+   fi
+}
+
+##############################################################################
+
+# For the installation of Autodesk Fusion 360 one of the supported Linux distributions must be selected! - Part 2
+
+function archlinux-1 {
+    echo "Checking for multilib..."
+    if archlinux-verify-multilib ; then
+        echo "multilib found. Continuing..."
+        archlinux-2 &&
+        select-your-path
+    else
+        echo "Enabling multilib..."
+        echo "[multilib]" | sudo tee -a /etc/pacman.conf &&
+        echo "Include = /etc/pacman.d/mirrorlist" | sudo tee -a /etc/pacman.conf &&
+        archlinux-2 &&
+        select-your-path
+    fi
+}
+
+function archlinux-2 {
+   sudo pacman -Sy --needed wine wine-mono wine_gecko winetricks p7zip curl cabextract samba ppp
+}
+
+function archlinux-verify-multilib {
+    if cat /etc/pacman.conf | grep -q '^\[multilib\]$' ; then
+        true
+    else
+        false
+    fi
+}
+   
+function debian-based-1 {
+    sudo apt-get update &&
+    sudo apt-get upgrade &&
+    sudo dpkg --add-architecture i386  &&
+    wget -nc https://dl.winehq.org/wine-builds/winehq.key &&
+    sudo apt-key add winehq.key
+}
+
+function debian-based-2 {
+    sudo apt-get update &&
+    sudo apt-get upgrade &&
+    sudo apt-get install p7zip p7zip-full p7zip-rar curl winbind cabextract wget &&
+    sudo apt-get install --install-recommends winehq-staging &&
+    select-your-path
+}
+
+function fedora-based-1 {
+    sudo dnf update &&
+    sudo dnf upgrade &&
+    sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+}
+
+function fedora-based-2 {
+    sudo dnf install p7zip p7zip-plugins curl wget wine cabextract &&
+    select-your-path
+}
+
+function redhat-linux {
+   sudo subscription-manager repos --enable codeready-builder-for-rhel-8-x86_64-rpms &&
+   sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm &&
+   sudo dnf upgrade &&
+   sudo dnf install wine
+}
+
+function solus-linux {
+   sudo eopkg install wine winetricks p7zip curl cabextract samba ppp
+}
+
+function void-linux {
+   sudo xbps-install -Sy wine wine-mono wine-gecko winetricks p7zip curl cabextract samba ppp
+}
+
+function gentoo-linux {
+    sudo emerge -av virtual/wine app-emulation/winetricks app-emulation/wine-mono app-emulation/wine-gecko app-arch/p7zip app-arch/cabextract net-misc/curl net-fs/samba net-dialup/ppp
+}
+
+##############################################################################
+
+# Autodesk Fusion 360 will now be installed using Wine and Winetricks!
+
+function winetricks-standard {
+   clear
+   mkdir -p /home/$USER/.wineprefixes/fusion360 &&
+   cd /home/$USER/.wineprefixes/fusion360 &&
+   wget -N https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks &&
+   chmod +x winetricks &&
+   WINEPREFIX=/home/$USER/.wineprefixes/fusion360 sh winetricks -q corefonts cjkfonts msxml4 msxml6 vcrun2017 fontsmooth=rgb win8 &&
+   # We must install cjkfonts again then sometimes it doesn't work the first time!
+   WINEPREFIX=/home/$USER/.wineprefixes/fusion360 sh winetricks -q cjkfonts &&
+   configure-dxvk-or-opengl-standard-1 &&
+   mkdir -p fusion360download &&
+   cd fusion360download &&
+   wget https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe -O Fusion360installer.exe &&
+   WINEPREFIX=/home/$USER/.wineprefixes/fusion360 wine Fusion360installer.exe -p deploy -g -f log.txt --quiet &&
+   WINEPREFIX=/home/$USER/.wineprefixes/fusion360 wine Fusion360installer.exe -p deploy -g -f log.txt --quiet &&
+   mkdir -p "/home/$USER/.wineprefixes/fusion360/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform" &&
+   cd "/home/$USER/.wineprefixes/fusion360/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform" &&
+   mkdir -p Options &&
+   cd Options &&
+   configure-dxvk-or-opengl-standard-2 &&
+   # Because the location varies depending on the Linux distro!
+   mkdir -p "/home/$USER/.wineprefixes/fusion360/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform" &&
+   cd "/home/$USER/.wineprefixes/fusion360/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform" &&
+   mkdir -p Options &&
+   cd Options &&
+   configure-dxvk-or-opengl-standard-3 &&
+   #Set up the program launcher for you!
+   cd "/$HOME/.local/share/applications" &&
+   wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/Autodesk%20Fusion%20360.desktop &&
+   logfile-installation-standard &&
+   program-exit
+}
+
+function winetricks-custom {
+   clear
+   mkdir -p $filename &&
+   cd $filename &&
+   wget -N https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks &&
+   chmod +x winetricks &&
+   WINEPREFIX=$filename sh winetricks -q corefonts cjkfonts msxml4 msxml6 vcrun2017 fontsmooth=rgb win8 &&
+   # We must install cjkfonts again then sometimes it doesn't work the first time!
+   WINEPREFIX=$filename sh winetricks -q cjkfonts &&
+   configure-dxvk-or-opengl-custom-1 &&
+   mkdir -p fusion360download &&
+   cd fusion360download &&
+   wget https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe -O Fusion360installer.exe &&
+   WINEPREFIX=$filename wine Fusion360installer.exe -p deploy -g -f log.txt --quiet &&
+   WINEPREFIX=$filename wine Fusion360installer.exe -p deploy -g -f log.txt --quiet &&
+   mkdir -p "$filename/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform" &&
+   cd "$filename/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform" &&
+   mkdir -p Options &&
+   cd Options &&
+   configure-dxvk-or-opengl-custom-2 &&
+   # Because the location varies depending on the Linux distro!
+   mkdir -p "$filename/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform" &&
+   cd "$filename/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform" &&
+   mkdir -p Options &&
+   cd Options &&
+   configure-dxvk-or-opengl-custom-3 &&
+   logfile-installation-custom &&
+   program-exit
+}
+
+##############################################################################
+
+# A log file will now be created here so that it can be checked in the future whether an installation of Autodesk Fusion 360 already exists on your system.
+
+function logfile-installation {
+   mkdir -p "/$HOME/.local/share/fusion360/logfiles" && 
+   exec 5> /$HOME/.local/share/fusion360/logfiles/install-log.txt
+   BASH_XTRACEFD="5"
+   set -x
+}
+
+function logfile-installation-standard {
+   mkdir -p "/$HOME/.local/share/fusion360/logfiles" &&
+   cd "/$HOME/.local/share/fusion360/logfiles" &&
+   echo "/home/$USER/.wineprefixes/fusion360/logfiles" >> path-log.txt
+}
+
+function logfile-installation-custom {
+   mkdir -p "/$HOME/.local/share/fusion360/logfiles" &&
+   cd "/$HOME/.local/share/fusion360/logfiles" &&
+   echo "$filename" >> path-log.txt
+}
+
+##############################################################################
+# ALL DIALOGS ARE ARRANGED HERE:
 ##############################################################################
 
 # Autodesk Fusion 360 will be installed from scratch on this system!
@@ -227,64 +455,6 @@ case $CHOICE in
             select-your-os
             ;;  
 esac     
-}
-
-##############################################################################
-
-# Here you have to decide whether you want to use Autodesk Fusion 360 with DXVK (DirectX 9) or OpenGL! - Part 2
-
-function configure-dxvk-or-opengl-standard-1 {
-  if [ $driver_used -eq 2 ]; then
-      WINEPREFIX=/home/$USER/.wineprefixes/fusion360 sh winetricks -q dxvk &&
-      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.reg &&
-      WINEPREFIX=/home/$USER/.wineprefixes/fusion360 wine regedit.exe DXVK.reg
-   fi
-}
-
-function configure-dxvk-or-opengl-standard-2 {
-if [ $driver_used -eq 2 ]; then
-      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.xml &&
-      mv DXVK.xml NMachineSpecificOptions.xml
-   else
-      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/NMachineSpecificOptions.xml
-   fi
-}
-
-function configure-dxvk-or-opengl-standard-3 {
-if [ $driver_used -eq 2 ]; then
-      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.xml &&
-      mv DXVK.xml NMachineSpecificOptions.xml
-   else
-      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/NMachineSpecificOptions.xml
-   fi
-}
-
-function configure-dxvk-or-opengl-custom-1 {
-   if [ $driver_used -eq 2 ]; then
-      WINEPREFIX=$filename sh winetricks -q dxvk &&
-      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.reg &&
-      WINEPREFIX=$filename wine regedit.exe DXVK.reg
-   else
-      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/NMachineSpecificOptions.xml
-   fi
-}
-
-function configure-dxvk-or-opengl-custom-2 {
-if [ $driver_used -eq 2 ]; then
-      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.xml &&
-      mv DXVK.xml NMachineSpecificOptions.xml
-   else
-      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/NMachineSpecificOptions.xml
-   fi
-}
-
-function configure-dxvk-or-opengl-custom-3 {
-if [ $driver_used -eq 2 ]; then
-      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.xml &&
-      mv DXVK.xml NMachineSpecificOptions.xml
-   else
-      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/NMachineSpecificOptions.xml
-   fi
 }
 
 ##############################################################################
@@ -488,83 +658,6 @@ esac
 
 ##############################################################################
 
-# For the installation of Autodesk Fusion 360 one of the supported Linux distributions must be selected! - Part 2
-
-function archlinux-1 {
-    echo "Checking for multilib..."
-    if archlinux-verify-multilib ; then
-        echo "multilib found. Continuing..."
-        archlinux-2 &&
-        select-your-path
-    else
-        echo "Enabling multilib..."
-        echo "[multilib]" | sudo tee -a /etc/pacman.conf &&
-        echo "Include = /etc/pacman.d/mirrorlist" | sudo tee -a /etc/pacman.conf &&
-        archlinux-2 &&
-        select-your-path
-    fi
-}
-
-function archlinux-2 {
-   sudo pacman -Sy --needed wine wine-mono wine_gecko winetricks p7zip curl cabextract samba ppp
-}
-
-function archlinux-verify-multilib {
-    if cat /etc/pacman.conf | grep -q '^\[multilib\]$' ; then
-        true
-    else
-        false
-    fi
-}
-   
-function debian-based-1 {
-    sudo apt-get update &&
-    sudo apt-get upgrade &&
-    sudo dpkg --add-architecture i386  &&
-    wget -nc https://dl.winehq.org/wine-builds/winehq.key &&
-    sudo apt-key add winehq.key
-}
-
-function debian-based-2 {
-    sudo apt-get update &&
-    sudo apt-get upgrade &&
-    sudo apt-get install p7zip p7zip-full p7zip-rar curl winbind cabextract wget &&
-    sudo apt-get install --install-recommends winehq-staging &&
-    select-your-path
-}
-
-function fedora-based-1 {
-    sudo dnf update &&
-    sudo dnf upgrade &&
-    sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-}
-
-function fedora-based-2 {
-    sudo dnf install p7zip p7zip-plugins curl wget wine cabextract &&
-    select-your-path
-}
-
-function redhat-linux {
-   sudo subscription-manager repos --enable codeready-builder-for-rhel-8-x86_64-rpms &&
-   sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm &&
-   sudo dnf upgrade &&
-   sudo dnf install wine
-}
-
-function solus-linux {
-   sudo eopkg install wine winetricks p7zip curl cabextract samba ppp
-}
-
-function void-linux {
-   sudo xbps-install -Sy wine wine-mono wine-gecko winetricks p7zip curl cabextract samba ppp
-}
-
-function gentoo-linux {
-    sudo emerge -av virtual/wine app-emulation/winetricks app-emulation/wine-mono app-emulation/wine-gecko app-arch/p7zip app-arch/cabextract net-misc/curl net-fs/samba net-dialup/ppp
-}
-
-##############################################################################
-
 # Here you can determine how Autodesk Fusion 360 should be instierlert! (Installation location)
 
 function select-your-path {
@@ -611,73 +704,6 @@ function select-your-path-custom {
 
 ##############################################################################
 
-# Autodesk Fusion 360 will now be installed using Wine and Winetricks!
-
-function winetricks-standard {
-   clear
-   mkdir -p /home/$USER/.wineprefixes/fusion360 &&
-   cd /home/$USER/.wineprefixes/fusion360 &&
-   wget -N https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks &&
-   chmod +x winetricks &&
-   WINEPREFIX=/home/$USER/.wineprefixes/fusion360 sh winetricks -q corefonts cjkfonts msxml4 msxml6 vcrun2017 fontsmooth=rgb win8 &&
-   # We must install cjkfonts again then sometimes it doesn't work the first time!
-   WINEPREFIX=/home/$USER/.wineprefixes/fusion360 sh winetricks -q cjkfonts &&
-   configure-dxvk-or-opengl-standard-1 &&
-   mkdir -p fusion360download &&
-   cd fusion360download &&
-   wget https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe -O Fusion360installer.exe &&
-   WINEPREFIX=/home/$USER/.wineprefixes/fusion360 wine Fusion360installer.exe -p deploy -g -f log.txt --quiet &&
-   WINEPREFIX=/home/$USER/.wineprefixes/fusion360 wine Fusion360installer.exe -p deploy -g -f log.txt --quiet &&
-   mkdir -p "/home/$USER/.wineprefixes/fusion360/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform" &&
-   cd "/home/$USER/.wineprefixes/fusion360/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform" &&
-   mkdir -p Options &&
-   cd Options &&
-   configure-dxvk-or-opengl-standard-2 &&
-   # Because the location varies depending on the Linux distro!
-   mkdir -p "/home/$USER/.wineprefixes/fusion360/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform" &&
-   cd "/home/$USER/.wineprefixes/fusion360/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform" &&
-   mkdir -p Options &&
-   cd Options &&
-   configure-dxvk-or-opengl-standard-3 &&
-   #Set up the program launcher for you!
-   cd "/$HOME/.local/share/applications" &&
-   wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/Autodesk%20Fusion%20360.desktop &&
-   logfile-installation-standard &&
-   program-exit
-}
-
-function winetricks-custom {
-   clear
-   mkdir -p $filename &&
-   cd $filename &&
-   wget -N https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks &&
-   chmod +x winetricks &&
-   WINEPREFIX=$filename sh winetricks -q corefonts cjkfonts msxml4 msxml6 vcrun2017 fontsmooth=rgb win8 &&
-   # We must install cjkfonts again then sometimes it doesn't work the first time!
-   WINEPREFIX=$filename sh winetricks -q cjkfonts &&
-   configure-dxvk-or-opengl-custom-1 &&
-   mkdir -p fusion360download &&
-   cd fusion360download &&
-   wget https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe -O Fusion360installer.exe &&
-   WINEPREFIX=$filename wine Fusion360installer.exe -p deploy -g -f log.txt --quiet &&
-   WINEPREFIX=$filename wine Fusion360installer.exe -p deploy -g -f log.txt --quiet &&
-   mkdir -p "$filename/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform" &&
-   cd "$filename/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform" &&
-   mkdir -p Options &&
-   cd Options &&
-   configure-dxvk-or-opengl-custom-2 &&
-   # Because the location varies depending on the Linux distro!
-   mkdir -p "$filename/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform" &&
-   cd "$filename/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform" &&
-   mkdir -p Options &&
-   cd Options &&
-   configure-dxvk-or-opengl-custom-3 &&
-   logfile-installation-custom &&
-   program-exit
-}
-
-##############################################################################
-
 # Update/Repair existing installation of Autodesk Fusion 360 on your system!
 
 function change-fusion360-1 {
@@ -686,29 +712,6 @@ function change-fusion360-1 {
 
 function change-fusion360-2 {
     filename=$(dialog --stdout --title "$text_9_2" --backtitle "$text_9_3" --fselect $HOME/ 14 100)
-}
-
-##############################################################################
-
-# A log file will now be created here so that it can be checked in the future whether an installation of Autodesk Fusion 360 already exists on your system.
-
-function logfile-installation {
-   mkdir -p "/$HOME/.local/share/fusion360/logfiles" && 
-   exec 5> /$HOME/.local/share/fusion360/logfiles/install-log.txt
-   BASH_XTRACEFD="5"
-   set -x
-}
-
-function logfile-installation-standard {
-   mkdir -p "/$HOME/.local/share/fusion360/logfiles" &&
-   cd "/$HOME/.local/share/fusion360/logfiles" &&
-   echo "/home/$USER/.wineprefixes/fusion360/logfiles" >> path-log.txt
-}
-
-function logfile-installation-custom {
-   mkdir -p "/$HOME/.local/share/fusion360/logfiles" &&
-   cd "/$HOME/.local/share/fusion360/logfiles" &&
-   echo "$filename" >> path-log.txt
 }
 
 ##############################################################################
