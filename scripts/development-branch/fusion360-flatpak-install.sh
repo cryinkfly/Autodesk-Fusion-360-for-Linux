@@ -63,9 +63,9 @@
 
 function languages {
     wget -N https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/raw/main/scripts/development-branch/languages-flatpak.sh &&
-    chmod +x languages.sh &&
+    chmod +x languages-flatpak.sh &&
     clear &&
-    . languages.sh
+    . languages-flatpak.sh
 }
 
 ##############################################################################
