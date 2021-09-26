@@ -60,23 +60,23 @@ Install OctoPrint for Autodesk® Fusion 360™ for Autodesk Fusion 360:
 
 4.1.) Install the OctoPrint for Autodesk® Fusion 360™ plugin:
 
-![octoprint_fusion360_install](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/images/fusion-360-apps/octoprint/octoprint_fusion360_install.png)
+![octoprint_fusion360_install](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/files/images/extensions/OctoPrint%20for%20Autodesk%C2%AE%20Fusion%20360%E2%84%A2/octoprint_fusion360_install.png)
 
 
 5.) If you have opened Autodesk Fusion 360 then you must restart the program!
 
 6.) Then you must configure the OctoPrint plugin in Autodesk Fusion 360 and you are connected to the OctoPrint server!
 
-![octoprint_fusion360_configure_1](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/images/fusion-360-apps/octoprint/octoprint_fusion360_configure_1.png)
+![octoprint_fusion360_configure_1](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/files/images/extensions/OctoPrint%20for%20Autodesk%C2%AE%20Fusion%20360%E2%84%A2/octoprint_fusion360_configure_1.png)
 
-![octoprint_fusion360_configure_2](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/images/fusion-360-apps/octoprint/octoprint_fusion360_configure_2.png)
+![octoprint_fusion360_configure_2](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/files/images/extensions/OctoPrint%20for%20Autodesk%C2%AE%20Fusion%20360%E2%84%A2/octoprint_fusion360_configure_2.png)
 
 
 7.) Now you can send directly the G-code of your created model to the OctoPrint server via Autodesk Fusion 360 and then it will be printed for you! ⏳
 
-![octoprint_fusion360_send_gcode_1](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/images/fusion-360-apps/octoprint/octoprint_fusion360_send_gcode_1.png)
+![octoprint_fusion360_send_gcode_1](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/files/images/extensions/OctoPrint%20for%20Autodesk%C2%AE%20Fusion%20360%E2%84%A2/octoprint_fusion360_send_gcode_1.png)
 
-![octoprint_fusion360_send_gcode_2](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/images/fusion-360-apps/octoprint/octoprint_fusion360_send_gcode_2.png)
+![octoprint_fusion360_send_gcode_2](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/files/images/extensions/OctoPrint%20for%20Autodesk%C2%AE%20Fusion%20360%E2%84%A2/octoprint_fusion360_send_gcode_2.png)
 
 ---
 
@@ -96,7 +96,7 @@ For example, you want to start the server:
 
 Then you can access the server by heading to http://YOUR-IP-ADDRESS:5000 and you should be greeted with the OctoPrint UI.
 
-![octoprint_vm](https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/images/fusion-360-apps/octoprint/octoprint_vm.png)
+![octoprint_vm](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/files/images/extensions/OctoPrint%20for%20Autodesk%C2%AE%20Fusion%20360%E2%84%A2/octoprint_vm.png)
 
 But you can configure a lot more and so I recommend reading this post here:
 
