@@ -41,16 +41,16 @@ You will get more information about this program, then you can visit the origina
 
 ## Screenshots
 <div>
-<img src="https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/images/production/%231.1_adapter-plate.png" width="300px" height="200px">
-<img src="https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/images/generative-design/%231.4_generative_design.png" width="300px" height="200px">
+<img src="https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/images/workspaces/Manufacture/%231.1_adapter-plate.png" width="300px" height="200px">
+<img src="https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/images/workspaces/Generative%20Design/%231.4_generative_design.png" width="300px" height="200px">
 </div>
 <div>
-<img src="https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/images/rendering/%231_water_pump.png" width="300px" height="200px">
-<img src="https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/images/simulation/%231_study_displacement.png" width="300px" height="200px">
+<img src="https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/images/workspaces/Rendering/%231_water_pump.png" width="300px" height="200px">
+<img src="https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/images/workspaces/Simulation/%231_study_displacement.png" width="300px" height="200px">
 </div>
 <div>
-<img src="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/images/drawing/drawing_oil_case.png" width="300px" height="200px">
-<img src="https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/images/electronics/%231.1_electronics_library.png" width="300px" height="200px">
+<img src="https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/images/workspaces/Drawing/drawing_oil_case.png" width="300px" height="200px">
+<img src="https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/images/workspaces/Electronics/%231.1_electronics_library.png" width="300px" height="200px">
 </div>
 
 ---
