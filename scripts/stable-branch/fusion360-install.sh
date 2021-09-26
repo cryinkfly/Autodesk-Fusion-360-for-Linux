@@ -407,7 +407,6 @@ case $CHOICE in
             cd $filename/fusion360download &&
             WINEPREFIX=$filename wine Fusion360installer.exe -p deploy -g -f log.txt --quiet &&
             WINEPREFIX=$filename wine Fusion360installer.exe -p deploy -g -f log.txt --quiet &&
-            install-extensions &&
             program-exit
             ;;
         3)
