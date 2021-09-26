@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                        #
 # License:      MIT                                                          #
 # Copyright (c) 2020-2021                                                    #
-# Time/Date:    10:30/24.09.2021                                             #
-# Version:      4.7                                                          #
+# Time/Date:    12:30/26.09.2021                                             #
+# Version:      4.8                                                          #
 ##############################################################################
 
 ##############################################################################
@@ -245,34 +245,35 @@ function gentoo-linux {
 
 function winetricks-standard {
    clear
-   mkdir -p /home/$USER/.wineprefixes/fusion360 &&
-   cd /home/$USER/.wineprefixes/fusion360 &&
+   mkdir -p $HOME/.wineprefixes/fusion360 &&
+   cd $HOME/.wineprefixes/fusion360 &&
    wget -N https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks &&
    chmod +x winetricks &&
-   WINEPREFIX=/home/$USER/.wineprefixes/fusion360 sh winetricks -q corefonts cjkfonts msxml4 msxml6 vcrun2017 fontsmooth=rgb win8 &&
+   WINEPREFIX=$HOME/.wineprefixes/fusion360 sh winetricks -q corefonts cjkfonts msxml4 msxml6 vcrun2017 fontsmooth=rgb win8 &&
    # We must install cjkfonts again then sometimes it doesn't work the first time!
-   WINEPREFIX=/home/$USER/.wineprefixes/fusion360 sh winetricks -q cjkfonts &&
+   WINEPREFIX=$HOME/.wineprefixes/fusion360 sh winetricks -q cjkfonts &&
    configure-dxvk-or-opengl-standard-1 &&
    mkdir -p fusion360download &&
    cd fusion360download &&
    wget https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe -O Fusion360installer.exe &&
-   WINEPREFIX=/home/$USER/.wineprefixes/fusion360 wine Fusion360installer.exe -p deploy -g -f log.txt --quiet &&
-   WINEPREFIX=/home/$USER/.wineprefixes/fusion360 wine Fusion360installer.exe -p deploy -g -f log.txt --quiet &&
-   mkdir -p "/home/$USER/.wineprefixes/fusion360/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform" &&
-   cd "/home/$USER/.wineprefixes/fusion360/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform" &&
+   WINEPREFIX=$HOME/.wineprefixes/fusion360 wine Fusion360installer.exe -p deploy -g -f log.txt --quiet &&
+   WINEPREFIX=$HOME/.wineprefixes/fusion360 wine Fusion360installer.exe -p deploy -g -f log.txt --quiet &&
+   mkdir -p "$HOME/.wineprefixes/fusion360/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform" &&
+   cd "$HOME/.wineprefixes/fusion360/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform" &&
    mkdir -p Options &&
    cd Options &&
    configure-dxvk-or-opengl-standard-2 &&
    # Because the location varies depending on the Linux distro!
-   mkdir -p "/home/$USER/.wineprefixes/fusion360/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform" &&
-   cd "/home/$USER/.wineprefixes/fusion360/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform" &&
+   mkdir -p "$HOME/.wineprefixes/fusion360/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform" &&
+   cd "$HOME/.wineprefixes/fusion360/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform" &&
    mkdir -p Options &&
    cd Options &&
    configure-dxvk-or-opengl-standard-3 &&
    #Set up the program launcher for you!
-   cd "/$HOME/.local/share/applications" &&
+   cd "$HOME/.local/share/applications" &&
    wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/Autodesk%20Fusion%20360.desktop &&
    logfile-installation-standard &&
+   install-extensions-standard &&
    program-exit
 }
 
@@ -303,6 +304,7 @@ function winetricks-custom {
    cd Options &&
    configure-dxvk-or-opengl-custom-3 &&
    logfile-installation-custom &&
+   install-extensions-custom &&
    program-exit
 }
 
@@ -405,6 +407,7 @@ case $CHOICE in
             cd $filename/fusion360download &&
             WINEPREFIX=$filename wine Fusion360installer.exe -p deploy -g -f log.txt --quiet &&
             WINEPREFIX=$filename wine Fusion360installer.exe -p deploy -g -f log.txt --quiet &&
+            install-extensions &&
             program-exit
             ;;
         3)
@@ -738,6 +741,176 @@ function program-exit {
     
     clear
     exit
+}
+
+##############################################################################
+
+# Installation of various extensions is offered here. For examble: OctoPrint for Autodesk® Fusion 360™
+
+function install-extensions-standard {
+    dialog --stdout --backtitle "$text_12" \
+    --title "$text_12_1" \
+    --checklist "$text_12_2" 14 250 0 \
+   "Airfoil Tools" "$text_12_3" off \
+   "Additive Assistant (FFF)" "$text_12_4" off \
+   "HP 3D Printers for Autodesk® Fusion 360™" "$text_12_5" off \
+   "OctoPrint for Autodesk® Fusion 360™" "$text_12_6" off \
+   "RoboDK" "$text_12_7" off 
+
+for RESULT in $RESULTS
+do
+    case $RESULT in
+        '"Airfoil Tools"' )
+            echo "Install Additive Assistant (FFF)"
+            airfoil-tools-plugin
+            ;;
+        '"Additive Assistant (FFF)"' )
+            echo "Install Additive Assistant (FFF)"
+            additive-assistant-plugin
+            ;;
+        '"HP 3D Printers for Autodesk® Fusion 360™"' )
+            echo "Install HP 3D Printers for Autodesk® Fusion 360™"
+            hp-3dprinter-connector-plugin
+            ;;
+        '"OctoPrint for Autodesk® Fusion 360™"' )
+            echo "Install OctoPrint for Autodesk® Fusion 360™"
+            octoprint-plugin
+            ;;
+        '"RoboDK"' )
+            echo "Install RoboDK"
+            robodk-plugin
+            ;;
+    esac
+done
+}
+
+function install-extensions-custom {
+    dialog --stdout --backtitle "$text_12" \
+    --title "$text_12_1" \
+    --checklist "$text_12_2" 14 250 0 \
+   "Airfoil Tools" "$text_12_3" off \
+   "Additive Assistant (FFF)" "$text_12_4" off \
+   "HP 3D Printers for Autodesk® Fusion 360™" "$text_12_5" off \
+   "OctoPrint for Autodesk® Fusion 360™" "$text_12_6" off \
+   "RoboDK" "$text_12_7" off 
+
+for RESULT in $RESULTS
+do
+    case $RESULT in
+        '"Airfoil Tools"' )
+            echo "Install Additive Assistant (FFF)"
+            airfoil-tools-plugin-custom
+            ;;
+        '"Additive Assistant (FFF)"' )
+            echo "Install Additive Assistant (FFF)"
+            additive-assistant-plugin-custom
+            ;;
+        '"HP 3D Printers for Autodesk® Fusion 360™"' )
+            echo "Install HP 3D Printers for Autodesk® Fusion 360™"
+            hp-3dprinter-connector-plugin-custom
+            ;;
+        '"OctoPrint for Autodesk® Fusion 360™"' )
+            echo "Install OctoPrint for Autodesk® Fusion 360™"
+            octoprint-plugin-custom
+            ;;
+        '"RoboDK"' )
+            echo "Install RoboDK"
+            robodk-plugin-custom
+            ;;
+    esac
+done
+}
+
+##############################################################################
+# ALL EXTENSIONS ARE HERE:
+##############################################################################
+
+# Airfoil Tools
+
+function airfoil-tools-plugin-standard {
+    mkdir -p "$HOME/.wineprefixes/fusion360/fusion360download/extensions"
+    cd "$HOME/.wineprefixes/fusion360/fusion360download/extensions"
+    wget -N https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/raw/main/files/extensions/AirfoilTools_win64.msi &&
+    WINEPREFIX=$HOME/.wineprefixes/fusion360 wine AirfoilTools_win64.msi
+}
+
+function airfoil-tools-plugin-custom {
+    mkdir -p "$filename/fusion360download/extensions"
+    cd "$filename/fusion360download/extensions"
+    wget -N https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/raw/main/files/extensions/AirfoilTools_win64.msi &&
+    WINEPREFIX=$filename wine AirfoilTools_win64.msi
+}
+
+##############################################################################
+
+# Additive Assistant (FFF)
+
+function additive-assistant-plugin-standard {
+    mkdir -p "$HOME/.wineprefixes/fusion360/fusion360download/extensions"
+    cd "$HOME/.wineprefixes/fusion360/fusion360download/extensions"
+    wget -N https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/raw/main/files/extensions/AdditiveAssistant.bundle-win64.msi &&
+    WINEPREFIX=$HOME/.wineprefixes/fusion360 wine AdditiveAssistant.bundle-win64.msi
+}
+
+function additive-assistant-plugin-custom {
+    mkdir -p "$filename/fusion360download/extensions"
+    cd "$filename/fusion360download/extensions"
+    wget -N https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/raw/main/files/extensions/AdditiveAssistant.bundle-win64.msi &&
+    WINEPREFIX=$filename wine AdditiveAssistant.bundle-win64.msi
+}
+
+##############################################################################
+
+# HP 3D Printers for Autodesk® Fusion 360™
+
+function hp-3dprinter-connector-plugin-standard {
+    mkdir -p "$HOME/.wineprefixes/fusion360/fusion360download/extensions"
+    cd "$HOME/.wineprefixes/fusion360/fusion360download/extensions"
+    wget -N https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/raw/main/files/extensions/HP_3DPrinters_for_Fusion360-win64.msi &&
+    WINEPREFIX=$HOME/.wineprefixes/fusion360 wine HP_3DPrinters_for_Fusion360-win64.msi
+}
+
+function hp-3dprinter-connector-plugin-custom {
+    mkdir -p "$filename/fusion360download/extensions"
+    cd "$filename/fusion360download/extensions"
+    wget -N https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/raw/main/files/extensions/HP_3DPrinters_for_Fusion360-win64.msi &&
+    WINEPREFIX=$filename wine HP_3DPrinters_for_Fusion360-win64.msi
+}
+
+##############################################################################
+
+# OctoPrint for Autodesk® Fusion 360™
+
+function octoprint-plugin-standard {
+    mkdir -p "$HOME/.wineprefixes/fusion360/fusion360download/extensions"
+    cd "$HOME/.wineprefixes/fusion360/fusion360download/extensions"
+    wget -N https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/raw/main/files/extensions/OctoPrint_for_Fusion360-win64.msi &&
+    WINEPREFIX=$HOME/.wineprefixes/fusion360 wine OctoPrint_for_Fusion360-win64.msi
+}
+
+function octoprint-plugin-custom {
+    mkdir -p "$filename/fusion360download/extensions"
+    cd "$filename/fusion360download/extensions"
+    wget -N https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/raw/main/files/extensions/OctoPrint_for_Fusion360-win64.msi &&
+    WINEPREFIX=$filename wine OctoPrint_for_Fusion360-win64.msi
+}
+
+##############################################################################
+
+# RoboDK
+
+function robodk-plugin-standard {
+    mkdir -p "$HOME/.wineprefixes/fusion360/fusion360download/extensions"
+    cd "$HOME/.wineprefixes/fusion360/fusion360download/extensions"
+    wget -N https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/raw/main/files/extensions/RoboDK.bundle-win64.msi &&
+    WINEPREFIX=$HOME/.wineprefixes/fusion360 wine RoboDK.bundle-win64.msi
+}
+
+function robodk-plugin-custom {
+    mkdir -p "$filename/fusion360download/extensions"
+    cd "$filename/fusion360download/extensions"
+    wget -N https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/raw/main/files/extensions/RoboDK.bundle-win64.msi &&
+    WINEPREFIX=$filename wine RoboDK.bundle-win64.msi
 }
 
 ##############################################################################
