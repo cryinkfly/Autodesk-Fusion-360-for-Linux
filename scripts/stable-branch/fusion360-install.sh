@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                        #
 # License:      MIT                                                          #
 # Copyright (c) 2020-2021                                                    #
-# Time/Date:    14:30/26.09.2021                                             #
-# Version:      4.9                                                          #
+# Time/Date:    15:30/26.09.2021                                             #
+# Version:      5.0                                                          #
 ##############################################################################
 
 ##############################################################################
@@ -756,26 +756,43 @@ function install-extensions-standard {
    "RoboDK" "$text_12_7" off`
 
    clear
-   echo "Deine ausgewählten Plugins sind: $extensions"
+
+   echo "Your selected plugins are: $extensions"
    if [ "$extensions" != "Airfoil Tools" ] ;then
-   echo "Install Additive Assistant (FFF)"
-   airfoil-tools-plugin-standard
-   elif [ "$extensions" != "Additive Assistant (FFF)" ] ;then
-   echo "Install Additive Assistant (FFF)"
-   additive-assistant-plugin-standard
-   elif [ "$extensions" != "HP 3D Printers for Autodesk® Fusion 360™" ] ;then
-   echo "Install HP 3D Printers for Autodesk® Fusion 360™"
-   hp-3dprinter-connector-plugin-standard
-   elif [ "$extensions" != "OctoPrint for Autodesk® Fusion 360™" ] ;then
-   echo "Install OctoPrint for Autodesk® Fusion 360™"
-   octoprint-plugin-standard
-   elif [ "$extensions" != "RoboDK" ] ;then
-   echo "Install RoboDK"
-   robodk-plugin-standard
+    echo "Install Airfoil Tools!"
+    airfoil-tools-plugin-standard
    else
-   echo "No plugins selected!"
+    echo "Airfoil Tools not selected!"
+   fi
+
+   if [ "$extensions" != "Additive Assistant (FFF)" ] ;then
+    echo "Install Additive Assistant (FFF)!"
+    additive-assistant-plugin-standard
+   else
+    echo "Additive Assistant (FFF) not selected!"
+   fi
+
+   if [ "$extensions" != "HP 3D Printers for Autodesk® Fusion 360™" ] ;then
+    echo "Install HP 3D Printers for Autodesk® Fusion 360™!"
+    hp-3dprinter-connector-plugin-standard
+   else
+    echo "HP 3D Printers for Autodesk® Fusion 360™ not selected!"
+   fi
+
+   if [ "$extensions" != "OctoPrint for Autodesk® Fusion 360™" ] ;then
+    echo "Install OctoPrint for Autodesk® Fusion 360™!"
+    octoprint-plugin-standard
+   else
+    echo "OctoPrint for Autodesk® Fusion 360™ not selected!"
+   fi
+
+   if [ "$extensions" != "RoboDK" ] ;then
+    echo "Install RoboDK!"
+    robodk-plugin-standard
+   else
+    echo "RoboDK not selected!"
    fi 
-   
+
    program-exit
 }
 
@@ -790,26 +807,43 @@ function install-extensions-custom {
    "RoboDK" "$text_12_7" off`
 
    clear
-   echo "Deine ausgewählten Plugins sind: $extensions"
+
+   echo "Your selected plugins are: $extensions"
    if [ "$extensions" != "Airfoil Tools" ] ;then
-   echo "Install Additive Assistant (FFF)"
-   airfoil-tools-plugin-custom
-   elif [ "$extensions" != "Additive Assistant (FFF)" ] ;then
-   echo "Install Additive Assistant (FFF)"
-   additive-assistant-plugin-custom
-   elif [ "$extensions" != "HP 3D Printers for Autodesk® Fusion 360™" ] ;then
-   echo "Install HP 3D Printers for Autodesk® Fusion 360™"
-   hp-3dprinter-connector-plugin-custom
-   elif [ "$extensions" != "OctoPrint for Autodesk® Fusion 360™" ] ;then
-   echo "Install OctoPrint for Autodesk® Fusion 360™"
-   octoprint-plugin-custom
-   elif [ "$extensions" != "RoboDK" ] ;then
-   echo "Install RoboDK"
-   robodk-plugin-custom
+    echo "Install Airfoil Tools!"
+    airfoil-tools-plugin-custom
    else
-   echo "No plugins selected!"
+    echo "Airfoil Tools not selected!"
    fi
-   
+
+   if [ "$extensions" != "Additive Assistant (FFF)" ] ;then
+    echo "Install Additive Assistant (FFF)!"
+    additive-assistant-plugin-custom
+   else
+    echo "Additive Assistant (FFF) not selected!"
+   fi
+
+   if [ "$extensions" != "HP 3D Printers for Autodesk® Fusion 360™" ] ;then
+    echo "Install HP 3D Printers for Autodesk® Fusion 360™!"
+    hp-3dprinter-connector-plugin-custom
+   else
+    echo "HP 3D Printers for Autodesk® Fusion 360™ not selected!"
+   fi
+
+   if [ "$extensions" != "OctoPrint for Autodesk® Fusion 360™" ] ;then
+    echo "Install OctoPrint for Autodesk® Fusion 360™!"
+    octoprint-plugin-custom
+   else
+    echo "OctoPrint for Autodesk® Fusion 360™ not selected!"
+   fi
+
+   if [ "$extensions" != "RoboDK" ] ;then
+    echo "Install RoboDK!"
+    robodk-plugin-custom
+   else
+    echo "RoboDK not selected!"
+   fi 
+
    program-exit
 }
 
