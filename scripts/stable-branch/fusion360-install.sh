@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                        #
 # License:      MIT                                                          #
 # Copyright (c) 2020-2021                                                    #
-# Time/Date:    12:30/26.09.2021                                             #
-# Version:      4.8                                                          #
+# Time/Date:    14:30/26.09.2021                                             #
+# Version:      4.9                                                          #
 ##############################################################################
 
 ##############################################################################
@@ -273,7 +273,8 @@ function winetricks-standard {
    cd "$HOME/.local/share/applications" &&
    wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/Autodesk%20Fusion%20360.desktop &&
    logfile-installation-standard &&
-   install-extensions-standard
+   install-extensions-standard &&
+   program-exit
 }
 
 function winetricks-custom {
@@ -303,7 +304,8 @@ function winetricks-custom {
    cd Options &&
    configure-dxvk-or-opengl-custom-3 &&
    logfile-installation-custom &&
-   install-extensions-custom
+   install-extensions-custom &&
+   program-exit
 }
 
 ##############################################################################
@@ -405,6 +407,7 @@ case $CHOICE in
             cd $filename/fusion360download &&
             WINEPREFIX=$filename wine Fusion360installer.exe -p deploy -g -f log.txt --quiet &&
             WINEPREFIX=$filename wine Fusion360installer.exe -p deploy -g -f log.txt --quiet &&
+            install-extensions &&
             program-exit
             ;;
         3)
@@ -745,79 +748,67 @@ function program-exit {
 # Installation of various extensions is offered here. For examble: OctoPrint for Autodesk® Fusion 360™
 
 function install-extensions-standard {
-    dialog --stdout --backtitle "$text_12" \
+    extensions=`dialog --stdout --backtitle "$text_12" \
     --title "$text_12_1" \
     --checklist "$text_12_2" 14 250 0 \
    "Airfoil Tools" "$text_12_3" off \
    "Additive Assistant (FFF)" "$text_12_4" off \
    "HP 3D Printers for Autodesk® Fusion 360™" "$text_12_5" off \
    "OctoPrint for Autodesk® Fusion 360™" "$text_12_6" off \
-   "RoboDK" "$text_12_7" off 
+   "RoboDK" "$text_12_7" off`
 
-for RESULT in $RESULTS
-do
-    case $RESULT in
-        '"Airfoil Tools"' )
-            echo "Install Additive Assistant (FFF)"
-            airfoil-tools-plugin
-            ;;
-        '"Additive Assistant (FFF)"' )
-            echo "Install Additive Assistant (FFF)"
-            additive-assistant-plugin
-            ;;
-        '"HP 3D Printers for Autodesk® Fusion 360™"' )
-            echo "Install HP 3D Printers for Autodesk® Fusion 360™"
-            hp-3dprinter-connector-plugin
-            ;;
-        '"OctoPrint for Autodesk® Fusion 360™"' )
-            echo "Install OctoPrint for Autodesk® Fusion 360™"
-            octoprint-plugin
-            ;;
-        '"RoboDK"' )
-            echo "Install RoboDK"
-            robodk-plugin
-            ;;
-    esac
-done
-program-exit
+   clear
+   echo "Deine ausgewählten Plugins sind: $extensions"
+   if [ "$extensions" != "Airfoil Tools" ] ;then
+   echo "Install Additive Assistant (FFF)"
+   airfoil-tools-plugin-standard
+   elif [ "$extensions" != "Additive Assistant (FFF)" ] ;then
+   echo "Install Additive Assistant (FFF)"
+   additive-assistant-plugin-standard
+   elif [ "$extensions" != "HP 3D Printers for Autodesk® Fusion 360™" ] ;then
+   echo "Install HP 3D Printers for Autodesk® Fusion 360™"
+   hp-3dprinter-connector-plugin-standard
+   elif [ "$extensions" != "OctoPrint for Autodesk® Fusion 360™" ] ;then
+   echo "Install OctoPrint for Autodesk® Fusion 360™"
+   octoprint-plugin-standard
+   elif [ "$extensions" != "RoboDK" ] ;then
+   echo "Install RoboDK"
+   robodk-plugin-standard
+   else
+   echo "No plugins selected!"
+   fi 
 }
 
 function install-extensions-custom {
-    dialog --stdout --backtitle "$text_12" \
+    extensions=`dialog --stdout --backtitle "$text_12" \
     --title "$text_12_1" \
     --checklist "$text_12_2" 14 250 0 \
    "Airfoil Tools" "$text_12_3" off \
    "Additive Assistant (FFF)" "$text_12_4" off \
    "HP 3D Printers for Autodesk® Fusion 360™" "$text_12_5" off \
    "OctoPrint for Autodesk® Fusion 360™" "$text_12_6" off \
-   "RoboDK" "$text_12_7" off 
+   "RoboDK" "$text_12_7" off`
 
-for RESULT in $RESULTS
-do
-    case $RESULT in
-        '"Airfoil Tools"' )
-            echo "Install Additive Assistant (FFF)"
-            airfoil-tools-plugin-custom
-            ;;
-        '"Additive Assistant (FFF)"' )
-            echo "Install Additive Assistant (FFF)"
-            additive-assistant-plugin-custom
-            ;;
-        '"HP 3D Printers for Autodesk® Fusion 360™"' )
-            echo "Install HP 3D Printers for Autodesk® Fusion 360™"
-            hp-3dprinter-connector-plugin-custom
-            ;;
-        '"OctoPrint for Autodesk® Fusion 360™"' )
-            echo "Install OctoPrint for Autodesk® Fusion 360™"
-            octoprint-plugin-custom
-            ;;
-        '"RoboDK"' )
-            echo "Install RoboDK"
-            robodk-plugin-custom
-            ;;
-    esac
-done
-program-exit
+   clear
+   echo "Deine ausgewählten Plugins sind: $extensions"
+   if [ "$extensions" != "Airfoil Tools" ] ;then
+   echo "Install Additive Assistant (FFF)"
+   airfoil-tools-plugin-custom
+   elif [ "$extensions" != "Additive Assistant (FFF)" ] ;then
+   echo "Install Additive Assistant (FFF)"
+   additive-assistant-plugin-custom
+   elif [ "$extensions" != "HP 3D Printers for Autodesk® Fusion 360™" ] ;then
+   echo "Install HP 3D Printers for Autodesk® Fusion 360™"
+   hp-3dprinter-connector-plugin-custom
+   elif [ "$extensions" != "OctoPrint for Autodesk® Fusion 360™" ] ;then
+   echo "Install OctoPrint for Autodesk® Fusion 360™"
+   octoprint-plugin-custom
+   elif [ "$extensions" != "RoboDK" ] ;then
+   echo "Install RoboDK"
+   robodk-plugin-custom
+   else
+   echo "No plugins selected!"
+   fi 
 }
 
 ##############################################################################
