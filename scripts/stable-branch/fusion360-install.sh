@@ -273,8 +273,7 @@ function winetricks-standard {
    cd "$HOME/.local/share/applications" &&
    wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/Autodesk%20Fusion%20360.desktop &&
    logfile-installation-standard &&
-   install-extensions-standard &&
-   program-exit
+   install-extensions-standard
 }
 
 function winetricks-custom {
@@ -304,8 +303,7 @@ function winetricks-custom {
    cd Options &&
    configure-dxvk-or-opengl-custom-3 &&
    logfile-installation-custom &&
-   install-extensions-custom &&
-   program-exit
+   install-extensions-custom
 }
 
 ##############################################################################
@@ -781,6 +779,7 @@ do
             ;;
     esac
 done
+program-exit
 }
 
 function install-extensions-custom {
@@ -818,6 +817,7 @@ do
             ;;
     esac
 done
+program-exit
 }
 
 ##############################################################################
