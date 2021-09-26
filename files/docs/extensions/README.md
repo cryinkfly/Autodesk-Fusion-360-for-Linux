@@ -89,7 +89,7 @@ An existing installation of Octoprint (Download and Installation instructions he
 
 #### Notice:
 
-You can find also more information about the instalation of this plugin [here](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/tree/main/docs/plugins-for-fusion360/octoprint)!
+You can find also more information about the instalation of this plugin [here](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/tree/main/files/docs/extensions/OctoPrint%20for%20Autodesk%C2%AE%20Fusion%20360%E2%84%A2)!
 
 <br>
 
