@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                  #
 # License:      MIT                                                                    #
 # Copyright (c) 2020-2021                                                              #
-# Time/Date:    10:30/24.09.2021                                                       #
-# Version:      1.5                                                                    #
+# Time/Date:    12:30/26.09.2021                                                       #
+# Version:      1.6                                                                    #
 ########################################################################################
 
 ##############################################################################
@@ -112,10 +112,21 @@
     text_10_1="Uninstalling Autodesk Fusion 360!"
     text_10_2="Autodesk Fusion 360 uninstallation is complete!"
 
-    #
+    #program-exit
     text_11="$text_2"
     text_11_1="Autodesk Fusion 360 is completed."
     text_11_2="The Autodesk Fusion 360 installation is complete and you can now use it for your projects."
+
+    #extension-manager
+    text_12="$text_2"
+    text_12_1="Extension Manager"
+    text_12_2="Choose one or more of the following options:"
+
+    text_12_3="This plug-in helps you by the optimization any thing or part that is exposed to a moving gas or liquid. For examble: wings, fins, propellers and turbines."
+    text_12_4="This plug-in helps you by analyses a number of aspects of your designs and provides clear feedback on how to improve the manufacturability of the part."
+    text_12_5="This plug-in is a connector between Autodesk Fusion 360 and the HP SmartStream Software and is used to send over jobs directly to the HP Software."
+    text_12_6="With this plug-in you can send the G-code of your created 3D models directly to the OctoPrint server via Autodesk Fusion 360."
+    text_12_7="This plug-in allows you to program more than 50 different robot manufacturers and 500 robots directly from Fusion 360."
 }
 
 ##############################################################################
@@ -133,7 +144,7 @@
     #welcome-screen-1
     text_2="Installation von Autodesk Fusion360 - Version $version_number"
     text_2_1="Möchten Sie Autodesk Fusion 360 installieren?"
-    text_2_2="Wählen Sie eine der folgenden Optionen:"
+    text_2_2="Wählen Sie eine der folgenden Optionen aus:"
     text_2_3="Ja"
     text_2_4="Nein"
 
@@ -191,17 +202,29 @@
     text_10_1="Deinstallieren von Autodesk Fusion 360!"
     text_10_2="Die Deinstallation von Autodesk Fusion 360 ist abgeschlossen!"
 
-    #
+    #program-exit
     text_11="$text_2"
     text_11_1="Autodesk Fusion 360 ist abgeschlossen."
     text_11_2="Die Installation von Autodesk Fusion 360 ist abgeschlossen und Sie können es nun für Ihre Projekte verwenden."
+
+    #extension-manager
+    text_12="$text_2"
+    text_12_1="Extension Manager"
+    text_12_2="Wählen Sie eine oder mehrere der folgenden Optionen aus:"
+
+    text_12_3="Dieses Plugin hilft Ihnen bei der Optimierung aller Dinge oder Teile, die einem bewegten Gas oder einer Flüssigkeit ausgesetzt sind. Zum Beispiel: Flügel, Flossen, Propeller und Turbinen."
+    text_12_4="Dieses Plugin hilft Ihnen, indem es eine Reihe von Aspekten Ihrer Konstruktionen analysiert und ein klares Feedback gibt, wie Sie die Herstellbarkeit des Teils verbessern können."
+    text_12_5="Dieses Plugin stellt eine Verbindung zwischen Autodesk Fusion 360 und der HP SmartStream Software da und wird verwendet, um Jobs direkt an die HP Software zu senden."
+    text_12_6="Mit diesem Plugin können Sie den G-Code Ihrer erstellten 3D-Modelle über Autodesk Fusion 360 direkt an den OctoPrint-Server senden."
+    text_12_7="Mit diesem Plugin können Sie mehr als 50 verschiedene Roboterhersteller und 500 Roboter direkt aus Fusion 360 heraus programmieren."
 }
 
 ##############################################################################
 # THE INSTALLATION PROGRAM IS STARTED HERE:
 ##############################################################################
 
-version_number="4.7"
+version_number="4.8"
 select-language
 
 ############################################################################################################################################################
+
