@@ -1,28 +1,29 @@
 #!/bin/bash
 
-##############################################################################
-# Name:         Autodesk Fusion 360 - Installationsskript (Linux)            #
-# Description:  With this file you can install Autodesk Fusion 360 on Linux. #
-# Author:       Steve Zabka                                                  #
-# Author URI:   https://cryinkfly.com                                        #
-# License:      MIT                                                          #
-# Copyright (c) 2020-2021                                                    #
-# Time/Date:    15:30/26.09.2021                                             #
-# Version:      5.0                                                          #
-##############################################################################
+####################################################################################################
+# Name:         Autodesk Fusion 360 - Setup Wizard (Linux)                                         #
+# Description:  With this file you can install Autodesk Fusion 360 on various Linux distributions. #
+# Author:       Steve Zabka                                                                        #
+# Author URI:   https://cryinkfly.com                                                              #
+# License:      MIT                                                                                #
+# Copyright (c) 2020-2021                                                                          #
+# Time/Date:    18:00/28.09.2021                                                                   #
+# Version:      5.1                                                                                #
+####################################################################################################
 
 ##############################################################################
-# DESCRIPTION
+# DESCRIPTION IN DETAIL
 ##############################################################################
 
-# With the help of my script, You get a way to install the Autodesk Fusion 360 on your Linux system. 
-# Certain packages and programs that are required will be set up on your system.
+# With the help of my setup wizard, you will be given a way to install Autodesk Fusion 360 with some extensions on 
+# Linux so that you don't have to use Windows or macOS for this program in the future!
 #
-# But it's important to know, that my script only helps You to get the program to run and nothing more!
+# Also, my setup wizard will guides you through the installation step by step and will install some required packages.
 #
-# And so, You must to purchase the licenses directly from the manufacturer of the program Autodesk Fusion 360!
-
-##############################################################################
+# The next one is you have the option of installing the program directly on your system or you can install it on an external storage medium.
+#
+# But it's important to know, you must to purchase the licenses directly from the manufacturer of Autodesk Fusion 360, when
+# you will work with them on Linux!
 
 ############################################################################################################################################################
 # 1. Step: Open a Terminal and run this command: cd Downloads && chmod +x fusion360-install.sh && bash fusion360-install.sh
@@ -273,7 +274,8 @@ function winetricks-standard {
    cd "$HOME/.local/share/applications" &&
    wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/Autodesk%20Fusion%20360.desktop &&
    logfile-installation-standard &&
-   install-extensions-standard
+   install-extensions-standard &&
+   program-exit
 }
 
 function winetricks-custom {
@@ -303,7 +305,8 @@ function winetricks-custom {
    cd Options &&
    configure-dxvk-or-opengl-custom-3 &&
    logfile-installation-custom &&
-   install-extensions-custom
+   install-extensions-custom &&
+   program-exit
 }
 
 ##############################################################################
@@ -746,105 +749,77 @@ function program-exit {
 # Installation of various extensions is offered here. For examble: OctoPrint for Autodesk® Fusion 360™
 
 function install-extensions-standard {
-    extensions=`dialog --stdout --backtitle "$text_12" \
-    --title "$text_12_1" \
-    --checklist "$text_12_2" 14 250 0 \
-   "Airfoil Tools" "$text_12_3" off \
-   "Additive Assistant (FFF)" "$text_12_4" off \
-   "HP 3D Printers for Autodesk® Fusion 360™" "$text_12_5" off \
-   "OctoPrint for Autodesk® Fusion 360™" "$text_12_6" off \
-   "RoboDK" "$text_12_7" off`
 
-   clear
-
-   echo "Your selected plugins are: $extensions"
-   if [ "$extensions" != "Airfoil Tools" ] ;then
-    echo "Install Airfoil Tools!"
-    airfoil-tools-plugin-standard
-   else
-    echo "Airfoil Tools not selected!"
-   fi
-
-   if [ "$extensions" != "Additive Assistant (FFF)" ] ;then
-    echo "Install Additive Assistant (FFF)!"
-    additive-assistant-plugin-standard
-   else
-    echo "Additive Assistant (FFF) not selected!"
-   fi
-
-   if [ "$extensions" != "HP 3D Printers for Autodesk® Fusion 360™" ] ;then
-    echo "Install HP 3D Printers for Autodesk® Fusion 360™!"
-    hp-3dprinter-connector-plugin-standard
-   else
-    echo "HP 3D Printers for Autodesk® Fusion 360™ not selected!"
-   fi
-
-   if [ "$extensions" != "OctoPrint for Autodesk® Fusion 360™" ] ;then
-    echo "Install OctoPrint for Autodesk® Fusion 360™!"
-    octoprint-plugin-standard
-   else
-    echo "OctoPrint for Autodesk® Fusion 360™ not selected!"
-   fi
-
-   if [ "$extensions" != "RoboDK" ] ;then
-    echo "Install RoboDK!"
-    robodk-plugin-standard
-   else
-    echo "RoboDK not selected!"
-   fi 
-
-   program-exit
+cmd=(dialog --separate-output --backtitle "$text_12" --title "$text_12_1" --checklist "$text_12_2" 22 250 16)
+options=(1 "$text_12_3" off    # any option can be set to default to "on"
+         2 "$text_12_4" off
+         3 "$text_12_5" off
+         4 "$text_12_6" off
+         5 "$text_12_7" off)
+choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
+clear
+for choice in $choices
+do
+    case $choice in
+        1)
+            echo "Install Airfoil Tools!"
+            airfoil-tools-plugin-standard
+            ;;
+        2)
+            echo "Install Additive Assistant (FFF)!"
+            additive-assistant-plugin-standard
+            ;;
+        3)
+            echo "Install HP 3D Printers for Autodesk® Fusion 360™!"
+            hp-3dprinter-connector-plugin-standard
+            ;;
+        4)
+            echo "Install OctoPrint for Autodesk® Fusion 360™!"
+            octoprint-plugin-standard
+            ;;
+        5)
+            echo "Install RoboDK!"
+            robodk-plugin-standard
+            ;;
+    esac
+done
 }
 
 function install-extensions-custom {
-    extensions=`dialog --stdout --backtitle "$text_12" \
-    --title "$text_12_1" \
-    --checklist "$text_12_2" 14 250 0 \
-   "Airfoil Tools" "$text_12_3" off \
-   "Additive Assistant (FFF)" "$text_12_4" off \
-   "HP 3D Printers for Autodesk® Fusion 360™" "$text_12_5" off \
-   "OctoPrint for Autodesk® Fusion 360™" "$text_12_6" off \
-   "RoboDK" "$text_12_7" off`
 
-   clear
-
-   echo "Your selected plugins are: $extensions"
-   if [ "$extensions" != "Airfoil Tools" ] ;then
-    echo "Install Airfoil Tools!"
-    airfoil-tools-plugin-custom
-   else
-    echo "Airfoil Tools not selected!"
-   fi
-
-   if [ "$extensions" != "Additive Assistant (FFF)" ] ;then
-    echo "Install Additive Assistant (FFF)!"
-    additive-assistant-plugin-custom
-   else
-    echo "Additive Assistant (FFF) not selected!"
-   fi
-
-   if [ "$extensions" != "HP 3D Printers for Autodesk® Fusion 360™" ] ;then
-    echo "Install HP 3D Printers for Autodesk® Fusion 360™!"
-    hp-3dprinter-connector-plugin-custom
-   else
-    echo "HP 3D Printers for Autodesk® Fusion 360™ not selected!"
-   fi
-
-   if [ "$extensions" != "OctoPrint for Autodesk® Fusion 360™" ] ;then
-    echo "Install OctoPrint for Autodesk® Fusion 360™!"
-    octoprint-plugin-custom
-   else
-    echo "OctoPrint for Autodesk® Fusion 360™ not selected!"
-   fi
-
-   if [ "$extensions" != "RoboDK" ] ;then
-    echo "Install RoboDK!"
-    robodk-plugin-custom
-   else
-    echo "RoboDK not selected!"
-   fi 
-
-   program-exit
+cmd=(dialog --separate-output --backtitle "$text_12" --title "$text_12_1" --checklist "$text_12_2" 22 250 16)
+options=(1 "$text_12_3" off    # any option can be set to default to "on"
+         2 "$text_12_4" off
+         3 "$text_12_5" off
+         4 "$text_12_6" off
+         5 "$text_12_7" off)
+choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
+clear
+for choice in $choices
+do
+    case $choice in
+        1)
+            echo "Install Airfoil Tools!"
+            airfoil-tools-plugin-standard
+            ;;
+        2)
+            echo "Install Additive Assistant (FFF)!"
+            additive-assistant-plugin-standard
+            ;;
+        3)
+            echo "Install HP 3D Printers for Autodesk® Fusion 360™!"
+            hp-3dprinter-connector-plugin-standard
+            ;;
+        4)
+            echo "Install OctoPrint for Autodesk® Fusion 360™!"
+            octoprint-plugin-standard
+            ;;
+        5)
+            echo "Install RoboDK!"
+            robodk-plugin-standard
+            ;;
+    esac
+done
 }
 
 ##############################################################################
