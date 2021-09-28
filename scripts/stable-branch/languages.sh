@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                  #
 # License:      MIT                                                                    #
 # Copyright (c) 2020-2021                                                              #
-# Time/Date:    15:00/26.09.2021                                                       #
-# Version:      1.8                                                                    #
+# Time/Date:    18:00/28.09.2021                                                       #
+# Version:      1.9                                                                    #
 ########################################################################################
 
 ##############################################################################
@@ -120,13 +120,13 @@
     #extension-manager
     text_12="$text_2"
     text_12_1="Extension Manager"
-    text_12_2="Choose one or more of the following options:"
+    text_12_2="Here you can install some extensions for Autodesk Fusion 360!"
 
-    text_12_3="This plug-in helps you by the optimization any thing or part that is exposed to a moving gas or liquid. For examble: wings, fins, propellers and turbines."
-    text_12_4="This plug-in helps you by analyses a number of aspects of your designs and provides clear feedback on how to improve the manufacturability of the part."
-    text_12_5="This plug-in is a connector between Autodesk Fusion 360 and the HP SmartStream Software and is used to send over jobs directly to the HP Software."
-    text_12_6="With this plug-in you can send the G-code of your created 3D models directly to the OctoPrint server via Autodesk Fusion 360."
-    text_12_7="This plug-in allows you to program more than 50 different robot manufacturers and 500 robots directly from Fusion 360."
+    text_12_3="Airfoil Tools helps you by the optimization any thing or part that is exposed to a moving gas or liquid. For examble: wings, fins, propellers and turbines."
+    text_12_4="Additive Assistant (FFF) helps you by analyses a number of aspects of your designs and provides clear feedback on how to improve the manufacturability of the part."
+    text_12_5="HP 3D Printers for Autodesk® Fusion 360™ is a connector between Autodesk® Fusion 360™ and the HP SmartStream Software and is used to send over jobs directly to the HP Software."
+    text_12_6="With OctoPrint for Autodesk® Fusion 360™ you can send the G-code of your created 3D models directly to the OctoPrint server via Autodesk Fusion 360."
+    text_12_7="RoboDK allows you to program more than 50 different robot manufacturers and 500 robots directly from Fusion 360."
 }
 
 ##############################################################################
@@ -210,7 +210,7 @@
     #extension-manager
     text_12="$text_2"
     text_12_1="Extension Manager"
-    text_12_2="Wählen Sie eine oder mehrere der folgenden Optionen aus:"
+    text_12_2="Hier können Sie einige Erweiterungen für Autodesk Fusion 360 installieren!"
 
     text_12_3="Dieses Plugin hilft Ihnen bei der Optimierung aller Dinge oder Teile, die einem bewegten Gas oder einer Flüssigkeit ausgesetzt sind. Zum Beispiel: Flügel, Flossen, Propeller und Turbinen."
     text_12_4="Dieses Plugin hilft Ihnen, indem es eine Reihe von Aspekten Ihrer Konstruktionen analysiert und ein klares Feedback gibt, wie Sie die Herstellbarkeit des Teils verbessern können."
@@ -223,7 +223,7 @@
 # THE INSTALLATION PROGRAM IS STARTED HERE:
 ##############################################################################
 
-version_number="5.0"
+version_number="5.1"
 select-language
 
 ############################################################################################################################################################
