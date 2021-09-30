@@ -212,11 +212,11 @@
     text_12_1="Extension Manager"
     text_12_2="Hier können Sie einige Erweiterungen für Autodesk Fusion 360 installieren!"
 
-    text_12_3="Dieses Plugin hilft Ihnen bei der Optimierung aller Dinge oder Teile, die einem bewegten Gas oder einer Flüssigkeit ausgesetzt sind. Zum Beispiel: Flügel, Flossen, Propeller und Turbinen."
-    text_12_4="Dieses Plugin hilft Ihnen, indem es eine Reihe von Aspekten Ihrer Konstruktionen analysiert und ein klares Feedback gibt, wie Sie die Herstellbarkeit des Teils verbessern können."
-    text_12_5="Dieses Plugin stellt eine Verbindung zwischen Autodesk Fusion 360 und der HP SmartStream Software da und wird verwendet, um Jobs direkt an die HP Software zu senden."
-    text_12_6="Mit diesem Plugin können Sie den G-Code Ihrer erstellten 3D-Modelle über Autodesk Fusion 360 direkt an den OctoPrint-Server senden."
-    text_12_7="Mit diesem Plugin können Sie mehr als 50 verschiedene Roboterhersteller und 500 Roboter direkt aus Fusion 360 heraus programmieren."
+    text_12_3="Airfoil Tools hilft Ihnen bei der Optimierung aller Dinge oder Teile, die einem bewegten Gas oder einer Flüssigkeit ausgesetzt sind. Zum Beispiel: Flügel, Flossen, Propeller und Turbinen."
+    text_12_4="Der Additive Assistant (FFF) hilft Ihnen, indem er eine Reihe von Aspekten Ihrer Konstruktionen analysiert und klare Rückmeldungen gibt, wie die Herstellbarkeit des Teils verbessert werden kann."
+    text_12_5="HP 3D-Drucker für Autodesk® Fusion 360™ ist eine Verbindung zwischen Autodesk® Fusion 360™ und der HP SmartStream Software und wird verwendet, um Aufträge direkt an die HP Software zu senden."
+    text_12_6="Mit OctoPrint für Autodesk® Fusion 360™ können Sie den G-Code Ihrer erstellten 3D-Modelle über Autodesk Fusion 360 direkt an den OctoPrint-Server senden."
+    text_12_7="Mit RoboDK können Sie mehr als 50 verschiedene Roboterhersteller und 500 Roboter direkt aus Autodesk Fusion 360 heraus programmieren."
 }
 
 ##############################################################################
