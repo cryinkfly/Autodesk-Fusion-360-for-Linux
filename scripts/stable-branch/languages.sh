@@ -95,7 +95,7 @@
     #select-your-path-custom
     text_8="$text_2"
     text_8_1="Description - Configure the installation location!"
-    text_8_2="Now you have to determine where you want to install Autodesk Fusion 360 and then the .fusion360 folder will be created for you automatically. For examlble you can install it on a external usb-drive: /run/media/user/usb-drive/wine/.fusion360 or you install it into your home folder: /home/YOUR-USERNAME/.wineprefixes/fusion360)."
+    text_8_2="Now you have to determine where you want to install Autodesk Fusion 360 and then the .fusion360 folder will be created for you automatically. For example you can install it on a external usb-drive: /run/media/user/usb-drive/wine/.fusion360 or you install it into your home folder: /home/YOUR-USERNAME/.wineprefixes/fusion360)."
     text_8_3="Enter the installation path for Autodesk Fusion 360:"
     text_8_4="$text_2"
 
