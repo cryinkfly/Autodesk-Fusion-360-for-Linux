@@ -55,5 +55,6 @@
 - @Lik3Hackdev
 - @CaninoDev
 - @b-desconocido
+- @Project-Scorch
 
 ... they help me with reports and code to get work Fusion 360 on Linux!!!
