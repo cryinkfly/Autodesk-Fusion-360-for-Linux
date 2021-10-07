@@ -57,5 +57,6 @@
 - @b-desconocido
 - @Project-Scorch
 - @dantahoua
+- @Kara-Zor-El
 
 ... they help me with reports and code to get work Fusion 360 on Linux!!!
