@@ -7,15 +7,15 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    18:00/28.09.2021                                                                   #
-# Version:      5.1                                                                                #
+# Time/Date:    09:00/08.10.2021                                                                   #
+# Version:      5.2                                                                                #
 ####################################################################################################
 
 ##############################################################################
 # DESCRIPTION IN DETAIL
 ##############################################################################
 
-# With the help of my setup wizard, you will be given a way to install Autodesk Fusion 360 with some extensions on 
+# With the help of my setup wizard, you will be given a way to install Autodesk Fusion 360 with some extensions on
 # Linux so that you don't have to use Windows or macOS for this program in the future!
 #
 # Also, my setup wizard will guides you through the installation step by step and will install some required packages.
@@ -100,7 +100,7 @@ function check-if-fusion360-exists {
 FILE=/$HOME/.local/share/fusion360/logfiles/path-log.txt # Search for log files indicting install
 if [ -f "$FILE" ]; then
     welcome-screen-2 # Exists - Modify install
-else 
+else
     welcome-screen-1 # New install
 fi
 }
@@ -193,7 +193,7 @@ function archlinux-verify-multilib {
         false
     fi
 }
-   
+
 function debian-based-1 {
     sudo apt-get update &&
     sudo apt-get upgrade &&
@@ -314,7 +314,7 @@ function winetricks-custom {
 # A log file will now be created here so that it can be checked in the future whether an installation of Autodesk Fusion 360 already exists on your system.
 
 function logfile-installation {
-   mkdir -p "/$HOME/.local/share/fusion360/logfiles" && 
+   mkdir -p "/$HOME/.local/share/fusion360/logfiles" &&
    exec 5> /$HOME/.local/share/fusion360/logfiles/install-log.txt
    BASH_XTRACEFD="5"
    set -x
@@ -361,7 +361,7 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
         1)
-            
+
             driver_used=0 &&
             select-dxvk-or-opengl
             ;;
@@ -408,14 +408,14 @@ case $CHOICE in
             cd $filename/fusion360download &&
             WINEPREFIX=$filename wine Fusion360installer.exe -p deploy -g -f log.txt --quiet &&
             WINEPREFIX=$filename wine Fusion360installer.exe -p deploy -g -f log.txt --quiet &&
-            install-extensions &&
+            install-extensions-custom &&
             program-exit
             ;;
         3)
             change-fusion360-1 &&
             change-fusion360-2 &&
             rmdir "$filename" &&
-            # Remove this path into the log file is still in process! 
+            # Remove this path into the log file is still in process!
             program-exit-uninstall
             ;;
 esac
@@ -446,19 +446,19 @@ CHOICE=$(dialog --clear \
 
 clear
 
-case $CHOICE in         
+case $CHOICE in
         1)
 
             driver_used=1 &&
             select-your-os
             ;;
-            
+
         2)
-        
+
             driver_used=2 &&
             select-your-os
-            ;;  
-esac     
+            ;;
+esac
 }
 
 ##############################################################################
@@ -500,104 +500,104 @@ CHOICE=$(dialog --clear \
                 2>&1 >/dev/tty)
 
 clear
-case $CHOICE in         
+case $CHOICE in
         1)
-            
+
             archlinux-1
             ;;
-            
+
         2)
-        
+
             debian-based-1 &&
             sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/debian/ buster main' &&
             debian-based-2
-            ;;  
-            
+            ;;
+
         3)
-        
+
             debian-based-1 &&
             sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/debian/ bullseye main' &&
             debian-based-2
-            ;;  
-            
+            ;;
+
         4)
-            
+
             fedora-based-1 &&
             sudo dnf config-manager --add-repo https://dl.winehq.org/wine-builds/fedora/33/winehq.repo &&
             fedora-based-2
-            ;;  
-            
-        5) 
-        
+            ;;
+
+        5)
+
             fedora-based-1 &&
             sudo dnf config-manager --add-repo https://dl.winehq.org/wine-builds/fedora/34/winehq.repo &&
             fedora-based-2
-            ;;  
-        
+            ;;
+
         6)
-        
+
             su -c 'zypper up && zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.2/ wine && zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.2/ wine && zypper install p7zip-full curl wget wine cabextract' &&
             select-your-path
             ;;
-            
+
         7)
-            
+
             su -c 'zypper up && zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.3/ wine && zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.3/ wine && zypper install p7zip-full curl wget wine cabextract' &&
             select-your-path
-            ;;  
-            
+            ;;
+
         8)
-            
+
             su -c 'zypper up && zypper install p7zip-full curl wget wine cabextract' &&
             select-your-path
-            ;;    
-            
+            ;;
+
         9)
-        
+
             redhat-linux &&
             select-your-path
             ;;
-            
+
         10)
-        
+
             solus-linux &&
             select-your-path
             ;;
-            
-        11) 
-        
+
+        11)
+
             debian-based-1 &&
             sudo apt-add-repository -r 'deb https://dl.winehq.org/wine-builds/ubuntu/ bionic main' &&
             wget -q https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_18.04/Release.key -O Release.key -O- | sudo apt-key add - &&
             sudo apt-add-repository 'deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_18.04/ ./' &&
             debian-based-2
             ;;
-            
-        12) 
-            
+
+        12)
+
             debian-based-1 &&
             sudo add-apt-repository -r 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main' &&
             wget -q https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_20.04/Release.key -O Release.key -O- | sudo apt-key add - &&
             sudo apt-add-repository 'deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_20.04/ ./' &&
             debian-based-2
             ;;
-            
-        13) 
-        
+
+        13)
+
             debian-based-1 &&
             sudo add-apt-repository -r 'deb https://dl.winehq.org/wine-builds/ubuntu/ groovy main' &&
             wget -q https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_20.10/Release.key -O Release.key -O- | sudo apt-key add - &&
             sudo apt-add-repository 'deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_20.10/ ./' &&
             debian-based-2
             ;;
-            
+
         14)
 
             # Note: This installs the public key to trusted.gpg.d - While this is "acceptable" behaviour it is not best practice.
             # It is infinitely better than using apt-key add though.
             # For more information and for instructions to utalise best practices, see:
             # https://askubuntu.com/questions/1286545/what-commands-exactly-should-replace-the-deprecated-apt-key
-            
+
             sudo apt update &&
             sudo apt upgrade &&
             sudo dpkg --add-architecture i386  &&
@@ -620,7 +620,7 @@ case $CHOICE in
             # It is infinitely better than using apt-key add though.
             # For more information and for instructions to utalise best practices, see:
             # https://askubuntu.com/questions/1286545/what-commands-exactly-should-replace-the-deprecated-apt-key
-            
+
             sudo apt update &&
             sudo apt upgrade &&
             sudo dpkg --add-architecture i386  &&
@@ -636,7 +636,7 @@ case $CHOICE in
             # Use 21.04 software prior to 21.10 release. Replace this with the below block after release.
             echo "deb [signed-by=/etc/apt/trusted.gpg.d/opensuse-wine.gpg] https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_21.04/ ./" | sudo tee -a /etc/apt/sources.list.d/opensuse-wine.list &&
             sudo add-apt-repository -r 'deb https://dl.winehq.org/wine-builds/ubuntu/ hirsute main' &&
-            
+
             # Verify the below repos exist and uncomment this block to replace the above after 21.10 release
             # echo "deb [signed-by=/etc/apt/trusted.gpg.d/opensuse-wine.gpg] https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_21.10/ ./" | sudo tee -a /etc/apt/sources.list.d/opensuse-wine.list &&
             # sudo add-apt-repository -r 'deb https://dl.winehq.org/wine-builds/ubuntu/ impish main' &&
@@ -644,9 +644,9 @@ case $CHOICE in
             debian-based-2
             ;;
 
-            
+
         16)
-        
+
             void-linux &&
             select-your-path
             ;;
@@ -726,7 +726,7 @@ function program-exit-uninstall {
     dialog --backtitle "$text_10" \
     --title "$text_10_1" \
     --msgbox "$text_10_2" 14 200
-    
+
     clear
     exit
 }
@@ -739,7 +739,7 @@ function program-exit {
     dialog --backtitle "$text_11" \
     --title "$text_11_1" \
     --msgbox "$text_11_2" 14 200
-    
+
     clear
     exit
 }
@@ -924,3 +924,4 @@ languages &&
 check-requirement
 
 ############################################################################################################################################################
+
