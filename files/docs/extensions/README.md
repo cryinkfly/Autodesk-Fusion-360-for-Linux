@@ -95,13 +95,13 @@ You can find also more information about the instalation of this plugin [here](h
 
 #### Details:
 
-Download Size: 0.298 MB
+Download Size: 3.6 MB
 <br>
 Release Date: 03.12.2020
 <br>
-Last Updated: 14.09.2021
+Last Updated: 01.10.2021
 <br>
-Version Info: 1.0.76
+Version Info: 1.2.0.90
 <br>
 Link: [OctoPrint for Autodesk® Fusion 360™](https://apps.autodesk.com/FUSION/en/Detail/Index?id=5679198834514673847&appLang=en&os=Mac)
 
