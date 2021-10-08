@@ -8,7 +8,7 @@
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
 # Time/Date:    09:00/08.10.2021                                                                   #
-# Version:      5.2                                                                                #
+# Version:      5.3                                                                                #
 ####################################################################################################
 
 ##############################################################################
@@ -323,7 +323,7 @@ function logfile-installation {
 function logfile-installation-standard {
    mkdir -p "/$HOME/.local/share/fusion360/logfiles" &&
    cd "/$HOME/.local/share/fusion360/logfiles" &&
-   echo "/home/$USER/.wineprefixes/fusion360/logfiles" >> path-log.txt
+   echo "/$HOME/.wineprefixes/fusion360/logfiles" >> path-log.txt
 }
 
 function logfile-installation-custom {
@@ -711,7 +711,7 @@ function select-your-path-custom {
 # Update/Repair existing installation of Autodesk Fusion 360 on your system!
 
 function change-fusion360-1 {
-    dialog --title "$text_9" --backtitle "$text_9_1" --textbox "$HOME/.local/share/fusion360log/log.txt" 14 180
+    dialog --title "$text_9" --backtitle "$text_9_1" --textbox "/$HOME/.local/share/fusion360/logfiles/path-log.txt" 14 180
 }
 
 function change-fusion360-2 {
