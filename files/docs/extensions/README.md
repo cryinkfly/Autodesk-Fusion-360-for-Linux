@@ -110,8 +110,6 @@ Link: [OctoPrint for Autodesk® Fusion 360™](https://apps.autodesk.com/FUSION/
 
 ### RoboDK:
 
-
-
 With the RoboDK plug-in for Autodesk Fusion 360, you can easily load 3D models created in Fusion 360 to RoboDK. This plug-in allows you to program more than 50 different robot manufacturers and 500 robots directly from Fusion 360. Robots can be easily programmed as 5-axis machines for manufacturing applications such as drilling, welding, trimming, 3D printing or robot machining.
 
 The RoboDK Add-In for Fusion is free if you have a RoboDK License.
