@@ -271,7 +271,7 @@ function winetricks-standard {
    cd Options &&
    configure-dxvk-or-opengl-standard-3 &&
    #Set up the program launcher for you!
-   cd "$HOME/.local/share/applications" &&
+   cd "$HOME/.local/share/applications/wine/Programs/Autodesk" &&
    wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/Autodesk%20Fusion%20360.desktop &&
    logfile-installation-standard &&
    install-extensions-standard &&
@@ -322,8 +322,11 @@ function logfile-installation {
 
 function logfile-installation-standard {
    mkdir -p "/$HOME/.local/share/fusion360/logfiles" &&
-   cd "/$HOME/.local/share/fusion360/logfiles" &&
-   echo "/$HOME/.wineprefixes/fusion360/logfiles" >> path-log.txt
+   cd "/$HOME/.local/share/fusion360" &&
+   wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/launcher.sh &&
+   chmod +x launcher.sh &&
+   cd "logfiles" &&
+   echo "/$HOME/.wineprefixes/fusion360" >> path-log.txt
 }
 
 function logfile-installation-custom {
