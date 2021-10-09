@@ -1,8 +1,10 @@
 [Desktop Entry]
 Name=Autodesk Fusion 360
 Comment=This program launcher only works if you selected the standard installation when installing Autodesk Fusion 360!
-Exec=fusion360starter="$(find $HOME/.wineprefixes/fusion360 -name Fusion360.exe -printf "%T+ %p\n" | sort -r 2>&1 | head -n 1 | sed -r 's/.+0000000000 (.+)/\1/')" && WINEPREFIX="$HOME/.wineprefixes/fusion360" wine "$fusion360starter"
+Exec=bash launcher.sh
 Type=Application
 Categories=Development;Graphics;Science
 StartupNotify=true
-Icon=E76B_Fusion360.0
+Icon=E414_Fusion360.0
+Terminal=false
+Path=/$HOME/.local/share/fusion360
