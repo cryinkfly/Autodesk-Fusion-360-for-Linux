@@ -7,4 +7,4 @@ Categories=Development;Graphics;Science
 StartupNotify=true
 Icon=E414_Fusion360.0
 Terminal=false
-Path=/$HOME/.local/share/fusion360
+Path=$HOME/.local/share/fusion360
