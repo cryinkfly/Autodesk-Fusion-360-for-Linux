@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    22:00/09.10.2021                                                                   #
-# Version:      5.4                                                                                #
+# Time/Date:    16:00/14.10.2021                                                                   #
+# Version:      5.5                                                                                #
 ####################################################################################################
 
 ##############################################################################
@@ -417,7 +417,7 @@ case $CHOICE in
         3)
             change-fusion360-1 &&
             change-fusion360-2 &&
-            rmdir "$filename" &&
+            rm -rf "$filename" &&
             # Remove this path into the log file is still in process!
             program-exit-uninstall
             ;;
