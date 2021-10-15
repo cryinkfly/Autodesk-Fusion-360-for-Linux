@@ -45,6 +45,7 @@
 - @mike-lloyd03
 - @MrEdd123
 - @nitro2k01
+- @nonchip
 - @Patschke
 - @paukstelis
 - @Project-Scorch
@@ -54,6 +55,7 @@
 - @rusk911
 - @SuibianP
 - @suryanisaac
+- @sixxxis
 - @TheCatster
 - @ThisIsTheOnlyUsernameAvailable
 - @TN-1
