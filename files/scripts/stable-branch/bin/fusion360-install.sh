@@ -426,7 +426,8 @@ case $? in
         configure-locale
 	      ;;
     -1)
-        echo "An unexpected error occurred!"
+        zenity --error \
+          --text="$text_error"
         exit;
 	      ;;
 esac
@@ -462,7 +463,8 @@ case $? in
         configure-locale
 	      ;;
     -1)
-        echo "An unexpected error occurred!"
+        zenity --error \
+          --text="$text_error"
         exit;
 	      ;;
 esac
@@ -494,7 +496,8 @@ case $? in
         configure-locale
 	      ;;
     -1)
-        echo "An unexpected error occurred!"
+        zenity --error \
+          --text="$text_error"
         exit;
         ;;
 esac
@@ -529,7 +532,8 @@ case $? in
         configure-locale
 	      ;;
     -1)
-        echo "An unexpected error occurred!"
+        zenity --error \
+          --text="$text_error"
         exit;
 	      ;;
 esac
@@ -565,7 +569,8 @@ case $? in
         configure-locale
 	      ;;
     -1)
-        echo "An unexpected error occurred!"
+        zenity --error \
+          --text="$text_error"
         exit;
 	      ;;
 esac
@@ -601,7 +606,8 @@ case $? in
         configure-locale
 	      ;;
     -1)
-        echo "An unexpected error occurred!"
+        zenity --error \
+          --text="$text_error"
         exit;
       	;;
 esac
@@ -637,7 +643,8 @@ case $? in
         configure-locale
 	      ;;
     -1)
-        echo "An unexpected error occurred!"
+        zenity --error \
+          --text="$text_error"
         exit;
 	      ;;
 esac
@@ -673,7 +680,8 @@ case $? in
         configure-locale
 	      ;;
     -1)
-        echo "An unexpected error occurred!"
+        zenity --error \
+          --text="$text_error"
         exit;
 	      ;;
 esac
@@ -709,7 +717,8 @@ case $? in
         configure-locale
 	      ;;
     -1)
-        echo "An unexpected error occurred!"
+        zenity --error \
+          --text="$text_error"
         exit;
       	;;
 esac
@@ -909,7 +918,8 @@ function view-exist-fusion360 {
           new_modify_deinstall
   	      ;;
       -1)
-          echo "An unexpected error occurred!"
+        zenity --error \
+          --text="$text_error"
           exit;
   	      ;;
   esac
@@ -938,7 +948,8 @@ function edit-exist-fusion360 {
           new_modify_deinstall
   	      ;;
       -1)
-          echo "An unexpected error occurred!"
+        zenity --error \
+          --text="$text_error"
           exit;
   	      ;;
   esac
@@ -1002,7 +1013,8 @@ function deinstall-view-exist-fusion360 {
           new_modify_deinstall
   	      ;;
       -1)
-          echo "An unexpected error occurred!"
+        zenity --error \
+          --text="$text_error"
           exit;
   	      ;;
   esac
