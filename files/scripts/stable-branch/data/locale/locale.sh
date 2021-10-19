@@ -6,7 +6,7 @@
 
 # Load & Save the locale files into the folders!
 
-function load-locale-files {
+function load-locale-languages {
   wget -P -N /cs-CZ/ https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/scripts/stable-branch/data/locale/cs-CZ/locale-cs.sh
   chmod +x ../cs-CZ/locale-cs.sh
   wget -P -N /de-DE/ https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/scripts/stable-branch/data/locale/de-DE/locale-de.sh
@@ -31,7 +31,7 @@ function load-locale-files {
 
 # Load & Save the licenses into the folders!
 
-function load-locale-license {
+function load-locale-licenses {
   wget -P -N /cs-CZ/ https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/scripts/stable-branch/data/locale/cs-CZ/license-cs
   wget -P -N /de-DE/ https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/scripts/stable-branch/data/locale/de-DE/license-de
   wget -P -N /en-US/ https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/scripts/stable-branch/data/locale/en-US/license-en
@@ -47,5 +47,5 @@ function load-locale-license {
 # THE INSTALLATION PROGRAM IS STARTED HERE:
 ##############################################################################
 
-load-locale-files
-load-locale-license
+load-locale-languages
+load-locale-licenses
