@@ -84,7 +84,8 @@ function desktop-launcher-custom {
           desktop-launcher-custom
   	      ;;
       -1)
-          echo "An unexpected error occurred!"
+          zenity --error \
+          --text="$text_error"
           exit;
   	      ;;
   esac
