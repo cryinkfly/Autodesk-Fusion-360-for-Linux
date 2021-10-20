@@ -1030,7 +1030,7 @@ function deinstall-view-exist-fusion360 {
 
           if [ "$answer" -eq 0 ]; then
               echo "$directory" > $file
-	      cp "$file" $HOME/.local/share/fusion360/logfiles/log-path
+	      cp "$file" $HOME/.local/share/fusion360/logfiles
               deinstall-exist-fusion360
           elif [ "$answer" -eq 1 ]; then
               deinstall-view-exist-fusion360
