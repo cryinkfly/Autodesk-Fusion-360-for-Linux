@@ -19,6 +19,5 @@ mkdir -p bin
 mkdir -p data
 
 wget -N -P bin https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/scripts/stable-branch/bin/fusion360-base.sh
-cd bin
-chmod +x fusion360-base.sh
-bash fusion360-base.sh
+chmod +x bin/fusion360-base.sh
+. bin/fusion360-base.sh
