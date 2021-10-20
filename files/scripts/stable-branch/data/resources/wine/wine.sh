@@ -1,9 +1,8 @@
-
 #!/bin/bash
 
 ####################################################################################################
 # Name:         Autodesk Fusion 360 - Setup Wizard (Linux)                                         #
-# Description:  With this file you get all languages for the Setup Wizard.                         #
+# Description:  With this file you install Autodesk Fusion 360 with Wine and Winetricks.           #
 # Author:       Steve Zabka                                                                        #
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
@@ -68,6 +67,10 @@ function winetricks-custom {
    . ../extensions/extensions.sh && install-extensions-custom
    program-exit
 }
+
+##############################################################################
+# ALL DIALOGS ARE ARRANGED HERE:
+##############################################################################
 
 function desktop-launcher-custom {
   file=`dirname $0`/Autodesk%20Fusion%20360
