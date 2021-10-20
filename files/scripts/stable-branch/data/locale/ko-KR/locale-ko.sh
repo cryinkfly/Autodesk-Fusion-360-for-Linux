@@ -37,10 +37,10 @@ text_linux_distribution="Linugseu baepopan"
 text_installation_location="Seolchi wichi"
 
 # Installation location - Standard
-text_installation_location_standard="Pyojun - Hom poldeoe Autodesk Fusion 360eul seolchihabnida. Ye: /home/username/wineprefixes/.fusion360"
+text_installation_location_standard="Pyojun - Hom poldeoe Autodesk Fusion 360eul seolchihabnida. Ye: /home/username/.wineprefixes/fusion360"
 
 # Installation location - Custom
-text_installation_location_custom="Sayongja jeong-ui - Autodesk Fusion 360 eul daleun wichie seolchihabnida. Ye: /run/media/username/usb-drive/wineprefixes/.fusion360"
+text_installation_location_custom="Sayongja jeong-ui - Autodesk Fusion 360 eul daleun wichie seolchihabnida. Ye: /run/media/username/usb-drive/.wineprefixes/fusion360"
 
 # Select a location with a file browser
 text_select_location_custom="Autodesk Fusion 360 seolchi wichileul seontaeghasibsio:"
