@@ -1,5 +1,20 @@
 #!/bin/bash
 
+####################################################################################################
+# Name:         Autodesk Fusion 360 - Setup Wizard (Linux)                                         #
+# Description:  This is the Chinese translation for the Setup Wizard.                              #
+# Author:       Steve Zabka                                                                        #
+# Author URI:   https://cryinkfly.com                                                              #
+# License:      MIT                                                                                #
+# Copyright (c) 2020-2021                                                                          #
+# Time/Date:    10:00/20.10.2021                                                                   #
+# Version:      1.0                                                                                #
+####################################################################################################
+
+###############################################################################################################################################################
+# ALL DEFINITIONS ARE ARRANGED HERE:                                                                                                                          #
+###############################################################################################################################################################
+
 # License-checkbox
 text_license_checkbox="Iyong-yaggwan-eul ilg-eoss-eumyeo ie dong-uihabnida."
 
@@ -22,10 +37,10 @@ text_linux_distribution="Linugseu baepopan"
 text_installation_location="Seolchi wichi"
 
 # Installation location - Standard
-text_installation_location_standard="Pyojun - Hom poldeoe Autodesk Fusion 360eul seolchihabnida. Ye: /home/username/wineprefixes/.fusion360"
+text_installation_location_standard="Pyojun - Hom poldeoe Autodesk Fusion 360eul seolchihabnida. Ye: /home/username/.wineprefixes/fusion360"
 
 # Installation location - Custom
-text_installation_location_custom="Sayongja jeong-ui - Autodesk Fusion 360 eul daleun wichie seolchihabnida. Ye: /run/media/username/usb-drive/wineprefixes/.fusion360"
+text_installation_location_custom="Sayongja jeong-ui - Autodesk Fusion 360 eul daleun wichie seolchihabnida. Ye: /run/media/username/usb-drive/.wineprefixes/fusion360"
 
 # Select a location with a file browser
 text_select_location_custom="Autodesk Fusion 360 seolchi wichileul seontaeghasibsio:"
