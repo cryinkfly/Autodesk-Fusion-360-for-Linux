@@ -104,6 +104,7 @@ function load-locale-zh {
 function load-extensions {
   wget -N -P data/resources/extensions https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/scripts/stable-branch/data/resources/extensions/extensions.sh
   chmod +x data/resources/extensions/extensions.sh
+  . data/resources/extensions/extensions.sh
 }
 
 function load-wine_winetricks {
