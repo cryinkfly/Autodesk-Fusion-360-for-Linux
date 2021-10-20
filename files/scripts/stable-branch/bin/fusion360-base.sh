@@ -60,7 +60,7 @@ function create-structure {
 }
 
 function load-locale {
-  wget -N -P data/locale https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/scripts/stable-branch/data/locale/locale.sh
+  wget -N -P data/locale https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/scripts/stable-branch/data/locale/locale.sh
   chmod +x data/locale/locale.sh
   . data/locale/locale.sh
 }
