@@ -276,6 +276,66 @@ function deinstall-exist-fusion360 {
 }
 
 ##############################################################################
+
+# Here you have to decide whether you want to use Autodesk Fusion 360 with DXVK (DirectX 9) or OpenGL! - Part 2
+
+function configure-dxvk-or-opengl-standard-1 {
+  if [ $driver_used -eq 2 ]; then
+      WINEPREFIX=$HOME/.wineprefixes/fusion360 sh data/resources/wine/winetricks -q dxvk
+      wget -N -P data/resources/wine https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.reg
+      WINEPREFIX=$HOME/.wineprefixes/fusion360 wine regedit.exe /data/resources/wine/DXVK.reg
+   fi
+}
+
+function configure-dxvk-or-opengl-standard-2 {
+if [ $driver_used -eq 2 ]; then
+      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.xml
+      mv DXVK.xml /$HOME/.wineprefixes/fusion360/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml
+   else
+      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/NMachineSpecificOptions.xml
+      mv NMachineSpecificOptions.xml /$HOME/.wineprefixes/fusion360/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml
+   fi
+}
+
+function configure-dxvk-or-opengl-standard-3 {
+if [ $driver_used -eq 2 ]; then
+      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.xml
+      mv DXVK.xml /$HOME/.wineprefixes/fusion360/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml
+   else
+      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/NMachineSpecificOptions.xml
+      mv NMachineSpecificOptions.xml /$HOME/.wineprefixes/fusion360/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml
+   fi
+}
+
+function configure-dxvk-or-opengl-custom-1 {
+   if [ $driver_used -eq 2 ]; then
+      WINEPREFIX=$custom_directory sh data/resources/wine/winetricks -q dxvk
+      wget -N -P data/resources/wine https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.reg
+      WINEPREFIX=$custom_directory wine regedit.exe data/resources/wine/DXVK.reg
+   fi
+}
+
+function configure-dxvk-or-opengl-custom-2 {
+if [ $driver_used -eq 2 ]; then
+      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.xml
+      mv DXVK.xml /$custom_directory/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml
+   else
+      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/NMachineSpecificOptions.xml
+      mv NMachineSpecificOptions.xml /$custom_directory/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml
+   fi
+}
+
+function configure-dxvk-or-opengl-custom-3 {
+if [ $driver_used -eq 2 ]; then
+      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.xml
+      mv DXVK.xml /$custom_directory/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml
+   else
+      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/NMachineSpecificOptions.xml
+      mv NMachineSpecificOptions.xml /$custom_directory/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml
+   fi
+}
+
+##############################################################################
 # ALL DIALOGS ARE ARRANGED HERE:
 ##############################################################################
 
