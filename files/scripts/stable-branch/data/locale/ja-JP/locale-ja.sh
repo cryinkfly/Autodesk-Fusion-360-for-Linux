@@ -37,7 +37,7 @@ text_linux_distribution="Rinakkusu disutoribyūshon"
 text_installation_location="Setchi basho"
 
 # Installation location - Standard
-text_installation_location_standard="Hyōjun - Autodesk Fusion 360 o hōmuforuda ni insutōru shimasu. Rei: /home/username/.wineprefixes/.fusion360"
+text_installation_location_standard="Hyōjun - Autodesk Fusion 360 o hōmuforuda ni insutōru shimasu. Rei: /home/username/.wineprefixes/fusion360"
 
 # Installation location - Custom
 text_installation_location_custom="Kasutamu - Autodesk Fusion 360 o betsu no basho ni insutōru shimasu. Rei: /run/media/username/usb-drive/.wineprefixes/fusion360"
