@@ -356,10 +356,6 @@ function start-launcher {
 
 function configure-locale {
 
-  export LC_ALL=en_US.UTF-8
-  export LANG=en_US.UTF-8
-  export LANGUAGE=en_US.UTF-8
-
   response=$(zenity --list \
                     --radiolist \
                     --title="$program_name" \
@@ -403,10 +399,6 @@ function configure-locale {
 
 function licenses-cs {
 
-  export LC_ALL=cs_CZ.UTF-8
-  export LANG=cs_CZ.UTF-8
-  export LANGUAGE=cs_CZ.UTF-8
-
 license_cs=`dirname $0`/data/locale/cs-CZ/license-cs
 
 zenity --text-info \
@@ -439,10 +431,6 @@ esac
 # Load & View the LICENSE AGREEMENT of this Setup Wizard - de-DE
 
 function licenses-de {
-
-  export LC_ALL=de_DE.UTF-8
-  export LANG=de_DE.UTF-8
-  export LANGUAGE=de_DE.UTF-8
 
 license_de=`dirname $0`/data/locale/de-DE/license-de
 
@@ -509,10 +497,6 @@ esac
 
 function licenses-es {
 
-  export LC_ALL=es_ES.UTF-8
-  export LANG=es_ES.UTF-8
-  export LANGUAGE=es_ES.UTF-8
-
 license_es=`dirname $0`/data/locale/es-ES/license-es
 
 zenity --text-info \
@@ -545,10 +529,6 @@ esac
 # Load & View the LICENSE AGREEMENT of this Setup Wizard - fr-FR
 
 function licenses-fr {
-
-  export LC_ALL=fr_FR.UTF-8
-  export LANG=fr_FR.UTF-8
-  export LANGUAGE=fr_FR.UTF-8
 
 license_fr=`dirname $0`/data/locale/fr-FR/license-fr
 
@@ -583,10 +563,6 @@ esac
 
 function licenses-it {
 
-  export LC_ALL=it_IT.UTF-8
-  export LANG=it_IT.UTF-8
-  export LANGUAGE=it_IT.UTF-8
-
 license_it=`dirname $0`/data/locale/it-IT/license-it
 
 zenity --text-info \
@@ -619,10 +595,6 @@ esac
 # Load & View the LICENSE AGREEMENT of this Setup Wizard - ja-JP
 
 function licenses-ja {
-
-  export LC_ALL=ja_JP.UTF-8
-  export LANG=ja_JP.UTF-8
-  export LANGUAGE=ja_JP.UTF-8
 
 license_ja=`dirname $0`/data/locale/ja-JP/license-ja
 
@@ -657,10 +629,6 @@ esac
 
 function licenses-ko {
 
-  export LC_ALL=ko_KR.UTF-8
-  export LANG=ko_KR.UTF-8
-  export LANGUAGE=ko_KR.UTF-8
-
 license_ko=`dirname $0`/data/locale/ko-KR/license-ko
 
 zenity --text-info \
@@ -693,10 +661,6 @@ esac
 # Load & View the LICENSE AGREEMENT of this Setup Wizard - zh-CN
 
 function licenses-zh {
-
-  export LC_ALL=zh_CN.UTF-8
-  export LANG=zh_CN.UTF-8
-  export LANGUAGE=zh_CN.UTF-8
 
 license_zh=`dirname $0`/data/locale/zh-CN/license-zh
 
@@ -1043,11 +1007,6 @@ function program-exit-uninstall {
 ##############################################################################
 # THE INSTALLATION PROGRAM IS STARTED HERE:
 ##############################################################################
-
-# Reset the locale for the installation of Autodesk Fusion 360!
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
-export LANGUAGE=en_US.UTF-8
 
 # Reset the driver for the installation of Autodesk Fusion 360!
 driver_used=0
