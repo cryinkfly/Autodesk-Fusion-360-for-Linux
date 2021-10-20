@@ -18,7 +18,7 @@
 # Load & Save the locale files into the folders!
 
 function load-extensions-files {
-  wget -N -P data/resources/extensions https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/files/extensions/AdditiveAssistant.bundle-win64.msi
+  wget -N -P data/resources/extensions https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/AirfoilTools_win64.msi
   wget -N -P data/resources/extensions https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/files/extensions/AdditiveAssistant.bundle-win64.msi
   wget -N -P data/resources/extensions https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/files/extensions/HP_3DPrinters_for_Fusion360-win64.msi
   wget -N -P data/resources/extensions https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/files/extensions/OctoPrint_for_Fusion360-win64.msi
