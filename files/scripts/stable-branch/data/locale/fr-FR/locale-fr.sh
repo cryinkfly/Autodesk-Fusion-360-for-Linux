@@ -1,5 +1,20 @@
 #!/bin/bash
 
+####################################################################################################
+# Name:         Autodesk Fusion 360 - Setup Wizard (Linux)                                         #
+# Description:  This is the French translation for the Setup Wizard.                              #
+# Author:       Steve Zabka                                                                        #
+# Author URI:   https://cryinkfly.com                                                              #
+# License:      MIT                                                                                #
+# Copyright (c) 2020-2021                                                                          #
+# Time/Date:    10:00/20.10.2021                                                                   #
+# Version:      1.0                                                                                #
+####################################################################################################
+
+###############################################################################################################################################################
+# ALL DEFINITIONS ARE ARRANGED HERE:                                                                                                                          #
+###############################################################################################################################################################
+
 # License-checkbox
 text_license_checkbox="J'ai lu les termes et conditions et je les accepte."
 
@@ -25,7 +40,7 @@ text_installation_location="Emplacement d'installation"
 text_installation_location_standard="Standard - Installez Autodesk Fusion 360 dans votre dossier de départ. Par exemple: /home/username/.wineprefixes/fusion360"
 
 # Installation location - Custom
-text_installation_location_custom="Personnalisé - Installez Autodesk Fusion 360 à un autre endroit. Par exemple: /run/media/username/usb-drive/wineprefixes/.fusion360"
+text_installation_location_custom="Personnalisé - Installez Autodesk Fusion 360 à un autre endroit. Par exemple: /run/media/username/usb-drive/.wineprefixes/fusion360"
 
 # Select a location with a file browser
 text_select_location_custom="Sélectionnez un emplacement pour votre installation d'Autodesk Fusion 360:"
@@ -87,9 +102,9 @@ text_extension_description="La description"
 text_extension_description_1="Cette extension vous aide par l'optimisation de toute chose ou pièce exposée à un gaz ou un liquide en mouvement. Par exemple: Ailes, ailerons, hélices et turbines."
 text_extension_description_2="Cette extension vous aide en analysant un certain nombre d'aspects de vos conceptions et fournit des informations claires sur la manière d'améliorer la fabricabilité de la pièce."
 text_extension_description_3="Cette extension vous donne la possibilité d'utiliser l'interface utilisateur (UI) tchèque dans Autodesk Fusion 360."
-text_extension_description_4="Cette extension est un connecteur entre Autodesk® Fusion 360™ et le logiciel HP SmartStream et est utilisée pour envoyer des travaux directement au logiciel HP."
+text_extension_description_4="Cette extension est un connecteur entre Autodesk Fusion 360 et le logiciel HP SmartStream et est utilisée pour envoyer des travaux directement au logiciel HP."
 text_extension_description_5="Avec cette extension, vous pouvez envoyer le code G de vos modèles 3D créés directement au serveur OctoPrint via Autodesk Fusion 360."
-text_extension_description_6="Cette extension vous permet de programmer plus de 50 fabricants de robots différents et 500 robots directement depuis Fusion 360."
+text_extension_description_6="Cette extension vous permet de programmer plus de 50 fabricants de robots différents et 500 robots directement depuis Autodesk Fusion 360."
 
 # Error
 text_error="Une erreur inattendue est apparue!"
