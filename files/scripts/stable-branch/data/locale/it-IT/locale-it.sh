@@ -1,5 +1,20 @@
 #!/bin/bash
 
+####################################################################################################
+# Name:         Autodesk Fusion 360 - Setup Wizard (Linux)                                         #
+# Description:  This is the Italian translation for the Setup Wizard.                              #
+# Author:       Steve Zabka                                                                        #
+# Author URI:   https://cryinkfly.com                                                              #
+# License:      MIT                                                                                #
+# Copyright (c) 2020-2021                                                                          #
+# Time/Date:    10:00/20.10.2021                                                                   #
+# Version:      1.0                                                                                #
+####################################################################################################
+
+###############################################################################################################################################################
+# ALL DEFINITIONS ARE ARRANGED HERE:                                                                                                                          #
+###############################################################################################################################################################
+
 # License-checkbox
 text_license_checkbox="Ho letto i termini e condizioni e li accetto."
 
@@ -22,10 +37,10 @@ text_linux_distribution="Distribuzione Linux"
 text_installation_location="Luogo di installazione"
 
 # Installation location - Standard
-text_installation_location_standard="Standard: installa Autodesk Fusion 360 nella cartella Inizio. Ad esempio: /home/NOME-UTENTE/.wineprefixes/fusion360"
+text_installation_location_standard="Standard: installa Autodesk Fusion 360 nella cartella Inizio. Ad esempio: /home/username/.wineprefixes/fusion360"
 
 # Installation location - Custom
-text_installation_location_custom="Personalizzato: installa Autodesk Fusion 360 in un'altra posizione. Ad esempio: /run/media/NOME-UTENTE/usb-drive/wineprefixes/.fusion360"
+text_installation_location_custom="Personalizzato: installa Autodesk Fusion 360 in un'altra posizione. Ad esempio: /run/media/username/usb-drive/.wineprefixes/fusion360"
 
 # Select a location with a file browser
 text_select_location_custom="Seleziona una posizione per l'installazione di Autodesk Fusion 360:"
@@ -87,9 +102,9 @@ text_extension_description="Descrizione"
 text_extension_description_1="Questa estensione ti aiuta a ottimizzare qualsiasi cosa o parte esposta a un gas o liquido in movimento. Ad esempio: Ali, pinne, eliche e turbine."
 text_extension_description_2="Questa estensione ti aiuta ad analizzare una serie di aspetti dei tuoi progetti e fornisce un chiaro feedback su come migliorare la producibilità della parte."
 text_extension_description_3="Questa estensione offre la possibilità di utilizzare l'interfaccia utente (UI) ceca in Autodesk Fusion 360."
-text_extension_description_4="Questa estensione è un connettore tra Autodesk® Fusion 360™ e il software HP SmartStream e viene utilizzata per inviare i lavori direttamente al software HP."
+text_extension_description_4="Questa estensione è un connettore tra Autodesk Fusion 360 e il software HP SmartStream e viene utilizzata per inviare i lavori direttamente al software HP."
 text_extension_description_5="Con questa estensione puoi inviare il codice G dei tuoi modelli 3D creati direttamente al server OctoPrint tramite Autodesk Fusion 360."
-text_extension_description_6="Questa estensione consente di programmare più di 50 diversi produttori di robot e 500 robot direttamente da Fusion 360."
+text_extension_description_6="Questa estensione consente di programmare più di 50 diversi produttori di robot e 500 robot direttamente da Autodesk Fusion 360."
 
 # Error
 text_error="Si è verificato un errore imprevisto!"
