@@ -37,7 +37,7 @@ function install-winetricks-custom {
    mkdir -p "$custom_directory/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options"
    configure-dxvk-or-opengl-custom-3
    #Set up the program launcher for you!
-   wget https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/Autodesk%20Fusion%20360
+   wget -P data/resources/fusion360-installer https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/Autodesk%20Fusion%20360.desktop -O Fusion360launcher
    desktop-launcher-custom
    mv "Autodesk Fusion 360" $HOME/.local/share/applications/Autodesk Fusion 360.desktop
    logfile-installation-custom
@@ -50,7 +50,7 @@ function install-winetricks-custom {
 ##############################################################################
 
 function desktop-launcher-custom {
-  file=`dirname $0`/Autodesk Fusion 360
+  file=`dirname $0`/data/resources/fusion360-installer/Fusion360launcher
   launcher=`zenity --text-info \
          --title="$program_name" \
          --width=700 \
@@ -70,6 +70,7 @@ function desktop-launcher-custom {
 
           if [ "$answer" -eq 0 ]; then
               echo "$launcher" > $file
+              mv $file $HOME/.local/share/fusion360/Autodesk%20Fusion%20360.desktop
           elif [ "$answer" -eq 1 ]; then
               desktop-launcher-custom
           fi
