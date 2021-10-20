@@ -35,8 +35,7 @@ function install-winetricks-standard {
    mkdir -p "$HOME/.wineprefixes/fusion360/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options"
    configure-dxvk-or-opengl-standard-3
    #Set up the program launcher for you!
-   wget https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/Autodesk%20Fusion%20360.desktop
-   mv Autodesk%20Fusion%20360.desktop $HOME/.local/share/applications/Autodesk%20Fusion%20360.desktop
+   wget -P $HOME/.local/share/applications https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/Autodesk%20Fusion%20360.desktop
    logfile-installation-standard
    . data/resources/extensions/extensions-standard.sh
    program-exit
