@@ -1,5 +1,22 @@
 #!/bin/bash
 
+####################################################################################################
+# Name:         Autodesk Fusion 360 - Setup Wizard (Linux)                                         #
+# Description:  This is the Czech translation for the Setup Wizard.                                #
+# Author:       Steve Zabka                                                                        #
+# Author URI:   https://cryinkfly.com                                                              #
+# License:      MIT                                                                                #
+# Copyright (c) 2020-2021                                                                          #
+# Time/Date:    10:00/20.10.2021                                                                   #
+# Version:      1.0                                                                                #
+####################################################################################################
+
+###############################################################################################################################################################
+# ALL DEFINITIONS ARE ARRANGED HERE:                                                                                                                          #
+###############################################################################################################################################################
+
+# License-checkbox
+
 # License-checkbox
 text_license_checkbox="Přečetl jsem si podmínky a přijímám je."
 
@@ -7,7 +24,7 @@ text_license_checkbox="Přečetl jsem si podmínky a přijímám je."
 text_select="Vybrat"
 
 # Driver
-text_driver="Ovladač"
+text_driver="Ovladač grafiky"
 
 # Driver OpenGL
 text_driver_opengl="OpenGL (Standard) - Tuto možnost vyberte, pokud si nejste jisti!"
@@ -22,10 +39,10 @@ text_linux_distribution="Distribuce Linuxu"
 text_installation_location="Umístění instalace"
 
 # Installation location - Standard
-text_installation_location_standard="Standard - Nainstalujte si Autodesk Fusion 360 do své domovské složky. Například: /home/YOUR-USERNAME/.wine prefixes/fusion 360"
+text_installation_location_standard="Standard - Nainstalujte si Autodesk Fusion 360 do své domovské složky. Například: /home/username/.wineprefixes/fusion360"
 
 # Installation location - Custom
-text_installation_location_custom="Vlastní - Nainstalujte Autodesk Fusion 360 na jiné místo. Například: /run/media/user/usb-drive/wine/.fusion 360"
+text_installation_location_custom="Vlastní - Nainstalujte Autodesk Fusion 360 na jiné místo. Například: /run/media/username/usb-drive/wineprefixes/.fusion360"
 
 # Select a location with a file browser
 text_select_location_custom="Vyberte umístění pro instalaci aplikace Autodesk Fusion 360:"
@@ -84,12 +101,13 @@ text_extension="Rozšíření"
 # Extension Description
 text_extension_description="Popis"
 
-text_extension_description_1="Toto rozšíření vám pomůže s optimalizací jakékoli věci nebo součásti, která je vystavena pohybujícímu se plynu nebo kapalině. Například: křídla, ploutve, vrtule a turbíny."
+text_extension_description_1="Toto rozšíření vám pomůže s optimalizací jakékoli věci nebo součásti, která je vystavena pohybujícímu se plynu nebo kapalině. Například: Křídla, ploutve, vrtule a turbíny."
 text_extension_description_2="Toto rozšíření vám pomůže analyzovat řadu aspektů vašich návrhů a poskytne jasnou zpětnou vazbu o tom, jak zlepšit vyrobitelnost součásti."
 text_extension_description_3="Toto rozšíření vám dává možnost používat české uživatelské rozhraní (UI) v aplikaci Autodesk Fusion 360."
-text_extension_description_4="Toto rozšíření je konektorem mezi Autodesk® Fusion 360 ™ a softwarem HP SmartStream a slouží k odesílání úloh přímo do softwaru HP."
+text_extension_description_4="Toto rozšíření je konektorem mezi Autodesk Fusion 360 a softwarem HP SmartStream a slouží k odesílání úloh přímo do softwaru HP."
 text_extension_description_5="S tímto rozšířením můžete odeslat G-kód vašich vytvořených 3D modelů přímo na server OctoPrint prostřednictvím Autodesk Fusion 360."
-text_extension_description_6="Toto rozšíření vám umožňuje naprogramovat více než 50 různých výrobců robotů a 500 robotů přímo z Fusion 360."
+text_extension_description_6="Toto rozšíření vám umožňuje naprogramovat více než 50 různých výrobců robotů a 500 robotů přímo z Autodesk Fusion 360."
 
 # Error
 text_error="Vyskytla se neočekávaná chyba!"
+
