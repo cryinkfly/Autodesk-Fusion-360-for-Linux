@@ -36,6 +36,8 @@ function install-winetricks-standard {
    configure-dxvk-or-opengl-standard-3
    #Set up the program launcher for you!
    wget -P $HOME/.local/share/applications/wine/Programs/Autodesk https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/Autodesk%20Fusion%20360.desktop
+   wget -P $HOME/.local/share/fusion360 https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/launcher.sh
+   chmod +x $HOME/.local/share/fusion360/launcher.sh
    logfile-installation-standard
    . data/resources/extensions/extensions-standard.sh
    program-exit
