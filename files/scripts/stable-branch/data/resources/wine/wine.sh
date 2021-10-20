@@ -23,12 +23,12 @@
 
 function winetricks-standard {
    mkdir -p $HOME/.wineprefixes/fusion360
-   WINEPREFIX=$HOME/.wineprefixes/fusion360 sh winetricks -q corefonts cjkfonts msxml4 msxml6 vcrun2017 fontsmooth=rgb win8
+   WINEPREFIX=$HOME/.wineprefixes/fusion360 sh data/resources/wine/winetricks -q corefonts cjkfonts msxml4 msxml6 vcrun2017 fontsmooth=rgb win8
    # We must install cjkfonts again then sometimes it doesn't work the first time!
-   WINEPREFIX=$HOME/.wineprefixes/fusion360 sh winetricks -q cjkfonts
+   WINEPREFIX=$HOME/.wineprefixes/fusion360 sh data/resources/wine/winetricks -q cjkfonts
    configure-dxvk-or-opengl-standard-1
-   WINEPREFIX=$HOME/.wineprefixes/fusion360 wine ../data/resources/fusion360-installer/Fusion360installer.exe -p deploy -g -f log.txt --quiet
-   WINEPREFIX=$HOME/.wineprefixes/fusion360 wine ../data/resources/fusion360-installer/Fusion360installer.exe -p deploy -g -f log.txt --quiet
+   WINEPREFIX=$HOME/.wineprefixes/fusion360 wine data/resources/fusion360-installer/Fusion360installer.exe -p deploy -g -f log.txt --quiet
+   WINEPREFIX=$HOME/.wineprefixes/fusion360 wine data/resources/fusion360-installer/Fusion360installer.exe -p deploy -g -f log.txt --quiet
    mkdir -p "$HOME/.wineprefixes/fusion360/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options"
    configure-dxvk-or-opengl-standard-2
    # Because the location varies depending on the Linux distro!
@@ -38,7 +38,7 @@ function winetricks-standard {
    wget https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/Autodesk%20Fusion%20360.desktop
    mv Autodesk%20Fusion%20360.desktop /$HOME/.local/share/applications/Autodesk%20Fusion%20360.desktop
    logfile-installation-standard
-   . ../extensions/extensions.sh && install-extensions-standard
+   . data/resources/extensions/extensions.sh && install-extensions-standard
    program-exit
 }
 
@@ -48,12 +48,12 @@ function winetricks-standard {
 
 function winetricks-custom {
    mkdir -p $custom_directory
-   WINEPREFIX=$custom_directory sh winetricks -q corefonts cjkfonts msxml4 msxml6 vcrun2017 fontsmooth=rgb win8
+   WINEPREFIX=$custom_directory sh data/resources/wine/winetricks -q corefonts cjkfonts msxml4 msxml6 vcrun2017 fontsmooth=rgb win8
    # We must install cjkfonts again then sometimes it doesn't work the first time!
-   WINEPREFIX=$custom_directory sh winetricks -q cjkfonts
+   WINEPREFIX=$custom_directory sh data/resources/wine/winetricks -q cjkfonts
    configure-dxvk-or-opengl-custom-1
-   WINEPREFIX=$custom_directory wine ../data/resources/fusion360-installer/Fusion360installer.exe -p deploy -g -f log.txt --quiet
-   WINEPREFIX=$custom_directory wine ../data/resources/fusion360-installer/Fusion360installer.exe -p deploy -g -f log.txt --quiet
+   WINEPREFIX=$custom_directory wine data/resources/fusion360-installer/Fusion360installer.exe -p deploy -g -f log.txt --quiet
+   WINEPREFIX=$custom_directory wine data/resources/fusion360-installer/Fusion360installer.exe -p deploy -g -f log.txt --quiet
    mkdir -p "$custom_directory/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options"
    configure-dxvk-or-opengl-custom-2
    # Because the location varies depending on the Linux distro!
@@ -64,7 +64,7 @@ function winetricks-custom {
    desktop-launcher-custom
    mv Autodesk%20Fusion%20360 /$HOME/.local/share/applications/Autodesk%20Fusion%20360.desktop
    logfile-installation-custom
-   . ../extensions/extensions.sh && install-extensions-custom
+   . data/resources/extensions/extensions.sh && install-extensions-custom
    program-exit
 }
 
