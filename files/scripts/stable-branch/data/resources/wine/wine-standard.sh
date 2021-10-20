@@ -21,7 +21,7 @@
 # ALL FUNCTIONS ARE ARRANGED HERE:                                                                                                                            #
 ###############################################################################################################################################################
 
-function winetricks-standard {
+function install-winetricks-standard {
    mkdir -p $HOME/.wineprefixes/fusion360
    WINEPREFIX=$HOME/.wineprefixes/fusion360 sh data/resources/wine/winetricks -q corefonts cjkfonts msxml4 msxml6 vcrun2017 fontsmooth=rgb win8
    # We must install cjkfonts again then sometimes it doesn't work the first time!
@@ -43,69 +43,7 @@ function winetricks-standard {
 }
 
 ##############################################################################
-
-# Winetricks - Custom
-
-function winetricks-custom {
-   mkdir -p $custom_directory
-   WINEPREFIX=$custom_directory sh data/resources/wine/winetricks -q corefonts cjkfonts msxml4 msxml6 vcrun2017 fontsmooth=rgb win8
-   # We must install cjkfonts again then sometimes it doesn't work the first time!
-   WINEPREFIX=$custom_directory sh data/resources/wine/winetricks -q cjkfonts
-   configure-dxvk-or-opengl-custom-1
-   WINEPREFIX=$custom_directory wine data/resources/fusion360-installer/Fusion360installer.exe -p deploy -g -f log.txt --quiet
-   WINEPREFIX=$custom_directory wine data/resources/fusion360-installer/Fusion360installer.exe -p deploy -g -f log.txt --quiet
-   mkdir -p "$custom_directory/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options"
-   configure-dxvk-or-opengl-custom-2
-   # Because the location varies depending on the Linux distro!
-   mkdir -p "$custom_directory/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options"
-   configure-dxvk-or-opengl-custom-3
-   #Set up the program launcher for you!
-   wget https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/Autodesk%20Fusion%20360
-   desktop-launcher-custom
-   mv Autodesk%20Fusion%20360 $HOME/.local/share/applications/Autodesk%20Fusion%20360.desktop
-   logfile-installation-custom
-   . data/resources/extensions/extensions-custom.sh
-   program-exit
-}
-
-##############################################################################
-# ALL DIALOGS ARE ARRANGED HERE:
+# THE INSTALLATION PROGRAM IS STARTED HERE:
 ##############################################################################
 
-function desktop-launcher-custom {
-  file=`dirname $0`/Autodesk%20Fusion%20360
-  launcher=`zenity --text-info \
-         --title="$program_name" \
-         --width=650 \
-         --height=400 \
-         --filename=$file \
-         --editable \
-         --checkbox="$text_desktop_launcher_custom_checkbox"`
-
-  case $? in
-      0)
-          zenity --question \
-                 --title="$program_name" \
-                 --text="$text_desktop_launcher_custom_question" \
-                 --width=350 \
-                 --height=100
-          answer=$?
-
-          if [ "$answer" -eq 0 ]; then
-              echo "$launcher" > $file
-          elif [ "$answer" -eq 1 ]; then
-              desktop-launcher-custom
-          fi
-
-  	      ;;
-      1)
-          echo "Go back"
-          desktop-launcher-custom
-  	      ;;
-      -1)
-          zenity --error \
-          --text="$text_error"
-          exit;
-  	      ;;
-  esac
-}
+install-winetricks-standard
