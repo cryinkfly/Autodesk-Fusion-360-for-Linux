@@ -36,7 +36,7 @@ function winetricks-standard {
    configure-dxvk-or-opengl-standard-3
    #Set up the program launcher for you!
    wget https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/Autodesk%20Fusion%20360.desktop
-   mv Autodesk%20Fusion%20360.desktop /$HOME/.local/share/applications/Autodesk%20Fusion%20360.desktop
+   mv Autodesk%20Fusion%20360.desktop $HOME/.local/share/applications/Autodesk%20Fusion%20360.desktop
    logfile-installation-standard
    . data/resources/extensions/extensions.sh && install-extensions-standard
    program-exit
@@ -62,7 +62,7 @@ function winetricks-custom {
    #Set up the program launcher for you!
    wget https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/Autodesk%20Fusion%20360
    desktop-launcher-custom
-   mv Autodesk%20Fusion%20360 /$HOME/.local/share/applications/Autodesk%20Fusion%20360.desktop
+   mv Autodesk%20Fusion%20360 $HOME/.local/share/applications/Autodesk%20Fusion%20360.desktop
    logfile-installation-custom
    . data/resources/extensions/extensions.sh && install-extensions-custom
    program-exit
