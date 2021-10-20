@@ -32,8 +32,8 @@
 # This log file will later help with error analysis to find out why the installation did not work.
 
 function logfile-installation {
-   mkdir -p "../data/logfiles" &&
-   exec 5> ../data/logfiles/logfile-installation
+   mkdir -p "/$HOME/.local/share/fusion360/logfiles" &&
+   exec 5> /$HOME/.local/share/fusion360/logfiles/logfile-installation
    BASH_XTRACEFD="5"
    set -x
 }
@@ -125,7 +125,7 @@ function load-fusion360-installer {
 # It will check whether Autodesk Fusion 360 is already installed on your system or not!
 
 function check-if-fusion360-exists {
-log_path=../data/logfiles/log-path # Search for log files indicting install
+log_path=/$HOME/.local/share/fusion360/logfiles/log-path # Search for log files indicting install
 if [ -f "$log_path" ]; then
     new_modify_deinstall # Exists - Modify install
 else
@@ -134,11 +134,11 @@ fi
 }
 
 function logfile-installation-standard {
-   echo "/$HOME/.wineprefixes/fusion360/logfiles" >> ../data/logfiles/path-log.txt
+   echo "/$HOME/.wineprefixes/fusion360/logfiles" >> /$HOME/.local/share/fusion360/logfiles/path-log
 }
 
 function logfile-installation-custom {
-   echo "$custom_directory" >> ../data/logfiles/path-log.txt
+   echo "$custom_directory" >> /$HOME/.local/share/fusion360/logfiles/path-log
 }
 
 ##############################################################################
@@ -901,7 +901,7 @@ function new_modify_deinstall {
 # View the path of your exist Autodesk Fusion 360! -View
 
 function view-exist-fusion360 {
-  file=`dirname $0`/../data/logfiles/log-path
+  file=`dirname $0`/$HOME/.local/share/fusion360/logfiles/log-path
   directory=`zenity --text-info \
          --title="$program_name" \
          --width=650 \
@@ -931,7 +931,7 @@ function view-exist-fusion360 {
 # View the path of your exist Autodesk Fusion 360! - edit-exist-fusion360
 
 function edit-exist-fusion360 {
-  file=`dirname $0`/../data/logfiles/log-path
+  file=`dirname $0`/$HOME/.local/share/fusion360/logfiles/log-path
   directory=`zenity --text-info \
          --title="$program_name" \
          --width=650 \
@@ -982,7 +982,7 @@ function new_modify-select-opengl_dxvk {
 # Deinstall a exist Autodesk Fusion 360 installation!
 
 function deinstall-view-exist-fusion360 {
-  file=`dirname $0`/../data/logfiles/log-path
+  file=`dirname $0`/$HOME/.local/share/fusion360/logfiles/log-path
   directory=`zenity --text-info \
          --title="$program_name" \
          --width=650 \
