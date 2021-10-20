@@ -1002,7 +1002,7 @@ function new_modify-select-opengl_dxvk {
 
 [[ $response = "$text_driver_dxvk" ]] && driver_used=2 && select-your-path-fusion360 && . data/resources/wine/wine-custom.sh
 
-[[ "$response" ]] || echo "Go back" && configure-locale
+[[ "$response" ]] || echo "Go back" && new_modify_deinstall
 }
 
 ##############################################################################
