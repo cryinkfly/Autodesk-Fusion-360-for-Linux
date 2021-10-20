@@ -138,7 +138,7 @@ fi
 }
 
 function logfile-installation-standard {
-   echo "$HOME/.wineprefixes/fusion360/logfiles" >> $HOME/.local/share/fusion360/logfiles/log-path
+   echo "$HOME/.wineprefixes/fusion360" >> $HOME/.local/share/fusion360/logfiles/log-path
 }
 
 function logfile-installation-custom {
