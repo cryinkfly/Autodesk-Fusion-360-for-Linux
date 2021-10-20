@@ -757,7 +757,7 @@ function select-opengl_dxvk {
   response=$(zenity --list \
                     --radiolist \
                     --title="$program_name" \
-                    --width=400 \
+                    --width=650 \
                     --height=300 \
                     --column="$text_select" --column="$text_driver" \
                     TRUE "$text_driver_opengl" \
@@ -778,8 +778,8 @@ function select-your-os {
   response=$(zenity --list \
                     --radiolist \
                     --title="$program_name" \
-                    --width=400 \
-                    --height=300 \
+                    --width=650 \
+                    --height=400 \
                     --column="$text_select" --column="$text_linux_distribution" \
                     FALSE "Arch Linux, Manjaro Linux, EndeavourOS, ..." \
                     FALSE "Debian 10, MX Linux 19.4, Raspberry Pi Desktop, ..." \
@@ -844,8 +844,8 @@ function select-your-path {
   response=$(zenity --list \
                     --radiolist \
                     --title="$program_name" \
-                    --width=400 \
-                    --height=300 \
+                    --width=650 \
+                    --height=400 \
                     --column="$text_select" --column="$text_installation_location" \
                     TRUE "$text_installation_location_standard" \
                     FALSE "$text_installation_location_custom")
@@ -903,8 +903,8 @@ function new_modify_deinstall {
   response=$(zenity --list \
                     --radiolist \
                     --title="$program_name" \
-                    --width=400 \
-                    --height=300 \
+                    --width=650 \
+                    --height=400 \
                     --column="$text_select" --column="$text_select_option" \
                     TRUE "$text_select_option_1" \
                     FALSE "$text_select_option_2" \
@@ -988,7 +988,7 @@ function new_modify-select-opengl_dxvk {
   response=$(zenity --list \
                     --radiolist \
                     --title="$program_name" \
-                    --width=400 \
+                    --width=650 \
                     --height=300 \
                     --column="$text_select" --column="$text_driver" \
                     TRUE "$text_driver_opengl" \
