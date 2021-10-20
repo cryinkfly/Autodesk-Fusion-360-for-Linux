@@ -929,7 +929,7 @@ function new_modify_deinstall {
 # View the path of your exist Autodesk Fusion 360! -View
 
 function view-exist-fusion360 {
-  file=`dirname $0`/$HOME/.local/share/fusion360/logfiles/log-path
+  file=`dirname $0`/data/logfiles/log-path
   directory=`zenity --text-info \
          --title="$program_name" \
          --width=700 \
