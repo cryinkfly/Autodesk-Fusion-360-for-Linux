@@ -444,7 +444,7 @@ function licenses-de {
   export LANG=de_DE.UTF-8
   export LANGUAGE=de_DE.UTF-8
 
-license_de=`dirname $0`data/locale/de-DE/license-de
+license_de=`dirname $0`/data/locale/de-DE/license-de
 
 zenity --text-info \
        --title="$program_name" \
@@ -477,7 +477,7 @@ esac
 
 function licenses-en {
 
-license_en=`dirname $0`data/locale/en-US/license-en
+license_en=`dirname $0`/data/locale/en-US/license-en
 
 zenity --text-info \
        --title="$program_name" \
