@@ -82,7 +82,7 @@ function load-locale-es {
 }
 
 function load-locale-fr {
-  . ../data/locale/fr-FR/locale-fr.sh
+  . data/locale/fr-FR/locale-fr.sh
 }
 
 function load-locale-it {
