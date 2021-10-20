@@ -39,7 +39,7 @@ function install-winetricks-custom {
    #Set up the program launcher for you!
    wget https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/Autodesk%20Fusion%20360
    desktop-launcher-custom
-   mv Autodesk%20Fusion%20360 $HOME/.local/share/applications/Autodesk%20Fusion%20360.desktop
+   mv "Autodesk Fusion 360" $HOME/.local/share/applications/Autodesk Fusion 360.desktop
    logfile-installation-custom
    . data/resources/extensions/extensions-custom.sh
    program-exit
@@ -50,11 +50,11 @@ function install-winetricks-custom {
 ##############################################################################
 
 function desktop-launcher-custom {
-  file=`dirname $0`/Autodesk%20Fusion%20360
+  file=`dirname $0`/Autodesk Fusion 360
   launcher=`zenity --text-info \
          --title="$program_name" \
-         --width=650 \
-         --height=400 \
+         --width=700 \
+         --height=500 \
          --filename=$file \
          --editable \
          --checkbox="$text_desktop_launcher_custom_checkbox"`
@@ -64,7 +64,7 @@ function desktop-launcher-custom {
           zenity --question \
                  --title="$program_name" \
                  --text="$text_desktop_launcher_custom_question" \
-                 --width=350 \
+                 --width=400 \
                  --height=100
           answer=$?
 
