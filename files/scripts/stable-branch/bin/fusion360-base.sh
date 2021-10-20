@@ -440,9 +440,9 @@ esac
 
 function licenses-de {
 
-  export LC_ALL=de_DE
-  export LANG=de_DE
-  export LANGUAGE=de_DE
+  export LC_ALL=de_DE.UTF-8
+  export LANG=de_DE.UTF-8
+  export LANGUAGE=de_DE.UTF-8
 
 license_de=`dirname $0`/data/locale/de-DE/license-de
 
@@ -509,9 +509,9 @@ esac
 
 function licenses-es {
 
-  export LC_ALL=es_ES
-  export LANG=es_ES
-  export LANGUAGE=es_ES
+  export LC_ALL=es_ES.UTF-8
+  export LANG=es_ES.UTF-8
+  export LANGUAGE=es_ES.UTF-8
 
 license_es=`dirname $0`/data/locale/es-ES/license-es
 
