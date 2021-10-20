@@ -60,25 +60,25 @@ function create-structure {
 }
 
 function load-locale {
-  wget -N -P ../data/locale https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/scripts/stable-branch/data/locale/locale.sh
-  chmod +x ../data/locale/locale.sh
-  . ../data/locale/locale.sh
+  wget -N -P data/locale https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/scripts/stable-branch/data/locale/locale.sh
+  chmod +x data/locale/locale.sh
+  . data/locale/locale.sh
 }
 
 function load-locale-cs {
-  . ../data/locale/cs-CZ/locale-cs.sh
+  . data/locale/cs-CZ/locale-cs.sh
 }
 
 function load-locale-de {
-  . ../data/locale/de-DE/locale-de.sh
+  . data/locale/de-DE/locale-de.sh
 }
 
 function load-locale-en {
-  . ../data/locale/en-US/locale-en.sh
+  . data/locale/en-US/locale-en.sh
 }
 
 function load-locale-es {
-  . ../data/locale/es-ES/locale-es.sh
+  . data/locale/es-ES/locale-es.sh
 }
 
 function load-locale-fr {
@@ -86,36 +86,36 @@ function load-locale-fr {
 }
 
 function load-locale-it {
-  . ../data/locale/it-IT/locale-it.sh
+  . data/locale/it-IT/locale-it.sh
 }
 
 function load-locale-ja {
-  . ../data/locale/ja-JP/locale-ja.sh
+  . data/locale/ja-JP/locale-ja.sh
 }
 
 function load-locale-ko {
-  . ../data/locale/ko-KR/locale-ko.sh
+  . data/locale/ko-KR/locale-ko.sh
 }
 
 function load-locale-zh {
-  . ../data/locale/zh-CN/locale-zh.sh
+  . data/locale/zh-CN/locale-zh.sh
 }
 
 function load-extensions {
-  wget -N -P ../data/resources/extensions https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/scripts/stable-branch/data/resources/extensions/extensions.sh
-  chmod +x ../data/resources/extensions/extensions.sh
+  wget -N -P data/resources/extensions https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/scripts/stable-branch/data/resources/extensions/extensions.sh
+  chmod +x data/resources/extensions/extensions.sh
 }
 
 function load-wine_winetricks {
-  wget -N -P ../data/resources/wine https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/scripts/stable-branch/data/resources/wine/wine.sh
-  chmod +x ../data/resources/wine/wine.sh
-  wget -N -P ../data/resources/wine https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks
-  chmod +x ../data/resources/wine/winetricks
+  wget -N -P data/resources/wine https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/scripts/stable-branch/data/resources/wine/wine.sh
+  chmod +x data/resources/wine/wine.sh
+  wget -N -P data/resources/wine https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks
+  chmod +x data/resources/wine/winetricks
   }
 
 function load-fusion360-installer {
   wget https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe -O Fusion360installer.exe
-  mv Fusion360installer.exe ../data/resources/fusion360-installer/Fusion360installer.exe
+  mv Fusion360installer.exe data/resources/fusion360-installer/Fusion360installer.exe
 }
 
 
@@ -406,7 +406,7 @@ function licenses-cs {
   export LANG=cs_CZ.UTF-8
   export LANGUAGE=cs_CZ.UTF-8
 
-filename=`dirname $0`/../data/locale/cs-CZ/license-cs
+filename=`dirname $0`data/locale/cs-CZ/license-cs
 
 zenity --text-info \
        --title="$program_name" \
@@ -443,7 +443,7 @@ function licenses-de {
   export LANG=de_DE.UTF-8
   export LANGUAGE=de_DE.UTF-8
 
-filename=`dirname $0`/../data/locale/de-DE/license-de
+filename=`dirname $0`data/locale/de-DE/license-de
 
 zenity --text-info \
        --title="$program_name" \
@@ -476,7 +476,7 @@ esac
 
 function licenses-en {
 
-filename=`dirname $0`/../data/locale/en-US/license-en
+filename=`dirname $0`data/locale/en-US/license-en
 
 zenity --text-info \
        --title="$program_name" \
@@ -512,7 +512,7 @@ function licenses-es {
   export LANG=es_ES.UTF-8
   export LANGUAGE=es_ES.UTF-8
 
-filename=`dirname $0`/../data/locale/es-ES/license-es
+filename=`dirname $0`data/locale/es-ES/license-es
 
 zenity --text-info \
        --title="$program_name" \
@@ -549,7 +549,7 @@ function licenses-fr {
   export LANG=fr_FR.UTF-8
   export LANGUAGE=fr_FR.UTF-8
 
-filename=`dirname $0`/../data/locale/fr-FR/license-fr
+filename=`dirname $0`data/locale/fr-FR/license-fr
 
 zenity --text-info \
        --title="$program_name" \
@@ -586,7 +586,7 @@ function licenses-it {
   export LANG=it_IT.UTF-8
   export LANGUAGE=it_IT.UTF-8
 
-filename=`dirname $0`/../data/locale/it-IT/license-it
+filename=`dirname $0`data/locale/it-IT/license-it
 
 zenity --text-info \
        --title="$program_name" \
@@ -623,7 +623,7 @@ function licenses-ja {
   export LANG=ja_JP.UTF-8
   export LANGUAGE=ja_JP.UTF-8
 
-filename=`dirname $0`/../data/locale/ja-JP/license-ja
+filename=`dirname $0`data/locale/ja-JP/license-ja
 
 zenity --text-info \
        --title="$program_name" \
@@ -660,7 +660,7 @@ function licenses-ko {
   export LANG=ko_KR.UTF-8
   export LANGUAGE=ko_KR.UTF-8
 
-filename=`dirname $0`/../data/locale/ko-KR/license-ko
+filename=`dirname $0`data/locale/ko-KR/license-ko
 
 zenity --text-info \
        --title="$program_name" \
@@ -697,7 +697,7 @@ function licenses-zh {
   export LANG=zh_CN.UTF-8
   export LANGUAGE=zh_CN.UTF-8
 
-filename=`dirname $0`/../data/locale/zh-CN/license-zh
+filename=`dirname $0`data/locale/zh-CN/license-zh
 
 zenity --text-info \
        --title="$program_name" \
@@ -825,9 +825,9 @@ function select-your-path {
                     TRUE "$text_installation_location_standard" \
                     FALSE "$text_installation_location_custom")
 
-[[ $response = "$text_installation_location_standard" ]] && . ../data/resources/wine/wine.sh && winetricks-standard
+[[ $response = "$text_installation_location_standard" ]] && . data/resources/wine/wine.sh && winetricks-standard
 
-[[ $response = "$text_installation_location_custom" ]] && select-your-path-fusion360 && . ../data/resources/wine/wine.sh && winetricks-custom
+[[ $response = "$text_installation_location_custom" ]] && select-your-path-fusion360 && . data/resources/wine/wine.sh && winetricks-custom
 
 [[ "$response" ]] || echo "Go back" && abort-installation
 }
@@ -969,9 +969,9 @@ function new_modify-select-opengl_dxvk {
                     TRUE "$text_driver_opengl" \
                     FALSE "$text_driver_dxvk")
 
-[[ $response = "$text_driver_opengl" ]] && driver_used=1 && select-your-path-fusion360 && . ../data/resources/wine/wine.sh && winetricks-custom
+[[ $response = "$text_driver_opengl" ]] && driver_used=1 && select-your-path-fusion360 && . data/resources/wine/wine.sh && winetricks-custom
 
-[[ $response = "$text_driver_dxvk" ]] && driver_used=2 && select-your-path-fusion360 && . ../data/resources/wine/wine.sh && winetricks-custom
+[[ $response = "$text_driver_dxvk" ]] && driver_used=2 && select-your-path-fusion360 && . data/resources/wine/wine.sh && winetricks-custom
 
 [[ "$response" ]] || echo "Go back" && configure-locale
 }
