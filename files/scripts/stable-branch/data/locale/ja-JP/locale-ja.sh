@@ -1,5 +1,20 @@
 #!/bin/bash
 
+####################################################################################################
+# Name:         Autodesk Fusion 360 - Setup Wizard (Linux)                                         #
+# Description:  This is the Japanese translation for the Setup Wizard.                             #
+# Author:       Steve Zabka                                                                        #
+# Author URI:   https://cryinkfly.com                                                              #
+# License:      MIT                                                                                #
+# Copyright (c) 2020-2021                                                                          #
+# Time/Date:    10:00/20.10.2021                                                                   #
+# Version:      1.0                                                                                #
+####################################################################################################
+
+###############################################################################################################################################################
+# ALL DEFINITIONS ARE ARRANGED HERE:                                                                                                                          #
+###############################################################################################################################################################
+
 # License-checkbox
 text_license_checkbox="Riyō kiyaku o yomi, dōi shimasu."
 
@@ -25,7 +40,7 @@ text_installation_location="Setchi basho"
 text_installation_location_standard="Hyōjun - Autodesk Fusion 360 o hōmuforuda ni insutōru shimasu. Rei: /home/username/.wineprefixes/.fusion360"
 
 # Installation location - Custom
-text_installation_location_custom="Kasutamu - Autodesk Fusion 360 o betsu no basho ni insutōru shimasu. Rei: /run/media/username/usb-drive/.wineprefixes/.fusion360"
+text_installation_location_custom="Kasutamu - Autodesk Fusion 360 o betsu no basho ni insutōru shimasu. Rei: /run/media/username/usb-drive/.wineprefixes/fusion360"
 
 # Select a location with a file browser
 text_select_location_custom="Autodesk Fusion 360 no insutōru basho o sentaku shimasu:"
@@ -67,7 +82,7 @@ text_deinstall_checkbox="Kizon no Autodesk Fusion 360 insutōru kara tadashī pa
 text_deinstall_question="Henkō o hozon shite, kizon no tadashī Autodesk Fusion 360 insutōru o sakujo shimasu ka?"
 
 # Select a location with a file browser - new_modify_deinstall
-text_select_location_deinstall="Kizon no Autodesk Fusion 360 insutōru o sentaku shimasu."
+text_select_location_deinstall="Kizon no Autodesk Fusion 360 insutōru o sentaku shimasu:"
 
 # Program-Exit - new_modify_deinstall
 text_completed_deinstallation="Autodesk Fusion 360 no sakujo ga kanryō shimashita."
