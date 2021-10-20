@@ -71,7 +71,7 @@ function desktop-launcher-custom {
 
           if [ "$answer" -eq 0 ]; then
               echo "$launcher" > $file
-              mv $file $HOME/.local/share/fusion360/Autodesk%20Fusion%20360.desktop
+              mv $file "$HOME/.local/share/fusion360/Autodesk Fusion 360.desktop"
           elif [ "$answer" -eq 1 ]; then
               desktop-launcher-custom
           fi
