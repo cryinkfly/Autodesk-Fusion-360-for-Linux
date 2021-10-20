@@ -108,8 +108,10 @@ function load-extensions {
 }
 
 function load-wine_winetricks {
-  wget -N -P data/resources/wine https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/scripts/stable-branch/data/resources/wine/wine.sh
-  chmod +x data/resources/wine/wine.sh
+  wget -N -P data/resources/wine https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/scripts/stable-branch/data/resources/wine/wine-standard.sh
+  chmod +x data/resources/wine/wine-standard.sh
+  wget -N -P data/resources/wine https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/scripts/stable-branch/data/resources/wine/wine-custom.sh
+  chmod +x data/resources/wine/wine-custom.sh
   wget -N -P data/resources/wine https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks
   chmod +x data/resources/wine/winetricks
   }
