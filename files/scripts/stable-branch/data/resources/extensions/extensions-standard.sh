@@ -88,8 +88,8 @@ function install-extensions-standard {
   response=$(zenity --list \
                     --checklist \
                     --title="$program_name" \
-                    --width=650 \
-                    --height=400 \
+                    --width=900 \
+                    --height=500 \
                     --column="$text_select" --column="$text_extension" --column="$text_extension_description"\
                     FALSE "Airfoil Tools" "$text_extension_description_1" \
                     FALSE "Additive Assistant (FFF)" "$text_extension_description_2" \
