@@ -406,7 +406,7 @@ function licenses-cs {
   export LANG=cs_CZ.UTF-8
   export LANGUAGE=cs_CZ.UTF-8
 
-filename=`dirname $0`data/locale/cs-CZ/license-cs
+filename=`dirname $0`/data/locale/cs-CZ/license-cs
 
 zenity --text-info \
        --title="$program_name" \
