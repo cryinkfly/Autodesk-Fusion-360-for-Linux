@@ -998,9 +998,9 @@ function new_modify-select-opengl_dxvk {
                     TRUE "$text_driver_opengl" \
                     FALSE "$text_driver_dxvk")
 
-[[ $response = "$text_driver_opengl" ]] && driver_used=1 && select-your-path-fusion360 && . data/resources/wine/wine.sh && winetricks-custom
+[[ $response = "$text_driver_opengl" ]] && driver_used=1 && select-your-path-fusion360 && . data/resources/wine/wine-custom.sh
 
-[[ $response = "$text_driver_dxvk" ]] && driver_used=2 && select-your-path-fusion360 && . data/resources/wine/wine.sh && winetricks-custom
+[[ $response = "$text_driver_dxvk" ]] && driver_used=2 && select-your-path-fusion360 && . data/resources/wine/wine-custom.sh
 
 [[ "$response" ]] || echo "Go back" && configure-locale
 }
