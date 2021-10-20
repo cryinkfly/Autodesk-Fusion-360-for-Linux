@@ -406,13 +406,13 @@ function licenses-cs {
   export LANG=cs_CZ.UTF-8
   export LANGUAGE=cs_CZ.UTF-8
 
-filename=`dirname $0`/data/locale/cs-CZ/license-cs
+license_cs=`dirname $0`data/locale/cs-CZ/license-cs
 
 zenity --text-info \
        --title="$program_name" \
        --width=650 \
        --height=400 \
-       --filename=$filename \
+       --filename=$license_cs \
        --checkbox="$text_license_checkbox"
 
 case $? in
@@ -443,13 +443,13 @@ function licenses-de {
   export LANG=de_DE.UTF-8
   export LANGUAGE=de_DE.UTF-8
 
-filename=`dirname $0`data/locale/de-DE/license-de
+license_de=`dirname $0`data/locale/de-DE/license-de
 
 zenity --text-info \
        --title="$program_name" \
        --width=650 \
        --height=400 \
-       --filename=$filename \
+       --filename=$license_de \
        --checkbox="$text_license_checkbox"
 
 case $? in
@@ -476,13 +476,13 @@ esac
 
 function licenses-en {
 
-filename=`dirname $0`data/locale/en-US/license-en
+license_en=`dirname $0`data/locale/en-US/license-en
 
 zenity --text-info \
        --title="$program_name" \
        --width=650 \
        --height=400 \
-       --filename=$filename \
+       --filename=$license_en \
        --checkbox="$text_license_checkbox"
 
 case $? in
@@ -512,13 +512,13 @@ function licenses-es {
   export LANG=es_ES.UTF-8
   export LANGUAGE=es_ES.UTF-8
 
-filename=`dirname $0`data/locale/es-ES/license-es
+license_es=`dirname $0`data/locale/es-ES/license-es
 
 zenity --text-info \
        --title="$program_name" \
        --width=650 \
        --height=400 \
-       --filename=$filename \
+       --filename=$license_es \
        --checkbox="$text_license_checkbox"
 
 case $? in
@@ -549,13 +549,13 @@ function licenses-fr {
   export LANG=fr_FR.UTF-8
   export LANGUAGE=fr_FR.UTF-8
 
-filename=`dirname $0`data/locale/fr-FR/license-fr
+license_fr=`dirname $0`data/locale/fr-FR/license-fr
 
 zenity --text-info \
        --title="$program_name" \
        --width=650 \
        --height=400 \
-       --filename=$filename \
+       --filename=$license_fr \
        --checkbox="$text_license_checkbox"
 
 case $? in
@@ -586,13 +586,13 @@ function licenses-it {
   export LANG=it_IT.UTF-8
   export LANGUAGE=it_IT.UTF-8
 
-filename=`dirname $0`data/locale/it-IT/license-it
+license_it=`dirname $0`data/locale/it-IT/license-it
 
 zenity --text-info \
        --title="$program_name" \
        --width=650 \
        --height=400 \
-       --filename=$filename \
+       --filename=$license_it \
        --checkbox="$text_license_checkbox"
 
 case $? in
@@ -623,13 +623,13 @@ function licenses-ja {
   export LANG=ja_JP.UTF-8
   export LANGUAGE=ja_JP.UTF-8
 
-filename=`dirname $0`data/locale/ja-JP/license-ja
+license_ja=`dirname $0`data/locale/ja-JP/license-ja
 
 zenity --text-info \
        --title="$program_name" \
        --width=650 \
        --height=400 \
-       --filename=$filename \
+       --filename=$license_ja \
        --checkbox="$text_license_checkbox"
 
 case $? in
@@ -660,13 +660,13 @@ function licenses-ko {
   export LANG=ko_KR.UTF-8
   export LANGUAGE=ko_KR.UTF-8
 
-filename=`dirname $0`data/locale/ko-KR/license-ko
+license_ko=`dirname $0`data/locale/ko-KR/license-ko
 
 zenity --text-info \
        --title="$program_name" \
        --width=650 \
        --height=400 \
-       --filename=$filename \
+       --filename=$license_ko \
        --checkbox="$text_license_checkbox"
 
 case $? in
@@ -697,13 +697,13 @@ function licenses-zh {
   export LANG=zh_CN.UTF-8
   export LANGUAGE=zh_CN.UTF-8
 
-filename=`dirname $0`data/locale/zh-CN/license-zh
+license_zh=`dirname $0`data/locale/zh-CN/license-zh
 
 zenity --text-info \
        --title="$program_name" \
        --width=650 \
        --height=400 \
-       --filename=$filename \
+       --filename=$license_zh \
        --checkbox="$text_license_checkbox"
 
 case $? in
