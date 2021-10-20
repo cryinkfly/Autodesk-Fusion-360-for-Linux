@@ -1,13 +1,29 @@
+
 #!/bin/bash
 
+####################################################################################################
+# Name:         Autodesk Fusion 360 - Setup Wizard (Linux)                                         #
+# Description:  This is the German translation for the Setup Wizard.                               #
+# Author:       Steve Zabka                                                                        #
+# Author URI:   https://cryinkfly.com                                                              #
+# License:      MIT                                                                                #
+# Copyright (c) 2020-2021                                                                          #
+# Time/Date:    10:00/20.10.2021                                                                   #
+# Version:      1.0                                                                                #
+####################################################################################################
+
+###############################################################################################################################################################
+# ALL DEFINITIONS ARE ARRANGED HERE:                                                                                                                          #
+###############################################################################################################################################################
+
 # License-checkbox
-text_license_checkbox="Ich habe die Lizenzvereinbachung gelesen und akzeptiere diese."
+text_license_checkbox="Ich habe die Lizenzvereinbachung gelesen und akzeptiert."
 
 # Select
 text_select="Wähle"
 
 # Driver
-text_driver="Treiber"
+text_driver="Grafiktreiber"
 
 # Driver OpenGL
 text_driver_opengl="OpenGL (Standard) - Wählen Sie diese Option, wenn Sie sich nicht sicher sind!"
@@ -22,10 +38,10 @@ text_linux_distribution="Linux Distribution"
 text_installation_location="Installationsort"
 
 # Installation location - Standard
-text_installation_location_standard="Standard – Installieren Sie Autodesk Fusion 360 in Ihrem Benutzerordner. Beispiel: /home/IHR-BENUTZERNAME/.wineprefixes/fusion360"
+text_installation_location_standard="Standard – Installieren Sie Autodesk Fusion 360 in Ihrem Benutzerordner. Beispiel: /home/username/.wineprefixes/fusion360"
 
 # Installation location - Custom
-text_installation_location_custom="Benutzerdefiniert – Installieren Sie Autodesk Fusion 360 an einem anderen Ort. Zum Beispiel: /run/media/user/usb-drive/wine/.fusion 360"
+text_installation_location_custom="Benutzerdefiniert – Installieren Sie Autodesk Fusion 360 an einem anderen Ort. Zum Beispiel: /run/media/username/usb-drive/.wineprefixes/fusion360"
 
 # Select a location with a file browser
 text_select_location_custom="Wählen Sie einen Speicherort für Ihre Autodesk Fusion 360-Installation aus:"
@@ -87,9 +103,9 @@ text_extension_description="Beschreibung"
 text_extension_description_1="Diese Erweiterung hilft Ihnen bei der Optimierung aller Dinge oder Teile, die einem bewegten Gas oder einer Flüssigkeit ausgesetzt sind. Zum Beispiel: Flügel, Flossen, Propeller und Turbinen."
 text_extension_description_2="Diese Erweiterung hilft Ihnen, indem sie eine Reihe von Aspekten Ihrer Konstruktionen analysiert und klare Rückmeldungen liefert, wie die Herstellbarkeit des Teils verbessert werden kann."
 text_extension_description_3="Diese Erweiterung bietet Ihnen die Möglichkeit, die tschechische Benutzeroberfläche (UI) in Autodesk Fusion 360 zu verwenden."
-text_extension_description_4="Diese Erweiterung stellt eine Verbindung zwischen Autodesk® Fusion 360™ und der HP SmartStream Software her und wird verwendet, um Aufträge direkt an die HP Software zu senden."
+text_extension_description_4="Diese Erweiterung stellt eine Verbindung zwischen Autodesk Fusion 360 und der HP SmartStream Software her und wird verwendet, um Aufträge direkt an die HP Software zu senden."
 text_extension_description_5="Mit dieser Erweiterung können Sie den G-Code Ihrer erstellten 3D-Modelle über Autodesk Fusion 360 direkt an den OctoPrint-Server senden."
-text_extension_description_6="Mit dieser Erweiterung können Sie mehr als 50 verschiedene Roboterhersteller und 500 Roboter direkt aus Fusion 360 heraus programmieren."
+text_extension_description_6="Mit dieser Erweiterung können Sie mehr als 50 verschiedene Roboterhersteller und 500 Roboter direkt aus Autodesk Fusion 360 heraus programmieren."
 
 # Error
 text_error="Ein unerwarteter Fehler ist aufgetreten!"
