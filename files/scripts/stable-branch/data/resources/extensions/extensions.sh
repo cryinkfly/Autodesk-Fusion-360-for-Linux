@@ -18,11 +18,11 @@
 # Load & Save the locale files into the folders!
 
 function load-extensions-files {
-  wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/files/extensions/AdditiveAssistant.bundle-win64.msi
-  wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/files/extensions/AdditiveAssistant.bundle-win64.msi
-  wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/files/extensions/HP_3DPrinters_for_Fusion360-win64.msi
-  wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/files/extensions/OctoPrint_for_Fusion360-win64.msi
-  wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/files/extensions/RoboDK.bundle-win64.msi
+  wget -N -P data/resources/extensions https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/files/extensions/AdditiveAssistant.bundle-win64.msi
+  wget -N -P data/resources/extensions https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/files/extensions/AdditiveAssistant.bundle-win64.msi
+  wget -N -P data/resources/extensions https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/files/extensions/HP_3DPrinters_for_Fusion360-win64.msi
+  wget -N -P data/resources/extensions https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/files/extensions/OctoPrint_for_Fusion360-win64.msi
+  wget -N -P data/resources/extensions https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/files/extensions/RoboDK.bundle-win64.msi
 }
 
 ##############################################################################
@@ -30,11 +30,11 @@ function load-extensions-files {
 # Airfoil Tools
 
 function airfoil-tools-plugin-standard {
-    WINEPREFIX=$HOME/.wineprefixes/fusion360 wine AirfoilTools_win64.msi
+    WINEPREFIX=$HOME/.wineprefixes/fusion360 wine data/resources/extensions/AirfoilTools_win64.msi
 }
 
 function airfoil-tools-plugin-custom {
-    WINEPREFIX=$custom_directory wine AirfoilTools_win64.msi
+    WINEPREFIX=$custom_directory wine data/resources/extensions/AirfoilTools_win64.msi
 }
 
 ##############################################################################
@@ -42,11 +42,11 @@ function airfoil-tools-plugin-custom {
 # Additive Assistant (FFF)
 
 function additive-assistant-plugin-standard {
-    WINEPREFIX=$HOME/.wineprefixes/fusion360 wine AdditiveAssistant.bundle-win64.msi
+    WINEPREFIX=$HOME/.wineprefixes/fusion360 wine data/resources/extensions/AdditiveAssistant.bundle-win64.msi
 }
 
 function additive-assistant-plugin-custom {
-    WINEPREFIX=$custom_directory wine AdditiveAssistant.bundle-win64.msi
+    WINEPREFIX=$custom_directory wine data/resources/extensions/AdditiveAssistant.bundle-win64.msi
 }
 
 ##############################################################################
@@ -84,11 +84,11 @@ function czech-locale-plugin-custom {
 # HP 3D Printers for Autodesk® Fusion 360™
 
 function hp-3dprinter-connector-plugin-standard {
-    WINEPREFIX=$HOME/.wineprefixes/fusion360 wine HP_3DPrinters_for_Fusion360-win64.msi
+    WINEPREFIX=$HOME/.wineprefixes/fusion360 wine data/resources/extensions/HP_3DPrinters_for_Fusion360-win64.msi
 }
 
 function hp-3dprinter-connector-plugin-custom {
-    WINEPREFIX=$custom_directory wine HP_3DPrinters_for_Fusion360-win64.msi
+    WINEPREFIX=$custom_directory wine data/resources/extensions/HP_3DPrinters_for_Fusion360-win64.msi
 }
 
 ##############################################################################
@@ -96,11 +96,11 @@ function hp-3dprinter-connector-plugin-custom {
 # OctoPrint for Autodesk® Fusion 360™
 
 function octoprint-plugin-standard {
-    WINEPREFIX=$HOME/.wineprefixes/fusion360 wine OctoPrint_for_Fusion360-win64.msi
+    WINEPREFIX=$HOME/.wineprefixes/fusion360 wine data/resources/extensions/OctoPrint_for_Fusion360-win64.msi
 }
 
 function octoprint-plugin-custom {
-    WINEPREFIX=$custom_directory wine OctoPrint_for_Fusion360-win64.msi
+    WINEPREFIX=$custom_directory wine data/resources/extensions/OctoPrint_for_Fusion360-win64.msi
 }
 
 ##############################################################################
@@ -108,11 +108,11 @@ function octoprint-plugin-custom {
 # RoboDK
 
 function robodk-plugin-standard {
-    WINEPREFIX=$HOME/.wineprefixes/fusion360 wine RoboDK.bundle-win64.msi
+    WINEPREFIX=$HOME/.wineprefixes/fusion360 wine data/resources/extensions/RoboDK.bundle-win64.msi
 }
 
 function robodk-plugin-custom {
-    WINEPREFIX=$custom_directory wine RoboDK.bundle-win64.msi
+    WINEPREFIX=$custom_directory wine data/resources/extensions/RoboDK.bundle-win64.msi
 }
 
 ##############################################################################
