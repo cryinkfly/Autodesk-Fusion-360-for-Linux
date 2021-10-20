@@ -42,7 +42,7 @@ text_installation_location="Umístění instalace"
 text_installation_location_standard="Standard - Nainstalujte si Autodesk Fusion 360 do své domovské složky. Například: /home/username/.wineprefixes/fusion360"
 
 # Installation location - Custom
-text_installation_location_custom="Vlastní - Nainstalujte Autodesk Fusion 360 na jiné místo. Například: /run/media/username/usb-drive/wineprefixes/.fusion360"
+text_installation_location_custom="Vlastní - Nainstalujte Autodesk Fusion 360 na jiné místo. Například: /run/media/username/usb-drive/.wineprefixes/fusion360"
 
 # Select a location with a file browser
 text_select_location_custom="Vyberte umístění pro instalaci aplikace Autodesk Fusion 360:"
