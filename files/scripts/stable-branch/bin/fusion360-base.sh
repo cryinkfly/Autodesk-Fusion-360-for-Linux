@@ -125,7 +125,7 @@ function load-fusion360-installer {
 # It will check whether Autodesk Fusion 360 is already installed on your system or not!
 
 function check-if-fusion360-exists {
-log_path=/$HOME/.local/share/fusion360/logfiles/log-path # Search for log files indicting install
+log_path="$HOME/.local/share/fusion360/logfiles/log-path" # Search for log files indicting install
 if [ -f "$log_path" ]; then
     new_modify_deinstall # Exists - Modify install
 else
@@ -134,11 +134,11 @@ fi
 }
 
 function logfile-installation-standard {
-   echo "/$HOME/.wineprefixes/fusion360/logfiles" >> /$HOME/.local/share/fusion360/logfiles/path-log
+   echo "$HOME/.wineprefixes/fusion360/logfiles" >> $HOME/.local/share/fusion360/logfiles/path-log
 }
 
 function logfile-installation-custom {
-   echo "$custom_directory" >> /$HOME/.local/share/fusion360/logfiles/path-log
+   echo "$custom_directory" >> $HOME/.local/share/fusion360/logfiles/path-log
 }
 
 ##############################################################################
@@ -290,20 +290,20 @@ function configure-dxvk-or-opengl-standard-1 {
 function configure-dxvk-or-opengl-standard-2 {
 if [ $driver_used -eq 2 ]; then
       wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.xml
-      mv DXVK.xml /$HOME/.wineprefixes/fusion360/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml
+      mv DXVK.xml $HOME/.wineprefixes/fusion360/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml
    else
       wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/NMachineSpecificOptions.xml
-      mv NMachineSpecificOptions.xml /$HOME/.wineprefixes/fusion360/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml
+      mv NMachineSpecificOptions.xml $HOME/.wineprefixes/fusion360/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml
    fi
 }
 
 function configure-dxvk-or-opengl-standard-3 {
 if [ $driver_used -eq 2 ]; then
       wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.xml
-      mv DXVK.xml /$HOME/.wineprefixes/fusion360/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml
+      mv DXVK.xml $HOME/.wineprefixes/fusion360/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml
    else
       wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/NMachineSpecificOptions.xml
-      mv NMachineSpecificOptions.xml /$HOME/.wineprefixes/fusion360/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml
+      mv NMachineSpecificOptions.xml $HOME/.wineprefixes/fusion360/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml
    fi
 }
 
@@ -318,20 +318,20 @@ function configure-dxvk-or-opengl-custom-1 {
 function configure-dxvk-or-opengl-custom-2 {
 if [ $driver_used -eq 2 ]; then
       wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.xml
-      mv DXVK.xml /$custom_directory/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml
+      mv DXVK.xml $custom_directory/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml
    else
       wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/NMachineSpecificOptions.xml
-      mv NMachineSpecificOptions.xml /$custom_directory/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml
+      mv NMachineSpecificOptions.xml $custom_directory/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml
    fi
 }
 
 function configure-dxvk-or-opengl-custom-3 {
 if [ $driver_used -eq 2 ]; then
       wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.xml
-      mv DXVK.xml /$custom_directory/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml
+      mv DXVK.xml $custom_directory/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml
    else
       wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/NMachineSpecificOptions.xml
-      mv NMachineSpecificOptions.xml /$custom_directory/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml
+      mv NMachineSpecificOptions.xml $custom_directory/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml
    fi
 }
 
