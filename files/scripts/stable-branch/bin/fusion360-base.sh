@@ -407,7 +407,7 @@ function licenses-cs {
   export LANG=cs_CZ.UTF-8
   export LANGUAGE=cs_CZ.UTF-8
 
-license_cs=`dirname $0`data/locale/cs-CZ/license-cs
+license_cs=`dirname $0`/data/locale/cs-CZ/license-cs
 
 zenity --text-info \
        --title="$program_name" \
@@ -513,7 +513,7 @@ function licenses-es {
   export LANG=es_ES.UTF-8
   export LANGUAGE=es_ES.UTF-8
 
-license_es=`dirname $0`data/locale/es-ES/license-es
+license_es=`dirname $0`/data/locale/es-ES/license-es
 
 zenity --text-info \
        --title="$program_name" \
@@ -550,7 +550,7 @@ function licenses-fr {
   export LANG=fr_FR.UTF-8
   export LANGUAGE=fr_FR.UTF-8
 
-license_fr=`dirname $0`data/locale/fr-FR/license-fr
+license_fr=`dirname $0`/data/locale/fr-FR/license-fr
 
 zenity --text-info \
        --title="$program_name" \
@@ -587,7 +587,7 @@ function licenses-it {
   export LANG=it_IT.UTF-8
   export LANGUAGE=it_IT.UTF-8
 
-license_it=`dirname $0`data/locale/it-IT/license-it
+license_it=`dirname $0`/data/locale/it-IT/license-it
 
 zenity --text-info \
        --title="$program_name" \
@@ -624,7 +624,7 @@ function licenses-ja {
   export LANG=ja_JP.UTF-8
   export LANGUAGE=ja_JP.UTF-8
 
-license_ja=`dirname $0`data/locale/ja-JP/license-ja
+license_ja=`dirname $0`/data/locale/ja-JP/license-ja
 
 zenity --text-info \
        --title="$program_name" \
@@ -661,7 +661,7 @@ function licenses-ko {
   export LANG=ko_KR.UTF-8
   export LANGUAGE=ko_KR.UTF-8
 
-license_ko=`dirname $0`data/locale/ko-KR/license-ko
+license_ko=`dirname $0`/data/locale/ko-KR/license-ko
 
 zenity --text-info \
        --title="$program_name" \
@@ -698,7 +698,7 @@ function licenses-zh {
   export LANG=zh_CN.UTF-8
   export LANGUAGE=zh_CN.UTF-8
 
-license_zh=`dirname $0`data/locale/zh-CN/license-zh
+license_zh=`dirname $0`/data/locale/zh-CN/license-zh
 
 zenity --text-info \
        --title="$program_name" \
