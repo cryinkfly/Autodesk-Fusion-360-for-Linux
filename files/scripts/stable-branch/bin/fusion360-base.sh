@@ -850,9 +850,9 @@ function select-your-path {
                     TRUE "$text_installation_location_standard" \
                     FALSE "$text_installation_location_custom")
 
-[[ $response = "$text_installation_location_standard" ]] && . data/resources/wine/wine.sh && winetricks-standard
+[[ $response = "$text_installation_location_standard" ]] && . data/resources/wine/wine-standard.sh
 
-[[ $response = "$text_installation_location_custom" ]] && select-your-path-fusion360 && . data/resources/wine/wine.sh && winetricks-custom
+[[ $response = "$text_installation_location_custom" ]] && select-your-path-fusion360 && . data/resources/wine/wine-custom.sh
 
 [[ "$response" ]] || echo "Go back" && abort-installation
 }
