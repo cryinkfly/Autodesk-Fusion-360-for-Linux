@@ -102,12 +102,12 @@ function load-locale-zh {
 }
 
 function load-extensions {
-  wget -N -P data/resources/extensions https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/scripts/stable-branch/data/resources/extensions/extensions.sh
+  wget -N -P data/resources/extensions https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/scripts/stable-branch/data/resources/extensions/extensions.sh
   chmod +x data/resources/extensions/extensions.sh
 }
 
 function load-wine_winetricks {
-  wget -N -P data/resources/wine https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/scripts/stable-branch/data/resources/wine/wine.sh
+  wget -N -P data/resources/wine https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/scripts/stable-branch/data/resources/wine/wine.sh
   chmod +x data/resources/wine/wine.sh
   wget -N -P data/resources/wine https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks
   chmod +x data/resources/wine/winetricks
