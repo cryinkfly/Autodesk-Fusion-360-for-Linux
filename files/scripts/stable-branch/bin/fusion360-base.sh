@@ -44,20 +44,19 @@ function logfile-installation {
 
 function create-structure {
 
-  mkdir -p ../data/locale
-  mkdir -p ../data/locale/cs-CZ
-  mkdir -p ../data/locale/de-DE
-  mkdir -p ../data/locale/en-US
-  mkdir -p ../data/locale/es-ES
-  mkdir -p ../data/locale/fr-FR
-  mkdir -p ../data/locale/it-IT
-  mkdir -p ../data/locale/ja-JP
-  mkdir -p ../data/locale/ko-KR
-  mkdir -p ../data/locale/zh-CN
-  mkdir -p ../data/logfiles
-  mkdir -p ../data/resources/extensions
-  mkdir -p ../data/resources/fusion360-installer
-  mkdir -p ../data/resources/wine
+  mkdir -p data/locale
+  mkdir -p data/locale/cs-CZ
+  mkdir -p data/locale/de-DE
+  mkdir -p data/locale/en-US
+  mkdir -p data/locale/es-ES
+  mkdir -p data/locale/fr-FR
+  mkdir -p data/locale/it-IT
+  mkdir -p data/locale/ja-JP
+  mkdir -p data/locale/ko-KR
+  mkdir -p data/locale/zh-CN
+  mkdir -p data/resources/extensions
+  mkdir -p data/resources/fusion360-installer
+  mkdir -p data/resources/wine
 }
 
 function load-locale {
