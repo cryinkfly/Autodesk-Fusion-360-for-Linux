@@ -125,8 +125,8 @@ function install-extensions-standard {
   response=$(zenity --list \
                     --checklist \
                     --title="$program_name" \
-                    --width=400 \
-                    --height=300 \
+                    --width=650 \
+                    --height=400 \
                     --column="$text_select" --column="$text_extension" --column="$text_extension_description"\
                     FALSE "Airfoil Tools" "$text_extension_description_1" \
                     FALSE "Additive Assistant (FFF)" "$text_extension_description_2" \
@@ -154,8 +154,8 @@ function install-extensions-custom {
   response=$(zenity --list \
                     --checklist \
                     --title="$program_name" \
-                    --width=400 \
-                    --height=300 \
+                    --width=650 \
+                    --height=400 \
                     --column="$text_select" --column="$text_extension" --column="$text_extension_description"\
                     FALSE "Airfoil Tools" "$text_extension_description_1" \
                     FALSE "Additive Assistant (FFF)" "$text_extension_description_2" \
