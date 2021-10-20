@@ -68,11 +68,41 @@ It's recommended that if you're new you start with the stable builds. Developmen
 - Internet connection (Cable/DSL speeds recommended)!
 - Latest graphics driver, see <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/wiki/Supported-Graphics-Cards">here</a>!
 - Latest wine version (winehq-staging), because with some versions of wine where no internet connection works!
-- The script fails silently on some Linux distributions if the package „dialog" isn't installed!
 - My script install some packages (dialog, p7zip, p7zip-full, p7zip-rar, curl, wget, winbind, cabextract, wine, wine-mono, wine_gecko, winetricks, ...)!
 - Supported Linux distributions:
 
 ![supported_os](https://user-images.githubusercontent.com/79079633/134313580-ac8cf27e-d0c8-4393-beb6-55015a136220.png)
+
+- Check if you have installed zenity and xterm on your Linux distribution:
+
+#### Debian based systems:
+
+    sudo apt-get update && sudo apt-get install software-properties-common zenity xterm
+
+#### Red Hat based systems:
+
+    sudo dnf update && sudo dnf install zenity xterm
+
+#### Arch based systems:
+
+    sudo pacman -Sy --needed zenity xterm
+
+#### openSUSE based systems:
+
+    su -c 'zypper up && zypper install zenity xterm'
+
+#### Void based systems:
+
+    sudo xbps-install -Sy zenity xterm
+
+#### Solus based systems:
+
+    sudo eopkg install zenity xterm
+
+
+#### Gentoo based systems:
+
+    sudo emerge -av gnome-extra/zenity x11-terms/xterm
 
 ---
 
