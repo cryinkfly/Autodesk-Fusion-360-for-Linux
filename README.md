@@ -73,34 +73,34 @@ It's recommended that if you're new you start with the stable builds. Developmen
 
 ![supported_os](https://user-images.githubusercontent.com/79079633/134313580-ac8cf27e-d0c8-4393-beb6-55015a136220.png)
 
-- Check if you have installed zenity and xterm on your Linux distribution:
+- Check if you have installed zenity and xterm on your Linux distribution ([Alpha version](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/releases/tag/v4.9)):
 
-#### Debian based systems:
+#### Debian based systems (Alpha version):
 
     sudo apt-get update && sudo apt-get install software-properties-common zenity xterm
 
-#### Red Hat based systems:
+#### Red Hat based systems (Alpha version):
 
     sudo dnf update && sudo dnf install zenity xterm
 
-#### Arch based systems:
+#### Arch based systems (Alpha version):
 
     sudo pacman -Sy --needed zenity xterm
 
-#### openSUSE based systems:
+#### openSUSE based systems (Alpha version):
 
     su -c 'zypper up && zypper install zenity xterm'
 
-#### Void based systems:
+#### Void based systems (Alpha version):
 
     sudo xbps-install -Sy zenity xterm
 
-#### Solus based systems:
+#### Solus based systems (Alpha version):
 
     sudo eopkg install zenity xterm
 
 
-#### Gentoo based systems:
+#### Gentoo based systems (Alpha version):
 
     sudo emerge -av gnome-extra/zenity x11-terms/xterm
 
