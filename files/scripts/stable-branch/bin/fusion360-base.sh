@@ -54,6 +54,7 @@ function create-structure {
   mkdir -p data/locale/ja-JP
   mkdir -p data/locale/ko-KR
   mkdir -p data/locale/zh-CN
+  mkdir -p data/logfiles
   mkdir -p data/resources/extensions
   mkdir -p data/resources/fusion360-installer
   mkdir -p data/resources/wine
@@ -129,6 +130,7 @@ function load-fusion360-installer {
 function check-if-fusion360-exists {
 log_path="$HOME/.local/share/fusion360/logfiles/log-path" # Search for log files indicting install
 if [ -f "$log_path" ]; then
+    cp "$HOME/.local/share/fusion360/logfiles/log-path" data/logfiles
     new_modify_deinstall # Exists - Modify install
 else
     select-opengl_dxvk # New install
@@ -957,7 +959,7 @@ function view-exist-fusion360 {
 # View the path of your exist Autodesk Fusion 360! - edit-exist-fusion360
 
 function edit-exist-fusion360 {
-  file=`dirname $0`/$HOME/.local/share/fusion360/logfiles/log-path
+  file=`dirname $0`/data/logfiles/log-path
   directory=`zenity --text-info \
          --title="$program_name" \
          --width=700 \
@@ -1008,7 +1010,7 @@ function new_modify-select-opengl_dxvk {
 # Deinstall a exist Autodesk Fusion 360 installation!
 
 function deinstall-view-exist-fusion360 {
-  file=`dirname $0`/$HOME/.local/share/fusion360/logfiles/log-path
+  file=`dirname $0`/data/logfiles/log-path
   directory=`zenity --text-info \
          --title="$program_name" \
          --width=700 \
@@ -1028,6 +1030,7 @@ function deinstall-view-exist-fusion360 {
 
           if [ "$answer" -eq 0 ]; then
               echo "$directory" > $file
+	      cp "$file" $HOME/.local/share/fusion360/logfiles/log-path
               deinstall-select-fusion360
           elif [ "$answer" -eq 1 ]; then
               deinstall-exist-fusion360
