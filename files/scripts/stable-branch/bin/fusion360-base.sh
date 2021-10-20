@@ -894,6 +894,8 @@ function abort-installation {
 
 function program-exit {
   zenity --info \
+  --width=400 \
+  --height=100 \
   --text="$text_completed_installation"
 
   exit;
@@ -1064,6 +1066,8 @@ function deinstall-select-fusion360 {
 
 function program-exit-uninstall {
   zenity --info \
+  --width=400 \
+  --height=100 \
   --text="$text_completed_deinstallation"
 
   exit;
