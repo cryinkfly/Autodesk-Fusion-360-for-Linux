@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    13:30/20.10.2021                                                                   #
+# Time/Date:    15:30/20.10.2021                                                                   #
 # Version:      6.0                                                                                #
 ####################################################################################################
 
@@ -918,7 +918,7 @@ function new_modify_deinstall {
 
 [[ $response = "$text_select_option_2" ]] && edit-exist-fusion360
 
-[[ $response = "$text_select_option_3" ]] && deinstall-exist-fusion360
+[[ $response = "$text_select_option_3" ]] && deinstall-view-exist-fusion360
 
 [[ "$response" ]] || echo "Go back" && configure-locale
 
@@ -1031,9 +1031,9 @@ function deinstall-view-exist-fusion360 {
           if [ "$answer" -eq 0 ]; then
               echo "$directory" > $file
 	      cp "$file" $HOME/.local/share/fusion360/logfiles/log-path
-              deinstall-select-fusion360
-          elif [ "$answer" -eq 1 ]; then
               deinstall-exist-fusion360
+          elif [ "$answer" -eq 1 ]; then
+              deinstall-view-exist-fusion360
           fi
 
   	      ;;
