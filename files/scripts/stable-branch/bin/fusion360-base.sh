@@ -377,7 +377,7 @@ elif [ "$?" = 1 ] ; then
         zenity --question \
                  --title="$program_name" \
                  --text="Are you sure you want to cancel the installation?" \
-                 --width=350 \
+                 --width=400 \
                  --height=100
         answer=$?
 
@@ -401,7 +401,7 @@ function start-launcher {
   zenity --question \
          --title="$program_name" \
          --text="Would you like to install Autodesk Fusion 360 on your system?" \
-         --width=350 \
+         --width=400 \
          --height=100
   answer=$?
 
@@ -421,8 +421,8 @@ function configure-locale {
   response=$(zenity --list \
                     --radiolist \
                     --title="$program_name" \
-                    --width=400 \
-                    --height=300 \
+                    --width=700 \
+                    --height=500 \
                     --column="Select:" --column="Language:" \
                     TRUE "English (Standard)" \
                     FALSE "German" \
@@ -465,8 +465,8 @@ license_cs=`dirname $0`/data/locale/cs-CZ/license-cs
 
 zenity --text-info \
        --title="$program_name" \
-       --width=650 \
-       --height=400 \
+       --width=700 \
+       --height=500 \
        --filename=$license_cs \
        --checkbox="$text_license_checkbox"
 
@@ -498,8 +498,8 @@ license_de=`dirname $0`/data/locale/de-DE/license-de
 
 zenity --text-info \
        --title="$program_name" \
-       --width=650 \
-       --height=400 \
+       --width=700 \
+       --height=500 \
        --filename=$license_de \
        --checkbox="$text_license_checkbox"
 
@@ -531,8 +531,8 @@ license_en=`dirname $0`/data/locale/en-US/license-en
 
 zenity --text-info \
        --title="$program_name" \
-       --width=650 \
-       --height=400 \
+       --width=700 \
+       --height=500 \
        --filename=$license_en \
        --checkbox="$text_license_checkbox"
 
@@ -563,8 +563,8 @@ license_es=`dirname $0`/data/locale/es-ES/license-es
 
 zenity --text-info \
        --title="$program_name" \
-       --width=650 \
-       --height=400 \
+       --width=700 \
+       --height=500 \
        --filename=$license_es \
        --checkbox="$text_license_checkbox"
 
@@ -596,8 +596,8 @@ license_fr=`dirname $0`/data/locale/fr-FR/license-fr
 
 zenity --text-info \
        --title="$program_name" \
-       --width=650 \
-       --height=400 \
+       --width=700 \
+       --height=500 \
        --filename=$license_fr \
        --checkbox="$text_license_checkbox"
 
@@ -629,8 +629,8 @@ license_it=`dirname $0`/data/locale/it-IT/license-it
 
 zenity --text-info \
        --title="$program_name" \
-       --width=650 \
-       --height=400 \
+       --width=700 \
+       --height=500 \
        --filename=$license_it \
        --checkbox="$text_license_checkbox"
 
@@ -662,8 +662,8 @@ license_ja=`dirname $0`/data/locale/ja-JP/license-ja
 
 zenity --text-info \
        --title="$program_name" \
-       --width=650 \
-       --height=400 \
+       --width=700 \
+       --height=500 \
        --filename=$license_ja \
        --checkbox="$text_license_checkbox"
 
@@ -695,8 +695,8 @@ license_ko=`dirname $0`/data/locale/ko-KR/license-ko
 
 zenity --text-info \
        --title="$program_name" \
-       --width=650 \
-       --height=400 \
+       --width=700 \
+       --height=500 \
        --filename=$license_ko \
        --checkbox="$text_license_checkbox"
 
@@ -728,8 +728,8 @@ license_zh=`dirname $0`/data/locale/zh-CN/license-zh
 
 zenity --text-info \
        --title="$program_name" \
-       --width=650 \
-       --height=400 \
+       --width=700 \
+       --height=500 \
        --filename=$license_zh \
        --checkbox="$text_license_checkbox"
 
@@ -759,8 +759,8 @@ function select-opengl_dxvk {
   response=$(zenity --list \
                     --radiolist \
                     --title="$program_name" \
-                    --width=650 \
-                    --height=300 \
+                    --width=700 \
+                    --height=500 \
                     --column="$text_select" --column="$text_driver" \
                     TRUE "$text_driver_opengl" \
                     FALSE "$text_driver_dxvk")
@@ -780,8 +780,8 @@ function select-your-os {
   response=$(zenity --list \
                     --radiolist \
                     --title="$program_name" \
-                    --width=650 \
-                    --height=400 \
+                    --width=700 \
+                    --height=500 \
                     --column="$text_select" --column="$text_linux_distribution" \
                     FALSE "Arch Linux, Manjaro Linux, EndeavourOS, ..." \
                     FALSE "Debian 10, MX Linux 19.4, Raspberry Pi Desktop, ..." \
@@ -846,8 +846,8 @@ function select-your-path {
   response=$(zenity --list \
                     --radiolist \
                     --title="$program_name" \
-                    --width=650 \
-                    --height=400 \
+                    --width=700 \
+                    --height=500 \
                     --column="$text_select" --column="$text_installation_location" \
                     TRUE "$text_installation_location_standard" \
                     FALSE "$text_installation_location_custom")
@@ -875,7 +875,7 @@ function abort-installation {
   zenity --question \
          --title="$program_name" \
          --text="$text_abort" \
-         --width=350 \
+         --width=400 \
          --height=100
   answer=$?
 
@@ -905,8 +905,8 @@ function new_modify_deinstall {
   response=$(zenity --list \
                     --radiolist \
                     --title="$program_name" \
-                    --width=650 \
-                    --height=400 \
+                    --width=700 \
+                    --height=500 \
                     --column="$text_select" --column="$text_select_option" \
                     TRUE "$text_select_option_1" \
                     FALSE "$text_select_option_2" \
@@ -930,8 +930,8 @@ function view-exist-fusion360 {
   file=`dirname $0`/$HOME/.local/share/fusion360/logfiles/log-path
   directory=`zenity --text-info \
          --title="$program_name" \
-         --width=650 \
-         --height=400 \
+         --width=700 \
+         --height=500 \
          --filename=$file \
          --checkbox="$text_new_installation_checkbox"`
 
@@ -960,8 +960,8 @@ function edit-exist-fusion360 {
   file=`dirname $0`/$HOME/.local/share/fusion360/logfiles/log-path
   directory=`zenity --text-info \
          --title="$program_name" \
-         --width=650 \
-         --height=400 \
+         --width=700 \
+         --height=500 \
          --filename=$file \
          --checkbox="$text_edit_installation_checkbox"`
 
@@ -990,8 +990,8 @@ function new_modify-select-opengl_dxvk {
   response=$(zenity --list \
                     --radiolist \
                     --title="$program_name" \
-                    --width=650 \
-                    --height=300 \
+                    --width=700 \
+                    --height=500 \
                     --column="$text_select" --column="$text_driver" \
                     TRUE "$text_driver_opengl" \
                     FALSE "$text_driver_dxvk")
@@ -1011,8 +1011,8 @@ function deinstall-view-exist-fusion360 {
   file=`dirname $0`/$HOME/.local/share/fusion360/logfiles/log-path
   directory=`zenity --text-info \
          --title="$program_name" \
-         --width=650 \
-         --height=400 \
+         --width=700 \
+         --height=500 \
          --filename=$file \
          --editable \
          --checkbox="$text_deinstall_checkbox"`
@@ -1022,7 +1022,7 @@ function deinstall-view-exist-fusion360 {
           zenity --question \
                  --title="$program_name" \
                  --text="$text_deinstall_question" \
-                 --width=350 \
+                 --width=400 \
                  --height=100
           answer=$?
 
