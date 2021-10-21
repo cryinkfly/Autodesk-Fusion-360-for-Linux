@@ -76,7 +76,7 @@ function airfoil-tools-plugin-custom {
 # Additive Assistant (FFF)
 
 function additive-assistant-plugin-custom {
-    WINEPREFIX=$custom_directory wine data/resources/extensions/AdditiveAssistant.bundle-win64.msi
+    WINEPREFIX=$custom_directory wine data/resources/extensions/AirfoilTools_win64.msi
 }
 
 ##############################################################################
