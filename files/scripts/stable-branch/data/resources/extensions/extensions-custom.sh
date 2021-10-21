@@ -138,7 +138,7 @@ function robodk-plugin-custom {
 
 # Installation of various extensions is offered here. For examble: OctoPrint for Autodesk® Fusion 360™
 
-function install-extensions-custom {
+function manager-extensions-custom {
 
 plugin_1="0"
 plugin_2="0"
