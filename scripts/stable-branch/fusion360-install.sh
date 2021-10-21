@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    16:00/14.10.2021                                                                   #
-# Version:      5.5                                                                                #
+# Time/Date:    17:00/21.10.2021                                                                   #
+# Version:      5.6                                                                                #
 ####################################################################################################
 
 ##############################################################################
@@ -852,15 +852,15 @@ function airfoil-tools-plugin-custom {
 function additive-assistant-plugin-standard {
     mkdir -p "$HOME/.wineprefixes/fusion360/fusion360download/extensions"
     cd "$HOME/.wineprefixes/fusion360/fusion360download/extensions"
-    wget -N https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/raw/main/files/extensions/AdditiveAssistant.bundle-win64.msi &&
-    WINEPREFIX=$HOME/.wineprefixes/fusion360 wine AdditiveAssistant.bundle-win64.msi
+    wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/AdditiveAssistant_win64.msi &&
+    WINEPREFIX=$HOME/.wineprefixes/fusion360 wine AdditiveAssistant_win64.msi
 }
 
 function additive-assistant-plugin-custom {
     mkdir -p "$filename/fusion360download/extensions"
     cd "$filename/fusion360download/extensions"
-    wget -N https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/raw/main/files/extensions/AdditiveAssistant.bundle-win64.msi &&
-    WINEPREFIX=$filename wine AdditiveAssistant.bundle-win64.msi
+    wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/AdditiveAssistant_win64.msi &&
+    WINEPREFIX=$filename wine AdditiveAssistant_win64.msi
 }
 
 ##############################################################################
@@ -870,15 +870,15 @@ function additive-assistant-plugin-custom {
 function hp-3dprinter-connector-plugin-standard {
     mkdir -p "$HOME/.wineprefixes/fusion360/fusion360download/extensions"
     cd "$HOME/.wineprefixes/fusion360/fusion360download/extensions"
-    wget -N https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/raw/main/files/extensions/HP_3DPrinters_for_Fusion360-win64.msi &&
-    WINEPREFIX=$HOME/.wineprefixes/fusion360 wine HP_3DPrinters_for_Fusion360-win64.msi
+    wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/HP3DPrintersForFusion360_win64.msi &&
+    WINEPREFIX=$HOME/.wineprefixes/fusion360 wine HP3DPrintersForFusion360_win64.msi
 }
 
 function hp-3dprinter-connector-plugin-custom {
     mkdir -p "$filename/fusion360download/extensions"
     cd "$filename/fusion360download/extensions"
-    wget -N https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/raw/main/files/extensions/HP_3DPrinters_for_Fusion360-win64.msi &&
-    WINEPREFIX=$filename wine HP_3DPrinters_for_Fusion360-win64.msi
+    wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/HP3DPrintersForFusion360_win64.msi &&
+    WINEPREFIX=$filename wine HP3DPrintersForFusion360_win64.msi
 }
 
 ##############################################################################
@@ -888,15 +888,15 @@ function hp-3dprinter-connector-plugin-custom {
 function octoprint-plugin-standard {
     mkdir -p "$HOME/.wineprefixes/fusion360/fusion360download/extensions"
     cd "$HOME/.wineprefixes/fusion360/fusion360download/extensions"
-    wget -N https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/raw/main/files/extensions/OctoPrint_for_Fusion360-win64.msi &&
-    WINEPREFIX=$HOME/.wineprefixes/fusion360 wine OctoPrint_for_Fusion360-win64.msi
+    wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/OctoPrintForFusion360_win64.msi &&
+    WINEPREFIX=$HOME/.wineprefixes/fusion360 wine OctoPrintForFusion360_win64.msi
 }
 
 function octoprint-plugin-custom {
     mkdir -p "$filename/fusion360download/extensions"
     cd "$filename/fusion360download/extensions"
-    wget -N https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/raw/main/files/extensions/OctoPrint_for_Fusion360-win64.msi &&
-    WINEPREFIX=$filename wine OctoPrint_for_Fusion360-win64.msi
+    wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/OctoPrintForFusion360_win64.msi &&
+    WINEPREFIX=$filename wine OctoPrintForFusion360_win64.msi
 }
 
 ##############################################################################
@@ -906,15 +906,15 @@ function octoprint-plugin-custom {
 function robodk-plugin-standard {
     mkdir -p "$HOME/.wineprefixes/fusion360/fusion360download/extensions"
     cd "$HOME/.wineprefixes/fusion360/fusion360download/extensions"
-    wget -N https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/raw/main/files/extensions/RoboDK.bundle-win64.msi &&
-    WINEPREFIX=$HOME/.wineprefixes/fusion360 wine RoboDK.bundle-win64.msi
+    wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/RoboDK_win64.msi &&
+    WINEPREFIX=$HOME/.wineprefixes/fusion360 wine RoboDK_win64.msi
 }
 
 function robodk-plugin-custom {
     mkdir -p "$filename/fusion360download/extensions"
     cd "$filename/fusion360download/extensions"
-    wget -N https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/raw/main/files/extensions/RoboDK.bundle-win64.msi &&
-    WINEPREFIX=$filename wine RoboDK.bundle-win64.msi
+    wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/RoboDK_win64.msi &&
+    WINEPREFIX=$filename wine RoboDK_win64.msi
 }
 
 ##############################################################################
