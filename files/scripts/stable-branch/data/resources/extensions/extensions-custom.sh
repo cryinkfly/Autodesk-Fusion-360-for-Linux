@@ -98,17 +98,17 @@ function install-extensions-custom {
                     FALSE "OctoPrint for Autodesk® Fusion 360™" "$text_extension_description_5" \
                     FALSE "RoboDK" "$text_extension_description_6" )
 
-[[ $response = "Airfoil Tools" ]] && airfoil-tools-plugin-custom
+[[ $response = *"Airfoil Tools"* ]] && airfoil-tools-plugin-custom
 
-[[ $response = "Additive Assistant (FFF)" ]] && additive-assistant-plugin-custom
+[[ $response = *"Additive Assistant (FFF)"* ]] && additive-assistant-plugin-custom
 
-[[ $response = "Czech localization for F360" ]] && czech-locale-plugin-custom
+[[ $response = *"Czech localization for F360"* ]] && czech-locale-plugin-custom
 
-[[ $response = "HP 3D Printers for Autodesk® Fusion 360™" ]] && hp-3dprinter-connector-plugin-custom
+[[ $response = *"HP 3D Printers for Autodesk® Fusion 360™"* ]] && hp-3dprinter-connector-plugin-custom
 
-[[ $response = "OctoPrint for Autodesk® Fusion 360™" ]] && octoprint-plugin-custom
+[[ $response = *"OctoPrint for Autodesk® Fusion 360™"* ]] && octoprint-plugin-custom
 
-[[ $response = "RoboDK" ]] && robodk-plugin-custom
+[[ $response = *"RoboDK"* ]] && robodk-plugin-custom
 
 [[ "$response" ]] || install-extensions-custom
 }
