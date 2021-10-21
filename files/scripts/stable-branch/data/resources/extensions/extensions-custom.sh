@@ -151,7 +151,7 @@ reset="0"
   response=$(zenity --list \
                     --checklist \
                     --title="$program_name" \
-                    --width=900 \
+                    --width=1000 \
                     --height=500 \
                     --column="$text_select" --column="$text_extension" --column="$text_extension_description"\
                     FALSE "Airfoil Tools" "$text_extension_description_1" \
