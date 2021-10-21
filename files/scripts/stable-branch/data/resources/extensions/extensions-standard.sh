@@ -58,7 +58,7 @@ fi
 if [ "$reset" = "1" ]; then
   manager-extensions-standard
 else
-  echo "Reset!"
+  echo "Nothing!"
 fi
 }
 
@@ -91,10 +91,14 @@ case $? in
        1)
               zenity --info \
               --text="$text_info_czech_plugin"
+              manager-extensions-standard
               install-extensions-standard
               ;;
        -1)
-              echo "An unexpected error occurred!";;
+              zenity --error \
+              --text="$text_error"
+              exit;
+              ;;
 esac
 }
 
@@ -134,6 +138,15 @@ function robodk-plugin-standard {
 # Installation of various extensions is offered here. For examble: OctoPrint for Autodesk® Fusion 360™
 
 function manager-extensions-standard {
+
+plugin_1="0"
+plugin_2="0"
+plugin_3="0"
+plugin_4="0"
+plugin_5="0"
+plugin_6="0"
+reset="0"
+
   response=$(zenity --list \
                     --checklist \
                     --title="$program_name" \
@@ -165,14 +178,6 @@ function manager-extensions-standard {
 ##############################################################################
 # THE INSTALLATION PROGRAM IS STARTED HERE:
 ##############################################################################
-
-plugin_1="0"
-plugin_2="0"
-plugin_3="0"
-plugin_4="0"
-plugin_5="0"
-plugin_6="0"
-reset="0"
 
 manager-extensions-standard
 install-extensions-standard
