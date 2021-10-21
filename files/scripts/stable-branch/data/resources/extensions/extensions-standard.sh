@@ -93,15 +93,15 @@ function manager-extensions-standard {
   response=$(zenity --list \
                     --checklist \
                     --title="$program_name" \
-                    --width=900 \
+                    --width=1000 \
                     --height=500 \
-                    --column="Select" --column="Extension" --column="Description"\
-                    FALSE "Airfoil Tools" "Description_1" \
-                    FALSE "Additive Assistant (FFF)" "Description_2" \
-                    FALSE "Czech localization for F360" "Description_3" \
-                    FALSE "HP 3D Printers for Autodesk® Fusion 360™" "Description_4" \
-                    FALSE "OctoPrint for Autodesk® Fusion 360™" "Description_5" \
-                    FALSE "RoboDK" "Description_6" )
+                    --column="$text_select" --column="$text_extension" --column="$text_extension_description"\
+                    FALSE "Airfoil Tools" "$text_extension_description_1" \
+                    FALSE "Additive Assistant (FFF)" "$text_extension_description_2" \
+                    FALSE "Czech localization for F360" "$text_extension_description_3" \
+                    FALSE "HP 3D Printers for Autodesk® Fusion 360™" "$text_extension_description_4" \
+                    FALSE "OctoPrint for Autodesk® Fusion 360™" "$text_extension_description_5" \
+                    FALSE "RoboDK" "$text_extension_description_6" )
 
 [[ $response = *"Airfoil Tools"* ]] && airfoil-tools-plugin-standard
 
