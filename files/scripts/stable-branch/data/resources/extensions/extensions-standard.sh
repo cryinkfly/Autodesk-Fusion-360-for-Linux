@@ -15,56 +15,6 @@
 # ALL FUNCTIONS & DIALOGS ARE ARRANGED HERE:                                                                                                                            #
 ###############################################################################################################################################################
 
-# Install selected plugins!
-
-function install-extensions-standard {
-
-if [ "$plugin_1" = "1" ]; then
-  airfoil-tools-plugin-standard
-else
-  echo "Airfoil Tools not selected."
-fi
-
-if [ "$plugin_2" = "1" ]; then
-  additive-assistant-plugin-standard
-else
-  echo "Additive Assistant (FFF) not selected."
-fi
-
-if [ "$plugin_3" = "1" ]; then
-  czech-locale-plugin-standard
-else
-  echo "Czech localization for F360 not selected."
-fi
-
-if [ "$plugin_4" = "1" ]; then
-  hp-3dprinter-connector-plugin-standard
-else
-  echo "HP 3D Printers for Autodesk® Fusion 360™ not selected."
-fi
-
-if [ "$plugin_5" = "1" ]; then
-  octoprint-plugin-standard
-else
-  echo "OctoPrint for Autodesk® Fusion 360™ not selected."
-fi
-
-if [ "$plugin_6" = "1" ]; then
-  robodk-plugin-standard
-else
-  echo "RoboDK not selected."
-fi
-
-if [ "$reset" = "1" ]; then
-  manager-extensions-standard
-  install-extensions-custom
-else
-  echo "Nothing!"
-fi
-}
-
-##############################################################################
-
 # Airfoil Tools
 
 function airfoil-tools-plugin-standard {
@@ -140,40 +90,32 @@ function robodk-plugin-standard {
 
 function manager-extensions-standard {
 
-plugin_1="0"
-plugin_2="0"
-plugin_3="0"
-plugin_4="0"
-plugin_5="0"
-plugin_6="0"
-reset="0"
-
   response=$(zenity --list \
                     --checklist \
                     --title="$program_name" \
-                    --width=1000 \
+                    --width=900 \
                     --height=500 \
-                    --column="$text_select" --column="$text_extension" --column="$text_extension_description"\
-                    FALSE "Airfoil Tools" "$text_extension_description_1" \
-                    FALSE "Additive Assistant (FFF)" "$text_extension_description_2" \
-                    FALSE "Czech localization for F360" "$text_extension_description_3" \
-                    FALSE "HP 3D Printers for Autodesk® Fusion 360™" "$text_extension_description_4" \
-                    FALSE "OctoPrint for Autodesk® Fusion 360™" "$text_extension_description_5" \
-                    FALSE "RoboDK" "$text_extension_description_6" )
+                    --column="Select" --column="Extension" --column="Description"\
+                    FALSE "Airfoil Tools" "Description_1" \
+                    FALSE "Additive Assistant (FFF)" "Description_2" \
+                    FALSE "Czech localization for F360" "Description_3" \
+                    FALSE "HP 3D Printers for Autodesk® Fusion 360™" "Description_4" \
+                    FALSE "OctoPrint for Autodesk® Fusion 360™" "Description_5" \
+                    FALSE "RoboDK" "Description_6" )
 
-[[ $response = *"Airfoil Tools"* ]] && plugin_1="1"
+[[ $response = *"Airfoil Tools"* ]] && airfoil-tools-plugin-standard
 
-[[ $response = *"Additive Assistant (FFF)"* ]] && plugin_2="1"
+[[ $response = *"Additive Assistant (FFF)"* ]] && additive-assistant-plugin-standard
 
-[[ $response = *"Czech localization for F360"* ]] && plugin_3="1"
+[[ $response = *"Czech localization for F360"* ]] && czech-locale-plugin-standard
 
-[[ $response = *"HP 3D Printers for Autodesk® Fusion 360™"* ]] && plugin_4="1"
+[[ $response = *"HP 3D Printers for Autodesk® Fusion 360™"* ]] && hp-3dprinter-connector-plugin-standard
 
-[[ $response = *"OctoPrint for Autodesk® Fusion 360™"* ]] && plugin_5="1"
+[[ $response = *"OctoPrint for Autodesk® Fusion 360™"* ]] && octoprint-plugin-standard
 
-[[ $response = *"RoboDK"* ]] && plugin_6="1"
+[[ $response = *"RoboDK"* ]] && robodk-plugin-standard
 
-[[ "$response" ]] || reset="1" #manager-extensions-standard
+[[ "$response" ]] || manager-extensions-standard
 }
 
 ##############################################################################
@@ -181,4 +123,3 @@ reset="0"
 ##############################################################################
 
 manager-extensions-standard
-install-extensions-standard
