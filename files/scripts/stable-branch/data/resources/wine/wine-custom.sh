@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    10:00/20.10.2021                                                                   #
-# Version:      1.0                                                                                #
+# Time/Date:    16:00/21.10.2021                                                                   #
+# Version:      1.1                                                                                #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -54,7 +54,7 @@ function desktop-launcher-custom {
   file=`dirname $0`/data/resources/fusion360-installer/Fusion360launcher
   launcher=`zenity --text-info \
          --title="$program_name" \
-         --width=700 \
+         --width=1000 \
          --height=500 \
          --filename=$file \
          --editable \
