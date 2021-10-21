@@ -7,13 +7,62 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    15:00/21.10.2021                                                                   #
-# Version:      1.1                                                                                #
+# Time/Date:    16:00/21.10.2021                                                                   #
+# Version:      1.2                                                                                #
 ####################################################################################################
 
 ###############################################################################################################################################################
 # ALL FUNCTIONS & DIALOGS ARE ARRANGED HERE:                                                                                                                            #
 ###############################################################################################################################################################
+
+# Install selected plugins!
+
+function install-extensions-custom {
+
+if [ "$plugin_1" = "1" ]; then
+  airfoil-tools-plugin-custom
+else
+  echo "Airfoil Tools not selected."
+fi
+
+if [ "$plugin_2" = "1" ]; then
+  additive-assistant-plugin-custom
+else
+  echo "Additive Assistant (FFF) not selected."
+fi
+
+if [ "$plugin_3" = "1" ]; then
+  czech-locale-plugin-custom
+else
+  echo "Czech localization for F360 not selected."
+fi
+
+if [ "$plugin_4" = "1" ]; then
+  hp-3dprinter-connector-plugin-custom
+else
+  echo "HP 3D Printers for Autodesk® Fusion 360™ not selected."
+fi
+
+if [ "$plugin_5" = "1" ]; then
+  octoprint-plugin-custom
+else
+  echo "OctoPrint for Autodesk® Fusion 360™ not selected."
+fi
+
+if [ "$plugin_6" = "1" ]; then
+  robodk-plugin-custom
+else
+  echo "RoboDK not selected."
+fi
+
+if [ "$reset" = "1" ]; then
+  manager-extensions-custom
+else
+  echo "Reset!"
+fi
+}
+
+##############################################################################
 
 # Airfoil Tools
 
@@ -42,7 +91,7 @@ case $? in
        1)
               zenity --info \
               --text="$text_info_czech_plugin"
-              install-extensions-standard
+              manager-extensions-custom
               ;;
        -1)
               echo "An unexpected error occurred!";;
@@ -98,23 +147,32 @@ function install-extensions-custom {
                     FALSE "OctoPrint for Autodesk® Fusion 360™" "$text_extension_description_5" \
                     FALSE "RoboDK" "$text_extension_description_6" )
 
-[[ $response = *"Airfoil Tools"* ]] && airfoil-tools-plugin-custom
+[[ $response = *"Airfoil Tools"* ]] && plugin_1="1"
 
-[[ $response = *"Additive Assistant (FFF)"* ]] && additive-assistant-plugin-custom
+[[ $response = *"Additive Assistant (FFF)"* ]] && plugin_2="1"
 
-[[ $response = *"Czech localization for F360"* ]] && czech-locale-plugin-custom
+[[ $response = *"Czech localization for F360"* ]] && plugin_3="1"
 
-[[ $response = *"HP 3D Printers for Autodesk® Fusion 360™"* ]] && hp-3dprinter-connector-plugin-custom
+[[ $response = *"HP 3D Printers for Autodesk® Fusion 360™"* ]] && plugin_4="1"
 
-[[ $response = *"OctoPrint for Autodesk® Fusion 360™"* ]] && octoprint-plugin-custom
+[[ $response = *"OctoPrint for Autodesk® Fusion 360™"* ]] && plugin_5="1"
 
-[[ $response = *"RoboDK"* ]] && robodk-plugin-custom
+[[ $response = *"RoboDK"* ]] && plugin_6="1"
 
-[[ "$response" ]] || install-extensions-custom
+[[ "$response" ]] || reset="1" #manager-extensions-custom
 }
 
 ##############################################################################
 # THE INSTALLATION PROGRAM IS STARTED HERE:
 ##############################################################################
 
+plugin_1="0"
+plugin_2="0"
+plugin_3="0"
+plugin_4="0"
+plugin_5="0"
+plugin_6="0"
+reset="0"
+
+manager-extensions-custom
 install-extensions-custom
