@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    10:00/20.10.2021                                                                   #
-# Version:      1.0                                                                                #
+# Time/Date:    15:00/21.10.2021                                                                   #
+# Version:      1.1                                                                                #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -98,17 +98,17 @@ function install-extensions-standard {
                     FALSE "OctoPrint for Autodesk® Fusion 360™" "$text_extension_description_5" \
                     FALSE "RoboDK" "$text_extension_description_6" )
 
-[[ $response = "Airfoil Tools" ]] && airfoil-tools-plugin-standard
+[[ $response = *"Airfoil Tools"* ]] && airfoil-tools-plugin-standard
 
-[[ $response = "Additive Assistant (FFF)" ]] && additive-assistant-plugin-standard
+[[ $response = *"Additive Assistant (FFF)"* ]] && additive-assistant-plugin-standard
 
-[[ $response = "Czech localization for F360" ]] && czech-locale-plugin-standard
+[[ $response = *"Czech localization for F360"* ]] && czech-locale-plugin-standard
 
-[[ $response = "HP 3D Printers for Autodesk® Fusion 360™" ]] && hp-3dprinter-connector-plugin-standard
+[[ $response = *"HP 3D Printers for Autodesk® Fusion 360™"* ]] && hp-3dprinter-connector-plugin-standard
 
-[[ $response = "OctoPrint for Autodesk® Fusion 360™" ]] && octoprint-plugin-standard
+[[ $response = *"OctoPrint for Autodesk® Fusion 360™"* ]] && octoprint-plugin-standard
 
-[[ $response = "RoboDK" ]] && robodk-plugin-standard
+[[ $response = *"RoboDK"* ]] && robodk-plugin-standard
 
 [[ "$response" ]] || install-extensions-standard
 }
