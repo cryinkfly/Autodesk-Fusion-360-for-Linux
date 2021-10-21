@@ -76,7 +76,7 @@ function airfoil-tools-plugin-standard {
 # Additive Assistant (FFF)
 
 function additive-assistant-plugin-standard {
-    WINEPREFIX=$HOME/.wineprefixes/fusion360 wine data/resources/extensions/AdditiveAssistant.bundle-win64.msi
+    WINEPREFIX=$HOME/.wineprefixes/fusion360 wine data/resources/extensions/AdditiveAssistant_win64.msi
 }
 
 ##############################################################################
@@ -113,7 +113,7 @@ function czech-locale-plugin-standard {
 # HP 3D Printers for Autodesk® Fusion 360™
 
 function hp-3dprinter-connector-plugin-standard {
-    WINEPREFIX=$HOME/.wineprefixes/fusion360 wine data/resources/extensions/HP_3DPrinters_for_Fusion360-win64.msi
+    WINEPREFIX=$HOME/.wineprefixes/fusion360 wine data/resources/extensions/HP3DPrintersForFusion360_win64.msi
 }
 
 ##############################################################################
@@ -121,7 +121,7 @@ function hp-3dprinter-connector-plugin-standard {
 # OctoPrint for Autodesk® Fusion 360™
 
 function octoprint-plugin-standard {
-    WINEPREFIX=$HOME/.wineprefixes/fusion360 wine data/resources/extensions/OctoPrint_for_Fusion360-win64.msi
+    WINEPREFIX=$HOME/.wineprefixes/fusion360 wine data/resources/extensions/OctoPrintForFusion360_win64.msi
 }
 
 ##############################################################################
@@ -129,7 +129,7 @@ function octoprint-plugin-standard {
 # RoboDK
 
 function robodk-plugin-standard {
-    WINEPREFIX=$HOME/.wineprefixes/fusion360 wine data/resources/extensions/RoboDK.bundle-win64.msi
+    WINEPREFIX=$HOME/.wineprefixes/fusion360 wine data/resources/extensions/RoboDK_win64.msi
 }
 
 ##############################################################################
