@@ -596,7 +596,15 @@ function configure-locale {
 [[ "$response" ]] || start-launcher
 }
 
---text-info \
+###############################################################################################################################################################
+
+# Load & View the LICENSE AGREEMENT of this Setup Wizard - cs-CZ
+
+function licenses-cs {
+
+license_de=`dirname $0`/data/locale/cs-CZ/license-cs
+
+zenity --text-info \
        --title="$program_name" \
        --width=700 \
        --height=500 \
