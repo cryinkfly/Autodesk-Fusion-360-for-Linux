@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    20:00/21.10.2021                                                                   #
+# Time/Date:    20:30/21.10.2021                                                                   #
 # Version:      1.0                                                                                #
 ####################################################################################################
 
@@ -144,7 +144,7 @@ function load-extensions {
 # Load newest winetricks version for the Setup Wizard!
 
 function load-winetricks {
-  wget -N -P data/resources/wine https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks
+  wget -N -P data/winetricks https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks
   chmod +x data/winetricks/winetricks
   }
 
