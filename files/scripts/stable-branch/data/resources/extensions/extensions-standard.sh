@@ -57,6 +57,7 @@ fi
 
 if [ "$reset" = "1" ]; then
   manager-extensions-standard
+  install-extensions-custom
 else
   echo "Nothing!"
 fi
