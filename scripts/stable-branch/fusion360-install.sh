@@ -803,23 +803,23 @@ do
     case $choice in
         1)
             echo "Install Airfoil Tools!"
-            airfoil-tools-plugin-standard
+            airfoil-tools-plugin-custom
             ;;
         2)
             echo "Install Additive Assistant (FFF)!"
-            additive-assistant-plugin-standard
+            additive-assistant-plugin-custom
             ;;
         3)
             echo "Install HP 3D Printers for Autodesk® Fusion 360™!"
-            hp-3dprinter-connector-plugin-standard
+            hp-3dprinter-connector-plugin-custom
             ;;
         4)
             echo "Install OctoPrint for Autodesk® Fusion 360™!"
-            octoprint-plugin-standard
+            octoprint-plugin-custom
             ;;
         5)
             echo "Install RoboDK!"
-            robodk-plugin-standard
+            robodk-plugin-custom
             ;;
     esac
 done
