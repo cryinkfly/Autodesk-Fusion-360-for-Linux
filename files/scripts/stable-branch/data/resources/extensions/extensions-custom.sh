@@ -57,6 +57,7 @@ fi
 
 if [ "$reset" = "1" ]; then
   manager-extensions-custom
+  install-extensions-custom
 else
   echo "Reset!"
 fi
@@ -92,9 +93,13 @@ case $? in
               zenity --info \
               --text="$text_info_czech_plugin"
               manager-extensions-custom
+              install-extensions-custom
               ;;
        -1)
-              echo "An unexpected error occurred!";;
+              zenity --error \
+              --text="$text_error"
+              exit;
+              ;;
 esac
 }
 
@@ -134,6 +139,15 @@ function robodk-plugin-custom {
 # Installation of various extensions is offered here. For examble: OctoPrint for Autodesk® Fusion 360™
 
 function install-extensions-custom {
+
+plugin_1="0"
+plugin_2="0"
+plugin_3="0"
+plugin_4="0"
+plugin_5="0"
+plugin_6="0"
+reset="0"
+
   response=$(zenity --list \
                     --checklist \
                     --title="$program_name" \
@@ -165,14 +179,6 @@ function install-extensions-custom {
 ##############################################################################
 # THE INSTALLATION PROGRAM IS STARTED HERE:
 ##############################################################################
-
-plugin_1="0"
-plugin_2="0"
-plugin_3="0"
-plugin_4="0"
-plugin_5="0"
-plugin_6="0"
-reset="0"
 
 manager-extensions-custom
 install-extensions-custom
