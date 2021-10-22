@@ -447,12 +447,12 @@ function czech-locale-plugin-custom {
 
 function hp-3dprinter-connector-plugin-standard {
     cd "$HOME/Fusion360/data/extensions"
-    WINEPREFIX=$HOME/.wineprefixes/fusion360 wine data/extensions/HP_3DPrinters_for_Fusion360-win64.msi
+    WINEPREFIX=$HOME/.wineprefixes/fusion360 wine HP_3DPrinters_for_Fusion360-win64.msi
 }
 
 function hp-3dprinter-connector-plugin-custom {
     cd "$HOME/Fusion360/data/extensions"
-    WINEPREFIX=$custom_directory wine data/extensions/HP_3DPrinters_for_Fusion360-win64.msi
+    WINEPREFIX=$custom_directory wine HP_3DPrinters_for_Fusion360-win64.msi
 }
 
 ###############################################################################################################################################################
@@ -461,12 +461,12 @@ function hp-3dprinter-connector-plugin-custom {
 
 function octoprint-plugin-standard {
     cd "$HOME/Fusion360/data/extensions"
-    WINEPREFIX=$HOME/.wineprefixes/fusion360 wine data/extensions/OctoPrint_for_Fusion360-win64.msi
+    WINEPREFIX=$HOME/.wineprefixes/fusion360 wine OctoPrint_for_Fusion360-win64.msi
 }
 
 function octoprint-plugin-custom {
     cd "$HOME/Fusion360/data/extensions"
-    WINEPREFIX=$custom_directory wine data/extensions/OctoPrint_for_Fusion360-win64.msi
+    WINEPREFIX=$custom_directory wine OctoPrint_for_Fusion360-win64.msi
 }
 
 ###############################################################################################################################################################
@@ -475,12 +475,12 @@ function octoprint-plugin-custom {
 
 function robodk-plugin-standard {
     cd "$HOME/Fusion360/data/extensions"
-    WINEPREFIX=$HOME/.wineprefixes/fusion360 wine data/extensions/RoboDK.bundle-win64.msi
+    WINEPREFIX=$HOME/.wineprefixes/fusion360 wine RoboDK.bundle-win64.msi
 }
 
 function robodk-plugin-custom {
     cd "$HOME/Fusion360/data/extensions"
-    WINEPREFIX=$custom_directory wine data/extensions/RoboDK.bundle-win64.msi
+    WINEPREFIX=$custom_directory wine RoboDK.bundle-win64.msi
 }
 
 ###############################################################################################################################################################
