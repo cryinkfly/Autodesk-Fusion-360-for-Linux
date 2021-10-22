@@ -515,9 +515,6 @@ create-structure
 echo "25" ; sleep 1
 echo "# The locale files will be loaded." ; sleep 1
 load-locale
-echo "35" ; sleep 1
-echo "# The extensions will be loaded." ; sleep 1
-load-extensions
 echo "55" ; sleep 1
 echo "# The wine- and winetricks Script is loaded." ; sleep 1
 load-winetricks
