@@ -84,7 +84,7 @@ Install OctoPrint for Autodesk® Fusion 360™ for Autodesk Fusion 360:
 
 Then you have the option here to install it with this command:
 
-    cd Downloads && wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/scripts/stable-branch/octoprint-server-install.sh && chmod +x octoprint-server-install.sh && bash octoprint-server-install.sh && exit
+    cd Downloads && wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/scripts/stable-branch/octoprint-server-install.sh && chmod +x octoprint-server-install.sh && bash octoprint-server-install.sh && exit
 
 After the installation you can start, stop or restart the server with changing the option of this command:
 
