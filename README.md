@@ -75,32 +75,32 @@ It's recommended that if you're new you start with the stable builds. Developmen
 
 - Check if you have installed zenity and xterm on your Linux distribution ([Alpha version](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/releases/tag/v4.9)):
 
-#### Debian based systems (Alpha version):
+#### Debian based systems:
 
     sudo apt-get update && sudo apt-get install software-properties-common zenity xterm
 
-#### Red Hat based systems (Alpha version):
+#### Red Hat based systems:
 
     sudo dnf update && sudo dnf install zenity xterm
 
-#### Arch based systems (Alpha version):
+#### Arch based systems:
 
     sudo pacman -Sy --needed zenity xterm
 
-#### openSUSE based systems (Alpha version):
+#### openSUSE based systems:
 
     su -c 'zypper up && zypper install zenity xterm'
 
-#### Void based systems (Alpha version):
+#### Void based systems:
 
     sudo xbps-install -Sy zenity xterm
 
-#### Solus based systems (Alpha version):
+#### Solus based systems:
 
     sudo eopkg install zenity xterm
 
 
-#### Gentoo based systems (Alpha version):
+#### Gentoo based systems:
 
     sudo emerge -av gnome-extra/zenity x11-terms/xterm
 
@@ -114,7 +114,7 @@ Install Fusion 360 for Linux client:
 
 2.) Open a terminal and run this command:
 
-    cd ~/Downloads && wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/scripts/stable-branch/fusion360-install.sh && chmod +x fusion360-install.sh && bash fusion360-install.sh && exit
+    cd $HOME && mkdir -p "Fusion360" && cd "Fusion360" && wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/scripts/stable-branch/fusion360-setup-wizard.sh && chmod +x fusion360-setup-wizard.sh && bash fusion360-setup-wizard.sh && exit
 
 3.) Now, You can <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues/44#issuecomment-890552181">use</a> Autodesk Fusion 360 on your Linux system!
 
