@@ -48,16 +48,21 @@ if [ -f "$log_path" ]; then
     cp "$HOME/.local/share/fusion360/logfiles/log-path" data/logfiles
     new_modify_deinstall # Exists - Modify install
 else
+    logfile_install=1
     select-opengl_dxvk # New install
 fi
 }
 
 function logfile-installation-standard {
-   echo "$HOME/.wineprefixes/fusion360" >> $HOME/.local/share/fusion360/logfiles/log-path
+if [ $logfile_install -eq 1 ]; then
+    echo "$HOME/.wineprefixes/fusion360" >> $HOME/.local/share/fusion360/logfiles/log-path
+fi
 }
 
 function logfile-installation-custom {
+if [ $logfile_install -eq 1 ]; then
    echo "$custom_directory" >> $HOME/.local/share/fusion360/logfiles/log-path
+fi
 }
 
 ###############################################################################################################################################################
@@ -399,11 +404,13 @@ function winetricks-custom {
 # Install a extension: Airfoil Tools
 
 function airfoil-tools-plugin-standard {
-    WINEPREFIX=$HOME/.wineprefixes/fusion360 wine data/extensions/AirfoilTools_win64.msi
+    cd "data/extensions"
+    WINEPREFIX=$HOME/.wineprefixes/fusion360 wine AirfoilTools_win64.msi
 }
 
 function airfoil-tools-plugin-custom {
-    WINEPREFIX=$custom_directory wine data/extensions/AirfoilTools_win64.msi
+    cd "data/extensions"
+    WINEPREFIX=$custom_directory wine AirfoilTools_win64.msi
 }
 
 ###############################################################################################################################################################
@@ -411,11 +418,13 @@ function airfoil-tools-plugin-custom {
 # Install a extension: Additive Assistant (FFF)
 
 function additive-assistant-plugin-standard {
-    WINEPREFIX=$HOME/.wineprefixes/fusion360 wine data/extensions/AdditiveAssistant.bundle-win64.msi
+    cd "data/extensions"
+    WINEPREFIX=$HOME/.wineprefixes/fusion360 wine AdditiveAssistant.bundle-win64.msi
 }
 
 function additive-assistant-plugin-custom {
-    WINEPREFIX=$custom_directory wine data/extensions/AdditiveAssistant.bundle-win64.msi
+    cd "data/extensions"
+    WINEPREFIX=$custom_directory wine AdditiveAssistant.bundle-win64.msi
 }
 
 ###############################################################################################################################################################
@@ -437,10 +446,12 @@ function czech-locale-plugin-custom {
 # Install a extension: HP 3D Printers for Autodesk® Fusion 360™
 
 function hp-3dprinter-connector-plugin-standard {
+    cd "data/extensions"
     WINEPREFIX=$HOME/.wineprefixes/fusion360 wine data/extensions/HP_3DPrinters_for_Fusion360-win64.msi
 }
 
 function hp-3dprinter-connector-plugin-custom {
+    cd "data/extensions"
     WINEPREFIX=$custom_directory wine data/extensions/HP_3DPrinters_for_Fusion360-win64.msi
 }
 
@@ -449,10 +460,12 @@ function hp-3dprinter-connector-plugin-custom {
 # Install a extension: OctoPrint for Autodesk® Fusion 360™
 
 function octoprint-plugin-standard {
+    cd "data/extensions"
     WINEPREFIX=$HOME/.wineprefixes/fusion360 wine data/extensions/OctoPrint_for_Fusion360-win64.msi
 }
 
 function octoprint-plugin-custom {
+    cd "data/extensions"
     WINEPREFIX=$custom_directory wine data/extensions/OctoPrint_for_Fusion360-win64.msi
 }
 
@@ -461,10 +474,12 @@ function octoprint-plugin-custom {
 # Install a extension: RoboDK
 
 function robodk-plugin-standard {
+    cd "data/extensions"
     WINEPREFIX=$HOME/.wineprefixes/fusion360 wine data/extensions/RoboDK.bundle-win64.msi
 }
 
 function robodk-plugin-custom {
+    cd "data/extensions"
     WINEPREFIX=$custom_directory wine data/extensions/RoboDK.bundle-win64.msi
 }
 
@@ -1056,7 +1071,7 @@ function new_modify_deinstall {
                     FALSE "$text_select_option_2" \
                     FALSE "$text_select_option_3")
 
-[[ $response = "$text_select_option_1" ]] && view-exist-fusion360
+[[ $response = "$text_select_option_1" ]] && logfile_install=1 && view-exist-fusion360
 
 [[ $response = "$text_select_option_2" ]] && edit-exist-fusion360
 
@@ -1353,11 +1368,15 @@ function program-exit-uninstall {
 # THE INSTALLATION PROGRAM IS STARTED HERE:                                                                                                                   #
 ###############################################################################################################################################################
 
-# Reset the driver for the installation of Autodesk Fusion 360!
+# Reset the driver-value for the installation of Autodesk Fusion 360!
 driver_used=0
+
+# Reset the logfile-value for the installation of Autodesk Fusion 360!
+logfile_install=0
 
 # Name of this program (Window Title)
 program_name="Autodesk Fusion 360 for Linux - Setup Wizard"
 
 logfile-installation
 progress-indicator-dialog
+
