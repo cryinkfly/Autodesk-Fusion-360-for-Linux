@@ -62,7 +62,7 @@
 # Here all languages are called up via an extra language file for the installation!
 
 function languages {
-    wget -N https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/raw/main/scripts/development-branch/languages-flatpak.sh &&
+    wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/scripts/development-branch/languages-flatpak.sh &&
     chmod +x languages-flatpak.sh &&
     clear &&
     . languages-flatpak.sh
