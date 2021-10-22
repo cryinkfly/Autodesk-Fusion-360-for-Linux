@@ -134,18 +134,6 @@ function load-locale-zh {
 
 ###############################################################################################################################################################
 
-# Load extensions for the Setup Wizard!
-
-function load-extensions {
-  wget -N -P data/extensions https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/AirfoilTools_win64.msi
-  wget -N -P data/extensions https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/files/extensions/AdditiveAssistant.bundle-win64.msi
-  wget -N -P data/extensions https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/files/extensions/HP_3DPrinters_for_Fusion360-win64.msi
-  wget -N -P data/extensions https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/files/extensions/OctoPrint_for_Fusion360-win64.msi
-  wget -N -P data/extensions https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/files/extensions/RoboDK.bundle-win64.msi
-}
-
-###############################################################################################################################################################
-
 # Load newest winetricks version for the Setup Wizard!
 
 function load-winetricks {
@@ -404,12 +392,16 @@ function winetricks-custom {
 # Install a extension: Airfoil Tools
 
 function airfoil-tools-plugin-standard {
+    mkdir -p "$HOME/Fusion360/data/extensions"
     cd "$HOME/Fusion360/data/extensions"
+    wget -N https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/raw/main/files/extensions/AirfoilTools_win64.msi &&
     WINEPREFIX=$HOME/.wineprefixes/fusion360 wine AirfoilTools_win64.msi
 }
 
 function airfoil-tools-plugin-custom {
+    mkdir -p "$HOME/Fusion360/data/extensions"
     cd "$HOME/Fusion360/data/extensions"
+    wget -N https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/raw/main/files/extensions/AirfoilTools_win64.msi &&
     WINEPREFIX=$custom_directory wine AirfoilTools_win64.msi
 }
 
@@ -418,12 +410,16 @@ function airfoil-tools-plugin-custom {
 # Install a extension: Additive Assistant (FFF)
 
 function additive-assistant-plugin-standard {
+    mkdir -p "$HOME/Fusion360/data/extensions"
     cd "$HOME/Fusion360/data/extensions"
+    wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/AdditiveAssistant.bundle-win64.msi &&
     WINEPREFIX=$HOME/.wineprefixes/fusion360 wine AdditiveAssistant.bundle-win64.msi
 }
 
 function additive-assistant-plugin-custom {
+    mkdir -p "$HOME/Fusion360/data/extensions"
     cd "$HOME/Fusion360/data/extensions"
+    wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/AdditiveAssistant.bundle-win64.msi &&
     WINEPREFIX=$custom_directory wine AdditiveAssistant.bundle-win64.msi
 }
 
@@ -446,12 +442,16 @@ function czech-locale-plugin-custom {
 # Install a extension: HP 3D Printers for Autodesk® Fusion 360™
 
 function hp-3dprinter-connector-plugin-standard {
+    mkdir -p "$HOME/Fusion360/data/extensions"
     cd "$HOME/Fusion360/data/extensions"
+    wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/HP_3DPrinters_for_Fusion360-win64.msi &&
     WINEPREFIX=$HOME/.wineprefixes/fusion360 wine HP_3DPrinters_for_Fusion360-win64.msi
 }
 
 function hp-3dprinter-connector-plugin-custom {
+    mkdir -p "$HOME/Fusion360/data/extensions"
     cd "$HOME/Fusion360/data/extensions"
+    wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/HP_3DPrinters_for_Fusion360-win64.msi &&
     WINEPREFIX=$custom_directory wine HP_3DPrinters_for_Fusion360-win64.msi
 }
 
@@ -460,12 +460,16 @@ function hp-3dprinter-connector-plugin-custom {
 # Install a extension: OctoPrint for Autodesk® Fusion 360™
 
 function octoprint-plugin-standard {
+    mkdir -p "$HOME/Fusion360/data/extensions"
     cd "$HOME/Fusion360/data/extensions"
+    wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/OctoPrint_for_Fusion360-win64.msi &&
     WINEPREFIX=$HOME/.wineprefixes/fusion360 wine OctoPrint_for_Fusion360-win64.msi
 }
 
 function octoprint-plugin-custom {
+    mkdir -p "$HOME/Fusion360/data/extensions"
     cd "$HOME/Fusion360/data/extensions"
+    wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/OctoPrint_for_Fusion360-win64.msi &&
     WINEPREFIX=$custom_directory wine OctoPrint_for_Fusion360-win64.msi
 }
 
@@ -474,12 +478,16 @@ function octoprint-plugin-custom {
 # Install a extension: RoboDK
 
 function robodk-plugin-standard {
+    mkdir -p "$HOME/Fusion360/data/extensions"
     cd "$HOME/Fusion360/data/extensions"
+    wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/RoboDK.bundle-win64.msi &&
     WINEPREFIX=$HOME/.wineprefixes/fusion360 wine RoboDK.bundle-win64.msi
 }
 
 function robodk-plugin-custom {
+    mkdir -p "$HOME/Fusion360/data/extensions"
     cd "$HOME/Fusion360/data/extensions"
+    wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/RoboDK.bundle-win64.msi &&
     WINEPREFIX=$custom_directory wine RoboDK.bundle-win64.msi
 }
 
