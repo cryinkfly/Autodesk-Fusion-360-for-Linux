@@ -404,12 +404,12 @@ function winetricks-custom {
 # Install a extension: Airfoil Tools
 
 function airfoil-tools-plugin-standard {
-    cd "data/extensions"
+    cd "$HOME/Fusion360/data/extensions"
     WINEPREFIX=$HOME/.wineprefixes/fusion360 wine AirfoilTools_win64.msi
 }
 
 function airfoil-tools-plugin-custom {
-    cd "data/extensions"
+    cd "$HOME/Fusion360/data/extensions"
     WINEPREFIX=$custom_directory wine AirfoilTools_win64.msi
 }
 
@@ -418,12 +418,12 @@ function airfoil-tools-plugin-custom {
 # Install a extension: Additive Assistant (FFF)
 
 function additive-assistant-plugin-standard {
-    cd "data/extensions"
+    cd "$HOME/Fusion360/data/extensions"
     WINEPREFIX=$HOME/.wineprefixes/fusion360 wine AdditiveAssistant.bundle-win64.msi
 }
 
 function additive-assistant-plugin-custom {
-    cd "data/extensions"
+    cd "$HOME/Fusion360/data/extensions"
     WINEPREFIX=$custom_directory wine AdditiveAssistant.bundle-win64.msi
 }
 
@@ -446,12 +446,12 @@ function czech-locale-plugin-custom {
 # Install a extension: HP 3D Printers for Autodesk® Fusion 360™
 
 function hp-3dprinter-connector-plugin-standard {
-    cd "data/extensions"
+    cd "$HOME/Fusion360/data/extensions"
     WINEPREFIX=$HOME/.wineprefixes/fusion360 wine data/extensions/HP_3DPrinters_for_Fusion360-win64.msi
 }
 
 function hp-3dprinter-connector-plugin-custom {
-    cd "data/extensions"
+    cd "$HOME/Fusion360/data/extensions"
     WINEPREFIX=$custom_directory wine data/extensions/HP_3DPrinters_for_Fusion360-win64.msi
 }
 
@@ -460,12 +460,12 @@ function hp-3dprinter-connector-plugin-custom {
 # Install a extension: OctoPrint for Autodesk® Fusion 360™
 
 function octoprint-plugin-standard {
-    cd "data/extensions"
+    cd "$HOME/Fusion360/data/extensions"
     WINEPREFIX=$HOME/.wineprefixes/fusion360 wine data/extensions/OctoPrint_for_Fusion360-win64.msi
 }
 
 function octoprint-plugin-custom {
-    cd "data/extensions"
+    cd "$HOME/Fusion360/data/extensions"
     WINEPREFIX=$custom_directory wine data/extensions/OctoPrint_for_Fusion360-win64.msi
 }
 
@@ -474,12 +474,12 @@ function octoprint-plugin-custom {
 # Install a extension: RoboDK
 
 function robodk-plugin-standard {
-    cd "data/extensions"
+    cd "$HOME/Fusion360/data/extensions"
     WINEPREFIX=$HOME/.wineprefixes/fusion360 wine data/extensions/RoboDK.bundle-win64.msi
 }
 
 function robodk-plugin-custom {
-    cd "data/extensions"
+    cd "$HOME/Fusion360/data/extensions"
     WINEPREFIX=$custom_directory wine data/extensions/RoboDK.bundle-win64.msi
 }
 
