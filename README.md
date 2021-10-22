@@ -27,7 +27,7 @@ You will get more information about this program, then you can visit the origina
 ---
 
   - 📂 Downloads: 
-<a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/tree/main/scripts/stable-branch">Stable</a> and <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/tree/main/scripts/development-branch">development builds</a>
+<a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/scripts/stable-branch">Stable</a> and <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/scripts/development-branch">development builds</a>
   - 📔 Documentation: <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/wiki/Documentation">GitHub-Documentation</a> & <a href="https://www.youtube.com/watch?v=-BktJspJKgs&list=PLzwMdS5iu_BIsO6RTy7Hy1MbzLMrQE2xe">Videos</a>
   - 💬 Would You like to get in touch with me? Or if You have any questions, suggestions or problems?
   - 📫 Then You can create an <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues">issue</a> here on GitHub or You can contact me via my <a href="https://cryinkfly.com/contact/">contact form</a>!
@@ -57,7 +57,7 @@ You will get more information about this program, then you can visit the origina
 
 ## Downloads
 
-There are some <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/tree/main/scripts">script releases</a> available, built from the release targets.
+There are some <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/scripts">script releases</a> available, built from the release targets.
 
 It's recommended that if you're new you start with the stable builds. Development builds are available here if you need it, but correspondingly may be less stable.
 
@@ -73,7 +73,7 @@ It's recommended that if you're new you start with the stable builds. Developmen
 
 ![supported_os](https://user-images.githubusercontent.com/79079633/134313580-ac8cf27e-d0c8-4393-beb6-55015a136220.png)
 
-- Check if you have installed zenity and xterm on your Linux distribution ([Alpha version](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/releases/tag/v4.9)):
+- Check if you have installed zenity and xterm on your Linux distribution:
 
 #### Debian based systems:
 
