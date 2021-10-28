@@ -146,3 +146,30 @@ Last Updated: 13.09.2021
 Version Info: 4.2.3
 <br>
 Link: [RoboDK](https://apps.autodesk.com/FUSION/en/Detail/Index?id=6894286262130884430&appLang=en&os=Win64)
+
+---
+
+
+### Czech localization for F360:
+
+The Czech localization for Autodesk® Fusion 360™ is an add-in, which installs and activates the Czech user interface (UI) in Fusion 360 (Win) and keeps it updated during the frequent release updates of this CAD/CAM product.
+ 
+
+The scope of the CZ localization: the user interface of modeling, sketches, surfaces, meshes, freeform shapes, sheetmetal, visualization, animations, manufacturing, 3D printing, drawings, document management, generative design. The Czech environment does not cover all assortment of Fusion 360 functions, but its contents are being continuously extended.
+ 
+
+You can use this localization for all types of Fusion 360 licenses, including its free variants (Personal, Startup, and Educational).
+
+<br>
+
+#### Details:
+
+Download Size: 3.2 MB
+<br>
+Release Date: 08.02.2021
+<br>
+Last Updated: 14.09.2021
+<br>
+Version Info: 6.1.1
+<br>
+Link: [Czech localization for F360](https://apps.autodesk.com/FUSION/en/Detail/Index?id=9151466655844643882)
