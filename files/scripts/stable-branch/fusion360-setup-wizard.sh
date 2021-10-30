@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    09:45/30.10.2021                                                                   #
-# Version:      1.2                                                                                #
+# Time/Date:    10:00/30.10.2021                                                                   #
+# Version:      1.3                                                                                #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -281,54 +281,54 @@ function gentoo-linux {
 function configure-dxvk-or-opengl-standard-1 {
   if [ $driver_used -eq 2 ]; then
       WINEPREFIX=/home/$USER/.wineprefixes/fusion360 sh data/winetricks/winetricks -q dxvk &&
-      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.reg &&
+      wget -N https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/DXVK.reg &&
       WINEPREFIX=/home/$USER/.wineprefixes/fusion360 wine regedit.exe DXVK.reg
    fi
 }
 
 function configure-dxvk-or-opengl-standard-2 {
 if [ $driver_used -eq 2 ]; then
-      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.xml &&
+      wget -N https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/DXVK.xml &&
       mv DXVK.xml NMachineSpecificOptions.xml
    else
-      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/NMachineSpecificOptions.xml
+      wget -N https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/NMachineSpecificOptions.xml
    fi
 }
 
 function configure-dxvk-or-opengl-standard-3 {
 if [ $driver_used -eq 2 ]; then
-      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.xml &&
+      wget -N https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/DXVK.xml &&
       mv DXVK.xml NMachineSpecificOptions.xml
    else
-      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/NMachineSpecificOptions.xml
+      wget -N https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/NMachineSpecificOptions.xml
    fi
 }
 
 function configure-dxvk-or-opengl-custom-1 {
    if [ $driver_used -eq 2 ]; then
       WINEPREFIX=$filename sh data/winetricks/winetricks -q dxvk &&
-      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.reg &&
+      wget -N https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/DXVK.reg &&
       WINEPREFIX=$filename wine regedit.exe DXVK.reg
    else
-      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/NMachineSpecificOptions.xml
+      wget -N https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/NMachineSpecificOptions.xml
    fi
 }
 
 function configure-dxvk-or-opengl-custom-2 {
 if [ $driver_used -eq 2 ]; then
-      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.xml &&
+      wget -N https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/DXVK.xml &&
       mv DXVK.xml NMachineSpecificOptions.xml
    else
-      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/NMachineSpecificOptions.xml
+      wget -N https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/NMachineSpecificOptions.xml
    fi
 }
 
 function configure-dxvk-or-opengl-custom-3 {
 if [ $driver_used -eq 2 ]; then
-      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.xml &&
+      wget -N https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/DXVK.xml &&
       mv DXVK.xml NMachineSpecificOptions.xml
    else
-      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/NMachineSpecificOptions.xml
+      wget -N https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/NMachineSpecificOptions.xml
    fi
 }
 
@@ -434,12 +434,12 @@ function additive-assistant-plugin-custom {
 # Install a extension: Czech localization for F360
 
 function czech-locale-plugin-standard {
-    czech-locale-search-plugin
+    czech-locale-search-plugin-standard
     WINEPREFIX=$HOME/.wineprefixes/fusion360 wine $CZECH_LOCALE
 }
 
 function czech-locale-plugin-custom {
-    czech-locale-search-plugin
+    czech-locale-search-plugin-custom
     WINEPREFIX=$custom_directory wine $CZECH_LOCALE
 }
 
@@ -1311,7 +1311,7 @@ response=$(zenity --list \
 
 # Select the downloaded installer for this special extension!
 
-function czech-locale-search-plugin {
+function czech-locale-search-plugin-standard {
 CZECH_LOCALE=`zenity --file-selection --title="$text_select_czech_plugin"`
 
 case $? in
@@ -1321,6 +1321,26 @@ case $? in
               zenity --info \
               --text="$text_info_czech_plugin"
               manager-extensions-standard
+              ;;
+       -1)
+              zenity --error \
+              --text="$text_error"
+              exit;
+              ;;
+esac
+}
+
+
+function czech-locale-search-plugin-custom {
+CZECH_LOCALE=`zenity --file-selection --title="$text_select_czech_plugin"`
+
+case $? in
+       0)
+              echo "\"$FILE\" selected.";;
+       1)
+              zenity --info \
+              --text="$text_info_czech_plugin"
+              manager-extensions-custom
               ;;
        -1)
               zenity --error \
