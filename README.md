@@ -46,7 +46,7 @@ You will get more information about this program, then you can visit the origina
 <img src="https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/images/workspaces/Generative%20Design/%231.4_generative_design.png" width="300px" height="200px">
 </div>
 <div>
-<img src="https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/images/workspaces/Rendering/%231_water_pump.png" width="300px" height="200px">
+<img src="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/files/images/workspaces/Rendering/rpi4_case_tux-tage-2021.png" width="300px" height="200px">
 <img src="https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/images/workspaces/Simulation/%231_study_displacement.png" width="300px" height="200px">
 </div>
 <div>
