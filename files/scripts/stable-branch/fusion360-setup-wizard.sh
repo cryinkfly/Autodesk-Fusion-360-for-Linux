@@ -280,57 +280,55 @@ function gentoo-linux {
 
 function configure-dxvk-or-opengl-standard-1 {
   if [ $driver_used -eq 2 ]; then
-      WINEPREFIX=$HOME/.wineprefixes/fusion360 sh data/winetricks/winetricks -q dxvk
-      wget -N -P data/winetricks https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.reg
-      WINEPREFIX=$HOME/.wineprefixes/fusion360 wine regedit.exe data/winetricks/DXVK.reg
+      WINEPREFIX=/home/$USER/.wineprefixes/fusion360 sh data/winetricks/winetricks -q dxvk &&
+      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.reg &&
+      WINEPREFIX=/home/$USER/.wineprefixes/fusion360 wine regedit.exe DXVK.reg
    fi
 }
 
 function configure-dxvk-or-opengl-standard-2 {
 if [ $driver_used -eq 2 ]; then
-      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.xml
-      mv DXVK.xml "$HOME/.wineprefixes/fusion360/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml"
+      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.xml &&
+      mv DXVK.xml NMachineSpecificOptions.xml
    else
       wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/NMachineSpecificOptions.xml
-      mv NMachineSpecificOptions.xml "$HOME/.wineprefixes/fusion360/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml"
    fi
 }
 
 function configure-dxvk-or-opengl-standard-3 {
 if [ $driver_used -eq 2 ]; then
-      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.xml
-      mv DXVK.xml "$HOME/.wineprefixes/fusion360/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml"
+      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.xml &&
+      mv DXVK.xml NMachineSpecificOptions.xml
    else
       wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/NMachineSpecificOptions.xml
-      mv NMachineSpecificOptions.xml "$HOME/.wineprefixes/fusion360/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml"
    fi
 }
 
 function configure-dxvk-or-opengl-custom-1 {
    if [ $driver_used -eq 2 ]; then
-      WINEPREFIX=$custom_directory sh data/winetricks/winetricks -q dxvk
-      wget -N -P data/winetricks https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.reg
-      WINEPREFIX=$custom_directory wine regedit.exe data/winetricks/DXVK.reg
+      WINEPREFIX=$filename sh data/winetricks/winetricks -q dxvk &&
+      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.reg &&
+      WINEPREFIX=$filename wine regedit.exe DXVK.reg
+   else
+      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/NMachineSpecificOptions.xml
    fi
 }
 
 function configure-dxvk-or-opengl-custom-2 {
 if [ $driver_used -eq 2 ]; then
-      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.xml
-      mv DXVK.xml "$custom_directory/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml"
+      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.xml &&
+      mv DXVK.xml NMachineSpecificOptions.xml
    else
       wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/NMachineSpecificOptions.xml
-      mv NMachineSpecificOptions.xml "$custom_directory/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml"
    fi
 }
 
 function configure-dxvk-or-opengl-custom-3 {
 if [ $driver_used -eq 2 ]; then
-      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.xml
-      mv DXVK.xml "$custom_directory/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml"
+      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.xml &&
+      mv DXVK.xml NMachineSpecificOptions.xml
    else
       wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/NMachineSpecificOptions.xml
-      mv NMachineSpecificOptions.xml "$custom_directory/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml"
    fi
 }
 
@@ -347,9 +345,13 @@ function winetricks-standard {
    WINEPREFIX=$HOME/.wineprefixes/fusion360 wine data/fusion360/Fusion360installer.exe -p deploy -g -f log.txt --quiet
    WINEPREFIX=$HOME/.wineprefixes/fusion360 wine data/fusion360/Fusion360installer.exe -p deploy -g -f log.txt --quiet
    mkdir -p "$HOME/.wineprefixes/fusion360/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options"
+   cd "$HOME/.wineprefixes/fusion360/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform"
    configure-dxvk-or-opengl-standard-2
    # Because the location varies depending on the Linux distro!
    mkdir -p "$HOME/.wineprefixes/fusion360/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options"
+   cd "$HOME/.wineprefixes/fusion360/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform"
+   mkdir -p Options
+   cd Options
    configure-dxvk-or-opengl-standard-3
    #Set up the program launcher for you!
    wget -P $HOME/.local/share/applications/wine/Programs/Autodesk https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/Autodesk%20Fusion%20360.desktop
@@ -373,9 +375,13 @@ function winetricks-custom {
    WINEPREFIX=$custom_directory wine data/fusion360/Fusion360installer.exe -p deploy -g -f log.txt --quiet
    WINEPREFIX=$custom_directory wine data/fusion360/Fusion360installer.exe -p deploy -g -f log.txt --quiet
    mkdir -p "$custom_directory/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options"
+   cd "$custom_directory/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options"
    configure-dxvk-or-opengl-custom-2
    # Because the location varies depending on the Linux distro!
    mkdir -p "$custom_directory/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options"
+   cd "$custom_directory/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options"
+   mkdir -p Options
+   cd Options
    configure-dxvk-or-opengl-custom-3
    #Set up the program launcher for you!
    wget -P $HOME/.local/share/applications/wine/Programs/Autodesk https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/Autodesk%20Fusion%20360.desktop
@@ -1297,6 +1303,8 @@ response=$(zenity --list \
 [[ $response = *"OctoPrint for Autodesk® Fusion 360™"* ]] && octoprint-plugin-custom
 
 [[ $response = *"RoboDK"* ]] && robodk-plugin-custom
+
+[[ $response = "" ]] && echo "Nothing selected!"
 
 [[ "$response" ]] || manager-extensions-custom
 }
