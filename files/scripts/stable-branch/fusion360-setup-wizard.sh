@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    10:00/30.10.2021                                                                   #
-# Version:      1.3                                                                                #
+# Time/Date:    12:30/30.10.2021                                                                   #
+# Version:      1.4                                                                                #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -354,7 +354,9 @@ function winetricks-standard {
    cd Options
    configure-dxvk-or-opengl-standard-3
    #Set up the program launcher for you!
+   rm $HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk\ Fusion\ 360.desktop
    wget -P $HOME/.local/share/applications/wine/Programs/Autodesk https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/Autodesk%20Fusion%20360.desktop
+   rm $HOME/.local/share/fusion360/launcher.sh
    wget -P $HOME/.local/share/fusion360 https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/launcher.sh
    chmod +x $HOME/.local/share/fusion360/launcher.sh
    logfile-installation-standard
@@ -384,7 +386,9 @@ function winetricks-custom {
    cd Options
    configure-dxvk-or-opengl-custom-3
    #Set up the program launcher for you!
+   rm $HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk\ Fusion\ 360.desktop
    wget -P $HOME/.local/share/applications/wine/Programs/Autodesk https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/Autodesk%20Fusion%20360.desktop
+   rm $HOME/.local/share/fusion360/launcher.sh
    wget https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/launcher.sh -O Fusion360launcher
    mv Fusion360launcher data/fusion360/Fusion360launcher
    desktop-launcher-custom
@@ -1168,7 +1172,7 @@ function new_modify-select-opengl_dxvk {
 
 [[ $response = "$text_driver_opengl" ]] && driver_used=1 && select-your-path-fusion360 && winetricks-custom
 
-[[ $response = "$text_driver_dxvk" ]] && driver_used=2 && select-your-path-fusion360 && . winetricks-custom
+[[ $response = "$text_driver_dxvk" ]] && driver_used=2 && select-your-path-fusion360 && winetricks-custom
 
 [[ "$response" ]] || echo "Go back" && new_modify_deinstall
 }
@@ -1410,4 +1414,3 @@ program_name="Autodesk Fusion 360 for Linux - Setup Wizard"
 
 logfile-installation
 progress-indicator-dialog
-
