@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    12:30/30.10.2021                                                                   #
-# Version:      1.4                                                                                #
+# Time/Date:    13:30/30.10.2021                                                                   #
+# Version:      1.5                                                                                #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -388,7 +388,8 @@ function winetricks-custom {
    #Set up the program launcher for you!
    rm $HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk\ Fusion\ 360.desktop
    wget -P $HOME/.local/share/applications/wine/Programs/Autodesk https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/Autodesk%20Fusion%20360.desktop
-   rm $HOME/.local/share/fusion360/launcher.sh
+   cd $HOME/Fusion360
+   wget -P $HOME/.local/share/fusion360 https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/launcher.sh
    wget https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/launcher.sh -O Fusion360launcher
    mv Fusion360launcher data/fusion360/Fusion360launcher
    desktop-launcher-custom
@@ -1045,6 +1046,7 @@ function desktop-launcher-custom {
 
           if [ "$answer" -eq 0 ]; then
               echo "$launcher" > $file
+              rm "$HOME/.local/share/fusion360/launcher.sh"
               mv $file "$HOME/.local/share/fusion360/launcher.sh"
           elif [ "$answer" -eq 1 ]; then
               desktop-launcher-custom
