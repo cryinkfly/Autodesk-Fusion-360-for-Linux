@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    13:30/30.10.2021                                                                   #
-# Version:      1.5                                                                                #
+# Time/Date:    14:15/30.10.2021                                                                   #
+# Version:      1.5.1                                                                                #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -345,13 +345,11 @@ function winetricks-standard {
    WINEPREFIX=$HOME/.wineprefixes/fusion360 wine data/fusion360/Fusion360installer.exe -p deploy -g -f log.txt --quiet
    WINEPREFIX=$HOME/.wineprefixes/fusion360 wine data/fusion360/Fusion360installer.exe -p deploy -g -f log.txt --quiet
    mkdir -p "$HOME/.wineprefixes/fusion360/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options"
-   cd "$HOME/.wineprefixes/fusion360/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform"
+   cd "$HOME/.wineprefixes/fusion360/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options"
    configure-dxvk-or-opengl-standard-2
    # Because the location varies depending on the Linux distro!
    mkdir -p "$HOME/.wineprefixes/fusion360/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options"
-   cd "$HOME/.wineprefixes/fusion360/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform"
-   mkdir -p Options
-   cd Options
+   cd "$HOME/.wineprefixes/fusion360/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options"
    configure-dxvk-or-opengl-standard-3
    #Set up the program launcher for you!
    rm $HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk\ Fusion\ 360.desktop
