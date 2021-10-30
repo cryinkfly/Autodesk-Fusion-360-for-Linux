@@ -380,8 +380,6 @@ function winetricks-custom {
    # Because the location varies depending on the Linux distro!
    mkdir -p "$custom_directory/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options"
    cd "$custom_directory/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options"
-   mkdir -p Options
-   cd Options
    configure-dxvk-or-opengl-custom-3
    #Set up the program launcher for you!
    rm $HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk\ Fusion\ 360.desktop
