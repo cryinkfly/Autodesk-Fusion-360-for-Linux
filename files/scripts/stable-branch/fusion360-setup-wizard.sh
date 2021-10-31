@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    14:15/30.10.2021                                                                   #
-# Version:      1.5.1                                                                                #
+# Time/Date:    08:15/31.10.2021                                                                   #
+# Version:      1.5.2                                                                                #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -41,6 +41,15 @@ function logfile-installation {
 ###############################################################################################################################################################
 
 # It will check whether Autodesk Fusion 360 is already installed on your system or not!
+
+function check-if-fusion360installer-exists {
+fusion360_installer="$HOME/Fusion360/data/fusion360/Fusion360installer.exe" # Search for a existing installer of Autodesk Fusion 360
+if [ -f "$fusion360_installer" ]; then
+    echo "Autodesk Fusion 360 installer exist!"
+else
+    load-fusion360-installer
+fi
+}
 
 function check-if-fusion360-exists {
 log_path="$HOME/.local/share/fusion360/logfiles/log-path" # Search for log files indicting install
@@ -527,7 +536,7 @@ echo "# The wine- and winetricks Script is loaded." ; sleep 1
 load-winetricks
 echo "75" ; sleep 1
 echo "# The Autodesk Fusion 360 installation file will be downloaded." ; sleep 1
-load-fusion360-installer
+check-if-fusion360installer-exists
 echo "90" ; sleep 1
 echo "# The installation can now be started!" ; sleep 1
 echo "100" ; sleep 1
