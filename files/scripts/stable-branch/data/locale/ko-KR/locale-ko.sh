@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    10:00/20.10.2021                                                                   #
-# Version:      1.0                                                                                #
+# Time/Date:    10:00/08.11.2021                                                                   #
+# Version:      1.1                                                                                #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -57,6 +57,9 @@ text_abort="Seolchileul jungdanhasigessseubnikka?"
 # Program-Exit
 text_completed_installation="Autodesk Fusion 360 seolchiga wanlyodoeeossseubnida."
 
+# Program-Exit (Extensions)
+text_completed_installation_extensions="Autodesk Fusion 360 yong ilbu hwagjang seolchiga wanlyodoeeossseubnida."
+
 # Select a option - new_modify_deinstall
 text_select_option="Obsyeon"
 
@@ -67,7 +70,10 @@ text_select_option_1="Ilbu ttoneun modeun guseong yosoui sae seolchi"
 text_select_option_2="Gijon seolchi eobdeiteu ttoneun boggu"
 
 # Option 3
-text_select_option_3="Modeun Autodesk Fusion 360 guseong-yoso jegeo"
+text_select_option_3="Ilbu hwagjang peulogeulaem seolchi, boggu ttoneun jegeo"
+
+# Option 4
+text_select_option_4="Modeun Autodesk Fusion 360 guseong-yoso jegeo"
 
 # New installation-checkbox - new_modify_deinstall
 text_new_installation_checkbox="Ije sayong ganeunghan seolchi gyeongloleul hwag-inhaess-eumyeo da-eum dangyeeseo daleun gyeongloleul jijeonghal geos-ibnida!"
