@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    10:00/20.10.2021                                                                   #
-# Version:      1.0                                                                                #
+# Time/Date:    10:00/08.11.2021                                                                   #
+# Version:      1.1                                                                                #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -57,6 +57,9 @@ text_abort="Do you really want to abort the installation?"
 # Program-Exit
 text_completed_installation="The installation of Autodesk Fusion 360 is completed."
 
+# Program-Exit (Extensions)
+text_completed_installation_extensions="The installation of some extensions for Autodesk Fusion 360 is completed."
+
 # Select a option - new_modify_deinstall
 text_select_option="Option"
 
@@ -67,7 +70,10 @@ text_select_option_1="New installation of some or all components"
 text_select_option_2="Update or Repair a existing installation"
 
 # Option 3
-text_select_option_3="Uninstall all Autodesk Fusion 360 components"
+text_select_option_3="Install, Repair or Uninstall some extensions"
+
+# Option 4
+text_select_option_4="Uninstall all Autodesk Fusion 360 components"
 
 # New installation-checkbox - new_modify_deinstall
 text_new_installation_checkbox="I have now seen which installation paths are available and will specify a different path in the next step!"
@@ -108,3 +114,4 @@ text_extension_description_6="This extension allows you to program more than 50 
 
 # Error
 text_error="An unexpected error occurred!"
+
