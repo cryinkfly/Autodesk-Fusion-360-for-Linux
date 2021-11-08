@@ -32,6 +32,7 @@
 - @DD1984
 - @dreamcat4
 - @Druco
+- @DanidCH
 - @fastrizwaan
 - @hopkuba
 - @Kara-Zor-El
@@ -60,6 +61,7 @@
 - @ThisIsTheOnlyUsernameAvailable
 - @TN-1
 - @Tony763
+- @thulle
 - @vintagepc
 - @watzon
 
