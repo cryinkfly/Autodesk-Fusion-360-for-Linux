@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    10:00/20.10.2021                                                                   #
-# Version:      1.0                                                                                #
+# Time/Date:    10:00/08.11.2021                                                                   #
+# Version:      1.1                                                                                #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -57,6 +57,9 @@ text_abort="¿Realmente quieres abortar la instalación?"
 # Program-Exit
 text_completed_installation="Se completa la instalación de Autodesk Fusion 360."
 
+# Program-Exit (Extensions)
+text_completed_installation_extensions="Se completa la instalación de algunas extensiones para Autodesk Fusion 360."
+
 # Select a option - new_modify_deinstall
 text_select_option="Opción"
 
@@ -67,7 +70,10 @@ text_select_option_1="Nueva instalación de algunos o todos los componentes"
 text_select_option_2="Update or Repair a existing installation"
 
 # Option 3
-text_select_option_3="Actualizar o reparar una instalación existente"
+text_select_option_3="Instalar, Reparar o Desinstalar algunas extensiones"
+
+# Option 4
+text_select_option_4="Desinstale todos los componentes de Autodesk Fusion 360"
 
 # New installation-checkbox - new_modify_deinstall
 text_new_installation_checkbox="¡Ahora he visto qué rutas de instalación están disponibles y especificaré una ruta diferente en el siguiente paso!"
@@ -108,3 +114,4 @@ text_extension_description_6="Esta extensión le permite programar más de 50 fa
 
 # Error
 text_error="¡Ocurrió un error inesperado!"
+
