@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    10:00/20.10.2021                                                                   #
-# Version:      1.0                                                                                #
+# Time/Date:    10:00/08.11.2021                                                                   #
+# Version:      1.1                                                                                #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -57,6 +57,9 @@ text_abort="Vuoi davvero interrompere l'installazione?"
 # Program-Exit
 text_completed_installation="L'installazione di Autodesk Fusion 360 è completata."
 
+# Program-Exit (Extensions)
+text_completed_installation_extensions="L'installazione di alcune estensioni per Autodesk Fusion 360 è stata completata."
+
 # Select a option - new_modify_deinstall
 text_select_option="Opzione"
 
@@ -64,10 +67,13 @@ text_select_option="Opzione"
 text_select_option_1="Nuova installazione di alcuni o tutti i componenti"
 
 # Option 2
-text_select_option_2="Aggiorna o ripara un'installazione esistente"
+text_select_option_2="Aggiorna o Ripara un'installazione esistente"
 
 # Option 3
-text_select_option_3="Disinstallare tutti i componenti di Autodesk Fusion 360"
+text_select_option_3="Installa, Ripara o Disinstalla alcune estensioni"
+
+# Option 4
+text_select_option_4="Disinstallare tutti i componenti di Autodesk Fusion 360"
 
 # New installation-checkbox - new_modify_deinstall
 text_new_installation_checkbox="Ora ho visto quali percorsi di installazione sono disponibili e specificherò un percorso diverso nel passaggio successivo!"
@@ -108,3 +114,4 @@ text_extension_description_6="Questa estensione consente di programmare più di 
 
 # Error
 text_error="Si è verificato un errore imprevisto!"
+
