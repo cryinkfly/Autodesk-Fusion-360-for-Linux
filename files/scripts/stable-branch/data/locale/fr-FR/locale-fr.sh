@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    10:00/20.10.2021                                                                   #
-# Version:      1.0                                                                                #
+# Time/Date:    10:00/08.11.2021                                                                   #
+# Version:      1.1                                                                                #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -57,6 +57,9 @@ text_abort="Voulez-vous vraiment interrompre l'installation?"
 # Program-Exit
 text_completed_installation="L'installation d'Autodesk Fusion 360 est terminée."
 
+# Program-Exit (Extensions)
+text_completed_installation_extensions="L'installation de certaines extensions pour Autodesk Fusion 360 est terminée."
+
 # Select a option - new_modify_deinstall
 text_select_option="Option"
 
@@ -67,7 +70,10 @@ text_select_option_1="Nouvelle installation de certains ou de tous les composant
 text_select_option_2="Mettre à jour ou réparer une installation existante"
 
 # Option 3
-text_select_option_3="Désinstaller tous les composants Autodesk Fusion 360"
+text_select_option_3="Installer, Réparer ou Désinstaller certaines extensions"
+
+# Option 4
+text_select_option_4="Désinstaller tous les composants Autodesk Fusion 360"
 
 # New installation-checkbox - new_modify_deinstall
 text_new_installation_checkbox="J'ai maintenant vu quels chemins d'installation sont disponibles et je spécifierai un chemin différent à l'étape suivante!"
@@ -108,3 +114,4 @@ text_extension_description_6="Cette extension vous permet de programmer plus de 
 
 # Error
 text_error="Une erreur inattendue est apparue!"
+
