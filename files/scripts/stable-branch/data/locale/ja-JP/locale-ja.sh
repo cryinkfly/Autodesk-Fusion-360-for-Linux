@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    10:00/20.10.2021                                                                   #
-# Version:      1.0                                                                                #
+# Time/Date:    10:00/08.11.2021                                                                   #
+# Version:      1.1                                                                                #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -57,6 +57,9 @@ text_abort="Hontōni insutōru o chūshi shimasu ka?"
 # Program-Exit
 text_completed_installation="Autodesk Fusion 360 no insutōru ga kanryō shimashita."
 
+# Program-Exit (Extensions)
+text_completed_installation_extensions="Autodesk Fusion 360 no ikutsu ka no kakuchō kinō no insutōru ga kanryō shimashita."
+
 # Select a option - new_modify_deinstall
 text_select_option="Opushon"
 
@@ -67,7 +70,10 @@ text_select_option_1="Ichibu matawa subete no konpōnento no shinki insutōru"
 text_select_option_2="Kizon no insutōru o kōshin matawa shūfuku suru"
 
 # Option 3
-text_select_option_3="Subete no Autodesk Fusion 360 konpōnento o an'insutōru shimasu"
+text_select_option_3="Ichibu no kakuchō kinō o insutōru, shūfuku, matawa an'insutōru suru"
+
+# Option 4
+text_select_option_4="Subete no Autodesk Fusion 360 konpōnento o an'insutōru shimasu"
 
 # New installation-checkbox - new_modify_deinstall
 text_new_installation_checkbox="Shiyō kanōna insutōrupasu o kakunin shimashita. Tsugi no suteppu de betsu no pasu o shitei shimasu."
@@ -108,3 +114,4 @@ text_extension_description_6="Kono kakuchō kinō o shiyō suru to, 50 wokoeru s
 
 # Error
 text_error="Yoki senu erā ga hassei shita!"
+
