@@ -8,8 +8,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    10:00/20.10.2021                                                                   #
-# Version:      1.0                                                                                #
+# Time/Date:    10:00/08.11.2021                                                                   #
+# Version:      1.1                                                                                #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -58,6 +58,9 @@ text_abort="Möchten Sie die Installation wirklich abbrechen?"
 # Program-Exit
 text_completed_installation="Die Installation von Autodesk Fusion 360 ist abgeschlossen."
 
+# Program-Exit (Extensions)
+text_completed_installation_extensions="Die Installation einiger Erweiterungen für Autodesk Fusion 360 ist abgeschlossen."
+
 # Select a option - new_modify_deinstall
 text_select_option="Option"
 
@@ -68,7 +71,10 @@ text_select_option_1="Neuinstallation einiger oder aller Komponenten"
 text_select_option_2="Aktualisieren oder Reparieren Sie eine vorhandene Installation"
 
 # Option 3
-text_select_option_3="Deinstallieren Sie alle Autodesk Fusion 360-Komponenten"
+text_select_option_3="Installieren, Reparieren oder Deinstallieren Sie verschiedene Erweiterungen"
+
+# Option 4
+text_select_option_4="Deinstallieren Sie alle Autodesk Fusion 360-Komponenten"
 
 # New installation-checkbox - new_modify_deinstall
 text_new_installation_checkbox="Ich habe jetzt gesehen, welche Installationspfade verfügbar sind und werde im nächsten Schritt einen anderen Pfad (Installationsort) angeben!"
@@ -109,3 +115,4 @@ text_extension_description_6="Mit dieser Erweiterung können Sie mehr als 50 ver
 
 # Error
 text_error="Ein unerwarteter Fehler ist aufgetreten!"
+
