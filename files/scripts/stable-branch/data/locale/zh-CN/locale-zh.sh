@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    10:00/20.10.2021                                                                   #
-# Version:      1.0                                                                                #
+# Time/Date:    10:00/08.11.2021                                                                   #
+# Version:      1.1                                                                                #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -57,6 +57,9 @@ text_abort="Nín zhēn de yāo zhōngzhǐ ānzhuāng ma?"
 # Program-Exit
 text_completed_installation="Autodesk Fusion 360 ānzhuāng wánchéng."
 
+# Program-Exit (Extensions)
+text_completed_installation_extensions="Autodesk Fusion 360 bùfèn kuòzhǎn ānzhuāng wánchéng."
+
 # Select a option - new_modify_deinstall
 text_select_option="Xuǎnxiàng"
 
@@ -67,7 +70,10 @@ text_select_option_1="Bùfèn huò suǒyǒu zǔjiàn de quánxīn ānzhuāng"
 text_select_option_2="Gēngxīn huò xiūfù xiàn yǒu ānzhuāng"
 
 # Option 3
-text_select_option_3="Xièzài suǒyǒu Autodesk Fusion 360 zǔjiàn"
+text_select_option_3="Ānzhuāng, xiūfù huò xiè zǎi yīxiē kuòzhǎn"
+
+# Option 4
+text_select_option_4="Xièzài suǒyǒu Autodesk Fusion 360 zǔjiàn"
 
 # New installation-checkbox - new_modify_deinstall
 text_new_installation_checkbox="Wǒ xiànzài yǐjīng kàn dàole nǎxiē ānzhuāng lùjìng kěyòng, bìng jiàng zàixià yībù zhōng zhǐdìng bùtóng de lùjìng!"
@@ -108,3 +114,4 @@ text_extension_description_6="Cǐ kuòzhǎn yǔnxǔ nín zhíjiē cóng Autodesk
 
 # Error
 text_error="Yīgè yìliào zhī wài de wèntí fāshēngle!"
+
