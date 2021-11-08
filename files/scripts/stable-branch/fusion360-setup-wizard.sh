@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    09:15/08.11.2021                                                                   #
-# Version:      1.5.3                                                                              #
+# Time/Date:    10:15/08.11.2021                                                                   #
+# Version:      1.5.4                                                                              #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -1091,13 +1091,16 @@ function new_modify_deinstall {
                     --column="$text_select" --column="$text_select_option" \
                     TRUE "$text_select_option_1" \
                     FALSE "$text_select_option_2" \
-                    FALSE "$text_select_option_3")
+                    FALSE "$text_select_option_3" \
+                    False "$text_select_option_4")
 
 [[ $response = "$text_select_option_1" ]] && logfile_install=1 && view-exist-fusion360
 
 [[ $response = "$text_select_option_2" ]] && edit-exist-fusion360
 
-[[ $response = "$text_select_option_3" ]] && deinstall-view-exist-fusion360
+[[ $response = "$text_select_option_3" ]] && view-exist-fusion360-extensions
+
+[[ $response = "$text_select_option_4" ]] && deinstall-view-exist-fusion360
 
 [[ "$response" ]] || echo "Go back" && configure-locale
 
@@ -1182,6 +1185,38 @@ function new_modify-select-opengl_dxvk {
 [[ $response = "$text_driver_dxvk" ]] && driver_used=2 && select-your-path-fusion360 && winetricks-custom
 
 [[ "$response" ]] || echo "Go back" && new_modify_deinstall
+}
+
+###############################################################################################################################################################
+
+# View the path of your exist Autodesk Fusion 360! -View
+
+function view-exist-fusion360-extensions {
+  file=`dirname $0`/data/logfiles/log-path
+  directory=`zenity --text-info \
+         --title="$program_name" \
+         --width=700 \
+         --height=500 \
+         --filename=$file \
+         --checkbox="$text_new_installation_checkbox"`
+
+  case $? in
+      0)
+          select-your-path-fusion360
+          manager-extensions-custom
+          program-exit-extensions
+  	      ;;
+      1)
+          echo "Go back"
+          new_modify_deinstall
+  	      ;;
+      -1)
+        zenity --error \
+          --text="$text_error"
+          exit;
+  	      ;;
+  esac
+
 }
 
 ###############################################################################################################################################################
@@ -1389,6 +1424,19 @@ function program-exit {
   --width=400 \
   --height=100 \
   --text="$text_completed_installation"
+
+  exit;
+}
+
+###############################################################################################################################################################
+
+# The installation of the extensions is complete and will be terminated.
+
+function program-exit-extensions {
+  zenity --info \
+  --width=400 \
+  --height=100 \
+  --text="$text_completed_installation_extensions"
 
   exit;
 }
