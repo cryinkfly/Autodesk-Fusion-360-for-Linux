@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    08:15/31.10.2021                                                                   #
-# Version:      1.5.2                                                                                #
+# Time/Date:    09:15/08.11.2021                                                                   #
+# Version:      1.5.3                                                                              #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -280,7 +280,7 @@ function void-linux {
 }
 
 function gentoo-linux {
-    sudo emerge -av virtual/wine app-emulation/winetricks app-emulation/wine-mono app-emulation/wine-gecko app-arch/p7zip app-arch/cabextract net-misc/curl net-fs/samba net-dialup/ppp
+    sudo emerge -nav virtual/wine app-emulation/winetricks app-emulation/wine-mono app-emulation/wine-gecko app-arch/p7zip app-arch/cabextract net-misc/curl net-fs/samba net-dialup/ppp
 }
 
 ###############################################################################################################################################################
