@@ -8,8 +8,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    10:00/08.11.2021                                                                   #
-# Version:      1.1                                                                                #
+# Time/Date:    12:00/09.11.2021                                                                   #
+# Version:      1.2                                                                                #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -21,6 +21,12 @@ text_license_checkbox="Ich habe die Lizenzvereinbachung gelesen und akzeptiert."
 
 # Select
 text_select="Wähle"
+
+# Version (Standard, Flatpak or Snap)
+text_version="Version"
+text_standard="Standard"
+text_flatpak="Flatpak (Experimental)"
+text_snap="Snap (Experimental)"
 
 # Driver
 text_driver="Grafiktreiber"
