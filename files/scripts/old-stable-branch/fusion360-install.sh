@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    17:00/21.10.2021                                                                   #
-# Version:      5.6                                                                                #
+# Time/Date:    08:00/09.11.2021                                                                   #
+# Version:      5.7                                                                                #
 ####################################################################################################
 
 ##############################################################################
@@ -112,54 +112,59 @@ fi
 function configure-dxvk-or-opengl-standard-1 {
   if [ $driver_used -eq 2 ]; then
       WINEPREFIX=/home/$USER/.wineprefixes/fusion360 sh winetricks -q dxvk &&
-      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.reg &&
+      wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extras/opengl_dxvk/DXVK.reg &&
       WINEPREFIX=/home/$USER/.wineprefixes/fusion360 wine regedit.exe DXVK.reg
    fi
 }
 
 function configure-dxvk-or-opengl-standard-2 {
 if [ $driver_used -eq 2 ]; then
-      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.xml &&
+      wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extras/opengl_dxvk/DXVK.xml &&
       mv DXVK.xml NMachineSpecificOptions.xml
    else
-      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/NMachineSpecificOptions.xml
+      wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extras/opengl_dxvk/OpenGL.xml
+      mv OpenGL.xml NMachineSpecificOptions.xml
    fi
 }
 
 function configure-dxvk-or-opengl-standard-3 {
 if [ $driver_used -eq 2 ]; then
-      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.xml &&
+      wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extras/opengl_dxvk/DXVK.xml &&
       mv DXVK.xml NMachineSpecificOptions.xml
    else
-      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/NMachineSpecificOptions.xml
+      wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extras/opengl_dxvk/OpenGL.xml
+      mv OpenGL.xml NMachineSpecificOptions.xml
    fi
 }
 
 function configure-dxvk-or-opengl-custom-1 {
    if [ $driver_used -eq 2 ]; then
       WINEPREFIX=$filename sh winetricks -q dxvk &&
-      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.reg &&
+      wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extras/opengl_dxvk/DXVK.reg &&
       WINEPREFIX=$filename wine regedit.exe DXVK.reg
    else
-      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/NMachineSpecificOptions.xml
+      wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extras/opengl_dxvk/OpenGL.xml
+      mv OpenGL.xml NMachineSpecificOptions.xml
    fi
 }
 
 function configure-dxvk-or-opengl-custom-2 {
 if [ $driver_used -eq 2 ]; then
-      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.xml &&
+      wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extras/opengl_dxvk/DXVK.xml &&
       mv DXVK.xml NMachineSpecificOptions.xml
    else
-      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/NMachineSpecificOptions.xml
+      wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extras/opengl_dxvk/OpenGL.xml
+      mv OpenGL.xml NMachineSpecificOptions.xml
    fi
 }
 
 function configure-dxvk-or-opengl-custom-3 {
 if [ $driver_used -eq 2 ]; then
-      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/DXVK.xml &&
+      wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extras/opengl_dxvk/DXVK.xml &&
       mv DXVK.xml NMachineSpecificOptions.xml
    else
-      wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/NMachineSpecificOptions.xml
+      wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extras/opengl_dxvk/OpenGL.xml
+      mv OpenGL.xml NMachineSpecificOptions.xml
    fi
 }
 
@@ -271,8 +276,11 @@ function winetricks-standard {
    cd Options &&
    configure-dxvk-or-opengl-standard-3 &&
    #Set up the program launcher for you!
-   cd "$HOME/.local/share/applications/wine/Programs/Autodesk" &&
-   wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/Autodesk%20Fusion%20360.desktop &&
+   rm $HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk\ Fusion\ 360.desktop &&
+   wget -P $HOME/.local/share/applications/wine/Programs/Autodesk https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/Autodesk%20Fusion%20360.desktop &&
+   rm $HOME/.local/share/fusion360/launcher.sh &&
+   wget -P $HOME/.local/share/fusion360 https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/launcher.sh &&
+   chmod +x $HOME/.local/share/fusion360/launcher.sh &&
    logfile-installation-standard &&
    install-extensions-standard &&
    program-exit
