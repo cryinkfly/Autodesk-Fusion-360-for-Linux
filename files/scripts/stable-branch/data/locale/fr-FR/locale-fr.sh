@@ -21,6 +21,12 @@ text_license_checkbox="J'ai lu les termes et conditions et je les accepte."
 # Select
 text_select="Sélectionner"
 
+# Version (Standard, Flatpak or Snap)
+text_version="Version"
+text_standard="Standard"
+text_flatpak="Flatpak (Expérimental)"
+text_snap="Snap (Expérimental)"
+
 # Driver
 text_driver="Pilote graphique"
 
