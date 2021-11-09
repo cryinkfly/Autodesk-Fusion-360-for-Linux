@@ -101,8 +101,8 @@ function create-structure {
 # Load the Flatpak-files for the Setup Wizard!
 
 function load-flatpak {
-  wget -N -P data/flatpak https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/scripts/development-branch/fusion360-flatpak-install.sh
-  chmod +x data/locale/locale.sh
+  wget -N -P data/flatpak https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/scripts/development-branch/flatpak-install.sh
+  chmod +x data/flatpak/flatpak-install.sh
 }
 
 ###############################################################################################################################################################
@@ -493,6 +493,13 @@ function airfoil-tools-plugin-custom {
     WINEPREFIX=$custom_directory wine AirfoilTools_win64.msi
 }
 
+function airfoil-tools-plugin-flatpak-standard {
+    mkdir -p "$HOME/Fusion360/data/extensions"
+    cd "$HOME/Fusion360/data/extensions"
+    wget -N https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/raw/main/files/extensions/AirfoilTools_win64.msi &&
+    flatpak run org.winehq.flatpak-wine619 wine AirfoilTools_win64.msi
+}
+
 ###############################################################################################################################################################
 
 # Install a extension: Additive Assistant (FFF)
@@ -511,6 +518,13 @@ function additive-assistant-plugin-custom {
     WINEPREFIX=$custom_directory wine AdditiveAssistant.bundle-win64.msi
 }
 
+function additive-assistant-plugin-flatpak-standard {
+    mkdir -p "$HOME/Fusion360/data/extensions"
+    cd "$HOME/Fusion360/data/extensions"
+    wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/AdditiveAssistant.bundle-win64.msi &&
+    flatpak run org.winehq.flatpak-wine619 wine AdditiveAssistant.bundle-win64.msi
+}
+
 ###############################################################################################################################################################
 
 # Install a extension: Czech localization for F360
@@ -523,6 +537,11 @@ function czech-locale-plugin-standard {
 function czech-locale-plugin-custom {
     czech-locale-search-plugin-custom
     WINEPREFIX=$custom_directory wine $CZECH_LOCALE
+}
+
+function czech-locale-plugin-flatpak-standard {
+    czech-locale-search-plugin-standard
+    flatpak run org.winehq.flatpak-wine619 wine $CZECH_LOCALE
 }
 
 ###############################################################################################################################################################
@@ -543,6 +562,13 @@ function hp-3dprinter-connector-plugin-custom {
     WINEPREFIX=$custom_directory wine HP_3DPrinters_for_Fusion360-win64.msi
 }
 
+function hp-3dprinter-connector-plugin-flatpak-standard {
+    mkdir -p "$HOME/Fusion360/data/extensions"
+    cd "$HOME/Fusion360/data/extensions"
+    wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/HP_3DPrinters_for_Fusion360-win64.msi &&
+    flatpak run org.winehq.flatpak-wine619 wine HP_3DPrinters_for_Fusion360-win64.msi
+}
+
 ###############################################################################################################################################################
 
 # Install a extension: OctoPrint for Autodesk® Fusion 360™
@@ -561,6 +587,13 @@ function octoprint-plugin-custom {
     WINEPREFIX=$custom_directory wine OctoPrint_for_Fusion360-win64.msi
 }
 
+function octoprint-plugin-flatpak-standard {
+    mkdir -p "$HOME/Fusion360/data/extensions"
+    cd "$HOME/Fusion360/data/extensions"
+    wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/OctoPrint_for_Fusion360-win64.msi &&
+    flatpak run org.winehq.flatpak-wine619 wine OctoPrint_for_Fusion360-win64.msi
+}
+
 ###############################################################################################################################################################
 
 # Install a extension: RoboDK
@@ -577,6 +610,13 @@ function robodk-plugin-custom {
     cd "$HOME/Fusion360/data/extensions"
     wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/RoboDK.bundle-win64.msi &&
     WINEPREFIX=$custom_directory wine RoboDK.bundle-win64.msi
+}
+
+function robodk-plugin-flatpak-standard {
+    mkdir -p "$HOME/Fusion360/data/extensions"
+    cd "$HOME/Fusion360/data/extensions"
+    wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/RoboDK.bundle-win64.msi &&
+    flatpak run org.winehq.flatpak-wine619 wine RoboDK.bundle-win64.msi
 }
 
 ###############################################################################################################################################################
@@ -1012,6 +1052,23 @@ function select-opengl_dxvk {
 [[ $response = "$text_driver_opengl" ]] && driver_used=1 && select-your-os
 
 [[ $response = "$text_driver_dxvk" ]] && driver_used=2 && select-your-os
+
+[[ "$response" ]] || echo "Go back" && configure-locale
+}
+
+function select-opengl_dxvk-flatpak {
+  response=$(zenity --list \
+                    --radiolist \
+                    --title="$program_name" \
+                    --width=700 \
+                    --height=500 \
+                    --column="$text_select" --column="$text_driver" \
+                    TRUE "$text_driver_opengl" \
+                    FALSE "$text_driver_dxvk")
+
+[[ $response = "$text_driver_opengl" ]] && driver_used=1 && . data/flatpak/flatpak-install.sh && winetricks-flatpak-standard
+
+[[ $response = "$text_driver_dxvk" ]] && driver_used=2 && data/flatpak/flatpak-install.sh && winetricks-flatpak-standard
 
 [[ "$response" ]] || echo "Go back" && configure-locale
 }
