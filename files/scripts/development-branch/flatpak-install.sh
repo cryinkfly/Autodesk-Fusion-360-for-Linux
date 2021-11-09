@@ -78,7 +78,8 @@ function flathub {
 
 # Install a special Wine-Version (org.winehq.flatpak-proton-68-ge-1)
 wget -c https://github.com/fastrizwaan/flatpak-wine-releases/releases/download/6.19-20211009/org.winehq.flatpak-wine619-6.19-20211010.flatpak
-flatpak -y --user reinstall org.winehq.flatpak-wine619-6.19-20211010.flatpak
+flatpak -y --user uninstall org.winehq.flatpak-wine619-6.19-20211010.flatpak
+flatpak -y --user install org.winehq.flatpak-wine619-6.19-20211010.flatpak
 }
 
 flathub
