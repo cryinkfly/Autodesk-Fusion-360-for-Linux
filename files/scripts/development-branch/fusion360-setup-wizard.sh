@@ -1043,6 +1043,27 @@ esac
 
 ###############################################################################################################################################################
 
+# Select between Standard and Flatpak Version!
+
+function select-standard_flatpak_snap {
+  response=$(zenity --list \
+                    --radiolist \
+                    --title="$program_name" \
+                    --width=700 \
+                    --height=500 \
+                    --column="$text_select" --column="$text_version" \
+                    TRUE "$text_standard" \
+                    FALSE "$$text_flatpak")
+
+[[ $response = "$text_standard" ]] && select-opengl_dxvk
+
+[[ $response = "$text_flatpak" ]] && select-opengl_dxvk-flatpak
+
+[[ "$response" ]] || echo "Go back" && configure-locale
+}
+
+###############################################################################################################################################################
+
 # Autodesk Fusion 360 will be installed from scratch on this system!
 
 function select-opengl_dxvk {
