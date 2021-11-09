@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Autodesk Fusion 360 (Flatpak)
+Comment=This program launcher only works if you selected the standard installation when installing Autodesk Fusion 360!
+Exec=xterm -hold -e "cd $HOME/.local/share/fusion360 && bash flatpak-launcher.sh"
+Type=Application
+Categories=Development;Graphics;Science
+StartupNotify=true
+Icon=E414_Fusion360.0
+Terminal=false
+Path=
