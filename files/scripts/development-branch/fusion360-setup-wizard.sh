@@ -58,7 +58,7 @@ if [ -f "$log_path" ]; then
     new_modify_deinstall # Exists - Modify install
 else
     logfile_install=1
-    select-opengl_dxvk # New install
+    select-standard_flatpak_snap # New install
 fi
 }
 
