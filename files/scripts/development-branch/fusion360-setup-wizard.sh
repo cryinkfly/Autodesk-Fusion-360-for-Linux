@@ -74,6 +74,12 @@ if [ $logfile_install -eq 1 ]; then
 fi
 }
 
+function logfile-installation-flatpak-standard {
+if [ $logfile_install -eq 1 ]; then
+    echo "$HOME/.local/share/flatpak-wine619/default" >> $HOME/.local/share/fusion360/logfiles/log-path
+fi
+}
+
 ###############################################################################################################################################################
 
 # Create the structure for the installation of Autodesk Fusion 360!
