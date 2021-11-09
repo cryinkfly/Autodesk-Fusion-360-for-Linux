@@ -540,7 +540,7 @@ function czech-locale-plugin-custom {
 }
 
 function czech-locale-plugin-flatpak-standard {
-    czech-locale-search-plugin-standard
+    czech-locale-search-plugin-flatpak-standard
     flatpak run org.winehq.flatpak-wine619 wine $CZECH_LOCALE
 }
 
@@ -1487,6 +1487,40 @@ response=$(zenity --list \
 
 ###############################################################################################################################################################
 
+# Install some extensions with a manager! - Standard (Flatpak)
+
+function manager-extensions-flatpak-standard {
+
+response=$(zenity --list \
+                  --checklist \
+                  --title="$program_name" \
+                  --width=1000 \
+                  --height=500 \
+                  --column="$text_select" --column="$text_extension" --column="$text_extension_description"\
+                  FALSE "Airfoil Tools" "$text_extension_description_1" \
+                  FALSE "Additive Assistant (FFF)" "$text_extension_description_2" \
+                  FALSE "Czech localization for F360" "$text_extension_description_3" \
+                  FALSE "HP 3D Printers for Autodesk® Fusion 360™" "$text_extension_description_4" \
+                  FALSE "OctoPrint for Autodesk® Fusion 360™" "$text_extension_description_5" \
+                  FALSE "RoboDK" "$text_extension_description_6" )
+
+[[ $response = *"Airfoil Tools"* ]] && airfoil-tools-plugin-flatpak-standard
+
+[[ $response = *"Additive Assistant (FFF)"* ]] && additive-assistant-plugin-flatpak-standard
+
+[[ $response = *"Czech localization for F360"* ]] && czech-locale-plugin-flatpak-standard
+
+[[ $response = *"HP 3D Printers for Autodesk® Fusion 360™"* ]] && hp-3dprinter-connector-plugin-flatpak-standard
+
+[[ $response = *"OctoPrint for Autodesk® Fusion 360™"* ]] && octoprint-plugin-flatpak-standard
+
+[[ $response = *"RoboDK"* ]] && robodk-plugin-flatpak-standard
+
+[[ "$response" ]] || echo "Nothing selected!"
+}
+
+###############################################################################################################################################################
+
 # Select the downloaded installer for this special extension!
 
 function czech-locale-search-plugin-standard {
@@ -1519,6 +1553,26 @@ case $? in
               zenity --info \
               --text="$text_info_czech_plugin"
               manager-extensions-custom
+              ;;
+       -1)
+              zenity --error \
+              --text="$text_error"
+              exit;
+              ;;
+esac
+}
+
+
+function czech-locale-search-plugin-flatpak-standard {
+CZECH_LOCALE=`zenity --file-selection --title="$text_select_czech_plugin"`
+
+case $? in
+       0)
+              echo "\"$FILE\" selected.";;
+       1)
+              zenity --info \
+              --text="$text_info_czech_plugin"
+              manager-extensions-flatpak-standard
               ;;
        -1)
               zenity --error \
