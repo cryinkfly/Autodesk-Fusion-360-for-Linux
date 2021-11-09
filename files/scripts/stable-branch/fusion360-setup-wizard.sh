@@ -2,7 +2,7 @@
 
 ####################################################################################################
 # Name:         Autodesk Fusion 360 - Setup Wizard (Linux)                                         #
-# Description:  This file create the structure for the Setup Wizard.                               #
+# Description:  With this file you can install Autodesk Fusion 360 on Linux.                       #
 # Author:       Steve Zabka                                                                        #
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
