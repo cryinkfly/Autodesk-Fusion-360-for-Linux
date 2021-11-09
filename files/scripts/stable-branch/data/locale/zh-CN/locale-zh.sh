@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    10:00/08.11.2021                                                                   #
-# Version:      1.1                                                                                #
+# Time/Date:    12:00/09.11.2021                                                                   #
+# Version:      1.2                                                                                #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -20,6 +20,12 @@ text_license_checkbox="Wǒ yǐ yuèdú tiáokuǎn hé tiáojiàn bìng jiēshòu
 
 # Select
 text_select="Xuǎnzé"
+
+# Version (Standard, Flatpak or Snap)
+text_version="Bǎnběn"
+text_standard="Biāozhǔn"
+text_flatpak="Flatpak (Shíyàn xìng de)"
+text_snap="Snap (Shíyàn xìng de)"
 
 # Driver
 text_driver="Xiǎnkǎ qūdòng"
