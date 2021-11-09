@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com
 # License:      MIT
 # Copyright (c) 2020-2021
-# Time/Date:    19:00/16.09.2021
-# Version:      1.5
+# Time/Date:    08:00/09.11.2021
+# Version:      1.6
 ##############################################################################
 
 # DESCRIPTION
@@ -49,7 +49,7 @@ function install-requirement-check {
    
    ~/OctoPrint/venv/bin/octoprint serve &&
 
-   wget -N https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/octoprint.service && 
+   wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extras/octoprint-server/octoprint.service && 
    sudo mv octoprint.service /etc/systemd/system/octoprint.service &&
    
    sudo systemctl enable octoprint.service &&
