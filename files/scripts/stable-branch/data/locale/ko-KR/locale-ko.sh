@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    10:00/08.11.2021                                                                   #
-# Version:      1.1                                                                                #
+# Time/Date:    12:00/09.11.2021                                                                   #
+# Version:      1.2                                                                                #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -20,6 +20,12 @@ text_license_checkbox="Iyong-yaggwan-eul ilg-eoss-eumyeo ie dong-uihabnida."
 
 # Select
 text_select="Seontaeghada"
+
+# Version (Standard, Flatpak or Snap)
+text_version="Beojeon"
+text_standard="Gijun"
+text_flatpak="Flatpak (Silheomjeog)"
+text_snap="Snap (Silheomjeog)"
 
 # Driver
 text_driver="Geulaepig deulaibeo"
