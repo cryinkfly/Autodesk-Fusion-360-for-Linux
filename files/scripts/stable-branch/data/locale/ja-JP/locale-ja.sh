@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    10:00/08.11.2021                                                                   #
-# Version:      1.1                                                                                #
+# Time/Date:    12:00/09.11.2021                                                                   #
+# Version:      1.2                                                                                #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -20,6 +20,12 @@ text_license_checkbox="Riyō kiyaku o yomi, dōi shimasu."
 
 # Select
 text_select="Sentaku suru"
+
+# Version (Standard, Flatpak or Snap)
+text_version="Bājon"
+text_standard="Hyōjun"
+text_flatpak="Flatpak (Jikken-teki)"
+text_snap="Snap (Jikken-teki)"
 
 # Driver
 text_driver="Gurafikkudoraibā"
