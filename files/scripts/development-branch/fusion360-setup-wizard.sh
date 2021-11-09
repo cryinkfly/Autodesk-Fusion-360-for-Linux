@@ -100,8 +100,10 @@ function create-structure {
 
 # Load the Flatpak-files for the Setup Wizard!
 
+function load-flatpak {
   wget -N -P data/flatpak https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/scripts/development-branch/fusion360-flatpak-install.sh
   chmod +x data/locale/locale.sh
+}
 
 ###############################################################################################################################################################
 
@@ -601,6 +603,9 @@ create-structure
 echo "25" ; sleep 1
 echo "# The locale files will be loaded." ; sleep 1
 load-locale
+echo "45" ; sleep 1
+echo "# The Flatpak file will be loaded." ; sleep 1
+load-flatpak
 echo "55" ; sleep 1
 echo "# The wine- and winetricks Script is loaded." ; sleep 1
 load-winetricks
