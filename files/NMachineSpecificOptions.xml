@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-16" standalone="no" ?>
-<OptionGroups>
-  <BootstrapOptionsGroup SchemaVersion="2" ToolTip="Special preferences that require the application to be restarted after a change." UserName="Bootstrap">
-    <driverOptionId ToolTip="The driver used to display the graphics" UserName="Graphics driver" Value="VirtualDeviceGLCore"/></BootstrapOptionsGroup>
-</OptionGroups>
