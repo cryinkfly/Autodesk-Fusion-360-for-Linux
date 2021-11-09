@@ -1053,7 +1053,7 @@ function select-standard_flatpak_snap {
                     --height=500 \
                     --column="$text_select" --column="$text_version" \
                     TRUE "$text_standard" \
-                    FALSE "$$text_flatpak")
+                    FALSE "$text_flatpak")
 
 [[ $response = "$text_standard" ]] && select-opengl_dxvk
 
