@@ -356,9 +356,9 @@ if [ $driver_used -eq 2 ]; then
 
 function configure-dxvk-or-opengl-flatpak-standard-1 {
   if [ $driver_used -eq 2 ]; then
-      WINEPREFIX=/home/$USER/.wineprefixes/fusion360 sh data/winetricks/winetricks -q dxvk &&
+      flatpak run org.winehq.flatpak-wine619 winetricks -q dxvk &&
       wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extras/opengl_dxvk/DXVK.reg &&
-      WINEPREFIX=/home/$USER/.wineprefixes/fusion360 wine regedit.exe DXVK.reg
+      flatpak run org.winehq.flatpak-wine619 wine regedit.exe DXVK.reg
    fi
 }
 
@@ -453,9 +453,8 @@ function winetricks-flatpak-standard {
    # We must install cjkfonts again then sometimes it doesn't work the first time!
    flatpak run org.winehq.flatpak-wine619-ge-1 winetricks -q cjkfonts
    configure-dxvk-or-opengl-flatpak-standard-1
-   flatpak run org.winehq.flatpak-wine619 bash
-   wine data/fusion360/Fusion360installer.exe -p deploy -g -f log.txt --quiet
-   wine data/fusion360/Fusion360installer.exe -p deploy -g -f log.txt --quiet
+   flatpak run org.winehq.flatpak-wine619 wine data/fusion360/Fusion360installer.exe -p deploy -g -f log.txt --quiet
+   flatpak run org.winehq.flatpak-wine619 wine data/fusion360/Fusion360installer.exe -p deploy -g -f log.txt --quiet
    mkdir -p "$HOME/.local/share/flatpak-wine619/default/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options"
    cd "$HOME/.local/share/flatpak-wine619/default/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options"
    configure-dxvk-or-opengl-flatpak-standard-2
