@@ -51,7 +51,7 @@ You will get more information about this program, then you can visit the origina
 </div>
 <div>
 <img src="https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/images/workspaces/Drawing/drawing_oil_case.png" width="300px" height="200px">
-<img src="https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/images/workspaces/Electronics/%231.1_electronics_library.png" width="300px" height="200px">
+<img src="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/images/workspaces/Electronics/%231_air%20quality%20sensor.png" width="300px" height="200px">
 </div>
 
 ---
