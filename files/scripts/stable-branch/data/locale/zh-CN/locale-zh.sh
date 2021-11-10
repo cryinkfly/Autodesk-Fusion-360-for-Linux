@@ -43,10 +43,10 @@ text_linux_distribution="Linux fāxíng bǎn"
 text_installation_location="Ānzhuāng wèizhì"
 
 # Installation location - Standard
-text_installation_location_standard="Biāozhǔn - Jiāng Autodesk Fusion 360 ānzhuāng dào nín de zhǔ wénjiàn jiā zhōng. Lìrú: /home/username/.wineprefixes/.fusion360"
+text_installation_location_standard="Biāozhǔn - Jiāng Autodesk Fusion 360 ānzhuāng dào nín de zhǔ wénjiàn jiā zhōng. Lìrú: /home/username/.wineprefixes/fusion360"
 
 # Installation location - Custom
-text_installation_location_custom="Zì dìngyì - Jiāng Autodesk Fusion 360 ānzhuāng dào qítā wèizhì. Lìrú: /run/media/username/usb-drive/.wineprefixes/.fusion360"
+text_installation_location_custom="Zì dìngyì - Jiāng Autodesk Fusion 360 ānzhuāng dào qítā wèizhì. Lìrú: /run/media/username/usb-drive/.wineprefixes/fusion360"
 
 # Select a location with a file browser
 text_select_location_custom="Xuǎnzé Autodesk Fusion 360 ānzhuāng wèizhì:"
