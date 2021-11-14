@@ -20,6 +20,7 @@
 - @alexswerner
 - @apopticon
 - @Azkali
+- @Aus-gez
 - @b-desconocido
 - @blazej222
 - @bwrsandman
