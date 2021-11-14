@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    08:00/09.11.2021                                                                   #
-# Version:      1.5.5                                                                              #
+# Time/Date:    13:00/14.11.2021                                                                   #
+# Version:      1.5.6                                                                              #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -399,8 +399,7 @@ function winetricks-custom {
    rm $HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk\ Fusion\ 360.desktop
    wget -P $HOME/.local/share/applications/wine/Programs/Autodesk https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extras/desktop-starter/Autodesk%20Fusion%20360.desktop
    cd $HOME/Fusion360
-   wget -P $HOME/.local/share/fusion360 https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extras/desktop-starter/launcher.sh
-   wget https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/launcher.sh -O Fusion360launcher
+   wget -P $HOME/.local/share/fusion360 https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extras/desktop-starter/launcher.sh -O Fusion360launcher
    mv Fusion360launcher data/fusion360/Fusion360launcher
    desktop-launcher-custom
    logfile-installation-custom
