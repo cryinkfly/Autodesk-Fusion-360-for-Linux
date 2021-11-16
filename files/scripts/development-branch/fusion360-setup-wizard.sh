@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    09:00/16.11.2021                                                                   #
+# Time/Date:    10:00/16.11.2021                                                                   #
 # Version:      1.5.6                                                                              #
 ####################################################################################################
 
@@ -364,9 +364,9 @@ if [ $driver_used -eq 2 ]; then
 
 function configure-dxvk-or-opengl-flatpak-standard-1 {
   if [ $driver_used -eq 2 ]; then
-      flatpak run org.winehq.flatpak-wine619 winetricks -q dxvk &&
+      winetricks -q dxvk &&
       wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extras/opengl_dxvk/DXVK.reg &&
-      flatpak run org.winehq.flatpak-wine619 wine regedit.exe DXVK.reg
+      wine regedit.exe DXVK.reg
    fi
 }
 
