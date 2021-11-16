@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    11:00/09.11.2021                                                                   #
+# Time/Date:    09:00/16.11.2021                                                                   #
 # Version:      1.5.6                                                                              #
 ####################################################################################################
 
@@ -461,8 +461,9 @@ function winetricks-flatpak-standard {
    # We must install cjkfonts again then sometimes it doesn't work the first time!
    flatpak run org.winehq.flatpak-wine619-ge-1 winetricks -q cjkfonts
    configure-dxvk-or-opengl-flatpak-standard-1
-   flatpak run org.winehq.flatpak-wine619 wine data/fusion360/Fusion360installer.exe -p deploy -g -f log.txt --quiet
-   flatpak run org.winehq.flatpak-wine619 wine data/fusion360/Fusion360installer.exe -p deploy -g -f log.txt --quiet
+   flatpak run org.winehq.flatpak-wine619 bash
+   wine data/fusion360/Fusion360installer.exe -p deploy -g -f log.txt --quiet
+   wine data/fusion360/Fusion360installer.exe -p deploy -g -f log.txt --quiet
    mkdir -p "$HOME/.local/share/flatpak-wine619/default/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options"
    cd "$HOME/.local/share/flatpak-wine619/default/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options"
    configure-dxvk-or-opengl-flatpak-standard-2
