@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    10:00/16.11.2021                                                                   #
+# Time/Date:    10:30/16.11.2021                                                                   #
 # Version:      1.5.6                                                                              #
 ####################################################################################################
 
@@ -364,7 +364,7 @@ if [ $driver_used -eq 2 ]; then
 
 function configure-dxvk-or-opengl-flatpak-standard-1 {
   if [ $driver_used -eq 2 ]; then
-      winetricks -q dxvk &&
+      flatpak --user run org.winehq.flatpak-wine619 winetricks -q dxvk &&
       wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extras/opengl_dxvk/DXVK.reg &&
       wine regedit.exe DXVK.reg
    fi
@@ -461,9 +461,8 @@ function winetricks-flatpak-standard {
    # We must install cjkfonts again then sometimes it doesn't work the first time!
    flatpak --user run org.winehq.flatpak-wine619 winetricks -q cjkfonts
    configure-dxvk-or-opengl-flatpak-standard-1
-   flatpak --user run org.winehq.flatpak-wine619 bash
-   wine data/fusion360/Fusion360installer.exe -p deploy -g -f log.txt --quiet
-   wine data/fusion360/Fusion360installer.exe -p deploy -g -f log.txt --quiet
+   flatpak --user run org.winehq.flatpak-wine619 wine data/fusion360/Fusion360installer.exe -p deploy -g -f log.txt --quiet
+   flatpak --user run org.winehq.flatpak-wine619 wine data/fusion360/Fusion360installer.exe -p deploy -g -f log.txt --quiet
    mkdir -p "$HOME/.local/share/flatpak-wine619/default/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options"
    cd "$HOME/.local/share/flatpak-wine619/default/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options"
    configure-dxvk-or-opengl-flatpak-standard-2
@@ -529,7 +528,7 @@ function additive-assistant-plugin-flatpak-standard {
     mkdir -p "$HOME/Fusion360/data/extensions"
     cd "$HOME/Fusion360/data/extensions"
     wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/AdditiveAssistant.bundle-win64.msi &&
-    wine AdditiveAssistant.bundle-win64.msi
+    flatpak --user run org.winehq.flatpak-wine619 wine AdditiveAssistant.bundle-win64.msi
 }
 
 ###############################################################################################################################################################
@@ -548,7 +547,7 @@ function czech-locale-plugin-custom {
 
 function czech-locale-plugin-flatpak-standard {
     czech-locale-search-plugin-flatpak-standard
-    wine $CZECH_LOCALE
+    flatpak --user run org.winehq.flatpak-wine619 wine $CZECH_LOCALE
 }
 
 ###############################################################################################################################################################
@@ -573,7 +572,7 @@ function hp-3dprinter-connector-plugin-flatpak-standard {
     mkdir -p "$HOME/Fusion360/data/extensions"
     cd "$HOME/Fusion360/data/extensions"
     wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/HP_3DPrinters_for_Fusion360-win64.msi &&
-    wine HP_3DPrinters_for_Fusion360-win64.msi
+    flatpak --user run org.winehq.flatpak-wine619 wine HP_3DPrinters_for_Fusion360-win64.msi
 }
 
 ###############################################################################################################################################################
@@ -598,7 +597,7 @@ function octoprint-plugin-flatpak-standard {
     mkdir -p "$HOME/Fusion360/data/extensions"
     cd "$HOME/Fusion360/data/extensions"
     wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/OctoPrint_for_Fusion360-win64.msi &&
-    wine OctoPrint_for_Fusion360-win64.msi
+    flatpak --user run org.winehq.flatpak-wine619 wine OctoPrint_for_Fusion360-win64.msi
 }
 
 ###############################################################################################################################################################
@@ -623,7 +622,7 @@ function robodk-plugin-flatpak-standard {
     mkdir -p "$HOME/Fusion360/data/extensions"
     cd "$HOME/Fusion360/data/extensions"
     wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/RoboDK.bundle-win64.msi &&
-    wine RoboDK.bundle-win64.msi
+    flatpak --user run org.winehq.flatpak-wine619 wine RoboDK.bundle-win64.msi
 }
 
 ###############################################################################################################################################################
