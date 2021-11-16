@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    10:30/16.11.2021                                                                   #
+# Time/Date:    11:00/16.11.2021                                                                   #
 # Version:      1.5.6                                                                              #
 ####################################################################################################
 
@@ -364,7 +364,7 @@ if [ $driver_used -eq 2 ]; then
 
 function configure-dxvk-or-opengl-flatpak-standard-1 {
   if [ $driver_used -eq 2 ]; then
-      flatpak --user run org.winehq.flatpak-wine619 winetricks -q dxvk &&
+      winetricks -q dxvk &&
       wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extras/opengl_dxvk/DXVK.reg &&
       wine regedit.exe DXVK.reg
    fi
@@ -461,8 +461,10 @@ function winetricks-flatpak-standard {
    # We must install cjkfonts again then sometimes it doesn't work the first time!
    flatpak --user run org.winehq.flatpak-wine619 winetricks -q cjkfonts
    configure-dxvk-or-opengl-flatpak-standard-1
-   flatpak --user run org.winehq.flatpak-wine619 wine data/fusion360/Fusion360installer.exe -p deploy -g -f log.txt --quiet
-   flatpak --user run org.winehq.flatpak-wine619 wine data/fusion360/Fusion360installer.exe -p deploy -g -f log.txt --quiet
+   flatpak --user run org.winehq.flatpak-wine619 bash
+   cd "$HOME/Fusion360/data/fusion360"
+   wine Fusion360installer.exe -p deploy -g -f log.txt --quiet
+   wine Fusion360installer.exe -p deploy -g -f log.txt --quiet
    mkdir -p "$HOME/.local/share/flatpak-wine619/default/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options"
    cd "$HOME/.local/share/flatpak-wine619/default/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options"
    configure-dxvk-or-opengl-flatpak-standard-2
