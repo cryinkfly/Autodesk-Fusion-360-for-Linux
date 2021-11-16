@@ -504,7 +504,7 @@ function airfoil-tools-plugin-flatpak-standard {
     mkdir -p "$HOME/Fusion360/data/extensions"
     cd "$HOME/Fusion360/data/extensions"
     wget -N https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/raw/main/files/extensions/AirfoilTools_win64.msi &&
-    flatpak run org.winehq.flatpak-wine619 wine AirfoilTools_win64.msi
+    wine AirfoilTools_win64.msi
 }
 
 ###############################################################################################################################################################
@@ -529,7 +529,7 @@ function additive-assistant-plugin-flatpak-standard {
     mkdir -p "$HOME/Fusion360/data/extensions"
     cd "$HOME/Fusion360/data/extensions"
     wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/AdditiveAssistant.bundle-win64.msi &&
-    flatpak run org.winehq.flatpak-wine619 wine AdditiveAssistant.bundle-win64.msi
+    wine AdditiveAssistant.bundle-win64.msi
 }
 
 ###############################################################################################################################################################
@@ -548,7 +548,7 @@ function czech-locale-plugin-custom {
 
 function czech-locale-plugin-flatpak-standard {
     czech-locale-search-plugin-flatpak-standard
-    flatpak run org.winehq.flatpak-wine619 wine $CZECH_LOCALE
+    wine $CZECH_LOCALE
 }
 
 ###############################################################################################################################################################
@@ -573,7 +573,7 @@ function hp-3dprinter-connector-plugin-flatpak-standard {
     mkdir -p "$HOME/Fusion360/data/extensions"
     cd "$HOME/Fusion360/data/extensions"
     wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/HP_3DPrinters_for_Fusion360-win64.msi &&
-    flatpak run org.winehq.flatpak-wine619 wine HP_3DPrinters_for_Fusion360-win64.msi
+    wine HP_3DPrinters_for_Fusion360-win64.msi
 }
 
 ###############################################################################################################################################################
@@ -598,7 +598,7 @@ function octoprint-plugin-flatpak-standard {
     mkdir -p "$HOME/Fusion360/data/extensions"
     cd "$HOME/Fusion360/data/extensions"
     wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/OctoPrint_for_Fusion360-win64.msi &&
-    flatpak run org.winehq.flatpak-wine619 wine OctoPrint_for_Fusion360-win64.msi
+    wine OctoPrint_for_Fusion360-win64.msi
 }
 
 ###############################################################################################################################################################
@@ -623,7 +623,7 @@ function robodk-plugin-flatpak-standard {
     mkdir -p "$HOME/Fusion360/data/extensions"
     cd "$HOME/Fusion360/data/extensions"
     wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/RoboDK.bundle-win64.msi &&
-    flatpak run org.winehq.flatpak-wine619 wine RoboDK.bundle-win64.msi
+    wine RoboDK.bundle-win64.msi
 }
 
 ###############################################################################################################################################################
