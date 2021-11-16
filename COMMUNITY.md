@@ -46,6 +46,7 @@
 - @mcbb2001
 - @mike-lloyd03
 - @MrEdd123
+- @madhead
 - @nitro2k01
 - @nonchip
 - @Patschke
@@ -66,6 +67,5 @@
 - @vintagepc
 - @watzon
 - @wprojects
-- @madhead
 
 ... they help me with reports and code to get work Fusion 360 on Linux!!!
