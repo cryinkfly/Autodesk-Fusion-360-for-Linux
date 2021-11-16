@@ -457,11 +457,11 @@ function winetricks-custom {
 # Autodesk Fusion 360 will now be installed using Wine and Winetricks! - Standard (Flatpak)
 
 function winetricks-flatpak-standard {
-   flatpak run org.winehq.flatpak-wine619 winetricks -q corefonts cjkfonts msxml4 msxml6 vcrun2017 fontsmooth=rgb win8
+   flatpak --user run org.winehq.flatpak-wine619 winetricks -q corefonts cjkfonts msxml4 msxml6 vcrun2017 fontsmooth=rgb win8
    # We must install cjkfonts again then sometimes it doesn't work the first time!
-   flatpak run org.winehq.flatpak-wine619-ge-1 winetricks -q cjkfonts
+   flatpak --user run org.winehq.flatpak-wine619-ge-1 winetricks -q cjkfonts
    configure-dxvk-or-opengl-flatpak-standard-1
-   flatpak run org.winehq.flatpak-wine619 bash
+   flatpak --user run org.winehq.flatpak-wine619 bash
    wine data/fusion360/Fusion360installer.exe -p deploy -g -f log.txt --quiet
    wine data/fusion360/Fusion360installer.exe -p deploy -g -f log.txt --quiet
    mkdir -p "$HOME/.local/share/flatpak-wine619/default/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options"
