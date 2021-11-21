@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    10:00/21.11.2021                                                                   #
+# Time/Date:    13:00/21.11.2021                                                                   #
 # Version:      1.5.7                                                                              #
 ####################################################################################################
 
@@ -32,10 +32,11 @@
 # This log file will later help with error analysis to find out why the installation did not work.
 
 function logfile-installation {
-   mkdir -p "/$HOME/.local/share/fusion360/logfiles" &&
-   exec 5> /$HOME/.local/share/fusion360/logfiles/logfile-installation
-   BASH_XTRACEFD="5"
-   set -x
+  mkdir -p "$HOME/.wineprefixes/fusion360/logfiles"
+  exec 3>&1 4>&2
+  trap 'exec 2>&4 1>&3' 0 1 2 3
+  exec 1> $HOME/.wineprefixes/fusion360/logfiles/setupact.log 2>&1
+  echo `date`
 }
 
 ###############################################################################################################################################################
