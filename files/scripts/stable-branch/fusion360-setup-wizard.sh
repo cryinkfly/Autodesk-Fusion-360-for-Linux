@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    13:00/14.11.2021                                                                   #
-# Version:      1.5.6                                                                              #
+# Time/Date:    10:00/21.11.2021                                                                   #
+# Version:      1.5.7                                                                              #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -289,9 +289,9 @@ function gentoo-linux {
 
 function configure-dxvk-or-opengl-standard-1 {
   if [ $driver_used -eq 2 ]; then
-      WINEPREFIX=/home/$USER/.wineprefixes/fusion360 sh data/winetricks/winetricks -q dxvk &&
+      WINEPREFIX=$HOME/.wineprefixes/fusion360 sh data/winetricks/winetricks -q dxvk &&
       wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extras/opengl_dxvk/DXVK.reg &&
-      WINEPREFIX=/home/$USER/.wineprefixes/fusion360 wine regedit.exe DXVK.reg
+      WINEPREFIX=$HOME/.wineprefixes/fusion360 wine regedit.exe DXVK.reg
    fi
 }
 
