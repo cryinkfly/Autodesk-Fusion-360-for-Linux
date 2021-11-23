@@ -39,11 +39,16 @@ f360path_log=0
 
 # Provides information about setup actions during installation.
 function setupact-log {
+  # mkdir -p "$HOME/.wineprefixes/fusion360/logfiles"
+  # exec 3>&1 4>&2
+  # trap 'exec 2>&4 1>&3' 0 1 2 3
+  # exec 1> $HOME/.wineprefixes/fusion360/logfiles/setupact.log 2>&1
+  # echo `date`
+  
   mkdir -p "$HOME/.wineprefixes/fusion360/logfiles"
-  exec 3>&1 4>&2
-  trap 'exec 2>&4 1>&3' 0 1 2 3
-  exec 1> $HOME/.wineprefixes/fusion360/logfiles/setupact.log 2>&1
-  echo `date`
+  exec 5> $HOME/.wineprefixes/fusion360/logfiles/setupact.log
+  BASH_XTRACEFD="5"
+  set -x
 }
 
 # Check if already exists a Autodesk Fusion 360 installation on your system.
