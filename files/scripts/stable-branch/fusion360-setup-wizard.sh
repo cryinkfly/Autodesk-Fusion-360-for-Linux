@@ -844,7 +844,7 @@ function setupact-select-f360-path {
                     TRUE "$text_installation_location_standard" \
                     FALSE "$text_installation_location_custom")
 
-[[ $select_f360_path = "$text_installation_location_standard" ]] && wineprefixname="$HOME/.wineprefixes/fusion360" && setupact-select-opengl_dxvk
+[[ $select_f360_path = "$text_installation_location_standard" ]] f360_launcher=1 && wineprefixname="$HOME/.wineprefixes/fusion360" && setupact-select-opengl_dxvk
 
 [[ $select_f360_path = "$text_installation_location_custom" ]] && setupact-f360-path && setupact-select-opengl_dxvk
 
