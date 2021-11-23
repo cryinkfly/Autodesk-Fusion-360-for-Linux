@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    09:00/23.11.2021                                                                   #
-# Version:      1.5.8                                                                              #
+# Time/Date:    10:30/23.11.2021                                                                   #
+# Version:      1.5.9                                                                              #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -208,9 +208,11 @@ function setupact-f360install {
    setupact-dxvk-opengl-2
    mkdir -p "$wineprefixname/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options"
    cd "$wineprefixname/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options"
-   setupact-dxvk-opengl-3
+   setupact-dxvk-opengl-3   
    setupact-f360-launcher
    setupact-log-f360-path
+   setupact-f360extensions
+   setupact-completed
 }
 
 ###############################################################################################################################################################
@@ -243,11 +245,13 @@ function archlinux {
     if archlinux-verify-multilib ; then
         echo "multilib found. Continuing..."
         sudo pacman -Sy --needed wine wine-mono wine_gecko winetricks p7zip curl cabextract samba ppp
+	setupact-f360install
     else
         echo "Enabling multilib..."
         echo "[multilib]" | sudo tee -a /etc/pacman.conf
         echo "Include = /etc/pacman.d/mirrorlist" | sudo tee -a /etc/pacman.conf
         sudo pacman -Sy --needed wine wine-mono wine_gecko winetricks p7zip curl cabextract samba ppp
+	setupact-f360install
     fi
 }
 
@@ -272,6 +276,7 @@ function debian-based-2 {
     sudo apt-get upgrade
     sudo apt-get install p7zip p7zip-full p7zip-rar curl winbind cabextract wget
     sudo apt-get install --install-recommends winehq-staging
+    setupact-f360install
 }
 
 function ubuntu18 {
@@ -337,6 +342,7 @@ function fedora-based-1 {
 
 function fedora-based-2 {
     sudo dnf install p7zip p7zip-plugins curl wget wine cabextract
+    setupact-f360install
 }
 
 function redhat-linux {
@@ -344,18 +350,22 @@ function redhat-linux {
    sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
    sudo dnf upgrade
    sudo dnf install wine
+   setupact-f360install
 }
 
 function solus-linux {
    sudo eopkg install -y wine winetricks p7zip curl cabextract samba ppp
+   setupact-f360install
 }
 
 function void-linux {
    sudo xbps-install -Sy wine wine-mono wine-gecko winetricks p7zip curl cabextract samba ppp
+   setupact-f360install
 }
 
 function gentoo-linux {
     sudo emerge -nav virtual/wine app-emulation/winetricks app-emulation/wine-mono app-emulation/wine-gecko app-arch/p7zip app-arch/cabextract net-misc/curl net-fs/samba net-dialup/ppp
+    setupact-f360install
 }
 
 ###############################################################################################################################################################
@@ -856,9 +866,9 @@ function setupact-select-opengl_dxvk {
                     TRUE "$text_driver_opengl" \
                     FALSE "$text_driver_dxvk")
 
-[[ $select_driver = "$text_driver_opengl" ]] && driver_used=1 && setupact-select-os && setupact-f360install && setupact-f360extensions && setupact-completed
+[[ $select_driver = "$text_driver_opengl" ]] && driver_used=1 && setupact-select-os
 
-[[ $select_driver = "$text_driver_dxvk" ]] && driver_used=2 && setupact-select-os && setupact-f360install && setupact-f360extensions && setupact-completed
+[[ $select_driver = "$text_driver_dxvk" ]] && driver_used=2 && setupact-select-os
 
 [[ "$select_driver" ]] || echo "Go back" && setupact-select-f360-path
 }
