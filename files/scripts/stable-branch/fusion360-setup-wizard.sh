@@ -1124,7 +1124,7 @@ function setupact-f360-modify-launcher {
           answer=$?
 
           if [ "$answer" -eq 0 ]; then
-              echo "$launcher" > $file
+              echo "$launcher" > $modify_f360_launcher
               rm "$HOME/.local/share/fusion360/launcher.sh"
               mv $modify_f360_launcher "$HOME/.local/applications/wine/Programs/Autodesk/fusion360-launcher.sh"
           elif [ "$answer" -eq 1 ]; then
