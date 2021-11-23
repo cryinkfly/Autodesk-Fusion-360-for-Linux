@@ -260,18 +260,18 @@ function archlinux-verify-multilib {
 }
 
 function debian-based-1 {
-    sudo apt-get -y update
-    sudo apt-get -y upgrade
+    sudo apt-get update
+    sudo apt-get upgrade
     sudo dpkg --add-architecture i386
     wget -nc https://dl.winehq.org/wine-builds/winehq.key
     sudo apt-key add winehq.key
 }
 
 function debian-based-2 {
-    sudo apt-get -y update
-    sudo apt-get -y upgrade
-    sudo apt-get -y install p7zip p7zip-full p7zip-rar curl winbind cabextract wget
-    sudo apt-get -y install --install-recommends winehq-staging
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get install p7zip p7zip-full p7zip-rar curl winbind cabextract wget
+    sudo apt-get install --install-recommends winehq-staging
 }
 
 function ubuntu18 {
@@ -297,8 +297,8 @@ function ubuntu21 {
     # It is infinitely better than using apt-key add though.
     # For more information and for instructions to utalise best practices, see:
     # https://askubuntu.com/questions/1286545/what-commands-exactly-should-replace-the-deprecated-apt-key
-    sudo apt-get -y update
-    sudo apt-get -y upgrade
+    sudo apt-get update
+    sudo apt-get upgrade
     sudo dpkg --add-architecture i386
     mkdir -p /tmp/360 && cd /tmp/360
     wget https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_21.04/Release.key
@@ -314,8 +314,8 @@ function ubuntu21 {
 
 function ubuntu21_10 {
     # Note: See the description in the function ubuntu21!
-    sudo apt-get -y update
-    sudo apt-get -y upgrade
+    sudo apt-get update
+    sudo apt-get upgrade
     sudo dpkg --add-architecture i386
     mkdir -p /tmp/360 && cd /tmp/360
     wget https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_21.04/Release.key
@@ -336,7 +336,7 @@ function fedora-based-1 {
 }
 
 function fedora-based-2 {
-    sudo dnf -y install p7zip p7zip-plugins curl wget wine cabextract
+    sudo dnf install p7zip p7zip-plugins curl wget wine cabextract
 }
 
 function redhat-linux {
@@ -547,7 +547,7 @@ function setupact-configure-locale {
 # Load & View the LICENSE AGREEMENT of this Setup Wizard - cs-CZ
 function licenses-cs {
 
-license_de=`dirname $0`/data/locale/cs-CZ/license-cs
+license_cs=`dirname $0`/data/locale/cs-CZ/license-cs
 
 zenity --text-info \
        --title="$program_name" \
