@@ -229,7 +229,7 @@ else
   rm $HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk\ Fusion\ 360.desktop
   wget -P $HOME/.local/share/applications/wine/Programs/Autodesk https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extras/desktop-starter/Autodesk%20Fusion%20360.desktop
   cd "$HOME/.wineprefixes/fusion360/INSTALLDIR"
-  wget -P $HOME/.local/share/fusion360 https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extras/desktop-starter/launcher.sh -O Fusion360launcher
+  wget -P $HOME/.local/share/fusion360 https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extras/desktop-starter/fusion360-launcher.sh -O Fusion360launcher
   mv Fusion360launcher data/fusion360/Fusion360launcher
   setupact-f360-modify-launcher
 fi
