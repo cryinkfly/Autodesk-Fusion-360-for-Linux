@@ -35,6 +35,7 @@
 - @Druco
 - @DanidCH
 - @fastrizwaan
+- @fcltymngr
 - @GoTVm
 - @hopkuba
 - @Kara-Zor-El
