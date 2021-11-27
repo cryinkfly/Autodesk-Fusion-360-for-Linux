@@ -40,6 +40,7 @@
 - @hopkuba
 - @Kara-Zor-El
 - @kpatel122
+- @kyngs
 - @Le0xFF
 - @Lik3Hackdev
 - @madurani
@@ -61,12 +62,14 @@
 - @SuibianP
 - @suryanisaac
 - @sixxxis
+- @smirgol
 - @TheCatster
 - @ThisIsTheOnlyUsernameAvailable
 - @TN-1
 - @Tony763
 - @thulle
 - @vintagepc
+- @vikingsraven
 - @watzon
 - @wprojects
 
