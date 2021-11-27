@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    10:30/23.11.2021                                                                   #
-# Version:      1.5.9                                                                              #
+# Time/Date:    13:30/27.11.2021                                                                   #
+# Version:      1.6.0                                                                              #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -315,6 +315,7 @@ function ubuntu21 {
     sudo mv *.gpg /etc/apt/trusted.gpg.d/ && cd /tmp && sudo rm -rf 360
     echo "deb [signed-by=/etc/apt/trusted.gpg.d/opensuse-wine.gpg] https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_21.04/ ./" | sudo tee -a /etc/apt/sources.list.d/opensuse-wine.list
     sudo add-apt-repository -r 'deb https://dl.winehq.org/wine-builds/ubuntu/ hirsute main'
+    cd "$HOME/.wineprefixes/fusion360/INSTALLDIR"
 }
 
 function ubuntu21_10 {
