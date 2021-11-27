@@ -88,9 +88,9 @@ function fusion360-flatpak {
     mkdir -p "$HOME/.wineprefixes/fusion360/INSTALLDIR/data/fusion360"
     cd "$HOME/.wineprefixes/fusion360/INSTALLDIR/data/fusion360"
     wget https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe -O Fusion360installer.exe
-    wine Fusion\ 360\ Admin\ Install.exe -p deploy -g -f log.txt --quiet &&
-    wine Fusion\ 360\ Admin\ Install.exe -p deploy -g -f log.txt --quiet &&
-   mkdir -p "$HOME/.local/share/flatpak-wine619/default/drive_c/users/steamuser/Application Data/Autodesk/Neutron Platform/" &&
+    wine Fusion\ 360\ Admin\ Install.exe -p deploy -g -f log.txt --quiet
+    wine Fusion\ 360\ Admin\ Install.exe -p deploy -g -f log.txt --quiet
+    mkdir -p "$HOME/.local/share/flatpak-wine619/default/drive_c/users/steamuser/Application Data/Autodesk/Neutron Platform/"
 
 cat > "$HOME/.local/share/flatpak-wine619/default/drive_c/users/steamuser/Application Data/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml" << "E"
 <?xml version="1.0" encoding="UTF-16" standalone="no" ?>
