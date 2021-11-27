@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    16:30/27.11.2021                                                                   #
-# Version:      1.6.1                                                                              #
+# Time/Date:    17:30/27.11.2021                                                                   #
+# Version:      1.6.2                                                                              #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -197,7 +197,7 @@ if [ $driver_used -eq 2 ]; then
 
 # Autodesk Fusion 360 will now be installed using Wine and Winetricks.
 function setupact-f360install {
-   WINEPREFIX=$wineprefixname sh data/winetricks/winetricks -q corefonts cjkfonts msxml4 msxml6 vcrun2017 fontsmooth=rgb win8
+   WINEPREFIX=$wineprefixname sh data/winetricks/winetricks -q atmlib gdiplus corefonts cjkfonts msxml4 msxml6 vcrun2017 fontsmooth=rgb winhttp win10
    # We must install cjkfonts again then sometimes it doesn't work in the first time!
    WINEPREFIX=$wineprefixname sh data/winetricks/winetricks -q cjkfonts
    setupact-dxvk-opengl-1
