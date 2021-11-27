@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    17:30/27.11.2021                                                                   #
-# Version:      1.6.2                                                                              #
+# Time/Date:    18:00/27.11.2021                                                                   #
+# Version:      1.6.3                                                                              #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -223,8 +223,8 @@ if [ $f360_launcher -eq 1 ]; then
   rm $HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk\ Fusion\ 360.desktop
   wget -P $HOME/.local/share/applications/wine/Programs/Autodesk https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extras/desktop-starter/Autodesk%20Fusion%20360.desktop
   rm $HOME/.local/applications/wine/Programs/Autodesk/fusion360-launcher.sh
-  wget -P $HOME/.local/applications/wine/Programs/Autodesk https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extras/desktop-starter/fusion360-launcher.sh
-  chmod +x $HOME/.local/applications/wine/Programs/Autodesk/fusion360-launcher.sh
+  wget -P $HOME/.local/share/applications/wine/Programs/Autodesk https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extras/desktop-starter/fusion360-launcher.sh
+  chmod +x $HOME/.local/share/applications/wine/Programs/Autodesk/fusion360-launcher.sh
 else
   rm $HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk\ Fusion\ 360.desktop
   wget -P $HOME/.local/share/applications/wine/Programs/Autodesk https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extras/desktop-starter/Autodesk%20Fusion%20360.desktop
@@ -1127,7 +1127,8 @@ function setupact-f360-modify-launcher {
           if [ "$answer" -eq 0 ]; then
               echo "$launcher" > $modify_f360_launcher
               rm "$HOME/.local/share/fusion360/launcher.sh"
-              mv $modify_f360_launcher "$HOME/.local/applications/wine/Programs/Autodesk/fusion360-launcher.sh"
+              mv $modify_f360_launcher "$HOME/.local/share/applications/wine/Programs/Autodesk/fusion360-launcher.sh"
+	      chmod +x $HOME/.local/share/applications/wine/Programs/Autodesk/fusion360-launcher.sh
           elif [ "$answer" -eq 1 ]; then
               setupact-f360-modify-launcher
           fi
