@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    11:30/09.11.2021                                                                   #
-# Version:      2.0                                                                                #
+# Time/Date:    17:00/27.11.2021                                                                   #
+# Version:      2.1                                                                                #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -81,4 +81,29 @@ wget -c https://github.com/fastrizwaan/flatpak-wine-releases/releases/download/6
 flatpak -y --user install org.winehq.flatpak-wine619-6.19-20211010.flatpak
 }
 
+function fusion360-flatpak {
+
+    flatpak run org.winehq.flatpak-wine619 winetricks -q corefonts msxml4 msxml6 vcrun2019 fontsmooth=rgb win8
+    flatpak run org.winehq.flatpak-wine619 bash
+    mkdir -p "$HOME/.wineprefixes/fusion360/INSTALLDIR/data/fusion360"
+    cd "$HOME/.wineprefixes/fusion360/INSTALLDIR/data/fusion360"
+    wget https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe -O Fusion360installer.exe
+    wine Fusion\ 360\ Admin\ Install.exe -p deploy -g -f log.txt --quiet &&
+    wine Fusion\ 360\ Admin\ Install.exe -p deploy -g -f log.txt --quiet &&
+   mkdir -p "$HOME/.local/share/flatpak-wine619/default/drive_c/users/steamuser/Application Data/Autodesk/Neutron Platform/" &&
+
+cat > "$HOME/.local/share/flatpak-wine619/default/drive_c/users/steamuser/Application Data/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml" << "E"
+<?xml version="1.0" encoding="UTF-16" standalone="no" ?>
+<OptionGroups>
+<BootstrapOptionsGroup SchemaVersion="2" ToolTip="Special preferences that require the application to be restarted after a change." UserName="Bootstrap">
+ <driverOptionId ToolTip="The driver used to display the graphics" UserName="Graphics driver" Value="VirtualDeviceGLCore"/></BootstrapOptionsGroup>
+</OptionGroups>
+E
+
+echo "The installation of Autodesk Fusion 360 is completed."
+exit
+
+}
+
 flathub
+fusion360-flatpak
