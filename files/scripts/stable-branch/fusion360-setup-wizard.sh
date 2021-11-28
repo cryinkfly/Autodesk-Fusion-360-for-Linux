@@ -1030,7 +1030,7 @@ function setupact-modify-f360 {
 
 [[ $f360_modify = "$text_select_option_2" ]] && setupact-new-edit-f360
 
-[[ $f360_modify = "$text_select_option_3" ]] && setupact-select-f360-path && setupact-f360extensions && setupact-completed
+[[ $f360_modify = "$text_select_option_3" ]] && setupact-f360-path && setupact-f360extensions && setupact-completed
 
 [[ $f360_modify = "$text_select_option_4" ]] && setupact-deinstall-f360
 
