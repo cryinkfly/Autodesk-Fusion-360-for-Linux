@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    18:00/27.11.2021                                                                   #
-# Version:      1.6.3                                                                              #
+# Time/Date:    11:45/28.11.2021                                                                   #
+# Version:      1.6.4                                                                              #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -33,6 +33,9 @@ driver_used=0
 # Reset the logfile-value for the installation of Autodesk Fusion 360!
 f360path_log=0
 
+# Reset the wine-value for the installation of Autodesk Fusion 360!
+wine_version_used=0
+
 ###############################################################################################################################################################
 # ALL LOG-FUNCTIONS ARE ARRANGED HERE:                                                                                                                        #
 ###############################################################################################################################################################
@@ -44,7 +47,7 @@ function setupact-log {
   # trap 'exec 2>&4 1>&3' 0 1 2 3
   # exec 1> $HOME/.wineprefixes/fusion360/logfiles/setupact.log 2>&1
   # echo `date`
-  
+
   mkdir -p "$HOME/.wineprefixes/fusion360/logfiles"
   exec 5> $HOME/.wineprefixes/fusion360/logfiles/setupact.log
   BASH_XTRACEFD="5"
@@ -164,7 +167,7 @@ function setupact-load-f360exe {
 ###############################################################################################################################################################
 
 function setupact-dxvk-opengl-1 {
-  if [ $driver_used -eq 2 ]; then
+  if [ $driver_used -eq 1 ]; then
       WINEPREFIX=$wineprefixname sh data/winetricks/winetricks -q dxvk
       wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extras/opengl_dxvk/DXVK.reg
       WINEPREFIX=$wineprefixname wine regedit.exe DXVK.reg
@@ -172,7 +175,7 @@ function setupact-dxvk-opengl-1 {
 }
 
 function setupact-dxvk-opengl-2 {
-if [ $driver_used -eq 2 ]; then
+if [ $driver_used -eq 1 ]; then
       wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extras/opengl_dxvk/DXVK.xml
       mv DXVK.xml NMachineSpecificOptions.xml
    else
@@ -182,7 +185,7 @@ if [ $driver_used -eq 2 ]; then
 }
 
 function setupact-dxvk-opengl-3 {
-if [ $driver_used -eq 2 ]; then
+if [ $driver_used -eq 1 ]; then
       wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extras/opengl_dxvk/DXVK.xml
       mv DXVK.xml NMachineSpecificOptions.xml
    else
@@ -208,7 +211,7 @@ function setupact-f360install {
    setupact-dxvk-opengl-2
    mkdir -p "$wineprefixname/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options"
    cd "$wineprefixname/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options"
-   setupact-dxvk-opengl-3   
+   setupact-dxvk-opengl-3
    setupact-f360-launcher
    wget -P $HOME/.local/share/applications/wine/Programs/Autodesk https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/files/extras/desktop-starter/Fusion360.ico
    setupact-log-f360-path
@@ -246,13 +249,13 @@ function archlinux {
     if archlinux-verify-multilib ; then
         echo "multilib found. Continuing..."
         sudo pacman -Sy --needed wine wine-mono wine_gecko winetricks p7zip curl cabextract samba ppp
-	setupact-f360install
+	      setupact-f360install
     else
         echo "Enabling multilib..."
         echo "[multilib]" | sudo tee -a /etc/pacman.conf
         echo "Include = /etc/pacman.d/mirrorlist" | sudo tee -a /etc/pacman.conf
         sudo pacman -Sy --needed wine wine-mono wine_gecko winetricks p7zip curl cabextract samba ppp
-	setupact-f360install
+	      setupact-f360install
     fi
 }
 
@@ -266,7 +269,6 @@ function archlinux-verify-multilib {
 
 function debian-based-1 {
     sudo apt-get update
-    sudo apt-get upgrade
     sudo dpkg --add-architecture i386
     wget -nc https://dl.winehq.org/wine-builds/winehq.key
     sudo apt-key add winehq.key
@@ -274,66 +276,33 @@ function debian-based-1 {
 
 function debian-based-2 {
     sudo apt-get update
-    sudo apt-get upgrade
     sudo apt-get install p7zip p7zip-full p7zip-rar curl winbind cabextract wget
-    sudo apt-get install --install-recommends winehq-staging
+    if [ $wine_version_used -eq 1 ]; then
+        sudo apt-get install --install-recommends winehq-staging
+    else
+        sudo apt-get install --install-recommends winehq-stable
+    fi
     setupact-f360install
 }
 
 function ubuntu18 {
-    sudo apt-add-repository -r 'deb https://dl.winehq.org/wine-builds/ubuntu/ bionic main'
-    wget -q https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_18.04/Release.key -O Release.key -O- | sudo apt-key add -
-    sudo apt-add-repository 'deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_18.04/ ./'
+    sudo apt-add-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ bionic main'
 }
 
 function ubuntu20 {
-    sudo add-apt-repository -r 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main'
-    wget -q https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_20.04/Release.key -O Release.key -O- | sudo apt-key add -
-    sudo apt-add-repository 'deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_20.04/ ./'
+    sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main'
 }
 
 function ubuntu20_10 {
-    sudo add-apt-repository -r 'deb https://dl.winehq.org/wine-builds/ubuntu/ groovy main'
-    wget -q https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_20.10/Release.key -O Release.key -O- | sudo apt-key add -
-    sudo apt-add-repository 'deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_20.10/ ./'
+    sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ groovy main'
 }
 
 function ubuntu21 {
-    # Note: This installs the public key to trusted.gpg.d - While this is "acceptable" behaviour it is not best practice.
-    # It is infinitely better than using apt-key add though.
-    # For more information and for instructions to utalise best practices, see:
-    # https://askubuntu.com/questions/1286545/what-commands-exactly-should-replace-the-deprecated-apt-key
-    sudo apt-get update
-    sudo apt-get upgrade
-    sudo dpkg --add-architecture i386
-    mkdir -p /tmp/360 && cd /tmp/360
-    wget https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_21.04/Release.key
-    wget https://dl.winehq.org/wine-builds/winehq.key
-    gpg --no-default-keyring --keyring ./temp-keyring.gpg --import Release.key
-    gpg --no-default-keyring --keyring ./temp-keyring.gpg --export --output opensuse-wine.gpg && rm temp-keyring.gpg
-    gpg --no-default-keyring --keyring ./temp-keyring.gpg --import winehq.key
-    gpg --no-default-keyring --keyring ./temp-keyring.gpg --export --output winehq.gpg && rm temp-keyring.gpg
-    sudo mv *.gpg /etc/apt/trusted.gpg.d/ && cd /tmp && sudo rm -rf 360
-    echo "deb [signed-by=/etc/apt/trusted.gpg.d/opensuse-wine.gpg] https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_21.04/ ./" | sudo tee -a /etc/apt/sources.list.d/opensuse-wine.list
-    sudo add-apt-repository -r 'deb https://dl.winehq.org/wine-builds/ubuntu/ hirsute main'
-    cd "$HOME/.wineprefixes/fusion360/INSTALLDIR"
+    sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ hirsute main'
 }
 
 function ubuntu21_10 {
-    # Note: See the description in the function ubuntu21!
-    sudo apt-get update
-    sudo apt-get upgrade
-    sudo dpkg --add-architecture i386
-    mkdir -p /tmp/360 && cd /tmp/360
-    wget https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_21.04/Release.key
-    wget https://dl.winehq.org/wine-builds/winehq.key
-    gpg --no-default-keyring --keyring ./temp-keyring.gpg --import Release.key
-    gpg --no-default-keyring --keyring ./temp-keyring.gpg --export --output opensuse-wine.gpg && rm temp-keyring.gpg
-    gpg --no-default-keyring --keyring ./temp-keyring.gpg --import winehq.key
-    gpg --no-default-keyring --keyring ./temp-keyring.gpg --export --output winehq.gpg && rm temp-keyring.gpg
-    sudo mv *.gpg /etc/apt/trusted.gpg.d/ && cd /tmp && sudo rm -rf 360
-    echo "deb [signed-by=/etc/apt/trusted.gpg.d/opensuse-wine.gpg] https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_21.10/ ./" | sudo tee -a /etc/apt/sources.list.d/opensuse-wine.list
-    sudo add-apt-repository -r 'deb https://dl.winehq.org/wine-builds/ubuntu/ impish main'
+    sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ impish main'
 }
 
 function fedora-based-1 {
@@ -857,7 +826,7 @@ function setupact-select-f360-path {
 
 ###############################################################################################################################################################
 
-# Autodesk Fusion 360 will be installed from scratch on this system!
+# Select driver version for Autodesk Fusion 360!
 function setupact-select-opengl_dxvk {
   select_driver=$(zenity --list \
                     --radiolist \
@@ -868,11 +837,31 @@ function setupact-select-opengl_dxvk {
                     TRUE "$text_driver_opengl" \
                     FALSE "$text_driver_dxvk")
 
-[[ $select_driver = "$text_driver_opengl" ]] && driver_used=1 && setupact-select-os
+[[ $select_driver = "$text_driver_opengl" ]] && driver_used=0 && setupact-select-wine_version
 
-[[ $select_driver = "$text_driver_dxvk" ]] && driver_used=2 && setupact-select-os
+[[ $select_driver = "$text_driver_dxvk" ]] && driver_used=1 && setupact-select-wine_version
 
 [[ "$select_driver" ]] || echo "Go back" && setupact-select-f360-path
+}
+
+###############################################################################################################################################################
+
+# Autodesk Fusion 360 will be installed from scratch on this system!
+function setupact-select-wine_version {
+  select_wine_version=$(zenity --list \
+                    --radiolist \
+                    --title="$program_name" \
+                    --width=700 \
+                    --height=500 \
+                    --column="$text_select" --column="Wine Version" \
+                    TRUE "Wine Version (Stable)" \
+                    FALSE "Wine Version (Staging)")
+
+[[ $select_wine_version = "Wine Version (Stable)" ]] && wine_version_used=0 && setupact-select-os
+
+[[ $select_wine_version = "Wine Version (Staging)" ]] && wine_version_used=1 && setupact-select-os
+
+[[ "$select_wine_version" ]] || echo "Go back" && setupact-select-opengl_dxvk
 }
 
 ###############################################################################################################################################################
