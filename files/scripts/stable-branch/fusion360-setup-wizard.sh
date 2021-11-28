@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    12:00/28.11.2021                                                                   #
-# Version:      1.6.4                                                                              #
+# Time/Date:    21:00/28.11.2021                                                                   #
+# Version:      1.6.5                                                                              #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -379,7 +379,7 @@ function additive-assistant-extension {
     mkdir -p "$HOME/.wineprefixes/fusion360/INSTALLDIR/data/extensions"
     cd "$HOME/.wineprefixes/fusion360/INSTALLDIR/data/extensions"
     wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/AdditiveAssistant.bundle-win64.msi &&
-    WINEPREFIX=$wineprefixname wine AdditiveAssistant.bundle-win64.msi
+    WINEPREFIX=$wineprefixname msiexec /i AdditiveAssistant.bundle-win64.msi
 }
 
 ###############################################################################################################################################################
@@ -387,7 +387,7 @@ function additive-assistant-extension {
 # Install a extension: Czech localization for F360
 function czech-locale-extension {
     czech-locale-search-extension
-    WINEPREFIX=$wineprefixname wine $CZECH_LOCALE_EXTENSION
+    WINEPREFIX=$wineprefixname msiexec /i $CZECH_LOCALE_EXTENSION
 }
 
 ###############################################################################################################################################################
@@ -397,7 +397,7 @@ function hp-3dprinter-connector-extension {
     mkdir -p "$HOME/.wineprefixes/fusion360/INSTALLDIR/data/extensions"
     cd "$HOME/.wineprefixes/fusion360/INSTALLDIR/data/extensions"
     wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/HP_3DPrinters_for_Fusion360-win64.msi &&
-    WINEPREFIX=$wineprefixname wine HP_3DPrinters_for_Fusion360-win64.msi
+    WINEPREFIX=$wineprefixname msiexec /i HP_3DPrinters_for_Fusion360-win64.msi
 }
 
 ###############################################################################################################################################################
@@ -407,7 +407,7 @@ function octoprint-extension {
     mkdir -p "$HOME/.wineprefixes/fusion360/INSTALLDIR/data/extensions"
     cd "$HOME/.wineprefixes/fusion360/INSTALLDIR/data/extensions"
     wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/OctoPrint_for_Fusion360-win64.msi &&
-    WINEPREFIX=$wineprefixname wine OctoPrint_for_Fusion360-win64.msi
+    WINEPREFIX=$wineprefixname msiexec /i OctoPrint_for_Fusion360-win64.msi
 }
 
 ###############################################################################################################################################################
@@ -417,7 +417,7 @@ function robodk-extension {
     mkdir -p "$HOME/.wineprefixes/fusion360/INSTALLDIR/data/extensions"
     cd "$HOME/.wineprefixes/fusion360/INSTALLDIR/data/extensions"
     wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/RoboDK.bundle-win64.msi &&
-    WINEPREFIX=$wineprefixname wine RoboDK.bundle-win64.msi
+    WINEPREFIX=$wineprefixname msiexec /i RoboDK.bundle-win64.msi
 }
 
 ###############################################################################################################################################################
