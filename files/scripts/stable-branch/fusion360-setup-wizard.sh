@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    11:45/28.11.2021                                                                   #
+# Time/Date:    12:00/28.11.2021                                                                   #
 # Version:      1.6.4                                                                              #
 ####################################################################################################
 
@@ -314,6 +314,25 @@ function fedora-based-1 {
 function fedora-based-2 {
     sudo dnf install p7zip p7zip-plugins curl wget wine cabextract
     setupact-f360install
+}
+
+function opensuse-152 {
+  if [ $wine_version_used -eq 1 ]; then
+      su -c 'zypper up && zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.2/ wine && zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.2/ wine && zypper install p7zip-full curl wget wine cabextract'
+      setupact-f360install
+  else
+      su -c 'zypper up && zypper install p7zip-full curl wget wine cabextract'
+  fi
+}
+
+function opensuse-153 {
+  if [ $wine_version_used -eq 1 ]; then
+      su -c 'zypper up && zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.3/ wine && zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.3/ wine && zypper install p7zip-full curl wget wine cabextract'
+      setupact-f360install
+  else
+      su -c 'zypper up && zypper install p7zip-full curl wget wine cabextract'
+      setupact-f360install
+  fi
 }
 
 function redhat-linux {
@@ -909,9 +928,9 @@ function setupact-select-os {
 
 [[ $select_os = "Fedora 34" ]] && fedora-based-1 && sudo dnf config-manager --add-repo https://dl.winehq.org/wine-builds/fedora/34/winehq.repo && fedora-based-2
 
-[[ $select_os = "openSUSE Leap 15.2" ]] && su -c 'zypper up && zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.2/ wine && zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.2/ wine && zypper install p7zip-full curl wget wine cabextract' && setupact-f360install
+[[ $select_os = "openSUSE Leap 15.2" ]] && opensuse-152
 
-[[ $select_os = "openSUSE Leap 15.3" ]] && su -c 'zypper up && zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.3/ wine && zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.3/ wine && zypper install p7zip-full curl wget wine cabextract' && setupact-f360install
+[[ $select_os = "openSUSE Leap 15.3" ]] && opensuse-153
 
 [[ $select_os = "openSUSE Tumbleweed" ]] && su -c 'zypper up && zypper install p7zip-full curl wget wine cabextract' && setupact-f360install
 
@@ -1184,3 +1203,4 @@ function setupact-uninstall-completed {
 
 setupact-log
 setupact-welcome
+
