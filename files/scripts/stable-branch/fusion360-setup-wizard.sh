@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    21:00/28.11.2021                                                                   #
-# Version:      1.6.5                                                                              #
+# Time/Date:    18:00/02.12.2021                                                                   #
+# Version:      1.6.6                                                                              #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -874,11 +874,14 @@ function setupact-select-wine_version {
                     --height=500 \
                     --column="$text_select" --column="Wine Version" \
                     TRUE "Wine Version (Stable)" \
-                    FALSE "Wine Version (Staging)")
+                    FALSE "Wine Version (Staging)" \
+		    FALSE "Wine Version (Wine is already installed!)")
 
 [[ $select_wine_version = "Wine Version (Stable)" ]] && wine_version_used=0 && setupact-select-os
 
 [[ $select_wine_version = "Wine Version (Staging)" ]] && wine_version_used=1 && setupact-select-os
+
+[[ $select_wine_version = "Wine Version (Wine is already installed!)" ]] && setupact-f360install
 
 [[ "$select_wine_version" ]] || echo "Go back" && setupact-select-opengl_dxvk
 }
