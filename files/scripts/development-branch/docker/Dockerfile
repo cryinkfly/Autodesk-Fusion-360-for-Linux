@@ -27,5 +27,5 @@ MAINTAINER Steve Zabka <info@cryinkfly.de>
 # Update the system.
 RUN zypper up -y && \
     zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.3/ wine && \
-    zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.3/ wine | echo 'a' && \
+    zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.3/ wine | echo 'i' && \
     zypper install -y p7zip p7zip-full curl wget wine winetricks samba cabextract wget zenity
