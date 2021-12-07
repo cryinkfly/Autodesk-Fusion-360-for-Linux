@@ -5,7 +5,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    14:00/07.12.2021                                                                   #
+# Time/Date:    15:00/07.12.2021                                                                   #
 # Version:      0.0.1                                                                              #
 ####################################################################################################
 
@@ -27,5 +27,5 @@ MAINTAINER Steve Zabka <info@cryinkfly.de>
 # Update the system.
 RUN zypper up -y && \
     zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.3/ wine && \
-    zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.3/ wine | echo 'i' && \
+    zypper --non-interactive --quiet ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.3/ wine | echo 'i' && \
     zypper install -y p7zip p7zip-full curl wget wine winetricks samba cabextract wget zenity
