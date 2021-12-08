@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    13:45/07.12.2021                                                                   #
-# Version:      1.6.7                                                                              #
+# Time/Date:    10:15/08.12.2021                                                                   #
+# Version:      1.6.8                                                                              #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -343,22 +343,13 @@ function fedora-based-2 {
 }
 
 function opensuse-152 {
-  if [ $wine_version_used -eq 1 ]; then
       su -c 'zypper up && zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.2/ wine && zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.2/ wine && zypper install p7zip-full curl wget wine cabextract'
       setupact-f360install
-  else
-      su -c 'zypper up && zypper install p7zip-full curl wget wine cabextract'
-  fi
 }
 
 function opensuse-153 {
-  if [ $wine_version_used -eq 1 ]; then
       su -c 'zypper up && zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.3/ wine && zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.3/ wine && zypper install p7zip-full curl wget wine cabextract'
       setupact-f360install
-  else
-      su -c 'zypper up && zypper install p7zip-full curl wget wine cabextract'
-      setupact-f360install
-  fi
 }
 
 function redhat-linux {
