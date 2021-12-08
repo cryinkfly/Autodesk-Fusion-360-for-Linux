@@ -68,6 +68,7 @@
 - @TN-1
 - @Tony763
 - @thulle
+- @TheTRCG
 - @vintagepc
 - @vikingsraven
 - @watzon
