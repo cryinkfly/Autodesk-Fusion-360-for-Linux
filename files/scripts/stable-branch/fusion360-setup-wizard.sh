@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    10:15/08.12.2021                                                                   #
-# Version:      1.6.8                                                                              #
+# Time/Date:    17:15/09.12.2021                                                                   #
+# Version:      1.6.9                                                                              #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -925,6 +925,7 @@ function setupact-select-os {
                     FALSE "Debian 11" \
                     FALSE "Fedora 33" \
                     FALSE "Fedora 34" \
+		    FALSE "Fedora 35" \
                     FALSE "openSUSE Leap 15.2" \
                     FALSE "openSUSE Leap 15.3" \
                     FALSE "openSUSE Tumbleweed" \
@@ -947,6 +948,8 @@ function setupact-select-os {
 [[ $select_os = "Fedora 33" ]] && fedora-based-1 && sudo dnf config-manager --add-repo https://dl.winehq.org/wine-builds/fedora/33/winehq.repo && fedora-based-2
 
 [[ $select_os = "Fedora 34" ]] && fedora-based-1 && sudo dnf config-manager --add-repo https://dl.winehq.org/wine-builds/fedora/34/winehq.repo && fedora-based-2
+
+[[ $select_os = "Fedora 35" ]] && fedora-based-1 && sudo dnf config-manager --add-repo https://dl.winehq.org/wine-builds/fedora/35/winehq.repo && fedora-based-2
 
 [[ $select_os = "openSUSE Leap 15.2" ]] && opensuse-152
 
