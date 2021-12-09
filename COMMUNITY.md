@@ -38,6 +38,7 @@
 - @fcltymngr
 - @GoTVm
 - @hopkuba
+- @IsaacDias2020
 - @Kara-Zor-El
 - @kpatel122
 - @kyngs
