@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    17:15/09.12.2021                                                                   #
-# Version:      1.6.9                                                                              #
+# Time/Date:    11:00/12.12.2021                                                                   #
+# Version:      1.7.0                                                                              #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -32,9 +32,6 @@ driver_used=0
 
 # Reset the logfile-value for the installation of Autodesk Fusion 360!
 f360path_log=0
-
-# Reset the wine-value for the installation of Autodesk Fusion 360!
-wine_version_used=0
 
 ###############################################################################################################################################################
 # ALL LOG-FUNCTIONS ARE ARRANGED HERE:                                                                                                                        #
@@ -277,11 +274,7 @@ function debian-based-1 {
 function debian-based-2 {
     sudo apt-get update
     sudo apt-get install p7zip p7zip-full p7zip-rar curl winbind cabextract wget
-    if [ $wine_version_used -eq 1 ]; then
-        sudo apt-get install --install-recommends winehq-staging
-    else
-        sudo apt-get install --install-recommends winehq-stable
-    fi
+    sudo apt-get install --install-recommends winehq-staging
     setupact-f360install
 }
 
@@ -890,13 +883,10 @@ function setupact-select-wine_version {
                     --width=700 \
                     --height=500 \
                     --column="$text_select" --column="Wine Version" \
-                    TRUE "Wine Version (Stable)" \
-                    FALSE "Wine Version (Staging)" \
+                    TRUE "Wine Version (Staging)" \
 		    FALSE "Wine Version (Wine is already installed!)")
 
-[[ $select_wine_version = "Wine Version (Stable)" ]] && wine_version_used=0 && setupact-select-os
-
-[[ $select_wine_version = "Wine Version (Staging)" ]] && wine_version_used=1 && setupact-select-os
+[[ $select_wine_version = "Wine Version (Staging)" ]] && setupact-select-os
 
 [[ $select_wine_version = "Wine Version (Wine is already installed!)" ]] && setupact-f360install
 
