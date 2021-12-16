@@ -5,6 +5,6 @@ Exec=xterm -hold -e "$HOME/.local/share/applications/wine/Programs/Autodesk/fusi
 Type=Application
 Categories=Development;Graphics;Science
 StartupNotify=true
-Icon=$HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360.ico
+Icon=$HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360.png
 Terminal=false
 Path=
