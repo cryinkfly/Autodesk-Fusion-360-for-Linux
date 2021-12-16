@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    11:00/12.12.2021                                                                   #
-# Version:      1.7.0                                                                              #
+# Time/Date:    16:00/16.12.2021                                                                   #
+# Version:      1.7.1                                                                              #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -210,7 +210,7 @@ function setupact-f360install {
    cd "$wineprefixname/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options"
    setupact-dxvk-opengl-3
    setupact-f360-launcher
-   wget -P $HOME/.local/share/applications/wine/Programs/Autodesk https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/files/extras/desktop-starter/Fusion360.ico
+   wget -P $HOME/.local/share/applications/wine/Programs/Autodesk https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/files/extras/desktop-starter/Fusion360.png
    setupact-log-f360-path
    setupact-f360extensions
    setupact-completed
