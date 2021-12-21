@@ -72,8 +72,24 @@ It's recommended that if you're new you start with the stable builds. Developmen
 - Would you like to use the Czech language later in Autodesk Fusion 360, then you need a [special extension](https://apps.autodesk.com/FUSION/en/Detail/Index?id=9151466655844643882) what you must have bought and downloaded before you can install this with my Setup Wizard!
 - My script install some packages (dialog, p7zip, p7zip-full, p7zip-rar, curl, wget, winbind, cabextract, wine, wine-mono, wine_gecko, winetricks, ...)!
 - Supported Linux distributions:
-
-![supported_os](https://user-images.githubusercontent.com/79079633/134313580-ac8cf27e-d0c8-4393-beb6-55015a136220.png)
+  - Arch Linux, Manjaro Linux, EndeavourOS, ...
+  - Debian 10, MX Linux 19.4, Raspberry Pi Desktop, ...
+  - Debian 11
+  - Fedora 33
+  - Fedora 34
+  - Fedora 35
+  - openSUSE Leap 15.2
+  - openSUSE Leap 15.3
+  - openSUSE Tumbleweed
+  - Red Hat Enterprise Linux 8.x
+  - Solus
+  - Ubuntu 18.04, Linux Mint 19.x, ...
+  - Ubuntu 20.04, Linux Mint 20.x, Pop!_OS 20.04, ...
+  - Ubuntu 20.10
+  - Ubuntu 21.04, Pop!_OS 21.04, ...
+  - Ubuntu 21.10
+  - Void Linux
+  - Gentoo Linux
 
 - Check if you have installed zenity and xterm on your Linux distribution:
 
