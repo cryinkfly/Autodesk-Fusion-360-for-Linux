@@ -114,11 +114,15 @@ Install Fusion 360 for Linux client:
 
 1.) Check my <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/wiki/Documentation">GitHub-Documentation</a> & <a href="https://www.youtube.com/watch?v=-BktJspJKgs&list=PLzwMdS5iu_BIsO6RTy7Hy1MbzLMrQE2xe">Videos</a> before you install Autodesk Fusion 360 on your system!
 
-2.) Open a terminal and run this command:
+2.) Check, if your [network settings](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/extras/network/etc) are correctly configured!
+
+
+
+3.) Open a terminal and run this command:
 
     mkdir -p "$HOME/.wineprefixes/fusion360/INSTALLDIR" && cd "$HOME/.wineprefixes/fusion360/INSTALLDIR" && wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/scripts/stable-branch/fusion360-setup-wizard.sh && chmod +x fusion360-setup-wizard.sh && bash fusion360-setup-wizard.sh && exit
 
-3.) Now, You can <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues/44#issuecomment-890552181">use</a> Autodesk Fusion 360 on your Linux system!
+4.) Now, You can <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues/44#issuecomment-890552181">use</a> Autodesk Fusion 360 on your Linux system!
 
 ---
 
