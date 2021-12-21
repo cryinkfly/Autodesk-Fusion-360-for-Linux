@@ -62,6 +62,8 @@ There are some <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Lin
 
 It's recommended that if you're new you start with the stable builds. Development builds are available here if you need it, but correspondingly may be less stable.
 
+In the [development branch](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/scripts/development-branch) you will find, for example, the upcoming versions of my setup wizard, as well as builds that run with the help of Flatpak or Docker.
+
 ---
 
 ## Hardware and Software Requirements
