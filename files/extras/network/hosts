@@ -1,0 +1,29 @@
+#
+# hosts         This file describes a number of hostname-to-address
+#               mappings for the TCP/IP subsystem.  It is mostly
+#               used at boot time, when no name servers are running.
+#               On small systems, this file can be used instead of a
+#               "named" name server.
+# Syntax:
+#    
+# IP-Address  Full-Qualified-Hostname  Short-Hostname
+#
+
+# Wine sends request for any domain to 127.0.0.1
+127.0.0.1	localhost
+
+# Change the name!
+127.0.1.1	YOUR-PC-NAME
+
+# fallback hostname used by NetworkManager
+127.0.0.1	localhost.localdomain
+
+# special IPv6 addresses
+::1             localhost ipv6-localhost ipv6-loopback
+
+fe00::0         ipv6-localnet
+
+ff00::0         ipv6-mcastprefix
+ff02::1         ipv6-allnodes
+ff02::2         ipv6-allrouters
+ff02::3         ipv6-allhosts
