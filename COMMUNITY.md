@@ -57,6 +57,8 @@
 - @paukstelis
 - @Project-Scorch
 - @pulponair
+- @phrxmd
+- @Petapton
 - @ReubenBTalbott
 - @roboticsmick
 - @rusk911
