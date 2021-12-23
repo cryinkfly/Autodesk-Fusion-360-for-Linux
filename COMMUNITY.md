@@ -36,9 +36,11 @@
 - @DanidCH
 - @fastrizwaan
 - @fcltymngr
+- @fliuzzi02
 - @GoTVm
 - @hopkuba
 - @IsaacDias2020
+- @jabautomation
 - @Kara-Zor-El
 - @kpatel122
 - @kyngs
