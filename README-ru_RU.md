@@ -67,18 +67,36 @@ Autodesk Fusion 360 — это облачное ПО для 3D-моделиро�
 Я рекомендую начать со стабильных сборок, если вы новичок.
 Девелоперские сборки доступны здесь же, но они могут быть менее стабильны.
 
+В [ветке разработки](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/scripts/development-branch) вы найдете, например, следующие версии мой мастер установки, а также сборки, запускаемые с помощью Flatpak или Docker / Podman.
+
 ---
 
 ## Системные требования
 
 - Соединение с Internet (рекомендую надёжное проводное)!
 - Свежий драйвер для видеокарты. Список поддерживаемых карт <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/wiki/Supported-Graphics-Cards">здесь</a>!
-- Свежая версия Wine (winehq-staging). В некоторых версия Wine не работает Internet!
+- Свежая версия Wine (6.23 и новее). В некоторых версия Wine не работает Internet!
 - Для использования чешского языка понадобится покупка [специального расширения](https://apps.autodesk.com/FUSION/en/Detail/Index?id=9151466655844643882)!
 - Мой скрипт установит некоторые пакеты: dialog, p7zip, p7zip-full, p7zip-rar, curl, wget, winbind, cabextract, wine, wine-mono, wine_gecko, winetricks, и некоторые другие!
-- Список поддерживаемых дистрибутивов Linux:
-
-![supported_os](https://user-images.githubusercontent.com/79079633/134313580-ac8cf27e-d0c8-4393-beb6-55015a136220.png)
+- Поддерживаемые дистрибутивы Linux:
+   - Arch Linux, Manjaro Linux, EndeavourOS, ...
+   - Debian 10, MX Linux 19.4, Raspberry Pi Desktop, ...
+   - Debian 11
+   - Fedora 33
+   - Fedora 34
+   - Fedora 35
+   - openSUSE Leap 15.2
+   - openSUSE Leap 15.3
+   - openSUSE Tumbleweed
+   - Red Hat Enterprise Linux 8.x
+   - Солус
+   - Ubuntu 18.04, Linux Mint 19.x, ...
+   - Ubuntu 20.04, Linux Mint 20.x, Pop! _OS 20.04, ...
+   - Ubuntu 20.10
+   - Ubuntu 21.04, Pop! _OS 21.04, ...
+   - Ubuntu 21.10
+   - Void Linux
+   - Gentoo Linux
 
 - Проверьте, установлены ли у вас zenity и xterm:
 
@@ -119,11 +137,17 @@ Autodesk Fusion 360 — это облачное ПО для 3D-моделиро�
 
 1.) Ознакомьтесь с <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/wiki/Documentation">документацией на GitHub</a> & <a href="https://www.youtube.com/watch?v=-BktJspJKgs&list=PLzwMdS5iu_BIsO6RTy7Hy1MbzLMrQE2xe">видео</a> прежде чем начать!
 
-2.) Откройте терминал и выполните эту команду:
+2.) Проверьте, правильно ли настроены ваши [сетевые настройки](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/extras/network/etc)!
+
+3.) Откройте терминал и выполните эту команду:
 
     cd $HOME && mkdir -p "Fusion360" && cd "Fusion360" && wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/scripts/stable-branch/fusion360-setup-wizard.sh && chmod +x fusion360-setup-wizard.sh && bash fusion360-setup-wizard.sh && exit
 
-3.) Теперь вы <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues/44#issuecomment-890552181">можете использовать</a> Autodesk Fusion 360 на своём Linux!
+4.) Теперь вы <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues/44#issuecomment-890552181">можете использовать</a> Autodesk Fusion 360 на своём Linux!
+
+Например (по умолчанию):
+
+    xterm -hold -e "$HOME/.local/share/applications/wine/Programs/Autodesk/fusion360-launcher.sh"
 
 ---
 
