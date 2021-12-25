@@ -142,6 +142,10 @@ Install Fusion 360 for Linux client:
 
 4.) Now, You can <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues/44#issuecomment-890552181">use</a> Autodesk Fusion 360 on your Linux system!
 
+For examble:
+
+    xterm -hold -e "$HOME/.local/share/applications/wine/Programs/Autodesk/fusion360-launcher.sh"
+
 ---
 
 ## Which work areas and functions have I tested:
