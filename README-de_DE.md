@@ -73,7 +73,7 @@ Im [Entwicklungszweig](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linu
 
 - Internetverbindung (Kabel-/DSL-Geschwindigkeiten empfohlen)!
 - Neuester Grafiktreiber, siehe <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/wiki/Supported-Graphics-Cards">hier</a>!
-- Neueste Wine-Version (winehq-staging), denn bei einigen Wine-Versionen, bei denen keine Internetverbindung funktioniert!
+- Neueste Wine-Version (6.23 und neuer), denn bei einigen Wine-Versionen, bei denen keine Internetverbindung funktioniert!
 - Möchten Sie die tschechische Sprache später in Autodesk Fusion 360 verwenden, dann benötigen Sie eine [spezielle Erweiterung](https://apps.autodesk.com/FUSION/en/Detail/Index?id=9151466655844643882), die Sie haben müssen gekauft und heruntergeladen, bevor Sie dies mit meinem Setup-Assistenten installieren können!
 - Mein Skript installiert einige Pakete (dialog, p7zip, p7zip-full, p7zip-rar, curl, wget, winbind, cabextract, wine, wine-mono, wine_gecko, winetricks, ...)!
 - Supported Linux distributions:
