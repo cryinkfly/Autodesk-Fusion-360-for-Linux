@@ -1,3 +1,5 @@
+[DE](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/README-de_DE.md) | [EN](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux) | [IT](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/README%20-it_IT.md) | [**RU**](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/README-ru_RU.md)
+
 ![banner-fusion360](https://user-images.githubusercontent.com/79079633/127371623-6b50b591-1b12-466d-9c96-b5b6d6314f31.png)
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/cryinkfly/Fusion-360---Linux-Wine-Version-?style=for-the-badge)
