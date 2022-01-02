@@ -45,6 +45,7 @@
 - @Kara-Zor-El
 - @kpatel122
 - @kyngs
+- @klack
 - @Le0xFF
 - @Lik3Hackdev
 - @madurani
