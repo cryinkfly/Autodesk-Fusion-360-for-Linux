@@ -145,6 +145,10 @@ Install Fusion 360 for Linux client:
 For examble (Default)*:
 
     xterm -hold -e "$HOME/.local/share/applications/wine/Programs/Autodesk/fusion360-launcher.sh"
+    
+OR:
+
+    launcher="$(find $HOME/.wineprefixes/fusion360 -name Fusion360.exe -printf "%T+ %p\n" | sort -r 2>&1 | head -n 1 | sed -r 's/.+0000000000 (.+)/\1/')" && WINEPREFIX="$HOME/.wineprefixes/fusion360" wine "$launcher"
 
 *Notice: Here can you find [all files](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/extras/desktop-starter) what you need for a .desktop file!
 
