@@ -71,6 +71,7 @@ In the [development branch](https://github.com/cryinkfly/Autodesk-Fusion-360-for
 ## Hardware and Software Requirements
 
 - Internet connection (Cable/DSL speeds recommended)!
+- Check the [Health Dashboard](https://health.autodesk.com/) of Autodesk Fusion 360!
 - Latest graphics driver, see <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/wiki/Supported-Graphics-Cards">here</a>!
 - Latest wine version (6.23 and newer), because with some versions of wine where no internet connection works!
 - Would you like to use the Czech language later in Autodesk Fusion 360, then you need a [special extension](https://apps.autodesk.com/FUSION/en/Detail/Index?id=9151466655844643882) what you must have bought and downloaded before you can install this with my Setup Wizard!
