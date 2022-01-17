@@ -466,16 +466,16 @@ function setupact-welcome {
 function setupact-progressbar {
   (
 echo "5" ; sleep 1
-echo "# The folder structure will be created." ; sleep 1
+echo "# Creating folder structure." ; sleep 1
 setupact-structure
 echo "25" ; sleep 1
-echo "# The locale files will be loaded." ; sleep 1
+echo "# Loading locale files." ; sleep 1
 setupact-load-locale
 echo "55" ; sleep 1
-echo "# The wine- and winetricks Script is loaded." ; sleep 1
+echo "# Loading winetricks script." ; sleep 1
 setupact-load-winetricks
 echo "75" ; sleep 1
-echo "# The Autodesk Fusion 360 installation file will be downloaded." ; sleep 1
+echo "# Downloading Fusion 360 installation file." ; sleep 1
 setupact-load-f360exe
 echo "90" ; sleep 1
 echo "# The installation can now be started!" ; sleep 1
@@ -910,8 +910,8 @@ function setupact-select-os {
                     --width=700 \
                     --height=500 \
                     --column="$text_select" --column="$text_linux_distribution" \
-                    FALSE "Arch Linux, Manjaro Linux, EndeavourOS, ..." \
-                    FALSE "Debian 10, MX Linux 19.4, Raspberry Pi Desktop, ..." \
+                    FALSE "Arch Linux, Manjaro Linux, EndeavourOS..." \
+                    FALSE "Debian 10, MX Linux 19.4, Raspberry Pi Desktop..." \
                     FALSE "Debian 11" \
                     FALSE "Fedora 33" \
                     FALSE "Fedora 34" \
@@ -921,17 +921,17 @@ function setupact-select-os {
                     FALSE "openSUSE Tumbleweed" \
                     FALSE "Red Hat Enterprise Linux 8.x" \
                     FALSE "Solus" \
-                    FALSE "Ubuntu 18.04, Linux Mint 19.x, ..." \
-                    FALSE "Ubuntu 20.04, Linux Mint 20.x, Pop!_OS 20.04, ..." \
+                    FALSE "Ubuntu 18.04, Linux Mint 19.x..." \
+                    FALSE "Ubuntu 20.04, Linux Mint 20.x, Pop!_OS 20.04..." \
                     FALSE "Ubuntu 20.10" \
-                    FALSE "Ubuntu 21.04, Pop!_OS 21.04, ..." \
+                    FALSE "Ubuntu 21.04, Pop!_OS 21.04..." \
                     FALSE "Ubuntu 21.10" \
                     FALSE "Void Linux" \
                     FALSE "Gentoo Linux")
 
-[[ $select_os = "Arch Linux, Manjaro Linux, EndeavourOS, ..." ]] && archlinux
+[[ $select_os = "Arch Linux, Manjaro Linux, EndeavourOS..." ]] && archlinux
 
-[[ $select_os = "Debian 10, MX Linux 19.4, Raspberry Pi Desktop, ..." ]] && debian-based-1 && sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/debian/ buster main' && debian-based-2
+[[ $select_os = "Debian 10, MX Linux 19.4, Raspberry Pi Desktop..." ]] && debian-based-1 && sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/debian/ buster main' && debian-based-2
 
 [[ $select_os = "Debian 11" ]] && debian-based-1 && sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/debian/ bullseye main' && debian-based-2
 
@@ -951,13 +951,13 @@ function setupact-select-os {
 
 [[ $select_os = "Solus" ]] && solus-linux
 
-[[ $select_os = "Ubuntu 18.04, Linux Mint 19.x, ..." ]] && debian-based-1 && ubuntu18 && debian-based-2
+[[ $select_os = "Ubuntu 18.04, Linux Mint 19.x..." ]] && debian-based-1 && ubuntu18 && debian-based-2
 
-[[ $select_os = "Ubuntu 20.04, Linux Mint 20.x, Pop!_OS 20.04, ..." ]] && debian-based-1 && ubuntu20 && debian-based-2
+[[ $select_os = "Ubuntu 20.04, Linux Mint 20.x, Pop!_OS 20.04..." ]] && debian-based-1 && ubuntu20 && debian-based-2
 
 [[ $select_os = "Ubuntu 20.10" ]] && debian-based-1 && ubuntu20_10 && debian-based-2
 
-[[ $select_os = "Ubuntu 21.04, Pop!_OS 21.04, ..." ]] && ubuntu21 && debian-based-2
+[[ $select_os = "Ubuntu 21.04, Pop!_OS 21.04..." ]] && ubuntu21 && debian-based-2
 
 [[ $select_os = "Ubuntu 21.10" ]] && ubuntu21_10 && debian-based-2
 
