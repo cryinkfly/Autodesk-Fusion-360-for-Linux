@@ -29,6 +29,15 @@ Weitere Informationen zu diesem Programm erhalten Sie mit diesem Link: https://w
 
 ---
 
+
+## Aktuelle Version von Autodesk Fusion 360
+
+**Versionsnummer:** 2.0.12157*
+
+*Hinweis: [Wie überprüfe ich, welche Version von Fusion 360 verwendet wird?](https://knowledge.autodesk.com/support/fusion-360/troubleshooting/caas/sfdcarticles/sfdcarticles/How-to-check-what-version-of-Fusion-360-is-installed.html)
+
+---
+
   - 📂 Downloads: 
 <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/scripts/stable-branch">Stabiler-</a> and <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/scripts/development-branch">Entwicklungs-Zweig</a>
   - 📔 Documentation: <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/wiki/Documentation">GitHub-Dokumentation</a> & <a href="https://www.youtube.com/watch?v=-BktJspJKgs&list=PLzwMdS5iu_BIsO6RTy7Hy1MbzLMrQE2xe">Videos</a>
