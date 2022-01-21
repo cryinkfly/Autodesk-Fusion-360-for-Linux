@@ -30,6 +30,14 @@ Autodesk Fusion 360 — это облачное ПО для 3D-моделиро�
 
 ---
 
+## Текущая версия Autodesk Fusion 360
+
+** Номер версии: ** 2.0.12157 *
+
+* Примечание. [Как узнать, какую версию Fusion 360 я использую?](https://knowledge.autodesk.com/support/fusion-360/troubleshooting/caas/sfdcarticles/sfdcarticles/How-to-check-what-version-of-Fusion-360-is-installed.html)
+
+---
+
   - 📂 Загрузки: 
 <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/scripts/stable-branch">Стабильная</a> и <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/scripts/development-branch">девелоперская</a> сборка.
   - 📔 Документация: <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/wiki/Documentation">GitHub</a> & <a href="https://www.youtube.com/watch?v=-BktJspJKgs&list=PLzwMdS5iu_BIsO6RTy7Hy1MbzLMrQE2xe">Видео</a>
