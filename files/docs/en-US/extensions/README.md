@@ -106,6 +106,33 @@ Link: [HP 3D Printers for Autodesk® Fusion 360™](https://apps.autodesk.com/FU
 
 ---
 
+
+### Helical Gear Generator:
+
+Helical gears resemble spur gears with the teeth at an angle. They can be meshed in parallel or crossed orientations at 90 degrees or arbitrary angles and can be generated with as little as a single tooth forming a screw gear.
+
+Gears may be specified in either the 'Normal' or the 'Radial' system or the fixed profile Sunderland standard, any of which can be generated as either Left or Right handed. Handedness in helical gears refers to the direction the teeth lean when the gear is placed flat on a table.
+
+[Read more ...](https://apps.autodesk.com/FUSION/de/Detail/Index?id=9029586664984391977&appLang=en&os=Win64)
+
+<br>
+
+#### Details:
+
+Download Size: 2.0 MB
+<br>
+Release Date: 20.10.2016
+<br>
+Last Updated: 06.10.2021
+<br>
+Version Info: 1.0.4
+<br>
+Link: [Helical Gear Generator](https://apps.autodesk.com/FUSION/de/Detail/Index?id=9029586664984391977&appLang=en&os=Win64)
+
+
+---
+
+
 ### OctoPrint for Autodesk® Fusion 360™:
 
 With this plug-in you can send the G-code of your created 3D models directly to the OctoPrint server via Autodesk Fusion 360.
@@ -132,6 +159,29 @@ Last Updated: 01.10.2021
 Version Info: 1.2.0.90
 <br>
 Link: [OctoPrint for Autodesk® Fusion 360™](https://apps.autodesk.com/FUSION/en/Detail/Index?id=5679198834514673847&appLang=en&os=Mac)
+
+---
+
+
+### Parameter I/O:
+
+Enables the user to Import/Update parameters from or export them to a CSV (Comma Separated Values) file. When importing/updating parameters from a CSV file the data in it needs to be in a specific format: <parameter name>, <unit>, <value>, <comment>
+
+[Read more ...](https://apps.autodesk.com/FUSION/de/Detail/Index?id=1801418194626000805&appLang=en&os=Win64) 
+ 
+<br>
+
+#### Details:
+
+Download Size: 0.7 MB
+<br>
+Release Date: 07.05.2015
+<br>
+Last Updated: 06.10.2021
+<br>
+Version Info: 1.5.0
+<br>
+Link: [Parameter I/O](https://apps.autodesk.com/FUSION/de/Detail/Index?id=1801418194626000805&appLang=en&os=Win64)
 
 ---
 
