@@ -7,9 +7,9 @@
 # Author:       Steve Zabka                                                                        #
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
-# Copyright (c) 2020-2021                                                                          #
-# Time/Date:    12:00/09.11.2021                                                                   #
-# Version:      1.2                                                                                #
+# Copyright (c) 2020-2022                                                                          #
+# Time/Date:    12:30/22.01.2022                                                                   #
+# Version:      1.3                                                                                #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -112,12 +112,15 @@ text_extension="Erweiterung"
 # Extension Description
 text_extension_description="Beschreibung"
 
-text_extension_description_1="Diese Erweiterung hilft Ihnen bei der Optimierung aller Dinge oder Teile, die einem bewegten Gas oder einer Flüssigkeit ausgesetzt sind. Zum Beispiel: Flügel, Flossen, Propeller und Turbinen."
-text_extension_description_2="Diese Erweiterung hilft Ihnen, indem sie eine Reihe von Aspekten Ihrer Konstruktionen analysiert und klare Rückmeldungen liefert, wie die Herstellbarkeit des Teils verbessert werden kann."
-text_extension_description_3="Diese Erweiterung bietet Ihnen die Möglichkeit, die tschechische Benutzeroberfläche (UI) in Autodesk Fusion 360 zu verwenden."
-text_extension_description_4="Diese Erweiterung stellt eine Verbindung zwischen Autodesk Fusion 360 und der HP SmartStream Software her und wird verwendet, um Aufträge direkt an die HP Software zu senden."
-text_extension_description_5="Mit dieser Erweiterung können Sie den G-Code Ihrer erstellten 3D-Modelle über Autodesk Fusion 360 direkt an den OctoPrint-Server senden."
-text_extension_description_6="Mit dieser Erweiterung können Sie mehr als 50 verschiedene Roboterhersteller und 500 Roboter direkt aus Autodesk Fusion 360 heraus programmieren."
+text_extension_description_1="Diese Erweiterung hilft Ihnen bei der Optimierung aller Dinge oder Teile, die einem sich bewegenden Gas oder einer Flüssigkeit ausgesetzt sind. Zum Beispiel: Flügel, Flossen, Propeller und Turbinen."
+text_extension_description_2="Diese Erweiterung hilft Ihnen, indem sie eine Reihe von Aspekten Ihrer Konstruktionen analysiert und klares Feedback dazu gibt, wie die Herstellbarkeit des Teils verbessert werden kann."
+text_extension_description_3="Diese Erweiterung gibt Ihnen die Möglichkeit, die tschechische Benutzeroberfläche (UI) in Autodesk Fusion 360 zu verwenden."
+text_extension_description_4="Diese Erweiterung stellt eine Verbindung zwischen Autodesk® Fusion 360™ und der HP SmartStream Software und wird verwendet, um Jobs direkt an die HP Software zu senden."
+text_extension_description_5="Schrägverzahnungen ähneln Stirnrädern mit schrägen Zähnen."
+text_extension_description_6="Mit dieser Erweiterung können Sie den G-Code Ihrer erstellten 3D-Modelle direkt über Autodesk Fusion 360 an den OctoPrint-Server senden."
+text_extension_description_7="Ermöglicht dem Benutzer, Parameter aus einer CSV-Datei (Comma Separated Values) zu importieren/aktualisieren oder in eine CSV-Datei zu exportieren."
+text_extension_description_8="Mit dieser Erweiterung können Sie mehr als 50 verschiedene Roboterhersteller und 500 Roboter direkt aus Autodesk Fusion 360 programmieren."
+text_extension_description_9="Diese Erweiterung stellt eine Verbindung zwischen Autodesk® Fusion 360™ und der Ultimaker Digital Factory-Site und ihren Diensten."
 
 # Error
 text_error="Ein unerwarteter Fehler ist aufgetreten!"
