@@ -6,9 +6,9 @@
 # Author:       Steve Zabka                                                                        #
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
-# Copyright (c) 2020-2021                                                                          #
-# Time/Date:    12:00/09.11.2021                                                                   #
-# Version:      1.2                                                                                #
+# Copyright (c) 2020-2022                                                                          #
+# Time/Date:    12:30/22.01.2022                                                                   #
+# Version:      1.3                                                                                #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -111,12 +111,15 @@ text_extension="Hwagdae"
 # Extension Description
 text_extension_description="Seolmyeong"
 
-text_extension_description_1="I hwagjang-eun umjig-ineun gichena aegchee nochuldoeneun modeun samul-ina bupum-eul choejeoghwahaneun de doum-i doebnida. Ye: Nalgae, jineuleomi, peulopelleo mich teobin."
-text_extension_description_2="I hwagjang gineung-eun seolgyeui yeoleo cheugmyeon-eul bunseoghaneun de doum-i doemyeo bupum-ui jejo ganeungseong-eul gaeseonhaneun bangbeob-e daehan myeonghwaghan pideubaeg-eul jegonghabnida."
-text_extension_description_3="I hwagjang-eun Autodesk Fusion 360 eseo cheko sayongja inteopeiseu(UI)leul sayonghal su issneun obsyeon-eul jegonghabnida."
-text_extension_description_4="I hwagjang-eun Autodesk Fusion 360 gwa HP SmartStream sopeuteuweeo saiui keonegteoimyeo HP sopeuteuweeolo jigjeob jag-eob-eul bonaeneun de sayongdoebnida."
-text_extension_description_5="I hwagjang-eul sayonghamyeon saengseonghan 3D model-ui G kodeuleul Autodesk Fusion 360 eul tonghae OctoPrint seobeolo jigjeob bonael su issseubnida."
-text_extension_description_6="I hwagjang gineung-eul sayonghamyeon Autodesk Fusion 360 eseo jigjeob 50 gae isang-ui lobos jejo-eobchewa 500 gae isang-ui lobos-eul peulogeulaeminghal su issseubnida."
+text_extension_description_1="이 확장 기능은 움직이는 기체나 액체에 노출되는 모든 사물이나 부품을 최적화하는 데 도움이 됩니다. 예: 날개, 지느러미, 프로펠러 및 터빈."
+text_extension_description_2="이 확장 기능은 설계의 여러 측면을 분석하는 데 도움이 되며 부품의 제조 가능성을 개선하는 방법에 대한 명확한 피드백을 제공합니다."
+text_extension_description_3="이 확장은 Autodesk Fusion 360에서 체코 사용자 인터페이스(UI)를 사용할 수 있는 옵션을 제공합니다."
+text_extension_description_4="이 확장은 Autodesk® Fusion 360™과 HP SmartStream 소프트웨어 사이의 커넥터이며 작업을 HP 소프트웨어로 직접 보내는 데 사용됩니다."
+text_extension_description_5="헬리컬 기어는 톱니가 비스듬한 평 기어와 비슷합니다."
+text_extension_description_6="이 확장 기능을 사용하면 생성한 3D 모델의 G 코드를 Autodesk Fusion 360을 통해 OctoPrint 서버로 직접 보낼 수 있습니다."
+text_extension_description_7="사용자가 매개변수를 CSV(쉼표로 구분된 값) 파일에서 가져오기/업데이트하거나 CSV(쉼표로 구분된 값) 파일로 내보낼 수 있습니다."
+text_extension_description_8="이 확장 프로그램을 사용하면 Autodesk Fusion 360에서 직접 50개 이상의 로봇 제조업체와 500개 이상의 로봇을 프로그래밍할 수 있습니다."
+text_extension_description_9="이 플러그인은 Autodesk® Fusion 360™과 Ultimaker Digital Factory 사이트 및 해당 서비스 간의 커넥터입니다."
 
 # Error
 text_error="Yesangchi moshan olyuga balsaenghaessseubnida!"
