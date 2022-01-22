@@ -6,9 +6,9 @@
 # Author:       Steve Zabka                                                                        #
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
-# Copyright (c) 2020-2021                                                                          #
-# Time/Date:    12:00/09.11.2021                                                                   #
-# Version:      1.2                                                                                #
+# Copyright (c) 2020-2022                                                                          #
+# Time/Date:    12:30/22.01.2022                                                                   #
+# Version:      1.3                                                                                #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -111,12 +111,15 @@ text_extension="Extension"
 # Extension Description
 text_extension_description="La description"
 
-text_extension_description_1="Cette extension vous aide par l'optimisation de toute chose ou pièce exposée à un gaz ou un liquide en mouvement. Par exemple: Ailes, ailerons, hélices et turbines."
-text_extension_description_2="Cette extension vous aide en analysant un certain nombre d'aspects de vos conceptions et fournit des informations claires sur la manière d'améliorer la fabricabilité de la pièce."
+text_extension_description_1="Cette extension vous aide par l'optimisation de toute chose ou pièce qui est exposée à un gaz ou un liquide en mouvement. Par exemple : ailes, ailettes, hélices et turbines."
+text_extension_description_2="Cette extension vous aide en analysant un certain nombre d'aspects de vos conceptions et fournit des informations claires sur la façon d'améliorer la fabricabilité de la pièce."
 text_extension_description_3="Cette extension vous donne la possibilité d'utiliser l'interface utilisateur (UI) tchèque dans Autodesk Fusion 360."
-text_extension_description_4="Cette extension est un connecteur entre Autodesk Fusion 360 et le logiciel HP SmartStream et est utilisée pour envoyer des travaux directement au logiciel HP."
-text_extension_description_5="Avec cette extension, vous pouvez envoyer le code G de vos modèles 3D créés directement au serveur OctoPrint via Autodesk Fusion 360."
-text_extension_description_6="Cette extension vous permet de programmer plus de 50 fabricants de robots différents et 500 robots directement depuis Autodesk Fusion 360."
+text_extension_description_4="Cette extension est un connecteur entre Autodesk® Fusion 360™ et le logiciel HP SmartStream et est utilisée pour envoyer des travaux directement au logiciel HP."
+text_extension_description_5="Les engrenages hélicoïdaux ressemblent à des engrenages droits avec les dents inclinées."
+text_extension_description_6="Avec cette extension, vous pouvez envoyer le code G de vos modèles 3D créés directement au serveur OctoPrint via Autodesk Fusion 360."
+text_extension_description_7="Permet à l'utilisateur d'importer/mettre à jour des paramètres depuis ou de les exporter vers un fichier CSV (Comma Separated Values)."
+text_extension_description_8="Cette extension vous permet de programmer plus de 50 fabricants de robots différents et 500 robots directement depuis Autodesk Fusion 360."
+text_extension_description_9="Ce plug-in est un connecteur entre Autodesk® Fusion 360™ et le site Ultimaker Digital Factory et ses services."
 
 # Error
 text_error="Une erreur inattendue est apparue!"
