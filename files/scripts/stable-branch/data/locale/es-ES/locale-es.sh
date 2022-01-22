@@ -6,9 +6,9 @@
 # Author:       Steve Zabka                                                                        #
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
-# Copyright (c) 2020-2021                                                                          #
-# Time/Date:    12:00/09.11.2021                                                                   #
-# Version:      1.2                                                                                #
+# Copyright (c) 2020-2022                                                                          #
+# Time/Date:    12:30/22.01.2022                                                                   #
+# Version:      1.3                                                                                #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -111,12 +111,15 @@ text_extension="Extensión"
 # Extension Description
 text_extension_description="Descripción"
 
-text_extension_description_1="Esta extensión le ayuda a optimizar cualquier cosa o parte que esté expuesta a un gas o líquido en movimiento. Por ejemplo: Alas, aletas, hélices y turbinas."
-text_extension_description_2="Esta extensión le ayuda a analizar una serie de aspectos de sus diseños y proporciona comentarios claros sobre cómo mejorar la capacidad de fabricación de la pieza."
-text_extension_description_3="Esta extensión le brinda la opción de utilizar la interfaz de usuario (UI) checa en Autodesk Fusion 360."
-text_extension_description_4="Esta extensión es un conector entre Autodesk Fusion 360 y el software HP SmartStream y se utiliza para enviar trabajos directamente al software HP."
-text_extension_description_5="Con esta extensión, puede enviar el código G de sus modelos 3D creados directamente al servidor OctoPrint a través de Autodesk Fusion 360."
-text_extension_description_6="Esta extensión le permite programar más de 50 fabricantes de robots diferentes y 500 robots directamente desde Autodesk Fusion 360."
+text_extension_description_1="Esta extensión te ayuda a optimizar cualquier cosa o pieza que esté expuesta a un gas o líquido en movimiento. Por ejemplo: alas, aletas, hélices y turbinas."
+text_extension_description_2="Esta extensión lo ayuda analizando una serie de aspectos de sus diseños y brinda comentarios claros sobre cómo mejorar la capacidad de fabricación de la pieza".
+text_extension_description_3="Esta extensión le ofrece la opción de utilizar la interfaz de usuario (UI) checa en Autodesk Fusion 360."
+text_extension_description_4="Esta extensión es un conector entre Autodesk® Fusion 360™ y el software HP SmartStream y se utiliza para enviar trabajos directamente al software HP".
+text_extension_description_5="Los engranajes helicoidales se parecen a los engranajes rectos con los dientes en ángulo."
+text_extension_description_6="Con esta extensión puede enviar el código G de sus modelos 3D creados directamente al servidor OctoPrint a través de Autodesk Fusion 360."
+text_extension_description_7="Permite al usuario importar/actualizar parámetros o exportarlos a un archivo CSV (valores separados por comas)".
+text_extension_description_8="Esta extensión le permite programar más de 50 fabricantes de robots diferentes y 500 robots directamente desde Autodesk Fusion 360."
+text_extension_description_9="Este complemento es un conector entre Autodesk® Fusion 360™ y el sitio de Ultimaker Digital Factory y sus servicios."
 
 # Error
 text_error="¡Ocurrió un error inesperado!"
