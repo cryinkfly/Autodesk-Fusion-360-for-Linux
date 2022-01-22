@@ -50,6 +50,34 @@ Link: [Additive Assistant (FFF)](https://apps.autodesk.com/FUSION/en/Detail/Inde
 
 ---
 
+
+### Czech localization for F360:
+
+The Czech localization for Autodesk® Fusion 360™ is an add-in, which installs and activates the Czech user interface (UI) in Fusion 360 (Win) and keeps it updated during the frequent release updates of this CAD/CAM product.
+ 
+
+The scope of the CZ localization: the user interface of modeling, sketches, surfaces, meshes, freeform shapes, sheetmetal, visualization, animations, manufacturing, 3D printing, drawings, document management, generative design. The Czech environment does not cover all assortment of Fusion 360 functions, but its contents are being continuously extended.
+ 
+
+You can use this localization for all types of Fusion 360 licenses, including its free variants (Personal, Startup, and Educational).
+
+<br>
+
+#### Details:
+
+Download Size: 3.2 MB
+<br>
+Release Date: 08.02.2021
+<br>
+Last Updated: 14.09.2021
+<br>
+Version Info: 6.1.1
+<br>
+Link: [Czech localization for F360](https://apps.autodesk.com/FUSION/en/Detail/Index?id=9151466655844643882)
+
+---
+
+
 ### HP 3D Printers for Autodesk® Fusion 360™:
 
 This plug-in is a connector between Autodesk Fusion 360 and the HP SmartStream Software and is used to send over jobs directly to the HP Software.
@@ -150,26 +178,20 @@ Link: [RoboDK](https://apps.autodesk.com/FUSION/en/Detail/Index?id=6894286262130
 ---
 
 
-### Czech localization for F360:
+### Ultimaker Digital Factory for Autodesk Fusion 360™:
 
-The Czech localization for Autodesk® Fusion 360™ is an add-in, which installs and activates the Czech user interface (UI) in Fusion 360 (Win) and keeps it updated during the frequent release updates of this CAD/CAM product.
- 
-
-The scope of the CZ localization: the user interface of modeling, sketches, surfaces, meshes, freeform shapes, sheetmetal, visualization, animations, manufacturing, 3D printing, drawings, document management, generative design. The Czech environment does not cover all assortment of Fusion 360 functions, but its contents are being continuously extended.
- 
-
-You can use this localization for all types of Fusion 360 licenses, including its free variants (Personal, Startup, and Educational).
+This plug-in is a connector between Autodesk® Fusion 360™ and the "Ultimaker Digital Factory" site and its services. It links to the accounts on the Ultimaker service and allows to share Fusion 360 projects with it.
 
 <br>
 
 #### Details:
 
-Download Size: 3.2 MB
+Download Size: 3.7 MB
 <br>
-Release Date: 08.02.2021
+Release Date: 20.04.2021
 <br>
-Last Updated: 14.09.2021
+Last Updated: 06.10.2021
 <br>
-Version Info: 6.1.1
+Version Info: 1.1.0.58
 <br>
-Link: [Czech localization for F360](https://apps.autodesk.com/FUSION/en/Detail/Index?id=9151466655844643882)
+Link: [Ultimaker Digital Factory for Autodesk Fusion 360™](https://apps.autodesk.com/FUSION/de/Detail/Index?id=3902215446994700895&appLang=en&os=Win64)
