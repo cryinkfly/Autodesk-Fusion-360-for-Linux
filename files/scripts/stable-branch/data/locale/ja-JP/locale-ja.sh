@@ -6,9 +6,9 @@
 # Author:       Steve Zabka                                                                        #
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
-# Copyright (c) 2020-2021                                                                          #
-# Time/Date:    12:00/09.11.2021                                                                   #
-# Version:      1.2                                                                                #
+# Copyright (c) 2020-2022                                                                          #
+# Time/Date:    12:30/22.01.2022                                                                   #
+# Version:      1.3                                                                                #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -111,12 +111,15 @@ text_extension="Kakudai"
 # Extension Description
 text_extension_description="Setsumei"
 
-text_extension_description_1="Kono kakuchō kinō wa, idō suru kitai matawa ekitai ni sarasa reru arayuru mono matawa buhin o saiteki-ka suru koto de yakudachimasu. Rei: Tsubasa, fin, puropera, tābin."
-text_extension_description_2="Kono kakuchō kinō wa, sekkei no samazamana sokumen o bunseki suru no ni yakudachi, buhin no seizō kanōsei o kaizen suru hōhō ni kansuru meikakuna fīdobakku o teikyō shimasu."
-text_extension_description_3="Kono kakuchō kinō ni yori, Autodesk Fusion 360 de Cheko-go no yūzāintāfeisu (UI) o shiyō suru opushon ga teikyō sa remasu."
-text_extension_description_4="Kono kakuchō kinō wa, Autodesk Fusion 360 to HP SmartStream sofutō~ea-kan no konekutadeari, jobu o HP sofutō~ea ni chokusetsu sōshin suru tame ni shiyō sa remasu."
-text_extension_description_5="Kono kakuchō kinō o shiyō suru to, sakusei shita 3D moderu no G kōdo o Autodesk Fusion 360 o kaishite OctoPrint sābā ni chokusetsu sōshin dekimasu."
-text_extension_description_6="Kono kakuchō kinō o shiyō suru to, 50 wokoeru samazamana robottomēkā to 500-dai no robotto o Autodesk Fusion 360 kara chokusetsu puroguramu dekimasu."
+text_extension_description_1 = "この拡張機能は、移動する気体または液体にさらされるあらゆるものまたは部品を最適化するのに役立ちます。たとえば、翼、フィン、プロペラ、タービンなどです。"
+text_extension_description_2 = "この拡張機能は、設計のさまざまな側面を分析し、部品の製造可能性を改善する方法に関する明確なフィードバックを提供するのに役立ちます。"
+text_extension_description_3 = "この拡張機能は、Autodesk Fusion 360でチェコのユーザーインターフェイス（UI）を使用するオプションを提供します。"
+text_extension_description_4 = "この拡張機能は、Autodesk®Fusion360™とHP SmartStreamソフトウェア間のコネクタであり、ジョブをHPソフトウェアに直接送信するために使用されます。"
+text_extension_description_5 = "はすば歯車は、歯が斜めになっている平歯車に似ています。"
+text_extension_description_6 = "この拡張機能を使用すると、作成した3DモデルのGコードをAutodesk Fusion360経由でOctoPrintサーバーに直接送信できます。"
+text_extension_description_7 = "ユーザーがパラメーターをCSV（カンマ区切り値）ファイルからインポート/更新したり、CSVファイルにエクスポートしたりできるようにします。"
+text_extension_description_8 = "この拡張機能を使用すると、50を超えるさまざまなロボットメーカーと500のロボットをAutodesk Fusion360から直接プログラムできます。"
+text_extension_description_9 = "このプラグインは、Autodesk®Fusion360™とUltimaker DigitalFactoryサイトおよびそのサービスの間のコネクタです。"
 
 # Error
 text_error="Yoki senu erā ga hassei shita!"
