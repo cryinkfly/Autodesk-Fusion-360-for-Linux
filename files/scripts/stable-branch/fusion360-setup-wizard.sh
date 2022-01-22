@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    11:40/22.01.2022                                                                   #
-# Version:      1.7.1                                                                              #
+# Time/Date:    12:20/22.01.2022                                                                   #
+# Version:      1.7.2                                                                              #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -412,6 +412,16 @@ function hp-3dprinter-connector-extension {
 
 ###############################################################################################################################################################
 
+# Install a extension: Helical Gear Generator
+function helical-gear-generator-extension {
+    mkdir -p "$HOME/.wineprefixes/fusion360/INSTALLDIR/data/extensions"
+    cd "$HOME/.wineprefixes/fusion360/INSTALLDIR/data/extensions"
+    wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/files/extensions/HelicalGear_win64.msi &&
+    WINEPREFIX=$wineprefixname msiexec /i HelicalGear_win64.msi
+}
+
+###############################################################################################################################################################
+
 # Install a extension: OctoPrint for Autodesk® Fusion 360™
 function octoprint-extension {
     mkdir -p "$HOME/.wineprefixes/fusion360/INSTALLDIR/data/extensions"
@@ -422,12 +432,32 @@ function octoprint-extension {
 
 ###############################################################################################################################################################
 
+# Install a extension: Parameter I/O
+function parameter-i-o-extension {
+    mkdir -p "$HOME/.wineprefixes/fusion360/INSTALLDIR/data/extensions"
+    cd "$HOME/.wineprefixes/fusion360/INSTALLDIR/data/extensions"
+    wget -N https:https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/files/extensions/ParameterIO_win64.msi &&
+    WINEPREFIX=$wineprefixname msiexec /i ParameterIO_win64.msi
+}
+
+###############################################################################################################################################################
+
 # Install a extension: RoboDK
 function robodk-extension {
     mkdir -p "$HOME/.wineprefixes/fusion360/INSTALLDIR/data/extensions"
     cd "$HOME/.wineprefixes/fusion360/INSTALLDIR/data/extensions"
     wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/RoboDK.bundle-win64.msi &&
     WINEPREFIX=$wineprefixname msiexec /i RoboDK.bundle-win64.msi
+}
+
+###############################################################################################################################################################
+
+# Install a extension: Ultimaker Digital Factory for Autodesk Fusion 360™
+function ultimaker-digital-factory-extension {
+    mkdir -p "$HOME/.wineprefixes/fusion360/INSTALLDIR/data/extensions"
+    cd "$HOME/.wineprefixes/fusion360/INSTALLDIR/data/extensions"
+    wget -N hhttps://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/files/extensions/Ultimaker_Digital_Factory-win64.msi &&
+    WINEPREFIX=$wineprefixname msiexec /i Ultimaker_Digital_Factory-win64.msi
 }
 
 ###############################################################################################################################################################
@@ -983,8 +1013,11 @@ f360_extension=$(zenity --list \
                   FALSE "Additive Assistant (FFF)" "$text_extension_description_2" \
                   FALSE "Czech localization for F360" "$text_extension_description_3" \
                   FALSE "HP 3D Printers for Autodesk® Fusion 360™" "$text_extension_description_4" \
-                  FALSE "OctoPrint for Autodesk® Fusion 360™" "$text_extension_description_5" \
-                  FALSE "RoboDK" "$text_extension_description_6" )
+		  FALSE "Helical Gear Generator" "$text_extension_description_5" \
+                  FALSE "OctoPrint for Autodesk® Fusion 360™" "$text_extension_description_6" \
+		  FALSE "Parameter I/O" "$text_extension_description_7" \
+		  FALSE "RoboDK" "$text_extension_description_8" \
+                  FALSE "Ultimaker Digital Factory for Autodesk Fusion 360™" "$text_extension_description_9" )
 
 [[ $f360_extension = *"Airfoil Tools"* ]] && airfoil-tools-extension
 
@@ -994,9 +1027,15 @@ f360_extension=$(zenity --list \
 
 [[ $f360_extension = *"HP 3D Printers for Autodesk® Fusion 360™"* ]] && hp-3dprinter-connector-extension
 
+[[ $f360_extension = *"Helical Gear Generator"* ]] && helical-gear-generator-extension
+
 [[ $f360_extension = *"OctoPrint for Autodesk® Fusion 360™"* ]] && octoprint-extension
 
+[[ $f360_extension = *"Parameter I/O"* ]] && parameter-i-o-extension
+
 [[ $f360_extension = *"RoboDK"* ]] && robodk-extension
+
+[[ $f360_extension = *"Ultimaker Digital Factory for Autodesk Fusion 360™"* ]] && ultimaker-digital-factory-extension
 
 [[ "$f360_extension" ]] || echo "Nothing selected!"
 }
