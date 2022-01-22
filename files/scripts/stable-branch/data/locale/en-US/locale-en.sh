@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    12:00/09.11.2021                                                                   #
-# Version:      1.2                                                                                #
+# Time/Date:    12:30/22.01.2022                                                                   #
+# Version:      1.3                                                                                #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -115,8 +115,11 @@ text_extension_description_1="This extension helps you by the optimization any t
 text_extension_description_2="This extension helps you by analyses a number of aspects of your designs and provides clear feedback on how to improve the manufacturability of the part."
 text_extension_description_3="This extension gives you the option to use the Czech user interface (UI) in Autodesk Fusion 360."
 text_extension_description_4="This extension is a connector between Autodesk® Fusion 360™ and the HP SmartStream Software and is used to send over jobs directly to the HP Software."
-text_extension_description_5="With this extension you can send the G-code of your created 3D models directly to the OctoPrint server via Autodesk Fusion 360."
-text_extension_description_6="This extension allows you to program more than 50 different robot manufacturers and 500 robots directly from Autodesk Fusion 360."
+text_extension_description_5="Helical gears resemble spur gears with the teeth at an angle."
+text_extension_description_6="With this extension you can send the G-code of your created 3D models directly to the OctoPrint server via Autodesk Fusion 360."
+text_extension_description_7="Enables the user to Import/Update parameters from or export them to a CSV (Comma Separated Values) file."
+text_extension_description_8="This extension allows you to program more than 50 different robot manufacturers and 500 robots directly from Autodesk Fusion 360."
+text_extension_description_9="This plug-in is a connector between Autodesk® Fusion 360™ and the Ultimaker Digital Factory site and its services."
 
 # Error
 text_error="An unexpected error occurred!"
