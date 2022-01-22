@@ -6,9 +6,9 @@
 # Author:       Steve Zabka                                                                        #
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
-# Copyright (c) 2020-2021                                                                          #
-# Time/Date:    12:00/09.11.2021                                                                   #
-# Version:      1.2                                                                                #
+# Copyright (c) 2020-2022                                                                          #
+# Time/Date:    12:30/22.01.2022                                                                   #
+# Version:      1.3                                                                                #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -111,12 +111,15 @@ text_extension="Yánqí"
 # Extension Description
 text_extension_description="Miáoshù"
 
-text_extension_description_1="Cǐ kuòzhǎn chéngxù kě bāngzhù nín yōuhuà bàolù yú yídòng qìtǐ huò yètǐ de rènhé shìwù huò bùjiàn. Lìrú: Jī yì, qí, luóxuánjiǎng hé wōlúnjī."
-text_extension_description_2="Cǐ kuòzhǎn tōngguò fèn xī shèjì de duō gè fāngmiàn wèi nín tígōng bāngzhù, bìng tígōng yǒuguān rúhé tígāo língjiàn kě zhìzào xìng de míngquè fǎnkuì."
-text_extension_description_3="Cǐ kuòzhǎn shǐ nín kěyǐ xuǎnzé zài Autodesk Fusion 360 zhōng shǐyòng jiékè yǔ yònghù jièmiàn (UI)."
-text_extension_description_4="Cǐ kuòzhǎn shì Autodesk Fusion 360 hé HP SmartStream ruǎnjiàn zhī jiān de liánjiē qì, yòng yú jiāng zuòyè zhíjiē fāsòng dào HP ruǎnjiàn."
-text_extension_description_5="Shǐyòng cǐ kuòzhǎn chéngxù, nín kěyǐ tōngguò Autodesk Fusion 360 jiāng chuàngjiàn de 3D móxíng de G dàimǎ zhíjiē fāsòng dào OctoPrint fúwùqì."
-text_extension_description_6="Cǐ kuòzhǎn yǔnxǔ nín zhíjiē cóng Autodesk Fusion 360 duì 50 duō gè bùtóng de jīqìrén zhìzào shāng hé 500 gè jīqìrén jìnxíng biānchéng."
+text_extension_description_1="此扩展帮助您优化暴露于移动气体或液体的任何事物或部件。例如：机翼、鳍、螺旋桨和涡轮机。"
+text_extension_description_2="此扩展帮助您分析设计的多个方面，并就如何提高零件的可制造性提供清晰的反馈。"
+text_extension_description_3="此扩展使您可以选择在 Autodesk Fusion 360 中使用捷克语用户界面 (UI)。"
+text_extension_description_4="此扩展是 Autodesk® Fusion 360™ 和 HP SmartStream 软件之间的连接器，用于将作业直接发送到 HP 软件。"
+text_extension_description_5="斜齿轮类似于正齿轮，齿呈一定角度。"
+text_extension_description_6="使用此扩展，您可以通过 Autodesk Fusion 360 将您创建的 3D 模型的 G 代码直接发送到 OctoPrint 服务器。"
+text_extension_description_7="允许用户从 CSV（逗号分隔值）文件导入/更新参数或将其导出到 CSV（逗号分隔值）文件。"
+text_extension_description_8="此扩展允许您直接从 Autodesk Fusion 360 对 50 多个不同的机器人制造商和 500 个机器人进行编程。"
+text_extension_description_9="此插件是 Autodesk® Fusion 360™ 与 Ultimaker Digital Factory 站点及其服务之间的连接器。"
 
 # Error
 text_error="Yīgè yìliào zhī wài de wèntí fāshēngle!"
