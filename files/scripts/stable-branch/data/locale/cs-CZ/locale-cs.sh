@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    12:00/09.11.2021                                                                   #
-# Version:      1.2                                                                                #
+# Time/Date:    12:30/22.01.2022                                                                   #
+# Version:      1.3                                                                                #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -113,12 +113,15 @@ text_extension="Rozšíření"
 # Extension Description
 text_extension_description="Popis"
 
-text_extension_description_1="Toto rozšíření vám pomůže s optimalizací jakékoli věci nebo součásti, která je vystavena pohybujícímu se plynu nebo kapalině. Například: Křídla, ploutve, vrtule a turbíny."
-text_extension_description_2="Toto rozšíření vám pomůže analyzovat řadu aspektů vašich návrhů a poskytne jasnou zpětnou vazbu o tom, jak zlepšit vyrobitelnost součásti."
-text_extension_description_3="Toto rozšíření vám dává možnost používat české uživatelské rozhraní (UI) v aplikaci Autodesk Fusion 360."
-text_extension_description_4="Toto rozšíření je konektorem mezi Autodesk Fusion 360 a softwarem HP SmartStream a slouží k odesílání úloh přímo do softwaru HP."
-text_extension_description_5="S tímto rozšířením můžete odeslat G-kód vašich vytvořených 3D modelů přímo na server OctoPrint prostřednictvím Autodesk Fusion 360."
-text_extension_description_6="Toto rozšíření vám umožňuje naprogramovat více než 50 různých výrobců robotů a 500 robotů přímo z Autodesk Fusion 360."
+text_extension_description_1="Toto rozšíření vám pomůže optimalizovat jakoukoli věc nebo část, která je vystavena pohybujícímu se plynu nebo kapalině. Například: křídla, ploutve, vrtule a turbíny."
+text_extension_description_2="Toto rozšíření vám pomůže analyzovat řadu aspektů vašich návrhů a poskytuje jasnou zpětnou vazbu, jak zlepšit vyrobitelnost dílu."
+text_extension_description_3="Toto rozšíření vám dává možnost používat české uživatelské rozhraní (UI) v Autodesk Fusion 360."
+text_extension_description_4="Toto rozšíření je konektorem mezi Autodesk® Fusion 360™ a softwarem HP SmartStream a používá se k odesílání úloh přímo do softwaru HP."
+text_extension_description_5="Šroubová ozubená kola připomínají čelní ozubená kola s šikmými zuby."
+text_extension_description_6="S tímto rozšířením můžete odeslat G-kód svých vytvořených 3D modelů přímo na server OctoPrint přes Autodesk Fusion 360."
+text_extension_description_7="Umožňuje uživateli importovat/aktualizovat parametry ze souboru CSV (hodnoty oddělené čárkami) nebo je exportovat do souboru."
+text_extension_description_8="Toto rozšíření umožňuje programovat více než 50 různých výrobců robotů a 500 robotů přímo z Autodesk Fusion 360."
+text_extension_description_9="Tento plug-in je konektorem mezi Autodesk® Fusion 360™ a webem Ultimaker Digital Factory a jeho službami."
 
 # Error
 text_error="Vyskytla se neočekávaná chyba!"
