@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    12:20/22.01.2022                                                                   #
-# Version:      1.7.2                                                                              #
+# Time/Date:    15:45/24.01.2022                                                                   #
+# Version:      1.7.3                                                                              #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -436,7 +436,7 @@ function octoprint-extension {
 function parameter-i-o-extension {
     mkdir -p "$HOME/.wineprefixes/fusion360/INSTALLDIR/data/extensions"
     cd "$HOME/.wineprefixes/fusion360/INSTALLDIR/data/extensions"
-    wget -N https:https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/files/extensions/ParameterIO_win64.msi &&
+    wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/files/extensions/ParameterIO_win64.msi &&
     WINEPREFIX=$wineprefixname msiexec /i ParameterIO_win64.msi
 }
 
@@ -456,7 +456,7 @@ function robodk-extension {
 function ultimaker-digital-factory-extension {
     mkdir -p "$HOME/.wineprefixes/fusion360/INSTALLDIR/data/extensions"
     cd "$HOME/.wineprefixes/fusion360/INSTALLDIR/data/extensions"
-    wget -N hhttps://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/files/extensions/Ultimaker_Digital_Factory-win64.msi &&
+    wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/files/extensions/Ultimaker_Digital_Factory-win64.msi &&
     WINEPREFIX=$wineprefixname msiexec /i Ultimaker_Digital_Factory-win64.msi
 }
 
