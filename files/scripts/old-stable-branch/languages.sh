@@ -122,7 +122,7 @@
     text_12_1="Extension Manager"
     text_12_2="Here you can install some extensions for Autodesk Fusion 360!"
 
-    text_12_3="Airfoil Tools helps you by the optimization any thing or part that is exposed to a moving gas or liquid. For examble: wings, fins, propellers and turbines."
+    text_12_3="Airfoil Tools helps you by the optimization any thing or part that is exposed to a moving gas or liquid. For example: wings, fins, propellers and turbines."
     text_12_4="Additive Assistant (FFF) helps you by analyses a number of aspects of your designs and provides clear feedback on how to improve the manufacturability of the part."
     text_12_5="HP 3D Printers for Autodesk® Fusion 360™ is a connector between Autodesk® Fusion 360™ and the HP SmartStream Software and is used to send over jobs directly to the HP Software."
     text_12_6="With OctoPrint for Autodesk® Fusion 360™ you can send the G-code of your created 3D models directly to the OctoPrint server via Autodesk Fusion 360."
