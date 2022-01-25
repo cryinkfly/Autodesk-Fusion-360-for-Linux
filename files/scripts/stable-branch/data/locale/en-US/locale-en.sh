@@ -43,10 +43,10 @@ text_linux_distribution="Linux distribution"
 text_installation_location="Installation location"
 
 # Installation location - Standard
-text_installation_location_standard="Standard - Install Autodesk Fusion 360 into your home folder. For examble: /home/username/.wineprefixes/fusion360"
+text_installation_location_standard="Standard - Install Autodesk Fusion 360 into your home folder. For example: /home/username/.wineprefixes/fusion360"
 
 # Installation location - Custom
-text_installation_location_custom="Custom - Install Autodesk Fusion 360 to another place. For examble: /run/media/username/usb-drive/.wineprefixes/fusion360"
+text_installation_location_custom="Custom - Install Autodesk Fusion 360 to another place. For example: /run/media/username/usb-drive/.wineprefixes/fusion360"
 
 # Select a location with a file browser
 text_select_location_custom="Select a location for your Autodesk Fusion 360 installation:"
@@ -111,7 +111,7 @@ text_extension="Extension"
 # Extension Description
 text_extension_description="Description"
 
-text_extension_description_1="This extension helps you by the optimization any thing or part that is exposed to a moving gas or liquid. For examble: wings, fins, propellers and turbines."
+text_extension_description_1="This extension helps you by the optimization any thing or part that is exposed to a moving gas or liquid. For example: wings, fins, propellers and turbines."
 text_extension_description_2="This extension helps you by analyses a number of aspects of your designs and provides clear feedback on how to improve the manufacturability of the part."
 text_extension_description_3="This extension gives you the option to use the Czech user interface (UI) in Autodesk Fusion 360."
 text_extension_description_4="This extension is a connector between Autodesk® Fusion 360™ and the HP SmartStream Software and is used to send over jobs directly to the HP Software."

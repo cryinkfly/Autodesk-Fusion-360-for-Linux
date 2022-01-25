@@ -757,7 +757,7 @@ function program-exit {
 
 ##############################################################################
 
-# Installation of various extensions is offered here. For examble: OctoPrint for Autodesk® Fusion 360™
+# Installation of various extensions is offered here. For example: OctoPrint for Autodesk® Fusion 360™
 
 function install-extensions-standard {
 
