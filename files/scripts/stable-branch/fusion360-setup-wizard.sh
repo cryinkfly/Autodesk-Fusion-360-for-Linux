@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    15:00/26.01.2022                                                                   #
-# Version:      1.7.4                                                                              #
+# Time/Date:    15:05/26.01.2022                                                                   #
+# Version:      1.7.5                                                                              #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -265,6 +265,9 @@ function archlinux-verify-multilib {
 }
 
 function debian-based-1 {
+    # Some systems require this command for all repositories to work properly and for the packages to be downloaded for installation!
+    sudo apt-get --allow-releaseinfo-change update
+    
     sudo apt-get update
     sudo dpkg --add-architecture i386
     wget -nc https://dl.winehq.org/wine-builds/winehq.key
