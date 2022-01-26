@@ -55,6 +55,7 @@
 - @mike-lloyd03
 - @MrEdd123
 - @madhead
+- @marzukia 
 - @nitro2k01
 - @nonchip
 - @Patschke
@@ -66,6 +67,7 @@
 - @ReubenBTalbott
 - @roboticsmick
 - @rusk911
+- @realumhelp
 - @SuibianP
 - @suryanisaac
 - @sixxxis
