@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2021                                                                          #
-# Time/Date:    15:45/24.01.2022                                                                   #
-# Version:      1.7.3                                                                              #
+# Time/Date:    15:00/26.01.2022                                                                   #
+# Version:      1.7.4                                                                              #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -288,12 +288,6 @@ function ubuntu20 {
     sudo add-apt-repository -r 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main'
     wget -q https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_20.04/Release.key -O Release.key -O- | sudo apt-key add -
     sudo apt-add-repository 'deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_20.04/ ./'
-}
-
-function ubuntu20_10 {
-    sudo add-apt-repository -r 'deb https://dl.winehq.org/wine-builds/ubuntu/ groovy main'
-    wget -q https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_20.10/Release.key -O Release.key -O- | sudo apt-key add -
-    sudo apt-add-repository 'deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_20.10/ ./'
 }
 
 function ubuntu21 {
@@ -953,7 +947,6 @@ function setupact-select-os {
                     FALSE "Solus" \
                     FALSE "Ubuntu 18.04, Linux Mint 19.x..." \
                     FALSE "Ubuntu 20.04, Linux Mint 20.x, Pop!_OS 20.04..." \
-                    FALSE "Ubuntu 20.10" \
                     FALSE "Ubuntu 21.04, Pop!_OS 21.04..." \
                     FALSE "Ubuntu 21.10" \
                     FALSE "Void Linux" \
@@ -984,8 +977,6 @@ function setupact-select-os {
 [[ $select_os = "Ubuntu 18.04, Linux Mint 19.x..." ]] && debian-based-1 && ubuntu18 && debian-based-2
 
 [[ $select_os = "Ubuntu 20.04, Linux Mint 20.x, Pop!_OS 20.04..." ]] && debian-based-1 && ubuntu20 && debian-based-2
-
-[[ $select_os = "Ubuntu 20.10" ]] && debian-based-1 && ubuntu20_10 && debian-based-2
 
 [[ $select_os = "Ubuntu 21.04, Pop!_OS 21.04..." ]] && ubuntu21 && debian-based-2
 
