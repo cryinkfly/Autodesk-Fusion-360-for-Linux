@@ -1,4 +1,4 @@
-[DE](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/README-de_DE.md) | [**EN**](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux) | [ES](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/README%20-es_ES.md) | [IT](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/README%20-it_IT.md) | [RU](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/README-ru_RU.md)
+[DE](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/README-de_DE.md) | [EN](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux) | [**ES**](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/README%20-es_ES.md) | [IT](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/README%20-it_IT.md) | [RU](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/README-ru_RU.md)
 
 ![banner-fusion360](https://user-images.githubusercontent.com/79079633/127371623-6b50b591-1b12-466d-9c96-b5b6d6314f31.png)
 
@@ -8,49 +8,49 @@
 ![GitHub forks](https://img.shields.io/github/forks/cryinkfly/Fusion-360---Linux-Wine-Version-?style=for-the-badge)
 ![GitHub](https://img.shields.io/github/license/cryinkfly/Fusion-360---Linux-Wine-Version-?style=for-the-badge)
 
-[Autodesk Fusion 360](https://www.autodesk.com/products/fusion-360/features) is a cloud-based 3D modeling, CAD, CAM, and PCB software platform for product design and manufacturing, what you can use on Windows and macOS.
+[Autodesk Fusion 360](https://www.autodesk.com/products/fusion-360/features) es una plataforma de modelado 3D, CAD (diseño asistido por ordenador), CAM (fabricación asistida por ordenador) y PCB (diseño de circuitos impresos) basada en la nube, para el diseño de producto y fabricación, y que puede utilizarse en Windows y macOS.
 
-But the problem is that there are also people like me who don't want to use either of these two operating systems on there systems. Then these users have installed a Linux distribution such as openSUSE Leap, Ubuntu or Fedora.
+El problema es que hay gente que no quiere o puede utilizar estos dos sistemas operativos en sus equipos. Estos usuarios podrían tener instalada una distribución de Linux, como openSUSE Leap, Ubuntu o Fedora.
 
-And so I got the idea to start this project here to find a way to solve this problem. 
+Así que el autor original tuvo la idea de comenzar este proyecto para encontrar un modo de solucionar esta dificultad.
 
-I started looking at different tools and my choice was Wine! 
+Comencé a buscar diferentes herramientas y la opción fue claramente Wine!
 
-With this nice tool we don't need longer two operating systems for Fusion 360, when we will create a fantastic project in the future or if you want to work on a project with other people.
+Con esta herramienta ya no necesitamos esos dos sistemas operativos para Fusion 360, y podremos crear proyectos fantásticos o colaborar si quieres con otras personas.
 
-Is that a great idea for the future?
+No es una idea genial?
 
-Personally, I think this idea is good and for this reason I will do my best to give you the opportunity to use it on Linux as well!
-
----
-
-You will get more information about this program, then you can visit the original website of Autodesk Fusion 360 with this link: https://www.autodesk.com/products/fusion-360/features
+Personalmente, creo que es una buena idea y por esta razón haré lo que pueda para darte la oportunidad de utilizarlo también en Linux!
 
 ---
 
-## Current Version of Autodesk Fusion 360
-
-**Version number:** 2.0.12157*
-
-*Notice: [How to check which version of Fusion 360 is being used?](https://knowledge.autodesk.com/support/fusion-360/troubleshooting/caas/sfdcarticles/sfdcarticles/How-to-check-what-version-of-Fusion-360-is-installed.html)
+Para obtener más información sobre este programa, puedes ver la web original de Autodesk Fusion 360 en este enlace: https://www.autodesk.com/products/fusion-360/features
 
 ---
 
-  - 📂 Downloads: 
-<a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/scripts/stable-branch">Stable</a> and <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/scripts/development-branch">development builds</a>
-  - 📔 Documentation: <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/wiki/Documentation">GitHub-Documentation</a> & <a href="https://www.youtube.com/watch?v=-BktJspJKgs&list=PLzwMdS5iu_BIsO6RTy7Hy1MbzLMrQE2xe">Videos</a>
-  - 💬 Would You like to get in touch with me? Or if You have any questions, suggestions or problems?
-  - 📫 Then You can create an <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues">issue</a> here on GitHub or You visit my <a href="https://cryinkfly.com">website</a> and get in touch with me!
-  - 📜 Code of Conduct: [Contributor Covenant](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/.github/CODE_OF_CONDUCT.md)
-  - 📖 Information for contributors: All contribution information, Compilation instructions, Roadmap (Still in Progress!)
-  - ❤️ I'd like to thank everyone who has <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/COMMUNITY.md">helped</a> me to get Fusion 360 up and running on Linux!
-  - ☕️ Discussion: https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/discussions
+## Versión actual de Autodesk Fusion 360
+
+**Número de versión:** 2.0.12157*
+
+*Ver: [Cómo comprobar qué versión de Fusion 360 está siendo usada? (En la web de Autodesk)](https://knowledge.autodesk.com/support/fusion-360/troubleshooting/caas/sfdcarticles/sfdcarticles/How-to-check-what-version-of-Fusion-360-is-installed.html)
+
+---
+
+  - 📂 Descargas: 
+Versiones <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/scripts/stable-branch">estables (stable)</a> y <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/scripts/development-branch">de desarrollo (development)</a>
+  - 📔 Documentation: <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/wiki/Documentation">GitHub-Documentation (en inglés)</a> & <a href="https://www.youtube.com/watch?v=-BktJspJKgs&list=PLzwMdS5iu_BIsO6RTy7Hy1MbzLMrQE2xe">Videos</a>
+  - 💬 Querrías ponerte en contacto conmigo? O, tienes pregunts, sugerencias o problemas?
+  - 📫 Si es así, puedes crear una <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues">issue</a> aquí en GitHub o visitar mi <a href="https://cryinkfly.com">web</a> y ponerte en contacto conmigo!
+  - 📜 Código de Conducta (en inglés): [Contributor Covenant](https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/.github/CODE_OF_CONDUCT.md)
+  - 📖 Información para contribuyentes: Toda la información de contribuyentes, instrucciones de compilación y roadmap (Todavía en construcción!)
+  - ❤️ Me gustaría agradecer a todo el mundo que me ha <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/COMMUNITY.md">ayudado</a> a hacer funcionar Fusion 360 bien en Linux!
+  - ☕️ Discusión: https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/discussions
   - 🍷 Super Application Maintainer (WineHQ): https://appdb.winehq.org/objectManager.php?sClass=application&iId=15617
-  - 🌍 Official member of the [Autodesk Group Network](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/releases/tag/v5.1)!
+  - 🌍 Miembro oficial de la [Autodesk Group Network](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/releases/tag/v5.1)!
 
 ---
 
-## Screenshots
+## Capturas de pantalla
 <div>
 <img src="https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/images/workspaces/Manufacture/%231.1_adapter-plate.png" width="300px" height="200px">
 <img src="https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/images/workspaces/Generative%20Design/%231.4_generative_design.png" width="300px" height="200px">
@@ -66,25 +66,25 @@ You will get more information about this program, then you can visit the origina
 
 ---
 
-## Downloads
+## Descargas
 
-There are some <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/scripts">script releases</a> available, built from the release targets.
+Hay unas cuantas versiones de <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/scripts">scripts</a> disponibles, extraídas de las versiones que vamos publicando (releases).
 
-It's recommended that if you're new you start with the stable builds. Development builds are available here if you need it, but correspondingly may be less stable.
+Se recomienda que empieces con las versiones "stable". Las versiones de desarrollo están disponibles si necesitas probarlas, pero como su nombre indica, puede que sean menos estables.
 
-In the [development branch](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/scripts/development-branch) you will find, for example, the upcoming versions of my setup wizard, as well as builds that run with the help of Flatpak or Docker/Podman.
+En la [rama de desarrollo](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/scripts/development-branch) encontrarás, por ejemplo, las versiones próximas de mi asistente de instalación, así como versiones que funcionan con Flatpak o Docker/Podman.
 
 ---
 
-## Hardware and Software Requirements
+## Requerimientos Hardware y Software
 
-- Internet connection (Cable/DSL speeds recommended)!
-- Check the [Health Dashboard](https://health.autodesk.com/) of Autodesk Fusion 360!
-- Latest graphics driver, see <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/wiki/Supported-Graphics-Cards">here</a>!
-- Latest wine version (6.23 and newer), because with some versions of wine where no internet connection works!
-- Would you like to use the Czech language later in Autodesk Fusion 360, then you need a [special extension](https://apps.autodesk.com/FUSION/en/Detail/Index?id=9151466655844643882) what you must have bought and downloaded before you can install this with my Setup Wizard!
-- My script install some packages (dialog, p7zip, p7zip-full, p7zip-rar, curl, wget, winbind, cabextract, wine, wine-mono, wine_gecko, winetricks, ...)!
-- Supported Linux distributions:
+- Conexión a internet (banda ancha recomandada)!
+- Comprueba que el panel [Health Dashboard](https://health.autodesk.com/) se muestre verde para Autodesk Fusion 360!
+- Los últimos drivers de tu tarjeta gráfica, ver <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/wiki/Supported-Graphics-Cards">aquí (en inglés)</a>!
+- Una versión reciente de wine (6.23 o más nueva), ya que en algunas versiones anteriores la aplicación no se conecta a internet!
+- Si quieres cambiar al lenguaje checo en Autodesk Fusion 360, necesitarás una [extensión especial](https://apps.autodesk.com/FUSION/en/Detail/Index?id=9151466655844643882) que has de tener comprada y descargada antes de instalar esto con mi asistente!
+- Ten en cuenta que mi script de instalación te instalará ciertos paquetes en tu distribución (dialog, p7zip, p7zip-full, p7zip-rar, curl, wget, winbind, cabextract, wine, wine-mono, wine_gecko, winetricks, ...)!
+- Distribuciones Linux soportadas:
   - Arch Linux, Manjaro Linux, EndeavourOS, ...
   - Debian 10, MX Linux 19.4, Raspberry Pi Desktop, ...
   - Debian 11
@@ -103,66 +103,66 @@ In the [development branch](https://github.com/cryinkfly/Autodesk-Fusion-360-for
   - Void Linux
   - Gentoo Linux
 
-- Check if you have installed zenity and xterm on your Linux distribution:
+- Comprueba tener `zenity` y `xterm` instaladas en tu distribución Linux:
 
-#### Debian based systems:
+#### Sistemas basados en Debian:
 
     sudo apt-get update && sudo apt-get install software-properties-common zenity xterm
 
-#### Red Hat based systems:
+#### Sistemas basados en Red Hat:
 
     sudo dnf update && sudo dnf install zenity xterm
 
-#### Arch based systems:
+#### Sistemas basados en Arch:
 
     sudo pacman -Sy --needed zenity xterm
 
-#### openSUSE based systems:
+#### Sistemas basados en openSUSE:
 
     su -c 'zypper up && zypper install zenity xterm'
 
-#### Void based systems:
+#### Sistemas basados en Void:
 
     sudo xbps-install -Sy zenity xterm
 
-#### Solus based systems:
+#### Sistemas basados en Solus:
 
     sudo eopkg install zenity xterm
 
 
-#### Gentoo based systems:
+#### Sistemas basados en Gentoo:
 
     sudo emerge -av gnome-extra/zenity x11-terms/xterm
 
 ---
 
-## Getting Started
+## Comencemos
 
-Install Fusion 360 for Linux client:
+Instala el cliente de Fusion 360 para Linux
 
-1.) Check my <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/wiki/Documentation">GitHub-Documentation</a> & <a href="https://www.youtube.com/watch?v=-BktJspJKgs&list=PLzwMdS5iu_BIsO6RTy7Hy1MbzLMrQE2xe">Videos</a> before you install Autodesk Fusion 360 on your system!
+1.) Comprueba mi <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/wiki/Documentation">GitHub-Documentation</a> & <a href="https://www.youtube.com/watch?v=-BktJspJKgs&list=PLzwMdS5iu_BIsO6RTy7Hy1MbzLMrQE2xe">Videos</a> antes de instalar Autodesk Fusion 360 en tu equipo!
 
-2.) Check, if your [network settings](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/extras/network/etc) are correctly configured!
+2.) Comprueba que tus [ajustes de red](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/extras/network/etc) estén correctamente configurados!
 
-3.) Open a terminal and run this command:
+3.) Abre un terminal y ejecuta este comando:
 
     mkdir -p "$HOME/.wineprefixes/fusion360/INSTALLDIR" && cd "$HOME/.wineprefixes/fusion360/INSTALLDIR" && wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/scripts/stable-branch/fusion360-setup-wizard.sh && chmod +x fusion360-setup-wizard.sh && bash fusion360-setup-wizard.sh && exit
 
-4.) Now, You can <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues/44#issuecomment-890552181">use</a> Autodesk Fusion 360 on your Linux system!
+4.) Ya puedes <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues/44#issuecomment-890552181">utilizar</a> Autodesk Fusion 360 en Linux!
 
-For example (Default)*:
+Por ejemplo (Por defecto)*:
 
     xterm -hold -e "$HOME/.local/share/applications/wine/Programs/Autodesk/fusion360-launcher.sh"
     
-OR:
+O, si no:
 
     launcher="$(find $HOME/.wineprefixes/fusion360 -name Fusion360.exe -printf "%T+ %p\n" | sort -r 2>&1 | head -n 1 | sed -r 's/.+0000000000 (.+)/\1/')" && WINEPREFIX="$HOME/.wineprefixes/fusion360" wine "$launcher"
 
-*Notice: Here can you find [all files](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/extras/desktop-starter) what you need for a .desktop file!
+*Nota: Aquí puedes encontrar [todos los archivos](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/extras/desktop-starter) que necesitas para hacerte un fichero `.desktop` e instalarlo en `$HOME/.local/share/applications`!
 
 ---
 
-## Which work areas and functions have I tested:
+## Qué áreas de trabajo y funciones he probado que funcionen:
 
 <table>
 <thead>
@@ -175,12 +175,12 @@ OR:
 </thead>
 <tbody>
 <tr>
-<td>Construction</td>
+<td>Construcción</td>
 <td style="text-align: center;"><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
 <td style="text-align: center;"><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
 <td style="text-align: center;"><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
 <tr>
-<td>Animation</td>
+<td>Animación</td>
 <td><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
 <td><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
 <td style="text-align: center;"><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
@@ -192,49 +192,49 @@ OR:
 <td><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
 </tr>
 <tr>
-<td>Production</td>
+<td>Fabricación</td>
 <td><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
 <td style="text-align: center;"><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
 <td style="text-align: center;"><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
 </tr>
 <tr>
-<td>Simulation</td>
+<td>Simulación</td>
 <td style="text-align: center;"><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
 <td style="text-align: center;"><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
 <td style="text-align: center;"><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
 </tr>
 <tr>
-<td>Generative Design</td>
+<td>Diseño generativo</td>
 <td style="text-align: center;"><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
 <td style="text-align: center;"><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
 <td style="text-align: center;"><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
 </tr>
 <tr>
-<td>Drawing</td>
+<td>Dibujo</td>
 <td style="text-align: center;"><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
 <td style="text-align: center;"><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
 <td style="text-align: center;"><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
 </tr>
 <tr>
-<td>Electronics</td>
+<td>Electrónica</td>
 <td style="text-align: center;"><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
 <td style="text-align: center;"><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
 <td style="text-align: center;"><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
 </tr>
 <tr>
-<td>Online- & Offline-Mode</td>
+<td>Modo Online y Offline</td>
 <td style="text-align: center;"><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
 <td style="text-align: center;"><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
 <td style="text-align: center;"><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
 </tr>
 <tr>
-<td>Support all languages</td>
+<td>Soporte de todos los idiomas</td>
 <td style="text-align: center;"><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
 <td style="text-align: center;"><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
 <td style="text-align: center;"><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
 </tr>
 <tr>
-<td><a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/docs/en-US/extensions">Scripts and additional modules</a></td>
+<td><a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/docs/en-US/extensions">Scripts y módulos adicionales</a></td>
 <td style="text-align: center;"><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
 <td style="text-align: center;"><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
 <td style="text-align: center;"><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
@@ -244,19 +244,19 @@ OR:
 
 ---
 
-## Important Notice
+## Nota importante
 
-With the help of my script, You get a way to install Autodesk Fusion 360 on your Linux system. 
+Con la ayuda de mi script, tendrás Autodesk Fusion 360 funcionando entu sistema Linux.
 
-Certain packages and programs that are required will be set up for You, but it's important to know, that my script only helps You to get the program to run and nothing more! 
+Instalará por ti ciertos paquetes y programas necesarios, pero es importante que tengas en cuenta que el script solo te ayuda a tener el programa funcionando, nada más.
 
-And so, You must to purchase the licenses directly from the manufacturer of the program Autodesk Fusion 360!
+Es decir, debes comprar igualmente las licencias apropiadas directamente al fabricante o distribuidor de Autodesk Fusion 360 para tu región!
 
 ---
 
-## License
+## Licencia
 
-All my scripts are released under the MIT license, see <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/LICENSE.md">LICENSE.md</a> for full text.
+Todos los scripts están licenciados bajo la licencia MIT, véase <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/LICENSE.md">LICENSE.md</a> para el texto completo (en inglés).
 
 
 
