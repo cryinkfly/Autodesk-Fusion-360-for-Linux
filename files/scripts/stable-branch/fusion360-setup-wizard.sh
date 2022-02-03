@@ -413,7 +413,7 @@ function hp-3dprinter-connector-extension {
 function helical-gear-generator-extension {
     mkdir -p "$HOME/.wineprefixes/fusion360/INSTALLDIR/data/extensions"
     cd "$HOME/.wineprefixes/fusion360/INSTALLDIR/data/extensions"
-    wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/files/extensions/HelicalGear_win64.msi &&
+    wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/HelicalGear_win64.msi &&
     WINEPREFIX=$wineprefixname msiexec /i HelicalGear_win64.msi
 }
 
@@ -433,7 +433,7 @@ function octoprint-extension {
 function parameter-i-o-extension {
     mkdir -p "$HOME/.wineprefixes/fusion360/INSTALLDIR/data/extensions"
     cd "$HOME/.wineprefixes/fusion360/INSTALLDIR/data/extensions"
-    wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/files/extensions/ParameterIO_win64.msi &&
+    wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/ParameterIO_win64.msi &&
     WINEPREFIX=$wineprefixname msiexec /i ParameterIO_win64.msi
 }
 
@@ -453,7 +453,7 @@ function robodk-extension {
 function ultimaker-digital-factory-extension {
     mkdir -p "$HOME/.wineprefixes/fusion360/INSTALLDIR/data/extensions"
     cd "$HOME/.wineprefixes/fusion360/INSTALLDIR/data/extensions"
-    wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/files/extensions/Ultimaker_Digital_Factory-win64.msi &&
+    wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/Ultimaker_Digital_Factory-win64.msi &&
     WINEPREFIX=$wineprefixname msiexec /i Ultimaker_Digital_Factory-win64.msi
 }
 
