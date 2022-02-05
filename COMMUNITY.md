@@ -48,6 +48,7 @@
 - @klack
 - @Le0xFF
 - @Lik3Hackdev
+- @lewisjared
 - @madurani
 - @ManuGithubSteam
 - @marrobHD
@@ -83,5 +84,6 @@
 - @vikingsraven
 - @watzon
 - @wprojects
+
 
 ... they help me with reports and code to get work Fusion 360 on Linux!!!
