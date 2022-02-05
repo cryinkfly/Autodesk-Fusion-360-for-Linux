@@ -6,7 +6,7 @@
 # Author:       Steve Zabka                                                                        #
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
-# Copyright (c) 2020-2021                                                                          #
+# Copyright (c) 2020-2022                                                                          #
 # Time/Date:    17:30/31.01.2022                                                                   #
 # Version:      1.7.6                                                                              #
 ####################################################################################################
