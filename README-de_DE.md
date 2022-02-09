@@ -48,7 +48,7 @@ Weitere Informationen zu diesem Programm erhalten Sie mit diesem Link: https://w
   - ❤️ Ich möchte allen danken, die mir bei meinem Projekt <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/COMMUNITY.md">geholfen</a> haben, Autodesk Fusion 360 unter Linux zum laufen zu bringen!
   - ☕️ Diskussion: https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/discussions
   - 🍷 Super Application Maintainer (WineHQ): https://appdb.winehq.org/objectManager.php?sClass=application&iId=15617
-  - 🌍 Offizielles Mitglied der [Autodesk Group Network](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/releases/tag/v5.1)!
+  - 🌍 Offizielles Mitglied der [Autodesk Group Network](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/releases/tag/v5.1) &  [Autodesk Fusion 360 Insider program](https://feedback.autodesk.com/key/Fusion360Insider)!
 
 ---
 
