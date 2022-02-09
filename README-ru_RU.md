@@ -48,7 +48,8 @@ Autodesk Fusion 360 — это облачное ПО для 3D-моделиро�
   - ❤️ Я также выражаю благодарность всем, кто <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/COMMUNITY.md">помогал</a> мне работать над этим проектом!
   - ☕️ Обсуждение проекта на GitHub: https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/discussions
   - 🍷 Страничка проекта на WineHQ: https://appdb.winehq.org/objectManager.php?sClass=application&iId=15617
-  - 🌍 Официальный участник [Autodesk Group Network](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/releases/tag/v5.1)!
+  - 🌍 Официальный участник [Autodesk Group Network](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/releases/tag/v5.1) &  [Autodesk Fusion 360 Insider program](https://feedback.autodesk.com/key/Fusion360Insider)!
+
 
 ---
 
