@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    12:30/22.01.2022                                                                   #
-# Version:      1.3                                                                                #
+# Time/Date:    16:30/10.02.2022                                                                   #
+# Version:      1.4                                                                                #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -31,10 +31,10 @@ text_snap="Snap (Jikken-teki)"
 text_driver="Gurafikkudoraibā"
 
 # Driver OpenGL
-text_driver_opengl="OpenGL (hyōjun) - wakaranai baai wa, kono opushon o sentaku shite kudasai."
+text_driver_opengl="OpenGL (Fōrubakkubarianto)"
 
 # Driver DXVK
-text_driver_dxvk="DXVK - Intel GPU o shiyō shite iru baai wa, kono opushon o sentaku shite kudasai."
+text_driver_dxvk="DXVK (Hyōjun barianto)"
 
 # Linux distribution
 text_linux_distribution="Rinakkusu disutoribyūshon"
