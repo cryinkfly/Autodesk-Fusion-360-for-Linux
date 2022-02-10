@@ -85,6 +85,7 @@ Im [Entwicklungszweig](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linu
 - Neueste Wine-Version (6.23 und neuer), denn bei einigen Wine-Versionen, bei denen keine Internetverbindung funktioniert!
 - Möchten Sie die tschechische Sprache später in Autodesk Fusion 360 verwenden, dann benötigen Sie eine [spezielle Erweiterung](https://apps.autodesk.com/FUSION/en/Detail/Index?id=9151466655844643882), die Sie haben müssen gekauft und heruntergeladen, bevor Sie dies mit meinem Setup-Assistenten installieren können!
 - Mein Skript installiert einige Pakete (dialog, p7zip, p7zip-full, p7zip-rar, curl, wget, winbind, cabextract, wine, wine-mono, wine_gecko, winetricks, ...)!
+- Bitte den DXVK-Modus auswählen, da bei dem OpenGL-Modus noch einige Bugs vorhanden sind! Der OpenGL-Modus dient nur als Fallback-Variante.
 - Supported Linux distributions:
   - Arch Linux, Manjaro Linux, EndeavourOS, ...
   - Debian 10, MX Linux 19.4, Raspberry Pi Desktop, ...
