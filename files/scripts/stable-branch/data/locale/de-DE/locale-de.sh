@@ -8,8 +8,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    12:30/22.01.2022                                                                   #
-# Version:      1.3                                                                                #
+# Time/Date:    16:30/10.02.2022                                                                   #
+# Version:      1.4                                                                                #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -32,10 +32,10 @@ text_snap="Snap (Experimental)"
 text_driver="Grafiktreiber"
 
 # Driver OpenGL
-text_driver_opengl="OpenGL (Standard) - Wählen Sie diese Option, wenn Sie sich nicht sicher sind!"
+text_driver_opengl="OpenGL (Fallback-Variante)"
 
 # Driver DXVK
-text_driver_dxvk="DXVK - Wählen Sie diese Option, wenn Sie eine Intel-GPU verwenden!"
+text_driver_dxvk="DXVK (Standard-Variante)"
 
 # Linux distribution
 text_linux_distribution="Linux Distribution"
