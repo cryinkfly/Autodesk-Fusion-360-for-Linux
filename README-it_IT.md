@@ -80,6 +80,7 @@ Nella [development branch](https://github.com/cryinkfly/Autodesk-Fusion-360-for-
 - Ultima versione di Wine (6.23 o più recente), poichè con alcune versioni di Wine la connessione internet non funziona!
 - Per utilizzare la versione in Ceco di Fusion 360, ti servirà una [special extension](https://apps.autodesk.com/FUSION/en/Detail/Index?id=9151466655844643882) Che devi aver comprato e scaricato prima di utilizzare il mio installer!
 - Il mio script installa alcuni pacchetti (dialog, p7zip, p7zip-full, p7zip-rar, curl, wget, winbind, cabextract, wine, wine-mono, wine_gecko, winetricks, ...)!
+- Seleziona la modalità DXVK, poiché ci sono alcuni bug nella modalità OpenGL! La modalità OpenGL serve solo come variante di fallback.
 - Distribuzioni di Linux supportate:
   - Arch Linux, Manjaro Linux, EndeavourOS, ...
   - Debian 10, MX Linux 19.4, Raspberry Pi Desktop, ...
