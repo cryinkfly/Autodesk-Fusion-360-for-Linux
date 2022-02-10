@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    12:30/22.01.2022                                                                   #
-# Version:      1.3                                                                                #
+# Time/Date:    16:30/10.02.2022                                                                   #
+# Version:      1.4                                                                                #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -31,10 +31,10 @@ text_snap="Snap (Silheomjeog)"
 text_driver="Geulaepig deulaibeo"
 
 # Driver OpenGL
-text_driver_opengl="OpenGL (pyojun) - Hwagsilhaji anh-eun gyeong-u i obsyeon-eul seontaeghasibsio!"
+text_driver_opengl="OpenGL (daeche byeonhyeong)"
 
 # Driver DXVK
-text_driver_dxvk="DXVK - Intel GPU leul sayonghaneun gyeong-u i obsyeon-eul seontaeghasibsio!"
+text_driver_dxvk="DXVK (pyojun byeonhyeong)"
 
 # Linux distribution
 text_linux_distribution="Linugseu baepopan"
