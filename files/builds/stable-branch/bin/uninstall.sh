@@ -20,22 +20,22 @@ program_name="Autodesk Fusion 360 for Linux - Uninstall"
 
 ###############################################################################################################################################################
 # ALL FUNCTIONS ARE ARRANGED HERE:                                                                                                                            #
-wineprefixes
+###############################################################################################################################################################
 
 # Remove a exist Wineprefix of Autodesk Fusion 360!
 function setupact-uninstall {
-	setupact-select-wineprefix-info
-    setupact-select-wineprefix
-    rm -r "$wineprefix_directory"
-    setupact-uninstall-completed
+  setupact-select-wineprefix-info
+  setupact-select-wineprefix
+  rm -r "$wineprefix_directory"
+  setupact-uninstall-completed
 }
 
 ###############################################################################################################################################################
 
 function setupact-get-wineprefixes-log {
-	mkdir -p "/tmp/fusion-360/logs"
-    cp "$HOME/.config/fusion-360/logs/wineprefixes.log" "/tmp/fusion-360/logs"
-    mv "/tmp/fusion-360/logs/wineprefixes.log" "/tmp/fusion-360/logs/wineprefixes.log/wineprefixes"
+  mkdir -p "/tmp/fusion-360/logs"
+  cp "$HOME/.config/fusion-360/logs/wineprefixes.log" "/tmp/fusion-360/logs"
+  mv "/tmp/fusion-360/logs/wineprefixes.log" "/tmp/fusion-360/logs/wineprefixes.log/wineprefixes"
 }
 
 ###############################################################################################################################################################
@@ -89,7 +89,7 @@ function setupact-select-wineprefix-info {
 }
 
 function setupact-select-wineprefix {
-wineprefix_directory=`zenity --file-selection --directory --title="Select the Wineprefix-directory ..."`
+  wineprefix_directory=`zenity --file-selection --directory --title="Select the Wineprefix-directory ..."`
 }
 
 ###############################################################################################################################################################
