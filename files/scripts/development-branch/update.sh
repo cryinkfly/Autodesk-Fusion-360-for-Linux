@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    11:15/17.02.2022                                                                   #
-# Version:      0.0.4                                                                              #
+# Time/Date:    09:00/18.02.2022                                                                   #
+# Version:      0.0.5                                                                              #
 ####################################################################################################
 
 # Path: /$HOME/.config/fusion-360/bin/update.sh
@@ -22,8 +22,11 @@ program_name="Autodesk Fusion 360 for Linux - Launcher"
 # A value of 0 means that there is no update and a value of 1 will notify the user that there is an update.
 get_update=0
 
-# Domain Name
+# Domain Name:
 domain="www.github.com"
+
+# Reset connection-value!
+connection=0
 
 ###############################################################################################################################################################
 # ALL FUNCTIONS ARE ARRANGED HERE:                                                                                                                            #
@@ -33,49 +36,35 @@ domain="www.github.com"
 function setupact-check-connection {
   ping -c 5 $domain 2>/dev/null 1>/dev/null
   if [ "$?" = 0 ]; then
-    echo "Host found"
+    connection=1
+    echo "Connection to the domain worked!"
   else
-    echo "Host not found"
-    setupact-no-connection-warning
-    # Skip the update proecess ... (Still in Progress!)
+    echo "No connection to the domain!"
 fi
 }
 
+###############################################################################################################################################################
+
 # Checks if there is an update for Autodesk Fusion 360.
-function setupact-check-update {
-  if [ $get_update -eq 1 ]; then
-    setupact-get-update
+function setupact-check-info {
+  if [ $connection -eq 1 ] && [ $get_update -eq 1 ]; then
+    setupact-update-question
+  elif [ $connection -eq 1 ] && [ $get_update -eq 0 ]; then
+    setupact-no-update-info 
   else    
-    echo "Do nothing!"
-    setupact-no-update-info
+    setupact-no-connection-error
   fi
 }
 
-# Checks the current day of the week so that the update can be performed.
-# %u day of week (1..7); 1 is Monday.
+###############################################################################################################################################################
 
-# The update runs on Monday, Wednesday and Friday.
-function setupact-get-update  {
-  pc_date=$(date +%u)
-  if [ $pc_date -eq 1 ]; then
-     echo "Monday"
-    setupact-update-question
-  elif [ $pc_date -eq 3 ]; then
-     echo "Wednesday"
-    setupact-update-question
-  elif [ $pc_date -eq 5 ]; then
-     echo "Friday"
-    setupact-update-question
-  else    
-    setupact-no-update-info
-  fi
-}
-
-function setupact-get-f360exe {
+function setupact-get-update {
   wget https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe -O Fusion360installer.exe
 }
 
-function setupact-update {
+###############################################################################################################################################################
+
+function setupact-install-update {
   WINEPREFIX="$HOME/.wineprefixes/fusion360" wine Fusion360installer.exe -p deploy -g -f log.txt --quiet
   WINEPREFIX="$HOME/.wineprefixes/fusion360" wine Fusion360installer.exe -p deploy -g -f log.txt --quiet
 }
@@ -94,9 +83,19 @@ function setupact-no-update-info {
 
 ###############################################################################################################################################################
 
+# The user will be informed that he is skipping the update!
+function setupact-skip-info {
+  zenity --warning \
+  --text="The update was skipped! Please update your Autodesk Fusion 360 version soon!" \
+  --width=400 \
+  --height=100
+}
+
+###############################################################################################################################################################
+
 # The user get a informationt that there is no connection to the server!
 function setupact-no-connection-warning {
-  zenity --warning \
+  zenity --error \
   --text="The connection to the server could not be established! The search for new updates has been skipped! Please check your internet connection!" \
   --width=400 \
   --height=100
@@ -113,11 +112,11 @@ function setupact-update-question {
   --height=100
   answer=$?
 
-  if [ "$answer" -eq 0 ]; then
-     echo "Do nothing!"
+  if [ "$answer" -eq 0 ]; then    
+    setupact-get-update
+    setupact-install-update
   elif [ "$answer" -eq 1 ]; then
-    setupact-get-f360exe
-    setupact-update
+    setupact-skip-info
   fi
 }
 
@@ -126,23 +125,22 @@ function setupact-update-question {
 # A progress bar is displayed here.
 function setupact-progressbar {
   (
-echo "5" ; sleep 1
-echo "# Connecting to the server ..." ; sleep 5
+echo "30" ; sleep 2
+echo "# Connecting to the server ..." ; sleep 3
 setupact-check-connection
-echo "25" ; sleep 1
-echo "# Check for updates ..." ; sleep 3
-setupact-check-update
-echo "75" ; sleep 1
+echo "50" ; sleep 1
+echo "# Check all files ..." ; sleep 1
+echo "100" ; sleep 3
 ) |
 zenity --progress \
   --title="$program_name" \
-  --text="Checking if there is a new version of Autodesk fusion 360 available ..." \
+  --text="Search for new updates ..." \
   --width=400 \
   --height=100 \
   --percentage=0
 
 if [ "$?" = 0 ] ; then
-        setupact-update-solved
+        setupact-check-info
 elif [ "$?" = 1 ] ; then
         zenity --question \
                  --title="$program_name" \
