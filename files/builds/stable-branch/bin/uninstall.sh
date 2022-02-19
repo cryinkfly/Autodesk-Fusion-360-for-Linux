@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                          #
 # License:      MIT                                                            #
 # Copyright (c) 2020-2022                                                      #
-# Time/Date:    11:30/18.02.2022                                               #
-# Version:      0.1                                                            #
+# Time/Date:    08:30/19.02.2022                                               #
+# Version:      0.2                                                            #
 ################################################################################
 
 # Path: /$HOME/.config/fusion-360/bin/uninstall.sh
@@ -35,7 +35,7 @@ function setupact-uninstall {
 function setupact-get-wineprefixes-log {
   mkdir -p "/tmp/fusion-360/logs"
   cp "$HOME/.config/fusion-360/logs/wineprefixes.log" "/tmp/fusion-360/logs"
-  mv "/tmp/fusion-360/logs/wineprefixes.log" "/tmp/fusion-360/logs/wineprefixes.log/wineprefixes"
+  mv "/tmp/fusion-360/logs/wineprefixes.log" "/tmp/fusion-360/logs/wineprefixes"
 }
 
 ###############################################################################################################################################################
@@ -73,8 +73,44 @@ function setupact-cancel-info {
 
 # Deinstall a exist Wineprefix of Autodesk Fusion 360!
 function setupact-uninstall-dialog {
+  file=/tmp/fusion-360/logs/wineprefixes
+  directory=`zenity --text-info \
+         --title="$program_name" \
+         --width=700 \
+         --height=500 \
+         --filename=$file \
+         --editable \
+         --checkbox="$text_deinstall_checkbox"`
 
-# Still in Progress!
+  case $? in
+      0)
+          zenity --question \
+                 --title="$program_name" \
+                 --text="$Do you want to save your changes and deleting the correct existing Autodesk Fusion 360 installation?" \
+                 --width=400 \
+                 --height=100
+          answer=$?
+
+          if [ "$answer" -eq 0 ]; then
+              echo "$directory" > $file
+	          mv "$file" "/tmp/fusion-360/logs/wineprefixes.log"
+	          cp "/tmp/fusion-360/logs/wineprefixes.log" "$HOME/.config/fusion-360/logs/wineprefixes.log"
+              setupact-uninstall
+          elif [ "$answer" -eq 1 ]; then
+              setupact-uninstall-dialog
+          fi
+
+  	      ;;
+      1)
+          echo "Go back"
+          setupact-update-question
+  	      ;;
+      -1)
+        zenity --error \
+          --text="An unexpected error occurred!"
+          exit;
+  	      ;;
+  esac
 
 }
 
@@ -109,3 +145,4 @@ function setupact-uninstall-completed {
 ###############################################################################################################################################################
 
 setupact-update-question
+
