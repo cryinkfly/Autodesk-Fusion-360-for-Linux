@@ -6,9 +6,9 @@
 # Author:       Steve Zabka                                                                        #
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
-# Copyright (c) 2020-2021                                                                          #
-# Time/Date:    10:00/20.10.2021                                                                   #
-# Version:      1.0                                                                                #
+# Copyright (c) 2020-2022                                                                          #
+# Time/Date:    10:00/19.02.2022                                                                   #
+# Version:      1.1                                                                                #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -16,42 +16,40 @@
 ###############################################################################################################################################################
 
 # Load & Save the locale files into the folders!
-
 function load-locale-languages {
-  wget -N -P data/locale/cs-CZ/ https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/scripts/stable-branch/data/locale/cs-CZ/locale-cs.sh
-  chmod +x data/locale/cs-CZ/locale-cs.sh
-  wget -N -P data/locale/de-DE/ https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/scripts/stable-branch/data/locale/de-DE/locale-de.sh
-  chmod +x data/locale/de-DE/locale-de.sh
-  wget -N -P data/locale/en-US/ https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/scripts/stable-branch/data/locale/en-US/locale-en.sh
-  chmod +x data/locale/en-US/locale-en.sh
-  wget -N -P data/locale/es-ES/ https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/scripts/stable-branch/data/locale/es-ES/locale-es.sh
-  chmod +x data/locale/es-ES/locale-es.sh
-  wget -N -P data/locale/fr-FR/ https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/scripts/stable-branch/data/locale/fr-FR/locale-fr.sh
-  chmod +x data/locale/fr-FR/locale-fr.sh
-  wget -N -P data/locale/it-IT/ https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/scripts/stable-branch/data/locale/it-IT/locale-it.sh
-  chmod +x data/locale/it-IT/locale-it.sh
-  wget -N -P data/locale/ja-JP/ https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/scripts/stable-branch/data/locale/ja-JP/locale-ja.sh
-  chmod +x data/locale/ja-JP/locale-ja.sh
-  wget -N -P data/locale/ko-KR/ https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/scripts/stable-branch/data/locale/ko-KR/locale-ko.sh
-  chmod +x data/locale/ko-KR/locale-ko.sh
-  wget -N -P data/locale/zh-CN/ https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/scripts/stable-branch/data/locale/zh-CN/locale-zh.sh
-  chmod +x data/locale/zh-CN/locale-zh.sh
+  wget -N -P $HOME/.config/fusion-360/locale/cs-CZ/ https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/locale/cs-CZ/locale-cs.sh
+  chmod +x $HOME/.config/fusion-360/locale/cs-CZ/locale-cs.sh
+  wget -N -P $HOME/.config/fusion-360/locale/de-DE/ https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/locale/de-DE/locale-de.sh
+  chmod +x $HOME/.config/fusion-360/locale/de-DE/locale-de.sh
+  wget -N -P $HOME/.config/fusion-360/locale/en-US/ https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/locale/en-US/locale-en.sh
+  chmod +x $HOME/.config/fusion-360/locale/en-US/locale-en.sh
+  wget -N -P $HOME/.config/fusion-360/locale/es-ES/ https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/locale/es-ES/locale-es.sh
+  chmod +x $HOME/.config/fusion-360/locale/es-ES/locale-es.sh
+  wget -N -P $HOME/.config/fusion-360/locale/fr-FR/ https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/locale/fr-FR/locale-fr.sh
+  chmod +x $HOME/.config/fusion-360/locale/fr-FR/locale-fr.sh
+  wget -N -P $HOME/.config/fusion-360/locale/it-IT/ https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/locale/it-IT/locale-it.sh
+  chmod +x $HOME/.config/fusion-360/locale/it-IT/locale-it.sh
+  wget -N -P $HOME/.config/fusion-360/locale/ja-JP/ https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/locale/ja-JP/locale-ja.sh
+  chmod +x $HOME/.config/fusion-360/locale/ja-JP/locale-ja.sh
+  wget -N -P $HOME/.config/fusion-360/locale/ko-KR/ https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/locale/ko-KR/locale-ko.sh
+  chmod +x $HOME/.config/fusion-360/locale/ko-KR/locale-ko.sh
+  wget -N -P $HOME/.config/fusion-360/locale/zh-CN/ https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/locale/zh-CN/locale-zh.sh
+  chmod +x $HOME/.config/fusion-360/locale/zh-CN/locale-zh.sh
 }
 
 ##############################################################################
 
 # Load & Save the licenses into the folders!
-
 function load-locale-licenses {
-  wget -N -P data/locale/cs-CZ/ https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/scripts/stable-branch/data/locale/cs-CZ/license-cs
-  wget -N -P data/locale/de-DE/ https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/scripts/stable-branch/data/locale/de-DE/license-de
-  wget -N -P data/locale/en-US/ https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/scripts/stable-branch/data/locale/en-US/license-en
-  wget -N -P data/locale/es-ES/ https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/scripts/stable-branch/data/locale/es-ES/license-es
-  wget -N -P data/locale/fr-FR/ https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/scripts/stable-branch/data/locale/fr-FR/license-fr
-  wget -N -P data/locale/it-IT/ https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/scripts/stable-branch/data/locale/it-IT/license-it
-  wget -N -P data/locale/ja-JP/ https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/scripts/stable-branch/data/locale/ja-JP/license-ja
-  wget -N -P data/locale/ko-KR/ https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/scripts/stable-branch/data/locale/ko-KR/license-ko
-  wget -N -P data/locale/zh-CN/ https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/scripts/stable-branch/data/locale/zh-CN/license-zh
+  wget -N -P $HOME/.config/fusion-360/locale/cs-CZ/ https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/locale/cs-CZ/license-cs
+  wget -N -P $HOME/.config/fusion-360/locale/de-DE/ https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/locale/de-DE/license-de
+  wget -N -P $HOME/.config/fusion-360/locale/en-US/ https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/locale/en-US/license-en
+  wget -N -P $HOME/.config/fusion-360/locale/es-ES/ https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/locale/es-ES/license-es
+  wget -N -P $HOME/.config/fusion-360/locale/fr-FR/ https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/locale/fr-FR/license-fr
+  wget -N -P $HOME/.config/fusion-360/locale/it-IT/ https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/locale/it-IT/license-it
+  wget -N -P $HOME/.config/fusion-360/locale/ja-JP/ https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/locale/ja-JP/license-ja
+  wget -N -P $HOME/.config/fusion-360/locale/ko-KR/ https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/locale/ko-KR/license-ko
+  wget -N -P $HOME/.config/fusion-360/locale/zh-CN/ https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/locale/zh-CN/license-zh
 }
 
 ##############################################################################
