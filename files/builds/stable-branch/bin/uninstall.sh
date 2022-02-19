@@ -45,14 +45,14 @@ function setupact-get-wineprefixes-log {
 # The user will be asked if he wants to uninstall or not.
 function setupact-update-question {
   zenity --question \
-  --title="$program_name" \
-  --text="Do you really want to uninstall Autodesk Fusion 360 from your system?" \
-  --width=400 \
-  --height=100
-  answer=$?
+         --title="$program_name" \
+         --text="Do you really want to uninstall Autodesk Fusion 360 from your system?" \
+         --width=400 \
+         --height=100
+ 
+ answer=$?
 
-  if [ "$answer" -eq 0 ]; then
-        
+  if [ "$answer" -eq 0 ]; then       
     setupact-uninstall-dialog
   elif [ "$answer" -eq 1 ]; then
     setupact-cancel-info
@@ -64,23 +64,25 @@ function setupact-update-question {
 # The user will be informed that he is skipping the update!
 function setupact-cancel-info {
   zenity --info \
-  --text="The uninstallation was aborted!" \
-  --width=400 \
-  --height=100
+         --text="The uninstallation was aborted!" \
+         --width=400 \
+         --height=100
 }
 
 ###############################################################################################################################################################
 
 # Deinstall a exist Wineprefix of Autodesk Fusion 360!
 function setupact-uninstall-dialog {
+  
   file=/tmp/fusion-360/logs/wineprefixes
+  
   directory=`zenity --text-info \
-         --title="$program_name" \
-         --width=700 \
-         --height=500 \
-         --filename=$file \
-         --editable \
-         --checkbox="$text_deinstall_checkbox"`
+                    --title="$program_name" \
+                    --width=700 \
+                    --height=500 \
+                    --filename=$file \
+                    --editable \
+                    --checkbox="$text_deinstall_checkbox"`
 
   case $? in
       0)
@@ -93,22 +95,21 @@ function setupact-uninstall-dialog {
 
           if [ "$answer" -eq 0 ]; then
               echo "$directory" > $file
-	          mv "$file" "/tmp/fusion-360/logs/wineprefixes.log"
-	          cp "/tmp/fusion-360/logs/wineprefixes.log" "$HOME/.config/fusion-360/logs/wineprefixes.log"
+	      mv "$file" "/tmp/fusion-360/logs/wineprefixes.log"
+	      cp "/tmp/fusion-360/logs/wineprefixes.log" "$HOME/.config/fusion-360/logs/wineprefixes.log"
               setupact-uninstall
           elif [ "$answer" -eq 1 ]; then
               setupact-uninstall-dialog
           fi
-
   	      ;;
       1)
-          echo "Go back"
-          setupact-update-question
+              echo "Go back"
+              setupact-update-question
   	      ;;
       -1)
-        zenity --error \
-          --text="An unexpected error occurred!"
-          exit;
+              zenity --error \
+                     --text="An unexpected error occurred!"
+              exit;
   	      ;;
   esac
 
@@ -119,9 +120,9 @@ function setupact-uninstall-dialog {
 # Select the Wineprefix-directory of your Autodesk Fusion 360 installation!
 function setupact-select-wineprefix-info {
   zenity --info \
-  --text="Select the Wineprefix-directory of your Autodesk Fusion 360 installation, which you want to uninstall! For example: /home/user/.wineprefixes/fusion360" \
-  --width=400 \
-  --height=100
+         --text="Select the Wineprefix-directory of your Autodesk Fusion 360 installation, which you want to uninstall! For example: /home/user/.wineprefixes/fusion360" \
+         --width=400 \
+         --height=100
 }
 
 function setupact-select-wineprefix {
@@ -133,9 +134,9 @@ function setupact-select-wineprefix {
 # The uninstallation is complete and will be terminated.
 function setupact-uninstall-completed {
   zenity --info \
-  --width=400 \
-  --height=100 \
-  --text="$text_completed_deinstallation"
+         --width=400 \
+         --height=100 \
+         --text="$text_completed_deinstallation"
 
   exit;
 }
