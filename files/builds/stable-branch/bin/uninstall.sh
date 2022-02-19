@@ -22,20 +22,21 @@ program_name="Autodesk Fusion 360 for Linux - Uninstall"
 # ALL FUNCTIONS ARE ARRANGED HERE:                                                                                                                            #
 ###############################################################################################################################################################
 
+# Get a file where the user can see the exits Wineprefixes of Autodesk Fusion 360 on the system.
+function setupact-get-wineprefixes-log {
+  mkdir -p "/tmp/fusion-360/logs"
+  cp "$HOME/.config/fusion-360/logs/wineprefixes.log" "/tmp/fusion-360/logs"
+  mv "/tmp/fusion-360/logs/wineprefixes.log" "/tmp/fusion-360/logs/wineprefixes"
+}
+
+###############################################################################################################################################################
+
 # Remove a exist Wineprefix of Autodesk Fusion 360!
 function setupact-uninstall {
   setupact-select-wineprefix-info
   setupact-select-wineprefix
   rm -r "$wineprefix_directory"
   setupact-uninstall-completed
-}
-
-###############################################################################################################################################################
-
-function setupact-get-wineprefixes-log {
-  mkdir -p "/tmp/fusion-360/logs"
-  cp "$HOME/.config/fusion-360/logs/wineprefixes.log" "/tmp/fusion-360/logs"
-  mv "/tmp/fusion-360/logs/wineprefixes.log" "/tmp/fusion-360/logs/wineprefixes"
 }
 
 ###############################################################################################################################################################
@@ -72,17 +73,15 @@ function setupact-cancel-info {
 ###############################################################################################################################################################
 
 # Deinstall a exist Wineprefix of Autodesk Fusion 360!
-function setupact-uninstall-dialog {
-  
+function setupact-uninstall-dialog { 
   file=/tmp/fusion-360/logs/wineprefixes
-  
   directory=`zenity --text-info \
                     --title="$program_name" \
                     --width=700 \
                     --height=500 \
                     --filename=$file \
                     --editable \
-                    --checkbox="$text_deinstall_checkbox"`
+                    --checkbox="I wrote down or copied the correct path from an existing Autodesk Fusion 360 installation and deleted this path then here!"`
 
   case $? in
       0)
@@ -95,8 +94,8 @@ function setupact-uninstall-dialog {
 
           if [ "$answer" -eq 0 ]; then
               echo "$directory" > $file
-	      mv "$file" "/tmp/fusion-360/logs/wineprefixes.log"
-	      cp "/tmp/fusion-360/logs/wineprefixes.log" "$HOME/.config/fusion-360/logs/wineprefixes.log"
+	      cp "$file" "$HOME/.config/fusion-360/logs"
+	      mv "$HOME/.config/fusion-360/logs/wineprefixes" "$HOME/.config/fusion-360/logs/wineprefixes.log"
               setupact-uninstall
           elif [ "$answer" -eq 1 ]; then
               setupact-uninstall-dialog
@@ -136,7 +135,7 @@ function setupact-uninstall-completed {
   zenity --info \
          --width=400 \
          --height=100 \
-         --text="$text_completed_deinstallation"
+         --text="The deinstallation of Autodesk Fusion 360 is completed."
 
   exit;
 }
@@ -145,5 +144,5 @@ function setupact-uninstall-completed {
 # THE PROGRAM IS STARTED HERE:                                                                                                                                #
 ###############################################################################################################################################################
 
+setupact-get-wineprefixes-log
 setupact-update-question
-
