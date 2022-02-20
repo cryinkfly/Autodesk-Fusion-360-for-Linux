@@ -36,6 +36,9 @@ f360path_log=0
 # Reset the Uninstall (Standalone)-value for the installation of Autodesk Fusion 360!
 uninstall_standalone=0
 
+# Reset the profile-locale-value for the installation of Autodesk Fusion 360!
+profile_locale="en-US"
+
 ###############################################################################################################################################################
 # ALL LOG-FUNCTIONS ARE ARRANGED HERE:                                                                                                                        #
 ###############################################################################################################################################################
@@ -48,9 +51,11 @@ function setupact-install-log {
   set -x
 }
 
+###############################################################################################################################################################
+
 # Check if already exists a Autodesk Fusion 360 installation on your system.
 function setupact-check-f360 {
-  f360_path="$HOME/.config/fusion-360/logs/wineprefixes.log" # Search for f360-path.log file.
+  f360_path="$HOME/.config/fusion-360/logs/wineprefixes.log" # Search for wineprefixes.log
   if [ -f "$f360_path" ]; then
     cp "$f360_path" "/tmp/fusion-360/logs"
     mv "/tmp/fusion-360/logs/wineprefixes.log" "/tmp/fusion-360/logs/wineprefixes"
@@ -61,10 +66,12 @@ function setupact-check-f360 {
   fi
 }
 
-# Save the path of the Wineprefix of Autodesk Fusion 360 into the f360-path.log file.
-function setupact-log-f360-path {
+###############################################################################################################################################################
+
+# Save the path of the Wineprefix and the profile-locale of Autodesk Fusion 360 into the wineprefixes.log
+function setupact-f360-wineprefixes-log {
 if [ $f360path_log -eq 1 ]; then
-  echo "$wineprefixname" >> $HOME/.config/fusion-360/logs/wineprefixes.log
+  echo "Wineprefix (Path): $wineprefixname | Profile-Locale: $profile_locale" >> $HOME/.config/fusion-360/logs/wineprefixes.log
 fi
 }
 
@@ -100,38 +107,47 @@ function setupact-load-locale {
 }
 
 function load-locale-cs {
+  profile_locale="cs-CZ"
   . $HOME/.config/fusion-360/locale/cs-CZ/locale-cs.sh
 }
 
 function load-locale-de {
+  profile_locale="de-DE"
   . $HOME/.config/fusion-360/locale/de-DE/locale-de.sh
 }
 
 function load-locale-en {
+  profile_locale="en-US"
   . $HOME/.config/fusion-360/locale/en-US/locale-en.sh
 }
 
 function load-locale-es {
+  profile_locale="es-ES"
   . $HOME/.config/fusion-360/locale/es-ES/locale-es.sh
 }
 
 function load-locale-fr {
+    profile_locale="fr-FR"
   . $HOME/.config/fusion-360/locale/fr-FR/locale-fr.sh
 }
 
 function load-locale-it {
+  profile_locale="it-IT"
   . $HOME/.config/fusion-360/locale/it-IT/locale-it.sh
 }
 
 function load-locale-ja {
+  profile_locale="ja-JP"
   . $HOME/.config/fusion-360/locale/ja-JP/locale-ja.sh
 }
 
 function load-locale-ko {
+  profile_locale="ko-KR"
   . $HOME/.config/fusion-360/locale/ko-KR/locale-ko.sh
 }
 
 function load-locale-zh {
+  profile_locale="zh-CN"
   . $HOME/.config/fusion-360/locale/zh-CN/locale-zh.sh
 }
 
@@ -201,8 +217,8 @@ function setupact-f360install {
   cd "$HOME/.config/fusion-360/bin"
   setupact-f360-launcher
   wget -N -P $HOME/.config/fusion-360/bin https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/fusion360.svg
-  setupact-log-f360-path
-  setupact-f360extensions
+  setupact-f360-wineprefixes-log
+  setupact-f360-extensions
   setupact-completed
 }
 
@@ -237,13 +253,13 @@ function archlinux {
   if archlinux-verify-multilib ; then
     echo "multilib found. Continuing..."
     sudo pacman -Sy --needed wine wine-mono wine_gecko winetricks p7zip curl cabextract samba ppp
-    setupact-f360install
+    setupact-f360-install
   else
     echo "Enabling multilib..."
     echo "[multilib]" | sudo tee -a /etc/pacman.conf
     echo "Include = /etc/pacman.d/mirrorlist" | sudo tee -a /etc/pacman.conf
     sudo pacman -Sy --needed wine wine-mono wine_gecko winetricks p7zip curl cabextract samba ppp
-    setupact-f360install
+    setupact-f360-install
   fi
 }
 
@@ -266,7 +282,7 @@ function debian-based-2 {
   sudo apt-get update
   sudo apt-get install p7zip p7zip-full p7zip-rar curl winbind cabextract wget
   sudo apt-get install --install-recommends winehq-staging
-  setupact-f360install
+  setupact-f360-install
 }
 
 function debian10 {
@@ -313,17 +329,17 @@ function fedora-based-1 {
 
 function fedora-based-2 {
   sudo dnf install p7zip p7zip-plugins curl wget wine cabextract
-  setupact-f360install
+  setupact-f360-install
 }
 
 function opensuse152 {
   su -c 'zypper up && zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.2/ wine && zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.2/ wine && zypper install p7zip-full curl wget wine cabextract'
-  setupact-f360install
+  setupact-f360-install
 }
 
 function opensuse153 {
   su -c 'zypper up && zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.3/ wine && zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.3/ wine && zypper install p7zip-full curl wget wine cabextract'
-  setupact-f360install
+  setupact-f360-install
 }
 
 function redhat-linux {
@@ -331,22 +347,22 @@ function redhat-linux {
   sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
   sudo dnf upgrade
   sudo dnf install wine
-  setupact-f360install
+  setupact-f360-install
 }
 
 function solus-linux {
   sudo eopkg install -y wine winetricks p7zip curl cabextract samba ppp
-  setupact-f360install
+  setupact-f360-install
 }
 
 function void-linux {
   sudo xbps-install -Sy wine wine-mono wine-gecko winetricks p7zip curl cabextract samba ppp
-  setupact-f360install
+  setupact-f360-install
 }
 
 function gentoo-linux {
   sudo emerge -nav virtual/wine app-emulation/winetricks app-emulation/wine-mono app-emulation/wine-gecko app-arch/p7zip app-arch/cabextract net-misc/curl net-fs/samba net-dialup/ppp
-  setupact-f360install
+  setupact-f360-install
 }
 
 ###############################################################################################################################################################
@@ -860,7 +876,7 @@ function setupact-select-wine_version {
 
   [[ $select_wine_version = "Wine Version (Staging)" ]] && setupact-select-os
 
-  [[ $select_wine_version = "Wine Version (6.23 or higher) is already installed!" ]] && setupact-f360install
+  [[ $select_wine_version = "Wine Version (6.23 or higher) is already installed!" ]] && setupact-f360-install
 
   [[ "$select_wine_version" ]] || echo "Go back" && setupact-select-opengl_dxvk
 }
@@ -916,7 +932,7 @@ function setupact-select-os {
 
   [[ $select_os = "openSUSE Leap 15.3" ]] && opensuse153
 
-  [[ $select_os = "openSUSE Tumbleweed" ]] && su -c 'zypper up && zypper install p7zip-full curl wget wine cabextract' && setupact-f360install
+  [[ $select_os = "openSUSE Tumbleweed" ]] && su -c 'zypper up && zypper install p7zip-full curl wget wine cabextract' && setupact-f360-install
 
   [[ $select_os = "Red Hat Enterprise Linux 8.x" ]] && redhat-linux
 
@@ -940,7 +956,7 @@ function setupact-select-os {
 ###############################################################################################################################################################
 
 # Install some extensions with a manager!
-function setupact-f360extensions {
+function setupact-f360-extensions {
   f360_extension=$(zenity --list \
                           --checklist \
                           --title="$program_name" \
@@ -990,7 +1006,7 @@ function czech-locale-search-extension {
     1)
         zenity --info \
         --text="$text_info_czech_plugin"
-        setupact-f360extensions
+        setupact-f360-extensions
         ;;
     -1)
         zenity --error \
@@ -1021,7 +1037,7 @@ function setupact-modify-f360 {
 
   [[ $f360_modify = "$text_select_option_2" ]] && setupact-new-edit-f360
 
-  [[ $f360_modify = "$text_select_option_3" ]] && setupact-f360-path && setupact-f360extensions && setupact-completed
+  [[ $f360_modify = "$text_select_option_3" ]] && setupact-f360-path && setupact-f360-extensions && setupact-completed
 
   [[ $f360_modify = "$text_select_option_4" ]] && uninstall_standalone=1 && . $HOME/.config/fusion-360/bin/uninstall.sh
 
