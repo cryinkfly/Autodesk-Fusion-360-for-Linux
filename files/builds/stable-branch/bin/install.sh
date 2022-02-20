@@ -232,13 +232,13 @@ function archlinux {
   if archlinux-verify-multilib ; then
     echo "multilib found. Continuing..."
     sudo pacman -Sy --needed wine wine-mono wine_gecko winetricks p7zip curl cabextract samba ppp
-	  setupact-f360install
+    setupact-f360install
   else
     echo "Enabling multilib..."
     echo "[multilib]" | sudo tee -a /etc/pacman.conf
     echo "Include = /etc/pacman.d/mirrorlist" | sudo tee -a /etc/pacman.conf
     sudo pacman -Sy --needed wine wine-mono wine_gecko winetricks p7zip curl cabextract samba ppp
-	  setupact-f360install
+    setupact-f360install
   fi
 }
 
