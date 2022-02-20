@@ -429,3 +429,75 @@ function ultimaker-digital-factory-extension {
   wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/Ultimaker_Digital_Factory-win64.msi &&
   WINEPREFIX=$wineprefixname msiexec /i Ultimaker_Digital_Factory-win64.msi
 }
+
+###############################################################################################################################################################
+# ALL DIALOGS ARE ARRANGED HERE:                                                                                                                              #
+###############################################################################################################################################################
+
+# Welcome Screen - Setup Wizard of Autodesk Fusion 360 for Linux
+function setupact-welcome {
+  zenity --question \
+         --title="$program_name" \
+         --text="Would you like to install Autodesk Fusion 360 on your system?" \
+         --width=400 \
+         --height=100
+  answer=$?
+
+  if [ "$answer" -eq 0 ]; then
+    setupact-progressbar
+  elif [ "$answer" -eq 1 ]; then
+    exit;
+  fi
+}
+
+###############################################################################################################################################################
+
+# A progress bar is displayed here.
+function setupact-progressbar {
+  (
+    echo "5" ; sleep 1
+    echo "# Creating folder structure." ; sleep 1
+    setupact-structure
+    echo "25" ; sleep 1
+    echo "# Loading locale files." ; sleep 1
+    setupact-load-locale
+    echo "55" ; sleep 1
+    echo "# Loading winetricks script." ; sleep 1
+    setupact-load-winetricks
+    echo "75" ; sleep 1
+    echo "# Downloading Fusion 360 installation file." ; sleep 1
+    setupact-load-f360exe
+    echo "90" ; sleep 1
+    echo "# The installation can now be started!" ; sleep 1
+    echo "100" ; sleep 1
+  ) |
+  zenity --progress \
+         --title="$program_name" \
+         --text="The Setup Wizard is being configured ..." \
+         --width=400 \
+         --height=100 \
+         --percentage=0
+
+  if [ "$?" = 0 ] ; then
+    setupact-configure-locale
+  elif [ "$?" = 1 ] ; then
+    zenity --question \
+           --title="$program_name" \
+           --text="Are you sure you want to cancel the installation?" \
+           --width=400 \
+           --height=100
+    answer=$?
+
+      if [ "$answer" -eq 0 ]; then
+        exit;
+      elif [ "$answer" -eq 1 ]; then
+        setupact-progressbar
+      fi
+  elif [ "$?" = -1 ] ; then
+    zenity --error \
+           --text="An unexpected error occurred!"
+    exit;
+  fi
+}
+
+###############################################################################################################################################################
