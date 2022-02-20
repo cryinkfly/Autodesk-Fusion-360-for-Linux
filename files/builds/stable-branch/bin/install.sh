@@ -91,10 +91,8 @@ function setupact-structure {
   mkdir -p $HOME/.config/fusion-360/locale/ja-JP
   mkdir -p $HOME/.config/fusion-360/locale/ko-KR
   mkdir -p $HOME/.config/fusion-360/locale/zh-CN
-  mkdir -p $HOME/.config/fusion-360/driver/video
-  mkdir -p $HOME/.config/fusion-360/driver/video/dxvk
-  mkdir -p $HOME/.config/fusion-360/driver/video/opengl
   mkdir -p $HOME/.config/fusion-360/extensions
+  mkdir -p $HOME/.config/fusion-360/downloads
 }
 
 ###############################################################################################################################################################
@@ -163,12 +161,12 @@ function setupact-load-winetricks {
 
 # Load newest Autodesk Fusion 360 installer version for the Setup Wizard!
 function setupact-load-f360exe {
-  f360exe="$HOME/.config/fusion-360/bin/Fusion360installer.exe" # Search for a existing installer of Autodesk Fusion 360
+  f360exe="$HOME/.config/fusion-360/downloads/Fusion360installer.exe" # Search for a existing installer of Autodesk Fusion 360
   if [ -f "$f360exe" ]; then
     echo "Autodesk Fusion 360 installer exist!"
   else
     wget https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe -O Fusion360installer.exe
-    mv "Fusion360installer.exe" "$HOME/.config/fusion-360/bin/Fusion360installer.exe"
+    mv "Fusion360installer.exe" "$HOME/.config/fusion-360/downloads/Fusion360installer.exe"
   fi
 }
 
@@ -206,8 +204,8 @@ function setupact-f360install {
   # We must install cjkfonts again then sometimes it doesn't work in the first time!
   WINEPREFIX=$wineprefixname sh winetricks -q cjkfonts
   setupact-dxvk-opengl-1
-  WINEPREFIX=$wineprefixname wine data/fusion360/Fusion360installer.exe -p deploy -g -f log.txt --quiet
-  WINEPREFIX=$wineprefixname wine data/fusion360/Fusion360installer.exe -p deploy -g -f log.txt --quiet
+  WINEPREFIX=$wineprefixname wine $HOME/.config/fusion-360/downloads/Fusion360installer.exe -p deploy -g -f log.txt --quiet
+  WINEPREFIX=$wineprefixname wine $HOME/.config/fusion-360/downloads/Fusion360installer.exe -p deploy -g -f log.txt --quiet
   mkdir -p "$wineprefixname/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options"
   cd "$wineprefixname/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options"
   setupact-dxvk-opengl-2
