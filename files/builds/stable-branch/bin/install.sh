@@ -868,7 +868,7 @@ function setupact-select-wine_version {
                                --title="$program_name" \
                                --width=700 \
                                --height=500 \
-                               --column="$text_select" --column="$text_wine_ersion" \
+                               --column="$text_select" --column="$text_wine_version" \
                                TRUE "$text_wine_version_staging" \
 		               FALSE "$text_wine_version_exists")
 
