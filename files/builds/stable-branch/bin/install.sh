@@ -33,6 +33,9 @@ driver_used=0
 # Reset the logfile-value for the installation of Autodesk Fusion 360!
 f360path_log=0
 
+# Reset the Uninstall (Standalone)-value for the installation of Autodesk Fusion 360!
+uninstall_standalone=0
+
 ###############################################################################################################################################################
 # ALL LOG-FUNCTIONS ARE ARRANGED HERE:                                                                                                                        #
 ###############################################################################################################################################################
@@ -1020,7 +1023,7 @@ function setupact-modify-f360 {
 
   [[ $f360_modify = "$text_select_option_3" ]] && setupact-f360-path && setupact-f360extensions && setupact-completed
 
-  [[ $f360_modify = "$text_select_option_4" ]] && . $HOME/.config/fusion-360/bin/uninstall.sh
+  [[ $f360_modify = "$text_select_option_4" ]] && uninstall_standalone=1 && . $HOME/.config/fusion-360/bin/uninstall.sh
 
   [[ "$f360_modify" ]] || echo "Go back" && setupact-configure-locale
 
@@ -1128,3 +1131,10 @@ function setupact-configure-locale-abort {
     setupact-configure-locale
   fi
 }
+
+###############################################################################################################################################################
+# THE INSTALLATION PROGRAM IS STARTED HERE:                                                                                                                   #
+###############################################################################################################################################################
+
+setupact-install-log
+setupact-welcome
