@@ -313,12 +313,12 @@ function fedora-based-2 {
   setupact-f360install
 }
 
-function opensuse-152 {
+function opensuse152 {
   su -c 'zypper up && zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.2/ wine && zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.2/ wine && zypper install p7zip-full curl wget wine cabextract'
   setupact-f360install
 }
 
-function opensuse-153 {
+function opensuse153 {
   su -c 'zypper up && zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.3/ wine && zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.3/ wine && zypper install p7zip-full curl wget wine cabextract'
   setupact-f360install
 }
@@ -800,4 +800,136 @@ function licenses-zh {
         exit;
       	;;
   esac
+}
+
+###############################################################################################################################################################
+
+# Here you can determine how Autodesk Fusion 360 should be installed!
+function setupact-select-f360-path {
+  select_f360_path=$(zenity --list \
+                            --radiolist \
+                            --title="$program_name" \
+                            --width=700 \
+                            --height=500 \
+                            --column="$text_select" --column="$text_installation_location" \
+                            TRUE "$text_installation_location_standard" \
+                            FALSE "$text_installation_location_custom")
+
+  [[ $select_f360_path = "$text_installation_location_standard" ]] && f360_launcher=1 && wineprefixname="$HOME/.wineprefixes/fusion360" && setupact-select-opengl_dxvk
+
+  [[ $select_f360_path = "$text_installation_location_custom" ]] && setupact-f360-path && setupact-select-opengl_dxvk
+
+  [[ "$select_f360_path" ]] || echo "Go back" && setupact-configure-locale
+}
+
+###############################################################################################################################################################
+
+# Select driver version for Autodesk Fusion 360!
+function setupact-select-opengl_dxvk {
+  select_driver=$(zenity --list \
+                         --radiolist \
+                         --title="$program_name" \
+                         --width=700 \
+                         --height=500 \
+                         --column="$text_select" --column="$text_driver" \
+                         TRUE "$text_driver_dxvk" \
+                         FALSE "$text_driver_opengl")
+
+  [[ $select_driver = "$text_driver_dxvk" ]] && driver_used=1 && setupact-select-wine_version
+
+  [[ $select_driver = "$text_driver_opengl" ]] && driver_used=0 && setupact-select-wine_version
+
+  [[ "$select_driver" ]] || echo "Go back" && setupact-select-f360-path
+}
+
+###############################################################################################################################################################
+
+# Autodesk Fusion 360 will be installed from scratch on this system!
+function setupact-select-wine_version {
+  select_wine_version=$(zenity --list \
+                               --radiolist \
+                               --title="$program_name" \
+                               --width=700 \
+                               --height=500 \
+                               --column="$text_select" --column="Wine Version" \
+                               TRUE "Wine Version (Staging)" \
+		               FALSE "Wine Version (6.23 or higher) is already installed!")
+
+  [[ $select_wine_version = "Wine Version (Staging)" ]] && setupact-select-os
+
+  [[ $select_wine_version = "Wine Version (6.23 or higher) is already installed!" ]] && setupact-f360install
+
+  [[ "$select_wine_version" ]] || echo "Go back" && setupact-select-opengl_dxvk
+}
+
+###############################################################################################################################################################
+
+# Create & Select a directory for your Autodesk Fusion 360!
+function setupact-f360-path {
+  wineprefixname=`zenity --file-selection --directory --title="$text_select_location_custom"`
+}
+
+###############################################################################################################################################################
+
+# For the installation of Autodesk Fusion 360 one of the supported Linux distributions must be selected! - Part 1
+function setupact-select-os {
+  select_os=$(zenity --list \
+                     --radiolist \
+                     --title="$program_name" \
+                     --width=700 \
+                     --height=500 \
+                     --column="$text_select" --column="$text_linux_distribution" \
+                     FALSE "Arch Linux, Manjaro Linux, EndeavourOS..." \
+                     FALSE "Debian 10, MX Linux 19.4, Raspberry Pi Desktop..." \
+                     FALSE "Debian 11" \
+                     FALSE "Fedora 33" \
+                     FALSE "Fedora 34" \
+		     FALSE "Fedora 35" \
+                     FALSE "openSUSE Leap 15.2" \
+                     FALSE "openSUSE Leap 15.3" \
+                     FALSE "openSUSE Tumbleweed" \
+                     FALSE "Red Hat Enterprise Linux 8.x" \
+                     FALSE "Solus" \
+                     FALSE "Ubuntu 18.04, Linux Mint 19.x..." \
+                     FALSE "Ubuntu 20.04, Linux Mint 20.x, Pop!_OS 20.04..." \
+                     FALSE "Ubuntu 21.04, Pop!_OS 21.04..." \
+                     FALSE "Ubuntu 21.10" \
+                     FALSE "Void Linux" \
+                     FALSE "Gentoo Linux")
+
+  [[ $select_os = "Arch Linux, Manjaro Linux, EndeavourOS..." ]] && archlinux
+
+  [[ $select_os = "Debian 10, MX Linux 19.4, Raspberry Pi Desktop..." ]] && debian-based-1 && debian10 && debian-based-2
+
+  [[ $select_os = "Debian 11" ]] && debian-based-1 && debian11 && debian-based-2
+
+  [[ $select_os = "Fedora 33" ]] && fedora-based-1 && sudo dnf config-manager --add-repo https://dl.winehq.org/wine-builds/fedora/33/winehq.repo && fedora-based-2
+
+  [[ $select_os = "Fedora 34" ]] && fedora-based-1 && sudo dnf config-manager --add-repo https://dl.winehq.org/wine-builds/fedora/34/winehq.repo && fedora-based-2
+
+  [[ $select_os = "Fedora 35" ]] && fedora-based-1 && sudo dnf config-manager --add-repo https://dl.winehq.org/wine-builds/fedora/35/winehq.repo && fedora-based-2
+
+  [[ $select_os = "openSUSE Leap 15.2" ]] && opensuse152
+
+  [[ $select_os = "openSUSE Leap 15.3" ]] && opensuse153
+
+  [[ $select_os = "openSUSE Tumbleweed" ]] && su -c 'zypper up && zypper install p7zip-full curl wget wine cabextract' && setupact-f360install
+
+  [[ $select_os = "Red Hat Enterprise Linux 8.x" ]] && redhat-linux
+
+  [[ $select_os = "Solus" ]] && solus-linux
+
+  [[ $select_os = "Ubuntu 18.04, Linux Mint 19.x..." ]] && debian-based-1 && ubuntu18 && debian-based-2
+
+  [[ $select_os = "Ubuntu 20.04, Linux Mint 20.x, Pop!_OS 20.04..." ]] && debian-based-1 && ubuntu20 && debian-based-2
+
+  [[ $select_os = "Ubuntu 21.04, Pop!_OS 21.04..." ]] && ubuntu21 && debian-based-2
+
+  [[ $select_os = "Ubuntu 21.10" ]] && ubuntu21_10 && debian-based-2
+
+  [[ $select_os = "Void Linux" ]] && void-linux
+
+  [[ $select_os = "Gentoo Linux" ]] && gentoo-linux
+
+  [[ "$select_os" ]] || echo "Go back" && setupact-select-opengl_dxvk
 }
