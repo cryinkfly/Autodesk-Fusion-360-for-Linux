@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                          #
 # License:      MIT                                                            #
 # Copyright (c) 2020-2022                                                      #
-# Time/Date:    11:30/20.02.2022                                               #
-# Version:      0.4                                                            #
+# Time/Date:    13:30/20.02.2022                                               #
+# Version:      0.5                                                            #
 ################################################################################
 
 # Path: /$HOME/.config/fusion-360/bin/uninstall.sh
@@ -73,6 +73,7 @@ function setupact-cancel-info {
     exit;
   else [ "$uninstall_standalone" -eq 1 ]; then 
     echo "Go back"
+    program_name="Autodesk Fusion 360 for Linux - Setup Wizard"
     setupact-modify-f360
   fi
 }
