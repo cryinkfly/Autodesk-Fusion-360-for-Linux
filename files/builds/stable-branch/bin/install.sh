@@ -557,16 +557,16 @@ function licenses-cs {
     0)
         echo "Start the installation."
         setupact-check-f360
-	      ;;
+	;;
     1)
         echo "Go back"
         setupact-configure-locale
-	      ;;
+	;;
     -1)
         zenity --error \
                --text="$text_error"
         exit;
-	      ;;
+	;;
   esac
 }
 
@@ -586,16 +586,16 @@ function licenses-de {
     0)
         echo "Start the installation."
         setupact-check-f360
-	      ;;
+	;;
     1)
         echo "Go back"
         setupact-configure-locale
-	      ;;
+	;;
     -1)
         zenity --error \
                --text="$text_error"
         exit;
-	      ;;
+	;;
   esac
 }
 
@@ -615,11 +615,11 @@ function licenses-en {
     0)
         echo "Start the installation."
         setupact-check-f360
-	      ;;
+	;;
     1)
         echo "Go back."
         setupact-configure-locale
-	      ;;
+        ;;
     -1)
         zenity --error \
                --text="$text_error"
@@ -644,16 +644,16 @@ function licenses-es {
     0)
         echo "Start the installation."
         setupact-check-f360
-	      ;;
+	;;
     1)
         echo "Go back"
         setupact-configure-locale
-	      ;;
+	;;
     -1)
         zenity --error \
                --text="$text_error"
         exit;
-	      ;;
+        ;;
   esac
 }
 
@@ -673,16 +673,16 @@ function licenses-fr {
     0)
         echo "Start the installation."
         setupact-check-f360
-	      ;;
+	;;
     1)
         echo "Go back"
         setupact-configure-locale
-	      ;;
+	;;
     -1)
         zenity --error \
                --text="$text_error"
         exit;
-	      ;;
+	;;
   esac
 }
 
@@ -702,11 +702,11 @@ function licenses-it {
     0)
         echo "Start the installation."
         setupact-check-f360
-	      ;;
+	;;
     1)
         echo "Go back"
         setupact-configure-locale
-	      ;;
+	;;
     -1)
         zenity --error \
                --text="$text_error"
@@ -731,16 +731,16 @@ function licenses-ja {
     0)
         echo "Start the installation."
         setupact-check-f360
-	      ;;
+	;;
     1)
         echo "Go back"
         setupact-configure-locale
-	      ;;
+	;;
     -1)
         zenity --error \
                --text="$text_error"
         exit;
-	      ;;
+	;;
   esac
 }
 
@@ -760,16 +760,16 @@ function licenses-ko {
     0)
         echo "Start the installation."
         setupact-check-f360
-	      ;;
+	;;
     1)
         echo "Go back"
         setupact-configure-locale
-	      ;;
+	;;
     -1)
         zenity --error \
                --text="$text_error"
         exit;
-	      ;;
+	;;
   esac
 }
 
@@ -789,11 +789,11 @@ function licenses-zh {
     0)
         echo "Start the installation."
         setupact-check-f360
-	      ;;
+	;;
     1)
         echo "Go back"
         setupact-configure-locale
-	      ;;
+	;;
     -1)
         zenity --error \
                --text="$text_error"
