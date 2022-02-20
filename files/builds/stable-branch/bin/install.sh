@@ -221,3 +221,125 @@ function setupact-f360-launcher {
     setupact-f360-modify-launcher
   fi
 }
+
+###############################################################################################################################################################
+# ALL FUNCTIONS FOR SUPPORTED LINUX DISTRIBUTIONS START HERE:                                                                                                 #
+###############################################################################################################################################################
+
+# For the installation of Autodesk Fusion 360 one of the supported Linux distributions must be selected! - Part 2
+function archlinux {
+  echo "Checking for multilib..."
+  if archlinux-verify-multilib ; then
+    echo "multilib found. Continuing..."
+    sudo pacman -Sy --needed wine wine-mono wine_gecko winetricks p7zip curl cabextract samba ppp
+	  setupact-f360install
+  else
+    echo "Enabling multilib..."
+    echo "[multilib]" | sudo tee -a /etc/pacman.conf
+    echo "Include = /etc/pacman.d/mirrorlist" | sudo tee -a /etc/pacman.conf
+    sudo pacman -Sy --needed wine wine-mono wine_gecko winetricks p7zip curl cabextract samba ppp
+	  setupact-f360install
+  fi
+}
+
+function archlinux-verify-multilib {
+  if cat /etc/pacman.conf | grep -q '^\[multilib\]$' ; then
+    true
+  else
+    false
+  fi
+}
+
+function debian-based-1 {
+  # Some systems require this command for all repositories to work properly and for the packages to be downloaded for installation!
+  sudo apt-get --allow-releaseinfo-change update  
+  # Added i386 support for wine!
+  sudo dpkg --add-architecture i386
+}
+
+function debian-based-2 {
+  sudo apt-get update
+  sudo apt-get install p7zip p7zip-full p7zip-rar curl winbind cabextract wget
+  sudo apt-get install --install-recommends winehq-staging
+  setupact-f360install
+}
+
+function debian10 {
+  sudo apt-add-repository -r 'deb https://dl.winehq.org/wine-builds/debian/ buster main'
+  wget -q https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/Debian_10//Release.key -O Release.key -O- | sudo apt-key add -
+  sudo apt-add-repository 'deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/Debian_10/ ./'
+}
+
+function debian11 {
+  sudo apt-add-repository -r 'deb https://dl.winehq.org/wine-builds/debian/ bullseye main'
+  wget -q https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/Debian_11//Release.key -O Release.key -O- | sudo apt-key add -
+  sudo apt-add-repository 'deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/Debian_11/ ./'
+}
+
+function ubuntu18 {
+  sudo apt-add-repository -r 'deb https://dl.winehq.org/wine-builds/ubuntu/ bionic main'
+  wget -q https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_18.04/Release.key -O Release.key -O- | sudo apt-key add -
+  sudo apt-add-repository 'deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_18.04/ ./'
+}
+
+function ubuntu20 {
+  sudo add-apt-repository -r 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main'
+  wget -q https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_20.04/Release.key -O Release.key -O- | sudo apt-key add -
+  sudo apt-add-repository 'deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_20.04/ ./'
+}
+
+function ubuntu21 {
+  sudo add-apt-repository -r 'deb https://dl.winehq.org/wine-builds/ubuntu/ hirsute main'
+  wget -q https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_21.04/Release.key -O Release.key -O- | sudo apt-key add -
+  sudo apt-add-repository 'deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_21.04/ ./'
+}
+
+function ubuntu21_10 {
+  sudo add-apt-repository -r 'deb https://dl.winehq.org/wine-builds/ubuntu/ impish main'
+  wget -q https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_21.10/Release.key -O Release.key -O- | sudo apt-key add -
+  sudo apt-add-repository 'deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_21.10/ ./'
+}
+
+function fedora-based-1 {
+  sudo dnf update
+  sudo dnf upgrade
+  sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+}
+
+function fedora-based-2 {
+  sudo dnf install p7zip p7zip-plugins curl wget wine cabextract
+  setupact-f360install
+}
+
+function opensuse-152 {
+  su -c 'zypper up && zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.2/ wine && zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.2/ wine && zypper install p7zip-full curl wget wine cabextract'
+  setupact-f360install
+}
+
+function opensuse-153 {
+  su -c 'zypper up && zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.3/ wine && zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.3/ wine && zypper install p7zip-full curl wget wine cabextract'
+  setupact-f360install
+}
+
+function redhat-linux {
+  sudo subscription-manager repos --enable codeready-builder-for-rhel-8-x86_64-rpms
+  sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+  sudo dnf upgrade
+  sudo dnf install wine
+  setupact-f360install
+}
+
+function solus-linux {
+  sudo eopkg install -y wine winetricks p7zip curl cabextract samba ppp
+  setupact-f360install
+}
+
+function void-linux {
+  sudo xbps-install -Sy wine wine-mono wine-gecko winetricks p7zip curl cabextract samba ppp
+  setupact-f360install
+}
+
+function gentoo-linux {
+  sudo emerge -nav virtual/wine app-emulation/winetricks app-emulation/wine-mono app-emulation/wine-gecko app-arch/p7zip app-arch/cabextract net-misc/curl net-fs/samba net-dialup/ppp
+  setupact-f360install
+}
