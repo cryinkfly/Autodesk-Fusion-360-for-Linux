@@ -452,7 +452,7 @@ function setupact-welcome {
 
 ###############################################################################################################################################################
 
-# A progress bar is displayed here.
+# A progress bar is displayed here!
 function setupact-progressbar {
   (
     echo "5" ; sleep 1
@@ -501,3 +501,303 @@ function setupact-progressbar {
 }
 
 ###############################################################################################################################################################
+
+# Configure the locale of this Setup Wizard!
+function setupact-configure-locale {
+  select_locale=$(zenity --list \
+                         --radiolist \
+                         --title="$program_name" \
+                         --width=700 \
+                         --height=500 \
+                         --column="Select:" --column="Language:" \
+                         TRUE "English (Standard)" \
+                         FALSE "German" \
+                         FALSE "Czech" \
+                         FALSE "Spanish" \
+                         FALSE "French" \
+                         FALSE "Italian" \
+                         FALSE "Japanese" \
+                         FALSE "Korean" \
+                         FALSE "Chinese")
+
+  [[ $select_locale = "English (Standard)" ]] && load-locale-en && licenses-en
+
+  [[ $select_locale = "German" ]] && load-locale-de && licenses-de
+
+  [[ $select_locale = "Czech" ]] && load-locale-cs && licenses-cs
+
+  [[ $select_locale = "Spanish" ]] && load-locale-es && licenses-es
+
+  [[ $select_locale = "French" ]] && load-locale-fr && licenses-fr
+
+  [[ $select_locale = "Italian" ]] && load-locale-it && licenses-it
+
+  [[ $select_locale = "Japanese" ]] && load-locale-ja && licenses-ja
+
+  [[ $select_locale = "Korean" ]] && load-locale-ko && licenses-ko
+
+  [[ $select_locale = "Chinese" ]] && load-locale-zh && licenses-zh
+
+  [[ "$select_locale" ]] || setupact-configure-locale-abort
+}
+
+###############################################################################################################################################################
+
+# Load & View the LICENSE AGREEMENT of this Setup Wizard - cs-CZ
+function licenses-cs {
+  license_cs=$HOME/.config/fusion-360/locale/cs-CZ/license-cs
+  zenity --text-info \
+         --title="$program_name" \
+         --width=700 \
+         --height=500 \
+         --filename=$license_cs \
+         --checkbox="$text_license_checkbox"
+
+  case $? in
+    0)
+        echo "Start the installation."
+        setupact-check-f360
+	      ;;
+    1)
+        echo "Go back"
+        setupact-configure-locale
+	      ;;
+    -1)
+        zenity --error \
+               --text="$text_error"
+        exit;
+	      ;;
+  esac
+}
+
+###############################################################################################################################################################
+
+# Load & View the LICENSE AGREEMENT of this Setup Wizard - de-DE
+function licenses-de {
+  license_de=$HOME/.config/fusion-360/locale/de-DE/license-de
+  zenity --text-info \
+         --title="$program_name" \
+         --width=700 \
+         --height=500 \
+         --filename=$license_de \
+         --checkbox="$text_license_checkbox"
+
+  case $? in
+    0)
+        echo "Start the installation."
+        setupact-check-f360
+	      ;;
+    1)
+        echo "Go back"
+        setupact-configure-locale
+	      ;;
+    -1)
+        zenity --error \
+               --text="$text_error"
+        exit;
+	      ;;
+  esac
+}
+
+###############################################################################################################################################################
+
+# Load & View the LICENSE AGREEMENT of this Setup Wizard - en-US
+function licenses-en {
+  license_en=$HOME/.config/fusion-360/locale/en-US/license-en
+  zenity --text-info \
+         --title="$program_name" \
+         --width=700 \
+         --height=500 \
+         --filename=$license_en \
+         --checkbox="$text_license_checkbox"
+
+  case $? in
+    0)
+        echo "Start the installation."
+        setupact-check-f360
+	      ;;
+    1)
+        echo "Go back."
+        setupact-configure-locale
+	      ;;
+    -1)
+        zenity --error \
+               --text="$text_error"
+        exit;
+        ;;
+  esac
+}
+
+###############################################################################################################################################################
+
+# Load & View the LICENSE AGREEMENT of this Setup Wizard - es-ES
+function licenses-es {
+  license_es=$HOME/.config/fusion-360/locale/es-ES/license-es
+  zenity --text-info \
+         --title="$program_name" \
+         --width=700 \
+         --height=500 \
+         --filename=$license_es \
+         --checkbox="$text_license_checkbox"
+
+  case $? in
+    0)
+        echo "Start the installation."
+        setupact-check-f360
+	      ;;
+    1)
+        echo "Go back"
+        setupact-configure-locale
+	      ;;
+    -1)
+        zenity --error \
+               --text="$text_error"
+        exit;
+	      ;;
+  esac
+}
+
+###############################################################################################################################################################
+
+# Load & View the LICENSE AGREEMENT of this Setup Wizard - fr-FR
+function licenses-fr {
+  license_fr=$HOME/.config/fusion-360/locale/fr-FR/license-fr
+  zenity --text-info \
+         --title="$program_name" \
+         --width=700 \
+         --height=500 \
+         --filename=$license_fr \
+         --checkbox="$text_license_checkbox"
+
+  case $? in
+    0)
+        echo "Start the installation."
+        setupact-check-f360
+	      ;;
+    1)
+        echo "Go back"
+        setupact-configure-locale
+	      ;;
+    -1)
+        zenity --error \
+               --text="$text_error"
+        exit;
+	      ;;
+  esac
+}
+
+###############################################################################################################################################################
+
+# Load & View the LICENSE AGREEMENT of this Setup Wizard - it-IT
+function licenses-it {
+  license_it=$HOME/.config/fusion-360/locale/it-IT/license-it
+  zenity --text-info \
+         --title="$program_name" \
+         --width=700 \
+         --height=500 \
+         --filename=$license_it \
+         --checkbox="$text_license_checkbox"
+
+  case $? in
+    0)
+        echo "Start the installation."
+        setupact-check-f360
+	      ;;
+    1)
+        echo "Go back"
+        setupact-configure-locale
+	      ;;
+    -1)
+        zenity --error \
+               --text="$text_error"
+        exit;
+      	;;
+  esac
+}
+
+###############################################################################################################################################################
+
+# Load & View the LICENSE AGREEMENT of this Setup Wizard - ja-JP
+function licenses-ja {
+  license_ja=$HOME/.config/fusion-360/locale/ja-JP/license-ja
+  zenity --text-info \
+         --title="$program_name" \
+         --width=700 \
+         --height=500 \
+         --filename=$license_ja \
+         --checkbox="$text_license_checkbox"
+
+  case $? in
+    0)
+        echo "Start the installation."
+        setupact-check-f360
+	      ;;
+    1)
+        echo "Go back"
+        setupact-configure-locale
+	      ;;
+    -1)
+        zenity --error \
+               --text="$text_error"
+        exit;
+	      ;;
+  esac
+}
+
+###############################################################################################################################################################
+
+# Load & View the LICENSE AGREEMENT of this Setup Wizard - ko-KR
+function licenses-ko {
+  license_ko=$HOME/.config/fusion-360/locale/ko-KR/license-ko
+  zenity --text-info \
+         --title="$program_name" \
+         --width=700 \
+         --height=500 \
+         --filename=$license_ko \
+         --checkbox="$text_license_checkbox"
+
+  case $? in
+    0)
+        echo "Start the installation."
+        setupact-check-f360
+	      ;;
+    1)
+        echo "Go back"
+        setupact-configure-locale
+	      ;;
+    -1)
+        zenity --error \
+               --text="$text_error"
+        exit;
+	      ;;
+  esac
+}
+
+###############################################################################################################################################################
+
+# Load & View the LICENSE AGREEMENT of this Setup Wizard - zh-CN
+function licenses-zh {
+  license_zh=$HOME/.config/fusion-360/locale/zh-CN/license-zh
+  zenity --text-info \
+         --title="$program_name" \
+         --width=700 \
+         --height=500 \
+         --filename=$license_zh \
+         --checkbox="$text_license_checkbox"
+
+  case $? in
+    0)
+        echo "Start the installation."
+        setupact-check-f360
+	      ;;
+    1)
+        echo "Go back"
+        setupact-configure-locale
+	      ;;
+    -1)
+        zenity --error \
+               --text="$text_error"
+        exit;
+      	;;
+  esac
+}
