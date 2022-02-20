@@ -181,6 +181,8 @@ function setupact-dxvk-opengl-2 {
 
 # Autodesk Fusion 360 will now be installed using Wine and Winetricks.
 function setupact-f360install {
+  # Note that the winetricks sandbox verb merely removes the desktop integration and Z: drive symlinks and is not a true sandbox.
+  # It protects against errors rather than malice. It's useful for, e.g., keeping games from saving their settings in random subdirectories of your home directory. 
   WINEPREFIX=$wineprefixname sh winetricks -q sandbox atmlib gdiplus corefonts cjkfonts msxml4 msxml6 vcrun2017 fontsmooth=rgb winhttp win10
   # We must install cjkfonts again then sometimes it doesn't work in the first time!
   WINEPREFIX=$wineprefixname sh winetricks -q cjkfonts
@@ -342,4 +344,88 @@ function void-linux {
 function gentoo-linux {
   sudo emerge -nav virtual/wine app-emulation/winetricks app-emulation/wine-mono app-emulation/wine-gecko app-arch/p7zip app-arch/cabextract net-misc/curl net-fs/samba net-dialup/ppp
   setupact-f360install
+}
+
+###############################################################################################################################################################
+# ALL FUNCTIONS FOR THE EXTENSIONS START HERE:                                                                                                                #
+###############################################################################################################################################################
+
+# Install a extension: Airfoil Tools
+
+function airfoil-tools-extension {
+  cd "$HOME/.config/fusion-360/extensions"
+  wget -N https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/raw/main/files/extensions/AirfoilTools_win64.msi &&
+  WINEPREFIX=$wineprefixname wine AirfoilTools_win64.msi
+}
+
+###############################################################################################################################################################
+
+# Install a extension: Additive Assistant (FFF)
+
+function additive-assistant-extension {
+  cd "$HOME/.config/fusion-360/extensions"
+  wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/AdditiveAssistant.bundle-win64.msi &&
+  WINEPREFIX=$wineprefixname msiexec /i AdditiveAssistant.bundle-win64.msi
+}
+
+###############################################################################################################################################################
+
+# Install a extension: Czech localization for F360
+function czech-locale-extension {
+  czech-locale-search-extension
+  WINEPREFIX=$wineprefixname msiexec /i $CZECH_LOCALE_EXTENSION
+}
+
+###############################################################################################################################################################
+
+# Install a extension: HP 3D Printers for Autodesk® Fusion 360™
+function hp-3dprinter-connector-extension {
+  cd "$HOME/.config/fusion-360/extensions"
+  wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/HP_3DPrinters_for_Fusion360-win64.msi &&
+  WINEPREFIX=$wineprefixname msiexec /i HP_3DPrinters_for_Fusion360-win64.msi
+}
+
+###############################################################################################################################################################
+
+# Install a extension: Helical Gear Generator
+function helical-gear-generator-extension {
+  cd "$HOME/.config/fusion-360/extensions"
+  wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/HelicalGear_win64.msi &&
+  WINEPREFIX=$wineprefixname msiexec /i HelicalGear_win64.msi
+}
+
+###############################################################################################################################################################
+
+# Install a extension: OctoPrint for Autodesk® Fusion 360™
+function octoprint-extension {
+  cd "$HOME/.config/fusion-360/extensions"
+  wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/OctoPrint_for_Fusion360-win64.msi &&
+  WINEPREFIX=$wineprefixname msiexec /i OctoPrint_for_Fusion360-win64.msi
+}
+
+###############################################################################################################################################################
+
+# Install a extension: Parameter I/O
+function parameter-i-o-extension {
+  cd "$HOME/.config/fusion-360/extensions"
+  wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/ParameterIO_win64.msi &&
+  WINEPREFIX=$wineprefixname msiexec /i ParameterIO_win64.msi
+}
+
+###############################################################################################################################################################
+
+# Install a extension: RoboDK
+function robodk-extension {
+  cd "$HOME/.config/fusion-360/extensions"
+  wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/RoboDK.bundle-win64.msi &&
+  WINEPREFIX=$wineprefixname msiexec /i RoboDK.bundle-win64.msi
+}
+
+###############################################################################################################################################################
+
+# Install a extension: Ultimaker Digital Factory for Autodesk Fusion 360™
+function ultimaker-digital-factory-extension {
+  cd "$HOME/.config/fusion-360/extensions"
+  wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/Ultimaker_Digital_Factory-win64.msi &&
+  WINEPREFIX=$wineprefixname msiexec /i Ultimaker_Digital_Factory-win64.msi
 }
