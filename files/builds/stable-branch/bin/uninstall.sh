@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                          #
 # License:      MIT                                                            #
 # Copyright (c) 2020-2022                                                      #
-# Time/Date:    13:30/20.02.2022                                               #
-# Version:      0.5                                                            #
+# Time/Date:    14:00/20.02.2022                                               #
+# Version:      0.6                                                            #
 ################################################################################
 
 # Path: /$HOME/.config/fusion-360/bin/uninstall.sh
@@ -129,7 +129,7 @@ function setupact-uninstall-configure-locale {
 
   [[ $select_locale = "Chinese" ]] && load-locale-zh && setupact-uninstall-question
 
-  [[ "$select_locale" ]] || setupact-configure-locale-abort
+  [[ "$select_locale" ]] || setupact-uninstall-configure-locale-abort
 }
 
 ###############################################################################################################################################################
@@ -138,7 +138,7 @@ function setupact-uninstall-configure-locale {
 function setupact-uninstall-question {
   zenity --question \
          --title="$program_name" \
-         --text="Do you really want to uninstall Autodesk Fusion 360 from your system?" \
+         --text="$text_uninstall_question" \
          --width=400 \
          --height=100
  
@@ -156,7 +156,7 @@ function setupact-uninstall-question {
 # The user will be informed that he is skipping the update!
 function setupact-cancel-info {
   zenity --info \
-         --text="The uninstallation was aborted!" \
+         --text="$text_uninstall_cancel" \
          --width=400 \
          --height=100
 	 
@@ -180,13 +180,13 @@ function setupact-uninstall-dialog {
                     --height=500 \
                     --filename=$file \
                     --editable \
-                    --checkbox="I wrote down or copied the correct path from an existing Autodesk Fusion 360 installation and deleted this path then here!"`
+                    --checkbox="$text_uninstall_checkbox"`
 
   case $? in
     0)
         zenity --question \
                --title="$program_name" \
-               --text="Do you want to save your changes and deleting the correct existing Autodesk Fusion 360 installation?" \
+               --text="$text_uninstall_edit_question" \
                --width=400 \
                --height=100
         answer=$?
@@ -206,7 +206,7 @@ function setupact-uninstall-dialog {
         ;;
     -1)
         zenity --error \
-               --text="An unexpected error occurred!"
+               --text="$text_error"
         exit;
         ;;
   esac
@@ -218,13 +218,13 @@ function setupact-uninstall-dialog {
 # Select the Wineprefix-directory of your Autodesk Fusion 360 installation!
 function setupact-select-wineprefix-info {
   zenity --info \
-         --text="Select the Wineprefix-directory of your Autodesk Fusion 360 installation, which you want to uninstall! For example: /home/user/.wineprefixes/fusion360" \
+         --text="$text_uninstall_path" \
          --width=400 \
          --height=100
 }
 
 function setupact-select-wineprefix {
-  wineprefix_directory=`zenity --file-selection --directory --title="Select the Wineprefix-directory ..."`
+  wineprefix_directory=`zenity --file-selection --directory --title="$text_uninstall_path_select"`
 }
 
 ###############################################################################################################################################################
@@ -234,9 +234,26 @@ function setupact-uninstall-completed {
   zenity --info \
          --width=400 \
          --height=100 \
-         --text="The deinstallation of Autodesk Fusion 360 is completed."
+         --text="$text_uninstall_completed"
 
   exit;
+}
+
+
+# Abort the locale-configuration of Uninstall!
+function setupact-uninstall-configure-locale-abort {
+  zenity --question \
+         --title="$program_name" \
+         --text="$text_abort" \
+         --width=400 \
+         --height=100
+  answer=$?
+
+  if [ "$answer" -eq 0 ]; then
+    exit;
+  elif [ "$answer" -eq 1 ]; then
+    setupact-uninstall-configure-locale
+  fi
 }
 
 ###############################################################################################################################################################
