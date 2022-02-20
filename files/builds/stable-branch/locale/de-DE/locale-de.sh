@@ -12,36 +12,32 @@
 # Version:      1.4                                                                                #
 ####################################################################################################
 
+# Path: /$HOME/.config/fusion-360/locale/de-DE/locale-de.sh
+
 ###############################################################################################################################################################
-# ALL DEFINITIONS ARE ARRANGED HERE:                                                                                                                          #
+# ALL DEFINITIONS FOR INSTALL ATODESK FUSION 360 ARE ARRANGED HERE:                                                                                           #
 ###############################################################################################################################################################
 
 # License-checkbox
 text_license_checkbox="Ich habe die Lizenzvereinbachung gelesen und akzeptiert."
 
+###############################################################################################################################################################
+
 # Select
 text_select="Wähle"
 
-# Version (Standard, Flatpak or Snap)
-text_version="Version"
-text_standard="Standard"
-text_flatpak="Flatpak (Experimental)"
-text_snap="Snap (Experimental)"
-
-# Driver
-text_driver="Grafiktreiber"
-
-# Driver OpenGL
-text_driver_opengl="OpenGL (Fallback-Variante)"
-
-# Driver DXVK
-text_driver_dxvk="DXVK (Standard-Variante)"
+###############################################################################################################################################################
 
 # Linux distribution
 text_linux_distribution="Linux Distribution"
 
+###############################################################################################################################################################
+
 # Installation location
 text_installation_location="Installationsort"
+
+# Select a location with a file browser
+text_select_location_custom="Wählen Sie einen Speicherort für Ihre Autodesk Fusion 360-Installation aus:"
 
 # Installation location - Standard
 text_installation_location_standard="Standard – Installieren Sie Autodesk Fusion 360 in Ihrem Benutzerordner. Beispiel: /home/username/.wineprefixes/fusion360"
@@ -49,23 +45,33 @@ text_installation_location_standard="Standard – Installieren Sie Autodesk Fusi
 # Installation location - Custom
 text_installation_location_custom="Benutzerdefiniert – Installieren Sie Autodesk Fusion 360 an einem anderen Ort. Zum Beispiel: /run/media/username/usb-drive/.wineprefixes/fusion360"
 
-# Select a location with a file browser
-text_select_location_custom="Wählen Sie einen Speicherort für Ihre Autodesk Fusion 360-Installation aus:"
+###############################################################################################################################################################
+
+# Driver
+text_driver="Grafiktreiber"
+
+# Driver DXVK
+text_driver_dxvk="DXVK unterstützt DirectX 9, 10, ... (Standard)"
+
+# Driver OpenGL
+text_driver_opengl="OpenGL (Fallback)"
+
+###############################################################################################################################################################
+
+# Wine Version
+text_wine_version="Wine Version"
+text_wine_version_staging="Wine Version (Staging)"
+text_wine_version_exists="Wine Version (6.23 oder höher) ist bereits auf dem System installiert!"
+
+###############################################################################################################################################################
 
 # Checkbox - desktop-launcher-custom
-text_desktop_launcher_custom_checkbox="Ich habe den Pfad von Autodesk Fusion 360 geändert!"
+text_desktop_launcher_custom_checkbox="Ich habe den Installationspfad von Autodesk Fusion 360 geändert!"
 
 # Question - desktop-launcher-custom
 text_desktop_launcher_custom_question="Möchtest du deine Änderungen speichern?"
 
-# Abort the program
-text_abort="Möchten Sie die Installation wirklich abbrechen?"
-
-# Program-Exit
-text_completed_installation="Die Installation von Autodesk Fusion 360 ist abgeschlossen."
-
-# Program-Exit (Extensions)
-text_completed_installation_extensions="Die Installation einiger Erweiterungen für Autodesk Fusion 360 ist abgeschlossen."
+###############################################################################################################################################################
 
 # Select a option - new_modify_deinstall
 text_select_option="Option"
@@ -81,6 +87,8 @@ text_select_option_3="Installieren, Reparieren oder Deinstallieren Sie verschied
 
 # Option 4
 text_select_option_4="Deinstallieren Sie alle Autodesk Fusion 360-Komponenten"
+
+###############################################################################################################################################################
 
 # New installation-checkbox - new_modify_deinstall
 text_new_installation_checkbox="Ich habe jetzt gesehen, welche Installationspfade verfügbar sind und werde im nächsten Schritt einen anderen Pfad (Installationsort) angeben!"
@@ -100,11 +108,7 @@ text_select_location_deinstall="Wählen Sie Ihre vorhandene Autodesk Fusion 360-
 # Program-Exit - new_modify_deinstall
 text_completed_deinstallation="Die Deinstallation von Autodesk Fusion 360 ist abgeschlossen."
 
-# Select CZECH-Plugin files
-text_select_czech_plugin="Wählen Sie die Installationsdatei aus:"
-
-# No Plugin was not found
-text_info_czech_plugin="Keine Datei ausgewählt."
+###############################################################################################################################################################
 
 # Extension
 text_extension="Erweiterung"
@@ -122,6 +126,27 @@ text_extension_description_7="Ermöglicht dem Benutzer, Parameter aus einer CSV-
 text_extension_description_8="Mit dieser Erweiterung können Sie mehr als 50 verschiedene Roboterhersteller und 500 Roboter direkt aus Autodesk Fusion 360 programmieren."
 text_extension_description_9="Diese Erweiterung stellt eine Verbindung zwischen Autodesk® Fusion 360™ und der Ultimaker Digital Factory-Site und ihren Diensten."
 
+# Select CZECH-Plugin files
+text_select_czech_plugin="Wählen Sie die Installationsdatei aus:"
+
+# No Plugin was not found
+text_info_czech_plugin="Es wurde keine Datei ausgewählt."
+
+# Program-Exit (Extensions)
+text_completed_installation_extensions="Die Installation einiger Erweiterungen für Autodesk Fusion 360 ist abgeschlossen."
+
+###############################################################################################################################################################
+
+# Program-Exit
+text_completed_installation="Die Installation von Autodesk Fusion 360 ist abgeschlossen."
+
+# Abort the program
+text_abort="Möchten Sie die Installation wirklich abbrechen?"
+
 # Error
 text_error="Ein unerwarteter Fehler ist aufgetreten!"
+
+###############################################################################################################################################################
+# ALL DEFINITIONS FOR UPDATE ATODESK FUSION 360 ARE ARRANGED HERE:                                                                                            #
+###############################################################################################################################################################
 
