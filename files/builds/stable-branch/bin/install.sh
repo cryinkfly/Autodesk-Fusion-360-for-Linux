@@ -868,9 +868,9 @@ function setupact-select-wine_version {
                                --title="$program_name" \
                                --width=700 \
                                --height=500 \
-                               --column="$text_select" --column="Wine Version" \
-                               TRUE "Wine Version (Staging)" \
-		               FALSE "Wine Version (6.23 or higher) is already installed!")
+                               --column="$text_select" --column="$text_wine_ersion" \
+                               TRUE "$text_wine_version_staging" \
+		               FALSE "$text_wine_version_exists")
 
   [[ $select_wine_version = "Wine Version (Staging)" ]] && setupact-select-os
 
