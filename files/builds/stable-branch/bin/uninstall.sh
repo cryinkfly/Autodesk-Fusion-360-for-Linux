@@ -44,7 +44,7 @@ function setupact-uninstall {
 ###############################################################################################################################################################
 
 # The user will be asked if he wants to uninstall or not.
-function setupact-update-question {
+function setupact-uninstall-question {
   zenity --question \
          --title="$program_name" \
          --text="Do you really want to uninstall Autodesk Fusion 360 from your system?" \
@@ -153,4 +153,4 @@ function setupact-uninstall-completed {
 ###############################################################################################################################################################
 
 setupact-get-wineprefixes-log
-setupact-update-question
+setupact-uninstall-question
