@@ -8,8 +8,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    16:30/10.02.2022                                                                   #
-# Version:      1.4                                                                                #
+# Time/Date:    14:00/20.02.2022                                                                   #
+# Version:      1.5                                                                                #
 ####################################################################################################
 
 # Path: /$HOME/.config/fusion-360/locale/de-DE/locale-de.sh
@@ -147,6 +147,16 @@ text_abort="Möchten Sie die Installation wirklich abbrechen?"
 text_error="Ein unerwarteter Fehler ist aufgetreten!"
 
 ###############################################################################################################################################################
-# ALL DEFINITIONS FOR UPDATE ATODESK FUSION 360 ARE ARRANGED HERE:                                                                                            #
+# ALL DEFINITIONS FOR UNINSTALL ATODESK FUSION 360 ARE ARRANGED HERE:                                                                                            #
 ###############################################################################################################################################################
 
+text_uninstall_question="Möchten Sie Autodesk Fusion 360 wirklich von Ihrem System deinstallieren?"
+text_uninstall_cancel="Die Deinstallation wurde abgebrochen!"
+
+text_uninstall_checkbox="Ich habe mir den richtigen Pfad aus einer bestehenden Autodesk Fusion 360 Installation aufgeschrieben/kopiert und danach den Pfad in dieser Ansicht hier gelöscht!"
+text_uninstall_edit_question="Möchten Sie Ihre Änderungen speichern und die Software deinstallieren?"
+
+text_uninstall_path="Wählen Sie das Wineprefix-Verzeichnis Ihrer Autodesk Fusion 360-Installation aus, die Sie deinstallieren möchten! Zum Beispiel: /home/user/.wineprefixes/fusion360"
+text_uninstall_path_select="Wählen Sie das Wineprefix-Verzeichnis ..."
+
+text_uninstall_completed="Die Deinstallation von Autodesk Fusion 360 ist abgeschlossen."
