@@ -68,6 +68,13 @@ function setupact-cancel-info {
          --text="The uninstallation was aborted!" \
          --width=400 \
          --height=100
+	 
+  if [ "$uninstall_standalone" -eq 0 ]; then       
+    exit;
+  else [ "$uninstall_standalone" -eq 1 ]; then 
+    echo "Go back"
+    setupact-modify-f360
+  fi
 }
 
 ###############################################################################################################################################################
@@ -84,32 +91,32 @@ function setupact-uninstall-dialog {
                     --checkbox="I wrote down or copied the correct path from an existing Autodesk Fusion 360 installation and deleted this path then here!"`
 
   case $? in
-      0)
-          zenity --question \
-                 --title="$program_name" \
-                 --text="$Do you want to save your changes and deleting the correct existing Autodesk Fusion 360 installation?" \
-                 --width=400 \
-                 --height=100
-          answer=$?
+    0)
+        zenity --question \
+               --title="$program_name" \
+               --text="Do you want to save your changes and deleting the correct existing Autodesk Fusion 360 installation?" \
+               --width=400 \
+               --height=100
+        answer=$?
 
-          if [ "$answer" -eq 0 ]; then
-              echo "$directory" > $file
-	      cp "$file" "$HOME/.config/fusion-360/logs"
-	      mv "$HOME/.config/fusion-360/logs/wineprefixes" "$HOME/.config/fusion-360/logs/wineprefixes.log"
-              setupact-uninstall
-          elif [ "$answer" -eq 1 ]; then
-              setupact-uninstall-dialog
-          fi
-  	      ;;
-      1)
-              echo "Go back"
-              setupact-update-question
-  	      ;;
-      -1)
-              zenity --error \
-                     --text="An unexpected error occurred!"
-              exit;
-  	      ;;
+        if [ "$answer" -eq 0 ]; then
+          echo "$directory" > $file
+	  cp "$file" "$HOME/.config/fusion-360/logs"
+	  mv "$HOME/.config/fusion-360/logs/wineprefixes" "$HOME/.config/fusion-360/logs/wineprefixes.log"
+          setupact-uninstall
+        elif [ "$answer" -eq 1 ]; then
+          setupact-uninstall-dialog
+        fi
+  	;;
+    1)
+        echo "Go back"
+        setupact-update-question
+        ;;
+    -1)
+        zenity --error \
+               --text="An unexpected error occurred!"
+        exit;
+        ;;
   esac
 
 }
