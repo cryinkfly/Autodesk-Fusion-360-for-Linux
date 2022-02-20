@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    09:00/18.02.2022                                                                   #
-# Version:      0.0.5                                                                              #
+# Time/Date:    12:30/20.02.2022                                                                   #
+# Version:      0.0.6                                                                              #
 ####################################################################################################
 
 # Path: /$HOME/.config/fusion-360/bin/update.sh
@@ -60,13 +60,14 @@ function setupact-check-info {
 
 function setupact-get-update {
   wget https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe -O Fusion360installer.exe
+  mv "Fusion360installer.exe" "$HOME/.config/fusion-360/downloads/Fusion360installer.exe"
 }
 
 ###############################################################################################################################################################
 
 function setupact-install-update {
-  WINEPREFIX="$HOME/.wineprefixes/fusion360" wine Fusion360installer.exe -p deploy -g -f log.txt --quiet
-  WINEPREFIX="$HOME/.wineprefixes/fusion360" wine Fusion360installer.exe -p deploy -g -f log.txt --quiet
+  WINEPREFIX="$HOME/.wineprefixes/fusion360" wine $HOME/.config/fusion-360/downloads/Fusion360installer.exe -p deploy -g -f log.txt --quiet
+  WINEPREFIX="$HOME/.wineprefixes/fusion360" wine $HOME/.config/fusion-360/downloads/Fusion360installer.exe -p deploy -g -f log.txt --quiet
 }
 
 ###############################################################################################################################################################
