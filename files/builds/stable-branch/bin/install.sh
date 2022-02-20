@@ -933,3 +933,198 @@ function setupact-select-os {
 
   [[ "$select_os" ]] || echo "Go back" && setupact-select-opengl_dxvk
 }
+
+###############################################################################################################################################################
+
+# Install some extensions with a manager!
+function setupact-f360extensions {
+  f360_extension=$(zenity --list \
+                          --checklist \
+                          --title="$program_name" \
+                          --width=1000 \
+                          --height=500 \
+                          --column="$text_select" --column="$text_extension" --column="$text_extension_description"\
+                          FALSE "Airfoil Tools" "$text_extension_description_1" \
+                          FALSE "Additive Assistant (FFF)" "$text_extension_description_2" \
+                          FALSE "Czech localization for F360" "$text_extension_description_3" \
+                          FALSE "HP 3D Printers for Autodesk® Fusion 360™" "$text_extension_description_4" \
+		          FALSE "Helical Gear Generator" "$text_extension_description_5" \
+                          FALSE "OctoPrint for Autodesk® Fusion 360™" "$text_extension_description_6" \
+		          FALSE "Parameter I/O" "$text_extension_description_7" \
+		          FALSE "RoboDK" "$text_extension_description_8" \
+                          FALSE "Ultimaker Digital Factory for Autodesk Fusion 360™" "$text_extension_description_9" )
+
+  [[ $f360_extension = *"Airfoil Tools"* ]] && airfoil-tools-extension
+
+  [[ $f360_extension = *"Additive Assistant (FFF)"* ]] && additive-assistant-extension
+
+  [[ $f360_extension = *"Czech localization for F360"* ]] && czech-locale-extension
+
+  [[ $f360_extension = *"HP 3D Printers for Autodesk® Fusion 360™"* ]] && hp-3dprinter-connector-extension
+
+  [[ $f360_extension = *"Helical Gear Generator"* ]] && helical-gear-generator-extension
+
+  [[ $f360_extension = *"OctoPrint for Autodesk® Fusion 360™"* ]] && octoprint-extension
+
+  [[ $f360_extension = *"Parameter I/O"* ]] && parameter-i-o-extension
+
+  [[ $f360_extension = *"RoboDK"* ]] && robodk-extension
+
+  [[ $f360_extension = *"Ultimaker Digital Factory for Autodesk Fusion 360™"* ]] && ultimaker-digital-factory-extension
+
+  [[ "$f360_extension" ]] || echo "Nothing selected!"
+}
+
+###############################################################################################################################################################
+
+# Select the downloaded installer for this special extension!
+function czech-locale-search-extension {
+  CZECH_LOCALE_EXTENSION=`zenity --file-selection --title="$text_select_czech_plugin"`
+
+  case $? in
+    0)
+        echo "\"$FILE\" selected.";;
+    1)
+        zenity --info \
+        --text="$text_info_czech_plugin"
+        setupact-f360extensions
+        ;;
+    -1)
+        zenity --error \
+               --text="$text_error"
+        exit;
+        ;;
+  esac
+}
+
+
+###############################################################################################################################################################
+
+# Autodesk Fusion 360 has already been installed on your system and you will now be given various options to choose from!
+
+function setupact-modify-f360 {
+  f360_modify=$(zenity --list \
+                       --radiolist \
+                       --title="$program_name" \
+                       --width=700 \
+                       --height=500 \
+                       --column="$text_select" --column="$text_select_option" \
+                       TRUE "$text_select_option_1" \
+                       FALSE "$text_select_option_2" \
+                       FALSE "$text_select_option_3" \
+                       False "$text_select_option_4")
+
+  [[ $f360_modify = "$text_select_option_1" ]] && logfile_install=1 && setupact-new-edit-f360
+
+  [[ $f360_modify = "$text_select_option_2" ]] && setupact-new-edit-f360
+
+  [[ $f360_modify = "$text_select_option_3" ]] && setupact-f360-path && setupact-f360extensions && setupact-completed
+
+  [[ $f360_modify = "$text_select_option_4" ]] && . $HOME/.config/fusion-360/bin/uninstall.sh
+
+  [[ "$f360_modify" ]] || echo "Go back" && setupact-configure-locale
+
+}
+
+###############################################################################################################################################################
+
+# View the exits Wineprefixes of Autodesk Fusion 360 on your system.
+function setupact-new-edit-f360 {
+  read_f360_path_log=/tmp/fusion-360/logs/wineprefixes
+  f360_wineprefixes=`zenity --text-info \
+                            --title="$program_name" \
+                            --width=700 \
+                            --height=500 \
+                            --filename=$read_f360_path_log \
+                            --checkbox="$text_new_installation_checkbox"`
+
+  case $? in
+    0)
+        setupact-f360-path
+        setupact-select-opengl_dxvk
+        ;;
+    1)
+        echo "Go back"
+        setupact-modify-f360
+        ;;
+    -1)
+        zenity --error \
+               --text="$text_error"
+        exit;
+        ;;
+  esac
+
+}
+
+###############################################################################################################################################################
+
+function setupact-f360-modify-launcher {
+  modify_f360_launcher=/tmp/fusion-360/logs/Fusion360launcher
+  launcher=`zenity --text-info \
+                   --title="$program_name" \
+                   --width=1000 \
+                   --height=500 \
+                   --filename=$modify_f360_launcher \
+                   --editable \
+                   --checkbox="$text_desktop_launcher_custom_checkbox"`
+
+  case $? in
+    0)
+        zenity --question \
+               --title="$program_name" \
+               --text="$text_desktop_launcher_custom_question" \
+               --width=400 \
+               --height=100
+        answer=$?
+
+        if [ "$answer" -eq 0 ]; then
+          echo "$launcher" > $modify_f360_launcher
+          rm "$HOME/.config/fusion-360/bin/launcher.sh"
+          mv $modify_f360_launcher "$HOME/.config/fusion-360/bin/launcher.sh"
+	  chmod +x $HOME/.config/fusion-360/bin/launcher.sh
+        elif [ "$answer" -eq 1 ]; then
+          setupact-f360-modify-launcher
+        fi
+
+  	;;
+    1)
+        echo "Go back"
+        setupact-f360-modify-launcher
+  	;;
+    -1)
+        zenity --error \
+               --text="$text_error"
+        exit;
+  	;;
+  esac
+}
+
+###############################################################################################################################################################
+
+# The installation is complete and will be terminated.
+function setupact-completed {
+  zenity --info \
+         --width=400 \
+         --height=100 \
+         --text="$text_completed_installation"
+
+  exit;
+}
+
+###############################################################################################################################################################
+
+# Abort the installation of Autodesk Fusion 360!
+function setupact-configure-locale-abort {
+  zenity --question \
+         --title="$program_name" \
+         --text="$text_abort" \
+         --width=400 \
+         --height=100
+  answer=$?
+
+  if [ "$answer" -eq 0 ]; then
+    exit;
+  elif [ "$answer" -eq 1 ]; then
+    setupact-configure-locale
+  fi
+}
