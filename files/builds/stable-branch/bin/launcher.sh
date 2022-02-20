@@ -7,9 +7,11 @@
 # Author URI:   https://cryinkfly.com                                       #
 # License:      MIT                                                         #
 # Copyright (c) 2020-2022                                                   #
-# Time/Date:    09:00/18.02.2022                                            #
-# Version:      1.2                                                         #
+# Time/Date:    13:00/20.02.2022                                            #
+# Version:      1.3                                                         #
 #############################################################################
+
+# Path: /$HOME/.config/fusion-360/bin/launcher.sh
 
 #################################
 # Open Autodesk Fusion 360 now! #
@@ -25,6 +27,8 @@ function setupact-check-fusion360 {
   chmod +x update.sh
   . update.sh
 }
+
+###############################################################################################################################################################
 
 # You must change the first part ($HOME/.wineprefixes/fusion360) and the last part (WINEPREFIX="$HOME/.wineprefixes/fusion360") when you have installed Autodesk Fusion 360 into another directory!
 function setupact-open-fusion360 {
