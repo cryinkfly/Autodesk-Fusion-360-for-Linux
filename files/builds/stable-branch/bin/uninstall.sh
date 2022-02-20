@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                          #
 # License:      MIT                                                            #
 # Copyright (c) 2020-2022                                                      #
-# Time/Date:    08:30/19.02.2022                                               #
-# Version:      0.2                                                            #
+# Time/Date:    11:30/20.02.2022                                               #
+# Version:      0.4                                                            #
 ################################################################################
 
 # Path: /$HOME/.config/fusion-360/bin/uninstall.sh
