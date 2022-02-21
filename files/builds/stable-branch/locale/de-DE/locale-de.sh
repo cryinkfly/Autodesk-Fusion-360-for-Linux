@@ -64,14 +64,6 @@ text_wine_version_exists="Wine Version (6.23 oder höher) ist bereits auf dem Sy
 
 ###############################################################################################################################################################
 
-# Checkbox - desktop-launcher-custom
-text_desktop_launcher_custom_checkbox="Ich habe den Installationspfad von Autodesk Fusion 360 geändert!"
-
-# Question - desktop-launcher-custom
-text_desktop_launcher_custom_question="Möchtest du deine Änderungen speichern?"
-
-###############################################################################################################################################################
-
 # Select a option - new_modify_deinstall
 text_select_option="Option"
 
