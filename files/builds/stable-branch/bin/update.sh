@@ -22,12 +22,6 @@ program_name="Autodesk Fusion 360 for Linux - Launcher"
 # A value of 0 means that there is no update and a value of 1 will notify the user that there is an update.
 get_update=0
 
-# Domain Name:
-domain="www.github.com"
-
-# Reset connection-value!
-connection=0
-
 ###############################################################################################################################################################
 # ALL FUNCTIONS ARE ARRANGED HERE:                                                                                                                            #
 ###############################################################################################################################################################
@@ -97,24 +91,11 @@ function setupact-config-locale {
 
 ###############################################################################################################################################################
 
-# Check the connection to the server of GitHub.
-function setupact-check-connection {
-  if ping -c 1 $domain &> /dev/null
-    then
-      echo "Connection to the domain worked!"
-      connection=1
-  else
-    echo "No connection to the domain!"
-  fi
-}
-
-###############################################################################################################################################################
-
 # Checks if there is an update for Autodesk Fusion 360.
 function setupact-check-info {
-  if [ $connection -eq 1 ] && [ $get_update -eq 1 ]; then
+  if [ $get_update -eq 1 ]; then
     setupact-update-question
-  elif [ $connection -eq 1 ] && [ $get_update -eq 0 ]; then
+  elif [ $get_update -eq 0 ]; then
     setupact-no-update-info 
   else    
     setupact-no-connection-warning
