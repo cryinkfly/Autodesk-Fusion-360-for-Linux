@@ -171,5 +171,4 @@ text_skip_update_question="Möchten Sie die Suche nach einem Autodesk Fusion 360
 
 text_update_question="Eine neue Version wurde veröffentlicht! Möchtest du jetzt die Aktualisierung durchführen?"
 
-
 text_no_connection_warning="Die Verbindung zum Server konnte nicht hergestellt werden! Die Suche nach neuen Updates wurde übersprungen! Bitte überprüfe deine Internetverbindung!"
