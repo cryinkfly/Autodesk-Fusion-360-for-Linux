@@ -244,6 +244,8 @@ function setupact-f360-launcher {
     chmod +x $HOME/.config/fusion-360/bin/uninstall.sh  
     wget -N -P $HOME/.config/fusion-360/bin https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/launcher.sh
     chmod +x $HOME/.config/fusion-360/bin/launcher.sh
+    wget -N -P $HOME/.config/fusion-360/bin https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/update.sh
+    chmod +x $HOME/.config/fusion-360/bin/update.sh
   else
     wget -N -P $HOME/.local/share/applications/wine/Programs/Autodesk https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/.desktop/Autodesk%20Fusion%20360.desktop
     wget -N -P $HOME/.local/share/applications/wine/Programs/Autodesk https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/files/builds/stable-branch/.desktop/Autodesk%20Fusion%20360%20Uninstall.desktop
@@ -251,6 +253,8 @@ function setupact-f360-launcher {
     chmod +x $HOME/.config/fusion-360/bin/uninstall.sh
     wget -P /tmp/fusion-360/logs https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/launcher.sh -O Fusion360launcher
     setupact-f360-modify-launcher
+    wget -P /tmp/fusion-360/logs https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/update.sh -O Fusion360update
+    setupact-f360-modify-update
   fi
 }
 
@@ -1120,6 +1124,49 @@ function setupact-f360-modify-launcher {
     1)
         echo "Go back"
         setupact-f360-modify-launcher
+  	;;
+    -1)
+        zenity --error \
+               --text="$text_error"
+        exit;
+  	;;
+  esac
+}
+
+###############################################################################################################################################################
+
+function setupact-f360-modify-update {
+  modify_f360_update=/tmp/fusion-360/logs/Fusion360update
+  update=`zenity --text-info \
+                   --title="$program_name" \
+                   --width=1000 \
+                   --height=500 \
+                   --filename=$modify_f360_update \
+                   --editable \
+                   --checkbox="$text_desktop_update_custom_checkbox"`
+
+  case $? in
+    0)
+        zenity --question \
+               --title="$program_name" \
+               --text="$text_desktop_update_custom_question" \
+               --width=400 \
+               --height=100
+        answer=$?
+
+        if [ "$answer" -eq 0 ]; then
+          echo "$update" > $modify_f360_update
+          rm "$HOME/.config/fusion-360/bin/update.sh"
+          mv $modify_f360_update "$HOME/.config/fusion-360/bin/update.sh"
+	  chmod +x $HOME/.config/fusion-360/bin/update.sh
+        elif [ "$answer" -eq 1 ]; then
+          setupact-f360-modify-update
+        fi
+
+  	;;
+    1)
+        echo "Go back"
+        setupact-f360-modify-update
   	;;
     -1)
         zenity --error \
