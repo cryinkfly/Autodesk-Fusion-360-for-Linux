@@ -200,7 +200,7 @@ function setupact-dxvk-opengl-2 {
 ###############################################################################################################################################################
 
 # Autodesk Fusion 360 will now be installed using Wine and Winetricks.
-function setupact-f360install {
+function setupact-f360-install {
   # Note that the winetricks sandbox verb merely removes the desktop integration and Z: drive symlinks and is not a true sandbox.
   # It protects against errors rather than malice. It's useful for, e.g., keeping games from saving their settings in random subdirectories of your home directory. 
   WINEPREFIX=$wineprefixname sh winetricks -q sandbox atmlib gdiplus corefonts cjkfonts msxml4 msxml6 vcrun2017 fontsmooth=rgb winhttp win10
