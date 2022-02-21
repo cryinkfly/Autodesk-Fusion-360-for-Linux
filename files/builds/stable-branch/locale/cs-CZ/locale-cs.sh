@@ -64,14 +64,6 @@ text_wine_version_exists="Verze Wine (6.23 nebo vyšší) je již nainstalována
 
 ###############################################################################################################################################################
 
-# Checkbox - desktop-launcher-custom
-text_desktop_launcher_custom_checkbox="Změnil jsem instalační cestu Autodesk Fusion 360!"
-
-# Question - desktop-launcher-custom
-text_desktop_launcher_custom_question="Chcete uložit změny?"
-
-###############################################################################################################################################################
-
 # Select a option - new_modify_deinstall
 text_select_option="Volba"
 
