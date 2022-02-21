@@ -18,10 +18,6 @@
 # Window Title (Launcher)
 program_name="Autodesk Fusion 360 for Linux - Launcher"
 
-# I will change this value as soon as a new version of Autodesk Fusion 360 is available. 
-# A value of 0 means that there is no update and a value of 1 will notify the user that there is an update.
-get_update=0
-
 ###############################################################################################################################################################
 # ALL FUNCTIONS ARE ARRANGED HERE:                                                                                                                            #
 ###############################################################################################################################################################
@@ -65,7 +61,7 @@ function load-locale-zh {
 }
 
 function setupact-config-locale {
-  config_locale=`. $HOME/.config/fusion-360/locale/read-text.sh $HOME/.config/fusion-360/logs/profile-locale.log 1`
+  config_locale=`. $HOME/.config/fusion-360/bin/read-text.sh $HOME/.config/fusion-360/logs/profile-locale.log 1`
   if [ "$config_locale" = "cs-CZ" ]; then
     load-locale-cs
   elif [ "$config_locale" = "de-DE" ]; then
@@ -86,6 +82,19 @@ function setupact-config-locale {
     load-locale-zh
   else
     load-locale-en
+  fi  
+}
+
+###############################################################################################################################################################
+
+function setupact-config-update {
+  config_update=`. $HOME/.config/fusion-360/bin/read-text.sh $HOME/.config/fusion-360/logs/update-config.log 1`
+  if [ "$config_update" = "Update=1" ]; then
+    # A value of 0 means that there is no update and a value of 1 will notify the user that there is an update.
+    get_update=1
+  else
+    echo "Do nothing!"
+    get_update=0
   fi  
 }
 
