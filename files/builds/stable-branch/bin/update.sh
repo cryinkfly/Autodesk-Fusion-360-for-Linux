@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    09:30/21.02.2022                                                                   #
-# Version:      0.0.7                                                                              #
+# Time/Date:    10:45/21.02.2022                                                                   #
+# Version:      0.0.8                                                                              #
 ####################################################################################################
 
 # Path: /$HOME/.config/fusion-360/bin/update.sh
@@ -35,48 +35,64 @@ connection=0
 # Load the locale files ...
 
 function load-locale-cs {
-  profile_locale="cs-CZ"
   . $HOME/.config/fusion-360/locale/cs-CZ/locale-cs.sh
 }
 
 function load-locale-de {
-  profile_locale="de-DE"
   . $HOME/.config/fusion-360/locale/de-DE/locale-de.sh
 }
 
 function load-locale-en {
-  profile_locale="en-US"
   . $HOME/.config/fusion-360/locale/en-US/locale-en.sh
 }
 
 function load-locale-es {
-  profile_locale="es-ES"
   . $HOME/.config/fusion-360/locale/es-ES/locale-es.sh
 }
 
 function load-locale-fr {
-    profile_locale="fr-FR"
   . $HOME/.config/fusion-360/locale/fr-FR/locale-fr.sh
 }
 
 function load-locale-it {
-  profile_locale="it-IT"
   . $HOME/.config/fusion-360/locale/it-IT/locale-it.sh
 }
 
 function load-locale-ja {
-  profile_locale="ja-JP"
   . $HOME/.config/fusion-360/locale/ja-JP/locale-ja.sh
 }
 
 function load-locale-ko {
-  profile_locale="ko-KR"
   . $HOME/.config/fusion-360/locale/ko-KR/locale-ko.sh
 }
 
 function load-locale-zh {
-  profile_locale="zh-CN"
   . $HOME/.config/fusion-360/locale/zh-CN/locale-zh.sh
+}
+
+function setupact-config-locale {
+  config_locale=`. $HOME/.config/fusion-360/local/user-locale.sh $HOME/.config/fusion-360/logs/profile-locale.log 1`
+  if [ "$config_locale" = "cs-CZ" ]; then
+    load-locale-cs
+  elif [ "$config_locale" = "de-DE" ]; then
+    load-locale-de
+  elif [ "$config_locale" = "en-US" ]; then
+    load-locale-en
+  elif [ "$config_locale" = "es-ES" ]; then
+    load-locale-es
+  elif [ "$config_locale" = "fr-FR" ]; then
+    load-locale-fr
+  elif [ "$config_locale" = "it-IT" ]; then
+    load-locale-it
+  elif [ "$config_locale" = "ja-JP" ]; then
+    load-locale-ja
+  elif [ "$config_locale" = "ko-KR" ]; then
+    load-locale-ko
+  elif [ "$config_locale" = "zh-CN" ]; then
+    load-locale-zh
+  else
+    load-locale-en
+  fi  
 }
 
 ###############################################################################################################################################################
@@ -89,7 +105,7 @@ function setupact-check-connection {
     echo "Connection to the domain worked!"
   else
     echo "No connection to the domain!"
-fi
+  fi
 }
 
 ###############################################################################################################################################################
@@ -126,9 +142,9 @@ function setupact-install-update {
 # The user get a informationt that no newer version of Autodesk Fusion 360 was found!
 function setupact-no-update-info {
   zenity --info \
-  --text="$text_no_update_info" \
-  --width=400 \
-  --height=100
+         --text="$text_no_update_info" \
+         --width=400 \
+         --height=100
 }
 
 ###############################################################################################################################################################
@@ -136,9 +152,9 @@ function setupact-no-update-info {
 # The user will be informed that he is skipping the update!
 function setupact-skip-info {
   zenity --warning \
-  --text="$text_skip_update_info" \
-  --width=400 \
-  --height=100
+         --text="$text_skip_update_info" \
+         --width=400 \
+         --height=100
 }
 
 ###############################################################################################################################################################
@@ -146,9 +162,9 @@ function setupact-skip-info {
 # The user get a informationt that there is no connection to the server!
 function setupact-no-connection-warning {
   zenity --error \
-  --text="$text_no_connection_warning" \
-  --width=400 \
-  --height=100
+         --text="$text_no_connection_warning" \
+         --width=400 \
+         --height=100
 }
 
 ###############################################################################################################################################################
@@ -156,10 +172,10 @@ function setupact-no-connection-warning {
 # The user will be asked if he wants to update or not.
 function setupact-update-question {
   zenity --question \
-  --title="$program_name" \
-  --text="$text_update_question" \
-  --width=400 \
-  --height=100
+         --title="$program_name" \
+         --text="$text_update_question" \
+         --width=400 \
+         --height=100
   answer=$?
 
   if [ "$answer" -eq 0 ]; then    
@@ -175,44 +191,45 @@ function setupact-update-question {
 # A progress bar is displayed here.
 function setupact-progressbar {
   (
-echo "30" ; sleep 2
-echo "# Connecting to the server ..." ; sleep 3
-setupact-check-connection
-echo "50" ; sleep 1
-echo "# Check all files ..." ; sleep 1
-echo "100" ; sleep 3
-) |
-zenity --progress \
-  --title="$program_name" \
-  --text="Search for new updates ..." \
-  --width=400 \
-  --height=100 \
-  --percentage=0
+    echo "30" ; sleep 2
+    echo "# Connecting to the server ..." ; sleep 3
+    setupact-check-connection
+    echo "50" ; sleep 1
+    echo "# Check all files ..." ; sleep 1
+    echo "100" ; sleep 3
+  ) |
+  zenity --progress \
+         --title="$program_name" \
+         --text="Search for new updates ..." \
+         --width=400 \
+         --height=100 \
+         --percentage=0
 
-if [ "$?" = 0 ] ; then
-        setupact-check-info
-elif [ "$?" = 1 ] ; then
-        zenity --question \
-                 --title="$program_name" \
-                 --text="$text_skip_update_question" \
-                 --width=400 \
-                 --height=100
-        answer=$?
+  if [ "$?" = 0 ] ; then
+    setupact-check-info
+  elif [ "$?" = 1 ] ; then
+    zenity --question \
+           --title="$program_name" \
+           --text="$text_skip_update_question" \
+           --width=400 \
+           --height=100
+    answer=$?
 
-        if [ "$answer" -eq 0 ]; then
-              echo "Do nothing!"
-        elif [ "$answer" -eq 1 ]; then
-              setupact-progressbar
-        fi
-elif [ "$?" = -1 ] ; then
-        zenity --error \
-          --text="$text_error"
-        exit;
-fi
+    if [ "$answer" -eq 0 ]; then
+      echo "Do nothing!"
+    elif [ "$answer" -eq 1 ]; then
+      setupact-progressbar
+    fi
+    elif [ "$?" = -1 ] ; then
+      zenity --error \
+             --text="$text_error"
+    exit;
+  fi
 }
 
 ###############################################################################################################################################################
 # THE PROGRAM IS STARTED HERE:                                                                                                                                #
 ###############################################################################################################################################################
 
+setupact-config-locale
 setupact-progressbar
