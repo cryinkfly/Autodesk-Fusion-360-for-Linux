@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    xx:xx/xx.xx.2022                                                                   #
+# Time/Date:    14:00/21.02.2022                                                                   #
 # Version:      1.7.7                                                                              #
 ####################################################################################################
 
@@ -213,6 +213,9 @@ function setupact-f360-install {
   WINEPREFIX=$wineprefixname wine $HOME/.config/fusion-360/downloads/Fusion360installer.exe -p deploy -g -f log.txt --quiet
   mkdir -p "$wineprefixname/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options"
   cd "$wineprefixname/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options"
+  setupact-dxvk-opengl-2
+  mkdir -p "$wineprefixname/drive_c/users/$USER/AppData/Local/Autodesk/Neutron Platform/Options"
+  cd "$wineprefixname/drive_c/users/$USER/AppData/Local/Autodesk/Neutron Platform/Options"
   setupact-dxvk-opengl-2
   mkdir -p "$wineprefixname/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options"
   cd "$wineprefixname/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options"
