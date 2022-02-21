@@ -8,8 +8,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    14:00/20.02.2022                                                                   #
-# Version:      1.5                                                                                #
+# Time/Date:    09:30/21.02.2022                                                                   #
+# Version:      1.6                                                                                #
 ####################################################################################################
 
 # Path: /$HOME/.config/fusion-360/locale/de-DE/locale-de.sh
