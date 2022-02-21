@@ -70,12 +70,21 @@ function setupact-check-f360 {
 
 ###############################################################################################################################################################
 
-# Save the path of the Wineprefix and the profile-locale of Autodesk Fusion 360 into the wineprefixes.log
+# Save the path of the Wineprefix and the profile-locale of Autodesk Fusion 360
 function setupact-f360-wineprefixes-log {
 if [ $f360path_log -eq 1 ]; then
-  echo "Wineprefix (Path): $wineprefixname | Profile-Locale: $profile_locale" >> $HOME/.config/fusion-360/logs/wineprefixes.log
+  echo "Wineprefix (Path): $wineprefixname" >> $HOME/.config/fusion-360/logs/wineprefixes.log
+  echo "$profile_locale" > $HOME/.config/fusion-360/logs/profile-locale.log
 fi
 }
+
+###############################################################################################################################################################
+
+# Create a profile-locale.log
+function setupact-f360-wineprefixes-log {
+if [ $profile_locale_value -eq 0 ]; then
+  echo "$profile_locale" >> $HOME/.config/fusion-360/logs/profile-locale.log
+fi
 
 ###############################################################################################################################################################
 # THE INITIALIZATION OF DEPENDENCIES STARTS HERE:                                                                                                             #
