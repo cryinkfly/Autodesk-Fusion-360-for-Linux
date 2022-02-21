@@ -23,8 +23,18 @@
 
 # This feature will check if there is a new version of Autodesk Fusion 360.
 function setupact-check-fusion360 {
-  wget -N -P $HOME/.config/fusion-360/bin https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/update-config.txt
-  . $HOME/.config/fusion-360/bin/update.sh
+  wget -N -P $HOME/.config/fusion-360/bin https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/update-config.txt  
+}
+
+function setupact-config-update {
+  config_update=`. $HOME/.config/fusion-360/bin/read-text.sh $HOME/.config/fusion-360/bin/update-config.txt 1`
+  if [ "$config_update" = "Update=1" ]; then
+    # A value of 0 means that there is no update and a value of 1 will notify the user that there is an update.
+    get_update=1
+  else
+    echo "Do nothing!"
+    get_update=0
+  fi 
 }
 
 ###############################################################################################################################################################
@@ -39,4 +49,6 @@ function setupact-open-fusion360 {
 ###############################################################################################################################################################
 
 setupact-check-fusion360
+setupact-config-update
+. $HOME/.config/fusion-360/bin/update.sh 
 setupact-open-fusion360
