@@ -111,9 +111,10 @@ function setupact-get-update {
 
 ###############################################################################################################################################################
 
+# You must change the first part ($HOME/.wineprefixes/fusion360) and the last part (WINEPREFIX="$HOME/.wineprefixes/fusion360") when you have installed Autodesk Fusion 360 into another directory!
 function setupact-install-update {
-  WINEPREFIX="$HOME/.wineprefixes/fusion360" wine $HOME/.config/fusion-360/downloads/Fusion360installer.exe -p deploy -g -f log.txt --quiet
-  WINEPREFIX="$HOME/.wineprefixes/fusion360" wine $HOME/.config/fusion-360/downloads/Fusion360installer.exe -p deploy -g -f log.txt --quiet
+  WINEPREFIX="$HOME/.wineprefixes/fusion360" wine $HOME/.wineprefixes/fusion360/drive_c/users/$USER/Downloads/Fusion360installer.exe -p deploy -g -f log.txt --quiet
+  WINEPREFIX="$HOME/.wineprefixes/fusion360" wine $HOME/.wineprefixes/fusion360/drive_c/users/$USER/Downloads/Fusion360installer.exe -p deploy -g -f log.txt --quiet
 }
 
 ###############################################################################################################################################################
