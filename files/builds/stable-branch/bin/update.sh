@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    14:00/21.02.2022                                                                   #
+# Time/Date:    17:00/21.02.2022                                                                   #
 # Version:      1.0.0                                                                              #
 ####################################################################################################
 
@@ -88,7 +88,7 @@ function setupact-config-locale {
 ###############################################################################################################################################################
 
 function setupact-config-update {
-  config_update=`. $HOME/.config/fusion-360/bin/read-text.sh $HOME/.config/fusion-360/logs/update-config.log 1`
+  config_update=`. $HOME/.config/fusion-360/bin/read-text.sh $HOME/.config/fusion-360/bin/update-config.txt 1`
   if [ "$config_update" = "Update=1" ]; then
     # A value of 0 means that there is no update and a value of 1 will notify the user that there is an update.
     get_update=1
