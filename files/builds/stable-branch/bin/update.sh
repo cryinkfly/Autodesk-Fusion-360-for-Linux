@@ -99,12 +99,10 @@ function setupact-config-locale {
 
 # Check the connection to the server of GitHub.
 function setupact-check-connection {
-  ping -c 1 $domain 2>/dev/null 1>/dev/null
-  echo "$?"
-  if [ "$?" = 0 ]; then
-    echo "Connection to the domain worked!"
-    connection=1
-    echo "$connection"
+  if ping -c 1 $domain &> /dev/null
+    then
+      echo "Connection to the domain worked!"
+      connection=1
   else
     echo "No connection to the domain!"
   fi
