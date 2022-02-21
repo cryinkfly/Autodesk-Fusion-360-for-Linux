@@ -226,7 +226,7 @@ function setupact-f360-install {
   cd "$wineprefixname/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options"
   setupact-dxvk-opengl-2
   cd "$HOME/.config/fusion-360/bin"
-  setupact-f360-launcher
+  setupact-f360-files
   wget -N -P $HOME/.config/fusion-360/bin https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/fusion360.svg
   setupact-f360-wineprefixes-log
   setupact-f360-extensions
@@ -236,8 +236,7 @@ function setupact-f360-install {
 ###############################################################################################################################################################
 
 # Create a launcher for your Wineprefix of Autodesk Fusion 360.
-function setupact-f360-launcher {
-  if [ $f360_launcher -eq 1 ]; then
+function setupact-f360-files {
     wget -N -P $HOME/.local/share/applications/wine/Programs/Autodesk https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/.desktop/Autodesk%20Fusion%20360.desktop
     wget -N -P $HOME/.local/share/applications/wine/Programs/Autodesk https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/files/builds/stable-branch/.desktop/Autodesk%20Fusion%20360%20Uninstall.desktop
     wget -N -P $HOME/.config/fusion-360/bin https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/uninstall.sh
@@ -248,18 +247,6 @@ function setupact-f360-launcher {
     chmod +x $HOME/.config/fusion-360/bin/update.sh
     wget -N -P $HOME/.config/fusion-360/bin https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/read-text.sh
     chmod +x $HOME/.config/fusion-360/bin/read-text.sh
-  else
-    wget -N -P $HOME/.local/share/applications/wine/Programs/Autodesk https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/.desktop/Autodesk%20Fusion%20360.desktop
-    wget -N -P $HOME/.local/share/applications/wine/Programs/Autodesk https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/files/builds/stable-branch/.desktop/Autodesk%20Fusion%20360%20Uninstall.desktop
-    wget -N -P $HOME/.config/fusion-360/bin https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/uninstall.sh
-    chmod +x $HOME/.config/fusion-360/bin/uninstall.sh
-    wget -N -P $HOME/.config/fusion-360/bin https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/read-text.sh
-    chmod +x $HOME/.config/fusion-360/bin/read-text.sh
-    wget -P /tmp/fusion-360/logs https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/launcher.sh -O Fusion360launcher
-    setupact-f360-modify-launcher
-    wget -P /tmp/fusion-360/logs https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/update.sh -O Fusion360update
-    setupact-f360-modify-update
-  fi
 }
 
 ###############################################################################################################################################################
@@ -853,7 +840,7 @@ function setupact-select-f360-path {
                             TRUE "$text_installation_location_standard" \
                             FALSE "$text_installation_location_custom")
 
-  [[ $select_f360_path = "$text_installation_location_standard" ]] && f360_launcher=1 && wineprefixname="$HOME/.wineprefixes/fusion360" && setupact-select-opengl_dxvk
+  [[ $select_f360_path = "$text_installation_location_standard" ]] && wineprefixname="$HOME/.wineprefixes/fusion360" && setupact-select-opengl_dxvk
 
   [[ $select_f360_path = "$text_installation_location_custom" ]] && setupact-f360-path && setupact-select-opengl_dxvk
 
