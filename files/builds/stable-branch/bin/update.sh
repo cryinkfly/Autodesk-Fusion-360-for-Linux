@@ -87,14 +87,18 @@ function setupact-config-locale {
 
 ###############################################################################################################################################################
 
+function setupact-get-update-0 {get_update=0}
+
+function setupact-get-update-1 {get_update=1}
+
 function setupact-config-update {
   config_update=`. $HOME/.config/fusion-360/bin/read-text.sh $HOME/.config/fusion-360/bin/update-config.txt 1`
   if [ "$config_update" = "Update=1" ]; then
     # A value of 0 means that there is no update and a value of 1 will notify the user that there is an update.
-    get_update=1
+   setupact-get-update-1
   else
     echo "Do nothing!"
-    get_update=0
+    setupact-get-update-0
   fi  
 }
 
