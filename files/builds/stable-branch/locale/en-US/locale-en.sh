@@ -7,40 +7,36 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    16:30/10.02.2022                                                                   #
-# Version:      1.4                                                                                #
+# Time/Date:    17:30/21.02.2022                                                                   #
+# Version:      1.5                                                                                #
 ####################################################################################################
 
+# Path: /$HOME/.config/fusion-360/locale/en-EN/locale-en.sh
+
 ###############################################################################################################################################################
-# ALL DEFINITIONS ARE ARRANGED HERE:                                                                                                                          #
+# ALL DEFINITIONS FOR INSTALL AUTODESK FUSION 360 ARE ARRANGED HERE:                                                                                          #
 ###############################################################################################################################################################
 
 # License-checkbox
 text_license_checkbox="I have read the terms and conditions and I accept them."
 
+###############################################################################################################################################################
+
 # Select
 text_select="Select"
 
-# Version (Standard, Flatpak or Snap)
-text_version="Version"
-text_standard="Standard"
-text_flatpak="Flatpak (Experimental)"
-text_snap="Snap (Experimental)"
-
-# Driver
-text_driver="Graphics driver"
-
-# Driver OpenGL
-text_driver_opengl="OpenGL (Fallback-Variant)"
-
-# Driver DXVK
-text_driver_dxvk="DXVK (Standard-Variant)"
+###############################################################################################################################################################
 
 # Linux distribution
 text_linux_distribution="Linux distribution"
 
+###############################################################################################################################################################
+
 # Installation location
 text_installation_location="Installation location"
+
+# Select a location with a file browser
+text_select_location_custom="Select a location for your Autodesk Fusion 360 installation:"
 
 # Installation location - Standard
 text_installation_location_standard="Standard - Install Autodesk Fusion 360 into your home folder. For example: /home/username/.wineprefixes/fusion360"
@@ -48,23 +44,25 @@ text_installation_location_standard="Standard - Install Autodesk Fusion 360 into
 # Installation location - Custom
 text_installation_location_custom="Custom - Install Autodesk Fusion 360 to another place. For example: /run/media/username/usb-drive/.wineprefixes/fusion360"
 
-# Select a location with a file browser
-text_select_location_custom="Select a location for your Autodesk Fusion 360 installation:"
+###############################################################################################################################################################
 
-# Checkbox - desktop-launcher-custom
-text_desktop_launcher_custom_checkbox="I have changed the path of Autodesk Fusion 360!"
+# Driver
+text_driver="Graphics driver"
 
-# Question - desktop-launcher-custom
-text_desktop_launcher_custom_question="Do you want to save your changes?"
+# Driver DXVK
+text_driver_dxvk="DXVK supports DirectX 9, 10, ... (Default)"
 
-# Abort the program
-text_abort="Do you really want to abort the installation?"
+# Driver OpenGL
+text_driver_opengl="OpenGL (Fallback)"
 
-# Program-Exit
-text_completed_installation="The installation of Autodesk Fusion 360 is completed."
+###############################################################################################################################################################
 
-# Program-Exit (Extensions)
-text_completed_installation_extensions="The installation of some extensions for Autodesk Fusion 360 is completed."
+# Wine Version
+text_wine_version="Wine Version"
+text_wine_version_staging="Wine Version (Staging)"
+text_wine_version_exists="Wine version (6.23 or higher) is already installed on the system!"
+
+###############################################################################################################################################################
 
 # Select a option - new_modify_deinstall
 text_select_option="Option"
@@ -80,6 +78,8 @@ text_select_option_3="Install, Repair or Uninstall some extensions"
 
 # Option 4
 text_select_option_4="Uninstall all Autodesk Fusion 360 components"
+
+###############################################################################################################################################################
 
 # New installation-checkbox - new_modify_deinstall
 text_new_installation_checkbox="I have now seen which installation paths are available and will specify a different path in the next step!"
@@ -99,11 +99,7 @@ text_select_location_deinstall="Select your exist Autodesk Fusion 360 installati
 # Program-Exit - new_modify_deinstall
 text_completed_deinstallation="The deinstallation of Autodesk Fusion 360 is completed."
 
-# Select CZECH-Plugin files
-text_select_czech_plugin="Select the installation file:"
-
-# No Plugin was not found
-text_info_czech_plugin="No file selected."
+###############################################################################################################################################################
 
 # Extension
 text_extension="Extension"
@@ -121,6 +117,50 @@ text_extension_description_7="Enables the user to Import/Update parameters from 
 text_extension_description_8="This extension allows you to program more than 50 different robot manufacturers and 500 robots directly from Autodesk Fusion 360."
 text_extension_description_9="This plug-in is a connector between Autodesk® Fusion 360™ and the Ultimaker Digital Factory site and its services."
 
+# Select CZECH-Plugin files
+text_select_czech_plugin="Select the installation file:"
+
+# No Plugin was not found
+text_info_czech_plugin="No file selected."
+
+# Program-Exit (Extensions)
+text_completed_installation_extensions="Installation of some extensions for Autodesk Fusion 360 is complete."
+
+###############################################################################################################################################################
+
+# Program-Exit
+text_completed_installation="Autodesk Fusion 360 installation is complete."
+
+# Abort the program
+text_abort="Do you really want to cancel the installation?"
+
 # Error
 text_error="An unexpected error occurred!"
 
+###############################################################################################################################################################
+# ALL DEFINITIONS FOR UNINSTALL AUTODESK FUSION 360 ARE ARRANGED HERE:                                                                                        #
+###############################################################################################################################################################
+
+text_uninstall_question="Are you sure you want to uninstall Autodesk Fusion 360 from your system?"
+text_uninstall_cancel="The uninstallation was aborted!"
+
+text_uninstall_checkbox="I wrote down/copied the correct path from an existing Autodesk Fusion 360 installation and then deleted the path in this view here!"
+text_uninstall_edit_question="Do you want to save your changes and uninstall the software?"
+
+text_uninstall_path="Select the Wineprefix directory of your Autodesk Fusion 360 installation that you want to uninstall! For example: /home/user/.wineprefixes/fusion360"
+text_uninstall_path_select="Select the Wineprefix directory..."
+
+text_uninstall_completed="Autodesk Fusion 360 uninstallation is complete."
+
+###############################################################################################################################################################
+# ALL DEFINITIONS FOR UNINSTALL AUTODESK FUSION 360 ARE ARRANGED HERE:                                                                                        #
+###############################################################################################################################################################
+
+text_no_update_info="No newer version was found, so your Autodesk fusion 360 is up to date!"
+
+text_skip_update_info="The update was skipped! Please update your Autodesk Fusion 360 version soon!"
+text_skip_update_question="Are you sure you want to skip searching for an Autodesk Fusion 360 update?"
+
+text_update_question="A new version has been released! Do you want to update now?"
+
+text_no_connection_warning="The connection to the server could not be established! Checking for new updates has been skipped! Please check your internet connection!"
