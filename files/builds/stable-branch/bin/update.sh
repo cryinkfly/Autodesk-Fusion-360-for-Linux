@@ -117,7 +117,7 @@ function setupact-check-info {
   elif [ $connection -eq 1 ] && [ $get_update -eq 0 ]; then
     setupact-no-update-info 
   else    
-    setupact-no-connection-error
+    setupact-no-connection-warning
   fi
 }
 
