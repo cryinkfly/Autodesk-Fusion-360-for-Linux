@@ -50,5 +50,6 @@ function setupact-open-fusion360 {
 
 setupact-check-fusion360
 setupact-config-update
+# This path you must change if you installed a custom installation of Autodesk Fusion 360! For example: $HOME/.config/fusion-360/bin/update-usb.sh 
 . $HOME/.config/fusion-360/bin/update.sh 
 setupact-open-fusion360
