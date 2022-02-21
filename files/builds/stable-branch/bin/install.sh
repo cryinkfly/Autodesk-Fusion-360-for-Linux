@@ -203,7 +203,9 @@ function setupact-dxvk-opengl-2 {
 function setupact-f360-install {
   # Note that the winetricks sandbox verb merely removes the desktop integration and Z: drive symlinks and is not a true sandbox.
   # It protects against errors rather than malice. It's useful for, e.g., keeping games from saving their settings in random subdirectories of your home directory. 
-  WINEPREFIX=$wineprefixname sh winetricks -q sandbox atmlib gdiplus corefonts cjkfonts msxml4 msxml6 vcrun2017 fontsmooth=rgb winhttp win10
+  WINEPREFIX=$wineprefixname sh winetricks -q sandbox
+  # We must install some packages!
+  WINEPREFIX=$wineprefixname sh winetricks -q atmlib gdiplus corefonts cjkfonts msxml4 msxml6 vcrun2017 fontsmooth=rgb winhttp win10
   # We must install cjkfonts again then sometimes it doesn't work in the first time!
   WINEPREFIX=$wineprefixname sh winetricks -q cjkfonts
   setupact-dxvk-opengl-1
