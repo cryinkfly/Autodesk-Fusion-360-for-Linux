@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                       #
 # License:      MIT                                                         #
 # Copyright (c) 2020-2022                                                   #
-# Time/Date:    13:00/20.02.2022                                            #
-# Version:      1.3                                                         #
+# Time/Date:    12:00/21.02.2022                                            #
+# Version:      1.4                                                         #
 #############################################################################
 
 # Path: /$HOME/.config/fusion-360/bin/launcher.sh
@@ -23,7 +23,7 @@
 
 # This feature will check if there is a new version of Autodesk Fusion 360.
 function setupact-check-fusion360 {
-  wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/scripts/stable-branch/.config/fusion-360/bin/update.sh
+  wget -N https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/update.sh
   chmod +x update.sh
   . update.sh
 }
