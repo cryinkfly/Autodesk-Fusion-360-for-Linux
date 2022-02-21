@@ -103,6 +103,7 @@ function setupact-check-info {
 function setupact-get-update {
   wget https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe -O Fusion360installer.exe
   mv "Fusion360installer.exe" "$HOME/.config/fusion-360/downloads/Fusion360installer.exe"
+  cp "$HOME/.config/fusion-360/downloads/Fusion360installer.exe" "$HOME/.wineprefixes/fusion360/drive_c/users/$USER/Downloads/Fusion360installer.exe"
 }
 
 ###############################################################################################################################################################
