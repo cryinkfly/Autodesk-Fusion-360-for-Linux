@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    12:30/20.02.2022                                                                   #
-# Version:      0.0.6                                                                              #
+# Time/Date:    09:30/21.02.2022                                                                   #
+# Version:      0.0.7                                                                              #
 ####################################################################################################
 
 # Path: /$HOME/.config/fusion-360/bin/update.sh
@@ -30,6 +30,55 @@ connection=0
 
 ###############################################################################################################################################################
 # ALL FUNCTIONS ARE ARRANGED HERE:                                                                                                                            #
+###############################################################################################################################################################
+
+# Load the locale files ...
+
+function load-locale-cs {
+  profile_locale="cs-CZ"
+  . $HOME/.config/fusion-360/locale/cs-CZ/locale-cs.sh
+}
+
+function load-locale-de {
+  profile_locale="de-DE"
+  . $HOME/.config/fusion-360/locale/de-DE/locale-de.sh
+}
+
+function load-locale-en {
+  profile_locale="en-US"
+  . $HOME/.config/fusion-360/locale/en-US/locale-en.sh
+}
+
+function load-locale-es {
+  profile_locale="es-ES"
+  . $HOME/.config/fusion-360/locale/es-ES/locale-es.sh
+}
+
+function load-locale-fr {
+    profile_locale="fr-FR"
+  . $HOME/.config/fusion-360/locale/fr-FR/locale-fr.sh
+}
+
+function load-locale-it {
+  profile_locale="it-IT"
+  . $HOME/.config/fusion-360/locale/it-IT/locale-it.sh
+}
+
+function load-locale-ja {
+  profile_locale="ja-JP"
+  . $HOME/.config/fusion-360/locale/ja-JP/locale-ja.sh
+}
+
+function load-locale-ko {
+  profile_locale="ko-KR"
+  . $HOME/.config/fusion-360/locale/ko-KR/locale-ko.sh
+}
+
+function load-locale-zh {
+  profile_locale="zh-CN"
+  . $HOME/.config/fusion-360/locale/zh-CN/locale-zh.sh
+}
+
 ###############################################################################################################################################################
 
 # Check the connection to the server of GitHub.
@@ -77,7 +126,7 @@ function setupact-install-update {
 # The user get a informationt that no newer version of Autodesk Fusion 360 was found!
 function setupact-no-update-info {
   zenity --info \
-  --text="No newer version was found, so your Autodesk fusion 360 is up to date!" \
+  --text="$text_no_update_info" \
   --width=400 \
   --height=100
 }
@@ -87,7 +136,7 @@ function setupact-no-update-info {
 # The user will be informed that he is skipping the update!
 function setupact-skip-info {
   zenity --warning \
-  --text="The update was skipped! Please update your Autodesk Fusion 360 version soon!" \
+  --text="$text_skip_update_info" \
   --width=400 \
   --height=100
 }
@@ -97,7 +146,7 @@ function setupact-skip-info {
 # The user get a informationt that there is no connection to the server!
 function setupact-no-connection-warning {
   zenity --error \
-  --text="The connection to the server could not be established! The search for new updates has been skipped! Please check your internet connection!" \
+  --text="$text_no_connection_warning" \
   --width=400 \
   --height=100
 }
@@ -108,7 +157,7 @@ function setupact-no-connection-warning {
 function setupact-update-question {
   zenity --question \
   --title="$program_name" \
-  --text="A new version has been released! Would you like to update now?" \
+  --text="$text_update_question" \
   --width=400 \
   --height=100
   answer=$?
@@ -145,7 +194,7 @@ if [ "$?" = 0 ] ; then
 elif [ "$?" = 1 ] ; then
         zenity --question \
                  --title="$program_name" \
-                 --text="Are you sure you want to skip checking for an Autodesk Fusion 360 update?" \
+                 --text="$text_skip_update_question" \
                  --width=400 \
                  --height=100
         answer=$?
@@ -157,7 +206,7 @@ elif [ "$?" = 1 ] ; then
         fi
 elif [ "$?" = -1 ] ; then
         zenity --error \
-          --text="An unexpected error occurred!"
+          --text="$text_error"
         exit;
 fi
 }
