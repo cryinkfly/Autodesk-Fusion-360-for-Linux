@@ -383,7 +383,7 @@ function gentoo-linux {
 # Install a extension: Airfoil Tools
 
 function airfoil-tools-extension {
-  cd "$HOME/.config/fusion-360/extensions"
+  cd "$wineprefixname/drive_c/users/$USER/Downloads"
   wget -N https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/raw/main/files/extensions/AirfoilTools_win64.msi &&
   WINEPREFIX=$wineprefixname wine AirfoilTools_win64.msi
 }
@@ -393,7 +393,7 @@ function airfoil-tools-extension {
 # Install a extension: Additive Assistant (FFF)
 
 function additive-assistant-extension {
-  cd "$HOME/.config/fusion-360/extensions"
+  cd "$wineprefixname/drive_c/users/$USER/Downloads"
   wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/AdditiveAssistant.bundle-win64.msi &&
   WINEPREFIX=$wineprefixname msiexec /i AdditiveAssistant.bundle-win64.msi
 }
@@ -410,7 +410,7 @@ function czech-locale-extension {
 
 # Install a extension: HP 3D Printers for Autodesk® Fusion 360™
 function hp-3dprinter-connector-extension {
-  cd "$HOME/.config/fusion-360/extensions"
+  cd "$wineprefixname/drive_c/users/$USER/Downloads"
   wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/HP_3DPrinters_for_Fusion360-win64.msi &&
   WINEPREFIX=$wineprefixname msiexec /i HP_3DPrinters_for_Fusion360-win64.msi
 }
@@ -419,7 +419,7 @@ function hp-3dprinter-connector-extension {
 
 # Install a extension: Helical Gear Generator
 function helical-gear-generator-extension {
-  cd "$HOME/.config/fusion-360/extensions"
+  cd "$wineprefixname/drive_c/users/$USER/Downloads"
   wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/HelicalGear_win64.msi &&
   WINEPREFIX=$wineprefixname msiexec /i HelicalGear_win64.msi
 }
@@ -428,7 +428,7 @@ function helical-gear-generator-extension {
 
 # Install a extension: OctoPrint for Autodesk® Fusion 360™
 function octoprint-extension {
-  cd "$HOME/.config/fusion-360/extensions"
+  cd "$wineprefixname/drive_c/users/$USER/Downloads"
   wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/OctoPrint_for_Fusion360-win64.msi &&
   WINEPREFIX=$wineprefixname msiexec /i OctoPrint_for_Fusion360-win64.msi
 }
@@ -437,7 +437,7 @@ function octoprint-extension {
 
 # Install a extension: Parameter I/O
 function parameter-i-o-extension {
-  cd "$HOME/.config/fusion-360/extensions"
+  cd "$wineprefixname/drive_c/users/$USER/Downloads"
   wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/ParameterIO_win64.msi &&
   WINEPREFIX=$wineprefixname msiexec /i ParameterIO_win64.msi
 }
@@ -446,7 +446,7 @@ function parameter-i-o-extension {
 
 # Install a extension: RoboDK
 function robodk-extension {
-  cd "$HOME/.config/fusion-360/extensions"
+  cd "$wineprefixname/drive_c/users/$USER/Downloads"
   wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/RoboDK.bundle-win64.msi &&
   WINEPREFIX=$wineprefixname msiexec /i RoboDK.bundle-win64.msi
 }
@@ -455,7 +455,7 @@ function robodk-extension {
 
 # Install a extension: Ultimaker Digital Factory for Autodesk Fusion 360™
 function ultimaker-digital-factory-extension {
-  cd "$HOME/.config/fusion-360/extensions"
+  cd "$wineprefixname/drive_c/users/$USER/Downloads"
   wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/Ultimaker_Digital_Factory-win64.msi &&
   WINEPREFIX=$wineprefixname msiexec /i Ultimaker_Digital_Factory-win64.msi
 }
