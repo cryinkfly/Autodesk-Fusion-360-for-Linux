@@ -877,9 +877,9 @@ function setupact-select-wine_version {
                                TRUE "$text_wine_version_staging" \
 		               FALSE "$text_wine_version_exists")
 
-  [[ $select_wine_version = "Wine Version (Staging)" ]] && setupact-select-os
+  [[ $select_wine_version = "$text_wine_version_staging" ]] && setupact-select-os
 
-  [[ $select_wine_version = "Wine Version (6.23 or higher) is already installed!" ]] && setupact-f360-install
+  [[ $select_wine_version = "$text_wine_version_exists" ]] && setupact-f360-install
 
   [[ "$select_wine_version" ]] || echo "Go back" && setupact-select-opengl_dxvk
 }
