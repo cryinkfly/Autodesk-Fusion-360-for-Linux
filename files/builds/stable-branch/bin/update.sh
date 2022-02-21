@@ -174,7 +174,6 @@ function setupact-progressbar {
   (
     echo "30" ; sleep 2
     echo "# Connecting to the server ..." ; sleep 3
-    setupact-check-connection
     echo "50" ; sleep 1
     echo "# Check all files ..." ; sleep 1
     echo "75" ; sleep 3
