@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                          #
 # License:      MIT                                                            #
 # Copyright (c) 2020-2022                                                      #
-# Time/Date:    14:00/20.02.2022                                               #
-# Version:      0.6                                                            #
+# Time/Date:    11:00/21.02.2022                                               #
+# Version:      0.7                                                            #
 ################################################################################
 
 # Path: /$HOME/.config/fusion-360/bin/uninstall.sh
@@ -32,51 +32,67 @@ function setupact-get-wineprefixes-log {
 
 ###############################################################################################################################################################
 
-# Load the locale files for the setup wizard.
+# Load the locale files ...
 
 function load-locale-cs {
-  profile_locale="cs-CZ"
   . $HOME/.config/fusion-360/locale/cs-CZ/locale-cs.sh
 }
 
 function load-locale-de {
-  profile_locale="de-DE"
   . $HOME/.config/fusion-360/locale/de-DE/locale-de.sh
 }
 
 function load-locale-en {
-  profile_locale="en-US"
   . $HOME/.config/fusion-360/locale/en-US/locale-en.sh
 }
 
 function load-locale-es {
-  profile_locale="es-ES"
   . $HOME/.config/fusion-360/locale/es-ES/locale-es.sh
 }
 
 function load-locale-fr {
-    profile_locale="fr-FR"
   . $HOME/.config/fusion-360/locale/fr-FR/locale-fr.sh
 }
 
 function load-locale-it {
-  profile_locale="it-IT"
   . $HOME/.config/fusion-360/locale/it-IT/locale-it.sh
 }
 
 function load-locale-ja {
-  profile_locale="ja-JP"
   . $HOME/.config/fusion-360/locale/ja-JP/locale-ja.sh
 }
 
 function load-locale-ko {
-  profile_locale="ko-KR"
   . $HOME/.config/fusion-360/locale/ko-KR/locale-ko.sh
 }
 
 function load-locale-zh {
-  profile_locale="zh-CN"
   . $HOME/.config/fusion-360/locale/zh-CN/locale-zh.sh
+}
+
+function setupact-config-locale {
+  config_locale=`. $HOME/.config/fusion-360/local/user-locale.sh $HOME/.config/fusion-360/logs/profile-locale.log 1`
+  if [ "$config_locale" = "cs-CZ" ]; then
+    load-locale-cs
+  elif [ "$config_locale" = "de-DE" ]; then
+    load-locale-de
+  elif [ "$config_locale" = "en-US" ]; then
+    load-locale-en
+  elif [ "$config_locale" = "es-ES" ]; then
+    load-locale-es
+  elif [ "$config_locale" = "fr-FR" ]; then
+    load-locale-fr
+  elif [ "$config_locale" = "it-IT" ]; then
+    load-locale-it
+  elif [ "$config_locale" = "ja-JP" ]; then
+    load-locale-ja
+  elif [ "$config_locale" = "ko-KR" ]; then
+    load-locale-ko
+  elif [ "$config_locale" = "zh-CN" ]; then
+    load-locale-zh
+  else
+    load-locale-en
+  fi  
 }
 
 ###############################################################################################################################################################
@@ -91,47 +107,6 @@ function setupact-uninstall {
 
 ###############################################################################################################################################################
 # ALL DIALOGS ARE ARRANGED HERE:                                                                                                                              #
-###############################################################################################################################################################
-
-# Configure the locale for the Uninstall of Autodesk Fusion 360!
-function setupact-uninstall-configure-locale {
-  select_locale=$(zenity --list \
-                         --radiolist \
-                         --title="$program_name" \
-                         --width=700 \
-                         --height=500 \
-                         --column="Select:" --column="Language:" \
-                         TRUE "English (Standard)" \
-                         FALSE "German" \
-                         FALSE "Czech" \
-                         FALSE "Spanish" \
-                         FALSE "French" \
-                         FALSE "Italian" \
-                         FALSE "Japanese" \
-                         FALSE "Korean" \
-                         FALSE "Chinese")
-
-  [[ $select_locale = "English (Standard)" ]] && load-locale-en && setupact-uninstall-question
-
-  [[ $select_locale = "German" ]] && load-locale-de && setupact-uninstall-question
-
-  [[ $select_locale = "Czech" ]] && load-locale-cs && setupact-uninstall-question
-
-  [[ $select_locale = "Spanish" ]] && load-locale-es && setupact-uninstall-question
-
-  [[ $select_locale = "French" ]] && load-locale-fr && setupact-uninstall-question
-
-  [[ $select_locale = "Italian" ]] && load-locale-it && setupact-uninstall-question
-
-  [[ $select_locale = "Japanese" ]] && load-locale-ja && setupact-uninstall-question
-
-  [[ $select_locale = "Korean" ]] && load-locale-ko && setupact-uninstall-question
-
-  [[ $select_locale = "Chinese" ]] && load-locale-zh && setupact-uninstall-question
-
-  [[ "$select_locale" ]] || setupact-uninstall-configure-locale-abort
-}
-
 ###############################################################################################################################################################
 
 # The user will be asked if he wants to uninstall or not.
@@ -260,5 +235,6 @@ function setupact-uninstall-configure-locale-abort {
 # THE PROGRAM IS STARTED HERE:                                                                                                                                #
 ###############################################################################################################################################################
 
+setupact-config-locale
 setupact-get-wineprefixes-log
-setupact-uninstall-configure-locale
+setupact-uninstall-question
