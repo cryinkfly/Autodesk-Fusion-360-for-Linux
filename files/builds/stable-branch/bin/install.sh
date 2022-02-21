@@ -180,7 +180,8 @@ function setupact-load-f360exe {
 function setupact-dxvk-opengl-1 {
   if [ $driver_used -eq 1 ]; then
     WINEPREFIX=$wineprefixname sh $HOME/.config/fusion-360/bin/winetricks -q dxvk
-    wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/driver/video/dxvk/DXVK.reg
+    wget -N -P $wineprefixname/drive_c/users/$USER/Downloads https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/driver/video/dxvk/DXVK.reg
+    cd "$wineprefixname/drive_c/users/$USER/Downloads"
     WINEPREFIX=$wineprefixname wine regedit.exe DXVK.reg
   fi
 }
@@ -201,16 +202,20 @@ function setupact-dxvk-opengl-2 {
 
 # Autodesk Fusion 360 will now be installed using Wine and Winetricks.
 function setupact-f360-install {
-  # Note that the winetricks sandbox verb merely removes the desktop integration and Z: drive symlinks and is not a true sandbox.
+  # Note that the winetricks sandbox verb merely removes the desktop integration and Z: drive symlinks and is not a "true" sandbox.
   # It protects against errors rather than malice. It's useful for, e.g., keeping games from saving their settings in random subdirectories of your home directory. 
+  # But it still ensures that wine, for example, no longer has access permissions to Home! 
+  # For this reason, the EXE files must be located directly in the Wineprefix folder!
   WINEPREFIX=$wineprefixname sh winetricks -q sandbox
   # We must install some packages!
   WINEPREFIX=$wineprefixname sh winetricks -q atmlib gdiplus corefonts cjkfonts msxml4 msxml6 vcrun2017 fontsmooth=rgb winhttp win10
   # We must install cjkfonts again then sometimes it doesn't work in the first time!
   WINEPREFIX=$wineprefixname sh winetricks -q cjkfonts
   setupact-dxvk-opengl-1
-  WINEPREFIX=$wineprefixname wine $HOME/.config/fusion-360/downloads/Fusion360installer.exe -p deploy -g -f log.txt --quiet
-  WINEPREFIX=$wineprefixname wine $HOME/.config/fusion-360/downloads/Fusion360installer.exe -p deploy -g -f log.txt --quiet
+  # We must copy the EXE-file directly in the Wineprefix folder (Sandbox-Mode).
+  cp "$HOME/.config/fusion-360/downloads/Fusion360installer.exe" "$wineprefixname/drive_c/users/$USER/Downloads"
+  WINEPREFIX=$wineprefixname wine $wineprefixname/drive_c/users/$USER/Downloads/Fusion360installer.exe -p deploy -g -f log.txt --quiet
+  WINEPREFIX=$wineprefixname wine $wineprefixname/drive_c/users/$USER/Downloads/Fusion360installer.exe -p deploy -g -f log.txt --quiet
   mkdir -p "$wineprefixname/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options"
   cd "$wineprefixname/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options"
   setupact-dxvk-opengl-2
