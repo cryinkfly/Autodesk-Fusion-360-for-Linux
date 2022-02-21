@@ -71,7 +71,7 @@ function load-locale-zh {
 }
 
 function setupact-config-locale {
-  config_locale=`. $HOME/.config/fusion-360/locale/user-locale.sh $HOME/.config/fusion-360/logs/profile-locale.log 1`
+  config_locale=`. $HOME/.config/fusion-360/locale/profile-locale.sh $HOME/.config/fusion-360/logs/profile-locale.log 1`
   if [ "$config_locale" = "cs-CZ" ]; then
     load-locale-cs
   elif [ "$config_locale" = "de-DE" ]; then
