@@ -15,7 +15,7 @@
 # Path: /$HOME/.config/fusion-360/locale/de-DE/locale-de.sh
 
 ###############################################################################################################################################################
-# ALL DEFINITIONS FOR INSTALL ATODESK FUSION 360 ARE ARRANGED HERE:                                                                                           #
+# ALL DEFINITIONS FOR INSTALL AUTODESK FUSION 360 ARE ARRANGED HERE:                                                                                          #
 ###############################################################################################################################################################
 
 # License-checkbox
@@ -147,7 +147,7 @@ text_abort="Möchten Sie die Installation wirklich abbrechen?"
 text_error="Ein unerwarteter Fehler ist aufgetreten!"
 
 ###############################################################################################################################################################
-# ALL DEFINITIONS FOR UNINSTALL ATODESK FUSION 360 ARE ARRANGED HERE:                                                                                            #
+# ALL DEFINITIONS FOR UNINSTALL AUTODESK FUSION 360 ARE ARRANGED HERE:                                                                                        #
 ###############################################################################################################################################################
 
 text_uninstall_question="Möchten Sie Autodesk Fusion 360 wirklich von Ihrem System deinstallieren?"
@@ -160,3 +160,17 @@ text_uninstall_path="Wählen Sie das Wineprefix-Verzeichnis Ihrer Autodesk Fusio
 text_uninstall_path_select="Wählen Sie das Wineprefix-Verzeichnis ..."
 
 text_uninstall_completed="Die Deinstallation von Autodesk Fusion 360 ist abgeschlossen."
+
+###############################################################################################################################################################
+# ALL DEFINITIONS FOR UNINSTALL AUTODESK FUSION 360 ARE ARRANGED HERE:                                                                                        #
+###############################################################################################################################################################
+
+text_no_update_info="Es wurde keine neuere Version gefunden, Ihr Autodesk fusion 360 ist also auf dem neuesten Stand!"
+
+text_skip_update_info="Das Update wurde übersprungen! Bitte aktualisieren Sie bald Ihre Autodesk Fusion 360-Version!"
+text_skip_update_question="Möchten Sie die Suche nach einem Autodesk Fusion 360-Update wirklich überspringen?"
+
+text_update_question="Eine neue Version wurde veröffentlicht! Möchtest du jetzt die Aktualisierung durchführen?"
+
+
+text_no_connection_warning="Die Verbindung zum Server konnte nicht hergestellt werden! Die Suche nach neuen Updates wurde übersprungen! Bitte überprüfe deine Internetverbindung!"
