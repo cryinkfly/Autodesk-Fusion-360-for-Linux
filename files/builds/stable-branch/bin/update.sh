@@ -196,7 +196,8 @@ function setupact-progressbar {
     setupact-check-connection
     echo "50" ; sleep 1
     echo "# Check all files ..." ; sleep 1
-    echo "100" ; sleep 3
+    echo "75" ; sleep 3
+    echo "# All files are checked!" ; sleep 1
   ) |
   zenity --progress \
          --title="$program_name" \
