@@ -87,23 +87,6 @@ function setupact-config-locale {
 
 ###############################################################################################################################################################
 
-function setupact-get-update-0 {get_update=0}
-
-function setupact-get-update-1 {get_update=1}
-
-function setupact-config-update {
-  config_update=`. $HOME/.config/fusion-360/bin/read-text.sh $HOME/.config/fusion-360/bin/update-config.txt 1`
-  if [ "$config_update" = "Update=1" ]; then
-    # A value of 0 means that there is no update and a value of 1 will notify the user that there is an update.
-   setupact-get-update-1
-  else
-    echo "Do nothing!"
-    setupact-get-update-0
-  fi  
-}
-
-###############################################################################################################################################################
-
 # Checks if there is an update for Autodesk Fusion 360.
 function setupact-check-info {
   if [ $get_update -eq 1 ]; then
@@ -190,6 +173,7 @@ function setupact-progressbar {
     echo "# Connecting to the server ..." ; sleep 3
     echo "50" ; sleep 1
     echo "# Check all files ..." ; sleep 1
+    setupact-config-update
     echo "75" ; sleep 3
     echo "# All files are checked!" ; sleep 1
   ) |
