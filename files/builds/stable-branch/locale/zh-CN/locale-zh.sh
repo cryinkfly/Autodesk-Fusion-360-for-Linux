@@ -7,109 +7,105 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    16:30/10.02.2022                                                                   #
-# Version:      1.4                                                                                #
+# Time/Date:    16:30/23.02.2022                                                                   #
+# Version:      1.5                                                                                #
 ####################################################################################################
 
+# Path: /$HOME/.config/fusion-360/locale/zh-CN/locale-zh.sh
+
 ###############################################################################################################################################################
-# ALL DEFINITIONS ARE ARRANGED HERE:                                                                                                                          #
+# ALL DEFINITIONS FOR INSTALL AUTODESK FUSION 360 ARE ARRANGED HERE:                                                                                          #
 ###############################################################################################################################################################
 
 # License-checkbox
-text_license_checkbox="Wǒ yǐ yuèdú tiáokuǎn hé tiáojiàn bìng jiēshòu tāmen."
+text_license_checkbox="我已阅读条款和条件并接受。"
+
+###############################################################################################################################################################
 
 # Select
-text_select="Xuǎnzé"
+text_select="选择"
 
-# Version (Standard, Flatpak or Snap)
-text_version="Bǎnběn"
-text_standard="Biāozhǔn"
-text_flatpak="Flatpak (Shíyàn xìng de)"
-text_snap="Snap (Shíyàn xìng de)"
-
-# Driver
-text_driver="Xiǎnkǎ qūdòng"
-
-# Driver OpenGL
-text_driver_opengl="OpenGL (Hòubèi biàn tǐ)"
-
-# Driver DXVK
-text_driver_dxvk="DXVK (biāozhǔn biàn tǐ)"
+###############################################################################################################################################################
 
 # Linux distribution
-text_linux_distribution="Linux fāxíng bǎn"
+text_linux_distribution="Linux 发行版"
+
+###############################################################################################################################################################
 
 # Installation location
-text_installation_location="Ānzhuāng wèizhì"
-
-# Installation location - Standard
-text_installation_location_standard="Biāozhǔn - Jiāng Autodesk Fusion 360 ānzhuāng dào nín de zhǔ wénjiàn jiā zhōng. Lìrú: /home/username/.wineprefixes/fusion360"
-
-# Installation location - Custom
-text_installation_location_custom="Zì dìngyì - Jiāng Autodesk Fusion 360 ānzhuāng dào qítā wèizhì. Lìrú: /run/media/username/usb-drive/.wineprefixes/fusion360"
+text_installation_location="安装位置"
 
 # Select a location with a file browser
-text_select_location_custom="Xuǎnzé Autodesk Fusion 360 ānzhuāng wèizhì:"
+text_select_location_custom="为您的 Autodesk Fusion 360 安装选择一个位置："
 
-# Checkbox - desktop-launcher-custom
-text_desktop_launcher_custom_checkbox="Wǒ yǐjīng gēnggǎile Autodesk Fusion 360 de lùjìng!"
+# Installation location - Standard
+text_installation_location_standard="标准 - 将 Autodesk Fusion 360 安装到您的主文件夹中。例如：/home/username/.wineprefixes/fusion360"
 
-# Question - desktop-launcher-custom
-text_desktop_launcher_custom_question="Shìfǒu yào bǎocún gēnggǎi?"
+# Installation location - Custom
+text_installation_location_custom="自定义 - 将 Autodesk Fusion 360 安装到其他位置。例如：/run/media/username/usb-drive/.wineprefixes/fusion360"
 
-# Abort the program
-text_abort="Nín zhēn de yāo zhōngzhǐ ānzhuāng ma?"
+###############################################################################################################################################################
 
-# Program-Exit
-text_completed_installation="Autodesk Fusion 360 ānzhuāng wánchéng."
+# Driver
+text_driver="显卡驱动"
 
-# Program-Exit (Extensions)
-text_completed_installation_extensions="Autodesk Fusion 360 bùfèn kuòzhǎn ānzhuāng wánchéng."
+# Driver DXVK
+text_driver_dxvk="DXVK 支持 DirectX 9, 10, ... (默认)"
+
+# Driver OpenGL
+text_driver_opengl="OpenGL（后备）"
+
+###############################################################################################################################################################
+
+# Wine Version
+text_wine_version="葡萄酒版"
+text_wine_version_staging="葡萄酒版（暂存）"
+text_wine_version_exists="Wine 版本（6.23 或更高版本）已安装在系统上！"
+
+###############################################################################################################################################################
 
 # Select a option - new_modify_deinstall
-text_select_option="Xuǎnxiàng"
+text_select_option="选项"
 
 # Option 1
-text_select_option_1="Bùfèn huò suǒyǒu zǔjiàn de quánxīn ānzhuāng"
+text_select_option_1="部分或全部组件的新安装"
 
 # Option 2
-text_select_option_2="Gēngxīn huò xiūfù xiàn yǒu ānzhuāng"
+text_select_option_2="更新或修复现有安装"
 
 # Option 3
-text_select_option_3="Ānzhuāng, xiūfù huò xiè zǎi yīxiē kuòzhǎn"
+text_select_option_3="安装、修复或卸载某些扩展"
 
 # Option 4
-text_select_option_4="Xièzài suǒyǒu Autodesk Fusion 360 zǔjiàn"
+text_select_option_4="卸载所有 Autodesk Fusion 360 组件"
+
+###############################################################################################################################################################
 
 # New installation-checkbox - new_modify_deinstall
-text_new_installation_checkbox="Wǒ xiànzài yǐjīng kàn dàole nǎxiē ānzhuāng lùjìng kěyòng, bìng jiàng zàixià yībù zhōng zhǐdìng bùtóng de lùjìng!"
+text_new_installation_checkbox="我现在已经看到有哪些安装路径可用，下一步将指定不同的路径！"
 
 # Edit installation-checkbox - new_modify_deinstall
-text_edit_installation_checkbox="Wǒ cóng xiàn yǒu de Autodesk Fusion 360 ānzhuāng zhōng jì xià huò fùzhìle zhèngquè de lùjìng!"
+text_edit_installation_checkbox="我从现有的 Autodesk Fusion 360 安装中记下或复制了正确的路径！"
 
 # Deinstall-checkbox - new_modify_deinstall
-text_deinstall_checkbox="Wǒ cóng xiàn yǒu de Autodesk Fusion 360 ānzhuāng zhōng jì xià huò fùzhìle zhèngquè de lùjìng, ránhòu zài cǐ chù shān chú liǎo cǐ lùjìng!"
+text_deinstall_checkbox="我从现有的 Autodesk Fusion 360 安装中记下或复制了正确的路径，然后在此处删除了该路径！"
 
 # Question - Deinstall a exist Autodesk Fusion 360 installation
-text_deinstall_question="Shìfǒu yào bǎocún gēnggǎi bìng shānchú zhèngquè de xiàn yǒu Autodesk Fusion 360 ānzhuāng?"
+text_deinstall_question="是否要保存更改并删除正确的现有 Autodesk Fusion 360 安装？"
 
 # Select a location with a file browser - new_modify_deinstall
-text_select_location_deinstall="Xuǎnzé nín xiàn yǒu de Autodesk Fusion 360 ānzhuāng:"
+text_select_location_deinstall="选择您现有的 Autodesk Fusion 360 安装："
 
 # Program-Exit - new_modify_deinstall
-text_completed_deinstallation="Autodesk Fusion 360 xièzài wánchéng."
+text_completed_deinstallation="Autodesk Fusion 360 的卸载完成。"
 
-# Select CZECH-Plugin files
-text_select_czech_plugin="Xuǎnzé ānzhuāng wénjiàn:"
-
-# No Plugin was not found
-text_info_czech_plugin="Wèi xuǎnzé wénjiàn."
+###############################################################################################################################################################
 
 # Extension
-text_extension="Yánqí"
+text_extension="扩展"
 
 # Extension Description
-text_extension_description="Miáoshù"
+text_extension_description="描述"
 
 text_extension_description_1="此扩展帮助您优化暴露于移动气体或液体的任何事物或部件。例如：机翼、鳍、螺旋桨和涡轮机。"
 text_extension_description_2="此扩展帮助您分析设计的多个方面，并就如何提高零件的可制造性提供清晰的反馈。"
@@ -121,6 +117,49 @@ text_extension_description_7="允许用户从 CSV（逗号分隔值）文件导�
 text_extension_description_8="此扩展允许您直接从 Autodesk Fusion 360 对 50 多个不同的机器人制造商和 500 个机器人进行编程。"
 text_extension_description_9="此插件是 Autodesk® Fusion 360™ 与 Ultimaker Digital Factory 站点及其服务之间的连接器。"
 
-# Error
-text_error="Yīgè yìliào zhī wài de wèntí fāshēngle!"
+# Select CZECH-Plugin files
+text_select_czech_plugin="选择安装文件："
 
+# No Plugin was not found
+text_info_czech_plugin="未选择文件。"
+
+# Program-Exit (Extensions)
+text_completed_installation_extensions="Autodesk Fusion 360 部分扩展的安装已完成。"
+
+###############################################################################################################################################################
+
+# Program-Exit
+text_completed_installation="Autodesk Fusion 360 安装完成。"
+
+# Abort the program
+text_abort="您真的要取消安装吗？"
+
+# Error
+text_error="发生意外错误！"
+
+###############################################################################################################################################################
+# ALL DEFINITIONS FOR UNINSTALL AUTODESK FUSION 360 ARE ARRANGED HERE:                                                                                        #
+###############################################################################################################################################################
+
+text_uninstall_question="您确定要从系统中卸载 Autodesk Fusion 360？"
+text_uninstall_cancel="卸载已中止！"
+
+text_uninstall_checkbox="我从现有的 Autodesk Fusion 360 安装中记下/复制了正确的路径，然后在此处删除了此视图中的路径！"
+text_uninstall_edit_question="您要保存更改并卸载软件吗？"
+text_uninstall_path="选择您要卸载的 Autodesk Fusion 360 安装的 Wineprefix 目录！例如：/home/user/.wineprefixes/fusion360"
+text_uninstall_path_select="选择 Wineprefix 目录..."
+
+text_uninstall_completed="Autodesk Fusion 360 卸载完成。"
+
+###############################################################################################################################################################
+# ALL DEFINITIONS FOR UNINSTALL AUTODESK FUSION 360 ARE ARRANGED HERE:                                                                                        #
+###############################################################################################################################################################
+
+text_no_update_info="未找到更新版本，因此您的 Autodesk fusion 360 是最新的！"
+
+text_skip_update_info="已跳过更新！请尽快更新您的 Autodesk Fusion 360 版本！"
+text_skip_update_question="您确定要跳过搜索 Autodesk Fusion 360 更新吗？"
+
+text_update_question="发布了新版本！您要立即更新吗？"
+
+text_no_connection_warning="无法建立与服务器的连接！已跳过检查新更新！请检查您的互联网连接！" 
