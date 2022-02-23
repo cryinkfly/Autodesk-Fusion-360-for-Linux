@@ -111,32 +111,32 @@ Autodesk Fusion 360 — это облачное ПО для 3D-моделиро�
 
 #### Семейство Debian:
 
-    sudo apt-get update && sudo apt-get install software-properties-common zenity xterm
+    sudo apt-get update && sudo apt-get install software-properties-common zenity
 
 #### Семейство Red Hat:
 
-    sudo dnf update && sudo dnf install zenity xterm
+    sudo dnf update && sudo dnf install zenity
 
 #### Семейство Arch:
 
-    sudo pacman -Sy --needed zenity xterm
+    sudo pacman -Sy --needed zenity
 
 #### Семейство openSUSE:
 
-    su -c 'zypper up && zypper install zenity xterm'
+    su -c 'zypper up && zypper install zenity'
 
 #### Семейство Void:
 
-    sudo xbps-install -Sy zenity xterm
+    sudo xbps-install -Sy zenity
 
 #### Семейство Solus:
 
-    sudo eopkg install zenity xterm
+    sudo eopkg install zenity
 
 
 #### Семейство Gentoo:
 
-    sudo emerge -av gnome-extra/zenity x11-terms/xterm
+    sudo emerge -av gnome-extra/zenity
 
 ---
 
@@ -150,13 +150,11 @@ Autodesk Fusion 360 — это облачное ПО для 3D-моделиро�
 
 3.) Откройте терминал и выполните эту команду:
 
-    cd $HOME && mkdir -p "Fusion360" && cd "Fusion360" && wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/scripts/stable-branch/fusion360-setup-wizard.sh && chmod +x fusion360-setup-wizard.sh && bash fusion360-setup-wizard.sh && exit
+    mkdir -p "$HOME/.config/fusion-360/bin" && cd "$HOME/.config/fusion-360/bin" && wget -N https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/install.sh && chmod +x install.sh && bash install.sh && exit
 
 4.) Теперь вы <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues/44#issuecomment-890552181">можете использовать</a> Autodesk Fusion 360 на своём Linux!
 
-Например (по умолчанию):
-
-    xterm -hold -e "$HOME/.local/share/applications/wine/Programs/Autodesk/fusion360-launcher.sh"
+*Примечание. Здесь вы можете найти [все файлы] (https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/extras/desktop-starter), которые вам нужны для .desktop. файл!
 
 ---
 
