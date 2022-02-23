@@ -39,7 +39,7 @@ Autodesk Fusion 360 — это облачное ПО для 3D-моделиро�
 ---
 
   - 📂 Загрузки: 
-<a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/scripts/stable-branch">Стабильная</a> и <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/scripts/development-branch">девелоперская</a> сборка.
+<a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/builds/stable-branch">Стабильная</a> и <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/builds/development-branch">девелоперская</a> сборка.
   - 📔 Документация: <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/wiki/Documentation">GitHub</a> & <a href="https://www.youtube.com/watch?v=-BktJspJKgs&list=PLzwMdS5iu_BIsO6RTy7Hy1MbzLMrQE2xe">Видео</a>
   - 💬 Хотите связаться со мной, задать вопрос, обсудить решения возникших проблем?
   - 📫 Тогда создавайте <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues">тикеты</a> здесь, на GitHub, или связывайтесь со мной через <a href="https://cryinkfly.com/contact/">форму</a> на моём сайте!
@@ -71,12 +71,12 @@ Autodesk Fusion 360 — это облачное ПО для 3D-моделиро�
 
 ## Загрузки
 
-Скрипты для установки лежат в <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/scripts">этой директории</a>.
+Скрипты для установки лежат в <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/builds">этой директории</a>.
 
 Я рекомендую начать со стабильных сборок, если вы новичок.
 Девелоперские сборки доступны здесь же, но они могут быть менее стабильны.
 
-В [ветке разработки](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/scripts/development-branch) вы найдете, например, следующие версии мой мастер установки, а также сборки, запускаемые с помощью Flatpak или Docker / Podman.
+В [ветке разработки](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/builds/development-branch) вы найдете, например, следующие версии мой мастер установки, а также сборки, запускаемые с помощью Flatpak или Docker / Podman.
 
 ---
 
