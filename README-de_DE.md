@@ -109,32 +109,32 @@ Im [Entwicklungszweig](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linu
 
 #### Debian based systems:
 
-    sudo apt-get update && sudo apt-get install software-properties-common zenity xterm
+    sudo apt-get update && sudo apt-get install software-properties-common zenity
 
 #### Red Hat based systems:
 
-    sudo dnf update && sudo dnf install zenity xterm
+    sudo dnf update && sudo dnf install zenity
 
 #### Arch based systems:
 
-    sudo pacman -Sy --needed zenity xterm
+    sudo pacman -Sy --needed zenity
 
 #### openSUSE based systems:
 
-    su -c 'zypper up && zypper install zenity xterm'
+    su -c 'zypper up && zypper install zenity'
 
 #### Void based systems:
 
-    sudo xbps-install -Sy zenity xterm
+    sudo xbps-install -Sy zenity
 
 #### Solus based systems:
 
-    sudo eopkg install zenity xterm
+    sudo eopkg install zenity
 
 
 #### Gentoo based systems:
 
-    sudo emerge -av gnome-extra/zenity x11-terms/xterm
+    sudo emerge -av gnome-extra/zenity
 
 ---
 
@@ -148,13 +148,9 @@ Installieren Sie Fusion 360 für Linux-Client:
 
 3.) Öffnen Sie ein Terminal und führen Sie diesen Befehl aus:
 
-     cd $HOME && mkdir -p "Fusion360" && cd "Fusion360" && wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/scripts/stable-branch/fusion360-setup-wizard.sh && chmod +x fusion360-setup-wizard.sh && bash fusion360-setup-wizard.sh && exit
+    mkdir -p "$HOME/.config/fusion-360/bin" && cd "$HOME/.config/fusion-360/bin" && wget -N https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/install.sh && chmod +x install.sh && bash install.sh && exit
 
 4.) Jetzt können Sie <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues/44#issuecomment-890552181">Autodesk Fusion 360</a> auf Ihrem Linux-System verwenden!
-
-Beispiel (Standard)*:
-
-    xterm -hold -e "$HOME/.local/share/applications/wine/Programs/Autodesk/fusion360-launcher.sh"
 
 *Notiz: Hier findest du [weitere Dateien](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/extras/desktop-starter), die du für eine .desktop-Datei benötigst!
 
