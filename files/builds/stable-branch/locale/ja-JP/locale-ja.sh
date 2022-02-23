@@ -7,109 +7,105 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    16:30/10.02.2022                                                                   #
-# Version:      1.4                                                                                #
+# Time/Date:    16:30/23.02.2022                                                                   #
+# Version:      1.5                                                                                #
 ####################################################################################################
 
+# Path: /$HOME/.config/fusion-360/locale/ja-JP/locale-ja.sh
+
 ###############################################################################################################################################################
-# ALL DEFINITIONS ARE ARRANGED HERE:                                                                                                                          #
+# ALL DEFINITIONS FOR INSTALL AUTODESK FUSION 360 ARE ARRANGED HERE:                                                                                          #
 ###############################################################################################################################################################
 
 # License-checkbox
-text_license_checkbox="Riyō kiyaku o yomi, dōi shimasu."
+text_license_checkbox="利用規約を読み、同意します。"
+
+###############################################################################################################################################################
 
 # Select
-text_select="Sentaku suru"
+text_select="選択する"
 
-# Version (Standard, Flatpak or Snap)
-text_version="Bājon"
-text_standard="Hyōjun"
-text_flatpak="Flatpak (Jikken-teki)"
-text_snap="Snap (Jikken-teki)"
-
-# Driver
-text_driver="Gurafikkudoraibā"
-
-# Driver OpenGL
-text_driver_opengl="OpenGL (Fōrubakkubarianto)"
-
-# Driver DXVK
-text_driver_dxvk="DXVK (Hyōjun barianto)"
+###############################################################################################################################################################
 
 # Linux distribution
-text_linux_distribution="Rinakkusu disutoribyūshon"
+text_linux_distribution="Linuxディストリビューション"
+
+###############################################################################################################################################################
 
 # Installation location
-text_installation_location="Setchi basho"
-
-# Installation location - Standard
-text_installation_location_standard="Hyōjun - Autodesk Fusion 360 o hōmuforuda ni insutōru shimasu. Rei: /home/username/.wineprefixes/fusion360"
-
-# Installation location - Custom
-text_installation_location_custom="Kasutamu - Autodesk Fusion 360 o betsu no basho ni insutōru shimasu. Rei: /run/media/username/usb-drive/.wineprefixes/fusion360"
+text_installation_location="設置場所"
 
 # Select a location with a file browser
-text_select_location_custom="Autodesk Fusion 360 no insutōru basho o sentaku shimasu:"
+text_select_location_custom="Autodesk Fusion360のインストール場所を選択します。"
 
-# Checkbox - desktop-launcher-custom
-text_desktop_launcher_custom_checkbox="Autodesk Fusion 360 no pasu o henkō shimashita!"
+# Installation location - Standard
+text_installation_location_standard="標準-AutodeskFusion360をホームフォルダにインストールします。 例：/home/username/.wineprefixes/fusion360"
 
-# Question - desktop-launcher-custom
-text_desktop_launcher_custom_question="Henkō o hozon shimasu ka?"
+# Installation location - Custom
+text_installation_location_custom="カスタム-AutodeskFusion360を別の場所にインストールします。 例：/run/media/username/usb-drive/.wineprefixes/fusion360"
 
-# Abort the program
-text_abort="Hontōni insutōru o chūshi shimasu ka?"
+###############################################################################################################################################################
 
-# Program-Exit
-text_completed_installation="Autodesk Fusion 360 no insutōru ga kanryō shimashita."
+# Driver
+text_driver="グラフィックドライバー"
 
-# Program-Exit (Extensions)
-text_completed_installation_extensions="Autodesk Fusion 360 no ikutsu ka no kakuchō kinō no insutōru ga kanryō shimashita."
+# Driver DXVK
+text_driver_dxvk="DXVKはDirectX9、10、...をサポートします（デフォルト）"
+
+# Driver OpenGL
+text_driver_opengl="OpenGL（フォールバック）"
+
+###############################################################################################################################################################
+
+# Wine Version
+text_wine_version="ワインバージョン"
+text_wine_version_staging="ワインバージョン（ステージング）"
+text_wine_version_exists="Wineバージョン（6.23以降）はすでにシステムにインストールされています！"
+
+###############################################################################################################################################################
 
 # Select a option - new_modify_deinstall
-text_select_option="Opushon"
+text_select_option="オプション"
 
 # Option 1
-text_select_option_1="Ichibu matawa subete no konpōnento no shinki insutōru"
+text_select_option_1="一部またはすべてのコンポーネントの新規インストール"
 
 # Option 2
-text_select_option_2="Kizon no insutōru o kōshin matawa shūfuku suru"
+text_select_option_2="既存のインストールを更新または修復する"
 
 # Option 3
-text_select_option_3="Ichibu no kakuchō kinō o insutōru, shūfuku, matawa an'insutōru suru"
+text_select_option_3="一部の拡張機能をインストール、修復、またはアンインストールする"
 
 # Option 4
-text_select_option_4="Subete no Autodesk Fusion 360 konpōnento o an'insutōru shimasu"
+text_select_option_4="すべてのAutodeskFusion360コンポーネントをアンインストールします"
+
+###############################################################################################################################################################
 
 # New installation-checkbox - new_modify_deinstall
-text_new_installation_checkbox="Shiyō kanōna insutōrupasu o kakunin shimashita. Tsugi no suteppu de betsu no pasu o shitei shimasu."
+text_new_installation_checkbox="使用可能なインストールパスを確認しました。次のステップで別のパスを指定します！"
 
 # Edit installation-checkbox - new_modify_deinstall
-text_edit_installation_checkbox="Kizon no Autodesk Fusion 360 insutōru kara tadashī pasu o kakitomeru ka kopī shimashita!"
+text_edit_installation_checkbox="既存のAutodeskFusion 360インストールから正しいパスを書き留めるかコピーしました！"
 
 # Deinstall-checkbox - new_modify_deinstall
-text_deinstall_checkbox="Kizon no Autodesk Fusion 360 insutōru kara tadashī pasu o kakitomeru ka kopī shite, kono pasu o sakujo shimashita."
+text_deinstall_checkbox="既存のAutodeskFusion 360インストールから正しいパスを書き留めるかコピーして、このパスを削除しました。"
 
 # Question - Deinstall a exist Autodesk Fusion 360 installation
-text_deinstall_question="Henkō o hozon shite, kizon no tadashī Autodesk Fusion 360 insutōru o sakujo shimasu ka?"
+text_deinstall_question="変更を保存して、既存の正しいAutodesk Fusion 360インストールを削除しますか？"
 
 # Select a location with a file browser - new_modify_deinstall
-text_select_location_deinstall="Kizon no Autodesk Fusion 360 insutōru o sentaku shimasu:"
+text_select_location_deinstall="既存のAutodeskFusion 360インストールを選択してください："
 
 # Program-Exit - new_modify_deinstall
-text_completed_deinstallation="Autodesk Fusion 360 no sakujo ga kanryō shimashita."
+text_completed_deinstallation="Autodesk Fusion360の削除が完了しました。"
 
-# Select CZECH-Plugin files
-text_select_czech_plugin="Insutōrufairu o sentaku shimasu:"
-
-# No Plugin was not found
-text_info_czech_plugin="Fairu ga sentaku sa rete imasen."
+###############################################################################################################################################################
 
 # Extension
-text_extension="Kakudai"
+text_extension="拡大"
 
 # Extension Description
-text_extension_description="Setsumei"
+text_extension_description="説明"
 
 text_extension_description_1 = "この拡張機能は、移動する気体または液体にさらされるあらゆるものまたは部品を最適化するのに役立ちます。たとえば、翼、フィン、プロペラ、タービンなどです。"
 text_extension_description_2 = "この拡張機能は、設計のさまざまな側面を分析し、部品の製造可能性を改善する方法に関する明確なフィードバックを提供するのに役立ちます。"
@@ -121,6 +117,50 @@ text_extension_description_7 = "ユーザーがパラメーターをCSV（カン
 text_extension_description_8 = "この拡張機能を使用すると、50を超えるさまざまなロボットメーカーと500のロボットをAutodesk Fusion360から直接プログラムできます。"
 text_extension_description_9 = "このプラグインは、Autodesk®Fusion360™とUltimaker DigitalFactoryサイトおよびそのサービスの間のコネクタです。"
 
-# Error
-text_error="Yoki senu erā ga hassei shita!"
+# Select CZECH-Plugin files
+text_select_czech_plugin="インストールファイルを選択します。"
 
+# No Plugin was not found
+text_info_czech_plugin="ファイルが選択されていません。"
+
+# Program-Exit (Extensions)
+text_completed_installation_extensions="Autodesk Fusion360の一部の拡張機能のインストールが完了しました。"
+
+###############################################################################################################################################################
+
+# Program-Exit
+text_completed_installation="Autodesk Fusion360のインストールが完了しました。"
+
+# Abort the program
+text_abort="本当にインストールをキャンセルしますか？"
+
+# Error
+text_error="予期しないエラーが発生しました！"
+
+###############################################################################################################################################################
+# ALL DEFINITIONS FOR UNINSTALL AUTODESK FUSION 360 ARE ARRANGED HERE:                                                                                        #
+###############################################################################################################################################################
+
+text_uninstall_question="システムからAutodeskFusion 360をアンインストールしてもよろしいですか？"
+text_uninstall_cancel="アンインストールが中止されました！"
+
+text_uninstall_checkbox="既存のAutodeskFusion 360インストールから正しいパスを書き留め/コピーしてから、このビューのパスをここで削除しました！"
+text_uninstall_edit_question="変更を保存してソフトウェアをアンインストールしますか？"
+
+text_uninstall_path="アンインストールするAutodeskFusion 360インストールのWineprefixディレクトリを選択します。例：/home/user/.wineprefixes/fusion360"
+text_uninstall_path_select="Wineprefixディレクトリを選択..."
+
+text_uninstall_completed="Autodesk Fusion360のアンインストールが完了しました。"
+
+###############################################################################################################################################################
+# ALL DEFINITIONS FOR UNINSTALL AUTODESK FUSION 360 ARE ARRANGED HERE:                                                                                        #
+###############################################################################################################################################################
+
+text_no_update_info="新しいバージョンが見つからなかったため、Autodesk Fusion 360は最新です！"
+
+text_skip_update_info="更新はスキップされました！Autodesk Fusion 360のバージョンをすぐに更新してください！"
+text_skip_update_question="Autodesk Fusion 360アップデートの検索をスキップしてもよろしいですか？"
+
+text_update_question="新しいバージョンがリリースされました！今すぐ更新しますか？"
+
+text_no_connection_warning="サーバーへの接続を確立できませんでした！新しい更新の確認はスキップされました！インターネット接続を確認してください！"
