@@ -39,7 +39,7 @@ Weitere Informationen zu diesem Programm erhalten Sie mit diesem Link: https://w
 ---
 
   - 📂 Downloads: 
-<a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/scripts/stable-branch">Stabiler-</a> and <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/scripts/development-branch">Entwicklungs-Zweig</a>
+<a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/builds/stable-branch">Stabiler-</a> and <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/builds/development-branch">Entwicklungs-Zweig</a>
   - 📔 Documentation: <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/wiki/Documentation">GitHub-Dokumentation</a> & <a href="https://www.youtube.com/watch?v=-BktJspJKgs&list=PLzwMdS5iu_BIsO6RTy7Hy1MbzLMrQE2xe">Videos</a>
   - 💬 Möchten Sie mit mir in Kontakt treten? Oder haben Sie Fragen, Anregungen oder Probleme?
   - 📫 Dann können Sie hier einen neuen <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues">Fall</a> auf GitHub erstellen oder Sie nutzen dazu mein <a href="https://cryinkfly.com/contact/">Kontaktformular</a>!
@@ -70,11 +70,11 @@ Weitere Informationen zu diesem Programm erhalten Sie mit diesem Link: https://w
 
 ## Downloads
 
-Es sind einige <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/scripts">Skript-Releases</a> verfügbar, die auf den Release-Zielen basieren .
+Es sind einige <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/builds">Skript-Releases</a> verfügbar, die auf den Release-Zielen basieren .
 
 Es wird empfohlen, dass Sie mit den stabilen Builds beginnen, wenn Sie neu sind. Entwicklungs-Builds sind hier bei Bedarf verfügbar, können jedoch entsprechend weniger stabil sein.
 
-Im [Entwicklungszweig](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/scripts/development-branch) finden Sie zum Beispiel die kommenden Versionen meines Setup-Assistenten, sowie Builds, die mit Hilfe von Flatpak oder Docker/Podman laufen.
+Im [Entwicklungszweig](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/builds/development-branch) finden Sie zum Beispiel die kommenden Versionen meines Setup-Assistenten, sowie Builds, die mit Hilfe von Flatpak oder Docker/Podman laufen.
 
 ---
 
