@@ -37,7 +37,7 @@ Para obtener más información sobre este programa, puedes ver la web original d
 ---
 
   - 📂 Descargas: 
-Versiones <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/scripts/stable-branch">estables (stable)</a> y <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/scripts/development-branch">de desarrollo (development)</a>
+Versiones <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/builds/stable-branch">estables (stable)</a> y <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/builds/development-branch">de desarrollo (development)</a>
   - 📔 Documentation: <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/wiki/Documentation">GitHub-Documentation (en inglés)</a> & <a href="https://www.youtube.com/watch?v=-BktJspJKgs&list=PLzwMdS5iu_BIsO6RTy7Hy1MbzLMrQE2xe">Videos</a>
   - 💬 Querrías ponerte en contacto conmigo? O, tienes pregunts, sugerencias o problemas?
   - 📫 Si es así, puedes crear una <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues">issue</a> aquí en GitHub o visitar mi <a href="https://cryinkfly.com">web</a> y ponerte en contacto conmigo!
@@ -69,11 +69,11 @@ Versiones <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tr
 
 ## Descargas
 
-Hay unas cuantas versiones de <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/scripts">scripts</a> disponibles, extraídas de las versiones que vamos publicando (releases).
+Hay unas cuantas versiones de <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/builds">scripts</a> disponibles, extraídas de las versiones que vamos publicando (releases).
 
 Se recomienda que empieces con las versiones "stable". Las versiones de desarrollo están disponibles si necesitas probarlas, pero como su nombre indica, puede que sean menos estables.
 
-En la [rama de desarrollo](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/scripts/development-branch) encontrarás, por ejemplo, las versiones próximas de mi asistente de instalación, así como versiones que funcionan con Flatpak o Docker/Podman.
+En la [rama de desarrollo](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/builds/development-branch) encontrarás, por ejemplo, las versiones próximas de mi asistente de instalación, así como versiones que funcionan con Flatpak o Docker/Podman.
 
 ---
 
