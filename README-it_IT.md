@@ -104,32 +104,32 @@ Nella [development branch](https://github.com/cryinkfly/Autodesk-Fusion-360-for-
 
 #### Debian:
 
-    sudo apt-get update && sudo apt-get install software-properties-common zenity xterm
+    sudo apt-get update && sudo apt-get install software-properties-common zenity
 
 #### Red Hat:
 
-    sudo dnf update && sudo dnf install zenity xterm
+    sudo dnf update && sudo dnf install zenity
 
 #### Arch:
 
-    sudo pacman -Sy --needed zenity xterm
+    sudo pacman -Sy --needed zenity
 
 #### openSUSE:
 
-    su -c 'zypper up && zypper install zenity xterm'
+    su -c 'zypper up && zypper install zenity'
 
 #### Void:
 
-    sudo xbps-install -Sy zenity xterm
+    sudo xbps-install -Sy zenity
 
 #### Solus:
 
-    sudo eopkg install zenity xterm
+    sudo eopkg install zenity
 
 
 #### Gentoo:
 
-    sudo emerge -av gnome-extra/zenity x11-terms/xterm
+    sudo emerge -av gnome-extra/zenity
 
 ---
 
@@ -139,19 +139,15 @@ Installare il client di Fusion 360 su Linux:
 
 1.) Controla la mia <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/wiki/Documentation">GitHub-Documentation</a> & <a href="https://www.youtube.com/watch?v=-BktJspJKgs&list=PLzwMdS5iu_BIsO6RTy7Hy1MbzLMrQE2xe">Video</a> prima di installare Fusion 360 sul tuo sistema!
 
-2.) COntrolla se le tue [impostazioni di rete](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/extras/network/etc) sono correttamente configurate!
-
-
+2.) Controlla se le tue [impostazioni di rete](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/extras/network/etc) sono correttamente configurate!
 
 3.) Apri il terminale ed esegui questo comando:
 
-    mkdir -p "$HOME/.wineprefixes/fusion360/INSTALLDIR" && cd "$HOME/.wineprefixes/fusion360/INSTALLDIR" && wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/scripts/stable-branch/fusion360-setup-wizard.sh && chmod +x fusion360-setup-wizard.sh && bash fusion360-setup-wizard.sh && exit
+    mkdir -p "$HOME/.config/fusion-360/bin" && cd "$HOME/.config/fusion-360/bin" && wget -N https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/install.sh && chmod +x install.sh && bash install.sh && exit
 
 4.) Ora puoi <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues/44#issuecomment-890552181">usare</a> Autodesk Fusion 360 sul tuo sistema Linux!
 
-Per esempio (Default):
-
-    xterm -hold -e "$HOME/.local/share/applications/wine/Programs/Autodesk/fusion360-launcher.sh"
+*Avviso: qui puoi trovare [tutti i file](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/extras/desktop-starter) quello che ti serve per un .desktop file! 
 
 ---
 
