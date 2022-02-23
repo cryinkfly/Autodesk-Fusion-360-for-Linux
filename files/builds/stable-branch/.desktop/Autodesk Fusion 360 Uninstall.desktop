@@ -1,10 +1,10 @@
 [Desktop Entry]
 Name=Autodesk Fusion 360 - Uninstall
-Comment=This program you can delete Autodesk Fusion 360 on your system!
-Exec=xterm -hold -e "$HOME/.config/fusion-360/bin/uninstall.sh"
+Comment=With this program you can delete Autodesk Fusion 360 on your system!
+Exec=bash ./uninstall.sh"
 Type=Application
 Categories=Development;Graphics;Science
 StartupNotify=true
-Icon=$HOME/.config/fusion-360/bin/fusion360.svg
+Icon=/home/USERNAME/.config/fusion-360/bin/fusion360-uninstall.svg
 Terminal=false
-Path=
+Path=/home/USERNAME/.config/fusion-360/bin
