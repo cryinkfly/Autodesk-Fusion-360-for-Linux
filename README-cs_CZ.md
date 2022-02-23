@@ -37,7 +37,7 @@ Získáte více informací o tomto programu, poté můžete navštívit původn�
 ---
 
   - 📂 Stahování:
-<a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/scripts/stable-branch">Stable</a> a <a href="https ://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/scripts/development-branch">vývojové sestavení</a>
+<a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/builds/stable-branch">Stable</a> a <a href="https ://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/builds/development-branch">vývojové sestavení</a>
   - 📔 Dokumentace: <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/wiki/Documentation">GitHub-Documentation</a> & <a href=" https://www.youtube.com/watch?v=-BktJspJKgs&list=PLzwMdS5iu_BIsO6RTy7Hy1MbzLMrQE2xe">Videa</a>
   - 💬 Chtěli byste se se mnou spojit? Nebo pokud máte nějaké dotazy, návrhy nebo problémy?
   - 📫 Pak můžete vytvořit <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues">problém</a> zde na GitHubu nebo můžete navštívit můj <a href="https://cryinkfly.com">webové stránce</a> a kontaktujte mě!
@@ -68,7 +68,7 @@ Získáte více informací o tomto programu, poté můžete navštívit původn�
 
 ## Stahování
 
-K dispozici jsou některá <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/scripts">vydání skriptů</a> sestavená z cílů vydání .
+K dispozici jsou některá <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/builds">vydání skriptů</a> sestavená z cílů vydání .
 
 Pokud jste noví, doporučujeme vám začít se stabilními sestaveními. Vývojová sestavení jsou k dispozici zde, pokud je potřebujete, ale mohou být méně stabilní.
 
