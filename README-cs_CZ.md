@@ -30,7 +30,7 @@ Získáte více informací o tomto programu, poté můžete navštívit původn�
 
 ## Aktuální verze Autodesk Fusion 360
 
-**Číslo verze:** 2.0.12376*
+**Číslo verze:** 2.0.12392*
 
 *Upozornění: [Jak zkontrolovat, která verze Fusion 360 se používá?](https://knowledge.autodesk.com/support/fusion-360/troubleshooting/caas/sfdcarticles/sfdcarticles/How-to-check-what- version-of-Fusion-360-is-installed.html)
 
