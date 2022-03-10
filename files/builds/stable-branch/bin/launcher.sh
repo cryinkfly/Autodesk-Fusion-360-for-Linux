@@ -30,7 +30,7 @@ function setupact-config-update {
   online_build_version=`. $HOME/.config/fusion-360/bin/read-text.sh $HOME/.config/fusion-360/bin/build-version.txt 1`
   system_build_version=`. $HOME/.config/fusion-360/bin/read-text.sh $HOME/.wineprefixes/fusion360/drive_c/users/$USER/AppData/Roaming/Autodesk/Autodesk\ Fusion\ 360/API/version.txt 1`
   if [ "$online_build_version" = "$system_build_version" ]; then
-        echo "Do nothing!"
+    echo "Do nothing!"
     get_update=0
   else
     # A value of 0 means that there is no update and a value of 1 will notify the user that there is an update.
