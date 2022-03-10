@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    20:00/23.02.2022                                                                   #
-# Version:      1.7.7                                                                              #
+# Time/Date:    11:30/10.03.2022                                                                   #
+# Version:      1.7.8                                                                              #
 ####################################################################################################
 
 # Path: /$HOME/.config/fusion-360/bin/install.sh
@@ -47,6 +47,7 @@ profile_locale="en-US"
 
 # Provides information about setup actions during installation.
 function setupact-install-log {
+  mkdir -p "/tmp/fusion-360/logs"
   mkdir -p "$HOME/.config/fusion-360/logs/"
   exec 5> $HOME/.config/fusion-360/logs/setupact.log
   BASH_XTRACEFD="5"
