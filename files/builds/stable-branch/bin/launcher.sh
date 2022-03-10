@@ -27,7 +27,7 @@ function setupact-check-fusion360 {
 }
 
 function setupact-config-update {
-  config_update=`. $HOME/.config/fusion-360/bin/read-text.sh $HOME/.wineprefixes/fusion360/drive_c/users/$USER/AppData/Roaming/Autodesk/Autodesk Fusion 360/API/version.txt 1`
+  config_update=`. $HOME/.config/fusion-360/bin/read-text.sh $HOME/.wineprefixes/fusion360/drive_c/users/$USER/AppData/Roaming/Autodesk/Autodesk\ Fusion\ 360/API/version.txt 1`
   if [ "$config_update" = "$config_update" ]; then
         echo "Do nothing!"
     get_update=0
