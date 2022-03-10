@@ -154,7 +154,7 @@ Autodesk Fusion 360 — это облачное ПО для 3D-моделиро�
 
 4.) Теперь вы <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues/44#issuecomment-890552181">можете использовать</a> Autodesk Fusion 360 на своём Linux!
 
-*Примечание. Здесь вы можете найти [все файлы] (https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/extras/desktop-starter), которые вам нужны для .desktop. файл!
+*Примечание. Здесь вы можете найти [все файлы](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/builds/stable-branch/.desktop), которые вам нужны для .desktop. файл!
 
 ---
 
