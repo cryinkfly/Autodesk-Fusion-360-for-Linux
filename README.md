@@ -151,7 +151,7 @@ Install Fusion 360 for Linux client:
 
 4.) Now, You can <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues/44#issuecomment-890552181">use</a> Autodesk Fusion 360 on your Linux system!
 
-*Notice: Here can you find [all files](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/extras/desktop-starter) what you need for a .desktop file!
+*Notice: Here can you find [all files](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/builds/stable-branch/.desktop) what you need for a .desktop file!
 
 ---
 
