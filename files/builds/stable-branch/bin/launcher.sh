@@ -24,10 +24,10 @@
 # This feature will check if there is a new version of Autodesk Fusion 360.
 function setupact-check-fusion360 {
   wget -N -P $HOME/.config/fusion-360/bin https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/build-version.txt  
+  online_build_version=`. $HOME/.config/fusion-360/bin/read-text.sh $HOME/.config/fusion-360/bin/build-version.txt 1`
 }
 
 function setupact-config-update {
-  online_build_version=`. $HOME/.config/fusion-360/bin/read-text.sh $HOME/.config/fusion-360/bin/build-version.txt 1`
   system_build_version=`. $HOME/.config/fusion-360/bin/read-text.sh $HOME/.wineprefixes/fusion360/drive_c/users/$USER/AppData/Roaming/Autodesk/Autodesk\ Fusion\ 360/API/version.txt 1`
   if [ "$online_build_version" = "$system_build_version" ]; then
     echo "Do nothing!"
