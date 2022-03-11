@@ -137,7 +137,7 @@ function setupact-cancel-info {
 	 
   if [ "$uninstall_standalone" -eq 0 ]; then       
     exit;
-  else [ "$uninstall_standalone" -eq 1 ]; then 
+  elif [ "$uninstall_standalone" -eq 1 ]; then 
     echo "Go back"
     program_name="Autodesk Fusion 360 for Linux - Setup Wizard"
     setupact-modify-f360
