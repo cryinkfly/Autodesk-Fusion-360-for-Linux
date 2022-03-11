@@ -39,6 +39,7 @@
 - @fcltymngr
 - @fliuzzi02
 - @GoTVm
+- @GibsDev
 - @hopkuba
 - @IsaacDias2020
 - @jabautomation
