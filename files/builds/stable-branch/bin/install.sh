@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    11:30/10.03.2022                                                                   #
-# Version:      1.7.8                                                                              #
+# Time/Date:    08:45/13.03.2022                                                                   #
+# Version:      1.7.9                                                                              #
 ####################################################################################################
 
 # Path: /$HOME/.config/fusion-360/bin/install.sh
@@ -370,6 +370,18 @@ function opensuse152 {
 
 function opensuse153 {
   su -c 'zypper up && zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.3/ wine && zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.3/ wine && zypper install p7zip-full curl wget wine cabextract'
+  setupact-f360-install
+}
+
+# Has not been published yet!
+function opensuse154 {
+  su -c 'zypper up && zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.4/ wine && zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.2/ wine && zypper install p7zip-full curl wget wine cabextract'
+  setupact-f360-install
+}
+
+# This repository contains the latest packages and patches faster!
+function opensuseTumbleweed {
+  su -c 'zypper up && zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.4/ wine && zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.2/ wine && zypper install p7zip-full curl wget wine cabextract'
   setupact-f360-install
 }
 
@@ -963,7 +975,7 @@ function setupact-select-os {
 
   [[ $select_os = "openSUSE Leap 15.3" ]] && opensuse153
 
-  [[ $select_os = "openSUSE Tumbleweed" ]] && su -c 'zypper up && zypper install p7zip-full curl wget wine cabextract' && setupact-f360-install
+  [[ $select_os = "openSUSE Tumbleweed" ]] && opensuseTumbleweed
 
   [[ $select_os = "Red Hat Enterprise Linux 8.x" ]] && redhat-linux
 
