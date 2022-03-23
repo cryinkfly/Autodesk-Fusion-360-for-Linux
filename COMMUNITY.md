@@ -83,6 +83,7 @@
 - @TheTRCG
 - @vintagepc
 - @vikingsraven
+- @Vermoot
 - @watzon
 - @wprojects
 
