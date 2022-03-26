@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Autodesk Fusion 360
 Comment=Autodesk Fusion 360 is a cloud-based 3D modeling, CAD, CAM, and PCB software platform for product design and manufacturing.
-Exec=bash ./launcher.sh"
+Exec=bash ./launcher.sh
 Type=Application
 Categories=Development;Graphics;Science
 StartupNotify=true
