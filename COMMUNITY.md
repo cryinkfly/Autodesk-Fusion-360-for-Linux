@@ -41,6 +41,7 @@
 - @fliuzzi02
 - @GoTVm
 - @GibsDev
+- @gromain
 - @hopkuba
 - @IsaacDias2020
 - @jabautomation
@@ -51,6 +52,7 @@
 - @Le0xFF
 - @Lik3Hackdev
 - @lewisjared
+- @looselyrigorous
 - @madurani
 - @ManuGithubSteam
 - @marrobHD
@@ -72,6 +74,7 @@
 - @roboticsmick
 - @rusk911
 - @realumhelp
+- @rmeno12
 - @SuibianP
 - @suryanisaac
 - @sixxxis
