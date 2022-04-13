@@ -26,6 +26,7 @@
 - @blazej222
 - @bwrsandman
 - @buteomont
+- @bishboshin
 - @CaninoDev
 - @ConorIA
 - @cooked
@@ -57,7 +58,8 @@
 - @mike-lloyd03
 - @MrEdd123
 - @madhead
-- @marzukia 
+- @marzukia
+- @madurani 
 - @nitro2k01
 - @nonchip
 - @Patschke
