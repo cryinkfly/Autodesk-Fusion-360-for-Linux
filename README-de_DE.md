@@ -32,7 +32,7 @@ Weitere Informationen zu diesem Programm erhalten Sie mit diesem Link: https://w
 
 ## Aktuelle Version von Autodesk Fusion 360
 
-**Versionsnummer:** 2.0.12665*
+**Versionsnummer:** 2.0.12670*
 
 *Hinweis: [Wie überprüfe ich, welche Version von Fusion 360 verwendet wird?](https://knowledge.autodesk.com/support/fusion-360/troubleshooting/caas/sfdcarticles/sfdcarticles/How-to-check-what-version-of-Fusion-360-is-installed.html)
 
