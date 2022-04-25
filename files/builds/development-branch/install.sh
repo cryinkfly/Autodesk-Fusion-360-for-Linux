@@ -369,9 +369,17 @@ function OPENSUSE_TW {
 
 ###############################################################################################################################################################
 
-function OS_REDHAT_LINUX {
+function OS_REDHAT_LINUX_8 {
   sudo subscription-manager repos --enable codeready-builder-for-rhel-8-x86_64-rpms
   sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+  sudo dnf upgrade
+  sudo dnf install wine
+  SP_FUSION360_INSTALL
+}
+
+function OS_REDHAT_LINUX_9 {
+  sudo subscription-manager repos --enable codeready-builder-for-rhel-9-x86_64-rpms
+  sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
   sudo dnf upgrade
   sudo dnf install wine
   SP_FUSION360_INSTALL
