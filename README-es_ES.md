@@ -30,7 +30,7 @@ Para obtener más información sobre este programa, puedes ver la web original d
 
 ## Versión actual de Autodesk Fusion 360
 
-**Número de versión:** 2.0.12670*
+**Número de versión:** 2.0.12888*
 
 *Ver: [Cómo comprobar qué versión de Fusion 360 está siendo usada? (En la web de Autodesk)](https://knowledge.autodesk.com/support/fusion-360/troubleshooting/caas/sfdcarticles/sfdcarticles/How-to-check-what-version-of-Fusion-360-is-installed.html)
 
