@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    10:45/25.04.2022                                                                   #
+# Time/Date:    21:45/25.04.2022                                                                   #
 # Version:      1.7.9 -> 1.8.0                                                                     #
 ####################################################################################################
 
@@ -488,4 +488,38 @@ function EXTENSION_ULTIMAKER_DIGITAL_FACTORY {
   cd "$WP_PATH/drive_c/users/$USER/Downloads"
   wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/Ultimaker_Digital_Factory-win64.msi &&
   WINEPREFIX=$WP_PATH msiexec /i Ultimaker_Digital_Factory-win64.msi
+}
+
+###############################################################################################################################################################
+# ALL DIALOGS ARE ARRANGED HERE:                                                                                                                              #
+###############################################################################################################################################################
+
+function SP-WELCOME {
+yad \
+--form \
+--separator="" \
+--center \
+--height=125 \
+--width=750 \
+--buttons-layout=center \
+--title="" \
+--field="<big>SP_TITLE</big>:LBL" \
+--field="$SP_WELCOME_LABEL_1:LBL" \
+--field="$SP_WELCOME_LABEL_2:LBL" \
+--align=center \
+--button=gtk-about!!"Here you get more informations about this setup wizard.":1 \
+--button=gtk-preferences!!"Here you can adjust the default setting. For example the language.":2 \
+--button=gtk-cancel:99 \
+--button=gtk-ok:3
+
+ret=$?
+
+# Responses to above button presses are below:
+if [[ $ret -eq 1 ]]; then
+    # About-GTK
+elif [[ $ret -eq 2 ]]; then
+    # Settings-GTK
+elif [[ $ret -eq 3 ]]; then
+    # setupact-progressbar
+fi
 }
