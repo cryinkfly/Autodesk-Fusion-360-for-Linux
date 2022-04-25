@@ -33,6 +33,10 @@
 # Window Title
 SP_TITLE="Autodesk Fusion 360 for Linux - Setup Wizard"
 
+# Welcome Screen
+SP_WELCOME_LABEL_1="This setup wizard installs Autodesk Fusion 360 on your computer so that you can also work on your projects on Linux."
+SP_WELCOME_LABEL_2="Click Ok to continue or Cancel to exit the setup wizard."
+
 # Default-Path
 SP_PATH="$HOME/.fusion360"
 
