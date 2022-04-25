@@ -48,19 +48,19 @@ SP_DRIVER=0
 
 # Create the structure for the installation of Autodesk Fusion 360:
 function SP_STRUCTURE {
-  mkdir -p $HOME/.config/fusion-360/bin
-  mkdir -p $HOME/.config/fusion-360/locale/cs-CZ
-  mkdir -p $HOME/.config/fusion-360/locale/de-DE
-  mkdir -p $HOME/.config/fusion-360/locale/en-US
-  mkdir -p $HOME/.config/fusion-360/locale/es-ES
-  mkdir -p $HOME/.config/fusion-360/locale/fr-FR
-  mkdir -p $HOME/.config/fusion-360/locale/it-IT
-  mkdir -p $HOME/.config/fusion-360/locale/ja-JP
-  mkdir -p $HOME/.config/fusion-360/locale/ko-KR
-  mkdir -p $HOME/.config/fusion-360/locale/zh-CN
-  mkdir -p $HOME/.config/fusion-360/extensions
-  mkdir -p $HOME/.config/fusion-360/logs
-  mkdir -p $HOME/.config/fusion-360/downloads
+  mkdir -p $SP_PATH/bin
+  mkdir -p $SP_PATH/locale/cs-CZ
+  mkdir -p $SP_PATH/locale/de-DE
+  mkdir -p $SP_PATH/locale/en-US
+  mkdir -p $SP_PATH/locale/es-ES
+  mkdir -p $SP_PATH/locale/fr-FR
+  mkdir -p $SP_PATH/locale/it-IT
+  mkdir -p $SP_PATH/locale/ja-JP
+  mkdir -p $SP_PATH/locale/ko-KR
+  mkdir -p $SP_PATH/locale/zh-CN
+  mkdir -p $SP_PATH/extensions
+  mkdir -p $SP_PATH/logs
+  mkdir -p $SP_PATH/downloads
 }
 
 ###############################################################################################################################################################
