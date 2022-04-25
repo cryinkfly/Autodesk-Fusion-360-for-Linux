@@ -409,3 +409,83 @@ function OS_GENTOO_LINUX {
 ###############################################################################################################################################################
 # ALL FUNCTIONS FOR THE EXTENSIONS START HERE:                                                                                                                #
 ###############################################################################################################################################################
+
+# Install a extension: Airfoil Tools
+
+function EXTENSION_AIRFOIL_TOOLS {
+  cd "$WP_PATH/drive_c/users/$USER/Downloads"
+  wget -N https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/raw/main/files/extensions/AirfoilTools_win64.msi &&
+  WINEPREFIX=$WP_PATH wine AirfoilTools_win64.msi
+}
+
+###############################################################################################################################################################
+
+# Install a extension: Additive Assistant (FFF)
+
+function EXTENSION_ADDITIVE_ASSISTANT {
+  cd "$WP_PATH/drive_c/users/$USER/Downloads"
+  wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/AdditiveAssistant.bundle-win64.msi &&
+  WINEPREFIX=$WP_PATH msiexec /i AdditiveAssistant.bundle-win64.msi
+}
+
+###############################################################################################################################################################
+
+# Install a extension: Czech localization for F360
+function EXTENSION_CZECH_LOCALE {
+  SP_SEARCH_EXTENSION_CZECH_LOCALE
+  WINEPREFIX=$WP_PATH msiexec /i $CZECH_LOCALE_EXTENSION
+}
+
+###############################################################################################################################################################
+
+# Install a extension: HP 3D Printers for Autodesk® Fusion 360™
+function EXTENSION_HP_3DPRINTER_CONNECTOR {
+  cd "$WP_PATH/drive_c/users/$USER/Downloads"
+  wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/HP_3DPrinters_for_Fusion360-win64.msi &&
+  WINEPREFIX=$WP_PATH msiexec /i HP_3DPrinters_for_Fusion360-win64.msi
+}
+
+###############################################################################################################################################################
+
+# Install a extension: Helical Gear Generator
+function EXTENSION_HELICAL_GEAR_GENERATOR {
+  cd "$WP_PATH/drive_c/users/$USER/Downloads"
+  wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/HelicalGear_win64.msi &&
+  WINEPREFIX=$WP_PATH msiexec /i HelicalGear_win64.msi
+}
+
+###############################################################################################################################################################
+
+# Install a extension: OctoPrint for Autodesk® Fusion 360™
+function EXTENSION_OCTOPRINT {
+  cd "$WP_PATH/drive_c/users/$USER/Downloads"
+  wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/OctoPrint_for_Fusion360-win64.msi &&
+  WINEPREFIX=$WP_PATH msiexec /i OctoPrint_for_Fusion360-win64.msi
+}
+
+###############################################################################################################################################################
+
+# Install a extension: Parameter I/O
+function EXTENSION_PARAMETER_IO {
+  cd "$WP_PATH/drive_c/users/$USER/Downloads"
+  wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/ParameterIO_win64.msi &&
+  WINEPREFIX=$WP_PATH msiexec /i ParameterIO_win64.msi
+}
+
+###############################################################################################################################################################
+
+# Install a extension: RoboDK
+function EXTENSION_ROBODK {
+  cd "$WP_PATH/drive_c/users/$USER/Downloads"
+  wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/RoboDK.bundle-win64.msi &&
+  WINEPREFIX=$WP_PATH msiexec /i RoboDK.bundle-win64.msi
+}
+
+###############################################################################################################################################################
+
+# Install a extension: Ultimaker Digital Factory for Autodesk Fusion 360™
+function EXTENSION_ULTIMAKER_DIGITAL_FACTORY {
+  cd "$WP_PATH/drive_c/users/$USER/Downloads"
+  wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/Ultimaker_Digital_Factory-win64.msi &&
+  WINEPREFIX=$WP_PATH msiexec /i Ultimaker_Digital_Factory-win64.msi
+}
