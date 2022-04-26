@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    21:45/25.04.2022                                                                   #
+# Time/Date:    08:00/26.04.2022                                                                   #
 # Version:      1.7.9 -> 1.8.0                                                                     #
 ####################################################################################################
 
@@ -30,15 +30,20 @@
 # ALL BASIC VALUES ARE CONFIGURED HERE:                                                                                                                       #
 ###############################################################################################################################################################
 
-# Window Title
-SP_TITLE="Autodesk Fusion 360 for Linux - Setup Wizard"
+# Window Title:
+SP_TITLE="Welcome to the Autodesk Fusion 360 Installer for Linux"
 
-# Welcome Screen
+# Welcome Screen:
 SP_WELCOME_LABEL_1="This setup wizard installs Autodesk Fusion 360 on your computer so that you can also work on your projects on Linux."
 SP_WELCOME_LABEL_2="Click Ok to continue or Cancel to exit the setup wizard."
+SP_WELCOME_TOOLTIP_1="Here you get more informations about this setup wizard."
+SP_WELCOME_TOOLTIP_2="Here you can adjust the default setting. For example the language."
 
-# Default-Path
+# Default-Path:
 SP_PATH="$HOME/.fusion360"
+
+# A list of all available languages:
+SP_LOCALE_SELECT="Czech!English!German!Spanish!French!Italian!Japanese!Korean!Chinese"
 
 # Reset the locale value:
 SP_LOCALE="en-US"
@@ -511,8 +516,8 @@ yad \
 --field="$SP_WELCOME_LABEL_1:LBL" \
 --field="$SP_WELCOME_LABEL_2:LBL" \
 --align=center \
---button=gtk-about!!"Here you get more informations about this setup wizard.":1 \
---button=gtk-preferences!!"Here you can adjust the default setting. For example the language.":2 \
+--button=gtk-about!!"$SP_WELCOME_TOOLTIP_1":1 \
+--button=gtk-preferences!!"$SP_WELCOME_TOOLTIP_2":2 \
 --button=gtk-cancel:99 \
 --button=gtk-ok:3
 
@@ -520,10 +525,59 @@ ret=$?
 
 # Responses to above button presses are below:
 if [[ $ret -eq 1 ]]; then
-    # About-GTK
+    xdg-open https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux
+    SP-WELCOME
 elif [[ $ret -eq 2 ]]; then
-    # Settings-GTK
+    SP-SETTINGS
+    SP-WELCOME
 elif [[ $ret -eq 3 ]]; then
     # setupact-progressbar
 fi
 }
+
+###############################################################################################################################################################
+
+# SETTINGS ...
+
+###############################################################################################################################################################
+
+function SP_LOCALE_SETTINGS {
+SP_LOCALE=$(yad --form \
+--field="Language::"CB "$SP_LOCALE_SELECT" \
+--separator="" )
+
+# Responses to above button presses are below:
+if [[ $SP_LOCALE = "Czech" ]]; then
+    echo "CS"
+    SP_LOCALE_CS
+elif [[ $SP_LOCALE = "English" ]]; then
+    echo "EN"
+    SP_LOCALE_EN
+elif [[ $SP_LOCALE = "German" ]]; then
+    echo "DE"
+    SP_LOCALE_DE
+elif [[ $SP_LOCALE = "Spanish" ]]; then
+    echo "ES"
+    SP_LOCALE_ES
+elif [[ $SP_LOCALE = "French" ]]; then
+    echo "FR"
+    SP_LOCALE_FR
+elif [[ $SP_LOCALE = "Italian" ]]; then
+    echo "IT"
+    SP_LOCALE_IT
+elif [[ $SP_LOCALE = "Japanese" ]]; then
+    echo "JP"
+    SP_LOCALE_JP
+elif [[ $SP_LOCALE = "Korean" ]]; then
+    echo "KO"
+    SP_LOCALE_KO
+elif [[ $SP_LOCALE = "Chinese" ]]; then
+    echo "ZH"
+    SP_LOCALE_ZH
+else 
+   echo "EN"
+   SP_LOCALE_EN
+fi
+}
+
+###############################################################################################################################################################
