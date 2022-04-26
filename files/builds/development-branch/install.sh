@@ -43,6 +43,7 @@ SP_WELCOME_TOOLTIP_2="Here you can adjust the default setting. For example the l
 SP_PATH="$HOME/.fusion360"
 
 # A list of all available languages:
+SP_LOCALE_LABEL="Languages"
 SP_LOCALE_SELECT="Czech!English!German!Spanish!French!Italian!Japanese!Korean!Chinese"
 
 # Reset the locale value:
@@ -543,7 +544,7 @@ fi
 
 function SP_LOCALE_SETTINGS {
 SP_LOCALE=$(yad --form \
---field="Language::"CB "$SP_LOCALE_SELECT" \
+--field="$SP_LOCALE_LABEL::"CB "$SP_LOCALE_SELECT" \
 --separator="" )
 
 # Responses to above button presses are below:
