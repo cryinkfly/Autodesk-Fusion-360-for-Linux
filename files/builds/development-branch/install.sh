@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    13:30/27.04.2022                                                                   #
+# Time/Date:    17:45/27.04.2022                                                                   #
 # Version:      1.7.9 -> 1.8.0                                                                     #
 ####################################################################################################
 
@@ -49,13 +49,19 @@ SP_SETTINGS_LABEL_2="*Please remember that any change will affect the Autodesk F
 SP_LOCALE_LABEL="Languages"
 SP_LOCALE_SELECT=$(echo "Czech,English,German,Spanish,French,Italian,Japanese,Korean,Chinese")
 SP_DRIVER_LABEL="Graphics Driver"
-SP_DRIVER_SELECT="DXVK,OpenGL"
+SP_DRIVER_SELECT=$(echo "DXVK,OpenGL")
 
 # Reset the locale value:
 SP_LOCALE="EN"
 
 # Reset the graphics driver value:
 SP_DRIVER="DXVK"
+
+# Linux distribution - Configuration:
+SP_OS_TITLE="Linux distribution - Configuration"
+SP_OS_LABEL_1="In this step you can now select your Linux distribution to install the required packages for the installation."
+SP_OS_LABEL_2="Linux distribution:"
+SP_OS_SELECT=$(echo "Arch Linux,Debian 10,Debian 11,EndeavourOS,Fedora 34,Fedora 35,Linux Mint 19.x,Linux Mint 20.x,Manjaro Linux,openSUSE Leap 15.2,openSUSE Leap 15.3,openSUSE Leap 15.4,openSUSE Tumbleweed,Red Hat Enterprise Linux 8.x,Red Hat Enterprise Linux 9.x,Solus,Ubuntu 18.04,Ubuntu 20.04,Ubuntu 22.04,Void Linux,Gentoo Linux")
 
 ###############################################################################################################################################################
 # THE INITIALIZATION OF DEPENDENCIES STARTS HERE:                                                                                                             #
@@ -76,6 +82,8 @@ function SP_STRUCTURE {
   mkdir -p $SP_PATH/extensions
   mkdir -p $SP_PATH/logs
   mkdir -p $SP_PATH/downloads
+  echo "EN" > /tmp/config.txt
+  echo "DXVK" >> /tmp/config.txt
 }
 
 ###############################################################################################################################################################
@@ -359,6 +367,14 @@ function FEDORA_BASED_2 {
   SP_FUSION360_INSTALL
 }
 
+function OS_FEDORA_34 {
+  sudo dnf config-manager --add-repo https://dl.winehq.org/wine-builds/fedora/34/winehq.repo
+}
+
+function OS_FEDORA_35 {
+  sudo dnf config-manager --add-repo https://dl.winehq.org/wine-builds/fedora/35/winehq.repo
+}
+
 ###############################################################################################################################################################
 
 function OS_OPENSUSE_152 {
@@ -377,7 +393,7 @@ function OS_OPENSUSE_154 {
   SP_FUSION360_INSTALL
 }
 
-function OPENSUSE_TW {
+function OS_OPENSUSE_TW {
   su -c 'zypper up && zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Tumbleweed/ wine && zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Tumbleweed/ wine && zypper install p7zip-full curl wget wine cabextract'
   SP_FUSION360_INSTALL
 }
@@ -539,7 +555,8 @@ elif [[ $ret -eq 2 ]]; then
     SP_DRIVER_SETTINGS
     SP-WELCOME
 elif [[ $ret -eq 3 ]]; then
-    # setupact-progressbar
+    SP_OS_SETTINGS_1
+    SP_OS_SETTINGS_2
 fi
 }
 
@@ -608,6 +625,108 @@ SP_DRIVER=`cat /tmp/config.txt | awk 'NR == 2'`
 }
 
 ###############################################################################################################################################################
+
+function SP_OS_SETTINGS_1 {
+yad --title="" \
+--form --separator="," --item-separator="," \
+--borders=15 \
+--width=550 \
+--buttons-layout=center \
+--align=center \
+--field="<big><b>$SP_OS_TITLE</b></big>:LBL" \
+--field=":LBL" \
+--field="$SP_OS_LABEL_1:LBL" \
+--field="$SP_OS_LABEL_2:CB" \
+"" "" "" "$SP_OS_SELECT" | while read line; do
+echo "`echo $line | awk -F',' '{print $4}'`" >> /tmp/config.txt
+done
+}
+
+function SP_OS_SETTINGS_2 {
+SP_OS=`cat /tmp/config.txt | awk 'NR == 3'`
+if [[ $SP_OS = "Arch Linux" ]]; then
+    echo "Arch Linux"
+    OS_ARCHLINUX
+elif [[ $SP_OS = "Debian 10" ]]; then
+    echo "Debian 10"
+    DEBIAN_BASED_1
+    OS_DEBIAN_10
+    DEBIAN_BASED_1
+elif [[ $SP_OS = "Debian 11" ]]; then
+    echo "Debian 11"
+    DEBIAN_BASED_1
+    OS_DEBIAN_11
+    DEBIAN_BASED_1
+elif [[ $SP_OS = "EndeavourOS" ]]; then
+    echo "EndeavourOS"
+    OS_ARCHLINUX
+elif [[ $SP_OS = "Fedora 34" ]]; then
+    echo "Fedora 34"
+    FEDORA_BASED_1
+    OS_FEDORA_34
+    FEDORA_BASED_2
+elif [[ $SP_OS = "Fedora 35" ]]; then
+    echo "Fedora 35"
+    FEDORA_BASED_1
+    OS_FEDORA_35
+    FEDORA_BASED_1
+elif [[ $SP_OS = "Linux Mint 19.x" ]]; then
+    echo "Linux Mint 19.x"
+    DEBIAN_BASED_1
+    OS_UBUNTU_18
+    DEBIAN_BASED_2
+elif [[ $SP_OS = "Linux Mint 20.x" ]]; then
+    echo "Linux Mint 20.x"
+    DEBIAN_BASED_1
+    OS_UBUNTU_20
+    DEBIAN_BASED_1
+elif [[ $SP_OS = "Manjaro Linux" ]]; then
+    echo "Manjaro Linux"
+    OS_ARCHLINUX
+elif [[ $SP_OS = "openSUSE Leap 15.2" ]]; then
+    echo "openSUSE Leap 15.2"
+    OS_OPENSUSE_152
+elif [[ $SP_OS = "openSUSE Leap 15.3" ]]; then
+    echo "openSUSE Leap 15.3"
+    OS_OPENSUSE_153
+elif [[ $SP_OS = "openSUSE Leap 15.4" ]]; then
+    echo "openSUSE Leap 15.4"
+    OS_OPENSUSE_154
+elif [[ $SP_OS = "openSUSE Tumbleweed" ]]; then
+    echo "openSUSE Tumbleweed"
+    OS_OPENSUSE_TW
+elif [[ $SP_OS = "Red Hat Enterprise Linux 8.x" ]]; then
+    echo "Red Hat Enterprise Linux 8.x"
+    OS_REDHAT_LINUX_8
+elif [[ $SP_OS = "Red Hat Enterprise Linux 9.x" ]]; then
+    echo "Red Hat Enterprise Linux 9.x"
+    OS_REDHAT_LINUX_9
+elif [[ $SP_OS = "Solus" ]]; then
+    echo "Solus"
+    OS_SOLUS_LINUX
+elif [[ $SP_OS = "Ubuntu 18.04" ]]; then
+    echo "Ubuntu 18.04"
+    DEBIAN_BASED_1
+    OS_UBUNTU_18
+    DEBIAN_BASED_2
+elif [[ $SP_OS = "Ubuntu 20.04" ]]; then
+    echo "Ubuntu 20.04"
+    DEBIAN_BASED_1
+    OS_UBUNTU_20
+    DEBIAN_BASED_2
+elif [[ $SP_OS = "Ubuntu 22.04" ]]; then
+    echo "Ubuntu 22.04"
+    DEBIAN_BASED_1
+    OS_UBUNTU_22
+    DEBIAN_BASED_2
+elif [[ $SP_OS = "Void Linux" ]]; then
+    echo "Void Linux"
+    OS_VOID_LINUX
+elif [[ $SP_OS = "Gentoo Linux" ]]; then
+    echo "Gentoo Linux"
+    OS_GENTOO_LINUX
+fi
+}
 
 # Still in Progress ...
 
