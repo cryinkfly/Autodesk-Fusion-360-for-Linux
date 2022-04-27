@@ -556,7 +556,7 @@ yad --title="" \
 --field=":LBL" \
 --field="$SP_SETTINGS_LABEL_1:LBL" \
 --field="$SP_LOCALE_LABEL:CB" \
---field="$SP_DRIVER_LABEL:CBE" \
+--field="$SP_DRIVER_LABEL:CB" \
 --field="$SP_SETTINGS_LABEL_2:LBL" \
 "" "" "" "$SP_LOCALE_SELECT" "$SP_DRIVER_SELECT" "" | while read line; do
 echo "`echo $line | awk -F',' '{print $4}'`" > /tmp/config.txt
