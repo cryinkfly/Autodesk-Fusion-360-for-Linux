@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    08:00/26.04.2022                                                                   #
+# Time/Date:    13:30/27.04.2022                                                                   #
 # Version:      1.7.9 -> 1.8.0                                                                     #
 ####################################################################################################
 
@@ -42,15 +42,20 @@ SP_WELCOME_TOOLTIP_2="Here you can adjust the default setting. For example the l
 # Default-Path:
 SP_PATH="$HOME/.fusion360"
 
-# A list of all available languages:
+# General Settings:
+SP_SETTINGS_TITLE="General Settings"
+SP_SETTINGS_LABEL_1="Here you have the option to adjust* further settings:"
+SP_SETTINGS_LABEL_2="*Please remember that any change will affect the Autodesk Fusion 360 installation!"
 SP_LOCALE_LABEL="Languages"
-SP_LOCALE_SELECT="Czech!English!German!Spanish!French!Italian!Japanese!Korean!Chinese"
+SP_LOCALE_SELECT=$(echo "Czech,English,German,Spanish,French,Italian,Japanese,Korean,Chinese")
+SP_DRIVER_LABEL="Graphics Driver"
+SP_DRIVER_SELECT="DXVK,OpenGL"
 
 # Reset the locale value:
-SP_LOCALE="en-US"
+SP_LOCALE="EN"
 
 # Reset the graphics driver value:
-SP_DRIVER=0
+SP_DRIVER="DXVK"
 
 ###############################################################################################################################################################
 # THE INITIALIZATION OF DEPENDENCIES STARTS HERE:                                                                                                             #
@@ -215,7 +220,7 @@ function SP_LOGFILE {
 ###############################################################################################################################################################
 
 function SP_DXVK_OPENGL_1 {
-  if [ $SP_DRIVER -eq 1 ]; then
+  if [[ $SP_DRIVER = "DXVK" ]]; then
     WINEPREFIX=$WP_PATH sh $SP_PATH/bin/winetricks -q dxvk
     wget -N -P $WP_PATH/drive_c/users/$USER/Downloads https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/driver/video/dxvk/DXVK.reg
     cd "$WP_PATH/drive_c/users/$USER/Downloads"
@@ -224,7 +229,7 @@ function SP_DXVK_OPENGL_1 {
 }
 
 function SP_DXVK_OPENGL_2 {
-  if [ $SP_DRIVER -eq 1 ]; then
+  if [[ $SP_DRIVER = "DXVK" ]]; then
     wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/driver/video/dxvk/DXVK.xml
     mv "DXVK.xml" "NMachineSpecificOptions.xml"
   else
@@ -530,6 +535,8 @@ if [[ $ret -eq 1 ]]; then
     SP-WELCOME
 elif [[ $ret -eq 2 ]]; then
     SP-SETTINGS
+    SP_LOCALE_SETTINGS
+    SP_DRIVER_SETTINGS
     SP-WELCOME
 elif [[ $ret -eq 3 ]]; then
     # setupact-progressbar
@@ -538,16 +545,29 @@ fi
 
 ###############################################################################################################################################################
 
-# SETTINGS ...
+function SP_SETTINGS {
+yad --title="" \
+--form --separator="," --item-separator="," \
+--borders=15 \
+--width=550 \
+--buttons-layout=center \
+--align=center \
+--field="<big><b>$SP_SETTINGS_TITLE</b></big>:LBL" \
+--field=":LBL" \
+--field="$SP_SETTINGS_LABEL_1:LBL" \
+--field="$SP_LOCALE_LABEL:CB" \
+--field="$SP_DRIVER_LABEL:CBE" \
+--field="$SP_SETTINGS_LABEL_2:LBL" \
+"" "" "" "$SP_LOCALE_SELECT" "$SP_DRIVER_SELECT" "" | while read line; do
+echo "`echo $line | awk -F',' '{print $4}'`" > /tmp/config.txt
+echo "`echo $line | awk -F',' '{print $5}'`" >> /tmp/config.txt
+done
+}
 
 ###############################################################################################################################################################
 
 function SP_LOCALE_SETTINGS {
-SP_LOCALE=$(yad --form \
---field="$SP_LOCALE_LABEL::"CB "$SP_LOCALE_SELECT" \
---separator="" )
-
-# Responses to above button presses are below:
+SP_LOCALE=`cat /tmp/config.txt | awk 'NR == 1'`
 if [[ $SP_LOCALE = "Czech" ]]; then
     echo "CS"
     SP_LOCALE_CS
@@ -582,3 +602,11 @@ fi
 }
 
 ###############################################################################################################################################################
+
+function SP_DRIVER_SETTINGS {
+SP_DRIVER=`cat /tmp/config.txt | awk 'NR == 2'`
+}
+
+###############################################################################################################################################################
+
+
