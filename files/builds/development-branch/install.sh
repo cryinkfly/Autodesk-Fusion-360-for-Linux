@@ -64,8 +64,9 @@ SP_OS_LABEL_2="Linux distribution:"
 SP_OS_SELECT=$(echo "Arch Linux,Debian 10,Debian 11,EndeavourOS,Fedora 34,Fedora 35,Fedora 36,Linux Mint 19.x,Linux Mint 20.x,Manjaro Linux,openSUSE Leap 15.2,openSUSE Leap 15.3,openSUSE Leap 15.4,openSUSE Tumbleweed,Red Hat Enterprise Linux 8.x,Red Hat Enterprise Linux 9.x,Solus,Ubuntu 18.04,Ubuntu 20.04,Ubuntu 22.04,Void Linux,Gentoo Linux")
 
 SP_INSTALLDIR_TITLE="Select Installation Folder"
-SP_INSTALLDIR_LABEL_1="The Setup Wizard will install Autodesk Fusion 360 to the following folder."
+SP_INSTALLDIR_LABEL_1="The Setup Wizard will install Autodesk Fusion 360 to the following folder*."
 SP_INSTALLDIR_LABEL_2="Folder:"
+SP_INSTALLDIR_LABEL_3="*You can also choose a different folder for the installation by clicking in the field."
 
 ###############################################################################################################################################################
 # THE INITIALIZATION OF DEPENDENCIES STARTS HERE:                                                                                                             #
@@ -749,7 +750,8 @@ SP_INSTALLDIR_PATH=$(yad --title="" \
 --field=":LBL" \
 --field="<b>$SP_INSTALLDIR_LABEL_1</b>:LBL" \
 --field="$SP_INSTALLDIR_LABEL_2:CDIR" \
-"" "" "" "$HOME/.wineprefixes/fusion360"  )
+--field="<b>$SP_INSTALLDIR_LABEL_3</b>:LBL" \
+"" "" "" "$HOME/.wineprefixes/fusion360" "" )
 }
 
 ###############################################################################################################################################################
