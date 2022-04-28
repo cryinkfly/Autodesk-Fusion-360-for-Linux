@@ -559,8 +559,8 @@ elif [[ $ret -eq 2 ]]; then
     SP_DRIVER_SETTINGS
     SP-WELCOME
 elif [[ $ret -eq 3 ]]; then
-    SP_OS_SETTINGS_1
-    SP_OS_SETTINGS_2
+    SP_OS_SETTINGS
+    SP_INSTALLDIR
 fi
 }
 
@@ -630,9 +630,9 @@ SP_DRIVER=`cat /tmp/settings.txt | awk 'NR == 2'`
 
 ###############################################################################################################################################################
 
-function SP_OS_SETTINGS_1 {
-yad --title="" \
---form --separator="," --item-separator="," \
+function SP_OS_SETTINGS {
+SP_OS=$(yad --title="" \
+--form --separator="" --item-separator="," \
 --borders=15 \
 --width=550 \
 --buttons-layout=center \
@@ -641,13 +641,8 @@ yad --title="" \
 --field=":LBL" \
 --field="$SP_OS_LABEL_1:LBL" \
 --field="$SP_OS_LABEL_2:CB" \
-"" "" "" "$SP_OS_SELECT" | while read line; do
-echo "`echo $line | awk -F',' '{print $4}'`" > /tmp/os-system.txt
-done
-}
+"" "" "" "$SP_OS_SELECT" )
 
-function SP_OS_SETTINGS_2 {
-SP_OS=`cat /tmp/os-system.txt | awk 'NR == 1'`
 if [[ $SP_OS = "Arch Linux" ]]; then
     echo "Arch Linux"
     OS_ARCHLINUX
@@ -737,10 +732,31 @@ elif [[ $SP_OS = "Gentoo Linux" ]]; then
 fi
 }
 
+###############################################################################################################################################################
+
+function SP_INSTALLDIR {
+SP_INSTALLDIR_PATH=$(yad --title="" \
+--form --separator="" \
+--borders=15 \
+--width=550 \
+--buttons-layout=center \
+--align=center \
+--field="<big><b>$SP_INSTALLDIR_TITLE</b></big>:LBL" \
+--field=":LBL" \
+--field="<b>$SP_INSTALLDIR_LABEL_1</b>:LBL" \
+--field="$SP_INSTALLDIR_LABEL_2:CDIR" \
+"" "" "" "$HOME/.wineprefixes/fusion360"  )
+}
+
+###############################################################################################################################################################
+
 # Still in Progress ...
 
 ###############################################################################################################################################################
 # THE INSTALLATION PROGRAM IS STARTED HERE:                                                                                                                   #
 ###############################################################################################################################################################
 
+SP_STRUCTURE
+SP_LOCALE_INDEX
+SP_LOCALE_EN
 SP-WELCOME
