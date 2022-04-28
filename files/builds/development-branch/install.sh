@@ -82,8 +82,8 @@ function SP_STRUCTURE {
   mkdir -p $SP_PATH/extensions
   mkdir -p $SP_PATH/logs
   mkdir -p $SP_PATH/downloads
-  echo "EN" > /tmp/config.txt
-  echo "DXVK" >> /tmp/config.txt
+  echo "EN" > /tmp/settings.txt
+  echo "DXVK" >> /tmp/settings.txt
 }
 
 ###############################################################################################################################################################
@@ -580,15 +580,15 @@ yad --title="" \
 --field="$SP_DRIVER_LABEL:CB" \
 --field="$SP_SETTINGS_LABEL_2:LBL" \
 "" "" "" "$SP_LOCALE_SELECT" "$SP_DRIVER_SELECT" "" | while read line; do
-echo "`echo $line | awk -F',' '{print $4}'`" > /tmp/config.txt
-echo "`echo $line | awk -F',' '{print $5}'`" >> /tmp/config.txt
+echo "`echo $line | awk -F',' '{print $4}'`" > /tmp/settings.txt
+echo "`echo $line | awk -F',' '{print $5}'`" >> /tmp/settings.txt
 done
 }
 
 ###############################################################################################################################################################
 
 function SP_LOCALE_SETTINGS {
-SP_LOCALE=`cat /tmp/config.txt | awk 'NR == 1'`
+SP_LOCALE=`cat /tmp/settings.txt | awk 'NR == 1'`
 if [[ $SP_LOCALE = "Czech" ]]; then
     echo "CS"
     SP_LOCALE_CS
@@ -625,7 +625,7 @@ fi
 ###############################################################################################################################################################
 
 function SP_DRIVER_SETTINGS {
-SP_DRIVER=`cat /tmp/config.txt | awk 'NR == 2'`
+SP_DRIVER=`cat /tmp/settings.txt | awk 'NR == 2'`
 }
 
 ###############################################################################################################################################################
@@ -642,12 +642,12 @@ yad --title="" \
 --field="$SP_OS_LABEL_1:LBL" \
 --field="$SP_OS_LABEL_2:CB" \
 "" "" "" "$SP_OS_SELECT" | while read line; do
-echo "`echo $line | awk -F',' '{print $4}'`" >> /tmp/config.txt
+echo "`echo $line | awk -F',' '{print $4}'`" > /tmp/os-system.txt
 done
 }
 
 function SP_OS_SETTINGS_2 {
-SP_OS=`cat /tmp/config.txt | awk 'NR == 3'`
+SP_OS=`cat /tmp/os-system.txt | awk 'NR == 1'`
 if [[ $SP_OS = "Arch Linux" ]]; then
     echo "Arch Linux"
     OS_ARCHLINUX
