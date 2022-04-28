@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    17:45/27.04.2022                                                                   #
+# Time/Date:    16:30/28.04.2022                                                                   #
 # Version:      1.7.9 -> 1.8.0                                                                     #
 ####################################################################################################
 
@@ -61,7 +61,7 @@ SP_DRIVER="DXVK"
 SP_OS_TITLE="Linux distribution - Configuration"
 SP_OS_LABEL_1="In this step you can now select your Linux distribution to install the required packages for the installation."
 SP_OS_LABEL_2="Linux distribution:"
-SP_OS_SELECT=$(echo "Arch Linux,Debian 10,Debian 11,EndeavourOS,Fedora 34,Fedora 35,Linux Mint 19.x,Linux Mint 20.x,Manjaro Linux,openSUSE Leap 15.2,openSUSE Leap 15.3,openSUSE Leap 15.4,openSUSE Tumbleweed,Red Hat Enterprise Linux 8.x,Red Hat Enterprise Linux 9.x,Solus,Ubuntu 18.04,Ubuntu 20.04,Ubuntu 22.04,Void Linux,Gentoo Linux")
+SP_OS_SELECT=$(echo "Arch Linux,Debian 10,Debian 11,EndeavourOS,Fedora 34,Fedora 35,Fedora 36,Linux Mint 19.x,Linux Mint 20.x,Manjaro Linux,openSUSE Leap 15.2,openSUSE Leap 15.3,openSUSE Leap 15.4,openSUSE Tumbleweed,Red Hat Enterprise Linux 8.x,Red Hat Enterprise Linux 9.x,Solus,Ubuntu 18.04,Ubuntu 20.04,Ubuntu 22.04,Void Linux,Gentoo Linux")
 
 ###############################################################################################################################################################
 # THE INITIALIZATION OF DEPENDENCIES STARTS HERE:                                                                                                             #
@@ -368,11 +368,15 @@ function FEDORA_BASED_2 {
 }
 
 function OS_FEDORA_34 {
-  sudo dnf config-manager --add-repo https://dl.winehq.org/wine-builds/fedora/34/winehq.repo
+  sudo dnf config-manager --add-repo https://download.opensuse.org/repositories/Emulators:/Wine:/Fedora/Fedora_34/Emulators:Wine:Fedora.repo
 }
 
 function OS_FEDORA_35 {
-  sudo dnf config-manager --add-repo https://dl.winehq.org/wine-builds/fedora/35/winehq.repo
+  sudo dnf config-manager --add-repo https://download.opensuse.org/repositories/Emulators:/Wine:/Fedora/Fedora_35/Emulators:Wine:Fedora.repo
+}
+
+function OS_FEDORA_36 {
+  sudo dnf config-manager --add-repo https://download.opensuse.org/repositories/Emulators:/Wine:/Fedora/Fedora_36/Emulators:Wine:Fedora.repo
 }
 
 ###############################################################################################################################################################
@@ -669,6 +673,11 @@ elif [[ $SP_OS = "Fedora 35" ]]; then
     echo "Fedora 35"
     FEDORA_BASED_1
     OS_FEDORA_35
+    FEDORA_BASED_1
+elif [[ $SP_OS = "Fedora 36" ]]; then
+    echo "Fedora 36"
+    FEDORA_BASED_1
+    OS_FEDORA_36
     FEDORA_BASED_1
 elif [[ $SP_OS = "Linux Mint 19.x" ]]; then
     echo "Linux Mint 19.x"
