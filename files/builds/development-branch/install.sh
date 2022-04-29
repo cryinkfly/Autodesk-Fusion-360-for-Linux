@@ -654,7 +654,7 @@ SP_LICENSE_CHECK=$(yad \
 --height=450 \
 --buttons-layout=center \
 --align=center \
---field=":TXT" "$SP_LICENSE" \
+--field=":TXT" "$SP_LICENSE_TEXT" \
 --field="$SP_LICENSE_CHECK_LABEL:CHK" )
 
 if [[ $SP_LICENSE_CHECK = *"TRUE"* ]]; then
