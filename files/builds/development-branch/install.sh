@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    16:00/29.04.2022                                                                   #
+# Time/Date:    20:00/29.04.2022                                                                   #
 # Version:      1.7.9 -> 1.8.0                                                                     #
 ####################################################################################################
 
@@ -565,8 +565,6 @@ elif [[ $ret -eq 2 ]]; then
     SP-WELCOME
 elif [[ $ret -eq 3 ]]; then
     SP_LICENSE
-    SP_INSTALLDIR
-    SP_WINE_SETTINGS
 fi
 }
 
@@ -648,7 +646,7 @@ SP_DRIVER=`cat /tmp/settings.txt | awk 'NR == 2'`
 
 function SP_LICENSE {
 SP_LICENSE_TEXT=$(cat $LICENSE)
-yad \
+SP_LICENSE_CHECK=$(yad \
 --title="" \
 --form \
 --borders=15 \
@@ -657,7 +655,16 @@ yad \
 --buttons-layout=center \
 --align=center \
 --field=":TXT" "$SP_LICENSE" \
---field="I have read the terms and conditions and I accept them.:CHK"
+--field="$SP_LICENSE_CHECK_LABEL:CHK" )
+
+if [[ $SP_LICENSE_CHECK = *"TRUE"* ]]; then
+    echo "TRUE"
+    SP_INSTALLDIR
+else
+    echo "FALSE"
+    SP_LICENSE
+fi
+
 }
 
 ###############################################################################################################################################################
@@ -675,6 +682,9 @@ WP_PATH=$(yad --title="" \
 --field="$SP_INSTALLDIR_LABEL_2:CB" \
 --field="<b>$SP_INSTALLDIR_LABEL_3</b>:LBL" \
 "" "" "" "$HOME/.wineprefixes/fusion360" "" )
+
+# Continue with the installation ...
+SP_WINE_SETTINGS
 }
 
 ###############################################################################################################################################################
@@ -691,7 +701,8 @@ WINE_VERSION=$(yad --title="" \
 --field="<b>$SP_WINE_SETTINGS_LABEL_1</b>:LBL" \
 --field="$SP_WINE_SETTINGS_LABEL_2:CDIR" \
 --field="<b>$SP_WINE_SETTINGS_LABEL_3</b>:LBL" \
-"" "" "" "$SP_WINE_VERSION_SELECT" "" )
+"" "" "" "$SP_WINE_VERSION_SELECT" "" 
+echo "`echo $line | awk -F',' '{print $4}'`" > /tmp/settings.txt)
 
 if [[ $WINE_VERSION = "$WINE_VERSION_0" ]]; then
     echo "Install Wine on your system!"
