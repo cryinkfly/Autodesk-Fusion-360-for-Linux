@@ -22,6 +22,7 @@
 - @Azkali
 - @Aus-gez
 - @Awoolyx
+- @alextrical
 - @b-desconocido
 - @blazej222
 - @bwrsandman
@@ -61,9 +62,11 @@
 - @MrEdd123
 - @madhead
 - @marzukia
-- @madurani 
+- @madurani
+- @molove 
 - @nitro2k01
 - @nonchip
+- @Noxdor
 - @Patschke
 - @paukstelis
 - @Project-Scorch
