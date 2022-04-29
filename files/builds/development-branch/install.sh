@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    18:30/28.04.2022                                                                   #
+# Time/Date:    15:00/29.04.2022                                                                   #
 # Version:      1.7.9 -> 1.8.0                                                                     #
 ####################################################################################################
 
@@ -564,8 +564,9 @@ elif [[ $ret -eq 2 ]]; then
     SP_DRIVER_SETTINGS
     SP-WELCOME
 elif [[ $ret -eq 3 ]]; then
-    SP_OS_SETTINGS
+    SP_LICENSE
     SP_INSTALLDIR
+    SP_WINE_SETTINGS
 fi
 }
 
@@ -632,6 +633,53 @@ fi
 function SP_DRIVER_SETTINGS {
 SP_DRIVER=`cat /tmp/settings.txt | awk 'NR == 2'`
 }
+
+###############################################################################################################################################################
+
+function SP_LICENSE {
+
+}
+
+###############################################################################################################################################################
+
+function SP_INSTALLDIR {
+WP_PATH=$(yad --title="" \
+--form --separator="" \
+--borders=15 \
+--width=550 \
+--buttons-layout=center \
+--align=center \
+--field="<big><b>$SP_INSTALLDIR_TITLE</b></big>:LBL" \
+--field=":LBL" \
+--field="<b>$SP_INSTALLDIR_LABEL_1</b>:LBL" \
+--field="$SP_INSTALLDIR_LABEL_2:CB" \
+--field="<b>$SP_INSTALLDIR_LABEL_3</b>:LBL" \
+"" "" "" "$HOME/.wineprefixes/fusion360" "" )
+}
+
+###############################################################################################################################################################
+
+function SP_WINE_SETTINGS {
+WINE_VERSION=$(yad --title="" \
+--form --separator="" \
+--borders=15 \
+--width=550 \
+--buttons-layout=center \
+--align=center \
+--field="<big><b>$SP_WINE_SETTINGS_TITLE</b></big>:LBL" \
+--field=":LBL" \
+--field="<b>$SP_WINE_SETTINGS_LABEL_1</b>:LBL" \
+--field="$SP_WINE_SETTINGS_LABEL_2:CDIR" \
+--field="<b>$SP_WINE_SETTINGS_LABEL_3</b>:LBL" \
+"" "" "" "$SP_WINE_VERSION_SELECT" "" )
+
+if [[ $WINE_VERSION = "$WINE_VERSION_0" ]]; then
+    echo "Install Wine on your system!"
+    SP_OS_SETTINGS
+else
+    echo "Wine version (6.23 or higher) is already installed on the system!"
+    SP_FUSION360_INSTALL
+fi
 
 ###############################################################################################################################################################
 
@@ -735,23 +783,6 @@ elif [[ $SP_OS = "Gentoo Linux" ]]; then
     echo "Gentoo Linux"
     OS_GENTOO_LINUX
 fi
-}
-
-###############################################################################################################################################################
-
-function SP_INSTALLDIR {
-SP_INSTALLDIR_PATH=$(yad --title="" \
---form --separator="" \
---borders=15 \
---width=550 \
---buttons-layout=center \
---align=center \
---field="<big><b>$SP_INSTALLDIR_TITLE</b></big>:LBL" \
---field=":LBL" \
---field="<b>$SP_INSTALLDIR_LABEL_1</b>:LBL" \
---field="$SP_INSTALLDIR_LABEL_2:CDIR" \
---field="<b>$SP_INSTALLDIR_LABEL_3</b>:LBL" \
-"" "" "" "$HOME/.wineprefixes/fusion360" "" )
 }
 
 ###############################################################################################################################################################
