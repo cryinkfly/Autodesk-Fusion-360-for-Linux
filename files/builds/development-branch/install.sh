@@ -637,7 +637,17 @@ SP_DRIVER=`cat /tmp/settings.txt | awk 'NR == 2'`
 ###############################################################################################################################################################
 
 function SP_LICENSE {
-
+LICENSE=$(cat license-en.txt) #IF ELSE ...
+yad \
+--title="" \
+--form \
+--borders=15 \
+--width=550 \
+--height=450 \
+--buttons-layout=center \
+--align=center \
+--field=":TXT" "$license" \
+--field="I have read the terms and conditions and I accept them.:CHK"
 }
 
 ###############################################################################################################################################################
