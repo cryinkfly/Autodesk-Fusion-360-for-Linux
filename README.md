@@ -104,7 +104,17 @@ In the [development branch](https://github.com/cryinkfly/Autodesk-Fusion-360-for
   - Void Linux
   - Gentoo Linux
 
-- Check if you have installed zenity on your Linux distribution:
+---
+
+## Getting Started
+
+Install Fusion 360 for Linux client:
+
+1.) Check my <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/wiki/Documentation">GitHub-Documentation</a> & <a href="https://www.youtube.com/watch?v=-BktJspJKgs&list=PLzwMdS5iu_BIsO6RTy7Hy1MbzLMrQE2xe">Videos</a> before you install Autodesk Fusion 360 on your system!
+
+2.) Check, if your [network settings](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/extras/network/etc) are correctly configured!
+
+3.)
 
 #### Debian based systems:
 
@@ -135,21 +145,11 @@ In the [development branch](https://github.com/cryinkfly/Autodesk-Fusion-360-for
 
     sudo emerge -av gnome-extra/zenity
 
----
-
-## Getting Started
-
-Install Fusion 360 for Linux client:
-
-1.) Check my <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/wiki/Documentation">GitHub-Documentation</a> & <a href="https://www.youtube.com/watch?v=-BktJspJKgs&list=PLzwMdS5iu_BIsO6RTy7Hy1MbzLMrQE2xe">Videos</a> before you install Autodesk Fusion 360 on your system!
-
-2.) Check, if your [network settings](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/extras/network/etc) are correctly configured!
-
-3.) Open a terminal and run this command:
+4.) Open a terminal and run this command:
 
     mkdir -p "$HOME/.config/fusion-360/bin" && cd "$HOME/.config/fusion-360/bin" && wget -N https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/install.sh && chmod +x install.sh && bash install.sh && exit
 
-4.) Now, You can <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues/44#issuecomment-890552181">use</a> Autodesk Fusion 360 on your Linux system!
+5.) Now, You can <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues/44#issuecomment-890552181">use</a> Autodesk Fusion 360 on your Linux system!
 
 *Notice: Here can you find [all files](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/builds/stable-branch/.desktop) what you need for a .desktop file!
 
