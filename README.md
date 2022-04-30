@@ -104,7 +104,7 @@ In the [development branch](https://github.com/cryinkfly/Autodesk-Fusion-360-for
   - Void Linux
   - Gentoo Linux
 
-- Check if you have installed zenity and xterm on your Linux distribution:
+- Check if you have installed zenity on your Linux distribution:
 
 #### Debian based systems:
 
