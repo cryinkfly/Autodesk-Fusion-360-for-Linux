@@ -81,6 +81,7 @@ Nella [development branch](https://github.com/cryinkfly/Autodesk-Fusion-360-for-
 - Per utilizzare la versione in Ceco di Fusion 360, ti servirà una [special extension](https://apps.autodesk.com/FUSION/en/Detail/Index?id=9151466655844643882) Che devi aver comprato e scaricato prima di utilizzare il mio installer!
 - Il mio script installa alcuni pacchetti (dialog, p7zip, p7zip-full, p7zip-rar, curl, wget, winbind, cabextract, wine, wine-mono, wine_gecko, winetricks, ...)!
 - Seleziona la modalità DXVK, poiché ci sono alcuni bug nella modalità OpenGL! La modalità OpenGL serve solo come variante di fallback.
+- [Zenity](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/issues/223) deve essere installato sul tuo computer!
 - Distribuzioni di Linux supportate:
   - Arch Linux, Manjaro Linux, EndeavourOS, ...
   - Debian 10, MX Linux 19.4, Raspberry Pi Desktop, ...
@@ -99,37 +100,6 @@ Nella [development branch](https://github.com/cryinkfly/Autodesk-Fusion-360-for-
   - Ubuntu 21.10
   - Void Linux
   - Gentoo Linux
-
-- Controlla di aver installato zenity e xterm sul tuo Linux:
-
-#### Debian:
-
-    sudo apt-get update && sudo apt-get install software-properties-common zenity
-
-#### Red Hat:
-
-    sudo dnf update && sudo dnf install zenity
-
-#### Arch:
-
-    sudo pacman -Sy --needed zenity
-
-#### openSUSE:
-
-    su -c 'zypper up && zypper install zenity'
-
-#### Void:
-
-    sudo xbps-install -Sy zenity
-
-#### Solus:
-
-    sudo eopkg install zenity
-
-
-#### Gentoo:
-
-    sudo emerge -av gnome-extra/zenity
 
 ---
 
