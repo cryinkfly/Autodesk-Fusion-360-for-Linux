@@ -83,6 +83,7 @@ Ve [vývojové větvi](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linu
 - Chcete češtinu používat později v Autodesk Fusion 360, pak potřebujete [speciální rozšíření](https://apps.autodesk.com/FUSION/en/Detail/Index?id=9151466655844643882), které musíte mít koupil a stáhl, než si to budete moci nainstalovat pomocí průvodce instalací!
 - Můj skript nainstaluje některé balíčky (dialog, p7zip, p7zip-full, p7zip-rar, curl, wget, winbind, cabextract, wine, wine-mono, wine_gecko, winetricks, ...)!
 - Vyberte prosím režim DXVK, protože v režimu OpenGL jsou nějaké chyby! Režim OpenGL slouží pouze jako záložní varianta.
+  - Na vašem počítači musí být nainstalována [Zenity](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/issues/223)!
 - Podporované distribuce Linuxu:
   - Arch Linux, Manjaro Linux, EndeavourOS, ...
   - Debian 10, MX Linux 19.4, Raspberry Pi Desktop, ...
@@ -101,37 +102,6 @@ Ve [vývojové větvi](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linu
   - Ubuntu 21.10
   - Void Linux
   - Gentoo Linux
-
-- Zkontrolujte, zda jste ve své distribuci Linuxu nainstalovali zeity a xterm:
-
-#### Systémy založené na Debian:
-
-    sudo apt-get update && sudo apt-get install software-properties-common zenity
-
-#### Systémy založené na Red Hat:
-
-    sudo dnf update && sudo dnf install zenity
-
-#### Systémy založené na Arch:
-
-    sudo pacman -Sy --needed zenity
-
-#### Systémy založené na openSUSE:
-
-    su -c 'zypper up && zypper install zenity'
-
-#### Systémy založené na Void:
-
-    sudo xbps-install -Sy zenity
-
-#### Systémy založené na Solus:
-
-    sudo eopkg install zenity
-
-
-#### Systémy založené na Gentoo:
-
-    sudo emerge -av gnome-extra/zenity
 
 ---
 
