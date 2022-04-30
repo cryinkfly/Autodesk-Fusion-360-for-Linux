@@ -86,6 +86,7 @@ Im [Entwicklungszweig](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linu
 - Möchten Sie die tschechische Sprache später in Autodesk Fusion 360 verwenden, dann benötigen Sie eine [spezielle Erweiterung](https://apps.autodesk.com/FUSION/en/Detail/Index?id=9151466655844643882), die Sie haben müssen gekauft und heruntergeladen, bevor Sie dies mit meinem Setup-Assistenten installieren können!
 - Mein Skript installiert einige Pakete (dialog, p7zip, p7zip-full, p7zip-rar, curl, wget, winbind, cabextract, wine, wine-mono, wine_gecko, winetricks, ...)!
 - Bitte den DXVK-Modus auswählen, da bei dem OpenGL-Modus noch einige Bugs vorhanden sind! Der OpenGL-Modus dient nur als Fallback-Variante.
+- [Zenity](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/issues/223) muss auf deinem Computer installiert sein!
 - Supported Linux distributions:
   - Arch Linux, Manjaro Linux, EndeavourOS, ...
   - Debian 10, MX Linux 19.4, Raspberry Pi Desktop, ...
@@ -104,37 +105,6 @@ Im [Entwicklungszweig](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linu
   - Ubuntu 21.10
   - Void Linux
   - Gentoo Linux
-
-- Überprüfen Sie, ob Sie zenity und xterm auf Ihrer Linux-Distribution installiert haben:
-
-#### Debian based systems:
-
-    sudo apt-get update && sudo apt-get install software-properties-common zenity
-
-#### Red Hat based systems:
-
-    sudo dnf update && sudo dnf install zenity
-
-#### Arch based systems:
-
-    sudo pacman -Sy --needed zenity
-
-#### openSUSE based systems:
-
-    su -c 'zypper up && zypper install zenity'
-
-#### Void based systems:
-
-    sudo xbps-install -Sy zenity
-
-#### Solus based systems:
-
-    sudo eopkg install zenity
-
-
-#### Gentoo based systems:
-
-    sudo emerge -av gnome-extra/zenity
 
 ---
 
