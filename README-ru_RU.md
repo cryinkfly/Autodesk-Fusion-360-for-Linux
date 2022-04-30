@@ -88,6 +88,7 @@ Autodesk Fusion 360 — это облачное ПО для 3D-моделиро�
 - Для использования чешского языка понадобится покупка [специального расширения](https://apps.autodesk.com/FUSION/en/Detail/Index?id=9151466655844643882)!
 - Мой скрипт установит некоторые пакеты: dialog, p7zip, p7zip-full, p7zip-rar, curl, wget, winbind, cabextract, wine, wine-mono, wine_gecko, winetricks, и некоторые другие!
 - Пожалуйста, выберите режим DXVK, так как в режиме OpenGL есть некоторые ошибки! Режим OpenGL служит только в качестве запасного варианта.
+- [Zenity] (https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/issues/223) должен быть установлен на вашем компьютере!
 - Поддерживаемые дистрибутивы Linux:
    - Arch Linux, Manjaro Linux, EndeavourOS, ...
    - Debian 10, MX Linux 19.4, Raspberry Pi Desktop, ...
@@ -106,37 +107,6 @@ Autodesk Fusion 360 — это облачное ПО для 3D-моделиро�
    - Ubuntu 21.10
    - Void Linux
    - Gentoo Linux
-
-- Проверьте, установлены ли у вас zenity и xterm:
-
-#### Семейство Debian:
-
-    sudo apt-get update && sudo apt-get install software-properties-common zenity
-
-#### Семейство Red Hat:
-
-    sudo dnf update && sudo dnf install zenity
-
-#### Семейство Arch:
-
-    sudo pacman -Sy --needed zenity
-
-#### Семейство openSUSE:
-
-    su -c 'zypper up && zypper install zenity'
-
-#### Семейство Void:
-
-    sudo xbps-install -Sy zenity
-
-#### Семейство Solus:
-
-    sudo eopkg install zenity
-
-
-#### Семейство Gentoo:
-
-    sudo emerge -av gnome-extra/zenity
 
 ---
 
