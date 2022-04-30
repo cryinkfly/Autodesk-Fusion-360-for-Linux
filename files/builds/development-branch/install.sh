@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    20:00/29.04.2022                                                                   #
+# Time/Date:    12:00/30.04.2022                                                                   #
 # Version:      1.7.9 -> 1.8.0                                                                     #
 ####################################################################################################
 
@@ -815,6 +815,56 @@ elif [[ $SP_OS = "Gentoo Linux" ]]; then
     OS_GENTOO_LINUX
 fi
 }
+
+###############################################################################################################################################################
+
+function SP_FUSION360_EXTENSIONS {
+EXTENSIONS=$(yad --button=gtk-cancel:99 --button=gtk-ok:0 --height=300 --list --multiple --checklist --column=Select --column=Extension --column=Description < shopping.list)
+
+if [[ $EXTENSIONS = *"Airfoil Tools"* ]]; then
+    echo "Airfoil Tools"
+    EXTENSION_AIRFOIL_TOOLS
+fi
+
+if [[ $EXTENSIONS = *"Additive Assistant (FFF)"* ]]; then
+    echo "Additive Assistant (FFF)"
+    EXTENSION_ADDITIVE_ASSISTANT
+fi
+
+if [[ $EXTENSIONS = *"Czech localization for F360"* ]]; then
+    echo "Czech localization for F360"
+    EXTENSION_CZECH_LOCALE
+fi
+
+if [[ $EXTENSIONS = *"HP 3D Printers for Autodesk® Fusion 360™"* ]]; then
+    echo "HP 3D Printers for Autodesk® Fusion 360™"
+    EXTENSION_HP_3DPRINTER_CONNECTOR
+fi
+
+if [[ $EXTENSIONS = *"Helical Gear Generator"* ]]; then
+    echo "Helical Gear Generator"
+    EXTENSION_HELICAL_GEAR_GENERATOR
+fi
+
+if [[ $EXTENSIONS = *"OctoPrint for Autodesk® Fusion 360™"* ]]; then
+    echo "OctoPrint for Autodesk® Fusion 360™"
+    EXTENSION_OCTOPRINT
+fi
+
+if [[ $EXTENSIONS = *"Parameter I/O"* ]]; then
+    echo "Parameter I/O"
+    EXTENSION_PARAMETER_IO
+fi
+
+if [[ $EXTENSIONS = *"RoboDK"* ]]; then
+    echo "RoboDK"
+    EXTENSION_ROBODK
+fi
+
+if [[ $EXTENSIONS = *"Ultimaker Digital Factory for Autodesk Fusion 360™"* ]]; then
+    echo "Ultimaker Digital Factory for Autodesk Fusion 360™"
+    EXTENSION_ULTIMAKER_DIGITAL_FACTORY
+fi
 
 ###############################################################################################################################################################
 
