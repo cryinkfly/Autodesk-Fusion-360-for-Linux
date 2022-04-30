@@ -648,7 +648,7 @@ SP_WINE_SETTINGS
 
 function SP_WINE_SETTINGS {
 WINE_VERSION=$(yad --title="" \
---form --separator="" \
+--form --separator="" --item-separator="," \
 --borders=15 \
 --width=550 \
 --buttons-layout=center \
@@ -656,12 +656,11 @@ WINE_VERSION=$(yad --title="" \
 --field="<big><b>$SP_WINE_SETTINGS_TITLE</b></big>:LBL" \
 --field=":LBL" \
 --field="<b>$SP_WINE_SETTINGS_LABEL_1</b>:LBL" \
---field="$SP_WINE_SETTINGS_LABEL_2:CDIR" \
+--field="$SP_WINE_SETTINGS_LABEL_2:CB" \
 --field="<b>$SP_WINE_SETTINGS_LABEL_3</b>:LBL" \
-"" "" "" "$SP_WINE_VERSION_SELECT" "" 
-echo "`echo $line | awk -F',' '{print $4}'`" > /tmp/settings.txt)
+"" "" "" "$SP_WINE_VERSION_SELECT" "" )
 
-if [[ $WINE_VERSION = "$WINE_VERSION_0" ]]; then
+if [[ $WINE_VERSION = "Wine Version (Staging)" ]]; then
     echo "Install Wine on your system!"
     SP_OS_SETTINGS
 else
