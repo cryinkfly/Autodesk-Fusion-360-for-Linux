@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    14:30/30.04.2022                                                                   #
+# Time/Date:    18:30/05.05.2022                                                                   #
 # Version:      1.7.9 -> 1.8.0                                                                     #
 ####################################################################################################
 
@@ -35,6 +35,7 @@ SP_PATH="$HOME/.fusion360"
 
 # Reset the locale value:
 SP_LOCALE="en-US"
+SP_LICENSE="$SP_PATH/locale/en-US/license-en.txt"
 
 # Reset the graphics driver value:
 SP_DRIVER="DXVK"
@@ -63,8 +64,7 @@ function SP_STRUCTURE {
 ###############################################################################################################################################################
 
 # Get all server connections (links):
-function SP_SERVER_LIST {
-  
+function SP_SERVER_LIST {  
   # LIST
   wget -N -P $SP_PATH/servers https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/servers/server-list.txt
   
@@ -91,6 +91,34 @@ function SP_SERVER_LIST {
   
   # WINETRICKS
   SP_SERVER_20=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 42'`
+  
+  # AUTODESK FUSION 360 INSTALLER
+  SP_SERVER_21=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 49'`
+  
+  # DXVK AND OPENGL:
+  SP_SERVER_22=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 56'`
+  SP_SERVER_23=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 57'`
+  SP_SERVER_24=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 58'`
+  
+  # ICONS:
+  SP_SERVER_25=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 65'`
+  SP_SERVER_26=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 66'`
+  
+  # EXTRA SCRIPTS:
+  SP_SERVER_27=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 73'`
+  SP_SERVER_28=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 74'`
+  SP_SERVER_29=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 75'`
+  SP_SERVER_30=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 76'`
+  
+  # EXTENSIONS:
+  SP_SERVER_30=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 83'`
+  SP_SERVER_30=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 84'`
+  SP_SERVER_30=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 85'`
+  SP_SERVER_30=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 86'`
+  SP_SERVER_30=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 87'`
+  SP_SERVER_30=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 88'`
+  SP_SERVER_30=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 89'`
+  SP_SERVER_30=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 90'`
 }
 
 ###############################################################################################################################################################
