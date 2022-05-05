@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    18:30/05.05.2022                                                                   #
+# Time/Date:    18:45/05.05.2022                                                                   #
 # Version:      1.7.9 -> 1.8.0                                                                     #
 ####################################################################################################
 
@@ -216,5 +216,78 @@ function SP_FUSION360_INSTALLER_LOAD {
     echo "The Autodesk Fusion 360 installer doesn't exist and will be downloaded for you!"
     wget $SP_SERVER_21 -O Fusion360installer.exe
     mv "Fusion360installer.exe" "$SP_PATH/downloads/Fusion360installer.exe"
+  fi
+}
+
+###############################################################################################################################################################
+
+# Load the icons and .desktop-files:
+function SP_FUSION360_SHORTCUTS_LOAD {
+  # Create a .desktop file (launcher.sh) for Autodesk Fusion 360!
+  wget -N -P $SP_PATH/bin $SP_SERVER_25
+  mkdir -p $HOME/.local/share/applications/wine/Programs/Autodesk
+  echo "[Desktop Entry]" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk\ Fusion\ 360.desktop
+  echo "Name=Autodesk Fusion 360" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk\ Fusion\ 360.desktop    
+  echo "Comment=Autodesk Fusion 360 is a cloud-based 3D modeling, CAD, CAM, and PCB software platform for product design and manufacturing." >> $HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk\ Fusion\ 360.desktop
+  echo "Exec=bash ./launcher.sh" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk\ Fusion\ 360.desktop
+  echo "Type=Application" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk\ Fusion\ 360.desktop
+  echo "Categories=Development;Graphics;Science" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk\ Fusion\ 360.desktop
+  echo "StartupNotify=true" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk\ Fusion\ 360.desktop
+  echo "Icon=$SP_PATH/bin/fusion360.svg" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk\ Fusion\ 360.desktop
+  echo "Terminal=true" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk\ Fusion\ 360.desktop
+  echo "Path=$SP_PATH/bin" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk\ Fusion\ 360.desktop
+  # Create a .desktop file (uninstall.sh) for Autodesk Fusion 360!
+  wget -N -P $SP_PATH/bin $SP_SERVER_26
+  echo "[Desktop Entry]" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk\ Fusion\ 360\ Uninstall.desktop
+  echo "Name=Autodesk Fusion 360 - Uninstall" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk\ Fusion\ 360\ Uninstall.desktop    
+  echo "Comment=With this program you can delete Autodesk Fusion 360 on your system!" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk\ Fusion\ 360\ Uninstall.desktop
+  echo "Exec=bash ./uninstall.sh" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk\ Fusion\ 360\ Uninstall.desktop
+  echo "Type=Application" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk\ Fusion\ 360\ Uninstall.desktop
+  echo "Categories=Development;Graphics;Science" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk\ Fusion\ 360\ Uninstall.desktop
+  echo "StartupNotify=true" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk\ Fusion\ 360\ Uninstall.desktop
+  echo "Icon=$SP_PATH/bin/fusion360-uninstall.svg" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk\ Fusion\ 360\ Uninstall.desktop
+  echo "Terminal=true" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk\ Fusion\ 360\ Uninstall.desktop
+  echo "Path=$SP_PATH/bin" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk\ Fusion\ 360\ Uninstall.desktop
+  wget -N -P $SP_PATH/bin $SP_SERVER_27
+  chmod +x $SP_PATH/bin/uninstall.sh  
+  wget -N -P $SP_PATH/bin $SP_SERVER_28
+  chmod +x $SP_PATH/bin/launcher.sh
+  wget -N -P $SP_PATH/bin $SP_SERVER_29
+  chmod +x $SP_PATH/bin/update.sh
+  wget -N -P $SP_PATH/bin $SP_SERVER_30
+  chmod +x $SP_PATH/bin/read-text.sh
+}
+
+###############################################################################################################################################################
+# ALL LOG-FUNCTIONS ARE ARRANGED HERE:                                                                                                                        #
+###############################################################################################################################################################
+
+# Provides information about setup actions during installation.
+function SP_LOGFILE {
+  exec 5> $SP_PATH/logs/setupact.log
+  BASH_XTRACEFD="5"
+  set -x
+}
+
+###############################################################################################################################################################
+# ALL FUNCTIONS FOR DXVK AND OPENGL START HERE:                                                                                                               #
+###############################################################################################################################################################
+
+function SP_DXVK_OPENGL_1 {
+  if [[ $SP_DRIVER = "DXVK" ]]; then
+    WINEPREFIX=$WP_PATH sh $SP_PATH/bin/winetricks -q dxvk
+    wget -N -P $WP_PATH/drive_c/users/$USER/Downloads $SP_SERVER_22
+    cd "$WP_PATH/drive_c/users/$USER/Downloads"
+    WINEPREFIX=$WP_PATH wine regedit.exe DXVK.reg
+  fi
+}
+
+function SP_DXVK_OPENGL_2 {
+  if [[ $SP_DRIVER = "DXVK" ]]; then
+    wget -N $SP_SERVER_23
+    mv "DXVK.xml" "NMachineSpecificOptions.xml"
+  else
+    wget -N $SP_SERVER_24
+    mv "OpenGL.xml" "NMachineSpecificOptions.xml"
   fi
 }
