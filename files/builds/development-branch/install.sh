@@ -26,16 +26,8 @@
 # But it's important to know, you must to purchase the licenses directly from the manufacturer of Autodesk Fusion 360, when you will work with them on Linux! #
 ###############################################################################################################################################################
 
-###############################################################################################################################################################
-# ALL BASIC VALUES ARE CONFIGURED HERE:                                                                                                                       #
-###############################################################################################################################################################
-
 # Default-Path:
 SP_PATH="$HOME/.fusion360"
-
-# Reset the locale value:
-SP_LOCALE="en-US"
-SP_LICENSE="$SP_PATH/locale/en-US/license-en.txt"
 
 # Reset the graphics driver value:
 SP_DRIVER="DXVK"
@@ -567,6 +559,354 @@ function EXTENSION_ROBODK {
 # Install a extension: Ultimaker Digital Factory for Autodesk Fusion 360™
 function EXTENSION_ULTIMAKER_DIGITAL_FACTORY {
   cd "$WP_PATH/drive_c/users/$USER/Downloads"
-  wget -N SP_SERVER_38 &&
+  wget -N $SP_SERVER_38 &&
   WINEPREFIX=$WP_PATH msiexec /i Ultimaker_Digital_Factory-win64.msi
 }
+
+###############################################################################################################################################################
+# ALL DIALOGS ARE ARRANGED HERE:                                                                                                                              #
+###############################################################################################################################################################
+
+function SP-WELCOME {
+yad \
+--form \
+--separator="" \
+--center \
+--height=125 \
+--width=750 \
+--buttons-layout=center \
+--title="" \
+--field="<big>SP_TITLE</big>:LBL" \
+--field="$SP_WELCOME_LABEL_1:LBL" \
+--field="$SP_WELCOME_LABEL_2:LBL" \
+--align=center \
+--button=gtk-about!!"$SP_WELCOME_TOOLTIP_1":1 \
+--button=gtk-preferences!!"$SP_WELCOME_TOOLTIP_2":2 \
+--button=gtk-cancel:99 \
+--button=gtk-ok:3
+
+ret=$?
+
+# Responses to above button presses are below:
+if [[ $ret -eq 1 ]]; then
+    xdg-open https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux
+    SP-WELCOME
+elif [[ $ret -eq 2 ]]; then
+    SP-SETTINGS
+    SP_LOCALE_SETTINGS
+    SP_DRIVER_SETTINGS
+    SP-WELCOME
+elif [[ $ret -eq 3 ]]; then
+    SP_LICENSE
+fi
+}
+
+###############################################################################################################################################################
+
+function SP_SETTINGS {
+yad --title="" \
+--form --separator="," --item-separator="," \
+--borders=15 \
+--width=550 \
+--buttons-layout=center \
+--align=center \
+--field="<big><b>$SP_SETTINGS_TITLE</b></big>:LBL" \
+--field=":LBL" \
+--field="$SP_SETTINGS_LABEL_1:LBL" \
+--field="$SP_LOCALE_LABEL:CB" \
+--field="$SP_DRIVER_LABEL:CB" \
+--field="$SP_SETTINGS_LABEL_2:LBL" \
+"" "" "" "$SP_LOCALE_SELECT" "$SP_DRIVER_SELECT" "" | while read line; do
+echo "`echo $line | awk -F',' '{print $4}'`" > /tmp/settings.txt
+echo "`echo $line | awk -F',' '{print $5}'`" >> /tmp/settings.txt
+done
+}
+
+###############################################################################################################################################################
+
+function SP_LOCALE_SETTINGS {
+SP_LOCALE=`cat /tmp/settings.txt | awk 'NR == 1'`
+if [[ $SP_LOCALE = "Czech" ]]; then
+    echo "CS"
+    SP_LOCALE_CS
+    LICENSE="$SP_PATH/locale/cs-CZ/license-cs.txt"
+elif [[ $SP_LOCALE = "English" ]]; then
+    echo "EN"
+    SP_LOCALE_EN
+    LICENSE="$SP_PATH/locale/en-US/license-en.txt"
+elif [[ $SP_LOCALE = "German" ]]; then
+    echo "DE"
+    SP_LOCALE_DE
+    LICENSE="$SP_PATH/locale/de-DE/license-de.txt"
+elif [[ $SP_LOCALE = "Spanish" ]]; then
+    echo "ES"
+    SP_LOCALE_ES
+    LICENSE="$SP_PATH/locale/es-ES/license-es.txt"
+elif [[ $SP_LOCALE = "French" ]]; then
+    echo "FR"
+    SP_LOCALE_FR
+    LICENSE="$SP_PATH/locale/fr-FR/license-fr.txt"
+elif [[ $SP_LOCALE = "Italian" ]]; then
+    echo "IT"
+    SP_LOCALE_IT
+    LICENSE="$SP_PATH/locale/it-IT/license-it.txt"
+elif [[ $SP_LOCALE = "Japanese" ]]; then
+    echo "JP"
+    SP_LOCALE_JP
+    LICENSE="$SP_PATH/locale/ja-JP/license-ja.txt"
+elif [[ $SP_LOCALE = "Korean" ]]; then
+    echo "KO"
+    SP_LOCALE_KO
+    LICENSE="$SP_PATH/locale/ko-KR/license-ko.txt"
+elif [[ $SP_LOCALE = "Chinese" ]]; then
+    echo "ZH"
+    SP_LOCALE_ZH
+    LICENSE="$SP_PATH/locale/zh-CN/license-zh.txt"
+else 
+   echo "EN"
+   SP_LOCALE_EN
+   LICENSE="$SP_PATH/locale/en-US/license-en.txt"
+fi
+}
+
+###############################################################################################################################################################
+
+function SP_DRIVER_SETTINGS {
+SP_DRIVER=`cat /tmp/settings.txt | awk 'NR == 2'`
+}
+
+###############################################################################################################################################################
+
+function SP_LICENSE {
+SP_LICENSE_TEXT=$(cat $LICENSE)
+SP_LICENSE_CHECK=$(yad \
+--title="" \
+--form \
+--borders=15 \
+--width=550 \
+--height=450 \
+--buttons-layout=center \
+--align=center \
+--field=":TXT" "$SP_LICENSE_TEXT" \
+--field="$SP_LICENSE_CHECK_LABEL:CHK" )
+
+if [[ $SP_LICENSE_CHECK = *"TRUE"* ]]; then
+    echo "TRUE"
+    SP_INSTALLDIR
+else
+    echo "FALSE"
+    SP_LICENSE
+fi
+}
+
+###############################################################################################################################################################
+
+function SP_INSTALLDIR {
+WP_PATH=$(yad --title="" \
+--form --separator="" \
+--borders=15 \
+--width=550 \
+--buttons-layout=center \
+--align=center \
+--field="<big><b>$SP_INSTALLDIR_TITLE</b></big>:LBL" \
+--field=":LBL" \
+--field="<b>$SP_INSTALLDIR_LABEL_1</b>:LBL" \
+--field="$SP_INSTALLDIR_LABEL_2:CB" \
+--field="<b>$SP_INSTALLDIR_LABEL_3</b>:LBL" \
+"" "" "" "$HOME/.wineprefixes/fusion360" "" )
+
+# Continue with the installation ...
+SP_WINE_SETTINGS
+}
+
+###############################################################################################################################################################
+
+function SP_WINE_SETTINGS {
+WINE_VERSION=$(yad --title="" \
+--form --separator="" --item-separator="," \
+--borders=15 \
+--width=550 \
+--buttons-layout=center \
+--align=center \
+--field="<big><b>$SP_WINE_SETTINGS_TITLE</b></big>:LBL" \
+--field=":LBL" \
+--field="<b>$SP_WINE_SETTINGS_LABEL_1</b>:LBL" \
+--field="$SP_WINE_SETTINGS_LABEL_2:CB" \
+--field="<b>$SP_WINE_SETTINGS_LABEL_3</b>:LBL" \
+"" "" "" "$SP_WINE_VERSION_SELECT" "" )
+
+if [[ $WINE_VERSION = "Wine Version (Staging)" ]]; then
+    echo "Install Wine on your system!"
+    SP_OS_SETTINGS
+else
+    echo "Wine version (6.23 or higher) is already installed on the system!"
+    SP_FUSION360_INSTALL
+fi
+}
+
+###############################################################################################################################################################
+
+function SP_OS_SETTINGS {
+SP_OS=$(yad --title="" \
+--form --separator="" --item-separator="," \
+--borders=15 \
+--width=550 \
+--buttons-layout=center \
+--align=center \
+--field="<big><b>$SP_OS_TITLE</b></big>:LBL" \
+--field=":LBL" \
+--field="$SP_OS_LABEL_1:LBL" \
+--field="$SP_OS_LABEL_2:CB" \
+"" "" "" "$SP_OS_SELECT" )
+
+if [[ $SP_OS = "Arch Linux" ]]; then
+    echo "Arch Linux"
+    OS_ARCHLINUX
+elif [[ $SP_OS = "Debian 10" ]]; then
+    echo "Debian 10"
+    DEBIAN_BASED_1
+    OS_DEBIAN_10
+    DEBIAN_BASED_1
+elif [[ $SP_OS = "Debian 11" ]]; then
+    echo "Debian 11"
+    DEBIAN_BASED_1
+    OS_DEBIAN_11
+    DEBIAN_BASED_1
+elif [[ $SP_OS = "EndeavourOS" ]]; then
+    echo "EndeavourOS"
+    OS_ARCHLINUX
+elif [[ $SP_OS = "Fedora 34" ]]; then
+    echo "Fedora 34"
+    FEDORA_BASED_1
+    OS_FEDORA_34
+    FEDORA_BASED_2
+elif [[ $SP_OS = "Fedora 35" ]]; then
+    echo "Fedora 35"
+    FEDORA_BASED_1
+    OS_FEDORA_35
+    FEDORA_BASED_1
+elif [[ $SP_OS = "Fedora 36" ]]; then
+    echo "Fedora 36"
+    FEDORA_BASED_1
+    OS_FEDORA_36
+    FEDORA_BASED_1
+elif [[ $SP_OS = "Linux Mint 19.x" ]]; then
+    echo "Linux Mint 19.x"
+    DEBIAN_BASED_1
+    OS_UBUNTU_18
+    DEBIAN_BASED_2
+elif [[ $SP_OS = "Linux Mint 20.x" ]]; then
+    echo "Linux Mint 20.x"
+    DEBIAN_BASED_1
+    OS_UBUNTU_20
+    DEBIAN_BASED_1
+elif [[ $SP_OS = "Manjaro Linux" ]]; then
+    echo "Manjaro Linux"
+    OS_ARCHLINUX
+elif [[ $SP_OS = "openSUSE Leap 15.2" ]]; then
+    echo "openSUSE Leap 15.2"
+    OS_OPENSUSE_152
+elif [[ $SP_OS = "openSUSE Leap 15.3" ]]; then
+    echo "openSUSE Leap 15.3"
+    OS_OPENSUSE_153
+elif [[ $SP_OS = "openSUSE Leap 15.4" ]]; then
+    echo "openSUSE Leap 15.4"
+    OS_OPENSUSE_154
+elif [[ $SP_OS = "openSUSE Tumbleweed" ]]; then
+    echo "openSUSE Tumbleweed"
+    OS_OPENSUSE_TW
+elif [[ $SP_OS = "Red Hat Enterprise Linux 8.x" ]]; then
+    echo "Red Hat Enterprise Linux 8.x"
+    OS_REDHAT_LINUX_8
+elif [[ $SP_OS = "Red Hat Enterprise Linux 9.x" ]]; then
+    echo "Red Hat Enterprise Linux 9.x"
+    OS_REDHAT_LINUX_9
+elif [[ $SP_OS = "Solus" ]]; then
+    echo "Solus"
+    OS_SOLUS_LINUX
+elif [[ $SP_OS = "Ubuntu 18.04" ]]; then
+    echo "Ubuntu 18.04"
+    DEBIAN_BASED_1
+    OS_UBUNTU_18
+    DEBIAN_BASED_2
+elif [[ $SP_OS = "Ubuntu 20.04" ]]; then
+    echo "Ubuntu 20.04"
+    DEBIAN_BASED_1
+    OS_UBUNTU_20
+    DEBIAN_BASED_2
+elif [[ $SP_OS = "Ubuntu 22.04" ]]; then
+    echo "Ubuntu 22.04"
+    DEBIAN_BASED_1
+    OS_UBUNTU_22
+    DEBIAN_BASED_2
+elif [[ $SP_OS = "Void Linux" ]]; then
+    echo "Void Linux"
+    OS_VOID_LINUX
+elif [[ $SP_OS = "Gentoo Linux" ]]; then
+    echo "Gentoo Linux"
+    OS_GENTOO_LINUX
+fi
+}
+
+###############################################################################################################################################################
+
+function SP_FUSION360_EXTENSIONS {
+EXTENSIONS=$(yad --button=gtk-cancel:99 --button=gtk-ok:0 --height=300 --list --multiple --checklist --column=Select --column=Extension --column=Description < shopping.list)
+
+if [[ $EXTENSIONS = *"Airfoil Tools"* ]]; then
+    echo "Airfoil Tools"
+    EXTENSION_AIRFOIL_TOOLS
+fi
+
+if [[ $EXTENSIONS = *"Additive Assistant (FFF)"* ]]; then
+    echo "Additive Assistant (FFF)"
+    EXTENSION_ADDITIVE_ASSISTANT
+fi
+
+if [[ $EXTENSIONS = *"Czech localization for F360"* ]]; then
+    echo "Czech localization for F360"
+    EXTENSION_CZECH_LOCALE
+fi
+
+if [[ $EXTENSIONS = *"HP 3D Printers for Autodesk® Fusion 360™"* ]]; then
+    echo "HP 3D Printers for Autodesk® Fusion 360™"
+    EXTENSION_HP_3DPRINTER_CONNECTOR
+fi
+
+if [[ $EXTENSIONS = *"Helical Gear Generator"* ]]; then
+    echo "Helical Gear Generator"
+    EXTENSION_HELICAL_GEAR_GENERATOR
+fi
+
+if [[ $EXTENSIONS = *"OctoPrint for Autodesk® Fusion 360™"* ]]; then
+    echo "OctoPrint for Autodesk® Fusion 360™"
+    EXTENSION_OCTOPRINT
+fi
+
+if [[ $EXTENSIONS = *"Parameter I/O"* ]]; then
+    echo "Parameter I/O"
+    EXTENSION_PARAMETER_IO
+fi
+
+if [[ $EXTENSIONS = *"RoboDK"* ]]; then
+    echo "RoboDK"
+    EXTENSION_ROBODK
+fi
+
+if [[ $EXTENSIONS = *"Ultimaker Digital Factory for Autodesk Fusion 360™"* ]]; then
+    echo "Ultimaker Digital Factory for Autodesk Fusion 360™"
+    EXTENSION_ULTIMAKER_DIGITAL_FACTORY
+fi
+
+###############################################################################################################################################################
+
+# Still in Progress ...
+
+###############################################################################################################################################################
+# THE INSTALLATION PROGRAM IS STARTED HERE:                                                                                                                   #
+###############################################################################################################################################################
+
+SP_STRUCTURE
+SP_LOCALE_INDEX
+SP_LOCALE_EN
+SP-WELCOME
