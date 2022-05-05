@@ -10,7 +10,7 @@
 
 [Autodesk Fusion 360](https://www.autodesk.com/products/fusion-360/features) is a cloud-based 3D modeling, CAD, CAM, and PCB software platform for product design and manufacturing, what you can use on Windows and macOS.
 
-But the problem is that there are also people like me who don't want to use either of these two operating systems on there systems. Then these users have installed a Linux distribution such as openSUSE Leap, Ubuntu or Fedora.
+But the problem is that there are also people like me who don't want to use either of these two operating systems on their systems. Then these users have installed a Linux distribution such as openSUSE Leap, Ubuntu or Fedora.
 
 And so I got the idea to start this project here to find a way to solve this problem. 
 
