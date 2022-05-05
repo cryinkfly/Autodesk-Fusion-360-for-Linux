@@ -40,3 +40,36 @@ https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds
 -------------
 
 https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks
+
+###############################################################################################################################################################
+
+# AUTODESK FUSION 360 INSTALLER:
+
+https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe
+
+###############################################################################################################################################################
+
+# DXVK AND OPENGL:
+
+https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/driver/video/dxvk/DXVK.reg
+https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/driver/video/dxvk/DXVK.xml
+
+https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/driver/video/opengl/OpenGL.xml
+
+###############################################################################################################################################################
+
+# ICONS:
+
+https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/fusion360.svg
+https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/fusion360-uninstall.svg
+
+###############################################################################################################################################################
+
+# EXTRA SCRIPTS:
+
+https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/uninstall.sh
+https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/launcher.sh
+https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/update.sh
+https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/read-text.sh
+
+###############################################################################################################################################################
