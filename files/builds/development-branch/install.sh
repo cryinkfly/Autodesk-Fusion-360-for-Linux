@@ -50,6 +50,7 @@ function SP_STRUCTURE {
   mkdir -p $SP_PATH/config
   mkdir -p $SP_PATH/servers
   mkdir -p $SP_PATH/graphics
+  mkdir -p $SP_PATH/downloads
   mkdir -p $SP_PATH/locale/cs-CZ
   mkdir -p $SP_PATH/locale/de-DE
   mkdir -p $SP_PATH/locale/en-US
@@ -193,4 +194,27 @@ function SP_LOCALE_ZH {
   SP_LOCALE="zh-CN"
   . $SP_PATH/locale/zh-CN/locale-zh.sh
   SP_LICENSE="$SP_PATH/locale/zh-CN/license-zh.txt"
+}
+
+###############################################################################################################################################################
+
+# Load the newest winetricks version:
+function SP_WINETRICKS_LOAD {
+  wget -N -P $SP_PATH/bin $SP_SERVER_20
+  chmod +x $SP_PATH/bin/winetricks
+}
+
+###############################################################################################################################################################
+
+# Load newest Autodesk Fusion 360 installer version for the Setup Wizard!
+function SP_FUSION360_INSTALLER_LOAD {
+  # Search for a existing installer of Autodesk Fusion 360
+  FUSION360_INSTALLER="$SP_PATH/downloads/Fusion360installer.exe"
+  if [ -f "$FUSION360_INSTALLER" ]; then
+    echo "The Autodesk Fusion 360 installer exist!"
+  else
+    echo "The Autodesk Fusion 360 installer doesn't exist and will be downloaded for you!"
+    wget $SP_SERVER_21 -O Fusion360installer.exe
+    mv "Fusion360installer.exe" "$SP_PATH/downloads/Fusion360installer.exe"
+  fi
 }
