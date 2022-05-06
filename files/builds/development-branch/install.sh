@@ -800,6 +800,11 @@ elif [[ $SP_OS = "Linux Mint 20.x" ]]; then
     DEBIAN_BASED_1
     OS_UBUNTU_20
     DEBIAN_BASED_1
+elif [[ $SP_OS = "Linux Mint 21.x" ]]; then
+    echo "Linux Mint 21.x"
+    DEBIAN_BASED_1
+    OS_UBUNTU_22
+    DEBIAN_BASED_1
 elif [[ $SP_OS = "Manjaro Linux" ]]; then
     echo "Manjaro Linux"
     OS_ARCHLINUX
