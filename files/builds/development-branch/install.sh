@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    06:45/06.05.2022                                                                   #
+# Time/Date:    07:45/06.05.2022                                                                   #
 # Version:      1.7.9 -> 1.8.0                                                                     #
 ####################################################################################################
 
@@ -48,6 +48,7 @@ function SP_STRUCTURE {
   mkdir -p $SP_PATH/servers
   mkdir -p $SP_PATH/graphics
   mkdir -p $SP_PATH/downloads
+  mkdir -p $SP_PATH/extensions
   mkdir -p $SP_PATH/locale/cs-CZ
   mkdir -p $SP_PATH/locale/de-DE
   mkdir -p $SP_PATH/locale/en-US
@@ -312,6 +313,7 @@ function SP_DXVK_OPENGL_2 {
 function SP_FUSION360_INSTALL {
   SP_WINETRICKS_LOAD
   SP_FUSION360_INSTALLER_LOAD
+  WINEPREFIX=$WP_PATH wineboot -u
   # Note that the winetricks sandbox verb merely removes the desktop integration and Z: drive symlinks and is not a "true" sandbox.
   # It protects against errors rather than malice. It's useful for, e.g., keeping games from saving their settings in random subdirectories of your home directory. 
   # But it still ensures that wine, for example, no longer has access permissions to Home! 
@@ -508,9 +510,11 @@ function OS_GENTOO_LINUX {
 # Install a extension: Airfoil Tools
 
 function EXTENSION_AIRFOIL_TOOLS {
-  cd "$WP_PATH/drive_c/users/$USER/Downloads"
+  cd "$SP_PATH/extensions"
   wget -N $SP_SERVER_31 &&
-  WINEPREFIX=$WP_PATH wine AirfoilTools_win64.msi
+  cp AirfoilTools_win64.msi "$WP_PATH/drive_c/users/$USER/Downloads"
+  cd "$WP_PATH/drive_c/users/$USER/Downloads"
+  WINEPREFIX=$WP_PATH wine msiexec /i AirfoilTools_win64.msi
 }
 
 ###############################################################################################################################################################
@@ -518,9 +522,11 @@ function EXTENSION_AIRFOIL_TOOLS {
 # Install a extension: Additive Assistant (FFF)
 
 function EXTENSION_ADDITIVE_ASSISTANT {
-  cd "$WP_PATH/drive_c/users/$USER/Downloads"
+  cd "$SP_PATH/extensions"
   wget -N $SP_SERVER_32 &&
-  WINEPREFIX=$WP_PATH msiexec /i AdditiveAssistant.bundle-win64.msi
+  cp AdditiveAssistant.bundle-win64.msi "$WP_PATH/drive_c/users/$USER/Downloads"
+  cd "$WP_PATH/drive_c/users/$USER/Downloads"
+  WINEPREFIX=$WP_PATH wine msiexec /i AdditiveAssistant.bundle-win64.msi
 }
 
 ###############################################################################################################################################################
@@ -528,7 +534,7 @@ function EXTENSION_ADDITIVE_ASSISTANT {
 # Install a extension: Czech localization for F360
 function EXTENSION_CZECH_LOCALE {
   SP_SEARCH_EXTENSION_CZECH_LOCALE
-  WINEPREFIX=$WP_PATH msiexec /i $CZECH_LOCALE_EXTENSION
+  WINEPREFIX=$WP_PATH wine msiexec /i $CZECH_LOCALE_EXTENSION
 }
 
 ###############################################################################################################################################################
@@ -537,7 +543,7 @@ function EXTENSION_CZECH_LOCALE {
 function EXTENSION_HP_3DPRINTER_CONNECTOR {
   cd "$WP_PATH/drive_c/users/$USER/Downloads"
   wget -N $SP_SERVER_33 &&
-  WINEPREFIX=$WP_PATH msiexec /i HP_3DPrinters_for_Fusion360-win64.msi
+  WINEPREFIX=$WP_PATH wine msiexec /i HP_3DPrinters_for_Fusion360-win64.msi
 }
 
 ###############################################################################################################################################################
@@ -546,7 +552,7 @@ function EXTENSION_HP_3DPRINTER_CONNECTOR {
 function EXTENSION_HELICAL_GEAR_GENERATOR {
   cd "$WP_PATH/drive_c/users/$USER/Downloads"
   wget -N $SP_SERVER_34 &&
-  WINEPREFIX=$WP_PATH msiexec /i HelicalGear_win64.msi
+  WINEPREFIX=$WP_PATH wine msiexec /i HelicalGear_win64.msi
 }
 
 ###############################################################################################################################################################
@@ -555,7 +561,7 @@ function EXTENSION_HELICAL_GEAR_GENERATOR {
 function EXTENSION_OCTOPRINT {
   cd "$WP_PATH/drive_c/users/$USER/Downloads"
   wget -N $SP_SERVER_35 &&
-  WINEPREFIX=$WP_PATH msiexec /i OctoPrint_for_Fusion360-win64.msi
+  WINEPREFIX=$WP_PATH wine msiexec /i OctoPrint_for_Fusion360-win64.msi
 }
 
 ###############################################################################################################################################################
@@ -564,7 +570,7 @@ function EXTENSION_OCTOPRINT {
 function EXTENSION_PARAMETER_IO {
   cd "$WP_PATH/drive_c/users/$USER/Downloads"
   wget -N $SP_SERVER_36 &&
-  WINEPREFIX=$WP_PATH msiexec /i ParameterIO_win64.msi
+  WINEPREFIX=$WP_PATH wine msiexec /i ParameterIO_win64.msi
 }
 
 ###############################################################################################################################################################
@@ -573,7 +579,7 @@ function EXTENSION_PARAMETER_IO {
 function EXTENSION_ROBODK {
   cd "$WP_PATH/drive_c/users/$USER/Downloads"
   wget -N $SP_SERVER_37 &&
-  WINEPREFIX=$WP_PATH msiexec /i RoboDK.bundle-win64.msi
+  WINEPREFIX=$WP_PATH wine msiexec /i RoboDK.bundle-win64.msi
 }
 
 ###############################################################################################################################################################
@@ -582,7 +588,7 @@ function EXTENSION_ROBODK {
 function EXTENSION_ULTIMAKER_DIGITAL_FACTORY {
   cd "$WP_PATH/drive_c/users/$USER/Downloads"
   wget -N $SP_SERVER_38 &&
-  WINEPREFIX=$WP_PATH msiexec /i Ultimaker_Digital_Factory-win64.msi
+  WINEPREFIX=$WP_PATH wine msiexec /i Ultimaker_Digital_Factory-win64.msi
 }
 
 ###############################################################################################################################################################
@@ -735,7 +741,7 @@ WP_PATH=$(yad --title="" \
 --field="<b>$SP_INSTALLDIR_LABEL_1</b>:LBL" \
 --field="$SP_INSTALLDIR_LABEL_2:CB" \
 --field="<b>$SP_INSTALLDIR_LABEL_3</b>:LBL" \
-"" "" "" "$HOME/.wineprefixes/fusion360" "" )
+"" "" "" "$HOME/.wine/wineprefixes/fusion360" "" )
 
 # Continue with the installation ...
 SP_WINE_SETTINGS
