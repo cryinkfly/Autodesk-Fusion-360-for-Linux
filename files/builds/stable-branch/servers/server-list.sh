@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    08:34/06.05.2022                                                                   #
+# Time/Date:    08:35/06.05.2022                                                                   #
 # Version:      x.x.x -> 0.0.1                                                                     #
 ####################################################################################################
 
@@ -43,8 +43,8 @@ SP_SERVER_15="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/mai
 SP_SERVER_16="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/locale/ko-KR/locale-ko.sh"
 SP_SERVER_17="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/locale/ko-KR/license-ko.txt"
 
-SP_SERVER_18=https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/locale/zh-CN/locale-zh.sh"
-SP_SERVER_19=https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/locale/zh-CN/license-zh.txt"
+SP_SERVER_18="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/locale/zh-CN/locale-zh.sh"
+SP_SERVER_19="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/locale/zh-CN/license-zh.txt"
 
 ###############################################################################################################################################################
 
