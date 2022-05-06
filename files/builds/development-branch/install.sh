@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    07:45/06.05.2022                                                                   #
+# Time/Date:    08:00/06.05.2022                                                                   #
 # Version:      1.7.9 -> 1.8.0                                                                     #
 ####################################################################################################
 
@@ -313,21 +313,23 @@ function SP_DXVK_OPENGL_2 {
 function SP_FUSION360_INSTALL {
   SP_WINETRICKS_LOAD
   SP_FUSION360_INSTALLER_LOAD
-  WINEPREFIX=$WP_PATH wineboot -u
   # Note that the winetricks sandbox verb merely removes the desktop integration and Z: drive symlinks and is not a "true" sandbox.
   # It protects against errors rather than malice. It's useful for, e.g., keeping games from saving their settings in random subdirectories of your home directory. 
   # But it still ensures that wine, for example, no longer has access permissions to Home! 
   # For this reason, the EXE files must be located directly in the Wineprefix folder!
   WINEPREFIX=$WP_PATH sh $SP_PATH/bin/winetricks -q sandbox
+  sleep 5
   # We must install some packages!
   WINEPREFIX=$WP_PATH sh $SP_PATH/bin/winetricks -q atmlib gdiplus corefonts cjkfonts msxml4 msxml6 vcrun2017 fontsmooth=rgb winhttp win10
+  sleep 5
   # We must install cjkfonts again then sometimes it doesn't work in the first time!
   WINEPREFIX=$WP_PATH sh $SP_PATH/bin/winetricks -q cjkfonts
+  sleep 5
   SP_DXVK_OPENGL_1
   # We must copy the EXE-file directly in the Wineprefix folder (Sandbox-Mode)!
-  cp "$SP_PATH/downloads/Fusion360installer.exe" "$wineprefixname/drive_c/users/$USER/Downloads"
-  WINEPREFIX=$WP_PATH wine $wineprefixname/drive_c/users/$USER/Downloads/Fusion360installer.exe -p deploy -g -f log.txt --quiet
-  WINEPREFIX=$WP_PATH wine $wineprefixname/drive_c/users/$USER/Downloads/Fusion360installer.exe -p deploy -g -f log.txt --quiet
+  cp "$SP_PATH/downloads/Fusion360installer.exe" "$WP_PATH/drive_c/users/$USER/Downloads"
+  WINEPREFIX=$WP_PATH wine $WP_PATH/drive_c/users/$USER/Downloads/Fusion360installer.exe -p deploy -g -f log.txt --quiet
+  WINEPREFIX=$WP_PATH wine $WP_PATH/drive_c/users/$USER/Downloads/Fusion360installer.exe -p deploy -g -f log.txt --quiet
   mkdir -p "$WP_PATH/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options"
   cd "$WP_PATH/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options"
   SP_DXVK_OPENGL_2
@@ -541,8 +543,10 @@ function EXTENSION_CZECH_LOCALE {
 
 # Install a extension: HP 3D Printers for Autodesk® Fusion 360™
 function EXTENSION_HP_3DPRINTER_CONNECTOR {
-  cd "$WP_PATH/drive_c/users/$USER/Downloads"
+  cd "$SP_PATH/extensions"
   wget -N $SP_SERVER_33 &&
+  cp HP_3DPrinters_for_Fusion360-win64.msi "$WP_PATH/drive_c/users/$USER/Downloads"
+  cd "$WP_PATH/drive_c/users/$USER/Downloads"
   WINEPREFIX=$WP_PATH wine msiexec /i HP_3DPrinters_for_Fusion360-win64.msi
 }
 
@@ -550,8 +554,10 @@ function EXTENSION_HP_3DPRINTER_CONNECTOR {
 
 # Install a extension: Helical Gear Generator
 function EXTENSION_HELICAL_GEAR_GENERATOR {
-  cd "$WP_PATH/drive_c/users/$USER/Downloads"
+  cd "$SP_PATH/extensions"
   wget -N $SP_SERVER_34 &&
+  cp HelicalGear_win64.msi "$WP_PATH/drive_c/users/$USER/Downloads"
+  cd "$WP_PATH/drive_c/users/$USER/Downloads"
   WINEPREFIX=$WP_PATH wine msiexec /i HelicalGear_win64.msi
 }
 
@@ -559,8 +565,10 @@ function EXTENSION_HELICAL_GEAR_GENERATOR {
 
 # Install a extension: OctoPrint for Autodesk® Fusion 360™
 function EXTENSION_OCTOPRINT {
-  cd "$WP_PATH/drive_c/users/$USER/Downloads"
+  cd "$SP_PATH/extensions"
   wget -N $SP_SERVER_35 &&
+  cp OctoPrint_for_Fusion360-win64.msi "$WP_PATH/drive_c/users/$USER/Downloads"
+  cd "$WP_PATH/drive_c/users/$USER/Downloads"
   WINEPREFIX=$WP_PATH wine msiexec /i OctoPrint_for_Fusion360-win64.msi
 }
 
@@ -568,8 +576,10 @@ function EXTENSION_OCTOPRINT {
 
 # Install a extension: Parameter I/O
 function EXTENSION_PARAMETER_IO {
-  cd "$WP_PATH/drive_c/users/$USER/Downloads"
+  cd "$SP_PATH/extensions" 
   wget -N $SP_SERVER_36 &&
+  cp ParameterIO_win64.msi "$WP_PATH/drive_c/users/$USER/Downloads"
+  cd "$WP_PATH/drive_c/users/$USER/Downloads"
   WINEPREFIX=$WP_PATH wine msiexec /i ParameterIO_win64.msi
 }
 
@@ -577,8 +587,10 @@ function EXTENSION_PARAMETER_IO {
 
 # Install a extension: RoboDK
 function EXTENSION_ROBODK {
-  cd "$WP_PATH/drive_c/users/$USER/Downloads"
+  cd "$SP_PATH/extensions"  
   wget -N $SP_SERVER_37 &&
+  cp RoboDK.bundle-win64.msi "$WP_PATH/drive_c/users/$USER/Downloads"
+  cd "$WP_PATH/drive_c/users/$USER/Downloads"
   WINEPREFIX=$WP_PATH wine msiexec /i RoboDK.bundle-win64.msi
 }
 
@@ -586,8 +598,10 @@ function EXTENSION_ROBODK {
 
 # Install a extension: Ultimaker Digital Factory for Autodesk Fusion 360™
 function EXTENSION_ULTIMAKER_DIGITAL_FACTORY {
-  cd "$WP_PATH/drive_c/users/$USER/Downloads"
+  cd "$SP_PATH/extensions"
   wget -N $SP_SERVER_38 &&
+  cp Ultimaker_Digital_Factory-win64.msi "$WP_PATH/drive_c/users/$USER/Downloads"
+  cd "$WP_PATH/drive_c/users/$USER/Downloads"
   WINEPREFIX=$WP_PATH wine msiexec /i Ultimaker_Digital_Factory-win64.msi
 }
 
