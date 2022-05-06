@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    08:00/06.05.2022                                                                   #
+# Time/Date:    08:30/06.05.2022                                                                   #
 # Version:      1.7.9 -> 1.8.0                                                                     #
 ####################################################################################################
 
@@ -659,15 +659,15 @@ yad --title="" \
 --field="$SP_DRIVER_LABEL:CB" \
 --field="$SP_SETTINGS_LABEL_2:LBL" \
 "" "" "" "$SP_LOCALE_SELECT" "$SP_DRIVER_SELECT" "" | while read line; do
-echo "`echo $line | awk -F',' '{print $4}'`" > /tmp/settings.txt
-echo "`echo $line | awk -F',' '{print $5}'`" >> /tmp/settings.txt
+echo "`echo $line | awk -F',' '{print $4}'`" > /tmp/fusion360/settings.txt
+echo "`echo $line | awk -F',' '{print $5}'`" >> /tmp/fusion360/settings.txt
 done
 }
 
 ###############################################################################################################################################################
 
 function SP_LOCALE_SETTINGS {
-SP_LOCALE=`cat /tmp/settings.txt | awk 'NR == 1'`
+SP_LOCALE=`cat /tmp/fusion360/settings.txt | awk 'NR == 1'`
 if [[ $SP_LOCALE = "Czech" ]]; then
     echo "CS"
     SP_LOCALE_CS
@@ -714,7 +714,7 @@ fi
 ###############################################################################################################################################################
 
 function SP_DRIVER_SETTINGS {
-SP_DRIVER=`cat /tmp/settings.txt | awk 'NR == 2'`
+SP_DRIVER=`cat /tmp/fusion360/settings.txt | awk 'NR == 2'`
 }
 
 ###############################################################################################################################################################
