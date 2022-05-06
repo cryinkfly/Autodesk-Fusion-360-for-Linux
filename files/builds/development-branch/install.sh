@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    08:30/06.05.2022                                                                   #
+# Time/Date:    08:32/06.05.2022                                                                   #
 # Version:      1.7.9 -> 1.8.0                                                                     #
 ####################################################################################################
 
@@ -65,59 +65,9 @@ function SP_STRUCTURE {
 # Get all server connections (links):
 function SP_SERVER_LIST {  
   # LIST
-  wget -N -P $SP_PATH/servers https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/servers/server-list.txt
-  
-  # LANGUAGE FILES
-  SP_SERVER_1=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 8'`
-  SP_SERVER_2=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 10'`
-  SP_SERVER_3=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 11'`
-  SP_SERVER_4=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 13'`
-  SP_SERVER_5=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 14'`
-  SP_SERVER_6=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 16'`
-  SP_SERVER_7=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 17'`
-  SP_SERVER_8=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 19'`
-  SP_SERVER_9=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 20'`
-  SP_SERVER_10=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 22'`
-  SP_SERVER_11=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 23'`
-  SP_SERVER_12=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 25'`
-  SP_SERVER_13=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 26'`
-  SP_SERVER_14=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 28'`
-  SP_SERVER_15=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 29'`
-  SP_SERVER_16=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 31'`
-  SP_SERVER_17=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 32'`
-  SP_SERVER_18=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 34'`
-  SP_SERVER_19=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 35'`
-  
-  # WINETRICKS
-  SP_SERVER_20=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 42'`
-  
-  # AUTODESK FUSION 360 INSTALLER
-  SP_SERVER_21=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 49'`
-  
-  # DXVK AND OPENGL:
-  SP_SERVER_22=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 56'`
-  SP_SERVER_23=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 57'`
-  SP_SERVER_24=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 58'`
-  
-  # ICONS:
-  SP_SERVER_25=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 65'`
-  SP_SERVER_26=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 66'`
-  
-  # EXTRA SCRIPTS:
-  SP_SERVER_27=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 73'`
-  SP_SERVER_28=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 74'`
-  SP_SERVER_29=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 75'`
-  SP_SERVER_30=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 76'`
-  
-  # EXTENSIONS:
-  SP_SERVER_31=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 83'`
-  SP_SERVER_32=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 84'`
-  SP_SERVER_33=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 85'`
-  SP_SERVER_34=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 86'`
-  SP_SERVER_35=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 87'`
-  SP_SERVER_36=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 88'`
-  SP_SERVER_37=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 89'`
-  SP_SERVER_38=`cat $SP_PATH/servers/server-list.txt | awk 'NR == 90'`
+  wget -N -P $SP_PATH/servers https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/servers/server-list.sh
+  chmod +x $SP_PATH/servers/server-list.sh
+  . $SP_PATH/servers/server-list.sh
 }
 
 ###############################################################################################################################################################
