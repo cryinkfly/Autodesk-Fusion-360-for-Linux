@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    06:35/06.05.2022                                                                   #
+# Time/Date:    06:45/06.05.2022                                                                   #
 # Version:      1.7.9 -> 1.8.0                                                                     #
 ####################################################################################################
 
@@ -310,6 +310,8 @@ function SP_DXVK_OPENGL_2 {
 
 # Autodesk Fusion 360 will now be installed using Wine and Winetricks.
 function SP_FUSION360_INSTALL {
+  SP_WINETRICKS_LOAD
+  SP_FUSION360_INSTALLER_LOAD
   # Note that the winetricks sandbox verb merely removes the desktop integration and Z: drive symlinks and is not a "true" sandbox.
   # It protects against errors rather than malice. It's useful for, e.g., keeping games from saving their settings in random subdirectories of your home directory. 
   # But it still ensures that wine, for example, no longer has access permissions to Home! 
