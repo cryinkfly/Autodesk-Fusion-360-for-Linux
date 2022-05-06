@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    06:00/06.05.2022                                                                   #
+# Time/Date:    06:30/06.05.2022                                                                   #
 # Version:      1.7.9 -> 1.8.0                                                                     #
 ####################################################################################################
 
@@ -31,6 +31,9 @@ SP_PATH="$HOME/.fusion360"
 
 # Reset the graphics driver value:
 SP_DRIVER="DXVK"
+
+# Reset the logfile-value for the installation of Autodesk Fusion 360!
+SP_FUSION360_CHANGE=0
 
 ###############################################################################################################################################################
 # THE INITIALIZATION OF DEPENDENCIES STARTS HERE:                                                                                                             #
@@ -255,10 +258,19 @@ function SP_FUSION360_SHORTCUTS_LOAD {
 ###############################################################################################################################################################
 
 # Provides information about setup actions during installation.
-function SP_LOGFILE {
+function SP_LOGFILE_INSTALL {
   exec 5> $SP_PATH/logs/setupact.log
   BASH_XTRACEFD="5"
   set -x
+}
+
+###############################################################################################################################################################
+
+function SP_LOGFILE_WINEPREFIX {
+if [ $SP_FUSION360_CHANGE -eq 1 ]; then
+  echo "Wineprefix (Path):" >> $SP_PATH/logs/wineprefixes.log
+  echo "$WP_PATH" >> $SP_PATH/logs/wineprefixes.log
+fi
 }
 
 ###############################################################################################################################################################
@@ -912,6 +924,7 @@ fi
 ###############################################################################################################################################################
 
 SP_STRUCTURE
+SP_LOGFILE_INSTALL
 SP_SERVER_LIST
 SP_LOCALE_INDEX
 SP-WELCOME
