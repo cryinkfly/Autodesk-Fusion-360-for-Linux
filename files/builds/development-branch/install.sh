@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    18:30/11.05.2022                                                                   #
+# Time/Date:    18:38/11.05.2022                                                                   #
 # Version:      1.7.9 -> 1.8.0                                                                     #
 ####################################################################################################
 
@@ -733,8 +733,11 @@ if [[ $ret -eq 1 ]]; then
     SP_INSTALLDIR 
 elif [[ $ret -eq 2 ]]; then
     # Get informations about the current wineprefix - Repair
+    WP_PATH_CHECK=`cat /tmp/fusion-360/logs/wineprefixes.log | awk 'NR == 1'`
 elif [[ $ret -eq 3 ]]; then
     # Get informations about the current wineprefix - Delete
+    WP_PATH_CHECK=`cat /tmp/fusion-360/logs/wineprefixes.log | awk 'NR == 1'`
+    . $SP_PATH/bin/uninstall.sh
 fi
 }
 
