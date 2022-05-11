@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    16:50/11.05.2022                                                                   #
+# Time/Date:    18:10/11.05.2022                                                                   #
 # Version:      1.7.9 -> 1.8.0                                                                     #
 ####################################################################################################
 
@@ -182,6 +182,53 @@ function SP_LOCALE_ZH {
 }
 
 ###############################################################################################################################################################
+
+function SP_LOCALE_SETTINGS {
+SP_LOCALE=`cat /tmp/fusion360/settings.txt | awk 'NR == 1'`
+if [[ $SP_LOCALE = "Czech" ]]; then
+    echo "CS"
+    SP_LOCALE_CS
+    LICENSE="$SP_PATH/locale/cs-CZ/license-cs.txt"
+elif [[ $SP_LOCALE = "English" ]]; then
+    echo "EN"
+    SP_LOCALE_EN
+    LICENSE="$SP_PATH/locale/en-US/license-en.txt"
+elif [[ $SP_LOCALE = "German" ]]; then
+    echo "DE"
+    SP_LOCALE_DE
+    LICENSE="$SP_PATH/locale/de-DE/license-de.txt"
+elif [[ $SP_LOCALE = "Spanish" ]]; then
+    echo "ES"
+    SP_LOCALE_ES
+    LICENSE="$SP_PATH/locale/es-ES/license-es.txt"
+elif [[ $SP_LOCALE = "French" ]]; then
+    echo "FR"
+    SP_LOCALE_FR
+    LICENSE="$SP_PATH/locale/fr-FR/license-fr.txt"
+elif [[ $SP_LOCALE = "Italian" ]]; then
+    echo "IT"
+    SP_LOCALE_IT
+    LICENSE="$SP_PATH/locale/it-IT/license-it.txt"
+elif [[ $SP_LOCALE = "Japanese" ]]; then
+    echo "JP"
+    SP_LOCALE_JP
+    LICENSE="$SP_PATH/locale/ja-JP/license-ja.txt"
+elif [[ $SP_LOCALE = "Korean" ]]; then
+    echo "KO"
+    SP_LOCALE_KO
+    LICENSE="$SP_PATH/locale/ko-KR/license-ko.txt"
+elif [[ $SP_LOCALE = "Chinese" ]]; then
+    echo "ZH"
+    SP_LOCALE_ZH
+    LICENSE="$SP_PATH/locale/zh-CN/license-zh.txt"
+else 
+   echo "EN"
+   SP_LOCALE_EN
+   LICENSE="$SP_PATH/locale/en-US/license-en.txt"
+fi
+}
+
+###############################################################################################################################################################
 # DONWLOAD WINETRICKS AND AUTODESK FUSION 360:                                                                                                                #
 ###############################################################################################################################################################
 
@@ -268,6 +315,12 @@ function SP_DXVK_OPENGL_2 {
     wget -N $SP_SERVER_24
     mv "OpenGL.xml" "NMachineSpecificOptions.xml"
   fi
+}
+
+###############################################################################################################################################################
+
+function SP_DRIVER_SETTINGS {
+SP_DRIVER=`cat /tmp/fusion360/settings.txt | awk 'NR == 2'`
 }
 
 ###############################################################################################################################################################
@@ -627,59 +680,6 @@ yad --title="" \
 echo "`echo $line | awk -F',' '{print $4}'`" > /tmp/fusion360/settings.txt
 echo "`echo $line | awk -F',' '{print $5}'`" >> /tmp/fusion360/settings.txt
 done
-}
-
-###############################################################################################################################################################
-
-function SP_LOCALE_SETTINGS {
-SP_LOCALE=`cat /tmp/fusion360/settings.txt | awk 'NR == 1'`
-if [[ $SP_LOCALE = "Czech" ]]; then
-    echo "CS"
-    SP_LOCALE_CS
-    LICENSE="$SP_PATH/locale/cs-CZ/license-cs.txt"
-elif [[ $SP_LOCALE = "English" ]]; then
-    echo "EN"
-    SP_LOCALE_EN
-    LICENSE="$SP_PATH/locale/en-US/license-en.txt"
-elif [[ $SP_LOCALE = "German" ]]; then
-    echo "DE"
-    SP_LOCALE_DE
-    LICENSE="$SP_PATH/locale/de-DE/license-de.txt"
-elif [[ $SP_LOCALE = "Spanish" ]]; then
-    echo "ES"
-    SP_LOCALE_ES
-    LICENSE="$SP_PATH/locale/es-ES/license-es.txt"
-elif [[ $SP_LOCALE = "French" ]]; then
-    echo "FR"
-    SP_LOCALE_FR
-    LICENSE="$SP_PATH/locale/fr-FR/license-fr.txt"
-elif [[ $SP_LOCALE = "Italian" ]]; then
-    echo "IT"
-    SP_LOCALE_IT
-    LICENSE="$SP_PATH/locale/it-IT/license-it.txt"
-elif [[ $SP_LOCALE = "Japanese" ]]; then
-    echo "JP"
-    SP_LOCALE_JP
-    LICENSE="$SP_PATH/locale/ja-JP/license-ja.txt"
-elif [[ $SP_LOCALE = "Korean" ]]; then
-    echo "KO"
-    SP_LOCALE_KO
-    LICENSE="$SP_PATH/locale/ko-KR/license-ko.txt"
-elif [[ $SP_LOCALE = "Chinese" ]]; then
-    echo "ZH"
-    SP_LOCALE_ZH
-    LICENSE="$SP_PATH/locale/zh-CN/license-zh.txt"
-else 
-   echo "EN"
-   SP_LOCALE_EN
-   LICENSE="$SP_PATH/locale/en-US/license-en.txt"
-fi
-}
-
-###############################################################################################################################################################
-
-function SP_DRIVER_SETTINGS {
-SP_DRIVER=`cat /tmp/fusion360/settings.txt | awk 'NR == 2'`
 }
 
 ###############################################################################################################################################################
