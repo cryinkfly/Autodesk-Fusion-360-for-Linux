@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    18:10/11.05.2022                                                                   #
+# Time/Date:    18:30/11.05.2022                                                                   #
 # Version:      1.7.9 -> 1.8.0                                                                     #
 ####################################################################################################
 
@@ -708,6 +708,38 @@ fi
 
 ###############################################################################################################################################################
 
+function SP_LOGFILE_WINEPREFIX_INFO {
+yad \
+--form \
+--separator="" \
+--center \
+--height=125 \
+--width=750 \
+--buttons-layout=center \
+--title="" \
+--field="<big>SP_TITLE</big>:LBL" \
+--field="$SP_LOGFILE_WINEPREFIX_INFO_LABEL_1:LBL" \
+--field="$SP_LOGFILE_WINEPREFIX_INFO_LABEL_2:LBL" \
+--align=center \
+--button=gtk-new!!"$SP_WELCOME_TOOLTIP_2":1 \
+--button=gtk-refresh!!"$SP_WELCOME_TOOLTIP_2":2 \
+--button=gtk-delete!!"$SP_WELCOME_TOOLTIP_2":3 \
+--button=gtk-cancel:99
+
+ret=$?
+
+# Responses to above button presses are below:
+if [[ $ret -eq 1 ]]; then
+    SP_INSTALLDIR 
+elif [[ $ret -eq 2 ]]; then
+    # Get informations about the current wineprefix - Repair
+elif [[ $ret -eq 3 ]]; then
+    # Get informations about the current wineprefix - Delete
+fi
+}
+
+###############################################################################################################################################################
+
 function SP_INSTALLDIR {
 WP_PATH=$(yad --title="" \
 --form --separator="" \
@@ -723,7 +755,19 @@ WP_PATH=$(yad --title="" \
 "" "" "" "$HOME/.wine/wineprefixes/fusion360" "" )
 
 # Continue with the installation ...
-SP_WINE_SETTINGS
+SP_INSTALLDIR_CHECK
+}
+
+function SP_INSTALLDIR_CHECK {
+# Check if this wineprefix already exist or not!
+WP_PATH_CHECK=`cat /tmp/fusion-360/logs/wineprefixes.log | awk 'NR == 1'`
+if [[ $WP_PATH_CHECK = "$WP_PATH" ]]; then
+    echo "FALSE"
+    SP_INSTALLDIR_INFO
+else
+    echo "TRUE"
+    SP_WINE_SETTINGS
+fi
 }
 
 ###############################################################################################################################################################
