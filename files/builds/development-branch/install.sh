@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    08:32/06.05.2022                                                                   #
+# Time/Date:    16:50/11.05.2022                                                                   #
 # Version:      1.7.9 -> 1.8.0                                                                     #
 ####################################################################################################
 
@@ -79,6 +79,21 @@ function SP_LOGFILE_INSTALL {
   exec 5> $SP_PATH/logs/setupact.log
   BASH_XTRACEFD="5"
   set -x
+}
+
+###############################################################################################################################################################
+
+# Check if already exists a Autodesk Fusion 360 installation on your system.
+function SP_LOGFILE_WINEPREFIX_CHECK {
+  SP_FUSION360_WINEPREFIX_CHECK="$SP_PATH/logs/wineprefixes.log" # Search for wineprefixes.log
+  if [ -f "$SP_FUSION360_WINEPREFIX_CHECK" ]; then
+    cp "$SP_FUSION360_WINEPREFIX_CHECK" "/tmp/fusion-360/logs"
+    SP_LOGFILE_WINEPREFIX_INFO # Add/Modify or Delete a exists Wineprefix of Autodesk Fusion 360.
+    # SP_INSTALLDIR
+  else
+    SP_FUSION360_CHANGE=1
+    SP_INSTALLDIR # Add a new Wineprefix of Autodesk Fusion 360.
+  fi
 }
 
 ###############################################################################################################################################################
@@ -684,7 +699,7 @@ SP_LICENSE_CHECK=$(yad \
 
 if [[ $SP_LICENSE_CHECK = *"TRUE"* ]]; then
     echo "TRUE"
-    SP_INSTALLDIR
+    SP_LOGFILE_WINEPREFIX_CHECK
 else
     echo "FALSE"
     SP_LICENSE
