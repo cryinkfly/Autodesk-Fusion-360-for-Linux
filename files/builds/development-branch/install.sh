@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    18:38/11.05.2022                                                                   #
+# Time/Date:    09:45/20.05.2022                                                                   #
 # Version:      1.7.9 -> 1.8.0                                                                     #
 ####################################################################################################
 
@@ -64,7 +64,6 @@ function SP_STRUCTURE {
 
 # Get all server connections (links):
 function SP_SERVER_LIST {  
-  # LIST
   wget -N -P $SP_PATH/servers https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/servers/server-list.sh
   chmod +x $SP_PATH/servers/server-list.sh
   . $SP_PATH/servers/server-list.sh
@@ -87,7 +86,7 @@ function SP_LOGFILE_INSTALL {
 function SP_LOGFILE_WINEPREFIX_CHECK {
   SP_FUSION360_WINEPREFIX_CHECK="$SP_PATH/logs/wineprefixes.log" # Search for wineprefixes.log
   if [ -f "$SP_FUSION360_WINEPREFIX_CHECK" ]; then
-    cp "$SP_FUSION360_WINEPREFIX_CHECK" "/tmp/fusion-360/logs"
+    cp "$SP_FUSION360_WINEPREFIX_CHECK" "/tmp/fusion360/logs"
     SP_LOGFILE_WINEPREFIX_INFO # Add/Modify or Delete a exists Wineprefix of Autodesk Fusion 360.
     # SP_INSTALLDIR
   else
@@ -733,10 +732,10 @@ if [[ $ret -eq 1 ]]; then
     SP_INSTALLDIR 
 elif [[ $ret -eq 2 ]]; then
     # Get informations about the current wineprefix - Repair
-    WP_PATH_CHECK=`cat /tmp/fusion-360/logs/wineprefixes.log | awk 'NR == 1'`
+    WP_PATH_CHECK=`cat /tmp/fusion360/logs/wineprefixes.log | awk 'NR == 1'`
 elif [[ $ret -eq 3 ]]; then
     # Get informations about the current wineprefix - Delete
-    WP_PATH_CHECK=`cat /tmp/fusion-360/logs/wineprefixes.log | awk 'NR == 1'`
+    WP_PATH_CHECK=`cat /tmp/fusion360/logs/wineprefixes.log | awk 'NR == 1'`
     . $SP_PATH/bin/uninstall.sh
 fi
 }
@@ -763,7 +762,7 @@ SP_INSTALLDIR_CHECK
 
 function SP_INSTALLDIR_CHECK {
 # Check if this wineprefix already exist or not!
-WP_PATH_CHECK=`cat /tmp/fusion-360/logs/wineprefixes.log | awk 'NR == 1'`
+WP_PATH_CHECK=`cat /tmp/fusion360/logs/wineprefixes.log | awk 'NR == 1'`
 if [[ $WP_PATH_CHECK = "$WP_PATH" ]]; then
     echo "FALSE"
     SP_INSTALLDIR_INFO
