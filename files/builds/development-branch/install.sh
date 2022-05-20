@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    09:45/20.05.2022                                                                   #
+# Time/Date:    10:00/20.05.2022                                                                   #
 # Version:      1.7.9 -> 1.8.0                                                                     #
 ####################################################################################################
 
@@ -720,9 +720,9 @@ yad \
 --field="$SP_LOGFILE_WINEPREFIX_INFO_LABEL_1:LBL" \
 --field="$SP_LOGFILE_WINEPREFIX_INFO_LABEL_2:LBL" \
 --align=center \
---button=gtk-new!!"$SP_WELCOME_TOOLTIP_2":1 \
---button=gtk-refresh!!"$SP_WELCOME_TOOLTIP_2":2 \
---button=gtk-delete!!"$SP_WELCOME_TOOLTIP_2":3 \
+--button=gtk-new!!"$SP_LOGFILE_WINEPREFIX_INFO_TOOLTIP_1":1 \
+--button=gtk-refresh!!"$SP_LOGFILE_WINEPREFIX_INFO_TOOLTIP_2":2 \
+--button=gtk-delete!!"$SP_LOGFILE_WINEPREFIX_INFO_TOOLTIP_3":3 \
 --button=gtk-cancel:99
 
 ret=$?
