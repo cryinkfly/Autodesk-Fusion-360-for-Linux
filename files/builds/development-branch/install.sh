@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    10:10/20.05.2022                                                                   #
+# Time/Date:    10:30/20.05.2022                                                                   #
 # Version:      1.7.9 -> 1.8.0                                                                     #
 ####################################################################################################
 
@@ -101,6 +101,20 @@ function SP_LOGFILE_WINEPREFIX {
 if [ $SP_FUSION360_CHANGE -eq 1 ]; then
   echo "Wineprefix (Path):" >> $SP_PATH/logs/wineprefixes.log
   echo "$WP_PATH" >> $SP_PATH/logs/wineprefixes.log
+fi
+}
+
+###############################################################################################################################################################
+
+function SP_INSTALLDIR_CHECK {
+# Check if this wineprefix already exist or not!
+WP_PATH_CHECK=`cat /tmp/fusion360/logs/wineprefixes.log | awk 'NR == 1'`
+if [[ $WP_PATH_CHECK = "$WP_PATH" ]]; then
+    echo "FALSE"
+    SP_INSTALLDIR_INFO
+else
+    echo "TRUE"
+    SP_WINE_SETTINGS
 fi
 }
 
@@ -760,15 +774,29 @@ WP_PATH=$(yad --title="" \
 SP_INSTALLDIR_CHECK
 }
 
-function SP_INSTALLDIR_CHECK {
-# Check if this wineprefix already exist or not!
-WP_PATH_CHECK=`cat /tmp/fusion360/logs/wineprefixes.log | awk 'NR == 1'`
-if [[ $WP_PATH_CHECK = "$WP_PATH" ]]; then
-    echo "FALSE"
-    SP_INSTALLDIR_INFO
-else
-    echo "TRUE"
-    SP_WINE_SETTINGS
+###############################################################################################################################################################
+
+function SP_INSTALLDIR_INFO {
+yad \
+--form \
+--separator="" \
+--center \
+--height=125 \
+--width=750 \
+--buttons-layout=center \
+--title="" \
+--field="<big>$SP_INSTALLDIR_INFO_TITLE</big>:LBL" \
+--field="$SP_INSTALLDIR_INFO_LABEL_1:LBL" \
+--field="$SP_INSTALLDIR_INFO_LABEL_2:LBL" \
+--align=center \
+--button=gtk-cancel:99 \
+--button=gtk-ok:1
+
+ret=$?
+
+# Responses to above button presses are below:
+if [[ $ret -eq 1 ]]; then
+    SP_INSTALLDIR 
 fi
 }
 
