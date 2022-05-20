@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    10:15/20.05.2022                                                                   #
+# Time/Date:    10:30/20.05.2022                                                                   #
 # Version:      1.5 -> 1.6                                                                         #
 ####################################################################################################
 
@@ -68,6 +68,13 @@ SP_INSTALLDIR_TITLE="Select Installation Folder"
 SP_INSTALLDIR_LABEL_1="The Setup Wizard will install Autodesk Fusion 360 to the following folder*."
 SP_INSTALLDIR_LABEL_2="Folder:"
 SP_INSTALLDIR_LABEL_3="*You can also choose a different folder for the installation by clicking in the field."
+
+###############################################################################################################################################################
+
+# Directory info:
+SP_INSTALLDIR_INFO_TITLE="Select Installation Folder -Info"
+SP_INSTALLDIR_INFO_LABEL_1="Danger! This directory already exists!"
+SP_INSTALLDIR_INFO_LABEL_2="Please select a different directory."
 
 ###############################################################################################################################################################
 
