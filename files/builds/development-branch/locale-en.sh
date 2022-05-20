@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    06:30/06.05.2022                                                                   #
+# Time/Date:    10:15/20.05.2022                                                                   #
 # Version:      1.5 -> 1.6                                                                         #
 ####################################################################################################
 
@@ -39,6 +39,19 @@ SP_DRIVER_SELECT=$(echo "DXVK,OpenGL")
 
 # Locale value:
 SP_LOCALE="EN"
+
+# License Checkbox:
+SP_LICENSE_CHECK_LABEL="I have read the terms and conditions and I accept them."
+
+###############################################################################################################################################################
+
+# Wineprefix Info - Autodesk Fusion 360 exist on the computer:
+SP_LOGFILE_WINEPREFIX_INFO_TITLE="Welcome to the Autodesk Fusion 360 Installer for Linux"
+SP_LOGFILE_WINEPREFIX_INFO_LABEL_1="A previous installation of Autodesk Fusion 360 has been detected on your system!"
+SP_LOGFILE_WINEPREFIX_INFO_LABEL_2="Therefore, please select one of the options below to continue!"
+SP_LOGFILE_WINEPREFIX_INFO_TOOLTIP_1="Create a new Wineprefix in a different location!"
+SP_LOGFILE_WINEPREFIX_INFO_TOOLTIP_2="Repair the current Wineprefix on your system!"
+SP_LOGFILE_WINEPREFIX_INFO_TOOLTIP_3="Remove the current Wineprefix from your system!"
 
 ###############################################################################################################################################################
 
