@@ -278,7 +278,7 @@ function SP_FUSION360_SHORTCUTS_LOAD {
   # Create a .desktop file (launcher.sh) for Autodesk Fusion 360!
   wget -N -P $SP_PATH/graphics $SP_SERVER_25
   mkdir -p $HOME/.local/share/applications/wine/Programs/Autodesk
-  echo "[Desktop Entry]" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$SP_DFILES_PATH/fusion360.desktop
+  echo "[Desktop Entry]" > $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$SP_DFILES_PATH/fusion360.desktop
   echo "Name=Autodesk Fusion 360" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$SP_DFILES_PATH/fusion360.desktop    
   echo "Comment=Autodesk Fusion 360 is a cloud-based 3D modeling, CAD, CAM, and PCB software platform for product design and manufacturing." >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$SP_DFILES_PATH/fusion360.desktop
   echo "Exec=bash ./launcher.sh" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$SP_DFILES_PATH/fusion360.desktop
@@ -290,7 +290,7 @@ function SP_FUSION360_SHORTCUTS_LOAD {
   echo "Path=$SP_PATH/bin" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$SP_DFILES_PATH/fusion360.desktop
   # Create a .desktop file (uninstall.sh) for Autodesk Fusion 360!
   wget -N -P $SP_PATH/graphics $SP_SERVER_26
-  echo "[Desktop Entry]" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$SP_DFILES_PATH/fusion360uninstall.desktop
+  echo "[Desktop Entry]" > $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$SP_DFILES_PATH/fusion360uninstall.desktop
   echo "Name=Autodesk Fusion 360 - Uninstall" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$SP_DFILES_PATH/fusion360uninstall.desktop   
   echo "Comment=With this program you can delete Autodesk Fusion 360 on your system!" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$SP_DFILES_PATH/fusion360uninstall.desktop
   echo "Exec=bash ./uninstall.sh" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$SP_DFILES_PATH/fusion360uninstall.desktop
