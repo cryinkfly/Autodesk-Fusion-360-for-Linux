@@ -18,20 +18,16 @@
 ###############################################################################################################################################################
 
 # Get a file where the user can see the exits Wineprefixes of Autodesk Fusion 360 on the system.
-function DL_WINEPREFIXES_GET_INFO {
-  mkdir -p "/tmp/fusion360/logs"
-  cp "$HOME/.fusion360/logs/wineprefixes.log" "/tmp/fusion360/logs"
-  # All Wineprefixes from the .wineprefixes.log are loaded here. (Array)
-  # So you'll have each line in ${var[1]}, ${var[2]} and so on.
-  mapfile -t -O 1 var </tmp/fusion360/logs/wineprefixes.log
-}
 
-function DL_WINEPREFIXES_DELETE_CHECK {
-  # ...
-  
-  # Delete the String
-  sed --in-place '/some string here/d' /tmp/fusion360/logs/wineprefixes.log
+function DL_WINEPREFIXES_LIST {
+  DL_WINEPREFIXES=$(yad --height=300 --list --checklist --column=SELECT --column=WINEPREFIXES < /tmp/fusion360/logs/wineprefixes.log)
+  DL_WINEPREFIXES_VAR_1=`grep -n "$select" test.txt | grep -Eo '^[^:]+'`
+  DL_WINEPREFIXES_VAR_2=1
+  DL_WINEPREFIXES_VAR_SUM=`echo $(( var1 - var2 ))`
+  sed --in-place "${DL_WINEPREFIXES_VAR_SUM}d" /tmp/fusion360/logs/wineprefixes.log
+  DL_WINEPREFIXES_VAR_1=`grep -n "$select" test.txt | grep -Eo '^[^:]+'`
+  sed --in-place "${DL_WINEPREFIXES_VAR_1}d" /tmp/fusion360/logs/wineprefixes.log
+  # Continue with removing ...
+  rmdir $DL_WINEPREFIXES
+  rmdir $HOME/.fusion360
 }
-
-# GUI where you can see all Wineprefixes (LOOP)
-# ...
