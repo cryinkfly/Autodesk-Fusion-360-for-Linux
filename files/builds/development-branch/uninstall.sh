@@ -20,7 +20,7 @@
 # Get a file where the user can see the exits Wineprefixes of Autodesk Fusion 360 on the system.
 
 function DL_WINEPREFIXES_LIST {
-  DL_WINEPREFIXES=$(yad --height=300 --list --checklist --column=SELECT --column=WINEPREFIXES < /tmp/fusion360/logs/wineprefixes.log)
+  DL_WINEPREFIXES=$(yad --height=300 --list --radiolist --column=SELECT --column=WINEPREFIXES < /tmp/fusion360/logs/wineprefixes.log)
   DL_WINEPREFIXES_VAR_1=`grep -n "$DL_WINEPREFIXES" /tmp/fusion360/logs/wineprefixes.log | grep -Eo '^[^:]+'`
   DL_WINEPREFIXES_VAR_2=1
   DL_WINEPREFIXES_VAR_SUM=`echo $(( var1 - var2 ))`
