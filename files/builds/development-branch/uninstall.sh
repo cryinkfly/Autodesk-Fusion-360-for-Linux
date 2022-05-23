@@ -23,3 +23,10 @@ function DL_WINEPREFIXES_GET_INFO {
   cp "$HOME/.fusion360/logs/wineprefixes.log" "/tmp/fusion360/logs"
   DL_WINEPREFIXES_INFO=`cat /tmp/fusion360/logs/wineprefixes.log | awk 'NR == 1'`
 }
+
+function DL_WINEPREFIXES_DELETE_CHECK {
+  sed --in-place '/some string here/d' /tmp/fusion360/logs/wineprefixes.log
+}
+
+# GUI where you can see all Wineprefixes (LOOP)
+# ...
