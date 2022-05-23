@@ -34,8 +34,9 @@ function DL_WINEPREFIXES_LIST {
   # Continue with removing ...
   rmdir $DL_WINEPREFIXES
   # Check if there another Wineprefixes ...
-  # if then
-  # rmdir $HOME/.fusion360
-  # else nothing
-  # ...
+  # if ... then
+  #   Do nothing!
+  # else 
+  #   rmdir $HOME/.fusion360
+  # fi
 }
