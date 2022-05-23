@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                          #
 # License:      MIT                                                            #
 # Copyright (c) 2020-2022                                                      #
-# Time/Date:    07:00/23.05.2022                                               #
+# Time/Date:    07:30/23.05.2022                                               #
 # Version:      0.7 -> 0.8                                                     #
 ################################################################################
 
@@ -21,10 +21,15 @@
 function DL_WINEPREFIXES_GET_INFO {
   mkdir -p "/tmp/fusion360/logs"
   cp "$HOME/.fusion360/logs/wineprefixes.log" "/tmp/fusion360/logs"
-  DL_WINEPREFIXES_INFO=`cat /tmp/fusion360/logs/wineprefixes.log | awk 'NR == 1'`
+  # All Wineprefixes from the .wineprefixes.log are loaded here. (Array)
+  # So you'll have each line in ${var[1]}, ${var[2]} and so on.
+  mapfile -t -O 1 var </tmp/fusion360/logs/wineprefixes.log
 }
 
 function DL_WINEPREFIXES_DELETE_CHECK {
+  # ...
+  
+  # Delete the String
   sed --in-place '/some string here/d' /tmp/fusion360/logs/wineprefixes.log
 }
 
