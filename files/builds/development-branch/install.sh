@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    09:15/21.05.2022                                                                   #
+# Time/Date:    07:45/24.05.2022                                                                   #
 # Version:      1.7.9 -> 1.8.0                                                                     #
 ####################################################################################################
 
@@ -73,6 +73,13 @@ function SP_SERVER_LIST {
 }
 
 ###############################################################################################################################################################
+
+function SP_SETTINGS_CREATE_FILE {
+  echo "English" > $SP_PATH/config/settings.txt
+  echo "DXVK" >> $SP_PATH/config/settings.txt
+}
+
+###############################################################################################################################################################
 # ALL LOG-FUNCTIONS ARE ARRANGED HERE:                                                                                                                        #
 ###############################################################################################################################################################
 
@@ -102,7 +109,7 @@ function SP_LOGFILE_WINEPREFIX_CHECK {
 
 function SP_LOGFILE_WINEPREFIX {
 if [ $SP_FUSION360_CHANGE -eq 1 ]; then
-  echo "Wineprefix (Path):" >> $SP_PATH/logs/wineprefixes.log
+  echo "FALSE" >> $SP_PATH/logs/wineprefixes.log
   echo "$WP_PATH" >> $SP_PATH/logs/wineprefixes.log
 fi
 }
@@ -695,6 +702,7 @@ yad --title="" \
 "" "" "" "$SP_LOCALE_SELECT" "$SP_DRIVER_SELECT" "" | while read line; do
 echo "`echo $line | awk -F',' '{print $4}'`" > /tmp/fusion360/settings.txt
 echo "`echo $line | awk -F',' '{print $5}'`" >> /tmp/fusion360/settings.txt
+cp "/tmp/fusion360/settings.txt" "$SP_PATH/config"
 done
 }
 
