@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                          #
 # License:      MIT                                                            #
 # Copyright (c) 2020-2022                                                      #
-# Time/Date:    13:20/23.05.2022                                               #
+# Time/Date:    07:30/24.05.2022                                               #
 # Version:      0.7 -> 0.8                                                     #
 ################################################################################
 
@@ -74,7 +74,7 @@ function DL_WINEPREFIXES_ACT {
   DL_WINEPREFIXES=${DL_WINEPREFIXES_STRING/#TRUE}
   DL_WINEPREFIXES_VAR_1=`grep -n "$DL_WINEPREFIXES" /tmp/fusion360/logs/wineprefixes.log | grep -Eo '^[^:]+'`
   DL_WINEPREFIXES_VAR_2=1
-  DL_WINEPREFIXES_VAR_SUM=`echo $(( var1 - var2 ))`
+  DL_WINEPREFIXES_VAR_SUM=`echo $(( DL_WINEPREFIXES_VAR_1 - DL_WINEPREFIXES_VAR_2 ))`
   # Get info if the user is sure with there choise ...
   DL_WINEPREFIXES_DEL_INFO
 }  
@@ -99,6 +99,7 @@ function DL_WINEPREFIXES_DEL_ALL {
  else
    echo "There are no more Wineprefixes installed on your system!"
    rmdir $DL_PATH
+   rmdir $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360
  fi
 }
 
@@ -139,7 +140,7 @@ function DL_WELCOME {
 ###############################################################################################################################################################
 
 function DL_WINEPREFIXES_LIST {
-  DL_WINEPREFIXES_STRING=$(yad --height=300 --separator="" --list --radiolist --column=SELECT --column=WINEPREFIXES < /tmp/fusion360/logs/wineprefixes.log)
+  DL_WINEPREFIXES_STRING=$(yad --height=300 --separator="" --list --radiolist --column="$DL_SELECT" --column=WINEPREFIXES < /tmp/fusion360/logs/wineprefixes.log)
   DL_WINEPREFIXES_ACT
 }
 
