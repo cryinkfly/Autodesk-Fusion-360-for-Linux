@@ -103,8 +103,8 @@ SP_EXTENSION_DESCRIPTION_8="This extension allows you to program more than 50 di
 SP_EXTENSION_DESCRIPTION_9="This plug-in is a connector between Autodesk® Fusion 360™ and the Ultimaker Digital Factory site and its services."
 
 SP_SEARCH_EXTENSION_CZECH_LOCALE_TITLE="Install the Czech-Locale-Extension"
-SP_SEARCH_EXTENSION_CZECH_LOCALE_LABEL_1="Select the directory* in which the extension is located!"
-SP_SEARCH_EXTENSION_CZECH_LOCALE_LABEL_2="Directory:"
+SP_SEARCH_EXTENSION_CZECH_LOCALE_LABEL_1="Select the file* in which the extension is located!"
+SP_SEARCH_EXTENSION_CZECH_LOCALE_LABEL_2="File:"
 SP_SEARCH_EXTENSION_CZECH_LOCALE_LABEL_3="By default you will find your downloaded extensions in the download directory."
 
 ###############################################################################################################################################################
