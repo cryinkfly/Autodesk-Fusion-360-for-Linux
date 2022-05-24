@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    07:50/24.05.2022                                                                   #
+# Time/Date:    08:15/24.05.2022                                                                   #
 # Version:      1.5 -> 1.6                                                                         #
 ####################################################################################################
 
@@ -64,15 +64,15 @@ SP_OS_SELECT=$(echo "Arch Linux,Debian 10,Debian 11,EndeavourOS,Fedora 36,Linux 
 ###############################################################################################################################################################
 
 # Installation Folder - Configuration:
-SP_INSTALLDIR_TITLE="Select Installation Folder"
-SP_INSTALLDIR_LABEL_1="The Setup Wizard will install Autodesk Fusion 360 to the following folder*."
-SP_INSTALLDIR_LABEL_2="Folder:"
-SP_INSTALLDIR_LABEL_3="*You can also choose a different folder for the installation by clicking in the field."
+SP_INSTALLDIR_TITLE="Select the destination of the installation"
+SP_INSTALLDIR_LABEL_1="The Setup Wizard will install Autodesk Fusion 360 to the following directory*."
+SP_INSTALLDIR_LABEL_2="Directory:"
+SP_INSTALLDIR_LABEL_3="*You can also choose a different directory for the installation by clicking in the field."
 
 ###############################################################################################################################################################
 
 # Directory info:
-SP_INSTALLDIR_INFO_TITLE="Select Installation Folder -Info"
+SP_INSTALLDIR_INFO_TITLE="Select Installation Directory - Info"
 SP_INSTALLDIR_INFO_LABEL_1="Danger! This directory already exists!"
 SP_INSTALLDIR_INFO_LABEL_2="Please select a different directory."
 
@@ -101,6 +101,11 @@ SP_EXTENSION_DESCRIPTION_6="With this extension you can send the G-code of your 
 SP_EXTENSION_DESCRIPTION_7="Enables the user to Import/Update parameters from or export them to a CSV (Comma Separated Values) file."
 SP_EXTENSION_DESCRIPTION_8="This extension allows you to program more than 50 different robot manufacturers and 500 robots directly from Autodesk Fusion 360."
 SP_EXTENSION_DESCRIPTION_9="This plug-in is a connector between Autodesk® Fusion 360™ and the Ultimaker Digital Factory site and its services."
+
+SP_SEARCH_EXTENSION_CZECH_LOCALE_TITLE="Install the Czech-Locale-Extension"
+SP_SEARCH_EXTENSION_CZECH_LOCALE_LABEL_1="Select the directory* in which the extension is located!"
+SP_SEARCH_EXTENSION_CZECH_LOCALE_LABEL_2="Directory:"
+SP_SEARCH_EXTENSION_CZECH_LOCALE_LABEL_3="By default you will find your downloaded extensions in the download directory."
 
 ###############################################################################################################################################################
 # ALL DEFINITIONS FOR UNINSTALL AUTODESK FUSION 360 ARE ARRANGED HERE:                                                                                        #
