@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    07:30/24.05.2022                                                                   #
+# Time/Date:    07:50/24.05.2022                                                                   #
 # Version:      1.5 -> 1.6                                                                         #
 ####################################################################################################
 
@@ -59,7 +59,7 @@ SP_LOGFILE_WINEPREFIX_INFO_TOOLTIP_3="Remove the current Wineprefix from your sy
 SP_OS_TITLE="Linux distribution - Configuration"
 SP_OS_LABEL_1="In this step you can now select your Linux distribution to install the required packages for the installation."
 SP_OS_LABEL_2="Linux distribution:"
-SP_OS_SELECT=$(echo "Arch Linux,Debian 10,Debian 11,EndeavourOS,Fedora 34,Fedora 35,Fedora 36,Linux Mint 19.x,Linux Mint 20.x,Manjaro Linux,openSUSE Leap 15.2,openSUSE Leap 15.3,openSUSE Leap 15.4,openSUSE Tumbleweed,Red Hat Enterprise Linux 8.x,Red Hat Enterprise Linux 9.x,Solus,Ubuntu 18.04,Ubuntu 20.04,Ubuntu 22.04,Void Linux,Gentoo Linux")
+SP_OS_SELECT=$(echo "Arch Linux,Debian 10,Debian 11,EndeavourOS,Fedora 36,Linux Mint 19.x,Linux Mint 20.x,Manjaro Linux,openSUSE Leap 15.3,openSUSE Leap 15.4,openSUSE Tumbleweed,Red Hat Enterprise Linux 8.x,Red Hat Enterprise Linux 9.x,Solus,Ubuntu 18.04,Ubuntu 20.04,Ubuntu 22.04,Void Linux,Gentoo Linux")
 
 ###############################################################################################################################################################
 
