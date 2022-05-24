@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    10:30/20.05.2022                                                                   #
+# Time/Date:    07:30/24.05.2022                                                                   #
 # Version:      1.5 -> 1.6                                                                         #
 ####################################################################################################
 
@@ -103,3 +103,15 @@ SP_EXTENSION_DESCRIPTION_8="This extension allows you to program more than 50 di
 SP_EXTENSION_DESCRIPTION_9="This plug-in is a connector between Autodesk® Fusion 360™ and the Ultimaker Digital Factory site and its services."
 
 ###############################################################################################################################################################
+# ALL DEFINITIONS FOR UNINSTALL AUTODESK FUSION 360 ARE ARRANGED HERE:                                                                                        #
+###############################################################################################################################################################
+
+DL_TITLE="Welcome to the Autodesk Fusion 360 Uninstaller for Linux"
+DL_WELCOME_LABEL_1="Autodesk Fusion 360 will be uninstalled from your computer!"
+DL_WELCOME_LABEL_2="Click Ok to continue or Cancel to exit this Uninstaller."
+DL_WELCOME_TOOLTIP_1="Here you get more informations about this Uninstaller."
+
+DL_SELECT="Select"
+
+DL_WINEPREFIXES_DEL_INFO_TEXT="Are you sure you want to delete the selected Wineprefix from your computer?"
+DL_WINEPREFIXES_DEL_INFO_LABEL="Yes, I am aware that all my personal data will be lost in the Wineprefix."
