@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    07:45/24.05.2022                                                                   #
+# Time/Date:    08:15/24.05.2022                                                                   #
 # Version:      1.7.9 -> 1.8.0                                                                     #
 ####################################################################################################
 
@@ -383,6 +383,7 @@ function SP_FUSION360_INSTALL {
   cd "SP_PATH/bin"
   SP_FUSION360_SHORTCUTS_LOAD
   SP_FUSION360_EXTENSIONS
+  SP_LOGFILE_WINEPREFIX
   SP_COMPLETED
 }
 
@@ -472,24 +473,11 @@ function FEDORA_BASED_2 {
   SP_FUSION360_INSTALL
 }
 
-function OS_FEDORA_34 {
-  sudo dnf config-manager --add-repo https://download.opensuse.org/repositories/Emulators:/Wine:/Fedora/Fedora_34/Emulators:Wine:Fedora.repo
-}
-
-function OS_FEDORA_35 {
-  sudo dnf config-manager --add-repo https://download.opensuse.org/repositories/Emulators:/Wine:/Fedora/Fedora_35/Emulators:Wine:Fedora.repo
-}
-
 function OS_FEDORA_36 {
   sudo dnf config-manager --add-repo https://download.opensuse.org/repositories/Emulators:/Wine:/Fedora/Fedora_36/Emulators:Wine:Fedora.repo
 }
 
 ###############################################################################################################################################################
-
-function OS_OPENSUSE_152 {
-  su -c 'zypper up && zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.2/ wine && zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.2/ wine && zypper install p7zip-full curl wget wine cabextract'
-  SP_FUSION360_INSTALL
-}
 
 function OS_OPENSUSE_153 {
   su -c 'zypper up && zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.3/ wine && zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.3/ wine && zypper install p7zip-full curl wget wine cabextract'
@@ -577,6 +565,8 @@ function EXTENSION_ADDITIVE_ASSISTANT {
 # Install a extension: Czech localization for F360
 function EXTENSION_CZECH_LOCALE {
   SP_SEARCH_EXTENSION_CZECH_LOCALE
+  cp $CZECH_LOCALE_EXTENSION "$WP_PATH/drive_c/users/$USER/Downloads"
+  cd "$WP_PATH/drive_c/users/$USER/Downloads"
   WINEPREFIX=$WP_PATH wine msiexec /i $CZECH_LOCALE_EXTENSION
 }
 
@@ -867,16 +857,6 @@ elif [[ $SP_OS = "Debian 11" ]]; then
 elif [[ $SP_OS = "EndeavourOS" ]]; then
     echo "EndeavourOS"
     OS_ARCHLINUX
-elif [[ $SP_OS = "Fedora 34" ]]; then
-    echo "Fedora 34"
-    FEDORA_BASED_1
-    OS_FEDORA_34
-    FEDORA_BASED_2
-elif [[ $SP_OS = "Fedora 35" ]]; then
-    echo "Fedora 35"
-    FEDORA_BASED_1
-    OS_FEDORA_35
-    FEDORA_BASED_1
 elif [[ $SP_OS = "Fedora 36" ]]; then
     echo "Fedora 36"
     FEDORA_BASED_1
@@ -900,9 +880,6 @@ elif [[ $SP_OS = "Linux Mint 21.x" ]]; then
 elif [[ $SP_OS = "Manjaro Linux" ]]; then
     echo "Manjaro Linux"
     OS_ARCHLINUX
-elif [[ $SP_OS = "openSUSE Leap 15.2" ]]; then
-    echo "openSUSE Leap 15.2"
-    OS_OPENSUSE_152
 elif [[ $SP_OS = "openSUSE Leap 15.3" ]]; then
     echo "openSUSE Leap 15.3"
     OS_OPENSUSE_153
@@ -997,7 +974,28 @@ fi
 
 ###############################################################################################################################################################
 
-# Still in Progress ...
+# Select the downloaded installer for this special extension!
+function SP_SEARCH_EXTENSION_CZECH_LOCALE {
+  CZECH_LOCALE_EXTENSION=$(yad --title="" \
+  --form --separator="" \
+  --borders=15 \
+  --width=550 \
+  --buttons-layout=center \
+  --align=center \
+  --field="<big><b>$SP_SEARCH_EXTENSION_CZECH_LOCALE_TITLE</b></big>:LBL" \
+  --field=":LBL" \
+  --field="<b>$SP_SEARCH_EXTENSION_CZECH_LOCALE_LABEL_1</b>:LBL" \
+  --field="$SP_SEARCH_EXTENSION_CZECH_LOCALE_LABEL_2:CB" \
+  --field="<b>$SP_SEARCH_EXTENSION_CZECH_LOCALE_LABEL_3</b>:LBL" \
+  "" "" "" "$HOME" "" )
+}
+
+###############################################################################################################################################################
+
+# The installation is complete and will be terminated.
+function SP_COMPLETED {
+  # ...
+}
 
 ###############################################################################################################################################################
 # THE INSTALLATION PROGRAM IS STARTED HERE:                                                                                                                   #
