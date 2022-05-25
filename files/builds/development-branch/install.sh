@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    08:15/24.05.2022                                                                   #
+# Time/Date:    08:10/25.05.2022                                                                   #
 # Version:      1.7.9 -> 1.8.0                                                                     #
 ####################################################################################################
 
@@ -52,6 +52,7 @@ function SP_STRUCTURE {
   mkdir -p $SP_PATH/graphics
   mkdir -p $SP_PATH/downloads
   mkdir -p $SP_PATH/extensions
+  mkdir -p $SP_PATH/wineprefixes
   mkdir -p $SP_PATH/locale/cs-CZ
   mkdir -p $SP_PATH/locale/de-DE
   mkdir -p $SP_PATH/locale/en-US
@@ -769,7 +770,7 @@ WP_PATH=$(yad --title="" \
 --field="<b>$SP_INSTALLDIR_LABEL_1</b>:LBL" \
 --field="$SP_INSTALLDIR_LABEL_2:CB" \
 --field="<b>$SP_INSTALLDIR_LABEL_3</b>:LBL" \
-"" "" "" "$HOME/.wine/wineprefixes/fusion360" "" )
+"" "" "" "$SP_PATH/wineprefixes/fusion360" "" )
 
 # Continue with the installation ...
 SP_INSTALLDIR_CHECK
