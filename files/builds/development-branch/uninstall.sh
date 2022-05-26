@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                          #
 # License:      MIT                                                            #
 # Copyright (c) 2020-2022                                                      #
-# Time/Date:    07:30/24.05.2022                                               #
+# Time/Date:    09:10/26.05.2022                                               #
 # Version:      0.7 -> 0.8                                                     #
 ################################################################################
 
@@ -71,10 +71,12 @@ function DL_LOAD_LOCALE {
 ###############################################################################################################################################################
 
 function DL_WINEPREFIXES_ACT {
-  DL_WINEPREFIXES=${DL_WINEPREFIXES_STRING/#TRUE}
-  DL_WINEPREFIXES_VAR_1=`grep -n "$DL_WINEPREFIXES" /tmp/fusion360/logs/wineprefixes.log | grep -Eo '^[^:]+'`
-  DL_WINEPREFIXES_VAR_2=1
-  DL_WINEPREFIXES_VAR_SUM=`echo $(( DL_WINEPREFIXES_VAR_1 - DL_WINEPREFIXES_VAR_2 ))`
+  # For examble:
+  # VAR 1 = FALSE
+  # VAR 2 = default
+  # VAR 3 = DXVK
+  # VAR 4 = $HOME/.fusion360/wineprefixes/default
+ 
   # Get info if the user is sure with there choise ...
   DL_WINEPREFIXES_DEL_INFO
 }  
@@ -82,8 +84,26 @@ function DL_WINEPREFIXES_ACT {
 ###############################################################################################################################################################
 
 function DL_WINEPREFIXES_DEL {
+  # Get the line numbers of your selected Wineprefixes:
+  # Filtering (Wineprefix-Directory):
+  DL_WINEPREFIXES=${DL_WINEPREFIXES_STRING/#TRUE}
+  # Remove VAR 3 (line)
+  DL_WINEPREFIXES_VAR_4=`grep -n "$DL_WINEPREFIXES" /tmp/fusion360/logs/wineprefixes.log | grep -Eo '^[^:]+'` 
+  DL_WINEPREFIXES_VAR_3=1
+  DL_WINEPREFIXES_VAR_SUM=`echo $(( DL_WINEPREFIXES_VAR_4 - DL_WINEPREFIXES_VAR_3 ))`  
   sed --in-place "${DL_WINEPREFIXES_VAR_SUM}d" /tmp/fusion360/logs/wineprefixes.log
-  DL_WINEPREFIXES_VAR_1=`grep -n "$DL_WINEPREFIXES" /tmp/fusion360/logs/wineprefixes.log | grep -Eo '^[^:]+'`
+  # Remove VAR 2 (line)
+  DL_WINEPREFIXES_VAR_4=`grep -n "$DL_WINEPREFIXES" /tmp/fusion360/logs/wineprefixes.log | grep -Eo '^[^:]+'`
+  DL_WINEPREFIXES_VAR_2=1
+  DL_WINEPREFIXES_VAR_SUM=`echo $(( DL_WINEPREFIXES_VAR_4 - DL_WINEPREFIXES_VAR_2 ))`
+  sed --in-place "${DL_WINEPREFIXES_VAR_SUM}d" /tmp/fusion360/logs/wineprefixes.log
+  # Remove VAR 1 (line)
+  DL_WINEPREFIXES_VAR_4=`grep -n "$DL_WINEPREFIXES" /tmp/fusion360/logs/wineprefixes.log | grep -Eo '^[^:]+'`
+  DL_WINEPREFIXES_VAR_1=1
+  DL_WINEPREFIXES_VAR_SUM=`echo $(( DL_WINEPREFIXES_VAR_4 - DL_WINEPREFIXES_VAR_1 ))`
+  sed --in-place "${DL_WINEPREFIXES_VAR_SUM}d" /tmp/fusion360/logs/wineprefixes.log
+  # Remove VAR 4 (line)
+  DL_WINEPREFIXES_VAR_4=`grep -n "$DL_WINEPREFIXES" /tmp/fusion360/logs/wineprefixes.log | grep -Eo '^[^:]+'` 
   sed --in-place "${DL_WINEPREFIXES_VAR_1}d" /tmp/fusion360/logs/wineprefixes.log
   # Continue with removing ...
   rmdir $DL_WINEPREFIXES
@@ -140,7 +160,7 @@ function DL_WELCOME {
 ###############################################################################################################################################################
 
 function DL_WINEPREFIXES_LIST {
-  DL_WINEPREFIXES_STRING=$(yad --height=300 --separator="" --list --radiolist --column="$DL_SELECT" --column=WINEPREFIXES < /tmp/fusion360/logs/wineprefixes.log)
+  DL_WINEPREFIXES_STRING=$(yad --height=300 --separator="" --list --radiolist --column="$DL_SELECT" --column="$WINEPREFIXES_TYPE" --column="$WINEPREFIXES_DRIVER" --column="WINEPREFIXES_DIRECTORY" < /tmp/fusion360/logs/wineprefixes.log)
   DL_WINEPREFIXES_ACT
 }
 
