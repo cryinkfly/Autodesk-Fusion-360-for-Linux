@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    08:15/24.05.2022                                                                   #
+# Time/Date:    08:50/26.05.2022                                                                   #
 # Version:      1.5 -> 1.6                                                                         #
 ####################################################################################################
 
@@ -34,8 +34,8 @@ SP_SETTINGS_LABEL_1="Here you have the option to adjust* further settings:"
 SP_SETTINGS_LABEL_2="*Please remember that any change will affect the Autodesk Fusion 360 installation!"
 SP_LOCALE_LABEL="Languages"
 SP_LOCALE_SELECT=$(echo "Czech,English,German,Spanish,French,Italian,Japanese,Korean,Chinese")
-SP_DRIVER_LABEL="Graphics Driver"
-SP_DRIVER_SELECT=$(echo "DXVK,OpenGL")
+WP_DRIVER_LABEL="Graphics Driver"
+WP_DRIVER_SELECT=$(echo "DXVK,OpenGL")
 
 # Locale value:
 SP_LOCALE="EN"
