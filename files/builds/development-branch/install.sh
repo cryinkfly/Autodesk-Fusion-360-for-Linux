@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    08:10/25.05.2022                                                                   #
+# Time/Date:    08:50/26.05.2022                                                                   #
 # Version:      1.7.9 -> 1.8.0                                                                     #
 ####################################################################################################
 
@@ -33,11 +33,8 @@
 # Default-Path:
 SP_PATH="$HOME/.fusion360"
 
-# Default-Path for .desktop-files:
-SP_DFILES_PATH="default"
-
 # Reset the graphics driver value:
-SP_DRIVER="DXVK"
+WP_DRIVER="DXVK"
 
 # Reset the logfile-value for the installation of Autodesk Fusion 360!
 SP_FUSION360_CHANGE=0
@@ -108,10 +105,24 @@ function SP_LOGFILE_WINEPREFIX_CHECK {
 
 ###############################################################################################################################################################
 
+# Create a WP-TYPE-Directory for the Wineprefix and .desktop-files:
+function SP_GET_WINEPREFIX_TYPE {
+  if [[ $WP_DIRECTORY = "$SP_PATH/wineprefixes/default" ]]; then
+    WP_TYPE="default"
+  else
+    # Create the directory (custom1, custom2, ...)
+    # ...
+  fi
+}
+
+###############################################################################################################################################################
+
 function SP_LOGFILE_WINEPREFIX {
 if [ $SP_FUSION360_CHANGE -eq 1 ]; then
   echo "FALSE" >> $SP_PATH/logs/wineprefixes.log
-  echo "$WP_PATH" >> $SP_PATH/logs/wineprefixes.log
+  echo "$WP_TYPE" >> $SP_PATH/logs/wineprefixes.log
+  echo "$WP_DRIVER" >> $SP_PATH/logs/wineprefixes.log
+  echo "$WP_DIRECTORY" >> $SP_PATH/logs/wineprefixes.log
 fi
 }
 
@@ -120,7 +131,7 @@ fi
 function SP_INSTALLDIR_CHECK {
 # Check if this wineprefix already exist or not!
 WP_PATH_CHECK=`cat /tmp/fusion360/logs/wineprefixes.log | awk 'NR == 1'`
-if [[ $WP_PATH_CHECK = "$WP_PATH" ]]; then
+if [[ $WP_PATH_CHECK = "$WP_DIRECTORY" ]]; then
     echo "FALSE"
     SP_INSTALLDIR_INFO
 else
@@ -286,28 +297,28 @@ function SP_FUSION360_SHORTCUTS_LOAD {
   # Create a .desktop file (launcher.sh) for Autodesk Fusion 360!
   wget -N -P $SP_PATH/graphics $SP_SERVER_25
   mkdir -p $HOME/.local/share/applications/wine/Programs/Autodesk
-  echo "[Desktop Entry]" > $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$SP_DFILES_PATH/fusion360.desktop
-  echo "Name=Autodesk Fusion 360" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$SP_DFILES_PATH/fusion360.desktop    
-  echo "Comment=Autodesk Fusion 360 is a cloud-based 3D modeling, CAD, CAM, and PCB software platform for product design and manufacturing." >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$SP_DFILES_PATH/fusion360.desktop
-  echo "Exec=bash ./launcher.sh" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$SP_DFILES_PATH/fusion360.desktop
-  echo "Type=Application" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$SP_DFILES_PATH/fusion360.desktop
-  echo "Categories=Development;Graphics;Science" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$SP_DFILES_PATH/fusion360.desktop
-  echo "StartupNotify=true" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$SP_DFILES_PATH/fusion360.desktop
-  echo "Icon=$SP_PATH/graphics/fusion360.svg" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$SP_DFILES_PATH/fusion360.desktop
-  echo "Terminal=true" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$SP_DFILES_PATH/fusion360.desktop
-  echo "Path=$SP_PATH/bin" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$SP_DFILES_PATH/fusion360.desktop
+  echo "[Desktop Entry]" > $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop
+  echo "Name=Autodesk Fusion 360" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop    
+  echo "Comment=Autodesk Fusion 360 is a cloud-based 3D modeling, CAD, CAM, and PCB software platform for product design and manufacturing." >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop
+  echo "Exec=bash ./launcher.sh" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop
+  echo "Type=Application" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop
+  echo "Categories=Development;Graphics;Science" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop
+  echo "StartupNotify=true" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop
+  echo "Icon=$SP_PATH/graphics/fusion360.svg" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop
+  echo "Terminal=true" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop
+  echo "Path=$SP_PATH/bin" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop
   # Create a .desktop file (uninstall.sh) for Autodesk Fusion 360!
   wget -N -P $SP_PATH/graphics $SP_SERVER_26
-  echo "[Desktop Entry]" > $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$SP_DFILES_PATH/fusion360uninstall.desktop
-  echo "Name=Autodesk Fusion 360 - Uninstall" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$SP_DFILES_PATH/fusion360uninstall.desktop   
-  echo "Comment=With this program you can delete Autodesk Fusion 360 on your system!" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$SP_DFILES_PATH/fusion360uninstall.desktop
-  echo "Exec=bash ./uninstall.sh" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$SP_DFILES_PATH/fusion360uninstall.desktop
-  echo "Type=Application" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$SP_DFILES_PATH/fusion360uninstall.desktop
-  echo "Categories=Development;Graphics;Science" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$SP_DFILES_PATH/fusion360uninstall.desktop
-  echo "StartupNotify=true" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$SP_DFILES_PATH/fusion360uninstall.desktop
-  echo "Icon=$SP_PATH/graphics/fusion360-uninstall.svg" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$SP_DFILES_PATH/fusion360uninstall.desktop
-  echo "Terminal=true" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$SP_DFILES_PATH/fusion360uninstall.desktop
-  echo "Path=$SP_PATH/bin" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$SP_DFILES_PATH/fusion360uninstall.desktop
+  echo "[Desktop Entry]" > $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop
+  echo "Name=Autodesk Fusion 360 - Uninstall" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop   
+  echo "Comment=With this program you can delete Autodesk Fusion 360 on your system!" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop
+  echo "Exec=bash ./uninstall.sh" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop
+  echo "Type=Application" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop
+  echo "Categories=Development;Graphics;Science" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop
+  echo "StartupNotify=true" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop
+  echo "Icon=$SP_PATH/graphics/fusion360-uninstall.svg" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop
+  echo "Terminal=true" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop
+  echo "Path=$SP_PATH/bin" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop
   wget -N -P $SP_PATH/bin $SP_SERVER_27
   chmod +x $SP_PATH/bin/uninstall.sh  
   wget -N -P $SP_PATH/bin $SP_SERVER_28
@@ -323,16 +334,16 @@ function SP_FUSION360_SHORTCUTS_LOAD {
 ###############################################################################################################################################################
 
 function SP_DXVK_OPENGL_1 {
-  if [[ $SP_DRIVER = "DXVK" ]]; then
-    WINEPREFIX=$WP_PATH sh $SP_PATH/bin/winetricks -q dxvk
-    wget -N -P $WP_PATH/drive_c/users/$USER/Downloads $SP_SERVER_22
-    cd "$WP_PATH/drive_c/users/$USER/Downloads"
-    WINEPREFIX=$WP_PATH wine regedit.exe DXVK.reg
+  if [[ $WP_DRIVER = "DXVK" ]]; then
+    WINEPREFIX=$WP_DIRECTORY sh $SP_PATH/bin/winetricks -q dxvk
+    wget -N -P $WP_DIRECTORY/drive_c/users/$USER/Downloads $SP_SERVER_22
+    cd "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
+    WINEPREFIX=$WP_DIRECTORY wine regedit.exe DXVK.reg
   fi
 }
 
 function SP_DXVK_OPENGL_2 {
-  if [[ $SP_DRIVER = "DXVK" ]]; then
+  if [[ $WP_DRIVER = "DXVK" ]]; then
     wget -N $SP_SERVER_23
     mv "DXVK.xml" "NMachineSpecificOptions.xml"
   else
@@ -344,7 +355,7 @@ function SP_DXVK_OPENGL_2 {
 ###############################################################################################################################################################
 
 function SP_DRIVER_SETTINGS {
-SP_DRIVER=`cat /tmp/fusion360/settings.txt | awk 'NR == 2'`
+WP_DRIVER=`cat /tmp/fusion360/settings.txt | awk 'NR == 2'`
 }
 
 ###############################################################################################################################################################
@@ -359,27 +370,27 @@ function SP_FUSION360_INSTALL {
   # It protects against errors rather than malice. It's useful for, e.g., keeping games from saving their settings in random subdirectories of your home directory. 
   # But it still ensures that wine, for example, no longer has access permissions to Home! 
   # For this reason, the EXE files must be located directly in the Wineprefix folder!
-  WINEPREFIX=$WP_PATH sh $SP_PATH/bin/winetricks -q sandbox
+  WINEPREFIX=$WP_DIRECTORY sh $SP_PATH/bin/winetricks -q sandbox
   sleep 5
   # We must install some packages!
-  WINEPREFIX=$WP_PATH sh $SP_PATH/bin/winetricks -q atmlib gdiplus corefonts cjkfonts msxml4 msxml6 vcrun2017 fontsmooth=rgb winhttp win10
+  WINEPREFIX=WP_DIRECTORY sh $SP_PATH/bin/winetricks -q atmlib gdiplus corefonts cjkfonts msxml4 msxml6 vcrun2017 fontsmooth=rgb winhttp win10
   sleep 5
   # We must install cjkfonts again then sometimes it doesn't work in the first time!
-  WINEPREFIX=$WP_PATH sh $SP_PATH/bin/winetricks -q cjkfonts
+  WINEPREFIX=$WP_DIRECTORY sh $SP_PATH/bin/winetricks -q cjkfonts
   sleep 5
   SP_DXVK_OPENGL_1
   # We must copy the EXE-file directly in the Wineprefix folder (Sandbox-Mode)!
-  cp "$SP_PATH/downloads/Fusion360installer.exe" "$WP_PATH/drive_c/users/$USER/Downloads"
-  WINEPREFIX=$WP_PATH wine $WP_PATH/drive_c/users/$USER/Downloads/Fusion360installer.exe -p deploy -g -f log.txt --quiet
-  WINEPREFIX=$WP_PATH wine $WP_PATH/drive_c/users/$USER/Downloads/Fusion360installer.exe -p deploy -g -f log.txt --quiet
-  mkdir -p "$WP_PATH/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options"
-  cd "$WP_PATH/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options"
+  cp "$SP_PATH/downloads/Fusion360installer.exe" "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
+  WINEPREFIX=$WP_DIRECTORY wine $WP_DIRECTORY/drive_c/users/$USER/Downloads/Fusion360installer.exe -p deploy -g -f log.txt --quiet
+  WINEPREFIX=$WP_DIRECTORY wine $WP_DIRECTORY/drive_c/users/$USER/Downloads/Fusion360installer.exe -p deploy -g -f log.txt --quiet
+  mkdir -p "$WP_DIRECTORY/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options"
+  cd "$WP_DIRECTORY/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options"
   SP_DXVK_OPENGL_2
-  mkdir -p "$WP_PATH/drive_c/users/$USER/AppData/Local/Autodesk/Neutron Platform/Options"
-  cd "$WP_PATH/drive_c/users/$USER/AppData/Local/Autodesk/Neutron Platform/Options"
+  mkdir -p "$WP_DIRECTORY/drive_c/users/$USER/AppData/Local/Autodesk/Neutron Platform/Options"
+  cd "$WP_DIRECTORY/drive_c/users/$USER/AppData/Local/Autodesk/Neutron Platform/Options"
   SP_DXVK_OPENGL_2
-  mkdir -p "$WP_PATH/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options"
-  cd "$WP_PATH/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options"
+  mkdir -p "$WP_DIRECTORY/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options"
+  cd "$WP_DIRECTORY/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options"
   SP_DXVK_OPENGL_2
   cd "SP_PATH/bin"
   SP_FUSION360_SHORTCUTS_LOAD
@@ -544,9 +555,9 @@ function OS_GENTOO_LINUX {
 function EXTENSION_AIRFOIL_TOOLS {
   cd "$SP_PATH/extensions"
   wget -N $SP_SERVER_31 &&
-  cp AirfoilTools_win64.msi "$WP_PATH/drive_c/users/$USER/Downloads"
-  cd "$WP_PATH/drive_c/users/$USER/Downloads"
-  WINEPREFIX=$WP_PATH wine msiexec /i AirfoilTools_win64.msi
+  cp AirfoilTools_win64.msi "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
+  cd "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
+  WINEPREFIX=$WP_DIRECTORY wine msiexec /i AirfoilTools_win64.msi
 }
 
 ###############################################################################################################################################################
@@ -556,9 +567,9 @@ function EXTENSION_AIRFOIL_TOOLS {
 function EXTENSION_ADDITIVE_ASSISTANT {
   cd "$SP_PATH/extensions"
   wget -N $SP_SERVER_32 &&
-  cp AdditiveAssistant.bundle-win64.msi "$WP_PATH/drive_c/users/$USER/Downloads"
-  cd "$WP_PATH/drive_c/users/$USER/Downloads"
-  WINEPREFIX=$WP_PATH wine msiexec /i AdditiveAssistant.bundle-win64.msi
+  cp AdditiveAssistant.bundle-win64.msi "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
+  cd "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
+  WINEPREFIX=$WP_DIRECTORY wine msiexec /i AdditiveAssistant.bundle-win64.msi
 }
 
 ###############################################################################################################################################################
@@ -566,9 +577,9 @@ function EXTENSION_ADDITIVE_ASSISTANT {
 # Install a extension: Czech localization for F360
 function EXTENSION_CZECH_LOCALE {
   SP_SEARCH_EXTENSION_CZECH_LOCALE
-  cp $CZECH_LOCALE_EXTENSION "$WP_PATH/drive_c/users/$USER/Downloads"
-  cd "$WP_PATH/drive_c/users/$USER/Downloads"
-  WINEPREFIX=$WP_PATH wine msiexec /i $CZECH_LOCALE_EXTENSION
+  cp $CZECH_LOCALE_EXTENSION "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
+  cd "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
+  WINEPREFIX=$WP_DIRECTORY wine msiexec /i $CZECH_LOCALE_EXTENSION
 }
 
 ###############################################################################################################################################################
@@ -577,9 +588,9 @@ function EXTENSION_CZECH_LOCALE {
 function EXTENSION_HP_3DPRINTER_CONNECTOR {
   cd "$SP_PATH/extensions"
   wget -N $SP_SERVER_33 &&
-  cp HP_3DPrinters_for_Fusion360-win64.msi "$WP_PATH/drive_c/users/$USER/Downloads"
-  cd "$WP_PATH/drive_c/users/$USER/Downloads"
-  WINEPREFIX=$WP_PATH wine msiexec /i HP_3DPrinters_for_Fusion360-win64.msi
+  cp HP_3DPrinters_for_Fusion360-win64.msi "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
+  cd "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
+  WINEPREFIX=$WP_DIRECTORY wine msiexec /i HP_3DPrinters_for_Fusion360-win64.msi
 }
 
 ###############################################################################################################################################################
@@ -588,9 +599,9 @@ function EXTENSION_HP_3DPRINTER_CONNECTOR {
 function EXTENSION_HELICAL_GEAR_GENERATOR {
   cd "$SP_PATH/extensions"
   wget -N $SP_SERVER_34 &&
-  cp HelicalGear_win64.msi "$WP_PATH/drive_c/users/$USER/Downloads"
-  cd "$WP_PATH/drive_c/users/$USER/Downloads"
-  WINEPREFIX=$WP_PATH wine msiexec /i HelicalGear_win64.msi
+  cp HelicalGear_win64.msi "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
+  cd "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
+  WINEPREFIX=$WP_DIRECTORY wine msiexec /i HelicalGear_win64.msi
 }
 
 ###############################################################################################################################################################
@@ -599,9 +610,9 @@ function EXTENSION_HELICAL_GEAR_GENERATOR {
 function EXTENSION_OCTOPRINT {
   cd "$SP_PATH/extensions"
   wget -N $SP_SERVER_35 &&
-  cp OctoPrint_for_Fusion360-win64.msi "$WP_PATH/drive_c/users/$USER/Downloads"
-  cd "$WP_PATH/drive_c/users/$USER/Downloads"
-  WINEPREFIX=$WP_PATH wine msiexec /i OctoPrint_for_Fusion360-win64.msi
+  cp OctoPrint_for_Fusion360-win64.msi "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
+  cd "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
+  WINEPREFIX=$WP_DIRECTORY wine msiexec /i OctoPrint_for_Fusion360-win64.msi
 }
 
 ###############################################################################################################################################################
@@ -610,9 +621,9 @@ function EXTENSION_OCTOPRINT {
 function EXTENSION_PARAMETER_IO {
   cd "$SP_PATH/extensions" 
   wget -N $SP_SERVER_36 &&
-  cp ParameterIO_win64.msi "$WP_PATH/drive_c/users/$USER/Downloads"
-  cd "$WP_PATH/drive_c/users/$USER/Downloads"
-  WINEPREFIX=$WP_PATH wine msiexec /i ParameterIO_win64.msi
+  cp ParameterIO_win64.msi "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
+  cd "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
+  WINEPREFIX=$WP_DIRECTORY wine msiexec /i ParameterIO_win64.msi
 }
 
 ###############################################################################################################################################################
@@ -621,9 +632,9 @@ function EXTENSION_PARAMETER_IO {
 function EXTENSION_ROBODK {
   cd "$SP_PATH/extensions"  
   wget -N $SP_SERVER_37 &&
-  cp RoboDK.bundle-win64.msi "$WP_PATH/drive_c/users/$USER/Downloads"
-  cd "$WP_PATH/drive_c/users/$USER/Downloads"
-  WINEPREFIX=$WP_PATH wine msiexec /i RoboDK.bundle-win64.msi
+  cp RoboDK.bundle-win64.msi "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
+  cd "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
+  WINEPREFIX=$WP_DIRECTORY wine msiexec /i RoboDK.bundle-win64.msi
 }
 
 ###############################################################################################################################################################
@@ -632,9 +643,9 @@ function EXTENSION_ROBODK {
 function EXTENSION_ULTIMAKER_DIGITAL_FACTORY {
   cd "$SP_PATH/extensions"
   wget -N $SP_SERVER_38 &&
-  cp Ultimaker_Digital_Factory-win64.msi "$WP_PATH/drive_c/users/$USER/Downloads"
-  cd "$WP_PATH/drive_c/users/$USER/Downloads"
-  WINEPREFIX=$WP_PATH wine msiexec /i Ultimaker_Digital_Factory-win64.msi
+  cp Ultimaker_Digital_Factory-win64.msi "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
+  cd "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
+  WINEPREFIX=$WP_DIRECTORY wine msiexec /i Ultimaker_Digital_Factory-win64.msi
 }
 
 ###############################################################################################################################################################
@@ -688,9 +699,9 @@ yad --title="" \
 --field=":LBL" \
 --field="$SP_SETTINGS_LABEL_1:LBL" \
 --field="$SP_LOCALE_LABEL:CB" \
---field="$SP_DRIVER_LABEL:CB" \
+--field="$WP_DRIVER_LABEL:CB" \
 --field="$SP_SETTINGS_LABEL_2:LBL" \
-"" "" "" "$SP_LOCALE_SELECT" "$SP_DRIVER_SELECT" "" | while read line; do
+"" "" "" "$SP_LOCALE_SELECT" "$WP_DRIVER_SELECT" "" | while read line; do
 echo "`echo $line | awk -F',' '{print $4}'`" > /tmp/fusion360/settings.txt
 echo "`echo $line | awk -F',' '{print $5}'`" >> /tmp/fusion360/settings.txt
 cp "/tmp/fusion360/settings.txt" "$SP_PATH/config"
@@ -759,7 +770,7 @@ fi
 ###############################################################################################################################################################
 
 function SP_INSTALLDIR {
-WP_PATH=$(yad --title="" \
+WP_DIRECTORY=$(yad --title="" \
 --form --separator="" \
 --borders=15 \
 --width=550 \
@@ -770,7 +781,7 @@ WP_PATH=$(yad --title="" \
 --field="<b>$SP_INSTALLDIR_LABEL_1</b>:LBL" \
 --field="$SP_INSTALLDIR_LABEL_2:CB" \
 --field="<b>$SP_INSTALLDIR_LABEL_3</b>:LBL" \
-"" "" "" "$SP_PATH/wineprefixes/fusion360" "" )
+"" "" "" "$SP_PATH/wineprefixes/default" "" )
 
 # Continue with the installation ...
 SP_INSTALLDIR_CHECK
