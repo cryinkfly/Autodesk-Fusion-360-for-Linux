@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    08:50/26.05.2022                                                                   #
+# Time/Date:    10:00/27.05.2022                                                                   #
 # Version:      1.7.9 -> 1.8.0                                                                     #
 ####################################################################################################
 
@@ -111,9 +111,22 @@ function SP_GET_WINEPREFIX_TYPE {
     WP_TYPE="default"
   else
     # Create the directory (custom1, custom2, ...)
-    # ...
+    SP_ADD_CUSTOM_WINEPREFIX_TYPE
   fi
 }
+
+function SP_ADD_CUSTOM_WINEPREFIX_TYPE {
+  WP_TYPE="custom1"
+  SP_READ_WP_TYPE="$SP_PATH/wineprefixes"
+ i=5
+
+
+  while [ $WP_DIRECTORY = "$SP_PATH/wineprefixes/custom1" ]
+  do
+    # ...
+  done
+}
+
 
 ###############################################################################################################################################################
 
