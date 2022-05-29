@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    10:00/27.05.2022                                                                   #
+# Time/Date:    10:30/29.05.2022                                                                   #
 # Version:      1.7.9 -> 1.8.0                                                                     #
 ####################################################################################################
 
@@ -105,7 +105,7 @@ function SP_LOGFILE_WINEPREFIX_CHECK {
 
 ###############################################################################################################################################################
 
-# Create a WP-TYPE-Directory for the Wineprefix and .desktop-files:
+# Create a WP-TYPE for the Wineprefix-Directory and .desktop-files:
 function SP_GET_WINEPREFIX_TYPE {
   if [[ $WP_DIRECTORY = "$SP_PATH/wineprefixes/default" ]]; then
     WP_TYPE="default"
@@ -116,15 +116,14 @@ function SP_GET_WINEPREFIX_TYPE {
 }
 
 function SP_ADD_CUSTOM_WINEPREFIX_TYPE {
-  WP_TYPE="custom1"
-  SP_READ_WP_TYPE="$SP_PATH/wineprefixes"
- i=5
-
-
-  while [ $WP_DIRECTORY = "$SP_PATH/wineprefixes/custom1" ]
-  do
-    # ...
-  done
+  WP_TYPE="custom"
+  if [[ -e $WP_TYPE || -L $WP_TYPE ]] ; then
+    i=0
+    while [[ -e $WP_TYPE-$i || -L $WP_TYPE-$i ]] ; do
+        let i++
+    done
+    WP_TYPE=$WP_TYPE-$i
+  fi
 }
 
 
