@@ -105,12 +105,12 @@ function SP_LOGFILE_WINEPREFIX_CHECK {
 
 ###############################################################################################################################################################
 
-# Create a WP-TYPE for the Wineprefix-Directory and .desktop-files:
+# Create a WP-TYPE for the .desktop-files:
 function SP_GET_WINEPREFIX_TYPE {
   if [[ $WP_DIRECTORY = "$SP_PATH/wineprefixes/default" ]]; then
     WP_TYPE="default"
   else
-    # Create the directory (custom1, custom2, ...)
+    # Create the directory (custom, custom-1, custom-2, ...)
     SP_ADD_CUSTOM_WINEPREFIX_TYPE
   fi
 }
