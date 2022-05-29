@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    19:30/29.05.2022                                                                   #
+# Time/Date:    19:50/29.05.2022                                                                   #
 # Version:      1.7.9 -> 1.8.0                                                                     #
 ####################################################################################################
 
@@ -445,6 +445,15 @@ function SP_FUSION360_INSTALL {
   SP_COMPLETED
 }
 
+function SP_FUSION360_REFRESH { 
+  wget $SP_SERVER_21 -O Fusion360installer.exe
+  mv "Fusion360installer.exe" "$SP_PATH/downloads/Fusion360installer.exe"
+  rmdir "$WP_WINEPREFIXES_REFRESH/drive_c/users/$USER/Downloads/Fusion360installer.exe"
+  cp "$SP_PATH/downloads/Fusion360installer.exe" "$WP_WINEPREFIXES_REFRESH/drive_c/users/$USER/Downloads"
+  WINEPREFIX=$WP_WINEPREFIXES_REFRESH wine $WP_WINEPREFIXES_REFRESH/drive_c/users/$USER/Downloads/Fusion360installer.exe -p deploy -g -f log.txt --quiet
+  WINEPREFIX=$WP_WINEPREFIXES_REFRESH wine $WP_WINEPREFIXES_REFRESH/drive_c/users/$USER/Downloads/Fusion360installer.exe -p deploy -g -f log.txt --quiet
+}
+
 ###############################################################################################################################################################
 # ALL FUNCTIONS FOR SUPPORTED LINUX DISTRIBUTIONS START HERE:                                                                                                 #
 ###############################################################################################################################################################
@@ -805,10 +814,11 @@ if [[ $ret -eq 1 ]]; then
     SP_INSTALLDIR 
 elif [[ $ret -eq 2 ]]; then
     # Get informations about the current wineprefix - Repair
-    WP_PATH_CHECK=`cat /tmp/fusion360/logs/wineprefixes.log | awk 'NR == 1'`
+    WP_WINEPREFIXES_STRING=$(yad --height=300 --separator="" --list --radiolist --column="$SELECT" --column="$WINEPREFIXES_TYPE" --column="$WINEPREFIXES_DRIVER" --column="$WINEPREFIXES_DIRECTORY" < /tmp/fusion360/logs/wineprefixes.log)
+    WP_WINEPREFIXES_REFRESH=${WP_WINEPREFIXES_STRING/#TRUE}
+    SP_FUSION360_REFRESH
 elif [[ $ret -eq 3 ]]; then
     # Get informations about the current wineprefix - Delete
-    WP_PATH_CHECK=`cat /tmp/fusion360/logs/wineprefixes.log | awk 'NR == 1'`
     . $SP_PATH/bin/uninstall.sh
 fi
 }
