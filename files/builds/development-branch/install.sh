@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    12:15/29.05.2022                                                                   #
+# Time/Date:    19:30/29.05.2022                                                                   #
 # Version:      1.7.9 -> 1.8.0                                                                     #
 ####################################################################################################
 
@@ -96,9 +96,7 @@ function SP_LOGFILE_WINEPREFIX_CHECK {
   if [ -f "$SP_FUSION360_WINEPREFIX_CHECK" ]; then
     cp "$SP_FUSION360_WINEPREFIX_CHECK" "/tmp/fusion360/logs"
     SP_LOGFILE_WINEPREFIX_INFO # Add/Modify or Delete a exists Wineprefix of Autodesk Fusion 360.
-    # SP_INSTALLDIR
   else
-    SP_FUSION360_CHANGE=1
     SP_INSTALLDIR # Add a new Wineprefix of Autodesk Fusion 360.
   fi
 }
@@ -148,6 +146,7 @@ if [[ $WP_PATH_CHECK = "$WP_DIRECTORY" ]]; then
     SP_INSTALLDIR_INFO
 else
     echo "TRUE"
+    SP_FUSION360_CHANGE=1
     SP_WINE_SETTINGS
 fi
 }
