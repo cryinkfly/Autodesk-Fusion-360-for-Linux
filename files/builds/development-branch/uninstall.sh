@@ -162,7 +162,7 @@ function DL_WELCOME {
 ###############################################################################################################################################################
 
 function DL_WINEPREFIXES_LIST {
-  DL_WINEPREFIXES_STRING=$(yad --height=300 --separator="" --list --radiolist --column="$DL_SELECT" --column="$WINEPREFIXES_TYPE" --column="$WINEPREFIXES_DRIVER" --column="WINEPREFIXES_DIRECTORY" < /tmp/fusion360/logs/wineprefixes.log)
+  DL_WINEPREFIXES_STRING=$(yad --height=300 --separator="" --list --radiolist --column="$SELECT" --column="$WINEPREFIXES_TYPE" --column="$WINEPREFIXES_DRIVER" --column="$WINEPREFIXES_DIRECTORY" < /tmp/fusion360/logs/wineprefixes.log)
   DL_WINEPREFIXES_ACT
 }
 
