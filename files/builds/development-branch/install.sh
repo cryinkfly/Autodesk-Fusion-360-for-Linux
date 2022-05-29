@@ -590,7 +590,7 @@ function EXTENSION_ADDITIVE_ASSISTANT {
 
 # Install a extension: Czech localization for F360
 function EXTENSION_CZECH_LOCALE {
-  SP_SEARCH_EXTENSION_CZECH_LOCALE
+  SP_SEARCH_EXTENSION_CZECH_LOCALE &&
   cp $CZECH_LOCALE_EXTENSION "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
   cd "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
   WINEPREFIX=$WP_DIRECTORY wine msiexec /i $CZECH_LOCALE_EXTENSION
