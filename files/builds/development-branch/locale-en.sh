@@ -7,14 +7,14 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    08:50/26.05.2022                                                                   #
+# Time/Date:    19:50/29.05.2022                                                                   #
 # Version:      1.5 -> 1.6                                                                         #
 ####################################################################################################
 
 # Path: /$HOME/.fusion360/locale/en-EN/locale-en.sh
 
 ###############################################################################################################################################################
-# ALL DEFINITIONS FOR INSTALL AUTODESK FUSION 360 ARE ARRANGED HERE:                                                                                          #
+# ALL DEFINITIONS FOR AUTODESK FUSION 360 ARE ARRANGED HERE:                                                                                                  #
 ###############################################################################################################################################################
 
 # Window Title:
@@ -116,7 +116,13 @@ DL_WELCOME_LABEL_1="Autodesk Fusion 360 will be uninstalled from your computer!"
 DL_WELCOME_LABEL_2="Click Ok to continue or Cancel to exit this Uninstaller."
 DL_WELCOME_TOOLTIP_1="Here you get more informations about this Uninstaller."
 
-DL_SELECT="Select"
-
 DL_WINEPREFIXES_DEL_INFO_TEXT="Are you sure you want to delete the selected Wineprefix from your computer?"
 DL_WINEPREFIXES_DEL_INFO_LABEL="Yes, I am aware that all my personal data will be lost in the Wineprefix."
+
+###############################################################################################################################################################
+###############################################################################################################################################################
+
+SELECT="Select"
+WINEPREFIXES_TYPE="Wineprefixes Type"
+WINEPREFIXES_DRIVER="Wineprefixes Driver"
+WINEPREFIXES_DIRECTORY="Wineprefixes Directory"
