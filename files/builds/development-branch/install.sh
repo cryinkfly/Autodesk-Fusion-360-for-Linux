@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    10:30/29.05.2022                                                                   #
+# Time/Date:    10:40/29.05.2022                                                                   #
 # Version:      1.7.9 -> 1.8.0                                                                     #
 ####################################################################################################
 
@@ -405,6 +405,7 @@ function SP_FUSION360_INSTALL {
   cd "$WP_DIRECTORY/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options"
   SP_DXVK_OPENGL_2
   cd "SP_PATH/bin"
+  SP_GET_WINEPREFIX_TYPE
   SP_FUSION360_SHORTCUTS_LOAD
   SP_FUSION360_EXTENSIONS
   SP_LOGFILE_WINEPREFIX
