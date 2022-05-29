@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                          #
 # License:      MIT                                                            #
 # Copyright (c) 2020-2022                                                      #
-# Time/Date:    09:10/26.05.2022                                               #
+# Time/Date:    11:10/29.05.2022                                               #
 # Version:      0.7 -> 0.8                                                     #
 ################################################################################
 
@@ -96,6 +96,7 @@ function DL_WINEPREFIXES_DEL {
   DL_WINEPREFIXES_VAR_4=`grep -n "$DL_WINEPREFIXES" /tmp/fusion360/logs/wineprefixes.log | grep -Eo '^[^:]+'`
   DL_WINEPREFIXES_VAR_2=1
   DL_WINEPREFIXES_VAR_SUM=`echo $(( DL_WINEPREFIXES_VAR_4 - DL_WINEPREFIXES_VAR_2 ))`
+  DL_SHORTCUTS=`cat /tmp/fusion360/logs/wineprefixes.log | awk -v nr="$DL_WINEPREFIXES_VAR_SUM" 'NR==nr'`
   sed --in-place "${DL_WINEPREFIXES_VAR_SUM}d" /tmp/fusion360/logs/wineprefixes.log
   # Remove VAR 1 (line)
   DL_WINEPREFIXES_VAR_4=`grep -n "$DL_WINEPREFIXES" /tmp/fusion360/logs/wineprefixes.log | grep -Eo '^[^:]+'`
@@ -107,6 +108,7 @@ function DL_WINEPREFIXES_DEL {
   sed --in-place "${DL_WINEPREFIXES_VAR_1}d" /tmp/fusion360/logs/wineprefixes.log
   # Continue with removing ...
   rmdir $DL_WINEPREFIXES
+  rmdir $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$DL_SHORTCUTS
   DL_WINEPREFIXES_DEL_ALL
 }
 
