@@ -311,7 +311,7 @@ function SP_FUSION360_SHORTCUTS_LOAD {
   # Create a .desktop file (launcher.sh) for Autodesk Fusion 360!
   wget -N -P $SP_PATH/graphics $SP_SERVER_25
   rm $HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk\ Fusion\ 360.desktop
-  mkdir -p $HOME/.local/share/applications/wine/Programs/Autodesk  
+  mkdir -p $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE
   echo "[Desktop Entry]" > $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop
   echo "Name=Autodesk Fusion 360 - $WP_TYPE" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop
   echo "GenericName=CAD Application" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop
