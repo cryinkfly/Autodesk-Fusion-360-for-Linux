@@ -421,7 +421,7 @@ function SP_FUSION360_INSTALL {
   WINEPREFIX=$WP_DIRECTORY sh $SP_PATH/bin/winetricks -q sandbox
   sleep 5
   # We must install some packages!
-  WINEPREFIX=WP_DIRECTORY sh $SP_PATH/bin/winetricks -q atmlib gdiplus corefonts cjkfonts msxml4 msxml6 vcrun2017 fontsmooth=rgb winhttp win10
+  WINEPREFIX=$WP_DIRECTORY sh $SP_PATH/bin/winetricks -q atmlib gdiplus corefonts cjkfonts msxml4 msxml6 vcrun2017 fontsmooth=rgb winhttp win10
   sleep 5
   # We must install cjkfonts again then sometimes it doesn't work in the first time!
   WINEPREFIX=$WP_DIRECTORY sh $SP_PATH/bin/winetricks -q cjkfonts
