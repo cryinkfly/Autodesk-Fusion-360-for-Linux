@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    19:50/29.05.2022                                                                   #
+# Time/Date:    08:00/30.05.2022                                                                   #
 # Version:      1.5 -> 1.6                                                                         #
 ####################################################################################################
 
@@ -82,7 +82,7 @@ SP_INSTALLDIR_INFO_LABEL_2="Please select a different directory."
 SP_WINE_SETTINGS_TITLE="Select Wine Version"
 SP_WINE_SETTINGS_LABEL_1="Here you have to decide between two options*."
 SP_WINE_SETTINGS_LABEL_2="Select:"
-SP_WINE_SELECT=$(echo "Wine Version (Staging),Wine version (6.23 or higher) is already installed on the system!")
+SP_WINE_VERSION_SELECT=$(echo "Wine Version (Staging),Wine version (6.23 or higher) is already installed on the system!")
 SP_WINE_SETTINGS_LABEL_3="*Depending on which option is selected, further packages will be installed on your system!"
 
 ###############################################################################################################################################################
