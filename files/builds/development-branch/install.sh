@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    19:50/29.05.2022                                                                   #
+# Time/Date:    07:50/30.05.2022                                                                   #
 # Version:      1.7.9 -> 1.8.0                                                                     #
 ####################################################################################################
 
@@ -73,6 +73,9 @@ function SP_SERVER_LIST {
 ###############################################################################################################################################################
 
 function SP_SETTINGS_CREATE_FILE {
+  mkdir -p /tmp/fusion360
+  echo "English" > /tmp/fusion360/settings.txt
+  echo "DXVK" >> /tmp/fusion360/settings.txt
   echo "English" > $SP_PATH/config/settings.txt
   echo "DXVK" >> $SP_PATH/config/settings.txt
 }
@@ -707,7 +710,7 @@ function EXTENSION_ULTIMAKER_DIGITAL_FACTORY {
 # ALL DIALOGS ARE ARRANGED HERE:                                                                                                                              #
 ###############################################################################################################################################################
 
-function SP-WELCOME {
+function SP_WELCOME {
 yad \
 --form \
 --separator="" \
@@ -730,12 +733,12 @@ ret=$?
 # Responses to above button presses are below:
 if [[ $ret -eq 1 ]]; then
     xdg-open https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux
-    SP-WELCOME
+    SP_WELCOME
 elif [[ $ret -eq 2 ]]; then
-    SP-SETTINGS
+    SP_SETTINGS
     SP_LOCALE_SETTINGS
     SP_DRIVER_SETTINGS
-    SP-WELCOME
+    SP_WELCOME
 elif [[ $ret -eq 3 ]]; then
     SP_LICENSE
 fi
@@ -1039,6 +1042,7 @@ if [[ $EXTENSIONS = *"Ultimaker Digital Factory for Autodesk Fusion 360™"* ]];
     echo "Ultimaker Digital Factory for Autodesk Fusion 360™"
     EXTENSION_ULTIMAKER_DIGITAL_FACTORY
 fi
+}
 
 ###############################################################################################################################################################
 
@@ -1074,4 +1078,4 @@ SP_LOGFILE_INSTALL
 SP_SETTINGS_CREATE_FILE
 SP_SERVER_LIST
 SP_LOCALE_INDEX
-SP-WELCOME
+SP_WELCOME
