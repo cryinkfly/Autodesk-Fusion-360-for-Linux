@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    07:50/30.05.2022                                                                   #
+# Time/Date:    08:00/30.05.2022                                                                   #
 # Version:      1.7.9 -> 1.8.0                                                                     #
 ####################################################################################################
 
@@ -465,13 +465,13 @@ function OS_ARCHLINUX {
   echo "Checking for multilib..."
   if ARCHLINUX_VERIFY_MULTILIB ; then
     echo "multilib found. Continuing..."
-    sudo pacman -Sy --needed wine wine-mono wine_gecko winetricks p7zip curl cabextract samba ppp
+    pkexec sudo pacman -Sy --needed wine wine-mono wine_gecko winetricks p7zip curl cabextract samba ppp
     SP_FUSION360_INSTALL
   else
     echo "Enabling multilib..."
     echo "[multilib]" | sudo tee -a /etc/pacman.conf
     echo "Include = /etc/pacman.d/mirrorlist" | sudo tee -a /etc/pacman.conf
-    sudo pacman -Sy --needed wine wine-mono wine_gecko winetricks p7zip curl cabextract samba ppp
+    pkexec sudo pacman -Sy --needed wine wine-mono wine_gecko winetricks p7zip curl cabextract samba ppp
     SP_FUSION360_INSTALL
   fi
 }
@@ -488,7 +488,7 @@ function ARCHLINUX_VERIFY_MULTILIB {
 
 function DEBIAN_BASED_1 {
   # Some systems require this command for all repositories to work properly and for the packages to be downloaded for installation!
-  sudo apt-get --allow-releaseinfo-change update  
+  pkexec sudo apt-get --allow-releaseinfo-change update  
   # Added i386 support for wine!
   sudo dpkg --add-architecture i386
 }
@@ -533,7 +533,7 @@ function OS_UBUNTU_22 {
 ###############################################################################################################################################################
 
 function FEDORA_BASED_1 {
-  sudo dnf update
+  pkexec sudo dnf update
   sudo dnf upgrade
   sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 }
@@ -550,25 +550,25 @@ function OS_FEDORA_36 {
 ###############################################################################################################################################################
 
 function OS_OPENSUSE_153 {
-  su -c 'zypper up && zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.3/ wine && zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.3/ wine && zypper install p7zip-full curl wget wine cabextract'
+  pkexec su -c 'zypper up && zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.3/ wine && zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.3/ wine && zypper install p7zip-full curl wget wine cabextract'
   SP_FUSION360_INSTALL
 }
 
 # Has not been published yet!
 function OS_OPENSUSE_154 {
-  su -c 'zypper up && zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.4/ wine && zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.4/ wine && zypper install p7zip-full curl wget wine cabextract'
+  pkexec su -c 'zypper up && zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.4/ wine && zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.4/ wine && zypper install p7zip-full curl wget wine cabextract'
   SP_FUSION360_INSTALL
 }
 
 function OS_OPENSUSE_TW {
-  su -c 'zypper up && zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Tumbleweed/ wine && zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Tumbleweed/ wine && zypper install p7zip-full curl wget wine cabextract'
+  pkexec su -c 'zypper up && zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Tumbleweed/ wine && zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Tumbleweed/ wine && zypper install p7zip-full curl wget wine cabextract'
   SP_FUSION360_INSTALL
 }
 
 ###############################################################################################################################################################
 
 function OS_REDHAT_LINUX_8 {
-  sudo subscription-manager repos --enable codeready-builder-for-rhel-8-x86_64-rpms
+  pkexec sudo subscription-manager repos --enable codeready-builder-for-rhel-8-x86_64-rpms
   sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
   sudo dnf upgrade
   sudo dnf install wine
@@ -576,7 +576,7 @@ function OS_REDHAT_LINUX_8 {
 }
 
 function OS_REDHAT_LINUX_9 {
-  sudo subscription-manager repos --enable codeready-builder-for-rhel-9-x86_64-rpms
+  pkexec sudo subscription-manager repos --enable codeready-builder-for-rhel-9-x86_64-rpms
   sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
   sudo dnf upgrade
   sudo dnf install wine
@@ -586,21 +586,21 @@ function OS_REDHAT_LINUX_9 {
 ###############################################################################################################################################################
 
 function OS_SOLUS_LINUX {
-  sudo eopkg install -y wine winetricks p7zip curl cabextract samba ppp
+  pkexec sudo eopkg install -y wine winetricks p7zip curl cabextract samba ppp
   SP_FUSION360_INSTALL
 }
 
 ###############################################################################################################################################################
 
 function OS_VOID_LINUX {
-  sudo xbps-install -Sy wine wine-mono wine-gecko winetricks p7zip curl cabextract samba ppp
+  pkexec sudo xbps-install -Sy wine wine-mono wine-gecko winetricks p7zip curl cabextract samba ppp
   SP_FUSION360_INSTALL
 }
 
 ###############################################################################################################################################################
 
 function OS_GENTOO_LINUX {
-  sudo emerge -nav virtual/wine app-emulation/winetricks app-emulation/wine-mono app-emulation/wine-gecko app-arch/p7zip app-arch/cabextract net-misc/curl net-fs/samba net-dialup/ppp
+  pkexec sudo emerge -nav virtual/wine app-emulation/winetricks app-emulation/wine-mono app-emulation/wine-gecko app-arch/p7zip app-arch/cabextract net-misc/curl net-fs/samba net-dialup/ppp
   SP_FUSION360_INSTALL
 }
 
@@ -1066,6 +1066,7 @@ function SP_SEARCH_EXTENSION_CZECH_LOCALE {
 
 # The installation is complete and will be terminated.
 function SP_COMPLETED {
+  echo "The installation is completed!"
   # ...
 }
 
