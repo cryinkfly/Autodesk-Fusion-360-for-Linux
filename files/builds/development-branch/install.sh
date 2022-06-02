@@ -593,6 +593,10 @@ function FEDORA_BASED_2 {
   SP_FUSION360_INSTALL
 }
 
+function OS_FEDORA_35 {
+  sudo dnf config-manager --add-repo https://download.opensuse.org/repositories/Emulators:/Wine:/Fedora/Fedora_35/Emulators:Wine:Fedora.repo
+}
+
 function OS_FEDORA_36 {
   sudo dnf config-manager --add-repo https://download.opensuse.org/repositories/Emulators:/Wine:/Fedora/Fedora_36/Emulators:Wine:Fedora.repo
 }
