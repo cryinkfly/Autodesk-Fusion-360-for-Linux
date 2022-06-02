@@ -1,0 +1,27 @@
+FALSE
+Airfoil Tools
+This extension helps you by the optimization any thing or part that is exposed to a moving gas or liquid. For example: wings, fins, propellers and turbines.
+FALSE
+Additive Assistant (FFF)
+This extension helps you by analyses a number of aspects of your designs and provides clear feedback on how to improve the manufacturability of the part.
+FALSE
+Czech localization for F360
+This extension gives you the option to use the Czech user interface (UI) in Autodesk Fusion 360.
+FALSE
+HP 3D Printers for Autodesk® Fusion 360™
+This extension is a connector between Autodesk® Fusion 360™ and the HP SmartStream Software and is used to send over jobs directly to the HP Software.
+FALSE
+Helical Gear Generator
+Helical gears resemble spur gears with the teeth at an angle.
+FALSE
+OctoPrint for Autodesk® Fusion 360™
+With this extension you can send the G-code of your created 3D models directly to the OctoPrint server via Autodesk Fusion 360.
+FALSE
+Parameter I/O
+Enables the user to Import/Update parameters from or export them to a CSV (Comma Separated Values) file.
+FALSE
+RoboDK
+This extension allows you to program more than 50 different robot manufacturers and 500 robots directly from Autodesk Fusion 360.
+FALSE
+Ultimaker Digital Factory for Autodesk Fusion 360™
+This plug-in is a connector between Autodesk® Fusion 360™ and the Ultimaker Digital Factory site and its services.
