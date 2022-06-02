@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    17:40/02.06.2022                                                                   #
+# Time/Date:    18:00/02.06.2022                                                                   #
 # Version:      1.7.9 -> 1.8.0                                                                     #
 ####################################################################################################
 
@@ -1050,7 +1050,7 @@ fi
 ###############################################################################################################################################################
 
 function SP_FUSION360_EXTENSIONS {
-EXTENSIONS=$(yad --button=gtk-cancel:99 --button=gtk-ok:0 --height=300 --list --multiple --checklist --column=Select --column=Extension --column=Description < shopping.list)
+EXTENSIONS=$(yad --button=gtk-cancel:99 --button=gtk-ok:0 --height=300 --list --multiple --checklist --column=$SP_EXTENSION_SELECT --column=$SP_EXTENSION_NAME --column=$SP_EXTENSION_DESCRIPTION < $SP_EXTENSION_LIST)
 
 if [[ $EXTENSIONS = *"Airfoil Tools"* ]]; then
     echo "Airfoil Tools"
