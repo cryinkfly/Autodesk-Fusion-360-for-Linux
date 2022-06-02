@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    08:00/30.05.2022                                                                   #
+# Time/Date:    17:30/02.06.2022                                                                   #
 # Version:      1.7.9 -> 1.8.0                                                                     #
 ####################################################################################################
 
@@ -410,6 +410,30 @@ WP_DRIVER=`cat /tmp/fusion360/settings.txt | awk 'NR == 2'`
 # ALL FUNCTIONS FOR WINE AND WINETRICKS START HERE:                                                                                                           #
 ###############################################################################################################################################################
 
+# Start Fusion360installer.exe - Part 1
+function SP_FUSION360_INSTALL_START_1 {
+  WINEPREFIX=$WP_DIRECTORY wine $WP_DIRECTORY/drive_c/users/$USER/Downloads/Fusion360installer.exe
+}
+
+# Stop Fusion360installer.exe - Part 1
+function SP_FUSION360_INSTALL_STOP_1 {
+  sleep 10m
+  kill -9 $(ps aux |grep -i '\.exe' |awk '{print $2}'|tr '\n' ' ')
+}
+
+# Start Fusion360installer.exe - Part 2
+function SP_FUSION360_INSTALL_START_2 {
+  WINEPREFIX=$WP_DIRECTORY wine $WP_DIRECTORY/drive_c/users/$USER/Downloads/Fusion360installer.exe
+}
+
+# Stop Fusion360installer.exe - Part 2
+function SP_FUSION360_INSTALL_STOP_2 {
+  sleep 1m
+  kill -9 $(ps aux |grep -i '\.exe' |awk '{print $2}'|tr '\n' ' ')
+}
+
+###############################################################################################################################################################
+
 # Autodesk Fusion 360 will now be installed using Wine and Winetricks.
 function SP_FUSION360_INSTALL {
   SP_WINETRICKS_LOAD
@@ -429,7 +453,10 @@ function SP_FUSION360_INSTALL {
   SP_DXVK_OPENGL_1
   # We must copy the EXE-file directly in the Wineprefix folder (Sandbox-Mode)!
   cp "$SP_PATH/downloads/Fusion360installer.exe" "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
-  WINEPREFIX=$WP_DIRECTORY wine $WP_DIRECTORY/drive_c/users/$USER/Downloads/Fusion360installer.exe -p deploy -g -f log.txt --quiet
+  # This start and stop the installer automatically after a time! 
+  # For more information check this link: https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/issues/232
+  SP_FUSION360_INSTALL_START_1 & SP_FUSION360_INSTALL_STOP_1 # These two commands run in the same time.  
+  SP_FUSION360_INSTALL_START_2 & SP_FUSION360_INSTALL_STOP_2 # These two commands run in the same time.
   WINEPREFIX=$WP_DIRECTORY wine $WP_DIRECTORY/drive_c/users/$USER/Downloads/Fusion360installer.exe -p deploy -g -f log.txt --quiet
   mkdir -p "$WP_DIRECTORY/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options"
   cd "$WP_DIRECTORY/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options"
