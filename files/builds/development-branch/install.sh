@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    17:30/02.06.2022                                                                   #
+# Time/Date:    17:40/02.06.2022                                                                   #
 # Version:      1.7.9 -> 1.8.0                                                                     #
 ####################################################################################################
 
@@ -434,6 +434,30 @@ function SP_FUSION360_INSTALL_STOP_2 {
 
 ###############################################################################################################################################################
 
+# Start Fusion360installer.exe - Part 1 (Refresh)
+function SP_FUSION360_INSTALL_REFRESH_START_1 {
+  WINEPREFIX=$WP_WINEPREFIXES_REFRESH wine $WP_WINEPREFIXES_REFRESH/drive_c/users/$USER/Downloads/Fusion360installer.exe
+}
+
+# Stop Fusion360installer.exe - Part 1 (Refresh)
+function SP_FUSION360_INSTALL_REFRESH_STOP_1 {
+  sleep 10m
+  kill -9 $(ps aux |grep -i '\.exe' |awk '{print $2}'|tr '\n' ' ')
+}
+
+# Start Fusion360installer.exe - Part 2 (Refresh)
+function SP_FUSION360_INSTALL_REFRESH_START_2 {
+  WINEPREFIX=$WP_WINEPREFIXES_REFRESH wine $WP_WINEPREFIXES_REFRESH/drive_c/users/$USER/Downloads/Fusion360installer.exe
+}
+
+# Stop Fusion360installer.exe - Part 2 (Refresh)
+function SP_FUSION360_INSTALL_REFRESH_STOP_2 {
+  sleep 1m
+  kill -9 $(ps aux |grep -i '\.exe' |awk '{print $2}'|tr '\n' ' ')
+}
+
+###############################################################################################################################################################
+
 # Autodesk Fusion 360 will now be installed using Wine and Winetricks.
 function SP_FUSION360_INSTALL {
   SP_WINETRICKS_LOAD
@@ -443,13 +467,13 @@ function SP_FUSION360_INSTALL {
   # But it still ensures that wine, for example, no longer has access permissions to Home! 
   # For this reason, the EXE files must be located directly in the Wineprefix folder!
   WINEPREFIX=$WP_DIRECTORY sh $SP_PATH/bin/winetricks -q sandbox
-  sleep 5
+  sleep 5s
   # We must install some packages!
-  WINEPREFIX=$WP_DIRECTORY sh $SP_PATH/bin/winetricks -q atmlib gdiplus corefonts cjkfonts msxml4 msxml6 vcrun2017 fontsmooth=rgb winhttp win10
-  sleep 5
+  WINEPREFIX=$WP_DIRECTORY sh $SP_PATH/bin/winetricks -q atmlib gdiplus corefonts cjkfonts dotnet452 msxml4 msxml6 vcrun2017 fontsmooth=rgb winhttp win10
+  sleep 5s
   # We must install cjkfonts again then sometimes it doesn't work in the first time!
   WINEPREFIX=$WP_DIRECTORY sh $SP_PATH/bin/winetricks -q cjkfonts
-  sleep 5
+  sleep 5s
   SP_DXVK_OPENGL_1
   # We must copy the EXE-file directly in the Wineprefix folder (Sandbox-Mode)!
   cp "$SP_PATH/downloads/Fusion360installer.exe" "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
@@ -479,8 +503,8 @@ function SP_FUSION360_REFRESH {
   mv "Fusion360installer.exe" "$SP_PATH/downloads/Fusion360installer.exe"
   rmdir "$WP_WINEPREFIXES_REFRESH/drive_c/users/$USER/Downloads/Fusion360installer.exe"
   cp "$SP_PATH/downloads/Fusion360installer.exe" "$WP_WINEPREFIXES_REFRESH/drive_c/users/$USER/Downloads"
-  WINEPREFIX=$WP_WINEPREFIXES_REFRESH wine $WP_WINEPREFIXES_REFRESH/drive_c/users/$USER/Downloads/Fusion360installer.exe -p deploy -g -f log.txt --quiet
-  WINEPREFIX=$WP_WINEPREFIXES_REFRESH wine $WP_WINEPREFIXES_REFRESH/drive_c/users/$USER/Downloads/Fusion360installer.exe -p deploy -g -f log.txt --quiet
+  SP_FUSION360_INSTALL_START_1 & SP_FUSION360_INSTALL_REFRESH_STOP_1
+  SP_FUSION360_INSTALL_START_2 & SP_FUSION360_INSTALL_REFRESH_STOP_2
 }
 
 ###############################################################################################################################################################
