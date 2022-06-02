@@ -457,7 +457,6 @@ function SP_FUSION360_INSTALL {
   # For more information check this link: https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/issues/232
   SP_FUSION360_INSTALL_START_1 & SP_FUSION360_INSTALL_STOP_1 # These two commands run in the same time.  
   SP_FUSION360_INSTALL_START_2 & SP_FUSION360_INSTALL_STOP_2 # These two commands run in the same time.
-  WINEPREFIX=$WP_DIRECTORY wine $WP_DIRECTORY/drive_c/users/$USER/Downloads/Fusion360installer.exe -p deploy -g -f log.txt --quiet
   mkdir -p "$WP_DIRECTORY/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options"
   cd "$WP_DIRECTORY/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options"
   SP_DXVK_OPENGL_2
