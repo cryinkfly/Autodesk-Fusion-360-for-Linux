@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    18:00/02.06.2022                                                                   #
+# Time/Date:    07:50/04.06.2022                                                                   #
 # Version:      1.7.9 -> 1.8.0                                                                     #
 ####################################################################################################
 
@@ -45,7 +45,6 @@ function SP_STRUCTURE {
   mkdir -p $SP_PATH/bin
   mkdir -p $SP_PATH/logs
   mkdir -p $SP_PATH/config
-  mkdir -p $SP_PATH/servers
   mkdir -p $SP_PATH/graphics
   mkdir -p $SP_PATH/downloads
   mkdir -p $SP_PATH/extensions
@@ -59,20 +58,6 @@ function SP_STRUCTURE {
   mkdir -p $SP_PATH/locale/ja-JP
   mkdir -p $SP_PATH/locale/ko-KR
   mkdir -p $SP_PATH/locale/zh-CN
-}
-
-###############################################################################################################################################################
-
-# Get all server connections (links):
-function SP_SERVER_LIST {  
-  wget -N -P $SP_PATH/servers https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/servers/server-list.sh
-  chmod +x $SP_PATH/servers/server-list.sh
-  . $SP_PATH/servers/server-list.sh
-}
-
-###############################################################################################################################################################
-
-function SP_SETTINGS_CREATE_FILE {
   mkdir -p /tmp/fusion360
   echo "English" > /tmp/fusion360/settings.txt
   echo "DXVK" >> /tmp/fusion360/settings.txt
@@ -160,7 +145,7 @@ fi
 
 # Load the index of locale files:
 function SP_LOCALE_INDEX {
-  wget -N -P $SP_PATH/locale $SP_SERVER_1
+  wget -N -P $SP_PATH/locale https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/locale/locale.sh
   chmod +x $SP_PATH/locale/locale.sh
   . $SP_PATH/locale/locale.sh
   SP_LOCALE_EN
@@ -283,7 +268,7 @@ fi
 
 # Load the newest winetricks version:
 function SP_WINETRICKS_LOAD {
-  wget -N -P $SP_PATH/bin $SP_SERVER_20
+  wget -N -P $SP_PATH/bin https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks
   chmod +x $SP_PATH/bin/winetricks
 }
 
@@ -297,7 +282,7 @@ function SP_FUSION360_INSTALLER_LOAD {
     echo "The Autodesk Fusion 360 installer exist!"
   else
     echo "The Autodesk Fusion 360 installer doesn't exist and will be downloaded for you!"
-    wget $SP_SERVER_21 -O Fusion360installer.exe
+    wget https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe -O Fusion360installer.exe
     mv "Fusion360installer.exe" "$SP_PATH/downloads/Fusion360installer.exe"
   fi
 }
@@ -309,7 +294,7 @@ function SP_FUSION360_INSTALLER_LOAD {
 # Load the icons and .desktop-files:
 function SP_FUSION360_SHORTCUTS_LOAD {
   # Create a .desktop file (launcher.sh) for Autodesk Fusion 360!
-  wget -N -P $SP_PATH/graphics $SP_SERVER_25
+  wget -N -P $SP_PATH/graphics https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/fusion360.svg
   rm $HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk\ Fusion\ 360.desktop
   mkdir -p $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE
   echo "[Desktop Entry]" > $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop
@@ -340,7 +325,7 @@ function SP_FUSION360_SHORTCUTS_LOAD {
   echo "Terminal=true" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop
   echo "Path=$SP_PATH/bin" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop
   # Create a .desktop file (uninstall.sh) for Autodesk Fusion 360!
-  wget -N -P $SP_PATH/graphics $SP_SERVER_26
+  wget -N -P $SP_PATH/graphics https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/fusion360-uninstall.svg
   echo "[Desktop Entry]" > $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop
   echo "Name=Autodesk Fusion 360 (Uninstall) - $WP_TYPE" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop
   echo "Name[cs]=Autodesk Fusion 360 (Odinstalovat) - $WP_TYPE" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop
@@ -367,13 +352,14 @@ function SP_FUSION360_SHORTCUTS_LOAD {
   echo "Icon=$SP_PATH/graphics/fusion360-uninstall.svg" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop
   echo "Terminal=true" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop
   echo "Path=$SP_PATH/bin" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop
-  wget -N -P $SP_PATH/bin $SP_SERVER_27
+  # Download some script files for Autodesk Fusion 360!
+  wget -N -P $SP_PATH/bin https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/uninstall.sh
   chmod +x $SP_PATH/bin/uninstall.sh  
-  wget -N -P $SP_PATH/bin $SP_SERVER_28
+  wget -N -P $SP_PATH/bin https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/launcher.sh
   chmod +x $SP_PATH/bin/launcher.sh
-  wget -N -P $SP_PATH/bin $SP_SERVER_29
+  wget -N -P $SP_PATH/bin https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/update.sh
   chmod +x $SP_PATH/bin/update.sh
-  wget -N -P $SP_PATH/bin $SP_SERVER_30
+  wget -N -P $SP_PATH/bin https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/read-text.sh
   chmod +x $SP_PATH/bin/read-text.sh
 }
 
@@ -384,7 +370,7 @@ function SP_FUSION360_SHORTCUTS_LOAD {
 function SP_DXVK_OPENGL_1 {
   if [[ $WP_DRIVER = "DXVK" ]]; then
     WINEPREFIX=$WP_DIRECTORY sh $SP_PATH/bin/winetricks -q dxvk
-    wget -N -P $WP_DIRECTORY/drive_c/users/$USER/Downloads $SP_SERVER_22
+    wget -N -P $WP_DIRECTORY/drive_c/users/$USER/Downloads https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/driver/video/dxvk/DXVK.reg
     cd "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
     WINEPREFIX=$WP_DIRECTORY wine regedit.exe DXVK.reg
   fi
@@ -392,10 +378,10 @@ function SP_DXVK_OPENGL_1 {
 
 function SP_DXVK_OPENGL_2 {
   if [[ $WP_DRIVER = "DXVK" ]]; then
-    wget -N $SP_SERVER_23
+    wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/driver/video/dxvk/DXVK.xml
     mv "DXVK.xml" "NMachineSpecificOptions.xml"
   else
-    wget -N $SP_SERVER_24
+    wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/driver/video/opengl/OpenGL.xml
     mv "OpenGL.xml" "NMachineSpecificOptions.xml"
   fi
 }
@@ -666,7 +652,7 @@ function OS_GENTOO_LINUX {
 
 function EXTENSION_AIRFOIL_TOOLS {
   cd "$SP_PATH/extensions"
-  wget -N $SP_SERVER_31 &&
+  wget -N https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/raw/main/files/extensions/AirfoilTools_win64.msi &&
   cp AirfoilTools_win64.msi "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
   cd "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
   WINEPREFIX=$WP_DIRECTORY wine msiexec /i AirfoilTools_win64.msi
@@ -678,7 +664,7 @@ function EXTENSION_AIRFOIL_TOOLS {
 
 function EXTENSION_ADDITIVE_ASSISTANT {
   cd "$SP_PATH/extensions"
-  wget -N $SP_SERVER_32 &&
+  wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/AdditiveAssistant.bundle-win64.msi &&
   cp AdditiveAssistant.bundle-win64.msi "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
   cd "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
   WINEPREFIX=$WP_DIRECTORY wine msiexec /i AdditiveAssistant.bundle-win64.msi
@@ -699,7 +685,7 @@ function EXTENSION_CZECH_LOCALE {
 # Install a extension: HP 3D Printers for Autodesk® Fusion 360™
 function EXTENSION_HP_3DPRINTER_CONNECTOR {
   cd "$SP_PATH/extensions"
-  wget -N $SP_SERVER_33 &&
+  wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/HP_3DPrinters_for_Fusion360-win64.msi &&
   cp HP_3DPrinters_for_Fusion360-win64.msi "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
   cd "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
   WINEPREFIX=$WP_DIRECTORY wine msiexec /i HP_3DPrinters_for_Fusion360-win64.msi
@@ -710,7 +696,7 @@ function EXTENSION_HP_3DPRINTER_CONNECTOR {
 # Install a extension: Helical Gear Generator
 function EXTENSION_HELICAL_GEAR_GENERATOR {
   cd "$SP_PATH/extensions"
-  wget -N $SP_SERVER_34 &&
+  wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/HelicalGear_win64.msi &&
   cp HelicalGear_win64.msi "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
   cd "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
   WINEPREFIX=$WP_DIRECTORY wine msiexec /i HelicalGear_win64.msi
@@ -721,7 +707,7 @@ function EXTENSION_HELICAL_GEAR_GENERATOR {
 # Install a extension: OctoPrint for Autodesk® Fusion 360™
 function EXTENSION_OCTOPRINT {
   cd "$SP_PATH/extensions"
-  wget -N $SP_SERVER_35 &&
+  wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/OctoPrint_for_Fusion360-win64.msi &&
   cp OctoPrint_for_Fusion360-win64.msi "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
   cd "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
   WINEPREFIX=$WP_DIRECTORY wine msiexec /i OctoPrint_for_Fusion360-win64.msi
@@ -732,7 +718,7 @@ function EXTENSION_OCTOPRINT {
 # Install a extension: Parameter I/O
 function EXTENSION_PARAMETER_IO {
   cd "$SP_PATH/extensions" 
-  wget -N $SP_SERVER_36 &&
+  wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/ParameterIO_win64.msi &&
   cp ParameterIO_win64.msi "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
   cd "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
   WINEPREFIX=$WP_DIRECTORY wine msiexec /i ParameterIO_win64.msi
@@ -743,7 +729,7 @@ function EXTENSION_PARAMETER_IO {
 # Install a extension: RoboDK
 function EXTENSION_ROBODK {
   cd "$SP_PATH/extensions"  
-  wget -N $SP_SERVER_37 &&
+  wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/RoboDK.bundle-win64.msi &&
   cp RoboDK.bundle-win64.msi "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
   cd "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
   WINEPREFIX=$WP_DIRECTORY wine msiexec /i RoboDK.bundle-win64.msi
@@ -754,7 +740,7 @@ function EXTENSION_ROBODK {
 # Install a extension: Ultimaker Digital Factory for Autodesk Fusion 360™
 function EXTENSION_ULTIMAKER_DIGITAL_FACTORY {
   cd "$SP_PATH/extensions"
-  wget -N $SP_SERVER_38 &&
+  wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/Ultimaker_Digital_Factory-win64.msi &&
   cp Ultimaker_Digital_Factory-win64.msi "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
   cd "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
   WINEPREFIX=$WP_DIRECTORY wine msiexec /i Ultimaker_Digital_Factory-win64.msi
@@ -1130,7 +1116,5 @@ function SP_COMPLETED {
 
 SP_STRUCTURE
 SP_LOGFILE_INSTALL
-SP_SETTINGS_CREATE_FILE
-SP_SERVER_LIST
 SP_LOCALE_INDEX
 SP_WELCOME
