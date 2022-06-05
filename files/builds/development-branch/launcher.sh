@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                       #
 # License:      MIT                                                         #
 # Copyright (c) 2020-2022                                                   #
-# Time/Date:    16:00/23.03.2022                                            #
+# Time/Date:    08:45/05.06.2022                                            #
 # Version:      1.8 -> 1.9                                                  #
 #############################################################################
 
@@ -17,43 +17,70 @@
 # Open Autodesk Fusion 360 now! #
 #################################
 
+SP_PATH="$HOME/.fusion360"
+
 ###############################################################################################################################################################
 # ALL FUNCTIONS ARE ARRANGED HERE:                                                                                                                            #
 ###############################################################################################################################################################
 
-# This feature will check if there is a new version of Autodesk Fusion 360.
-function setupact-check-fusion360 {
-  wget -N -P $HOME/.config/fusion-360/bin https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/build-version.txt  
-  online_build_version=`cat $HOME/.config/fusion-360/bin/build-version.txt | awk 'NR == 1'`
-  online_build_insider_version=`cat $HOME/.config/fusion-360/bin/build-version.txt | awk 'NR == 2'`
-  echo "Online Build-Version: $online_build_version"
+function LAUNCHER_LOAD_LOCALE {
+  DL_LOCALE=`cat /tmp/fusion360/settings.txt | awk 'NR == 1'`
+  if [[ $LAUNCHER_LOAD_LOCALE = "Czech" ]]; then
+    echo "CS"
+    . $DL_PATH/locale/cs-CZ/locale-cs.sh
+  elif [[ $LAUNCHER_LOAD_LOCALE = "English" ]]; then
+    echo "EN"
+    . $DL_PATH/locale/en-US/locale-en.sh
+  elif [[ $LAUNCHER_LOAD_LOCALE = "German" ]]; then
+    echo "DE"
+    . $DL_PATH/locale/de-DE/locale-de.sh
+  elif [[ $LAUNCHER_LOAD_LOCALE = "Spanish" ]]; then
+    echo "ES"
+    . $DL_PATH0/locale/es-ES/locale-es.sh
+  elif [[ $LAUNCHER_LOAD_LOCALE = "French" ]]; then
+    echo "FR"
+    . $DL_PATH/locale/fr-FR/locale-fr.sh
+  elif [[ $LAUNCHER_LOAD_LOCALE = "Italian" ]]; then
+    echo "IT"
+    . $DL_PATH/locale/it-IT/locale-it.sh
+  elif [[ $LAUNCHER_LOAD_LOCALE = "Japanese" ]]; then
+    echo "JP"
+    . $DL_PATH/locale/ja-JP/locale-ja.sh
+  elif [[ $LAUNCHER_LOAD_LOCALE = "Korean" ]]; then
+    echo "KO"
+    . $DL_PATH/locale/ko-KR/locale-ko.sh
+  elif [[ $LAUNCHER_LOAD_LOCALE = "Chinese" ]]; then
+    echo "ZH"
+    . $DL_PATH/locale/zh-CN/locale-zh.sh
+  else 
+   echo "EN"
+   . $DL_PATH/locale/en-US/locale-en.sh
+  fi
 }
 
-function setupact-config-update {
-  system_build_version=`cat $HOME/.wineprefixes/fusion360/drive_c/users/$USER/AppData/Roaming/Autodesk/Autodesk\ Fusion\ 360/API/version.txt`
-  echo "System Build-Version: $system_build_version"
-  if [ "$online_build_version" = "$system_build_version" ] || [ "$online_build_insider_version" = "$system_build_version" ]; then
-    echo "Do nothing!"
-    get_update=0
-  else
-    # A value of 0 means that there is no update and a value of 1 will notify the user that there is an update.
-    get_update=1
-  fi 
-}
-
-###############################################################################################################################################################
-
-# You must change the first part ($HOME/.wineprefixes/fusion360) and the last part (WINEPREFIX="$HOME/.wineprefixes/fusion360") when you have installed Autodesk Fusion 360 into another directory!
-function setupact-open-fusion360 {
-  launcher="$(find $HOME/.wineprefixes/fusion360 -name Fusion360.exe -printf "%T+ %p\n" | sort -r 2>&1 | head -n 1 | sed -r 's/.+0000000000 (.+)/\1/')" && WINEPREFIX="$HOME/.wineprefixes/fusion360" wine "$launcher"
-}
 
 ###############################################################################################################################################################
 # THE PROGRAM IS STARTED HERE:                                                                                                                                #
 ###############################################################################################################################################################
 
-setupact-check-fusion360
-setupact-config-update
-# This path you must change if you installed a custom installation of Autodesk Fusion 360! For example: $HOME/.config/fusion-360/bin/update-usb.sh 
-. $HOME/.config/fusion-360/bin/update.sh 
-setupact-open-fusion360
+LAUNCHER_LOAD_LOCALE
+Fusion360Launcher="$(mktemp)"
+rm $Fusion360Launcher
+mkfifo $Fusion360Launcher
+# Kanal wird etabliert:
+exec 3<> $Fusion360Launcher
+# Yad wird gestartet:
+yad --notification --command='./fusion360.sh' --listen <&3 &
+# Menü wird definiert:
+>&3 echo "menu:\
+Open Fusion 360 ...!./fusion360.sh!$SP_PATH/graphics/favorite.svg|\
+Switch Boxes ...!./switcher.sh!$SP_PATH/graphics/window.svg|\
+Documentation ...!./help.sh!$SP_PATH/graphics/help.svg|\
+Settings ...!./settings.sh!$SP_PATH/graphics/settings.svg|\
+About ...!./about.sh!$SP_PATH/graphics/about.svg|\
+Exit ...!pkill yad!$SP_PATH/graphics/exit.svg \
+"
+# Tooltip wird definiert:
+>&3 echo "TOOLTIP:Fusion360Launcher"
+# Icon wird definiert:
+>&3 echo "icon:$SP_PATH/graphics/launcher.svg"
