@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    20:00/06.06.2022                                                                   #
+# Time/Date:    20:15/06.06.2022                                                                   #
 # Version:      1.7.9 -> 1.8.0                                                                     #
 ####################################################################################################
 
@@ -58,6 +58,7 @@ function SP_STRUCTURE {
   mkdir -p $SP_PATH/locale/ja-JP
   mkdir -p $SP_PATH/locale/ko-KR
   mkdir -p $SP_PATH/locale/zh-CN
+  # Create a temporary folder with some information for the next step:
   mkdir -p /tmp/fusion360
   echo "English" > /tmp/fusion360/settings.txt
   echo "DXVK" >> /tmp/fusion360/settings.txt
@@ -111,7 +112,6 @@ function SP_ADD_CUSTOM_WINEPREFIX_TYPE {
     WP_TYPE=$WP_TYPE-$i
   fi
 }
-
 
 ###############################################################################################################################################################
 
@@ -652,7 +652,6 @@ function OS_GENTOO_LINUX {
 ###############################################################################################################################################################
 
 # Install a extension: Airfoil Tools
-
 function EXTENSION_AIRFOIL_TOOLS {
   cd "$SP_PATH/extensions"
   wget -N https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/raw/main/files/extensions/AirfoilTools_win64.msi &&
@@ -664,7 +663,6 @@ function EXTENSION_AIRFOIL_TOOLS {
 ###############################################################################################################################################################
 
 # Install a extension: Additive Assistant (FFF)
-
 function EXTENSION_ADDITIVE_ASSISTANT {
   cd "$SP_PATH/extensions"
   wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/AdditiveAssistant.bundle-win64.msi &&
@@ -1110,7 +1108,23 @@ function SP_SEARCH_EXTENSION_CZECH_LOCALE {
 # The installation is complete and will be terminated.
 function SP_COMPLETED {
   echo "The installation is completed!"
-  # ...
+  SP_COMPLETED_CHECK=$(yad \
+  --title="" \
+  --form \
+  --borders=15 \
+  --width=550 \
+  --height=450 \
+  --buttons-layout=center \
+  --align=center \
+  --field=":TXT" "$SP_COMPLETED_TEXT" \
+  --field="$SP_COMPLETED_CHECK_LABEL:CHK" )
+
+  if [[ $SP_LICENSE_CHECK = *"TRUE"* ]]; then
+    echo "TRUE"
+    . $WP_DIRECTORY/box-run.sh
+  else
+    echo "FALSE"
+  fi
 }
 
 ###############################################################################################################################################################
