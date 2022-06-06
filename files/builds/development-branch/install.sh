@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    21:00/06.06.2022                                                                   #
+# Time/Date:    21:45/06.06.2022                                                                   #
 # Version:      1.7.9 -> 1.8.0                                                                     #
 ####################################################################################################
 
@@ -939,7 +939,7 @@ elif [[ $WINE_VERSION = "Wine Version (Entwicklungsversion)" ]]; then
     echo "Install Wine on your system!"
     SP_OS_SETTINGS
 # English:    
-if [[ $WINE_VERSION = "Wine Version (Staging)" ]]; then
+elif [[ $WINE_VERSION = "Wine Version (Staging)" ]]; then
     echo "Install Wine on your system!"
     SP_OS_SETTINGS
 # Spanish:    
