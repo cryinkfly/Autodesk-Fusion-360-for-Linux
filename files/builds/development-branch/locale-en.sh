@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    17:45/02.06.2022                                                                   #
+# Time/Date:    20:20/06.06.2022                                                                   #
 # Version:      1.5 -> 1.6                                                                         #
 ####################################################################################################
 
@@ -112,9 +112,16 @@ DL_WINEPREFIXES_DEL_INFO_TEXT="Are you sure you want to delete the selected Wine
 DL_WINEPREFIXES_DEL_INFO_LABEL="Yes, I am aware that all my personal data will be lost in the Wineprefix."
 
 ###############################################################################################################################################################
+
+SP_COMPLETED_TEXT="Autodesk Fusion 360 was successfully installed and setup on your computer."
+SP_COMPLETED_CHECK_LABEL="Run Autodesk Fusion 360"
+
+###############################################################################################################################################################
 ###############################################################################################################################################################
 
 SELECT="Select"
 WINEPREFIXES_TYPE="Wineprefixes Type"
 WINEPREFIXES_DRIVER="Wineprefixes Driver"
 WINEPREFIXES_DIRECTORY="Wineprefixes Directory"
+
+
