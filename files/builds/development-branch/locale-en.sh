@@ -40,9 +40,6 @@ SP_LOCALE_SELECT=$(echo "Czech,English,German,Spanish,French,Italian,Japanese,Ko
 WP_DRIVER_LABEL="Graphics Driver"
 WP_DRIVER_SELECT=$(echo "DXVK,OpenGL")
 
-# Locale value:
-SP_LOCALE="EN"
-
 # License Checkbox:
 SP_LICENSE_CHECK_LABEL="I have read the terms and conditions and I accept them."
 
