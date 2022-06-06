@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    20:30/06.06.2022                                                                   #
+# Time/Date:    21:00/06.06.2022                                                                   #
 # Version:      1.7.9 -> 1.8.0                                                                     #
 ####################################################################################################
 
@@ -930,7 +930,40 @@ WINE_VERSION=$(yad --title="$SP_TITLE" \
 --field="<b>$SP_WINE_SETTINGS_LABEL_3</b>:LBL" \
 "" "" "" "$SP_WINE_VERSION_SELECT" "" )
 
+# Czech:
+if [[ $WINE_VERSION = "Verze vína (Staging)" ]]; then
+    echo "Install Wine on your system!"
+    SP_OS_SETTINGS
+# German:    
+elif [[ $WINE_VERSION = "Wine Version (Entwicklungsversion)" ]]; then
+    echo "Install Wine on your system!"
+    SP_OS_SETTINGS
+# English:    
 if [[ $WINE_VERSION = "Wine Version (Staging)" ]]; then
+    echo "Install Wine on your system!"
+    SP_OS_SETTINGS
+# Spanish:    
+elif [[ $WINE_VERSION = "Versión Vino (Puesta en Escena)" ]]; then
+    echo "Install Wine on your system!"
+    SP_OS_SETTINGS
+# French:    
+elif [[ $WINE_VERSION = "Version Vin (Mise en scène)" ]]; then
+    echo "Install Wine on your system!"
+    SP_OS_SETTINGS
+# Italian:    
+elif [[ $WINE_VERSION = "Versione vino (messa in scena)" ]]; then
+    echo "Install Wine on your system!"
+    SP_OS_SETTINGS
+# Japanese:    
+elif [[ $WINE_VERSION = "ワインバージョン（ステージング）" ]]; then
+    echo "Install Wine on your system!"
+    SP_OS_SETTINGS
+# Korean:    
+elif [[ $WINE_VERSION = "와인 버전(스테이징)" ]]; then
+    echo "Install Wine on your system!"
+    SP_OS_SETTINGS
+# Chinese:    
+elif [[ $WINE_VERSION = "葡萄酒版（分期）" ]]; then
     echo "Install Wine on your system!"
     SP_OS_SETTINGS
 else
