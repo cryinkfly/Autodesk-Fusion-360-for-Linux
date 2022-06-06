@@ -17,6 +17,9 @@
 # ALL DEFINITIONS FOR AUTODESK FUSION 360 ARE ARRANGED HERE:                                                                                                  #
 ###############################################################################################################################################################
 
+# Window Title (Setup Wizard)
+program_name="Autodesk Fusion 360 for Linux - Setup Wizard"
+
 # Window Title:
 SP_TITLE="Welcome to the Autodesk Fusion 360 Installer for Linux"
 
