@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    20:20/06.06.2022                                                                   #
+# Time/Date:    21:00/06.06.2022                                                                   #
 # Version:      1.5 -> 1.6                                                                         #
 ####################################################################################################
 
@@ -103,7 +103,8 @@ SP_SEARCH_EXTENSION_CZECH_LOCALE_LABEL_3="By default you will find your download
 # ALL DEFINITIONS FOR UNINSTALL AUTODESK FUSION 360 ARE ARRANGED HERE:                                                                                        #
 ###############################################################################################################################################################
 
-DL_TITLE="Welcome to the Autodesk Fusion 360 Uninstaller for Linux"
+DL_TITLE="Uninstaller - Autodesk Fusion 360 for Linux"
+DL_SUBTITLE="Welcome to the Autodesk Fusion 360 Uninstaller for Linux"
 DL_WELCOME_LABEL_1="Autodesk Fusion 360 will be uninstalled from your computer!"
 DL_WELCOME_LABEL_2="Click Ok to continue or Cancel to exit this Uninstaller."
 DL_WELCOME_TOOLTIP_1="Here you get more informations about this Uninstaller."
