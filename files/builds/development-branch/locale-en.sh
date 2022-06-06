@@ -123,5 +123,3 @@ SELECT="Select"
 WINEPREFIXES_TYPE="Wineprefixes Type"
 WINEPREFIXES_DRIVER="Wineprefixes Driver"
 WINEPREFIXES_DIRECTORY="Wineprefixes Directory"
-
-
