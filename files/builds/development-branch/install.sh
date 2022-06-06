@@ -760,8 +760,8 @@ yad \
 --height=125 \
 --width=750 \
 --buttons-layout=center \
---title="" \
---field="<big>$SP_TITLE</big>:LBL" \
+--title="$SP_TITLE" \
+--field="<big>$SP_SUBTITLE</big>:LBL" \
 --field="$SP_WELCOME_LABEL_1:LBL" \
 --field="$SP_WELCOME_LABEL_2:LBL" \
 --align=center \
@@ -789,7 +789,7 @@ fi
 ###############################################################################################################################################################
 
 function SP_SETTINGS {
-yad --title="" \
+yad --title="$SP_TITLE" \
 --form --separator="," --item-separator="," \
 --borders=15 \
 --width=550 \
@@ -813,7 +813,7 @@ done
 function SP_LICENSE {
 SP_LICENSE_TEXT=$(cat $LICENSE)
 SP_LICENSE_CHECK=$(yad \
---title="" \
+--title="$SP_TITLE" \
 --form \
 --borders=15 \
 --width=550 \
@@ -842,7 +842,7 @@ yad \
 --height=125 \
 --width=750 \
 --buttons-layout=center \
---title="" \
+--title="$SP_TITLE" \
 --field="<big>$SP_LOGFILE_WINEPREFIX_INFO_TITLE</big>:LBL" \
 --field="$SP_LOGFILE_WINEPREFIX_INFO_LABEL_1:LBL" \
 --field="$SP_LOGFILE_WINEPREFIX_INFO_LABEL_2:LBL" \
@@ -871,7 +871,7 @@ fi
 ###############################################################################################################################################################
 
 function SP_INSTALLDIR {
-WP_DIRECTORY=$(yad --title="" \
+WP_DIRECTORY=$(yad --title="$SP_TITLE" \
 --form --separator="" \
 --borders=15 \
 --width=550 \
@@ -898,7 +898,7 @@ yad \
 --height=125 \
 --width=750 \
 --buttons-layout=center \
---title="" \
+--title="$SP_TITLE" \
 --field="<big>$SP_INSTALLDIR_INFO_TITLE</big>:LBL" \
 --field="$SP_INSTALLDIR_INFO_LABEL_1:LBL" \
 --field="$SP_INSTALLDIR_INFO_LABEL_2:LBL" \
@@ -917,7 +917,7 @@ fi
 ###############################################################################################################################################################
 
 function SP_WINE_SETTINGS {
-WINE_VERSION=$(yad --title="" \
+WINE_VERSION=$(yad --title="$SP_TITLE" \
 --form --separator="" --item-separator="," \
 --borders=15 \
 --width=550 \
@@ -942,7 +942,7 @@ fi
 ###############################################################################################################################################################
 
 function SP_OS_SETTINGS {
-SP_OS=$(yad --title="" \
+SP_OS=$(yad --title="$SP_TITLE" \
 --form --separator="" --item-separator="," \
 --borders=15 \
 --width=550 \
@@ -1038,7 +1038,7 @@ fi
 ###############################################################################################################################################################
 
 function SP_FUSION360_EXTENSIONS {
-EXTENSIONS=$(yad --button=gtk-cancel:99 --button=gtk-ok:0 --height=300 --list --multiple --checklist --column=$SP_EXTENSION_SELECT --column=$SP_EXTENSION_NAME --column=$SP_EXTENSION_DESCRIPTION < $SP_EXTENSION_LIST)
+EXTENSIONS=$(yad --title="$SP_TITLE" --button=gtk-cancel:99 --button=gtk-ok:0 --height=300 --list --multiple --checklist --column=$SP_EXTENSION_SELECT --column=$SP_EXTENSION_NAME --column=$SP_EXTENSION_DESCRIPTION < $SP_EXTENSION_LIST)
 
 if [[ $EXTENSIONS = *"Airfoil Tools"* ]]; then
     echo "Airfoil Tools"
@@ -1090,7 +1090,7 @@ fi
 
 # Select the downloaded installer for this special extension!
 function SP_SEARCH_EXTENSION_CZECH_LOCALE {
-  CZECH_LOCALE_EXTENSION=$(yad --title="" \
+  CZECH_LOCALE_EXTENSION=$(yad --title="$SP_TITLE" \
   --form --separator="" \
   --borders=15 \
   --width=550 \
@@ -1110,7 +1110,7 @@ function SP_SEARCH_EXTENSION_CZECH_LOCALE {
 function SP_COMPLETED {
   echo "The installation is completed!"
   SP_COMPLETED_CHECK=$(yad \
-  --title="" \
+  --title="$SP_TITLE" \
   --form \
   --borders=15 \
   --width=550 \
