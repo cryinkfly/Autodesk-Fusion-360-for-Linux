@@ -153,35 +153,30 @@ function SP_LOCALE_INDEX {
 
 # Czech:
 function SP_LOCALE_CS {
-  SP_LOCALE="cs-CZ"
   . $SP_PATH/locale/cs-CZ/locale-cs.sh
   SP_LICENSE="$SP_PATH/locale/cs-CZ/license-cs.txt"
 }
 
 # German:
 function SP_LOCALE_DE {
-  SP_LOCALE="de-DE"
   . $SP_PATH/locale/de-DE/locale-de.sh
   SP_LICENSE="$SP_PATH/locale/de-DE/license-de.txt"
 }
 
 # English:
 function SP_LOCALE_EN {
-  SP_LOCALE="en-US"
   . $SP_PATH/locale/en-US/locale-en.sh
   SP_LICENSE="$SP_PATH/locale/en-US/license-en.txt"
 }
 
 # Spanish:
 function SP_LOCALE_ES {
-  SP_LOCALE="es-ES"
   . $SP_PATH0/locale/es-ES/locale-es.sh
   SP_LICENSE="$SP_PATH/locale/es-ES/license-es.txt"
 }
 
 # French:
 function SP_LOCALE_FR {
-  SP_LOCALE="fr-FR"
   . $SP_PATH/locale/fr-FR/locale-fr.sh
   SP_LICENSE="$SP_PATH/locale/fr-FR/license-fr.txt"
 }
@@ -189,28 +184,24 @@ function SP_LOCALE_FR {
 
 # Italian:
 function SP_LOCALE_IT {
-  SP_LOCALE="it-IT"
   . $SP_PATH/locale/it-IT/locale-it.sh
   SP_LICENSE="$SP_PATH/locale/it-IT/license-it.txt"
 }
 
 # Japanese:
 function SP_LOCALE_JA {
-  SP_LOCALE="ja-JP"
   . $SP_PATH/locale/ja-JP/locale-ja.sh
   SP_LICENSE="$SP_PATH/locale/ja-JP/license-ja.txt"
 }
 
 # Korean:
 function SP_LOCALE_KO {
-  SP_LOCALE="ko-KR"
   . $SP_PATH/locale/ko-KR/locale-ko.sh
   SP_LICENSE="$SP_PATH/locale/ko-KR/license-ko.txt"
 }
 
 # Chinese:
 function SP_LOCALE_ZH {
-  SP_LOCALE="zh-CN"
   . $SP_PATH/locale/zh-CN/locale-zh.sh
   SP_LICENSE="$SP_PATH/locale/zh-CN/license-zh.txt"
 }
