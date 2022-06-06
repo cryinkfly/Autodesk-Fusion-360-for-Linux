@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    20:15/06.06.2022                                                                   #
+# Time/Date:    20:30/06.06.2022                                                                   #
 # Version:      1.7.9 -> 1.8.0                                                                     #
 ####################################################################################################
 
@@ -355,6 +355,7 @@ function SP_FUSION360_SHORTCUTS_LOAD {
   # Create a link to the Wineprefixes Box:
   echo "WP_BOX='$WP_DIRECTORY'" > $WP_DIRECTORY/box-run.sh
   echo ". $SP_PATH/bin/launcher.sh" >> $WP_DIRECTORY/box-run.sh
+  chmod +x $WP_DIRECTORY/box-run.sh 
   # Download some script files for Autodesk Fusion 360!
   wget -N -P $SP_PATH/bin https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/uninstall.sh
   chmod +x $SP_PATH/bin/uninstall.sh  
