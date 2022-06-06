@@ -323,7 +323,7 @@ function SP_FUSION360_SHORTCUTS_LOAD {
   echo "StartupNotify=true" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop
   echo "Icon=$SP_PATH/graphics/fusion360.svg" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop
   echo "Terminal=false" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop
-  echo "Path=$SP_PATH/bin" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop
+  echo "Path=$WP_DIRECTORY" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop
   # Create a .desktop file (uninstall.sh) for Autodesk Fusion 360!
   wget -N -P $SP_PATH/graphics https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/fusion360-uninstall.svg
   echo "[Desktop Entry]" > $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop
