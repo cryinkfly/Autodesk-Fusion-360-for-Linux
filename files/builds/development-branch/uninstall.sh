@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                          #
 # License:      MIT                                                            #
 # Copyright (c) 2020-2022                                                      #
-# Time/Date:    19:50/29.05.2022                                               #
+# Time/Date:    21:00/06.06.2022                                               #
 # Version:      0.7 -> 0.8                                                     #
 ################################################################################
 
@@ -137,8 +137,8 @@ function DL_WELCOME {
   --height=125 \
   --width=750 \
   --buttons-layout=center \
-  --title="" \
-  --field="<big>$DL_TITLE</big>:LBL" \
+  --title="$DL_TITLE" \
+  --field="<big>$DL_SUBTITLE</big>:LBL" \
   --field="$DL_WELCOME_LABEL_1:LBL" \
   --field="$DL_WELCOME_LABEL_2:LBL" \
   --align=center \
@@ -162,7 +162,7 @@ function DL_WELCOME {
 ###############################################################################################################################################################
 
 function DL_WINEPREFIXES_LIST {
-  DL_WINEPREFIXES_STRING=$(yad --height=300 --separator="" --list --radiolist --column="$SELECT" --column="$WINEPREFIXES_TYPE" --column="$WINEPREFIXES_DRIVER" --column="$WINEPREFIXES_DIRECTORY" < /tmp/fusion360/logs/wineprefixes.log)
+  DL_WINEPREFIXES_STRING=$(yad --title="$DL_TITLE" --height=300 --separator="" --list --radiolist --column="$SELECT" --column="$WINEPREFIXES_TYPE" --column="$WINEPREFIXES_DRIVER" --column="$WINEPREFIXES_DIRECTORY" < /tmp/fusion360/logs/wineprefixes.log)
   DL_WINEPREFIXES_ACT
 }
 
@@ -170,7 +170,7 @@ function DL_WINEPREFIXES_LIST {
 
 function DL_WINEPREFIXES_DEL_INFO {
   DL_WINEPREFIXES_DEL_CHECK=$(yad \
-  --title="" \
+  --title="$DL_TITLE" \
   --form \
   --borders=15 \
   --width=550 \
