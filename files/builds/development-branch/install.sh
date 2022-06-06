@@ -827,7 +827,7 @@ if [[ $SP_LICENSE_CHECK = *"TRUE"* ]]; then
     SP_LOGFILE_WINEPREFIX_CHECK
 else
     echo "FALSE"
-    SP_LICENSE
+    SP_WELCOME
 fi
 }
 
