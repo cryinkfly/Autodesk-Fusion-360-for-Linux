@@ -18,7 +18,7 @@
 ###############################################################################################################################################################
 
 # Window Title (Setup Wizard)
-SP_TITLE="Autodesk Fusion 360 for Linux - Setup Wizard"
+SP_TITLE="Setup Wizard - Autodesk Fusion 360 for Linux"
 
 # Window Title:
 SP_SUBTITLE="Welcome to the Autodesk Fusion 360 Installer for Linux"
