@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    20:20/07.06.2022                                                                   #
+# Time/Date:    21:10/07.06.2022                                                                   #
 # Version:      1.5 -> 1.6                                                                         #
 ####################################################################################################
 
@@ -121,6 +121,19 @@ DL_WINEPREFIXES_DEL_INFO_LABEL="Ano, jsem si vědom toho, že všechna moje osob
 
 SP_COMPLETED_TEXT="Autodesk Fusion 360 byl úspěšně nainstalován a nastaven na vašem počítači."
 SP_COMPLETED_CHECK_LABEL="Spusťte Autodesk Fusion 360"
+
+###############################################################################################################################################################
+# ALL DEFINITIONS FOR THE LAUNCHER OF AUTODESK FUSION 360 ARE ARRANGED HERE:                                                                                  #
+###############################################################################################################################################################
+
+LAUNCHER_NO_UPDATE_INFO="Nebyla nalezena žádná novější verze, takže váš Autodesk fusion 360 je aktuální!"
+
+LAUNCHER_SKIP_UPDATE_INFO="Aktualizace byla přeskočena! Aktualizujte prosím svou verzi Autodesk Fusion 360 brzy!"
+LAUNCHER_SKIP_UPDATE_QUESTION="Opravdu chcete přeskočit hledání aktualizace Autodesk Fusion 360?"
+
+LAUNCHER_UPDATE_QUESTION="Byla vydána nová verze! Chcete provést aktualizaci?"
+
+LAUNCHER_UPDATE_WARNING="Spojení se serverem nelze navázat! Kontrola nových aktualizací byla přeskočena! Zkontrolujte prosím své internetové připojení!"
 
 ###############################################################################################################################################################
 ###############################################################################################################################################################
