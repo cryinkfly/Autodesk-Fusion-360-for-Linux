@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    22:00/06.06.2022                                                                   #
+# Time/Date:    20:20/07.06.2022                                                                   #
 # Version:      1.7.9 -> 1.8.0                                                                     #
 ####################################################################################################
 
@@ -450,8 +450,7 @@ function SP_FUSION360_INSTALL {
   cp "$SP_PATH/downloads/Fusion360installer.exe" "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
   # This start and stop the installer automatically after a time! 
   # For more information check this link: https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/issues/232
-  SP_FUSION360_INSTALL_START_1 & SP_FUSION360_INSTALL_STOP_1 # These two commands run in the same time.  
-  SP_FUSION360_INSTALL_START_2 & SP_FUSION360_INSTALL_STOP_2 # These two commands run in the same time.
+  SP_FUSION360_INSTALL_PROGRESS
   mkdir -p "$WP_DIRECTORY/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options"
   cd "$WP_DIRECTORY/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options"
   SP_DXVK_OPENGL_2
@@ -474,8 +473,7 @@ function SP_FUSION360_REFRESH {
   mv "Fusion360installer.exe" "$SP_PATH/downloads/Fusion360installer.exe"
   rmdir "$WP_WINEPREFIXES_REFRESH/drive_c/users/$USER/Downloads/Fusion360installer.exe"
   cp "$SP_PATH/downloads/Fusion360installer.exe" "$WP_WINEPREFIXES_REFRESH/drive_c/users/$USER/Downloads"
-  SP_FUSION360_INSTALL_START_1 & SP_FUSION360_INSTALL_REFRESH_STOP_1
-  SP_FUSION360_INSTALL_START_2 & SP_FUSION360_INSTALL_REFRESH_STOP_2
+  SP_FUSION360_INSTALL_PROGRESS_REFRESH
 }
 
 ###############################################################################################################################################################
@@ -1047,6 +1045,38 @@ elif [[ $SP_OS = "Gentoo Linux" ]]; then
     echo "Gentoo Linux"
     OS_GENTOO_LINUX
 fi
+}
+
+###############################################################################################################################################################
+
+function SP_FUSION360_INSTALL_PROGRESS {
+
+SP_FUSION360_INSTALL_PROGRESS_MAIN () {
+echo "20"
+SP_FUSION360_INSTALL_START_1 & SP_FUSION360_INSTALL_STOP_1 # These two commands run in the same time.
+echo "70"
+SP_FUSION360_INSTALL_START_1 & SP_FUSION360_INSTALL_STOP_1 # These two commands run in the same time.
+sleep 5
+echo "100"
+}
+
+SP_FUSION360_INSTALL_PROGRESS_MAIN | yad --progress --progress-text "$SP_INSTALL_PROGRESS_LABEL" --percentage=0 --auto-close
+}
+
+###############################################################################################################################################################
+
+function SP_FUSION360_INSTALL_PROGRESS_REFRESH {
+
+SP_FUSION360_INSTALL_PROGRESS_MAIN_REFRESH () {
+echo "20"
+SP_FUSION360_INSTALL_REFRESH_START_1 & SP_FUSION360_INSTALL_REFRESH_STOP_1 # These two commands run in the same time.
+echo "70"
+SP_FUSION360_INSTALL_REFRESH_START_2 & SP_FUSION360_INSTALL_REFRESH_STOP_2 # These two commands run in the same time.
+sleep 5
+echo "100"
+}
+
+SP_FUSION360_INSTALL_PROGRESS_MAIN_REFRESH | yad --progress --progress-text "$SP_INSTALL_PROGRESS_REFRESH_LABEL" --percentage=0 --auto-close
 }
 
 ###############################################################################################################################################################
