@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    21:00/06.06.2022                                                                   #
+# Time/Date:    20:20/07.06.2022                                                                   #
 # Version:      1.5 -> 1.6                                                                         #
 ####################################################################################################
 
@@ -84,6 +84,11 @@ SP_WINE_SETTINGS_LABEL_1="Here you have to decide between two options*."
 SP_WINE_SETTINGS_LABEL_2="Select:"
 SP_WINE_VERSION_SELECT=$(echo "Wine Version (Staging),Wine version (6.23 or higher) is already installed on the system!")
 SP_WINE_SETTINGS_LABEL_3="*Depending on which option is selected, further packages will be installed on your system!"
+
+###############################################################################################################################################################
+
+SP_INSTALL_PROGRESS_LABEL="Autodesk Fusion 360 will be installed on your system ..."
+SP_INSTALL_PROGRESS_REFRESH_LABEL="Autodesk Fusion 360 is being updated on this system ..."
 
 ###############################################################################################################################################################
 
