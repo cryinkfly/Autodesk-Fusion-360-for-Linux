@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    21:00/07.06.2022                                                                   #
+# Time/Date:    21:10/07.06.2022                                                                   #
 # Version:      1.5 -> 1.6                                                                         #
 ####################################################################################################
 
@@ -121,6 +121,19 @@ DL_WINEPREFIXES_DEL_INFO_LABEL="Ja, mir ist bekannt, dass alle meine persönlich
 
 SP_COMPLETED_TEXT="Autodesk Fusion 360 wurde erfolgreich auf Ihrem Computer installiert und eingerichtet."
 SP_COMPLETED_CHECK_LABEL="Autodesk Fusion 360 ausführen"
+
+###############################################################################################################################################################
+# ALL DEFINITIONS FOR THE LAUNCHER OF AUTODESK FUSION 360 ARE ARRANGED HERE:                                                                                  #
+###############################################################################################################################################################
+
+LAUNCHER_NO_UPDATE_INFO="Es wurde keine neuere Version gefunden, daher ist Ihr Autodesk Fusion 360 auf dem neuesten Stand!"
+
+LAUNCHER_SKIP_UPDATE_INFO="Das Update wurde übersprungen! Bitte aktualisieren Sie bald Ihre Autodesk Fusion 360 Version!"
+LAUNCHER_SKIP_UPDATE_QUESTION="Sind Sie sicher, dass Sie die Suche nach einem Autodesk Fusion 360 Update überspringen möchten?"
+
+LAUNCHER_UPDATE_QUESTION="Eine neue Version wurde veröffentlicht! Möchten Sie jetzt aktualisieren?"
+
+LAUNCHER_UPDATE_WARNING="Die Verbindung zum Server konnte nicht hergestellt werden! Die Suche nach neuen Updates wurde übersprungen! Bitte überprüfen Sie Ihre Internetverbindung!"
 
 ###############################################################################################################################################################
 ###############################################################################################################################################################
