@@ -50,8 +50,8 @@ SP_LOGFILE_WINEPREFIX_INFO_TITLE="$SP_SUBTITLE"
 SP_LOGFILE_WINEPREFIX_INFO_LABEL_1="A previous installation of Autodesk Fusion 360 has been detected on your system!"
 SP_LOGFILE_WINEPREFIX_INFO_LABEL_2="Therefore, please select one of the options below to continue!"
 SP_LOGFILE_WINEPREFIX_INFO_TOOLTIP_1="Create a new Wineprefix in a different location!"
-SP_LOGFILE_WINEPREFIX_INFO_TOOLTIP_2="Repair the current Wineprefix on your system!"
-SP_LOGFILE_WINEPREFIX_INFO_TOOLTIP_3="Remove the current Wineprefix from your system!"
+SP_LOGFILE_WINEPREFIX_INFO_TOOLTIP_2="Repair a current Wineprefix on your system!"
+SP_LOGFILE_WINEPREFIX_INFO_TOOLTIP_3="Remove a current Wineprefix from your system!"
 
 ###############################################################################################################################################################
 
