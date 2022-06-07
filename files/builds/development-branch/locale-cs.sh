@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    21:10/06.06.2022                                                                   #
+# Time/Date:    20:20/07.06.2022                                                                   #
 # Version:      1.5 -> 1.6                                                                         #
 ####################################################################################################
 
@@ -84,6 +84,11 @@ SP_WINE_SETTINGS_LABEL_1="Zde se musíte rozhodnout mezi dvěma možnostmi*."
 SP_WINE_SETTINGS_LABEL_2="Vybrat:"
 SP_WINE_VERSION_SELECT=$(echo "Verze vína (Staging), Verze vína (6.23 nebo vyšší) je již nainstalována v systému!")
 SP_WINE_SETTINGS_LABEL_3="*V závislosti na zvolené možnosti se na váš systém nainstalují další balíčky!"
+
+###############################################################################################################################################################
+
+SP_INSTALL_PROGRESS_LABEL="Autodesk Fusion 360 se nainstaluje do vašeho systému ..."
+SP_INSTALL_PROGRESS_REFRESH_LABEL="Autodesk Fusion 360 je v tomto systému aktualizován ..."
 
 ###############################################################################################################################################################
 
