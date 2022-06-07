@@ -120,6 +120,19 @@ SP_COMPLETED_TEXT="Autodesk Fusion 360 se instaló y configuró correctamente en
 SP_COMPLETED_CHECK_LABEL="Ejecutar Autodesk Fusion 360"
 
 ###############################################################################################################################################################
+# ALL DEFINITIONS FOR THE LAUNCHER OF AUTODESK FUSION 360 ARE ARRANGED HERE:                                                                                  #
+###############################################################################################################################################################
+
+LAUNCHER_NO_UPDATE_INFO="¡No se encontró una versión más nueva, por lo que su Autodesk fusion 360 está actualizado!"
+
+LAUNCHER_SKIP_UPDATE_INFO="¡Se omitió la actualización! ¡Actualice su versión de Autodesk Fusion 360 pronto!"
+LAUNCHER_SKIP_UPDATE_QUESTION="¿Está seguro de que desea omitir la búsqueda de una actualización de Autodesk Fusion 360?"
+
+LAUNCHER_UPDATE_QUESTION="¡Se ha lanzado una nueva versión! ¿Quiere actualizar ahora?"
+
+LAUNCHER_UPDATE_WARNING="¡No se pudo establecer la conexión con el servidor! ¡Se ha omitido la búsqueda de nuevas actualizaciones! ¡Por favor, compruebe su conexión a Internet!"
+
+###############################################################################################################################################################
 ###############################################################################################################################################################
 
 SELECCIONAR="Seleccionar"
