@@ -18,7 +18,7 @@
 ###############################################################################################################################################################
 
 # Window Title (Setup Wizard)
-SP_TITLE="Setup Wizard - Autodesk Fusion 360 for Linux"
+SP_TITLE="Setup-Assistent - Autodesk Fusion 360 für Linux"
 
 # Window Title:
 SP_SUBTITLE="Willkommen zum Autodesk Fusion 360 Setup-Assistenten für Linux"
@@ -108,7 +108,7 @@ SP_SEARCH_EXTENSION_CZECH_LOCALE_LABEL_3="*Standardmäßig finden Sie Ihre herun
 # ALL DEFINITIONS FOR UNINSTALL AUTODESK FUSION 360 ARE ARRANGED HERE:                                                                                        #
 ###############################################################################################################################################################
 
-DL_TITLE="Deinstallationsprogramm - Autodesk Fusion 360 for Linux"
+DL_TITLE="Deinstallationsprogramm - Autodesk Fusion 360 für Linux"
 DL_SUBTITLE="Willkommen zum Autodesk Fusion 360 Deinstallationsprogramm für Linux"
 DL_WELCOME_LABEL_1="Autodesk Fusion 360 wird von Ihrem Computer deinstalliert!"
 DL_WELCOME_LABEL_2="Klicken Sie auf OK, um fortzufahren oder auf Abbrechen, um dieses Deinstallationsprogramm zu beenden."
