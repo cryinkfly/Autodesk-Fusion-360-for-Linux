@@ -102,7 +102,7 @@ SP_EXTENSION_LIST="$SP_PATH/locale/cs-CZ/extensions-cs.txt"
 SP_SEARCH_EXTENSION_CZECH_LOCALE_TITLE="Nainstalujte rozšíření Czech-Locale-Extension"
 SP_SEARCH_EXTENSION_CZECH_LOCALE_LABEL_1="Vyberte soubor*, ve kterém je přípona umístěna!"
 SP_SEARCH_EXTENSION_CZECH_LOCALE_LABEL_2="Soubor:"
-SP_SEARCH_EXTENSION_CZECH_LOCALE_LABEL_3="Ve výchozím nastavení najdete stažená rozšíření v adresáři pro stahování."
+SP_SEARCH_EXTENSION_CZECH_LOCALE_LABEL_3="*Ve výchozím nastavení najdete stažená rozšíření v adresáři pro stahování."
 
 ###############################################################################################################################################################
 # ALL DEFINITIONS FOR UNINSTALL AUTODESK FUSION 360 ARE ARRANGED HERE:                                                                                        #
