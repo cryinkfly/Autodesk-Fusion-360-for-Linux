@@ -102,7 +102,7 @@ SP_EXTENSION_LIST="$SP_PATH/locale/en-US/extensions-en.txt"
 SP_SEARCH_EXTENSION_CZECH_LOCALE_TITLE="Install the Czech-Locale-Extension"
 SP_SEARCH_EXTENSION_CZECH_LOCALE_LABEL_1="Select the file* in which the extension is located!"
 SP_SEARCH_EXTENSION_CZECH_LOCALE_LABEL_2="File:"
-SP_SEARCH_EXTENSION_CZECH_LOCALE_LABEL_3="By default you will find your downloaded extensions in the download directory."
+SP_SEARCH_EXTENSION_CZECH_LOCALE_LABEL_3="*By default you will find your downloaded extensions in the download directory."
 
 ###############################################################################################################################################################
 # ALL DEFINITIONS FOR UNINSTALL AUTODESK FUSION 360 ARE ARRANGED HERE:                                                                                        #
