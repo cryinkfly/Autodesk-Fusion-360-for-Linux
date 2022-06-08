@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    06:45/08.06.2022                                                                   #
+# Time/Date:    21:15/08.06.2022                                                                   #
 # Version:      1.5 -> 1.6                                                                         #
 ####################################################################################################
 
@@ -127,14 +127,19 @@ SP_COMPLETED_CHECK_LABEL="Esegui Autodesk Fusion 360"
 # ALL DEFINITIONS FOR THE LAUNCHER OF AUTODESK FUSION 360 ARE ARRANGED HERE:                                                                                  #
 ###############################################################################################################################################################
 
-LAUNCHER_NO_UPDATE_INFO="Nessuna versione più recente trovata, quindi il tuo Autodesk fusion 360 è aggiornato!"
+UP_TITLE="Autodesk Fusion 360 per Linux - Avvio applicazioni"
+UP_NO_UPDATE_INFO_LABEL="Nessuna versione più recente trovata, quindi il tuo Autodesk fusion 360 è aggiornato!"
+UP_SKIP_INFO_LABEL="L'aggiornamento è stato ignorato! Aggiorna presto la tua versione di Autodesk Fusion 360!"
+UP_SKIP_UPDATE_QUESTION_LABEL="Sei sicuro di voler saltare la ricerca di un aggiornamento di Autodesk Fusion 360?"
 
-LAUNCHER_SKIP_UPDATE_INFO="L'aggiornamento è stato ignorato! Aggiorna presto la tua versione di Autodesk Fusion 360!"
-LAUNCHER_SKIP_UPDATE_QUESTION="Sei sicuro di voler saltare la ricerca di un aggiornamento di Autodesk Fusion 360?"
+UP_QUESTION_LABEL="Una nuova versione è stata rilasciata! Vuoi aggiornare ora?"
 
-LAUNCHER_UPDATE_QUESTION="Una nuova versione è stata rilasciata! Vuoi aggiornare ora?"
+UP_NO_CONNECTION_WARNING_LABEL="Impossibile stabilire la connessione al server! Il controllo dei nuovi aggiornamenti è stato saltato! Controlla la tua connessione Internet!"
 
-LAUNCHER_UPDATE_WARNING="Impossibile stabilire la connessione al server! Il controllo dei nuovi aggiornamenti è stato saltato! Controlla la tua connessione Internet!"
+UP_PROGRESS_LABEL_1="Connessione al server ..."
+UP_PROGRESS_LABEL_2="# Controlla tutti i file .."
+UP_PROGRESS_LABEL_3="# Tutti i file sono stati controllati!"
+UP_INSTALL_UPDATE_PROGRESS_LABEL="Autodesk Fusion 360 verrà aggiornato a una versione più recente ..."
 
 ###############################################################################################################################################################
 ###############################################################################################################################################################
