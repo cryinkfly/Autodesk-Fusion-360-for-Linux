@@ -120,7 +120,7 @@ Autodesk Fusion 360 — это облачное ПО для 3D-моделиро�
 
 3.) Откройте терминал и выполните эту команду:
 
-    mkdir -p "$HOME/.config/fusion-360/bin" && cd "$HOME/.config/fusion-360/bin" && wget -N https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/install.sh && chmod +x install.sh && bash install.sh && exit
+    mkdir -p "$HOME/.fusion360/bin" && cd "$HOME/.fusion360/bin" && wget -N https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/install.sh && chmod +x install.sh && bash install.sh && exit
 
 4.) Теперь вы <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues/44#issuecomment-890552181">можете использовать</a> Autodesk Fusion 360 на своём Linux!
 
