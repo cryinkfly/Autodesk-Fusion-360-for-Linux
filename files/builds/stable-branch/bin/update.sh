@@ -116,7 +116,8 @@ function UP_FUSION360_INSTALL_STOP_2 {
 
 # The user get a informationt that no newer version of Autodesk Fusion 360 was found!
 function UP_NO_UPDATE_INFO {
-  yad --title="$UP_TITLE" --text="$UP_NO_CONNECTION_WARNING_LABEL" --text-align=center
+  yad --title="$UP_TITLE" --text="$UP_NO_UPDATE_INFO_LABEL" --text-align=center
+  LAUNCHER_RUN_FUSION360
 }
 
 ###############################################################################################################################################################
@@ -124,13 +125,15 @@ function UP_NO_UPDATE_INFO {
 # The user will be informed that he is skipping the update!
 function UP_SKIP_INFO {
   yad --title="$UP_TITLE" --text="$UP_SKIP_INFO_LABEL" --text-align=center
+  LAUNCHER_RUN_FUSION360
 }
 
 ###############################################################################################################################################################
 
 # The user get a informationt that there is no connection to the server!
 function UP_NO_CONNECTION_WARNING {
-  yad --title="$UP_TITLE" --text="$UP_NO_UPDATE_INFO_LABEL" --text-align=center
+  yad --title="$UP_TITLE" --text="$UP_NO_CONNECTION_WARNING_LABEL" --text-align=center
+  LAUNCHER_RUN_FUSION360
 }
 
 ###############################################################################################################################################################
@@ -187,6 +190,8 @@ echo "100"
 }
 
 UP_FUSION360_INSTALL_UPDATE_PROGRESS_MAIN | yad --progress --progress-text "$UP_INSTALL_UPDATE_PROGRESS_LABEL" --percentage=0 --auto-close
+
+LAUNCHER_RUN_FUSION360
 }
 
 ###############################################################################################################################################################
