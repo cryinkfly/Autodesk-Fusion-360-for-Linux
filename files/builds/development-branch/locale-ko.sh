@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    07:00/08.06.2022                                                                   #
+# Time/Date:    21:15/08.06.2022                                                                   #
 # Version:      1.5 -> 1.6                                                                         #
 ####################################################################################################
 
@@ -127,14 +127,19 @@ SP_COMPLETED_CHECK_LABEL="Autodesk Fusion 360 실행"
 # ALL DEFINITIONS FOR THE LAUNCHER OF AUTODESK FUSION 360 ARE ARRANGED HERE:                                                                                  #
 ###############################################################################################################################################################
 
-LAUNCHER_NO_UPDATE_INFO="최신 버전을 찾을 수 없으므로 Autodesk fusion 360이 최신 상태입니다!"
+UP_TITLE="Linux용 Autodesk Fusion 360 - 실행기"
+UP_NO_UPDATE_INFO_LABEL="최신 버전을 찾을 수 없으므로 Autodesk fusion 360이 최신 상태입니다!"
+UP_SKIP_INFO_LABEL="업데이트를 건너뛰었습니다! Autodesk Fusion 360 버전을 곧 업데이트하십시오!"
+UP_SKIP_UPDATE_QUESTION_LABEL="Autodesk Fusion 360 업데이트 검색을 건너뛰시겠습니까?"
 
-LAUNCHER_SKIP_UPDATE_INFO="업데이트를 건너뛰었습니다! Autodesk Fusion 360 버전을 곧 업데이트하십시오!"
-LAUNCHER_SKIP_UPDATE_QUESTION="Autodesk Fusion 360 업데이트 검색을 건너뛰시겠습니까?"
+UP_QUESTION_LABEL="새 버전이 출시되었습니다! 지금 업데이트하시겠습니까?"
 
-LAUNCHER_UPDATE_QUESTION="새 버전이 출시되었습니다! 지금 업데이트하시겠습니까?"
+UP_NO_CONNECTION_WARNING_LABEL="서버에 연결할 수 없습니다! 새 업데이트 확인을 건너뛰었습니다! 인터넷 연결을 확인하십시오!"
 
-LAUNCHER_UPDATE_WARNING="서버에 연결할 수 없습니다! 새 업데이트 확인을 건너뛰었습니다! 인터넷 연결을 확인하십시오!"
+UP_PROGRESS_LABEL_1="서버에 연결하는 중..."
+UP_PROGRESS_LABEL_2="# 모든 파일 확인 .."
+UP_PROGRESS_LABEL_3="# 모든 파일을 확인했습니다!"
+UP_INSTALL_UPDATE_PROGRESS_LABEL="Autodesk Fusion 360이 최신 버전으로 업데이트됩니다 ..."
 
 ###############################################################################################################################################################
 ###############################################################################################################################################################
