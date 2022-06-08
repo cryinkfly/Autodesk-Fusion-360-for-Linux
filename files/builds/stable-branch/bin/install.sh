@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    21:30/08.06.2022                                                                   #
+# Time/Date:    22:00/08.06.2022                                                                   #
 # Version:      1.8.0                                                                              #
 ####################################################################################################
 
@@ -168,7 +168,7 @@ function SP_LOCALE_EN {
 
 # Spanish:
 function SP_LOCALE_ES {
-  . $SP_PATH0/locale/es-ES/locale-es.sh
+  . $SP_PATH/locale/es-ES/locale-es.sh
 }
 
 # French:
@@ -221,7 +221,7 @@ elif [[ $SP_LOCALE = "Italian" ]]; then
     SP_LOCALE_IT
 elif [[ $SP_LOCALE = "Japanese" ]]; then
     echo "JP"
-    SP_LOCALE_JP
+    SP_LOCALE_JA
 elif [[ $SP_LOCALE = "Korean" ]]; then
     echo "KO"
     SP_LOCALE_KO
