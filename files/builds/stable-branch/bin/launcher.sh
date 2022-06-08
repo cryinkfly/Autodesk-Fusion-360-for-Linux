@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                       #
 # License:      MIT                                                         #
 # Copyright (c) 2020-2022                                                   #
-# Time/Date:    22:50/08.06.2022                                            #
+# Time/Date:    23:00/08.06.2022                                            #
 # Version:      1.9                                                         #
 #############################################################################
 
@@ -45,9 +45,6 @@ function LAUNCHER_CHECK_UPDATE_VERSION {
   SYSTEM_BUILD_VERSION=`cat $WP_BOX/drive_c/users/$USER/AppData/Roaming/Autodesk/Autodesk\ Fusion\ 360/API/version.txt`
   echo "System Build-Version: $SYSTEM_BUILD_VERSION"
   if [ "$ONLINE_BUILD_VERSION" = "$SYSTEM_BUILD_VERSION" ] || [ "$ONLINE_INSIDER_BUILD_VERSION" = "$SYSTEM_BUILD_VERSION" ]; then
-    echo "Do nothing!"
-    GET_UPDATE=0
-  elif [ "$ONLINE_BUILD_VERSION" = "" ] || [ "$ONLINE_INSIDER_BUILD_VERSION" = "" ]; then
     echo "Do nothing!"
     GET_UPDATE=0
   else
