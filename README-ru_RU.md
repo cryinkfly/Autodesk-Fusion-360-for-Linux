@@ -32,7 +32,7 @@ Autodesk Fusion 360 — это облачное ПО для 3D-моделиро�
 
 ## Текущая версия Autodesk Fusion 360
 
-** Номер версии: ** 2.0.12888*
+** Номер версии: ** 2.0.13162*
 
 * Примечание. [Как узнать, какую версию Fusion 360 я использую?](https://knowledge.autodesk.com/support/fusion-360/troubleshooting/caas/sfdcarticles/sfdcarticles/How-to-check-what-version-of-Fusion-360-is-installed.html)
 
