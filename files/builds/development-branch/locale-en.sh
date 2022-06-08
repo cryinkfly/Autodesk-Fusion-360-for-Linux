@@ -42,6 +42,7 @@ WP_DRIVER_SELECT=$(echo "DXVK,OpenGL")
 
 # License Checkbox:
 SP_LICENSE_CHECK_LABEL="I have read the terms and conditions and I accept them."
+SP_LICENSE="$SP_PATH/locale/en-US/license-en.txt"
 
 ###############################################################################################################################################################
 
