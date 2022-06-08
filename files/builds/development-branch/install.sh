@@ -335,8 +335,6 @@ function SP_FUSION360_SHORTCUTS_LOAD {
   chmod +x $SP_PATH/bin/launcher.sh
   wget -N -P $SP_PATH/bin https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/update.sh
   chmod +x $SP_PATH/bin/update.sh
-  wget -N -P $SP_PATH/bin https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/read-text.sh
-  chmod +x $SP_PATH/bin/read-text.sh
 }
 
 ###############################################################################################################################################################
