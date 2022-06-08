@@ -148,7 +148,7 @@ UP_NO_CONNECTION_WARNING_LABEL="The connection to the server could not be establ
 UP_PROGRESS_LABEL_1="Connecting to the server ..."
 UP_PROGRESS_LABEL_2="# Check all files .."
 UP_PROGRESS_LABEL_3="# All files are checked!"
-UP_INSTALL_PROGRESS_LABEL="Autodesk Fusion 360 will be updated to a newer version ..."
+UP_INSTALL_UPDATE_PROGRESS_LABEL="Autodesk Fusion 360 will be updated to a newer version ..."
 
 ###############################################################################################################################################################
 ###############################################################################################################################################################
