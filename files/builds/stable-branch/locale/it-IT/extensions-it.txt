@@ -1,0 +1,27 @@
+FALSE
+Airfoil Tools
+Questa estensione ti aiuta a ottimizzare qualsiasi cosa o parte che è esposta a un gas o liquido in movimento. Ad esempio: ali, pinne, eliche e turbine.
+FALSE
+Additive Assistant (FFF)
+Questa estensione ti aiuta analizzando una serie di aspetti dei tuoi progetti e fornisce un feedback chiaro su come migliorare la producibilità della parte.
+FALSE
+Czech localization for F360
+Questa estensione offre la possibilità di utilizzare l'interfaccia utente (UI) ceca in Autodesk Fusion 360.
+FALSE
+HP 3D Printers for Autodesk® Fusion 360™
+Questa estensione è un connettore tra Autodesk® Fusion 360™ e il software HP SmartStream e viene utilizzata per inviare i lavori direttamente al software HP.
+FALSE
+Helical Gear Generator
+Questa estensione permette la creazione di ingranaggi elicoidali.
+FALSE
+OctoPrint for Autodesk® Fusion 360™
+Con questa estensione puoi inviare il codice G dei tuoi modelli 3D creati direttamente al server OctoPrint tramite Autodesk Fusion 360.
+FALSE
+Parameter I/O
+Consente all'utente di importare/aggiornare parametri da o esportarli in un file CSV (Comma Separated Values).
+FALSE
+RoboDK
+Questa estensione consente di programmare più di 50 diversi produttori di robot e 500 robot direttamente da Autodesk Fusion 360.
+FALSE
+Ultimaker Digital Factory for Autodesk Fusion 360™
+Questo plug-in è un connettore tra Autodesk® Fusion 360™ e il sito Ultimaker Digital Factory e i suoi servizi.
