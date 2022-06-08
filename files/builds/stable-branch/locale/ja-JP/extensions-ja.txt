@@ -1,0 +1,27 @@
+FALSE
+Airfoil Tools
+この拡張機能は、移動する気体または液体にさらされるあらゆるものまたは部品を最適化するのに役立ちます。 例：翼、フィン、プロペラ、タービン。
+FALSE
+Additive Assistant (FFF)
+この拡張機能は、設計のさまざまな側面を分析するのに役立ち、部品の製造可能性を改善する方法に関する明確なフィードバックを提供します。
+FALSE
+Czech localization for F360
+この拡張機能により、Autodesk Fusion 360でチェコのユーザーインターフェイス（UI）を使用するオプションが提供されます。
+FALSE
+HP 3D Printers for Autodesk® Fusion 360™
+この拡張機能は、Autodesk®Fusion360™とHP SmartStreamソフトウェア間のコネクタであり、ジョブをHPソフトウェアに直接送信するために使用されます。
+FALSE
+Helical Gear Generator
+この拡張により、はすば歯車を作成できます。
+FALSE
+OctoPrint for Autodesk® Fusion 360™
+この拡張機能を使用すると、作成した3DモデルのGコードをAutodeskFusion360を介してOctoPrintサーバーに直接送信できます。
+FALSE
+Parameter I/O
+ユーザーがパラメーターをCSV（コンマ区切り値）ファイルからインポート/更新したり、CSV（コンマ区切り値）ファイルにエクスポートしたりできるようにします。
+FALSE
+RoboDK
+この拡張機能を使用すると、50を超えるさまざまなロボットメーカーと500のロボットをAutodeskFusion360から直接プログラムできます。
+FALSE
+Ultimaker Digital Factory for Autodesk Fusion 360™
+このプラグインは、Autodesk®Fusion360™とUltimakerDigitalFactoryサイトおよびそのサービスの間のコネクタです。
