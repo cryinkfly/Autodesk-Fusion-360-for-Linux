@@ -12,7 +12,7 @@ HP 3D Printers for Autodesk® Fusion 360™
 Toto rozšíření je konektorem mezi Autodesk® Fusion 360™ a softwarem HP SmartStream a používá se k odesílání úloh přímo do softwaru HP.
 FALSE
 Helical Gear Generator
-Šroubová ozubená kola připomínají čelní ozubená kola se zuby pod úhlem.
+Tento nástavec umožňuje vytvoření spirálových ozubených kol.
 FALSE
 OctoPrint for Autodesk® Fusion 360™
 S tímto rozšířením můžete odesílat G-kód svých vytvořených 3D modelů přímo na server OctoPrint prostřednictvím Autodesk Fusion 360.
