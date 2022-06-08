@@ -1,0 +1,27 @@
+FALSE
+Airfoil Tools
+此扩展通过优化暴露于移动气体或液体的任何事物或部件来帮助您。 例如：机翼、鳍片、螺旋桨和涡轮机。
+FALSE
+Additive Assistant (FFF)
+此扩展通过分析设计的多个方面来帮助您，并就如何提高零件的可制造性提供清晰的反馈。
+FALSE
+Czech localization for F360
+此扩展使您可以选择在 Autodesk Fusion 360 中使用捷克语用户界面 (UI)。
+FALSE
+HP 3D Printers for Autodesk® Fusion 360™
+此扩展是 Autodesk® Fusion 360™ 和 HP SmartStream 软件之间的连接器，用于将作业直接发送到 HP 软件。
+FALSE
+Helical Gear Generator
+此扩展允许创建螺旋齿轮。
+FALSE
+OctoPrint for Autodesk® Fusion 360™
+使用此扩展程序，您可以通过 Autodesk Fusion 360 将创建的 3D 模型的 G 代码直接发送到 OctoPrint 服务器。
+FALSE
+Parameter I/O
+使用户能够从 CSV（逗号分隔值）文件导入/更新参数或将其导出到 CSV（逗号分隔值）文件。
+FALSE
+RoboDK
+此扩展允许您直接从 Autodesk Fusion 360 对 50 多个不同的机器人制造商和 500 个机器人进行编程。
+FALSE
+Ultimaker Digital Factory for Autodesk Fusion 360™
+此插件是 Autodesk® Fusion 360™ 与 Ultimaker Digital Factory 站点及其服务之间的连接器。
