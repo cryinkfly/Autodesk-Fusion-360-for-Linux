@@ -86,7 +86,7 @@ En la [rama de desarrollo](https://github.com/cryinkfly/Autodesk-Fusion-360-for-
 - Si quieres cambiar al lenguaje checo en Autodesk Fusion 360, necesitarás una [extensión especial](https://apps.autodesk.com/FUSION/en/Detail/Index?id=9151466655844643882) que has de tener comprada y descargada antes de instalar esto con mi asistente!
 - Ten en cuenta que mi script de instalación te instalará ciertos paquetes en tu distribución (dialog, p7zip, p7zip-full, p7zip-rar, curl, wget, winbind, cabextract, wine, wine-mono, wine_gecko, winetricks, ...)!
 - Seleccione el modo DXVK, ya que hay algunos errores en el modo OpenGL! El modo OpenGL solo sirve como variante alternativa.
-- ¡[Zenity](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/issues/223) debe estar instalado en su computadora!
+- ¡[YAD](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/issues/233) debe estar instalado en su computadora!
 - Distribuciones Linux soportadas:
   - Arch Linux, Manjaro Linux, EndeavourOS, ...
   - Debian 10, MX Linux 19.4, Raspberry Pi Desktop, ...
