@@ -32,6 +32,16 @@ function LAUNCHER_CHECK_FUSION360_ONLINE_VERSIONS {
 }
 
 function LAUNCHER_CHECK_UPDATE {
+  FUSION360_API_VERSION="$WP_BOX/drive_c/users/$USER/AppData/Roaming/Autodesk/Autodesk\ Fusion\ 360/API/version.txt" # Search for version.txt
+  if [ -f "$FUSION360_API_VERSION" ]; then
+    LAUNCHER_CHECK_UPDATE_VERSION
+  else
+    echo "Do nothing!"
+    GET_UPDATE=0
+  fi
+}
+
+function LAUNCHER_CHECK_UPDATE_VERSION {
   SYSTEM_BUILD_VERSION=`cat $WP_BOX/drive_c/users/$USER/AppData/Roaming/Autodesk/Autodesk\ Fusion\ 360/API/version.txt`
   echo "System Build-Version: $SYSTEM_BUILD_VERSION"
   if [ "$ONLINE_BUILD_VERSION" = "$SYSTEM_BUILD_VERSION" ] || [ "$ONLINE_INSIDER_BUILD_VERSION" = "$SYSTEM_BUILD_VERSION" ]; then
