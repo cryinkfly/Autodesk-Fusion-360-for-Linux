@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    18:15/02.06.2022                                                                   #
-# Version:      1.1 -> 1.2                                                                         #
+# Time/Date:    21:30/08.06.2022                                                                   #
+# Version:      1.3                                                                                #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -39,7 +39,7 @@ function load-locale-languages {
 
 ###############################################################################################################################################################
 
-# Load & Save the licenses into the folders!
+# Load & Save the translations of the licenses into the folders!
 function load-locale-licenses {
   wget -N -P $HOME/.config/fusion-360/locale/cs-CZ/ https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/locale/cs-CZ/license-cs.txt
   wget -N -P $HOME/.config/fusion-360/locale/de-DE/ https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/locale/de-DE/license-de.txt
@@ -54,7 +54,7 @@ function load-locale-licenses {
 
 ###############################################################################################################################################################
 
-# Load & Save the licenses into the folders!
+# Load & Save the translations of the extensions into the folders!
 function load-locale-extensions {
   wget -N -P $HOME/.config/fusion-360/locale/cs-CZ/ https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/locale/cs-CZ/extensions-cs.txt
   wget -N -P $HOME/.config/fusion-360/locale/de-DE/ https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/locale/de-DE/extensions-de.txt
@@ -74,4 +74,3 @@ function load-locale-extensions {
 load-locale-languages
 load-locale-licenses
 load-locale-extensions
-
