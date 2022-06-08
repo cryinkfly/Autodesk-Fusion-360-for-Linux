@@ -85,7 +85,7 @@ In the [development branch](https://github.com/cryinkfly/Autodesk-Fusion-360-for
 - Would you like to use the Czech language later in Autodesk Fusion 360, then you need a [special extension](https://apps.autodesk.com/FUSION/en/Detail/Index?id=9151466655844643882) what you must have bought and downloaded before you can install this with my Setup Wizard!
 - My script install some packages (dialog, p7zip, p7zip-full, p7zip-rar, curl, wget, winbind, cabextract, wine, wine-mono, wine_gecko, winetricks, ...)!
 - Please select the DXVK mode, as there are some bugs in the OpenGL mode! The OpenGL mode only serves as a fallback.
-- [Zenity](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/issues/223) must be installed on your computer!
+- [YAD](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/issues/233) must be installed on your computer!
 - Supported Linux distributions:
   - Arch Linux, Manjaro Linux, EndeavourOS, ...
   - Debian 10, MX Linux 19.4, Raspberry Pi Desktop, ...
