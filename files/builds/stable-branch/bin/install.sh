@@ -779,7 +779,7 @@ done
 ###############################################################################################################################################################
 
 function SP_LICENSE {
-SP_LICENSE_TEXT=$(cat $LICENSE)
+SP_LICENSE_TEXT=$(cat $SP_LICENSE)
 SP_LICENSE_CHECK=$(yad \
 --title="$SP_TITLE" \
 --form \
