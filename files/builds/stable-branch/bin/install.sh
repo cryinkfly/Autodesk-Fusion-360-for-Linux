@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    22:00/08.06.2022                                                                   #
+# Time/Date:    22:35/08.06.2022                                                                   #
 # Version:      1.8.0                                                                              #
 ####################################################################################################
 
@@ -377,7 +377,7 @@ function SP_FUSION360_INSTALL_START_1 {
 
 # Stop Fusion360installer.exe - Part 1
 function SP_FUSION360_INSTALL_STOP_1 {
-  sleep 10m
+  sleep 3m
   kill -9 $(ps aux |grep -i '\.exe' |awk '{print $2}'|tr '\n' ' ')
 }
 
@@ -401,7 +401,7 @@ function SP_FUSION360_INSTALL_REFRESH_START_1 {
 
 # Stop Fusion360installer.exe - Part 1 (Refresh)
 function SP_FUSION360_INSTALL_REFRESH_STOP_1 {
-  sleep 10m
+  sleep 3m
   kill -9 $(ps aux |grep -i '\.exe' |awk '{print $2}'|tr '\n' ' ')
 }
 
