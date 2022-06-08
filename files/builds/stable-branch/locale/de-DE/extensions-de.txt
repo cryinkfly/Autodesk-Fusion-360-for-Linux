@@ -1,0 +1,27 @@
+FALSE
+Airfoil Tools
+Diese Erweiterung hilft Ihnen bei der Optimierung aller Dinge oder Teile, die einem sich bewegenden Gas oder einer Flüssigkeit ausgesetzt sind. Zum Beispiel: Flügel, Flossen, Propeller und Turbinen.
+FALSE
+Additive Assistant (FFF)
+Diese Erweiterung hilft Ihnen, indem sie eine Reihe von Aspekten Ihrer Konstruktionen analysiert und klares Feedback dazu gibt, wie die Herstellbarkeit des Teils verbessert werden kann.
+FALSE
+Czech localization for F360
+Diese Erweiterung gibt Ihnen die Möglichkeit, die tschechische Benutzeroberfläche (UI) in Autodesk Fusion 360 zu verwenden.
+FALSE
+HP 3D Printers for Autodesk® Fusion 360™
+Diese Erweiterung stellt eine Verbindung zwischen Autodesk® Fusion 360™ und der HP SmartStream Software und wird verwendet, um Jobs direkt an die HP Software zu senden.
+FALSE
+Helical Gear Generator
+Diese Erweiterung ermöglicht das Erstellen von Schrägverzahnungen.
+FALSE
+OctoPrint for Autodesk® Fusion 360™
+Mit dieser Erweiterung können Sie den G-Code Ihrer erstellten 3D-Modelle direkt über Autodesk Fusion 360 an den OctoPrint-Server senden.
+FALSE
+Parameter I/O
+Ermöglicht dem Benutzer, Parameter aus einer CSV-Datei (Comma Separated Values) zu importieren/aktualisieren oder in eine CSV-Datei zu exportieren.
+FALSE
+RoboDK
+Mit dieser Erweiterung können Sie mehr als 50 verschiedene Roboterhersteller und 500 Roboter direkt aus Autodesk Fusion 360 programmieren.
+FALSE
+Ultimaker Digital Factory for Autodesk Fusion 360™
+Diese Erweiterung stellt eine Verbindung zwischen Autodesk® Fusion 360™ und der Ultimaker Digital Factory-Site und ihren Diensten.
