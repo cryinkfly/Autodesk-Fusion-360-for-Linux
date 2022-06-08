@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    06:30/08.06.2022                                                                   #
+# Time/Date:    20:50/08.06.2022                                                                   #
 # Version:      1.7.9 -> 1.8.0                                                                     #
 ####################################################################################################
 
@@ -1044,7 +1044,7 @@ SP_FUSION360_INSTALL_PROGRESS_MAIN () {
 echo "20"
 SP_FUSION360_INSTALL_START_1 & SP_FUSION360_INSTALL_STOP_1 # These two commands run in the same time.
 echo "70"
-SP_FUSION360_INSTALL_START_1 & SP_FUSION360_INSTALL_STOP_1 # These two commands run in the same time.
+SP_FUSION360_INSTALL_START_2 & SP_FUSION360_INSTALL_STOP_2 # These two commands run in the same time.
 sleep 5
 echo "100"
 }
