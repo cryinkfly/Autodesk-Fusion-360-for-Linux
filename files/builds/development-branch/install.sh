@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    20:20/07.06.2022                                                                   #
+# Time/Date:    06:30/08.06.2022                                                                   #
 # Version:      1.7.9 -> 1.8.0                                                                     #
 ####################################################################################################
 
@@ -154,56 +154,47 @@ function SP_LOCALE_INDEX {
 # Czech:
 function SP_LOCALE_CS {
   . $SP_PATH/locale/cs-CZ/locale-cs.sh
-  SP_LICENSE="$SP_PATH/locale/cs-CZ/license-cs.txt"
 }
 
 # German:
 function SP_LOCALE_DE {
   . $SP_PATH/locale/de-DE/locale-de.sh
-  SP_LICENSE="$SP_PATH/locale/de-DE/license-de.txt"
 }
 
 # English:
 function SP_LOCALE_EN {
   . $SP_PATH/locale/en-US/locale-en.sh
-  SP_LICENSE="$SP_PATH/locale/en-US/license-en.txt"
 }
 
 # Spanish:
 function SP_LOCALE_ES {
   . $SP_PATH0/locale/es-ES/locale-es.sh
-  SP_LICENSE="$SP_PATH/locale/es-ES/license-es.txt"
 }
 
 # French:
 function SP_LOCALE_FR {
   . $SP_PATH/locale/fr-FR/locale-fr.sh
-  SP_LICENSE="$SP_PATH/locale/fr-FR/license-fr.txt"
 }
 
 
 # Italian:
 function SP_LOCALE_IT {
   . $SP_PATH/locale/it-IT/locale-it.sh
-  SP_LICENSE="$SP_PATH/locale/it-IT/license-it.txt"
 }
 
 # Japanese:
 function SP_LOCALE_JA {
   . $SP_PATH/locale/ja-JP/locale-ja.sh
-  SP_LICENSE="$SP_PATH/locale/ja-JP/license-ja.txt"
 }
 
 # Korean:
 function SP_LOCALE_KO {
   . $SP_PATH/locale/ko-KR/locale-ko.sh
-  SP_LICENSE="$SP_PATH/locale/ko-KR/license-ko.txt"
 }
 
 # Chinese:
 function SP_LOCALE_ZH {
   . $SP_PATH/locale/zh-CN/locale-zh.sh
-  SP_LICENSE="$SP_PATH/locale/zh-CN/license-zh.txt"
 }
 
 ###############################################################################################################################################################
