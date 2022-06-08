@@ -1065,13 +1065,13 @@ sleep 5
 echo "100"
 }
 
-SP_FUSION360_INSTALL_PROGRESS_MAIN_REFRESH | yad --progress --progress-text "$SP_INSTALL_PROGRESS_REFRESH_LABEL" --percentage=0 --auto-close
+SP_FUSION360_INSTALL_PROGRESS_MAIN_REFRESH | yad --title="$SP_TITLE" --borders=15 --progress --progress-text "$SP_INSTALL_PROGRESS_REFRESH_LABEL" --percentage=0 --auto-close
 }
 
 ###############################################################################################################################################################
 
 function SP_FUSION360_EXTENSIONS {
-EXTENSIONS=$(yad --title="$SP_TITLE" --button=gtk-cancel:99 --button=gtk-ok:0 --height=300 --list --multiple --checklist --column=$SP_EXTENSION_SELECT --column=$SP_EXTENSION_NAME --column=$SP_EXTENSION_DESCRIPTION < $SP_EXTENSION_LIST)
+EXTENSIONS=$(yad --title="$SP_TITLE" --borders=15 --button=gtk-cancel:99 --button=gtk-ok:0 --height=300 --list --multiple --checklist --column=$SP_EXTENSION_SELECT --column=$SP_EXTENSION_NAME --column=$SP_EXTENSION_DESCRIPTION < $SP_EXTENSION_LIST)
 
 if [[ $EXTENSIONS = *"Airfoil Tools"* ]]; then
     echo "Airfoil Tools"
