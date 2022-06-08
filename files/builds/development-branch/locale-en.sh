@@ -136,6 +136,19 @@ LAUNCHER_UPDATE_QUESTION="A new version has been released! Do you want to update
 
 LAUNCHER_UPDATE_WARNING="The connection to the server could not be established! Checking for new updates has been skipped! Please check your internet connection!"
 
+UP_TITLE="Autodesk Fusion 360 for Linux - Launcher"
+UP_NO_UPDATE_INFO_LABEL="No newer version was found, so your Autodesk fusion 360 is up to date!"
+UP_SKIP_INFO_LABEL="The update was skipped! Please update your Autodesk Fusion 360 version soon!"
+UP_SKIP_UPDATE_QUESTION_LABEL="Are you sure you want to skip searching for an Autodesk Fusion 360 update?"
+
+UP_QUESTION_LABEL="A new version has been released! Do you want to update now?"
+
+UP_NO_CONNECTION_WARNING_LABEL="The connection to the server could not be established! Checking for new updates has been skipped! Please check your internet connection!"
+
+UP_PROGRESS_LABEL_1="Connecting to the server ..."
+UP_PROGRESS_LABEL_2="# Check all files .."
+UP_PROGRESS_LABEL_3="# All files are checked!"
+
 ###############################################################################################################################################################
 ###############################################################################################################################################################
 
