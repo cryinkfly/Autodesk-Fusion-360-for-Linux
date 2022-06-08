@@ -12,7 +12,7 @@ HP 3D Printers for Autodesk® Fusion 360™
 This extension is a connector between Autodesk® Fusion 360™ and the HP SmartStream Software and is used to send over jobs directly to the HP Software.
 FALSE
 Helical Gear Generator
-Helical gears resemble spur gears with the teeth at an angle.
+This extension allows the creation of helical gears.
 FALSE
 OctoPrint for Autodesk® Fusion 360™
 With this extension you can send the G-code of your created 3D models directly to the OctoPrint server via Autodesk Fusion 360.
