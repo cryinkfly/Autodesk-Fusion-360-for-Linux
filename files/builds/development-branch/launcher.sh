@@ -35,10 +35,10 @@ function setupact-config-update {
   echo "System Build-Version: $system_build_version"
   if [ "$online_build_version" = "$system_build_version" ] || [ "$online_build_insider_version" = "$system_build_version" ]; then
     echo "Do nothing!"
-    get_update=0
+    GET_UPDATE=0
   else
     # A value of 0 means that there is no update and a value of 1 will notify the user that there is an update.
-    get_update=1
+    GET_UPDATE=1
   fi 
 }
 
