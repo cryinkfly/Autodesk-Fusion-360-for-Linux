@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    21:00/08.06.2022                                                                   #
+# Time/Date:    21:05/08.06.2022                                                                   #
 # Version:      1.0.0                                                                              #
 ####################################################################################################
 
@@ -111,13 +111,6 @@ function UP_FUSION360_INSTALL_STOP_2 {
 }
 
 ###############################################################################################################################################################
-
-function UP_INSTALL_UPDATE {
-  UP_FUSION360_INSTALL_START_1 & UP_FUSION360_INSTALL_STOP_1
-  UP_FUSION360_INSTALL_START_2 & UP_FUSION360_INSTALL_STOP_2
-}
-
-###############################################################################################################################################################
 # ALL DIALOGS ARE ARRANGED HERE:                                                                                                                              #
 ###############################################################################################################################################################
 
@@ -150,7 +143,7 @@ function UP_QUESTION {
 
   if [ "$answer" -eq 0 ]; then    
     UP_GET_UPDATE
-    UP_INSTALL_UPDATE
+    UP_FUSION360_INSTALL_UPDATE_PROGRESS
   elif [ "$answer" -eq 1 ]; then
     UP_SKIP_INFO
   fi
@@ -178,6 +171,22 @@ function UP_PROGRESS {
   elif [[ $ret -eq 1 ]]; then
     UP_CHECK_INFO
   fi
+}
+
+###############################################################################################################################################################
+
+function UP_FUSION360_INSTALL_UPDATE_PROGRESS {
+
+UP_FUSION360_INSTALL_PROGRESS_MAIN () {
+echo "20"
+UP_FUSION360_INSTALL_START_1 & UP_FUSION360_INSTALL_STOP_1 # These two commands run in the same time.
+echo "70"
+UP_FUSION360_INSTALL_START_2 & UP_FUSION360_INSTALL_STOP_2 # These two commands run in the same time.
+sleep 5
+echo "100"
+}
+
+UP_FUSION360_INSTALL_UPDATE_PROGRESS_MAIN | yad --progress --progress-text "$UP_INSTALL_UPDATE_PROGRESS_LABEL" --percentage=0 --auto-close
 }
 
 ###############################################################################################################################################################
