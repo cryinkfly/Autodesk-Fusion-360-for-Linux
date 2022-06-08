@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                       #
 # License:      MIT                                                         #
 # Copyright (c) 2020-2022                                                   #
-# Time/Date:    21:20/07.06.2022                                            #
+# Time/Date:    20:40/08.06.2022                                            #
 # Version:      1.8 -> 1.9                                                  #
 #############################################################################
 
@@ -22,18 +22,19 @@
 ###############################################################################################################################################################
 
 # This feature will check if there is a new version of Autodesk Fusion 360.
-function setupact-check-fusion360 {
+function LAUNCHER_CHECK_FUSION360_ONLINE_VERSIONS {
   mkdir -p /tmp/fusion360
   wget -N -P /tmp/fusion360 https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/build-version.txt  
-  online_build_version=`cat /tmp/fusion360/build-version.txt | awk 'NR == 1'`
-  online_build_insider_version=`cat /tmp/fusion360/build-version.txt | awk 'NR == 2'`
-  echo "Online Build-Version: $online_build_version"
+  ONLINE_BUILD_VERSION=`cat /tmp/fusion360/build-version.txt | awk 'NR == 1'`
+  ONLINE_INSIDER_BUILD_VERSION=`cat /tmp/fusion360/build-version.txt | awk 'NR == 2'`
+  echo "Online Build-Version: $ONLINE_BUILD_VERSION"
+  echo "Online Insider-Build-Version: $ONLINE_INSIDER_BUILD_VERSION"
 }
 
-function setupact-config-update {
-  system_build_version=`cat $WP_BOX/drive_c/users/$USER/AppData/Roaming/Autodesk/Autodesk\ Fusion\ 360/API/version.txt`
-  echo "System Build-Version: $system_build_version"
-  if [ "$online_build_version" = "$system_build_version" ] || [ "$online_build_insider_version" = "$system_build_version" ]; then
+function LAUNCHER_CHECK_UPDATE {
+  SYSTEM_BUILD_VERSION=`cat $WP_BOX/drive_c/users/$USER/AppData/Roaming/Autodesk/Autodesk\ Fusion\ 360/API/version.txt`
+  echo "System Build-Version: $SYSTEM_BUILD_VERSION"
+  if [ "$ONLINE_BUILD_VERSION" = "$SYSTEM_BUILD_VERSION" ] || [ "$ONLINE_INSIDER_BUILD_VERSION" = "$SYSTEM_BUILD_VERSION" ]; then
     echo "Do nothing!"
     GET_UPDATE=0
   else
@@ -45,16 +46,15 @@ function setupact-config-update {
 ###############################################################################################################################################################
 
 # You must change the first part ($HOME/.wineprefixes/fusion360) and the last part (WINEPREFIX="$HOME/.wineprefixes/fusion360") when you have installed Autodesk Fusion 360 into another directory!
-function setupact-open-fusion360 {
-  launcher="$(find $WP_BOX -name Fusion360.exe -printf "%T+ %p\n" | sort -r 2>&1 | head -n 1 | sed -r 's/.+0000000000 (.+)/\1/')" && WINEPREFIX="$WP_BOX" wine "$launcher"
+function LAUNCHER_RUN_FUSION360 {
+  LAUNCHER="$(find $WP_BOX -name Fusion360.exe -printf "%T+ %p\n" | sort -r 2>&1 | head -n 1 | sed -r 's/.+0000000000 (.+)/\1/')" && WINEPREFIX="$WP_BOX" wine "$LAUNCHER"
 }
 
 ###############################################################################################################################################################
 # THE PROGRAM IS STARTED HERE:                                                                                                                                #
 ###############################################################################################################################################################
 
-setupact-check-fusion360
-setupact-config-update
-# This path you must change if you installed a custom installation of Autodesk Fusion 360! For example: $HOME/.config/fusion-360/bin/update-usb.sh 
+LAUNCHER_CHECK_FUSION360_ONLINE_VERSIONS
+LAUNCHER_CHECK_UPDATE
 . $HOME/.fusion360/bin/update.sh 
-setupact-open-fusion360
+LAUNCHER_RUN_FUSION360
