@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    08:00/08.06.2022                                                                   #
+# Time/Date:    21:00/08.06.2022                                                                   #
 # Version:      1.0.0                                                                              #
 ####################################################################################################
 
@@ -82,16 +82,39 @@ function UP_CHECK_INFO {
 
 function UP_GET_UPDATE {
   wget https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe -O Fusion360installer.exe
-  mv "Fusion360installer.exe" "$HOME/.config/fusion-360/downloads/Fusion360installer.exe"
-  cp "$HOME/.config/fusion-360/downloads/Fusion360installer.exe" "$HOME/.wineprefixes/fusion360/drive_c/users/$USER/Downloads/Fusion360installer.exe"
+  mv "Fusion360installer.exe" "$HOME/.fusion360/downloads/Fusion360installer.exe"
+  cp "$HOME/.fusion360/downloads/Fusion360installer.exe" "$WP_BOX/drive_c/users/$USER/Downloads/Fusion360installer.exe"
 }
 
 ###############################################################################################################################################################
 
-# You must change the first part ($HOME/.wineprefixes/fusion360) and the last part (WINEPREFIX="$HOME/.wineprefixes/fusion360") when you have installed Autodesk Fusion 360 into another directory!
+# Start Fusion360installer.exe - Part 1
+function UP_FUSION360_INSTALL_START_1 {
+  WINEPREFIX=$WP_BOX wine $WP_BOX/drive_c/users/$USER/Downloads/Fusion360installer.exe
+}
+
+# Stop Fusion360installer.exe - Part 1
+function UP_FUSION360_INSTALL_STOP_1 {
+  sleep 10m
+  kill -9 $(ps aux |grep -i '\.exe' |awk '{print $2}'|tr '\n' ' ')
+}
+
+# Start Fusion360installer.exe - Part 2
+function UP_FUSION360_INSTALL_START_2 {
+  WINEPREFIX=$WP_BOX wine $WP_BOX/drive_c/users/$USER/Downloads/Fusion360installer.exe
+}
+
+# Stop Fusion360installer.exe - Part 2
+function UP_FUSION360_INSTALL_STOP_2 {
+  sleep 1m
+  kill -9 $(ps aux |grep -i '\.exe' |awk '{print $2}'|tr '\n' ' ')
+}
+
+###############################################################################################################################################################
+
 function UP_INSTALL_UPDATE {
-  WINEPREFIX="$HOME/.wineprefixes/fusion360" wine $HOME/.wineprefixes/fusion360/drive_c/users/$USER/Downloads/Fusion360installer.exe -p deploy -g -f log.txt --quiet
-  WINEPREFIX="$HOME/.wineprefixes/fusion360" wine $HOME/.wineprefixes/fusion360/drive_c/users/$USER/Downloads/Fusion360installer.exe -p deploy -g -f log.txt --quiet
+  UP_FUSION360_INSTALL_START_1 & UP_FUSION360_INSTALL_STOP_1
+  UP_FUSION360_INSTALL_START_2 & UP_FUSION360_INSTALL_STOP_2
 }
 
 ###############################################################################################################################################################
@@ -121,18 +144,15 @@ function UP_NO_CONNECTION_WARNING {
 
 # The user will be asked if he wants to update or not.
 function UP_QUESTION {
-  zenity --question \
-         --title="$program_name" \
-         --text="$text_update_question" \
-         --width=400 \
-         --height=100
+  yad --title="$UP_TITLE" --text="$UP_QUESTION_LABEL" --text-align=center --button=gtk-cancel:0 --button=gtk-ok:1
+  
   answer=$?
 
   if [ "$answer" -eq 0 ]; then    
-    setupact-get-update
-    setupact-install-update
+    UP_GET_UPDATE
+    UP_INSTALL_UPDATE
   elif [ "$answer" -eq 1 ]; then
-    setupact-skip-info
+    UP_SKIP_INFO
   fi
 }
 
@@ -144,7 +164,6 @@ function UP_PROGRESS {
     echo "30" ; sleep 5
     echo "50" ; sleep 1
     echo "UP_PROGRESS_LABEL_2" ; sleep 5
-    setupact-config-update
     echo "100" ; sleep 3
     echo "UP_PROGRESS_LABEL_3" ; sleep 1
   }
@@ -167,4 +186,4 @@ function UP_PROGRESS {
 
 UP_GET_FILES
 UP_LOAD_LOCALE
-setupact-progressbar
+UP_PROGRESS
