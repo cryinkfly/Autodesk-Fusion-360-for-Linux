@@ -1,0 +1,27 @@
+FALSE
+Airfoil Tools
+이 확장은 움직이는 기체나 액체에 노출되는 모든 사물이나 부품을 최적화하는 데 도움이 됩니다. 예: 날개, 지느러미, 프로펠러 및 터빈.
+FALSE
+Additive Assistant (FFF)
+이 확장은 설계의 여러 측면을 분석하고 부품의 제조 가능성을 개선하는 방법에 대한 명확한 피드백을 제공하여 도움이 됩니다.
+FALSE
+Czech localization for F360
+이 확장은 Autodesk Fusion 360에서 체코 사용자 인터페이스(UI)를 사용할 수 있는 옵션을 제공합니다.
+FALSE
+HP 3D Printers for Autodesk® Fusion 360™
+이 확장은 Autodesk® Fusion 360™과 HP SmartStream 소프트웨어 사이의 커넥터이며 HP 소프트웨어로 직접 작업을 보내는 데 사용됩니다.
+FALSE
+Helical Gear Generator
+이 확장을 통해 헬리컬 기어를 생성할 수 있습니다.
+FALSE
+OctoPrint for Autodesk® Fusion 360™
+이 확장을 사용하면 생성한 3D 모델의 G 코드를 Autodesk Fusion 360을 통해 OctoPrint 서버로 직접 보낼 수 있습니다.
+FALSE
+Parameter I/O
+사용자가 매개변수를 CSV(쉼표로 구분된 값) 파일에서 가져오거나 업데이트하거나 내보낼 수 있습니다.
+FALSE
+RoboDK
+이 확장을 사용하면 Autodesk Fusion 360에서 직접 50개 이상의 로봇 제조업체와 500개 이상의 로봇을 프로그래밍할 수 있습니다.
+FALSE
+Ultimaker Digital Factory for Autodesk Fusion 360™
+이 플러그인은 Autodesk® Fusion 360™과 Ultimaker Digital Factory 사이트 및 해당 서비스 간의 커넥터입니다.
