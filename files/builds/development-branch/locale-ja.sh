@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    06:45/08.06.2022                                                                   #
+# Time/Date:    21:15/08.06.2022                                                                   #
 # Version:      1.5 -> 1.6                                                                         #
 ####################################################################################################
 
@@ -127,14 +127,19 @@ SP_COMPLETED_CHECK_LABEL="AutodeskFusion360を実行する"
 # ALL DEFINITIONS FOR THE LAUNCHER OF AUTODESK FUSION 360 ARE ARRANGED HERE:                                                                                  #
 ###############################################################################################################################################################
 
-LAUNCHER_NO_UPDATE_INFO="新しいバージョンが見つからなかったため、Autodesk Fusion 360は最新です！"
+UP_TITLE="Autodesk Fusion 360 for Linux-Launcher"
+UP_NO_UPDATE_INFO_LABEL="新しいバージョンが見つからなかったため、Autodesk Fusion 360は最新です！"
+UP_SKIP_INFO_LABEL="更新はスキップされました！Autodesk Fusion 360のバージョンをすぐに更新してください！"
+UP_SKIP_UPDATE_QUESTION_LABEL="Autodesk Fusion 360アップデートの検索をスキップしてもよろしいですか？"
 
-LAUNCHER_SKIP_UPDATE_INFO="更新はスキップされました！Autodesk Fusion 360のバージョンをすぐに更新してください！"
-LAUNCHER_SKIP_UPDATE_QUESTION="Autodesk Fusion 360アップデートの検索をスキップしてもよろしいですか？"
+UP_QUESTION_LABEL="新しいバージョンがリリースされました！今すぐ更新しますか？"
 
-LAUNCHER_UPDATE_QUESTION="新しいバージョンがリリースされました！今すぐ更新しますか？"
+UP_NO_CONNECTION_WARNING_LABEL="サーバーへの接続を確立できませんでした！新しい更新の確認はスキップされました！インターネット接続を確認してください！"
 
-LAUNCHER_UPDATE_WARNING="サーバーへの接続を確立できませんでした！新しい更新の確認はスキップされました！インターネット接続を確認してください！"
+UP_PROGRESS_LABEL_1="サーバーに接続しています..."
+UP_PROGRESS_LABEL_2="＃すべてのファイルを確認してください.."
+UP_PROGRESS_LABEL_3="＃すべてのファイルがチェックされます！"
+UP_INSTALL_UPDATE_PROGRESS_LABEL="AutodeskFusion360は新しいバージョンに更新されます ..."
 
 ###############################################################################################################################################################
 ###############################################################################################################################################################
