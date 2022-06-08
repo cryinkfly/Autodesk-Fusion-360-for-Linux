@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                       #
 # License:      MIT                                                         #
 # Copyright (c) 2020-2022                                                   #
-# Time/Date:    23:00/08.06.2022                                            #
+# Time/Date:    23:20/08.06.2022                                            #
 # Version:      1.9                                                         #
 #############################################################################
 
@@ -37,7 +37,7 @@ function LAUNCHER_CHECK_UPDATE {
     LAUNCHER_CHECK_UPDATE_VERSION
   else
     echo "Do nothing!"
-    GET_UPDATE=0
+    LAUNCHER_RUN_FUSION360
   fi
 }
 
@@ -51,6 +51,8 @@ function LAUNCHER_CHECK_UPDATE_VERSION {
     # A value of 0 means that there is no update and a value of 1 will notify the user that there is an update.
     GET_UPDATE=1
   fi 
+  
+  . $HOME/.fusion360/bin/update.sh 
 }
 
 ###############################################################################################################################################################
@@ -66,5 +68,3 @@ function LAUNCHER_RUN_FUSION360 {
 
 LAUNCHER_CHECK_FUSION360_ONLINE_VERSIONS
 LAUNCHER_CHECK_UPDATE
-. $HOME/.fusion360/bin/update.sh 
-LAUNCHER_RUN_FUSION360
