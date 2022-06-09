@@ -848,7 +848,7 @@ WP_DIRECTORY=$(yad --title="$SP_TITLE" \
 --field="<big><b>$SP_INSTALLDIR_TITLE</b></big>:LBL" \
 --field=":LBL" \
 --field="<b>$SP_INSTALLDIR_LABEL_1</b>:LBL" \
---field="$SP_INSTALLDIR_LABEL_2:CB" \
+--field="$SP_INSTALLDIR_LABEL_2:DIR" \
 --field="<b>$SP_INSTALLDIR_LABEL_3</b>:LBL" \
 "" "" "" "$SP_PATH/wineprefixes/default" "" )
 
