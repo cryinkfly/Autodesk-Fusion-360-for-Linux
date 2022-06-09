@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    22:30/08.06.2022                                                                   #
+# Time/Date:    08:15/09.06.2022                                                                   #
 # Version:      1.1                                                                                #
 ####################################################################################################
 
@@ -23,7 +23,7 @@ DL_PATH="$HOME/.fusion360"
 # Copy the file where the user can see the exits Wineprefixes of Autodesk Fusion 360 on the system.
 function UP_GET_FILES {
   mkdir -p "/tmp/fusion360/logs"
-  cp "$HOME/.fusion360/config/settings.txt" "/tmp/fusion360/config"
+  cp "$HOME/.fusion360/config/settings.txt" "/tmp/fusion360"
 }
 
 ###############################################################################################################################################################
