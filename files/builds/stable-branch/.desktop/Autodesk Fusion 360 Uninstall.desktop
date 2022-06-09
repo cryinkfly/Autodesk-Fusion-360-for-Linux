@@ -1,10 +1,27 @@
+# This is an example .desktop file for the standard installation!
 [Desktop Entry]
-Name=Autodesk Fusion 360 - Uninstall
+Name=Autodesk Fusion 360 (Uninstall) - default
+Name[cs]=Autodesk Fusion 360 (Odinstalovat) - default
+Name[de]=Autodesk Fusion 360 (Deinstallieren) - default
+Name[es]=Autodesk Fusion 360 (Desinstalar) - default
+Name[fr]=Autodesk Fusion 360 (Désinstaller) - default
+Name[it]=Autodesk Fusion 360 (Disinstalla) - default
+Name[ja]=Autodesk Fusion 360 (アンインストール) - default
+Name[ko]=Autodesk Fusion 360 (제거) - default
+Name[zh_CN]=Autodesk Fusion 360 (卸载) - default
 Comment=With this program you can delete Autodesk Fusion 360 on your system!
-Exec=bash ./uninstall.sh"
+Comment[cs]=Pomocí tohoto programu můžete odstranit Autodesk Fusion 360 ze svého systému!
+Comment[de]=Mit diesem Programm können Sie Autodesk Fusion 360 auf Ihrem System löschen!
+Comment[es]=¡Con este programa puede eliminar Autodesk Fusion 360 en su sistema!
+Comment[fr]=Avec ce programme, vous pouvez supprimer Autodesk Fusion 360 sur votre système !
+Comment[it]=Con questo programma puoi eliminare Autodesk Fusion 360 sul tuo sistema!
+Comment[ja]=このプログラムを使用すると、システム上のAutodeskFusion360を削除できます。
+Comment[ko]=이 프로그램을 사용하면 시스템에서 Autodesk Fusion 360을 삭제할 수 있습니다!
+Comment[zh_CN]=使用此程序，您可以删除系统上的 Autodesk Fusion 360！
+Exec=bash ./uninstall.sh
 Type=Application
-Categories=Development;Graphics;Science
+Categories=Education;Engineering;
 StartupNotify=true
-Icon=/home/USERNAME/.config/fusion-360/bin/fusion360-uninstall.svg
+Icon=/home/steve/.fusion360/graphics/fusion360-uninstall.svg
 Terminal=false
-Path=/home/USERNAME/.config/fusion-360/bin
+Path=/home/steve/.fusion360/bin
