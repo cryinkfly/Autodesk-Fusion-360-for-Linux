@@ -91,6 +91,7 @@ En la [rama de desarrollo](https://github.com/cryinkfly/Autodesk-Fusion-360-for-
   - Arch Linux, Manjaro Linux, EndeavourOS, ...
   - Debian 10, MX Linux 19.4, Raspberry Pi Desktop, ...
   - Debian 11
+  - Fedora 35
   - Fedora 36
   - openSUSE Leap 15.2
   - openSUSE Leap 15.3
