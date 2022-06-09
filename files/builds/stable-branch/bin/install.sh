@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    22:35/08.06.2022                                                                   #
+# Time/Date:    09:05/09.06.2022                                                                   #
 # Version:      1.8.0                                                                              #
 ####################################################################################################
 
@@ -128,8 +128,8 @@ fi
 
 function SP_INSTALLDIR_CHECK {
 # Check if this wineprefix already exist or not!
-WP_PATH_CHECK=`cat /tmp/fusion360/logs/wineprefixes.log | awk 'NR == 1'`
-if [[ $WP_PATH_CHECK = "$WP_DIRECTORY" ]]; then
+WP_PATH_CHECK="$WP_DIRECTORY"
+if [[ -f "$WP_PATH_CHECK" ]]; then
     echo "FALSE"
     SP_INSTALLDIR_INFO
 else
@@ -1153,7 +1153,7 @@ function SP_COMPLETED {
   --field=":TXT" "$SP_COMPLETED_TEXT" \
   --field="$SP_COMPLETED_CHECK_LABEL:CHK" )
 
-  if [[ $SP_LICENSE_CHECK = *"TRUE"* ]]; then
+  if [[ $SP_COMPLETED_CHECK_LABEL = *"TRUE"* ]]; then
     echo "TRUE"
     . $WP_DIRECTORY/box-run.sh
   else
