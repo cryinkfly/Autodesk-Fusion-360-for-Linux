@@ -971,11 +971,16 @@ elif [[ $SP_OS = "Debian 11" ]]; then
 elif [[ $SP_OS = "EndeavourOS" ]]; then
     echo "EndeavourOS"
     OS_ARCHLINUX
+elif [[ $SP_OS = "Fedora 35" ]]; then
+    echo "Fedora 35"
+    FEDORA_BASED_1
+    OS_FEDORA_35
+    FEDORA_BASED_2
 elif [[ $SP_OS = "Fedora 36" ]]; then
     echo "Fedora 36"
     FEDORA_BASED_1
     OS_FEDORA_36
-    FEDORA_BASED_1
+    FEDORA_BASED_2
 elif [[ $SP_OS = "Linux Mint 19.x" ]]; then
     echo "Linux Mint 19.x"
     DEBIAN_BASED_1
