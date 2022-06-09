@@ -129,7 +129,7 @@ fi
 function SP_INSTALLDIR_CHECK {
 # Check if this wineprefix already exist or not!
 WP_PATH_CHECK="$WP_DIRECTORY"
-if [[ -f "$WP_PATH_CHECK" ]]; then
+if [[ -d "$WP_PATH_CHECK" ]]; then
     echo "FALSE"
     SP_INSTALLDIR_INFO
 else
