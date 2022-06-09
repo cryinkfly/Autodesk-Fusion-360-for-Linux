@@ -128,8 +128,8 @@ fi
 
 function SP_INSTALLDIR_CHECK {
 # Check if this wineprefix already exist or not!
-WP_PATH_CHECK="$WP_DIRECTORY"
-if [[ -d "$WP_PATH_CHECK" ]]; then
+WP_PATH_CHECK="$WP_DIRECTORY/box-run.sh"
+if [[ -f "$WP_PATH_CHECK" ]]; then
     echo "FALSE"
     SP_INSTALLDIR_INFO
 else
