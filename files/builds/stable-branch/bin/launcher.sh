@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                       #
 # License:      MIT                                                         #
 # Copyright (c) 2020-2022                                                   #
-# Time/Date:    07:50/09.06.2022                                            #
+# Time/Date:    08:15/09.06.2022                                            #
 # Version:      1.9                                                         #
 #############################################################################
 
@@ -34,10 +34,11 @@ function LAUNCHER_CHECK_FUSION360_ONLINE_VERSIONS {
 function LAUNCHER_CHECK_UPDATE {
   FUSION360_API_VERSION="$WP_BOX/drive_c/users/$USER/AppData/Roaming/Autodesk/Autodesk Fusion 360/API/version.txt" # Search for version.txt
   if [ -f "$FUSION360_API_VERSION" ]; then
+    echo "The version.txt file exist!"
     LAUNCHER_CHECK_UPDATE_VERSION
   else
-    echo "Do nothing!"
-    LAUNCHER_RUN_FUSION360
+    echo "The version.txt file not exist!"
+    GET_UPDATE=0
   fi
 }
 
@@ -50,9 +51,7 @@ function LAUNCHER_CHECK_UPDATE_VERSION {
   else
     # A value of 0 means that there is no update and a value of 1 will notify the user that there is an update.
     GET_UPDATE=1
-  fi 
-  
-  . $HOME/.fusion360/bin/update.sh 
+  fi  
 }
 
 ###############################################################################################################################################################
@@ -68,3 +67,4 @@ function LAUNCHER_RUN_FUSION360 {
 
 LAUNCHER_CHECK_FUSION360_ONLINE_VERSIONS
 LAUNCHER_CHECK_UPDATE
+. $HOME/.fusion360/bin/update.sh
