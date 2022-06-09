@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                       #
 # License:      MIT                                                         #
 # Copyright (c) 2020-2022                                                   #
-# Time/Date:    23:20/08.06.2022                                            #
+# Time/Date:    07:50/09.06.2022                                            #
 # Version:      1.9                                                         #
 #############################################################################
 
@@ -32,7 +32,7 @@ function LAUNCHER_CHECK_FUSION360_ONLINE_VERSIONS {
 }
 
 function LAUNCHER_CHECK_UPDATE {
-  FUSION360_API_VERSION="$WP_BOX/drive_c/users/$USER/AppData/Roaming/Autodesk/Autodesk\ Fusion\ 360/API/version.txt" # Search for version.txt
+  FUSION360_API_VERSION="$WP_BOX/drive_c/users/$USER/AppData/Roaming/Autodesk/Autodesk Fusion 360/API/version.txt" # Search for version.txt
   if [ -f "$FUSION360_API_VERSION" ]; then
     LAUNCHER_CHECK_UPDATE_VERSION
   else
