@@ -93,7 +93,7 @@ In the [development branch](https://github.com/cryinkfly/Autodesk-Fusion-360-for
   - Fedora 36
   - openSUSE Leap 15.2
   - openSUSE Leap 15.3
-  - openSUSE Leap 15.3 (Comming Soon!)
+  - openSUSE Leap 15.4 (Comming Soon!)
   - openSUSE Tumbleweed
   - Red Hat Enterprise Linux 8.x
   - Red Hat Enterprise Linux 9.x
