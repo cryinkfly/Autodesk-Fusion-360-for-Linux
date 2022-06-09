@@ -88,18 +88,17 @@ Ve [vývojové větvi](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linu
   - Arch Linux, Manjaro Linux, EndeavourOS, ...
   - Debian 10, MX Linux 19.4, Raspberry Pi Desktop, ...
   - Debian 11
-  - Fedora 33
-  - Fedora 34
-  - Fedora 35
+  - Fedora 36
   - openSUSE Leap 15.2
   - openSUSE Leap 15.3
+  - openSUSE Leap 15.4 (Comming Soon!)
   - openSUSE Tumbleweed
   - Red Hat Enterprise Linux 8.x
+  - Red Hat Enterprise Linux 9.x
   - Solus
   - Ubuntu 18.04, Linux Mint 19.x, ...
   - Ubuntu 20.04, Linux Mint 20.x, Pop!_OS 20.04, ...
-  - Ubuntu 21.04, Pop!_OS 21.04, ...
-  - Ubuntu 21.10
+  - Ubuntu 22.04, Pop!_OS 22.04, ...
   - Void Linux
   - Gentoo Linux
 
