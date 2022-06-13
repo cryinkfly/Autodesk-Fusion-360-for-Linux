@@ -1,13 +1,39 @@
-[CZ](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/README-cs_CZ.md) | [DE](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/README-de_DE.md) | [**EN**](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux) | [ES](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/README-es_ES.md) | [IT](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/README-it_IT.md) | [RU](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/README-ru_RU.md)
+<p align="center">
+ <a href="https://github.com/sponsors/cryinkfly">CZ</a>
+  |
+ <a href="https://github.com/sponsors/cryinkfly">CN</a> 
+  |
+ <a href="https://github.com/sponsors/cryinkfly">DE</a> 
+  |
+ <a href="https://github.com/sponsors/cryinkfly">EN</a> 
+  |
+ <a href="https://github.com/sponsors/cryinkfly">ES</a> 
+  |
+ <a href="https://github.com/sponsors/cryinkfly">FR</a> 
+  |
+ <a href="https://github.com/sponsors/cryinkfly">IT</a> 
+  |
+ <a href="https://github.com/sponsors/cryinkfly">JP</a> 
+  |
+ <a href="https://github.com/sponsors/cryinkfly">KR</a> 
+  |
+ <a href="https://github.com/sponsors/cryinkfly">RU</a>    
+</p>
 
-![banner-fusion360](https://user-images.githubusercontent.com/79079633/127371623-6b50b591-1b12-466d-9c96-b5b6d6314f31.png)
+<p align="center">
+ <img align="center" src="https://user-images.githubusercontent.com/79079633/127371623-6b50b591-1b12-466d-9c96-b5b6d6314f31.png">
+</p>
 
-![GitHub last commit](https://img.shields.io/github/last-commit/cryinkfly/Fusion-360---Linux-Wine-Version-?style=for-the-badge)
-![GitHub issues](https://img.shields.io/github/issues-raw/cryinkfly/Fusion-360---Linux-Wine-Version-?style=for-the-badge)
-![GitHub Repo stars](https://img.shields.io/github/stars/cryinkfly/Fusion-360---Linux-Wine-Version-?style=for-the-badge)
-![GitHub forks](https://img.shields.io/github/forks/cryinkfly/Fusion-360---Linux-Wine-Version-?style=for-the-badge)
-![GitHub](https://img.shields.io/github/license/cryinkfly/Fusion-360---Linux-Wine-Version-?style=for-the-badge)
+<p align="center">
+ <img align="center" src="https://img.shields.io/github/last-commit/cryinkfly/Fusion-360---Linux-Wine-Version-?style=for-the-badge">
+ <img align="center" src="https://img.shields.io/github/issues-raw/cryinkfly/Fusion-360---Linux-Wine-Version-?style=for-the-badge"> 
+ <img align="center" src="https://img.shields.io/github/stars/cryinkfly/Fusion-360---Linux-Wine-Version-?style=for-the-badge"> 
+ <img align="center" src="https://img.shields.io/github/forks/cryinkfly/Fusion-360---Linux-Wine-Version-?style=for-the-badge"> 
+ <img align="center" src="https://img.shields.io/github/sponsors/cryinkfly?style=for-the-badge">
+ <img align="center" src="https://img.shields.io/github/license/cryinkfly/Fusion-360---Linux-Wine-Version-?style=for-the-badge"> 
 
+</p>
+  
 [Autodesk Fusion 360](https://www.autodesk.com/products/fusion-360/features) is a cloud-based 3D modeling, CAD, CAM, and PCB software platform for product design and manufacturing, what you can use on Windows and macOS.
 
 But the problem is that there are also people like me who don't want to use either of these two operating systems on their systems. Then these users have installed a Linux distribution such as openSUSE Leap, Ubuntu or Fedora.
@@ -232,6 +258,12 @@ With the help of my script, You get a way to install Autodesk Fusion 360 on your
 Certain packages and programs that are required will be set up for You, but it's important to know, that my script only helps You to get the program to run and nothing more! 
 
 And so, You must to purchase the licenses directly from the manufacturer of the program Autodesk Fusion 360!
+
+---
+
+### ❤️ Become a sponsor or supporter?
+  
+- More information under "[Become a sponsor](https://github.com/sponsors/cryinkfly)" and "[Become a supporter](https://github.com/cryinkfly/cryinkfly/blob/main/SPONSORSHIP.md#become-a-supporter)".
 
 ---
 
