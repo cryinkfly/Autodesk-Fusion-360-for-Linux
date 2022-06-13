@@ -1,40 +1,89 @@
-<p align="center">
- <a href="https://github.com/sponsors/cryinkfly">CZ</a>
-  |
- <a href="https://github.com/sponsors/cryinkfly">CN</a> 
-  |
- <a href="https://github.com/sponsors/cryinkfly">DE</a> 
-  |
- <a href="https://github.com/sponsors/cryinkfly">EN</a> 
-  |
- <a href="https://github.com/sponsors/cryinkfly">ES</a> 
-  |
- <a href="https://github.com/sponsors/cryinkfly">FR</a> 
-  |
- <a href="https://github.com/sponsors/cryinkfly">IT</a> 
-  |
- <a href="https://github.com/sponsors/cryinkfly">JP</a> 
-  |
- <a href="https://github.com/sponsors/cryinkfly">KR</a> 
-  |
- <a href="https://github.com/sponsors/cryinkfly">RU</a>    
-</p>
-
-<p align="center">
+<div id="header" align="center">
+ <a href="https://github.com/sponsors/cryinkfly"><img src="https://img.shields.io/badge/CZ-lightgrey"></a>
+ <a href="https://github.com/sponsors/cryinkfly"><img src="https://img.shields.io/badge/CN-lightgrey"></a> 
+ <a href="https://github.com/sponsors/cryinkfly"><img src="https://img.shields.io/badge/DE-lightgrey"></a> 
+ <a href="https://github.com/sponsors/cryinkfly"><img src="https://img.shields.io/badge/EN-brightgreen"></a> 
+ <a href="https://github.com/sponsors/cryinkfly"><img src="https://img.shields.io/badge/ES-lightgrey"></a> 
+ <a href="https://github.com/sponsors/cryinkfly"><img src="https://img.shields.io/badge/FR-lightgrey"></a> 
+ <a href="https://github.com/sponsors/cryinkfly"><img src="https://img.shields.io/badge/IT-lightgrey"></a> 
+ <a href="https://github.com/sponsors/cryinkfly"><img src="https://img.shields.io/badge/JP-lightgrey"></a> 
+ <a href="https://github.com/sponsors/cryinkfly"><img src="https://img.shields.io/badge/KR-lightgrey"></a> 
+ <a href="https://github.com/sponsors/cryinkfly"><img src="https://img.shields.io/badge/RU-lightgrey"></a>
+ </br>
  <img align="center" src="https://user-images.githubusercontent.com/79079633/127371623-6b50b591-1b12-466d-9c96-b5b6d6314f31.png">
-</p>
+ </br>
+ <img align="center" src="https://img.shields.io/github/license/cryinkfly/Fusion-360---Linux-Wine-Version-?style=flat">
+ <img align="center" src="https://img.shields.io/github/last-commit/cryinkfly/Fusion-360---Linux-Wine-Version-?style=flat">
+ <img align="center" src="https://img.shields.io/github/issues-raw/cryinkfly/Fusion-360---Linux-Wine-Version-?style=flat"> 
+ <img align="center" src="https://img.shields.io/github/stars/cryinkfly/Fusion-360---Linux-Wine-Version-?style=flat"> 
+ <img align="center" src="https://img.shields.io/github/forks/cryinkfly/Fusion-360---Linux-Wine-Version-?style=flat"> 
+ <img align="center" src="https://img.shields.io/github/sponsors/cryinkfly">
+ </br></br>
+ <a href="https://www.autodesk.com/products/fusion-360/features">Autodesk Fusion 360</a> is a cloud-based 3D modeling, CAD, CAM, CAE, and PCB software platform for product design and manufacturing that offers an affordable, powerful alternative to other well-known solutions on the market.
+</div>
 
-<p align="center">
- <img align="center" src="https://img.shields.io/github/last-commit/cryinkfly/Fusion-360---Linux-Wine-Version-?style=for-the-badge">
- <img align="center" src="https://img.shields.io/github/issues-raw/cryinkfly/Fusion-360---Linux-Wine-Version-?style=for-the-badge"> 
- <img align="center" src="https://img.shields.io/github/stars/cryinkfly/Fusion-360---Linux-Wine-Version-?style=for-the-badge"> 
- <img align="center" src="https://img.shields.io/github/forks/cryinkfly/Fusion-360---Linux-Wine-Version-?style=for-the-badge"> 
- <img align="center" src="https://img.shields.io/github/sponsors/cryinkfly?style=for-the-badge">
- <img align="center" src="https://img.shields.io/github/license/cryinkfly/Fusion-360---Linux-Wine-Version-?style=for-the-badge"> 
+---
 
-</p>
-  
-[Autodesk Fusion 360](https://www.autodesk.com/products/fusion-360/features) is a cloud-based 3D modeling, CAD, CAM, and PCB software platform for product design and manufacturing, what you can use on Windows and macOS.
+<div id="box" align="center">
+<h2>📋 What can you do with Autodesk Fusion 360?</h2>
+<table>
+ <thead>
+  <tr>
+   <th>Features</th>
+   <th>Description of the feature</th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td>3D design and modeling</td>
+   <td>Engineer products with a comprehensive set of modeling tools. Ensure your products' form, fit, and function with diverse analysis methods.</td>
+  </tr>
+  <tr>
+   <td>Sketching</td>
+   <td>Create and edit sketches with sketch constraints, dimensions, and a powerful suite of sketch tools.</td>
+  </tr>
+  <tr>
+   <td>Direct modeling</td>
+   <td>Edit or repair imported geometry from non-native file formats. Make design changes without worrying about time-based features.</td>
+  </tr>
+  <tr>
+   <td>Surface modeling</td>
+   <td>Create and edit complex parametric surfaces for repairing, patching, or designing geometry.</td>
+  </tr>
+  <tr>
+   <td>Parametric modeling</td>
+   <td>Create history-based features, including extrude, revolve, loft, sweep, etc., that update with design changes.</td>
+  </tr>
+  <tr>
+   <td>Mesh modeling</td>
+   <td>Edit and repair imported scans or mesh models, including STL and OBJ files.</td>
+  </tr>
+  <tr>
+   <td>Freeform modeling</td>
+   <td>Create complex sub-divisional surfaces with T-splines and edit them with intuitive push-pull gestures.</td>
+  </tr>
+  <tr>
+   <td>Rendering</td>
+   <td>Create photo-realistic images of your model, leveraging local or cloud rendering.</td>
+  </tr>
+  <tr>
+   <td>PCB design integration</td>
+   <td>Synchronize bi-directional changes from your electronics designs seamlessly with Autodesk EAGLE interoperability.</td>
+  </tr>
+  <tr>
+   <td>Sheet metal</td>
+   <td>Design sheet metal part components. Document flat patterns using 2D drawings and DXFs. Manufacture your designs with cutting strategies for water jet, laser, and plasma machines.</td>
+  </tr>
+  <tr>
+   <td>Assemblies</td>
+   <td>Assemble designs with a traditional bottom-up, middle-out, or top-down approach, and analyze assembly motion.</td>
+  </tr>
+ </tbody>
+</table>
+<h2>⚠️ Do you want to learn everything about Autodesk Fusion 360 features? ⚠️</h2>
+ ✅ Visit the original website of Autodesk Fusion 360 with this link: https://www.autodesk.com/products/fusion-360/features
+ </br></br>
+</div> 
 
 But the problem is that there are also people like me who don't want to use either of these two operating systems on their systems. Then these users have installed a Linux distribution such as openSUSE Leap, Ubuntu or Fedora.
 
@@ -47,7 +96,7 @@ With this nice tool we don't need longer two operating systems for Fusion 360, w
 Is that a great idea for the future?
 
 Personally, I think this idea is good and for this reason I will do my best to give you the opportunity to use it on Linux as well!
-
+ 
 ---
 
 You will get more information about this program, then you can visit the original website of Autodesk Fusion 360 with this link: https://www.autodesk.com/products/fusion-360/features
