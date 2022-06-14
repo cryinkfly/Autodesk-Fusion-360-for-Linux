@@ -99,7 +99,7 @@
   </tr>
  </tbody>
 </table>
-<h3>📖 Do you want to learn everything about Autodesk Fusion 360 features?</h3>
+<h3>📖 Do you want to learn everything about the Autodesk Fusion 360 features?</h3>
  ✅ Then visit the official <a href="https://www.youtube.com/user/AutodeskFusion360">YouTube channel</a> where you you can watch many hours of free tutorials 
  </br>
  ✅ Or visit the <a href="https://www.autodesk.com/products/fusion-360/features">website</a> of Autodesk Fusion 360.
@@ -144,7 +144,9 @@
   </tr>
  </tbody>
 </table>
- </br>
+ <h3>📖 Do you want to learn everything about the Autodesk Fusion 360 subscription options?</h3>
+ ✅ Then visit the <a href="https://www.autodesk.com/products/fusion-360/overview?term=1-MONTH&tab=subscription">website</a> of Autodesk Fusion 360.
+ </br></br>
 </div>
 
 ---
@@ -162,45 +164,129 @@
 
 ---
 
+<div id="fusion360-contribute" align="center">
+<h2>📮 Would you like to contribute?</h2>
+ Contributions of all kinds are welcome, not only in the form of code, but also in terms of the <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/wiki/Documentation">official documentation</a>, debugging help in the <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/issues">bug tracker</a>, support from other users in the <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/discussions">discussion section</a> here on GitHub or in the comments section of my published videos on my <a href="https://www.youtube.com/channel/UCJO-EOBPtlVv5OycHkFPcRg">official YouTube channel</a> and also <a href="https://github.com/sponsors/cryinkfly">financially</a>.
+</br></br>
+If you think something is bad about this project or its documentation, please help in any way to make it better instead of just complaining about it - this is an open source project after all! 🎈
+ </br></br>
+ There is also a <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/.github/CODE_OF_CONDUCT.md">Contributor Covenant Code of Conduct</a>, which also provides additional information. 📚
+</div>
+
+---
+
 <div id="fusion360-more-project-information" align="center">
 <h2>🪧 More information about this project:</h2>
  🌍 Official member: <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/releases/tag/v5.1">Autodesk Group Network</a> & <a href="https://feedback.autodesk.com/key/Fusion360Insider">Autodesk Fusion 360 Insider program</a>! 🌍
  </br>
  🍷 <a href="https://appdb.winehq.org/objectManager.php?sClass=application&iId=15617">Super Application Maintainer</a> (WineHQ) 🍷
- </br>
- 📔 Documentation: <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/wiki/Documentation">GitHub-Documentation</a> & <a href="https://www.youtube.com/watch?v=-BktJspJKgs&list=PLzwMdS5iu_BIsO6RTy7Hy1MbzLMrQE2xe">Videos</a> 📔
- </br>
- 📂 Downloads: 
-<a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/builds/stable-branch">Stable</a> and <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/builds/development-branch">development builds</a> 📂
-</br>
- 📜 Code of Conduct: <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/.github/CODE_OF_CONDUCT.md">Contributor Covenant</a> 📜
-</br>
- 📖 Information for contributors: All contribution information, Compilation instructions, Roadmap (Still in Progress!) 📖
-</br>
- ☕️ Discussion: https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/discussions ☕️
-</br>
- 💬 Would You like to get in touch with me? Or if You have any questions, suggestions or problems? 💬
-</br>
- 📫 Then You can create an <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues">bug report</a> here on GitHub or You visit my <a href="https://cryinkfly.com">website</a> and get in touch with me! 📫
- </br>
- ❤️ I'd like to thank everyone who has <a href="https://github.com/cryinkfly/cryinkfly/blob/main/SPONSORSHIP.md">helped</a> me as a sponsor or supporter! ❤️
-</br></br>
-</div>
-
----
-
-<div id="fusion360-project-screenshots" align="center">
-<h2>🖼 Screenshots from this project:</h2>
-<img src="https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/images/workspaces/Manufacture/%231.1_adapter-plate.png" width="300px" height="200px">
-<img src="https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/images/workspaces/Generative%20Design/%231.4_generative_design.png" width="300px" height="200px">
-<img src="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/files/images/workspaces/Rendering/rpi4_case_tux-tage-2021.png" width="300px" height="200px">
-<img src="https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/images/workspaces/Simulation/%231_study_displacement.png" width="300px" height="200px">
-<img src="https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/images/workspaces/Drawing/drawing_oil_case.png" width="300px" height="200px">
-<img src="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/images/workspaces/Electronics/%231_air%20quality%20sensor.png" width="300px" height="200px">
  </br></br>
 </div>
 
 ---
+
+<div id="fusion360-requirements-1" align="center">
+<h2>📑 What are the System requirements for Autodesk Fusion 360?</h2>
+</div>
+<div id="fusion360-requirements-2" align="left">
+ <table>
+   <thead>
+    <tr>
+     <th colspan="2" rowspan="1"><b>System requirements for Autodesk Fusion 360</b></th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td><strong>Operating System</strong></td>
+     <td >
+     <u>Linux distributions</u>
+      <ul>
+       <li><p>Arch Linux, Manjaro Linux, EndeavourOS, ...</p></li>
+       <li><p>Debian 10, MX Linux 19.4, Raspberry Pi Desktop, ...</p></li>
+       <li><p>Debian 11</p></li>
+       <li><p>Fedora 35</p></li>
+       <li><p>Fedora 36</p></li>
+       <li><p>openSUSE Leap 15.2</p></li>
+       <li><p>openSUSE Leap 15.3</p></li>
+       <li><p>openSUSE Leap 15.4 (Comming Soon!)</p></li>
+       <li><p>openSUSE Tumbleweed</p></li>
+       <li><p>Red Hat Enterprise Linux 8.x</p></li>
+       <li><p>Red Hat Enterprise Linux 9.x</p></li>
+       <li><p>Solus</p></li>
+       <li><p>Ubuntu 18.04, Linux Mint 19.x, ...</p></li>
+       <li><p>Ubuntu 20.04, Linux Mint 20.x, Pop!_OS 20.04, ...</p></li>
+       <li><p>Ubuntu 22.04, Pop!_OS 22.04, ...</p></li>
+       <li><p>Void Linux</p></li>
+       <li><p>Gentoo Linux</p></li>
+      </ul><p><b>Note</b>: These Linux distributions are not officially supported by Autodesk!</p></td>
+    </tr>
+    <tr>
+     <td><strong>CPU Type</strong></td>
+     <td>x86-based 64-bit processor (for example, Intel Core i, AMD Ryzen series), 4 cores, 1.7 GHz or greater; 32-bit not supported</td>
+    </tr>
+    <tr>
+     <td><strong>Memory</strong></td>
+     <td>4 GB of RAM (integrated graphics recommend 6 GB or more)</td>
+    </tr>
+    <tr>
+     <td><strong>Graphics Card</strong></td>
+     <td>DirectX11 (Direct3D 10.1 or greater) = DXVK Mode <br> OpenGL (2.0 or greater) = OpenGL Mode <br> Dedicated GPU with 1 GB or more of VRAM<br> Integrated graphics with 6 GB or more of RAM
+      <br><br>
+      <p><b>Note</b>: There is a <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/wiki/Supported-Graphics-Cards">list of tested graphics cards</a> that will work with Autodesk Fusion 360 on Linux!</p></td>
+    </tr>
+    <tr>
+     <td><strong>Disk Space</strong></td>
+     <td>3 GB of storage</td>
+    </tr>
+    <tr>
+     <td><strong>Display Resolution</strong></td>
+     <td>1366 x 768 (1920 x 1080 or greater at 100% scale recommended)</td>
+    </tr>
+    <tr>
+     <td><strong>Pointing Device</strong></td>
+     <td>HID-compliant mouse or trackpad, optional Wacom® tablet and 3Dconnexion SpaceMouse® support
+     <br><br>
+      <p><b>Note</b>: That still needs to be checked if it works on Linux!</p
+     </td>
+    </tr>
+    <tr>
+     <td><strong>Internet</strong></td>
+     <td>2.5 Mbps or faster download; 500 Kbps or faster upload</td>
+    </tr>
+    <tr>
+     <td><strong>Dependencies</strong></td>
+     <td>SSL 3.0, TLS 1.2+,&nbsp;.NET Framework 4.5 or newer required to submit crash reports</td>
+    </tr>
+   </tbody>
+  </table>
+ </br>
+ <table>
+   <thead>
+    <tr>
+     <th colspan="2" rowspan="1"><b>Recommended specs for complex modeling and processing</b></th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td><strong>CPU Type</strong></td>
+     <td>3 GHz or greater, 6 or more cores</td>
+    </tr>
+    <tr>
+     <td><strong>Memory</strong></td>
+     <td>8-GB RAM or greater</td>
+    </tr>
+    <tr>
+     <td><strong>Graphics</strong></td>
+     <td>Dedicated GPU with 4 GB or more VRAM, DirectX 11 (Direct3D 11 or greater)</td>
+    </tr>
+   </tbody>
+  </table>
+  </br>
+</div>
+
+---
+
+
 
 ## Downloads
 
@@ -358,6 +444,19 @@ Install Fusion 360 for Linux client:
 </tr>
 </tbody>
 </table>
+
+---
+
+<div id="fusion360-project-screenshots" align="center">
+<h2>🖼 Screenshots from this project:</h2>
+<img src="https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/images/workspaces/Manufacture/%231.1_adapter-plate.png" width="200px" height="150px">
+<img src="https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/images/workspaces/Generative%20Design/%231.4_generative_design.png" width="200px" height="150px">
+<img src="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/files/images/workspaces/Rendering/rpi4_case_tux-tage-2021.png" width="200px" height="150px">
+<img src="https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/images/workspaces/Simulation/%231_study_displacement.png" width="200px" height="150px">
+<img src="https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/images/workspaces/Drawing/drawing_oil_case.png" width="200px" height="150px">
+<img src="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/images/workspaces/Electronics/%231_air%20quality%20sensor.png" width="200px" height="150px">
+ </br></br>
+</div>
 
 ---
 
