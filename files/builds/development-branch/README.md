@@ -117,6 +117,33 @@
 
 <div id="license-packs" align="center">
 <h2>💰 How much does Fusion 360 cost?</h2>
+ <table>
+ <thead>
+  <tr>
+   <th>License</th>
+   <th>Description of the license</th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td>Free Trial</td>
+   <td>Autodesk offers a 30-day free trial after registration.</td>
+  </tr>
+  <tr>
+   <td>Education</td>
+   <td>Like most CAD packages, Fusion 360 offers an educational license for students, teachers, and educational institutions.</td>
+  </tr>
+  <tr>
+   <td>Start-up</td>
+   <td>There are free licenses for start-ups as well as for non-commercial private users. Companies with annual sales of less than USD 100,000 are eligible for the start-up license. But it doesn't include any of the more advanced features like generative design.</td>
+  </tr>
+  <tr>
+   <td>Standard</td>
+   <td>There have been two versions of the paid license so far: Standard and Ultimate. However, they have been merged into one version that includes all the features of the Ultimate version. Fees are incurred as part of a subscription.</td>
+  </tr>
+ </tbody>
+</table>
+ </br></br>
 </div>
 
 
