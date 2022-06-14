@@ -281,12 +281,23 @@ If you think something is bad about this project or its documentation, please he
     </tr>
    </tbody>
   </table>
-  </br>
+</div>
+
+<div id="fusion360-requirements-3" align="center">
+<h3>📖 What else is there to consider when it comes to the requirements?</h3>
+ ✅ Check the <a href="https://health.autodesk.com/">Health Dashboard</a>!
+ </br>
+ ✅ You must have installed the <a href="https://github.com/lutris/docs/blob/master/InstallingDrivers.md">latest graphics driver</a>!
+ </br>
+ ✅ You need the <a href="https://www.winehq.org/">latest version of wine (6.23 and newer)</a> and <a href="https://github.com/Winetricks/winetricks">winetricks</a>!
+ </br>
+ ✅ You need the some packages (yad, dialog, p7zip, p7zip-full, p7zip-rar, curl, wget, winbind, cabextract, wine, wine-mono, wine_gecko, winetricks, ...)!
+ </br></br>
+ And would you like to use the Czech language later in Autodesk Fusion 360, then you need a <a href="https://apps.autodesk.com/FUSION/en/Detail/Index?id=9151466655844643882">special extension</a> what you must have bought and downloaded before you can install this with my Setup Wizard!
+ </br></br>
 </div>
 
 ---
-
-
 
 ## Downloads
 
@@ -295,37 +306,6 @@ There are some <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Lin
 It's recommended that if you're new you start with the stable builds. Development builds are available here if you need it, but correspondingly may be less stable.
 
 In the [development branch](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/builds/development-branch) you will find, for example, the upcoming versions of my setup wizard, as well as builds that run with the help of Flatpak or Docker/Podman.
-
----
-
-## Hardware and Software Requirements
-
-- Internet connection (Cable/DSL speeds recommended)!
-- Check the [Health Dashboard](https://health.autodesk.com/) of Autodesk Fusion 360!
-- Latest graphics driver, see <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/wiki/Supported-Graphics-Cards">here</a>!
-- Latest wine version (6.23 and newer), because with some versions of wine where no internet connection works!
-- Would you like to use the Czech language later in Autodesk Fusion 360, then you need a [special extension](https://apps.autodesk.com/FUSION/en/Detail/Index?id=9151466655844643882) what you must have bought and downloaded before you can install this with my Setup Wizard!
-- My script install some packages (dialog, p7zip, p7zip-full, p7zip-rar, curl, wget, winbind, cabextract, wine, wine-mono, wine_gecko, winetricks, ...)!
-- Please select the DXVK mode, as there are some bugs in the OpenGL mode! The OpenGL mode only serves as a fallback.
-- [YAD](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/issues/233) must be installed on your computer!
-- Supported Linux distributions:
-  - Arch Linux, Manjaro Linux, EndeavourOS, ...
-  - Debian 10, MX Linux 19.4, Raspberry Pi Desktop, ...
-  - Debian 11
-  - Fedora 35
-  - Fedora 36
-  - openSUSE Leap 15.2
-  - openSUSE Leap 15.3
-  - openSUSE Leap 15.4 (Comming Soon!)
-  - openSUSE Tumbleweed
-  - Red Hat Enterprise Linux 8.x
-  - Red Hat Enterprise Linux 9.x
-  - Solus
-  - Ubuntu 18.04, Linux Mint 19.x, ...
-  - Ubuntu 20.04, Linux Mint 20.x, Pop!_OS 20.04, ...
-  - Ubuntu 22.04, Pop!_OS 22.04, ...
-  - Void Linux
-  - Gentoo Linux
 
 ---
 
