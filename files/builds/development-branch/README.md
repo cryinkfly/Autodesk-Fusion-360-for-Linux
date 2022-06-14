@@ -1,6 +1,6 @@
 # STILL IN PROGRESS!!!
 
-<div id="header" align="center">
+<div id="about" align="center">
  <a href="https://github.com/sponsors/cryinkfly"><img src="https://img.shields.io/badge/CZ-lightgrey"></a>
  <a href="https://github.com/sponsors/cryinkfly"><img src="https://img.shields.io/badge/CN-lightgrey"></a> 
  <a href="https://github.com/sponsors/cryinkfly"><img src="https://img.shields.io/badge/DE-lightgrey"></a> 
@@ -21,12 +21,28 @@
  <img align="center" src="https://img.shields.io/github/forks/cryinkfly/Fusion-360---Linux-Wine-Version-?style=flat"> 
  <img align="center" src="https://img.shields.io/github/sponsors/cryinkfly">
  </br></br>
- <a href="https://www.autodesk.com/products/fusion-360/features">Autodesk Fusion 360</a> is a cloud-based 3D modeling, CAD, CAM, CAE, and PCB software platform for product design and manufacturing that offers an affordable, powerful alternative to other well-known solutions on the market.
+ <a href="https://www.autodesk.com/products/fusion-360/features">Autodesk Fusion 360</a> is a cloud-based 3D modeling, CAD, CAM, CAE, and PCB software platform for product design and manufacturing that offers an affordable, powerful alternative to other well-known solutions on the market. ⚗️ 🔭 🔬 🔩 🛠
+ </br></br>
+ ⚠️ But the problem is that it usually only works on systems that have Windows or macOS installed as the operating system. ⚠️
+ </br></br>
+ ⛔️ However, I do not use either of these two operating systems on my devices! ⛔️
+ </br></br>
+ 🐧 I'm using a Linux distribution such as openSUSE Tumbleweed and needed a solution to this problem. 🐧 
+ </br></br>
+ 🔍 I started looking at different tools, testing different approaches and ideas until I chose Wine. 🔍
+ </br></br>
+ 🍷 Wine (originally an acronym for "Wine Is Not an Emulator") is a compatibility layer capable of running Windows applications on several POSIX-compliant operating systems, such as Linux, macOS, & BSD. Instead of simulating internal Windows logic like a virtual machine or emulator, Wine translates Windows API calls into POSIX calls on-the-fly, eliminating the performance and memory penalties of other methods and allowing you to cleanly integrate Windows applications into your desktop. 🍷
+ </br></br>
+ ✅ And so, with this nice tool, we no longer need two operating systems for Fusion 360 if you or I want to create an awesome project in the future. ✅
+ </br></br>
+ 💡 Is this a good idea for the future of Autodesk Fusion 360? 💡
+ </br></br> 
+ 🚀 I personally like this idea and for that reason I will do my best to give you the possibility to use it on Linux too! 🚀
 </div>
 
 ---
 
-<div id="box" align="center">
+<div id="features" align="center">
 <h2>📋 What can you do with Autodesk Fusion 360?</h2>
 <table>
  <thead>
@@ -82,28 +98,29 @@
   </tr>
  </tbody>
 </table>
-<h2>⚠️ Do you want to learn everything about Autodesk Fusion 360 features? ⚠️</h2>
- ✅ Visit the original website of Autodesk Fusion 360 with this link: https://www.autodesk.com/products/fusion-360/features
+<h3>📖 Do you want to learn everything about Autodesk Fusion 360 features?</h3>
+ ✅ Then visit the official <a href="https://www.youtube.com/user/AutodeskFusion360">YouTube channel</a> where you you can watch many hours of free tutorials 
+ </br>
+ ✅ Or visit the <a href="https://www.autodesk.com/products/fusion-360/features">website</a> of Autodesk Fusion 360.
+ </br></br>
+ And you will also get all the news and information about this project through my channels:
+ </br></br>
+ <a href="https://cryinkfly.com/"><img src="https://img.shields.io/badge/Website-73ba25?style=for-the-badge&logo=website&logoColor=black" alt="Website Badge"/></a>
+ <a href="https://www.facebook.com/cryinkfly/"><img src="https://img.shields.io/badge/Facebook-blue?style=for-the-badge&logo=facebook&logoColor=white" alt="Facebook Badge"/></a>
+ <a href="https://instagram.com/cryinkfly"><img src="https://img.shields.io/badge/Instagram-purple?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram Badge"/></a>
+ <a href="https://github.com/cryinkfly/"><img src="https://img.shields.io/badge/GitHub-black?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Badge"/></a>
+ <a href="https://www.youtube.com/channel/UCJO-EOBPtlVv5OycHkFPcRg"><img src="https://img.shields.io/badge/YouTube-red?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube Badge"/></a>
  </br></br>
 </div> 
 
-But the problem is that there are also people like me who don't want to use either of these two operating systems on their systems. Then these users have installed a Linux distribution such as openSUSE Leap, Ubuntu or Fedora.
-
-And so I got the idea to start this project here to find a way to solve this problem. 
-
-I started looking at different tools and my choice was Wine! 
-
-With this nice tool we don't need longer two operating systems for Fusion 360, when we will create a fantastic project in the future or if you want to work on a project with other people.
-
-Is that a great idea for the future?
-
-Personally, I think this idea is good and for this reason I will do my best to give you the opportunity to use it on Linux as well!
- 
 ---
 
-You will get more information about this program, then you can visit the original website of Autodesk Fusion 360 with this link: https://www.autodesk.com/products/fusion-360/features
+<div id="license-packs" align="center">
+<h2>💰 How much does Fusion 360 cost?</h2>
+</div>
 
----
+
+
 
 ## Current Version of Autodesk Fusion 360
 
