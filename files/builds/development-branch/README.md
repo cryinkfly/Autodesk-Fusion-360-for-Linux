@@ -259,9 +259,11 @@
    </tbody>
   </table>
  </br>
- <table width="100%">
+ 
+ <div id="fusion360-requirements-3" align="center">
+ <table>
    <thead>
-    <tr width="(100/x)%">
+    <tr>
      <th colspan="2" rowspan="1"><b>Recommended specs for complex modeling and processing</b></th>
     </tr>
    </thead>
@@ -282,7 +284,7 @@
   </table>
 </div>
 
-<div id="fusion360-requirements-3" align="center">
+<div id="fusion360-requirements-4" align="center">
 <h3>📖 What else is there to consider when it comes to the requirements?</h3>
  🔹 Check the <a href="https://health.autodesk.com/">Health Dashboard</a>!
  </br>
@@ -290,7 +292,7 @@
  </br>
  🔹 You need the <a href="https://www.winehq.org/">latest version of wine (6.23 and newer)</a> and <a href="https://github.com/Winetricks/winetricks">winetricks</a>!
  </br></br>
- 🧩 And would you like to use extra functions or languages as like the Czech language later in Autodesk Fusion 360, then you need a <a href="https://apps.autodesk.com/FUSION/en/Detail/Index?id=9151466655844643882">special extension</a> what you must have bought and downloaded before you can install this with my Setup Wizard! 🧩
+ 🧩 And would you like to use <a href="https://apps.autodesk.com/FUSION/de/Home/Index">extra functions</a> or languages as like the Czech language later in Autodesk Fusion 360, then you need a <a href="https://apps.autodesk.com/FUSION/en/Detail/Index?id=9151466655844643882">special extension</a> what you must have bought and downloaded before you can install this with my Setup Wizard! 🧩
  </br></br>
 </div>
 
