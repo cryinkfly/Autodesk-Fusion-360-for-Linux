@@ -34,11 +34,31 @@
  </br></br>
  🍷 Wine (originally an acronym for "Wine Is Not an Emulator") is a compatibility layer capable of running Windows applications on several POSIX-compliant operating systems, such as Linux, macOS, & BSD. Instead of simulating internal Windows logic like a virtual machine or emulator, Wine translates Windows API calls into POSIX calls on-the-fly, eliminating the performance and memory penalties of other methods and allowing you to cleanly integrate Windows applications into your desktop. 🍷
  </br></br>
- ✅ And so, with this nice tool, we no longer need two operating systems for Fusion 360 if you or I want to create an awesome project in the future. ✅
+ 🪄 And so, with this nice tool, we no longer need two operating systems for Fusion 360 if you or I want to create an awesome project in the future. 🪄
  </br></br>
  💡 Is this a good idea for the future of Autodesk Fusion 360? 💡
  </br></br> 
  🚀 I personally like this idea and for that reason I will do my best to give you the possibility to use it on Linux too! 🚀
+  </br> </br>
+ <h3>🪧 More information about this project:</h3>
+ 🌍 Official member: <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/releases/tag/v5.1">Autodesk Group Network</a> & <a href="https://feedback.autodesk.com/key/Fusion360Insider">Autodesk Fusion 360 Insider program</a>! 🌍
+ </br>
+ 🍷 <a href="https://appdb.winehq.org/objectManager.php?sClass=application&iId=15617">Super Application Maintainer</a> (WineHQ) 🍷
+ </br></br>
+</div>
+
+---
+
+<div id="fusion360-project-screenshots" align="center">
+<h2>🖼 Screenshots from this project:</h2>
+<img src="https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/images/workspaces/Manufacture/%231.1_adapter-plate.png" width="200px" height="150px">
+<img src="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/files/images/workspaces/Rendering/rpi4_case_tux-tage-2021.png" width="200px" height="150px">
+<img src="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/files/images/workspaces/Design/MacMASTER-CARR.png?raw=true" width="200px" height="150px">
+<img src="https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/images/workspaces/Generative%20Design/%231.4_generative_design.png" width="200px" height="150px">
+<img src="https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/images/workspaces/Simulation/%231_study_displacement.png" width="200px" height="150px">
+<img src="https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/images/workspaces/Drawing/drawing_oil_case.png" width="200px" height="150px">
+<img src="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/images/workspaces/Electronics/%231_air%20quality%20sensor.png" width="200px" height="150px">
+ </br></br>
 </div>
 
 ---
@@ -100,9 +120,9 @@
  </tbody>
 </table>
 <h3>📖 Do you want to learn everything about the Autodesk Fusion 360 features?</h3>
- ✅ Then visit the official <a href="https://www.youtube.com/user/AutodeskFusion360">YouTube channel</a> where you you can watch many hours of free tutorials 
+ 🔹 Then visit the official <a href="https://www.youtube.com/user/AutodeskFusion360">YouTube channel</a> where you you can watch many hours of free tutorials 
  </br>
- ✅ Or visit the <a href="https://www.autodesk.com/products/fusion-360/features">website</a> of Autodesk Fusion 360.
+ 🔹 Or visit the <a href="https://www.autodesk.com/products/fusion-360/features">website</a> of Autodesk Fusion 360.
  </br></br>
  And you will also get all the news and information about this project through my channels:
  </br></br>
@@ -145,7 +165,7 @@
  </tbody>
 </table>
  <h3>📖 Do you want to learn everything about the Autodesk Fusion 360 subscription options?</h3>
- ✅ Then visit the <a href="https://www.autodesk.com/products/fusion-360/overview?term=1-MONTH&tab=subscription">website</a> of Autodesk Fusion 360.
+ 🔹 Then visit the <a href="https://www.autodesk.com/products/fusion-360/overview?term=1-MONTH&tab=subscription">website</a> of Autodesk Fusion 360.
  </br></br>
 </div>
 
@@ -154,32 +174,11 @@
 <div id="fusion360-version-info" align="center">
 <h2>🕑 What is the latest version of Fusion 360?</h2>
  <h4>Complete the following steps:</h4>
- 1.) Visit the <a href="https://www.autodesk.com/products/fusion-360/blog?s=what%27s+new">What's New in Fusion Blog</a> (where product updates for Fusion 360 are chronicled).
+ 🔹 Visit the <a href="https://www.autodesk.com/products/fusion-360/blog?s=what%27s+new">What's New in Fusion Blog</a> (where product updates for Fusion 360 are chronicled).
  </br>
- 2.) Click on the latest product update (the first item in the list).
+ 🔹 Click on the latest product update (the first item in the list).
  </br>
- 3.) The version number is documented here.
- </br></br>
-</div>
-
----
-
-<div id="fusion360-contribute" align="center">
-<h2>📮 Would you like to contribute?</h2>
- Contributions of all kinds are welcome, not only in the form of code, but also in terms of the <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/wiki/Documentation">official documentation</a>, debugging help in the <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/issues">bug tracker</a>, support from other users in the <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/discussions">discussion section</a> here on GitHub or in the comments section of my published videos on my <a href="https://www.youtube.com/channel/UCJO-EOBPtlVv5OycHkFPcRg">official YouTube channel</a> and also <a href="https://github.com/sponsors/cryinkfly">financially</a>.
-</br></br>
-If you think something is bad about this project or its documentation, please help in any way to make it better instead of just complaining about it - this is an open source project after all! 🎈
- </br></br>
- There is also a <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/.github/CODE_OF_CONDUCT.md">Contributor Covenant Code of Conduct</a>, which also provides additional information. 📚
-</div>
-
----
-
-<div id="fusion360-more-project-information" align="center">
-<h2>🪧 More information about this project:</h2>
- 🌍 Official member: <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/releases/tag/v5.1">Autodesk Group Network</a> & <a href="https://feedback.autodesk.com/key/Fusion360Insider">Autodesk Fusion 360 Insider program</a>! 🌍
- </br>
- 🍷 <a href="https://appdb.winehq.org/objectManager.php?sClass=application&iId=15617">Super Application Maintainer</a> (WineHQ) 🍷
+ 🔹 The version number is documented here.
  </br></br>
 </div>
 
@@ -255,14 +254,14 @@ If you think something is bad about this project or its documentation, please he
     </tr>
     <tr>
      <td><strong>Dependencies</strong></td>
-     <td>SSL 3.0, TLS 1.2+,&nbsp;.NET Framework 4.5 or newer required to submit crash reports</td>
+     <td>SSL 3.0, TLS 1.2+,&nbsp; yad, dialog, p7zip, p7zip-full, p7zip-rar, curl, wget, winbind, cabextract, wine, wine-mono, wine-gecko, winetricks; .NET Framework 4.5 (winetricks) or newer required to submit crash reports</td>
     </tr>
    </tbody>
   </table>
  </br>
- <table>
+ <table width="100%">
    <thead>
-    <tr>
+    <tr width="(100/x)%">
      <th colspan="2" rowspan="1"><b>Recommended specs for complex modeling and processing</b></th>
     </tr>
    </thead>
@@ -285,15 +284,13 @@ If you think something is bad about this project or its documentation, please he
 
 <div id="fusion360-requirements-3" align="center">
 <h3>📖 What else is there to consider when it comes to the requirements?</h3>
- ✅ Check the <a href="https://health.autodesk.com/">Health Dashboard</a>!
+ 🔹 Check the <a href="https://health.autodesk.com/">Health Dashboard</a>!
  </br>
- ✅ You must have installed the <a href="https://github.com/lutris/docs/blob/master/InstallingDrivers.md">latest graphics driver</a>!
+ 🔹 You must have installed the <a href="https://github.com/lutris/docs/blob/master/InstallingDrivers.md">latest graphics driver</a>!
  </br>
- ✅ You need the <a href="https://www.winehq.org/">latest version of wine (6.23 and newer)</a> and <a href="https://github.com/Winetricks/winetricks">winetricks</a>!
- </br>
- ✅ You need the some packages (yad, dialog, p7zip, p7zip-full, p7zip-rar, curl, wget, winbind, cabextract, wine, wine-mono, wine_gecko, winetricks, ...)!
+ 🔹 You need the <a href="https://www.winehq.org/">latest version of wine (6.23 and newer)</a> and <a href="https://github.com/Winetricks/winetricks">winetricks</a>!
  </br></br>
- And would you like to use the Czech language later in Autodesk Fusion 360, then you need a <a href="https://apps.autodesk.com/FUSION/en/Detail/Index?id=9151466655844643882">special extension</a> what you must have bought and downloaded before you can install this with my Setup Wizard!
+ 🧩 And would you like to use extra functions or languages as like the Czech language later in Autodesk Fusion 360, then you need a <a href="https://apps.autodesk.com/FUSION/en/Detail/Index?id=9151466655844643882">special extension</a> what you must have bought and downloaded before you can install this with my Setup Wizard! 🧩
  </br></br>
 </div>
 
@@ -427,15 +424,13 @@ Install Fusion 360 for Linux client:
 
 ---
 
-<div id="fusion360-project-screenshots" align="center">
-<h2>🖼 Screenshots from this project:</h2>
-<img src="https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/images/workspaces/Manufacture/%231.1_adapter-plate.png" width="200px" height="150px">
-<img src="https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/images/workspaces/Generative%20Design/%231.4_generative_design.png" width="200px" height="150px">
-<img src="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/files/images/workspaces/Rendering/rpi4_case_tux-tage-2021.png" width="200px" height="150px">
-<img src="https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/images/workspaces/Simulation/%231_study_displacement.png" width="200px" height="150px">
-<img src="https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/images/workspaces/Drawing/drawing_oil_case.png" width="200px" height="150px">
-<img src="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/images/workspaces/Electronics/%231_air%20quality%20sensor.png" width="200px" height="150px">
+<div id="fusion360-contribute" align="center">
+<h2>📮 Would you like to contribute?</h2>
+ Contributions of all kinds are welcome, not only in the form of code, but also in terms of the <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/wiki/Documentation">official documentation</a>, debugging help in the <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/issues">bug tracker</a>, support from other users in the <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/discussions">discussion section</a> here on GitHub or in the comments section of my published videos on my <a href="https://www.youtube.com/channel/UCJO-EOBPtlVv5OycHkFPcRg">official YouTube channel</a> and also <a href="https://github.com/sponsors/cryinkfly">financially</a>.
+</br></br>
+If you think something is bad about this project or its documentation, please help in any way to make it better instead of just complaining about it - this is an open source project after all! 🎈
  </br></br>
+ There is also a <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/.github/CODE_OF_CONDUCT.md">Contributor Covenant Code of Conduct</a>, which also provides additional information. 📚
 </div>
 
 ---
