@@ -278,7 +278,7 @@
     </tr>
     <tr>
      <td><strong>Graphics</strong></td>
-     <td>Dedicated GPU with 4 GB or more VRAM, DirectX 11 (Direct3D 11 or greater)</td>
+     <td>Dedicated GPU with 4 GB or more VRAM, DirectX11 (Direct3D 10.1 or greater) = DXVK Mode, OpenGL (2.0 or greater) = OpenGL Mode</td>
     </tr>
    </tbody>
   </table>
