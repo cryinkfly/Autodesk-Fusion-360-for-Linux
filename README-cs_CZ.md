@@ -243,9 +243,9 @@
     </tr>
     <tr>
      <td><strong>Polohovací zařízení</strong></td>
-     <td>Myš nebo trackpad kompatibilní s HID, volitelný tablet Wacom® a podpora 3Dconnexion SpaceMouse®
+     <td>Myš nebo trackpad kompatibilní s HID, volitelný tablet Wacom® a podpora 3Dconnexion SpaceMouse®*
      <br><br>
-      <p><b>Poznámka</b>: To je ještě potřeba zkontrolovat, jestli to funguje na Linuxu!</p
+      <p><b>*Poznámka</b>: To je ještě potřeba zkontrolovat, jestli to funguje na Linuxu!</p
      </td>
     </tr>
     <tr>
