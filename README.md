@@ -243,9 +243,9 @@
     </tr>
     <tr>
      <td><strong>Pointing Device</strong></td>
-     <td>HID-compliant mouse or trackpad, optional Wacom® tablet and 3Dconnexion SpaceMouse® support
+     <td>HID-compliant mouse or trackpad, optional Wacom® tablet and 3Dconnexion SpaceMouse®* support
      <br><br>
-      <p><b>Note</b>: That still needs to be checked if it works on Linux!</p
+      <p><b>*Note</b>: That still needs to be checked if it works on Linux!</p
      </td>
     </tr>
     <tr>
