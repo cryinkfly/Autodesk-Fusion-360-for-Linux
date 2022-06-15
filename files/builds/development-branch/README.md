@@ -1,5 +1,3 @@
-# STILL IN PROGRESS!!!
-
 <div id="fusion360-about" align="center">
  <a href="https://github.com/sponsors/cryinkfly"><img src="https://img.shields.io/badge/CZ-lightgrey"></a>
  <a href="https://github.com/sponsors/cryinkfly"><img src="https://img.shields.io/badge/CN-lightgrey"></a> 
@@ -178,7 +176,9 @@
  </br>
  🔹 Click on the latest product update (the first item in the list).
  </br>
- 🔹 The version number is documented here.
+ 🔹 The version number* is documented here.
+ </br></br>
+ *Notice: How to check which <a href="https://knowledge.autodesk.com/support/fusion-360/troubleshooting/caas/sfdcarticles/sfdcarticles/How-to-check-what-version-of-Fusion-360-is-installed.html">version of Fusion 360</a> is being used on your system?
  </br></br>
 </div>
 
@@ -298,36 +298,32 @@
 
 ---
 
-## Downloads
+<div id="fusion360-installation" align="center">
+<h2>⚙️ Getting Started</h3>
+🔹 Check my <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/wiki/Documentation">GitHub-Documentation</a> & <a href="https://www.youtube.com/watch?v=-BktJspJKgs&list=PLzwMdS5iu_BIsO6RTy7Hy1MbzLMrQE2xe">Videos</a> before you install Autodesk Fusion 360 on your system!
+</br>
+🔹 Check, if your <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/extras/network/etc">network settings</a> are correctly configured!
+</br>
+🔹 Check, if your system meets all <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/edit/main/files/builds/development-branch/README.md#-what-are-the-system-requirements-for-autodesk-fusion-360">requirements</a>!
+</br>
+🔹 You need an active Fusion 360 <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/edit/main/files/builds/development-branch/README.md#-how-much-does-fusion-360-cost">license</a>!
+</br></br>
+🔹 Open a terminal and run this command:
+</br></br>
 
-There are some <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/builds">script releases</a> available, built from the release targets.
-
-It's recommended that if you're new you start with the stable builds. Development builds are available here if you need it, but correspondingly may be less stable.
-
-In the [development branch](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/builds/development-branch) you will find, for example, the upcoming versions of my setup wizard, as well as builds that run with the help of Flatpak or Docker/Podman.
-
----
-
-## Getting Started
-
-Install Fusion 360 for Linux client:
-
-1.) Check my <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/wiki/Documentation">GitHub-Documentation</a> & <a href="https://www.youtube.com/watch?v=-BktJspJKgs&list=PLzwMdS5iu_BIsO6RTy7Hy1MbzLMrQE2xe">Videos</a> before you install Autodesk Fusion 360 on your system!
-
-2.) Check, if your [network settings](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/extras/network/etc) are correctly configured!
-
-3.) Open a terminal and run this command:
-
-    mkdir -p "$HOME/.fusion360/bin" && cd "$HOME/.fusion360/bin" && wget -N https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/install.sh && chmod +x install.sh && bash install.sh && exit
-
-4.) Now, You can <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues/44#issuecomment-890552181">use</a> Autodesk Fusion 360 on your Linux system!
-
-*Notice: Here can you find [all files](https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/builds/stable-branch/.desktop) what you need for a .desktop file!
+    mkdir -p "$HOME/.fusion360/bin" && cd "$HOME/.fusion360/bin" && wget -N https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/install.sh && chmod +x install.sh && ./install.sh
+    
+🔹 Now, You can <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues/44#issuecomment-890552181">use</a> Autodesk Fusion 360 on your Linux system!
+ </br></br>
+ <h3>📖 Which script releases are available?</h3>
+ There are some <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/builds">script releases</a> available, built from the release targets. It's recommended that if you're new you start with the stable builds. Development builds are available here if you need it, but correspondingly may be less stable. In the <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/builds/development-branch">development branch</a> you will find, for example, the upcoming versions of my setup wizard, as well as builds that run with the help of Flatpak or Docker/Podman.
+ </br></br>
+</div>
 
 ---
 
-## Which work areas and functions have I tested:
-
+<div id="fusion360-tested-area" align="center">
+<h2>🧪 Which work areas and functions have I tested?</h3>
 <table>
 <thead>
 <tr>
@@ -423,6 +419,8 @@ Install Fusion 360 for Linux client:
 </tr>
 </tbody>
 </table>
+</br> 
+</div>
 
 ---
 
@@ -430,29 +428,23 @@ Install Fusion 360 for Linux client:
 <h2>📮 Would you like to contribute?</h2>
  Contributions of all kinds are welcome, not only in the form of code, but also in terms of the <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/wiki/Documentation">official documentation</a>, debugging help in the <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/issues">bug tracker</a>, support from other users in the <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/discussions">discussion section</a> here on GitHub or in the comments section of my published videos on my <a href="https://www.youtube.com/channel/UCJO-EOBPtlVv5OycHkFPcRg">official YouTube channel</a> and also <a href="https://github.com/sponsors/cryinkfly">financially</a>.
 </br></br>
-If you think something is bad about this project or its documentation, please help in any way to make it better instead of just complaining about it - this is an open source project after all! 🎈
+If you think something is bad about this project or its documentation, please <a href="https://github.com/cryinkfly/cryinkfly/blob/main/SPONSORSHIP.md">help</a> in any way to make it better instead of just complaining about it - this is an open source project after all! 🎈
  </br></br>
  There is also a <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/.github/CODE_OF_CONDUCT.md">Contributor Covenant Code of Conduct</a>, which also provides additional information. 📚
 </div>
 
 ---
 
-## Important Notice
-
-With the help of my script, You get a way to install Autodesk Fusion 360 on your Linux system. 
-
-Certain packages and programs that are required will be set up for You, but it's important to know, that my script only helps You to get the program to run and nothing more! 
-
-And so, You must to purchase the licenses directly from the manufacturer of the program Autodesk Fusion 360!
+<div id="fusion360-notice" align="center">
+<h2>⚠️ Important Notice</h2>
+With the help of my script, you get a way to install Autodesk Fusion 360 on your Linux system. Certain packages and programs that are required will be set up for you, but it's important to know, that my script only helps you to get the program to run and nothing more! And so, you must to purchase the licenses directly from the manufacturer of the program Autodesk Fusion 360!
+</br></br>
+</div>
 
 ---
 
-### ❤️ Become a sponsor or supporter?
-  
-- More information under "[Become a sponsor](https://github.com/sponsors/cryinkfly)" and "[Become a supporter](https://github.com/cryinkfly/cryinkfly/blob/main/SPONSORSHIP.md#become-a-supporter)".
-
----
-
-## License
-
+<div id="fusion360-license" align="center">
+<h2>⚠️ License</h2>
 All my scripts are released under the MIT license, see <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/LICENSE.md">LICENSE.md</a> for full text.
+ </br></br>
+</div>
