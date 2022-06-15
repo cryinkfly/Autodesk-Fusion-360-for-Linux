@@ -278,7 +278,7 @@
     </tr>
     <tr>
      <td><strong>Grafika</strong></td>
-     <td>Vyhrazený GPU se 4 GB nebo více VRAM, DirectX 11 (Direct3D 11 nebo vyšší)</td>
+     <td>Vyhrazený GPU se 4 GB nebo více VRAM, DirectX11 (Direct3D 10.1 nebo vyšší) = režim DXVK, OpenGL (2.0 nebo vyšší) = režim OpenGL</td>
     </tr>
    </tbody>
   </table>
