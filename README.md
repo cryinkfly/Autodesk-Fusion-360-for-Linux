@@ -444,7 +444,7 @@ With the help of my script, you get a way to install Autodesk Fusion 360 on your
 ---
 
 <div id="fusion360-license" align="center">
-<h2>⚠️ License</h2>
+<h2>📃 License</h2>
 All my scripts are released under the MIT license, see <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/LICENSE.md">LICENSE.md</a> for full text.
  </br></br>
 </div>
