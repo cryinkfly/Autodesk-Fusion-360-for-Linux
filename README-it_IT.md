@@ -4,7 +4,7 @@
  <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/README-de_DE.md"><img src="https://img.shields.io/badge/DE-red"></a> 
  <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/README.md"><img src="https://img.shields.io/badge/EN-lightgrey"></a> 
  <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/README-es_ES.md"><img src="https://img.shields.io/badge/ES-lightgrey"></a> 
- <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/README-fr_FR.md"><img src="https://img.shields.io/badge/FR-red"></a> 
+ <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/README-fr_FR.md"><img src="https://img.shields.io/badge/FR-lightgrey"></a> 
  <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/README-it_IT.md"><img src="https://img.shields.io/badge/IT-brightgreen"></a> 
  <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/README-ja_JP.md"><img src="https://img.shields.io/badge/JP-red"></a> 
  <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/README-ko_KR.md"><img src="https://img.shields.io/badge/KR-red"></a> 
