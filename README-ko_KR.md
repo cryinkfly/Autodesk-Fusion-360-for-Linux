@@ -8,7 +8,7 @@
  <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/README-it_IT.md"><img src="https://img.shields.io/badge/IT-lightgrey"></a> 
  <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/README-ja_JP.md"><img src="https://img.shields.io/badge/JP-lightgrey"></a> 
  <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/README-ko_KR.md"><img src="https://img.shields.io/badge/KR-brightgreen"></a> 
- <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/README-ru_RU.md"><img src="https://img.shields.io/badge/RU-red"></a>
+ <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/README-ru_RU.md"><img src="https://img.shields.io/badge/RU-lightgrey"></a>
  </br>
  <img align="center" src="https://user-images.githubusercontent.com/79079633/127371623-6b50b591-1b12-466d-9c96-b5b6d6314f31.png">
  </br>
