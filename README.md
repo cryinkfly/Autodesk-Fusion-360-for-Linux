@@ -150,7 +150,7 @@
   </tr>
   <tr>
    <td>Personal</td>
-   <td><a href="https://www.autodesk.com/products/fusion-360/personal">Autodesk offers</a> a feature-limited 1-year, renewable trial for personal use only</td>
+   <td><a href="https://www.autodesk.com/products/fusion-360/personal">Autodesk offers</a> a free feature-limited 1-year, renewable trial for personal use only</td>
   </tr>
   <tr>
    <td>Education</td>
