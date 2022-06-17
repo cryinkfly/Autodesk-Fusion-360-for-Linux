@@ -1,6 +1,6 @@
 <div id="fusion360-about" align="center">
  <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/README-cs_CZ.md"><img src="https://img.shields.io/badge/CZ-lightgrey"></a>
- <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/README-zh_CN.md"><img src="https://img.shields.io/badge/CN-red"></a> 
+ <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/README-zh_CN.md"><img src="https://img.shields.io/badge/CN-lightgrey"></a> 
  <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/README-de_DE.md"><img src="https://img.shields.io/badge/DE-lightgrey"></a> 
  <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/README.md"><img src="https://img.shields.io/badge/EN-brightgreen"></a> 
  <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/README-es_ES.md"><img src="https://img.shields.io/badge/ES-lightgrey"></a> 
