@@ -149,6 +149,10 @@
    <td>Autodesk offers a 30-day free trial after registration.</td>
   </tr>
   <tr>
+   <td>Personal</td>
+   <td><a href="https://www.autodesk.com/products/fusion-360/personal">Autodesk offers</a> a free, feature-limited, 1-year, renewable trial for personal use only</td>
+  </tr>
+  <tr>
    <td>Education</td>
    <td>Like most CAD packages, Fusion 360 offers an educational license for students, teachers, and educational institutions.</td>
   </tr>
