@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    09:05/09.06.2022                                                                   #
-# Version:      1.8.0                                                                              #
+# Time/Date:    20:05/20.06.2022                                                                   #
+# Version:      1.8.1                                                                              #
 ####################################################################################################
 
 # Path: /$HOME/.fusion360/bin/install.sh
@@ -352,11 +352,9 @@ function SP_DXVK_OPENGL_1 {
 
 function SP_DXVK_OPENGL_2 {
   if [[ $WP_DRIVER = "DXVK" ]]; then
-    wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/driver/video/dxvk/DXVK.xml
-    mv "DXVK.xml" "NMachineSpecificOptions.xml"
+    wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/driver/video/dxvk/NMachineSpecificOptions.xml
   else
-    wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/driver/video/opengl/OpenGL.xml
-    mv "OpenGL.xml" "NMachineSpecificOptions.xml"
+    wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/driver/video/opengl/NMachineSpecificOptions.xml
   fi
 }
 
