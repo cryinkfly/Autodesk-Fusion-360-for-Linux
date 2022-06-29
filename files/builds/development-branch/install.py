@@ -65,6 +65,7 @@ frame5 = ttk.Frame(notebook, width=700, height=400)
 frame6 = ttk.Frame(notebook, width=700, height=400)
 frame7 = ttk.Frame(notebook, width=700, height=400)
 
+
 frame1.pack(fill='both', expand=True)
 frame2.pack(fill='both', expand=True)
 frame3.pack(fill='both', expand=True)
@@ -72,6 +73,7 @@ frame4.pack(fill='both', expand=True)
 frame5.pack(fill='both', expand=True)
 frame6.pack(fill='both', expand=True)
 frame7.pack(fill='both', expand=True)
+
 
 # add frames to notebook
 notebook.add(frame1, text='Welcome',)
@@ -82,42 +84,78 @@ notebook.add(frame5, text='System Info')
 notebook.add(frame6, text='About')
 notebook.add(frame7, text='Help')
 
-# Create objects into the frames (notebook)
-photo = tk.PhotoImage(file='/home/steve/Vorlagen/welcome.png')
-image_label = ttk.Label(frame1, image=photo)
-image_label.pack(padx=20, pady=20, side='left', fill='both', expand=True)
+###############################################################################################################################################################
+# ALL FRAME-1-FUNCTIONS ARE ARRANGED HERE:                                                                                                                    #
+###############################################################################################################################################################
 
-textframe = Frame(frame1)
-textframe.pack(padx=40)
+# Create objects into the frame 1 (notebook)
 
-title1 = Label(textframe, text="Welcome to the Autodesk Fusion 360 for Linux Setup Wizard", font=(24))
-title1.pack(pady=20, anchor="w")
+frame1_photo = tk.PhotoImage(file='/home/steve/Vorlagen/welcome.png')
+frame1_image_label = ttk.Label(frame1, image=frame1_photo)
+frame1_image_label.pack(padx=20, pady=20, side='left', fill='both', expand=True)
 
-label1 = Label(textframe, text="Many thanks to you for deciding to use my setup wizard to be able to use Autodesk Fusion 360 on your computer. This quick setup wizard will help you configure the basic settings and install the program. Furthermore, it is possible to install some tested plugins after the installation.", wraplength=430, justify="left")
-label1.pack(pady=5, anchor="w")
+textframe1 = Frame(frame1)
+textframe1.pack(padx=40)
 
-label2 = Label(textframe, text="Depending on your current environment, setup may involve:", wraplength=450)
-label2.pack(pady=5, anchor="w")
+frame1_title1 = Label(textframe1, text="Welcome to the Autodesk Fusion 360 for Linux Setup Wizard", font=(24))
+frame1_title1.pack(pady=20, anchor="w")
 
-label3 = Label(textframe, text="- Checking your system for minimum installation requirements.", wraplength=450)
-label3.pack(anchor="w")
-label4 = Label(textframe, text="- It is recommended that you close all other applications before continuing.", wraplength=450)
-label4.pack(anchor="w")
+frame1_label1 = Label(textframe1, text="Many thanks to you for deciding to use my setup wizard to be able to use Autodesk Fusion 360 on your computer.", wraplength=430, justify="left")
+frame1_label1.pack(pady=5, anchor="w")
 
-label5 = Label(textframe, text="Click Next to continue, or Cancel to exit the Setup Wizard.", wraplength=450)
-label5.pack(pady=20, anchor="w")
+frame1_label2 = Label(textframe1, text="This quick setup wizard will help you configure the basic settings and install the program. Furthermore, it is possible to install some tested plugins after the installation.", wraplength=430, justify="left")
+frame1_label2.pack(pady=5, anchor="w")
 
-buttonframe = Frame(frame1)
-buttonframe.pack(padx=15, pady=15, side='bottom', anchor="e")
+frame1_label3 = Label(textframe1, text="Depending on your current environment, setup may involve:", wraplength=430)
+frame1_label3.pack(pady=5, anchor="w")
 
-button1=Button(buttonframe,text='< Back',width=10,height=1, underline=0, state=DISABLED)
-button1.grid(row=0, column=0, padx=5, pady=5)
-button1.grid_rowconfigure(0, weight=1)
-button2=Button(buttonframe,text='Cancel',width=10,height=1, underline=0, command=lambda:root.quit())
-button2.grid(row=0, column=1, padx=5, pady=5)
-button3=Button(buttonframe,text='Next >',width=10,height=1, underline=0, command=lambda:notebook.select(frame2))
-button3.grid(row=0, column=2, padx=5, pady=5)
-button4=Button(buttonframe,text='Help',width=10,height=1, underline=0, command=lambda:notebook.select(frame7))
-button4.grid(row=0, column=3, padx=5, pady=5)
+frame1_label4 = Label(textframe1, text="- Checking your system for minimum installation requirements.", wraplength=430)
+frame1_label4.pack(anchor="w")
+frame1_label5 = Label(textframe1, text="- It is recommended that you close all other applications before continuing.", wraplength=430)
+frame1_label5.pack(anchor="w")
+
+frame1_label6 = Label(textframe1, text="Click Next to continue, or Cancel to exit the Setup Wizard.", wraplength=430)
+frame1_label6.pack(pady=20, anchor="w")
+
+
+buttonframe1 = Frame(frame1)
+buttonframe1.pack(padx=15, pady=15, side='bottom', anchor="e")
+
+frame1_button1=Button(buttonframe1,text='< Back',width=10,height=1, underline=0, state=DISABLED)
+frame1_button1.grid(row=0, column=0, padx=5, pady=5)
+frame1_button1.grid_rowconfigure(0, weight=1)
+frame1_button2=Button(buttonframe1,text='Cancel',width=10,height=1, underline=0, command=lambda:root.quit())
+frame1_button2.grid(row=0, column=1, padx=5, pady=5)
+frame1_button3=Button(buttonframe1,text='Next >',width=10,height=1, underline=0, command=lambda:notebook.select(frame2))
+frame1_button3.grid(row=0, column=2, padx=5, pady=5)
+frame1_button4=Button(buttonframe1,text='Help',width=10,height=1, underline=0, command=lambda:notebook.select(frame7))
+frame1_button4.grid(row=0, column=3, padx=5, pady=5)
+
+###############################################################################################################################################################
+# ALL FRAME-2-FUNCTIONS ARE ARRANGED HERE:                                                                                                                    #
+###############################################################################################################################################################
+
+frame2_photo = tk.PhotoImage(file='/home/steve/Vorlagen/welcome.png')
+frame2_image_label = ttk.Label(frame2, image=frame1_photo)
+frame2_image_label.pack(padx=20, pady=20, side='left', fill='both', expand=True)
+
+textframe2 = Frame(frame2)
+textframe2.pack(padx=40)
+
+frame2_title1 = Label(textframe2, text="Basic Configuration", font=(24))
+frame2_title1.pack(pady=20, anchor="w")
+
+buttonframe2 = Frame(frame2)
+buttonframe2.pack(padx=15, pady=15, side='bottom', anchor="e")
+
+frame2_button1=Button(buttonframe2,text='< Back',width=10,height=1, underline=0, command=lambda:notebook.select(frame1))
+frame2_button1.grid(row=0, column=0, padx=5, pady=5)
+frame2_button1.grid_rowconfigure(0, weight=1)
+frame2_button2=Button(buttonframe2,text='Cancel',width=10,height=1, underline=0, command=lambda:root.quit())
+frame2_button2.grid(row=0, column=1, padx=5, pady=5)
+frame2_button3=Button(buttonframe2,text='Next >',width=10,height=1, underline=0, command=lambda:notebook.select(frame2))
+frame2_button3.grid(row=0, column=2, padx=5, pady=5)
+frame2_button4=Button(buttonframe2,text='Help',width=10,height=1, underline=0, command=lambda:notebook.select(frame7))
+frame2_button4.grid(row=0, column=3, padx=5, pady=5)
 
 root.mainloop()
