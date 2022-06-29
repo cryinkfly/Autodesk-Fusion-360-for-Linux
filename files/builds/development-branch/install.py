@@ -65,7 +65,6 @@ frame5 = ttk.Frame(notebook, width=700, height=400)
 frame6 = ttk.Frame(notebook, width=700, height=400)
 frame7 = ttk.Frame(notebook, width=700, height=400)
 
-
 frame1.pack(fill='both', expand=True)
 frame2.pack(fill='both', expand=True)
 frame3.pack(fill='both', expand=True)
@@ -73,7 +72,6 @@ frame4.pack(fill='both', expand=True)
 frame5.pack(fill='both', expand=True)
 frame6.pack(fill='both', expand=True)
 frame7.pack(fill='both', expand=True)
-
 
 # add frames to notebook
 notebook.add(frame1, text='Welcome',)
@@ -142,8 +140,25 @@ frame2_image_label.pack(padx=20, pady=20, side='left', fill='both', expand=True)
 textframe2 = Frame(frame2)
 textframe2.pack(padx=40)
 
-frame2_title1 = Label(textframe2, text="Basic Configuration", font=(24))
+frame2_title1 = Label(textframe2, text="Basis Configuration of Autodesk Fusion 360", font=(24))
 frame2_title1.pack(pady=20, anchor="w")
+
+frame2_label1 = Label(textframe2, text="...", wraplength=430, justify="left")
+frame2_label1.pack(pady=5, anchor="w")
+
+frame2_label2 = Label(textframe2, text="...", wraplength=430, justify="left")
+frame2_label2.pack(pady=5, anchor="w")
+
+frame2_label3 = Label(textframe2, text="...", wraplength=430)
+frame2_label3.pack(pady=5, anchor="w")
+
+frame2_label4 = Label(textframe2, text="...", wraplength=430)
+frame2_label4.pack(anchor="w")
+frame2_label5 = Label(textframe2, text="...", wraplength=430)
+frame2_label5.pack(anchor="w")
+
+frame2_label6 = Label(textframe2, text="...", wraplength=430)
+frame2_label6.pack(pady=20, anchor="w")
 
 buttonframe2 = Frame(frame2)
 buttonframe2.pack(padx=15, pady=15, side='bottom', anchor="e")
@@ -153,9 +168,63 @@ frame2_button1.grid(row=0, column=0, padx=5, pady=5)
 frame2_button1.grid_rowconfigure(0, weight=1)
 frame2_button2=Button(buttonframe2,text='Cancel',width=10,height=1, underline=0, command=lambda:root.quit())
 frame2_button2.grid(row=0, column=1, padx=5, pady=5)
-frame2_button3=Button(buttonframe2,text='Next >',width=10,height=1, underline=0, command=lambda:notebook.select(frame2))
+frame2_button3=Button(buttonframe2,text='Next >',width=10,height=1, underline=0, command=lambda:notebook.select(frame3))
 frame2_button3.grid(row=0, column=2, padx=5, pady=5)
 frame2_button4=Button(buttonframe2,text='Help',width=10,height=1, underline=0, command=lambda:notebook.select(frame7))
 frame2_button4.grid(row=0, column=3, padx=5, pady=5)
+
+###############################################################################################################################################################
+# ALL FRAME-3-FUNCTIONS ARE ARRANGED HERE:                                                                                                                    #
+###############################################################################################################################################################
+
+frame3_photo = tk.PhotoImage(file='/home/steve/Vorlagen/welcome.png')
+frame3_image_label = ttk.Label(frame3, image=frame1_photo)
+frame3_image_label.pack(padx=20, pady=20, side='left', fill='both', expand=True)
+
+textframe3 = Frame(frame3)
+textframe3.pack(padx=40)
+
+frame3_title1 = Label(textframe3, text="Installation of Autodesk Fusion 360", font=(24))
+frame3_title1.pack(pady=20, anchor="w")
+
+buttonframe3 = Frame(frame3)
+buttonframe3.pack(padx=15, pady=15, side='bottom', anchor="e")
+
+frame3_button1=Button(buttonframe3,text='< Back',width=10,height=1, underline=0, command=lambda:notebook.select(frame2))
+frame3_button1.grid(row=0, column=0, padx=5, pady=5)
+frame3_button1.grid_rowconfigure(0, weight=1)
+frame3_button2=Button(buttonframe3,text='Cancel',width=10,height=1, underline=0, command=lambda:root.quit())
+frame3_button2.grid(row=0, column=1, padx=5, pady=5)
+frame3_button3=Button(buttonframe3,text='Next >',width=10,height=1, underline=0, command=lambda:notebook.select(frame4))
+frame3_button3.grid(row=0, column=2, padx=5, pady=5)
+frame3_button4=Button(buttonframe3,text='Help',width=10,height=1, underline=0, command=lambda:notebook.select(frame7))
+frame3_button4.grid(row=0, column=3, padx=5, pady=5)
+
+###############################################################################################################################################################
+# ALL FRAME-4-FUNCTIONS ARE ARRANGED HERE:                                                                                                                    #
+###############################################################################################################################################################
+
+frame4_photo = tk.PhotoImage(file='/home/steve/Vorlagen/welcome.png')
+frame4_image_label = ttk.Label(frame4, image=frame1_photo)
+frame4_image_label.pack(padx=20, pady=20, side='left', fill='both', expand=True)
+
+textframe4 = Frame(frame4)
+textframe4.pack(padx=40)
+
+frame4_title1 = Label(textframe4, text="Available tested plugins for Autodesk Fusion 360", font=(24))
+frame4_title1.pack(pady=20, anchor="w")
+
+buttonframe4 = Frame(frame4)
+buttonframe4.pack(padx=15, pady=15, side='bottom', anchor="e")
+
+frame4_button1=Button(buttonframe4,text='< Back',width=10,height=1, underline=0, command=lambda:notebook.select(frame3))
+frame4_button1.grid(row=0, column=0, padx=5, pady=5)
+frame4_button1.grid_rowconfigure(0, weight=1)
+frame4_button2=Button(buttonframe4,text='Cancel',width=10,height=1, underline=0, command=lambda:root.quit())
+frame4_button2.grid(row=0, column=1, padx=5, pady=5)
+frame4_button3=Button(buttonframe4,text='Next >',width=10,height=1, underline=0, command=lambda:notebook.select(frame5))
+frame4_button3.grid(row=0, column=2, padx=5, pady=5)
+frame4_button4=Button(buttonframe4,text='Help',width=10,height=1, underline=0, command=lambda:notebook.select(frame7))
+frame4_button4.grid(row=0, column=3, padx=5, pady=5)
 
 root.mainloop()
