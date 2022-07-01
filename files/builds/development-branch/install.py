@@ -28,6 +28,7 @@
 
 import tkinter as tk
 from tkinter import ttk
+from tkinter.messagebox import showinfo
 
 ###############################################################################################################################################################
 # CREATE A WINDOW FOR THE SETUP WIZARD                                                                                                                        #
@@ -112,47 +113,121 @@ notebook.add(notebook_tab7, text='Help')
 # ALL NOTEBOOK_TAB-1-FUNCTIONS ARE ARRANGED HERE:                                                                                                             #
 ###############################################################################################################################################################
 
-# Create objects into the tab 1 (notebook)
+# Frame 1 - Left-Side:
+notebook_tab1_frame_photo = tk.PhotoImage(file='/home/steve/Vorlagen/welcome.png')
+notebook_tab1_frame_image_label = ttk.Label(notebook_tab1, image=notebook_tab1_frame_photo)
+notebook_tab1_frame_image_label.pack(padx=20, pady=20, side='left', fill='both', expand=True)
 
-frame1_photo = tk.PhotoImage(file='/home/steve/Vorlagen/welcome.png')
-frame1_image_label = ttk.Label(notebook_tab1, image=frame1_photo)
-frame1_image_label.pack(padx=20, pady=20, side='left', fill='both', expand=True)
+# ----------------------------------------------------------------------------------------------- #
 
-textframe1 = tk.Frame(notebook_tab1)
-textframe1.pack(padx=40)
+# Frame 2 - Right-Side:
+notebook_tab1_frame_text = tk.Frame(notebook_tab1)
+notebook_tab1_frame_text.pack(padx=40)
 
-frame1_title1 = tk.Label(textframe1, text="Welcome to the Autodesk Fusion 360 for Linux Setup Wizard", font=(24))
-frame1_title1.pack(pady=20, anchor="w")
+notebook_tab1_frame_title = tk.Label(notebook_tab1_frame_text, text="Welcome to the Autodesk Fusion 360 for Linux Setup Wizard", font=(24))
+notebook_tab1_frame_title.pack(pady=20, anchor="w")
 
-frame1_label1 = tk.Label(textframe1, text="Many thanks to you for deciding to use my setup wizard to be able to use Autodesk Fusion 360 on your computer.", wraplength=430, justify="left")
-frame1_label1.pack(pady=5, anchor="w")
+notebook_tab1_frame_label1 = tk.Label(notebook_tab1_frame_text, text="Many thanks to you for deciding to use my setup wizard to be able to use Autodesk Fusion 360 on your computer.", wraplength=430, justify="left")
+notebook_tab1_frame_label1.pack(pady=5, anchor="w")
+notebook_tab1_frame_label2 = tk.Label(notebook_tab1_frame_text, text="This quick setup wizard will help you configure the basic settings and install the program. Furthermore, it is possible to install some tested plugins after the installation.", wraplength=430, justify="left")
+notebook_tab1_frame_label2.pack(pady=5, anchor="w")
+notebook_tab1_frame_label3 = tk.Label(notebook_tab1_frame_text, text="Depending on your current environment, setup may involve:", wraplength=430)
+notebook_tab1_frame_label3.pack(pady=5, anchor="w")
+notebook_tab1_frame_label4 = tk.Label(notebook_tab1_frame_text, text="- Checking your system for minimum installation requirements.", wraplength=430)
+notebook_tab1_frame_label4.pack(anchor="w")
+notebook_tab1_frame_label5 = tk.Label(notebook_tab1_frame_text, text="- It is recommended that you close all other applications before continuing.", wraplength=430)
+notebook_tab1_frame_label5.pack(anchor="w")
+notebook_tab1_frame_label6 = tk.Label(notebook_tab1_frame_text, text="Click Next to continue, or Cancel to exit the Setup Wizard.", wraplength=430)
+notebook_tab1_frame_label6.pack(pady=20, anchor="w")
 
-frame1_label2 = tk.Label(textframe1, text="This quick setup wizard will help you configure the basic settings and install the program. Furthermore, it is possible to install some tested plugins after the installation.", wraplength=430, justify="left")
-frame1_label2.pack(pady=5, anchor="w")
+# ----------------------------------------------------------------------------------------------- #
 
-frame1_label3 = tk.Label(textframe1, text="Depending on your current environment, setup may involve:", wraplength=430)
-frame1_label3.pack(pady=5, anchor="w")
+# Frame 3 - Right-Side:
+notebook_tab1_frame_button = tk.Frame(notebook_tab1)
+notebook_tab1_frame_button.pack(padx=15, pady=15, side='bottom', anchor="e")
 
-frame1_label4 = tk.Label(textframe1, text="- Checking your system for minimum installation requirements.", wraplength=430)
-frame1_label4.pack(anchor="w")
-frame1_label5 = tk.Label(textframe1, text="- It is recommended that you close all other applications before continuing.", wraplength=430)
-frame1_label5.pack(anchor="w")
+notebook_tab1_frame_button1 = tk.Button(notebook_tab1_frame_button,text='< Back',width=6,height=1, underline=2, state=tk.DISABLED)
+notebook_tab1_frame_button1.grid(row=0, column=0, padx=5, pady=5)
+notebook_tab1_frame_button1.grid_rowconfigure(0, weight=1)
+notebook_tab1_frame_button2 = tk.Button(notebook_tab1_frame_button,text='Cancel',width=6,height=1, underline=0, command=lambda:window.quit())
+notebook_tab1_frame_button2.grid(row=0, column=1, padx=5, pady=5)
+notebook_tab1_frame_button3 = tk.Button(notebook_tab1_frame_button,text='Next >',width=6,height=1, underline=0, command=lambda:notebook.select(notebook_tab2))
+notebook_tab1_frame_button3.grid(row=0, column=2, padx=5, pady=5)
+notebook_tab1_frame_button4 = tk.Button(notebook_tab1_frame_button,text='Help',width=6,height=1, underline=0, command=lambda:notebook.select(notebook_tab7))
+notebook_tab1_frame_button4.grid(row=0, column=3, padx=5, pady=5)
 
-frame1_label6 = tk.Label(textframe1, text="Click Next to continue, or Cancel to exit the Setup Wizard.", wraplength=430)
-frame1_label6.pack(pady=20, anchor="w")
+###############################################################################################################################################################
+# ALL NOTEBOOK_TAB-2-FUNCTIONS ARE ARRANGED HERE:                                                                                                             #
+###############################################################################################################################################################
 
-buttonframe1 = tk.Frame(notebook_tab1)
-buttonframe1.pack(padx=15, pady=15, side='bottom', anchor="e")
+# Frame 1 - Left-Side:
+notebook_tab2_frame_photo = tk.PhotoImage(file='/home/steve/Vorlagen/welcome.png')
+notebook_tab2_frame_image_label = ttk.Label(notebook_tab2, image=notebook_tab2_frame_photo)
+notebook_tab2_frame_image_label.pack(padx=20, pady=20, side='left', fill='both', expand=True)
 
-frame1_button1 = tk.Button(buttonframe1,text='< Back',width=10,height=1, underline=0, state=tk.DISABLED)
-frame1_button1.grid(row=0, column=0, padx=5, pady=5)
-frame1_button1.grid_rowconfigure(0, weight=1)
-frame1_button2 = tk.Button(buttonframe1,text='Cancel',width=10,height=1, underline=0, command=lambda:window.quit())
-frame1_button2.grid(row=0, column=1, padx=5, pady=5)
-frame1_button3 = tk.Button(buttonframe1,text='Next >',width=10,height=1, underline=0, command=lambda:notebook.select(notebook_tab2))
-frame1_button3.grid(row=0, column=2, padx=5, pady=5)
-frame1_button4 = tk.Button(buttonframe1,text='Help',width=10,height=1, underline=0, command=lambda:notebook.select(notebook_tab7))
-frame1_button4.grid(row=0, column=3, padx=5, pady=5)
+# ----------------------------------------------------------------------------------------------- #
+
+# Frame 2 - Right-Side:
+notebook_tab2_frame_text = tk.Frame(notebook_tab2)
+notebook_tab2_frame_text.pack(padx=40, anchor="w")
+
+notebook_tab2_frame_title = tk.Label(notebook_tab2_frame_text, text="Welcome to the Autodesk Fusion 360 for Linux Setup Wizard", font=(24))
+notebook_tab2_frame_title = tk.Label(notebook_tab2_frame_text, text="Configure the Autodesk Fusion 360 for Linux Setup Wizard", font=(24))
+notebook_tab2_frame_title.pack(pady=20, anchor="w")
+
+notebook_tab2_frame_label1 = tk.Label(notebook_tab2_frame_text, text="In this step you can change some settings to apply your desired configuration of Autodesk Fusion 360 on your computer.", wraplength=430, justify="left")
+notebook_tab2_frame_label1.pack(pady=5, anchor="w")
+
+# ----------------------------------------------------------------------------------------------- #
+
+# Set up the correct Linux Distro:
+def show_selected_linux_distro():
+    showinfo(
+        title='Result',
+        message=selected_linux_distro.get()
+    )
+
+selected_linux_distro = tk.StringVar()
+linux_distros = ['Arch Linux, Manjaro Linux, EndeavourOS, ...', 
+'Debian 10, MX Linux 19.4, Raspberry Pi Desktop, ...', 
+'Debian 11',
+'Fedora 35', 
+'Fedora 36', 
+'openSUSE Leap 15.2',
+'openSUSE Leap 15.3', 
+'openSUSE Tumbleweed',
+'Red Hat Enterprise Linux 8.x',
+'Red Hat Enterprise Linux 9.x',  
+'Solus', 
+'Ubuntu 18.04, Linux Mint 19.x, ...',
+'Ubuntu 20.04, Linux Mint 20.x, Pop!_OS 20.04, ...', 
+'Ubuntu 22.04, Pop!_OS 22.04, ...',  
+'Void Linux', 
+'Gentoo Linux']
+
+notebook_tab2_frame_label2 = ttk.Label(notebook_tab2_frame_text, text="1.) Select your installed Linux distro:")
+notebook_tab2_frame_label2.pack(fill='x', padx=5, pady=5)
+
+notebook_tab2_frame_combobox1 = ttk.Combobox(notebook_tab2_frame_text, values=linux_distros, textvariable=selected_linux_distro, width=50)
+notebook_tab2_frame_combobox1.pack(fill='x', padx=15, pady=5)
+notebook_tab2_frame_combobox1.set('Arch Linux, Manjaro Linux, EndeavourOS, ...') # default selected option
+notebook_tab2_frame_combobox1['state'] = 'readonly'
+
+# ----------------------------------------------------------------------------------------------- #
+
+# Frame 3 - Right-Side:
+notebook_tab2_frame_button = tk.Frame(notebook_tab2)
+notebook_tab2_frame_button.pack(padx=15, pady=15, side='bottom', anchor="e")
+
+notebook_tab2_frame_button1 = tk.Button(notebook_tab2_frame_button,text='< Back',width=6,height=1, underline=2, command=lambda:notebook.select(notebook_tab1))
+notebook_tab2_frame_button1.grid(row=0, column=0, padx=5, pady=5)
+notebook_tab2_frame_button1.grid_rowconfigure(0, weight=1)
+notebook_tab2_frame_button2 = tk.Button(notebook_tab2_frame_button,text='Cancel',width=6,height=1, underline=0, command=lambda:window.quit())
+notebook_tab2_frame_button2.grid(row=0, column=1, padx=5, pady=5)
+notebook_tab2_frame_button3 = tk.Button(notebook_tab2_frame_button,text='Next >',width=6,height=1, underline=0, command=lambda:notebook.select(notebook_tab3))
+notebook_tab2_frame_button3.grid(row=0, column=2, padx=5, pady=5)
+notebook_tab2_frame_button4 = tk.Button(notebook_tab2_frame_button,text='Help',width=6,height=1, underline=0, command=lambda:notebook.select(notebook_tab7))
+notebook_tab2_frame_button4.grid(row=0, column=3, padx=5, pady=5)
 
 # ----------------------------------------------------------------------------------------------- #
 
