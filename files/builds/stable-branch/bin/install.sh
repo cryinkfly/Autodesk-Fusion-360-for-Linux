@@ -325,8 +325,8 @@ function SP_FUSION360_SHORTCUTS_LOAD {
   echo "Terminal=false" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop
   echo "Path=$SP_PATH/bin" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop
   # Create a link to the Wineprefixes Box:
-  echo "WP_BOX='$WP_DIRECTORY'" > $WP_DIRECTORY/box-run.sh
-  echo ". $SP_PATH/bin/launcher.sh" >> $WP_DIRECTORY/box-run.sh
+  echo "#!/bin/bash" > $WP_DIRECTORY/box-run.sh
+  echo "WP_BOX='$WP_DIRECTORY' . $SP_PATH/bin/launcher.sh" >> $WP_DIRECTORY/box-run.sh
   chmod +x $WP_DIRECTORY/box-run.sh 
   # Download some script files for Autodesk Fusion 360!
   wget -N -P $SP_PATH/bin https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/uninstall.sh
