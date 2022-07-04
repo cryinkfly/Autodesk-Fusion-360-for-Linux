@@ -28,7 +28,8 @@
 
 import tkinter as tk
 from tkinter import ttk
-from tkinter.messagebox import showinfo
+from tkinter.messagebox import askokcancel, showinfo, WARNING
+import os
 
 ###############################################################################################################################################################
 # CREATE A WINDOW FOR THE SETUP WIZARD                                                                                                                        #
@@ -180,13 +181,101 @@ notebook_tab2_frame_label1.pack(pady=5, anchor="w")
 
 # ----------------------------------------------------------------------------------------------- #
 
-# Set up the correct Linux Distro:
-def show_selected_linux_distro():
-    showinfo(
-        title='Result',
-        message=selected_linux_distro.get()
-    )
+def setup_selected_linux_distro():
+    if selected_linux_distro.get() == 'Arch Linux, Manjaro Linux, EndeavourOS, ...':
+      showinfo(
+        title='Configure - Linux Distro',
+        message="Arch Linux, Manjaro Linux, EndeavourOS, ... will be set up ...")
+      os.system("firefox")
+    elif selected_linux_distro.get() == 'Debian 10, MX Linux 19.4, Raspberry Pi Desktop, ...':
+      showinfo(
+        title='Configure - Linux Distro',
+        message="Debian 10, MX Linux 19.4, Raspberry Pi Desktop, ... will be set up ...")
+      os.system("firefox")
+    elif selected_linux_distro.get() == 'Debian 11':
+      showinfo(
+        title='Configure - Linux Distro',
+        message="Debian 11 will be set up ...")
+      os.system("firefox")
+    elif selected_linux_distro.get() == 'Fedora 35':
+      showinfo(
+        title='Configure - Linux Distro',
+        message="Fedora 35 will be set up ...")
+      os.system("firefox")
+    elif selected_linux_distro.get() == 'Fedora 36':
+      showinfo(
+        title='Configure - Linux Distro',
+        message="Fedora 36 will be set up ...")
+      os.system("firefox")
+    elif selected_linux_distro.get() == 'openSUSE Leap 15.2':
+      showinfo(
+        title='Configure - Linux Distro',
+        message="openSUSE Leap 15.2 will be set up ...")
+      os.system("firefox")
+    elif selected_linux_distro.get() == 'openSUSE Leap 15.3':
+      showinfo(
+        title='Configure - Linux Distro',
+        message="openSUSE Leap 15.3 will be set up ...")
+      os.system("firefox")
+    elif selected_linux_distro.get() == 'openSUSE Tumbleweed':
+      showinfo(
+        title='Configure - Linux Distro',
+        message="openSUSE Tumbleweed will be set up ...")
+      os.system("firefox")
+    elif selected_linux_distro.get() == 'Red Hat Enterprise Linux 8.x':
+      showinfo(
+        title='Configure - Linux Distro',
+        message="Red Hat Enterprise Linux 8.x will be set up ...")
+      os.system("firefox")
+    elif selected_linux_distro.get() == 'Red Hat Enterprise Linux 9.x':
+      showinfo(
+        title='Configure - Linux Distro',
+        message="Red Hat Enterprise Linux 9.x will be set up ...")
+      os.system("firefox")
+    elif selected_linux_distro.get() == 'Solus':
+      showinfo(
+        title='Configure - Linux Distro',
+        message="Solus will be set up ...")
+      os.system("firefox")
+    elif selected_linux_distro.get() == 'Ubuntu 18.04, Linux Mint 19.x, ...':
+      showinfo(
+        title='Configure - Linux Distro',
+        message="Ubuntu 18.04, Linux Mint 19.x, ... will be set up ...")
+      os.system("firefox")
+    elif selected_linux_distro.get() == 'Ubuntu 20.04, Linux Mint 20.x, Pop!_OS 20.04, ...':
+      showinfo(
+        title='Configure - Linux Distro',
+        message="Ubuntu 20.04, Linux Mint 20.x, Pop!_OS 20.04, ... will be set up ...")
+      os.system("firefox")
+    elif selected_linux_distro.get() == 'Ubuntu 22.04, Pop!_OS 22.04, ...':
+      showinfo(
+        title='Configure - Linux Distro',
+        message="Ubuntu 22.04, Pop!_OS 22.04, ... will be set up ...")
+      os.system("firefox")
+    elif selected_linux_distro.get() == 'Void Linux':
+      showinfo(
+        title='Configure - Linux Distro',
+        message="Void Linux will be set up ...")
+      os.system("firefox")
+    elif selected_linux_distro.get() == 'Gentoo Linux':
+      showinfo(
+        title='Configure - Linux Distro',
+        message="Gentoo Linux will be set up ...")
+      os.system("firefox")
 
+
+def show_selected_linux_distro():
+    MsgBox = tk.messagebox.askquestion ('Save Configuration','Do you want to continue with your settings?',icon = 'question')
+    if MsgBox == 'yes':
+       setup_selected_linux_distro()
+    else:
+        tk.messagebox.showinfo('Return Configuration','You will be returned to the settings and can change them again or Cancel the installation.')
+
+
+
+# ----------------------------------------------------------------------------------------------- #
+
+# Show a list of supported Linux Distro's
 selected_linux_distro = tk.StringVar()
 linux_distros = ['Arch Linux, Manjaro Linux, EndeavourOS, ...', 
 'Debian 10, MX Linux 19.4, Raspberry Pi Desktop, ...', 
@@ -224,7 +313,7 @@ notebook_tab2_frame_button1.grid(row=0, column=0, padx=5, pady=5)
 notebook_tab2_frame_button1.grid_rowconfigure(0, weight=1)
 notebook_tab2_frame_button2 = tk.Button(notebook_tab2_frame_button,text='Cancel',width=6,height=1, underline=0, command=lambda:window.quit())
 notebook_tab2_frame_button2.grid(row=0, column=1, padx=5, pady=5)
-notebook_tab2_frame_button3 = tk.Button(notebook_tab2_frame_button,text='Next >',width=6,height=1, underline=0, command=lambda:notebook.select(notebook_tab3))
+notebook_tab2_frame_button3 = tk.Button(notebook_tab2_frame_button,text='Next >',width=6,height=1, underline=0, command=show_selected_linux_distro)
 notebook_tab2_frame_button3.grid(row=0, column=2, padx=5, pady=5)
 notebook_tab2_frame_button4 = tk.Button(notebook_tab2_frame_button,text='Help',width=6,height=1, underline=0, command=lambda:notebook.select(notebook_tab7))
 notebook_tab2_frame_button4.grid(row=0, column=3, padx=5, pady=5)
