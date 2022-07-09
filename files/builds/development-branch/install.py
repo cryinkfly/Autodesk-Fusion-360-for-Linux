@@ -80,7 +80,8 @@ notebook_style.theme_use("theme_notebook_tabs")
 # Create a Tkinter Notebook widget to create tabs in this window:
 notebook = ttk.Notebook(window)
 notebook.pack(pady=20,padx=20, expand=True)
-ttk.Style().configure("TNotebook", background=white)
+notebook_style = ttk.Style(notebook)
+notebook_style.configure("TNotebook", background=white, tabposition='nw')
 
 # ----------------------------------------------------------------------------------------------- #
 
@@ -319,5 +320,39 @@ notebook_tab2_frame_button4 = tk.Button(notebook_tab2_frame_button,text='Help',w
 notebook_tab2_frame_button4.grid(row=0, column=3, padx=5, pady=5)
 
 # ----------------------------------------------------------------------------------------------- #
+
+# Create a Tkinter Notebook widget to create tabs in this window:
+notebook2 = ttk.Notebook(notebook_tab4)
+notebook2.pack(pady=20,padx=20, expand=True)
+notebook2_style = ttk.Style(notebook2)
+notebook2_style.configure("TNotebook2", background=white, tabposition='sw')
+
+# ----------------------------------------------------------------------------------------------- #
+
+# Configure the tabs:
+notebook2_tab1 = tk.Frame(notebook2, width=600, height=300)
+notebook2_tab2 = tk.Frame(notebook2, width=600, height=300)
+notebook2_tab3 = tk.Frame(notebook2, width=600, height=300)
+notebook2_tab4 = tk.Frame(notebook2, width=600, height=300)
+notebook2_tab5 = tk.Frame(notebook2, width=600, height=300)
+notebook2_tab6 = tk.Frame(notebook2, width=600, height=300)
+notebook2_tab7 = tk.Frame(notebook2, width=600, height=300)
+
+notebook2_tab1.pack(fill='both', expand=True)
+notebook2_tab2.pack(fill='both', expand=True)
+notebook2_tab3.pack(fill='both', expand=True)
+notebook2_tab4.pack(fill='both', expand=True)
+notebook2_tab5.pack(fill='both', expand=True)
+notebook2_tab6.pack(fill='both', expand=True)
+notebook2_tab7.pack(fill='both', expand=True)
+
+# Add the tabs to Notebook widget:
+notebook2.add(notebook2_tab1, text='Welcome')
+notebook2.add(notebook2_tab2, text='Configuration')
+notebook2.add(notebook2_tab3, text='Installation')
+notebook2.add(notebook2_tab4, text='Plugins')
+notebook2.add(notebook2_tab5, text='System Info')
+notebook2.add(notebook2_tab6, text='About')
+notebook2.add(notebook2_tab7, text='Help')
 
 window.mainloop()
