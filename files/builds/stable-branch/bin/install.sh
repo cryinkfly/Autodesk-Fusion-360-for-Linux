@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    21:00/20.06.2022                                                                   #
-# Version:      1.8.1                                                                              #
+# Time/Date:    21:00/20.07.2022                                                                   #
+# Version:      1.8.2                                                                              #
 ####################################################################################################
 
 # Path: /$HOME/.fusion360/bin/install.sh
@@ -369,49 +369,25 @@ WP_DRIVER=`cat /tmp/fusion360/settings.txt | awk 'NR == 2'`
 ###############################################################################################################################################################
 
 # Start Fusion360installer.exe - Part 1
-function SP_FUSION360_INSTALL_START_1 {
-  WINEPREFIX=$WP_DIRECTORY wine $WP_DIRECTORY/drive_c/users/$USER/Downloads/Fusion360installer.exe
-}
-
-# Stop Fusion360installer.exe - Part 1
-function SP_FUSION360_INSTALL_STOP_1 {
-  sleep 10m
-  kill -9 $(ps aux |grep -i '\.exe' |awk '{print $2}'|tr '\n' ' ')
+function SP_FUSION360_INSTALL_DEFAULT_1 {
+  WINEPREFIX=$WP_DIRECTORY timeout -k 10m 9m wine $WP_DIRECTORY/drive_c/users/$USER/Downloads/Fusion360installer.exe
 }
 
 # Start Fusion360installer.exe - Part 2
-function SP_FUSION360_INSTALL_START_2 {
-  WINEPREFIX=$WP_DIRECTORY wine $WP_DIRECTORY/drive_c/users/$USER/Downloads/Fusion360installer.exe
-}
-
-# Stop Fusion360installer.exe - Part 2
-function SP_FUSION360_INSTALL_STOP_2 {
-  sleep 3m
-  kill -9 $(ps aux |grep -i '\.exe' |awk '{print $2}'|tr '\n' ' ')
+function SP_FUSION360_INSTALL_DEFAULT_2 {
+  WINEPREFIX=$WP_DIRECTORY timeout -k 5m 4m wine $WP_DIRECTORY/drive_c/users/$USER/Downloads/Fusion360installer.exe
 }
 
 ###############################################################################################################################################################
 
 # Start Fusion360installer.exe - Part 1 (Refresh)
-function SP_FUSION360_INSTALL_REFRESH_START_1 {
-  WINEPREFIX=$WP_WINEPREFIXES_REFRESH wine $WP_WINEPREFIXES_REFRESH/drive_c/users/$USER/Downloads/Fusion360installer.exe
-}
-
-# Stop Fusion360installer.exe - Part 1 (Refresh)
-function SP_FUSION360_INSTALL_REFRESH_STOP_1 {
-  sleep 10m
-  kill -9 $(ps aux |grep -i '\.exe' |awk '{print $2}'|tr '\n' ' ')
+function SP_FUSION360_INSTALL_REFRESH_1 {
+  WINEPREFIX=$WP_WINEPREFIXES_REFRESH timeout -k 10m 9m wine $WP_WINEPREFIXES_REFRESH/drive_c/users/$USER/Downloads/Fusion360installer.exe
 }
 
 # Start Fusion360installer.exe - Part 2 (Refresh)
-function SP_FUSION360_INSTALL_REFRESH_START_2 {
-  WINEPREFIX=$WP_WINEPREFIXES_REFRESH wine $WP_WINEPREFIXES_REFRESH/drive_c/users/$USER/Downloads/Fusion360installer.exe
-}
-
-# Stop Fusion360installer.exe - Part 2 (Refresh)
-function SP_FUSION360_INSTALL_REFRESH_STOP_2 {
-  sleep 3m
-  kill -9 $(ps aux |grep -i '\.exe' |awk '{print $2}'|tr '\n' ' ')
+function SP_FUSION360_INSTALL_REFRESH_2 {
+  WINEPREFIX=$WP_WINEPREFIXES_REFRESH timeout -k 5m 4m wine $WP_WINEPREFIXES_REFRESH/drive_c/users/$USER/Downloads/Fusion360installer.exe
 }
 
 ###############################################################################################################################################################
@@ -1045,9 +1021,9 @@ function SP_FUSION360_INSTALL_PROGRESS {
 
 SP_FUSION360_INSTALL_PROGRESS_MAIN () {
 echo "20"
-SP_FUSION360_INSTALL_START_1 & SP_FUSION360_INSTALL_STOP_1 # These two commands run in the same time.
+SP_FUSION360_INSTALL_DEFAULT_1
 echo "70"
-SP_FUSION360_INSTALL_START_2 & SP_FUSION360_INSTALL_STOP_2 # These two commands run in the same time.
+SP_FUSION360_INSTALL_DEFAULT_2
 sleep 5
 echo "100"
 }
@@ -1061,9 +1037,9 @@ function SP_FUSION360_INSTALL_PROGRESS_REFRESH {
 
 SP_FUSION360_INSTALL_PROGRESS_MAIN_REFRESH () {
 echo "20"
-SP_FUSION360_INSTALL_REFRESH_START_1 & SP_FUSION360_INSTALL_REFRESH_STOP_1 # These two commands run in the same time.
+SP_FUSION360_INSTALL_REFRESH_1
 echo "70"
-SP_FUSION360_INSTALL_REFRESH_START_2 & SP_FUSION360_INSTALL_REFRESH_STOP_2 # These two commands run in the same time.
+SP_FUSION360_INSTALL_REFRESH_2
 sleep 5
 echo "100"
 }
