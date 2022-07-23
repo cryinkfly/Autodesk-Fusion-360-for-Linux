@@ -149,6 +149,10 @@
    <td>オートデスクは、登録後30日間の無料トライアルを提供しています。</ td>
   </tr>
   <tr>
+    <td>個人</td>
+    <td> <a href="https://www.autodesk.com/products/fusion-360/personal"> Autodeskは、個人使用のみを目的とした、機能が制限された1年間の無料の更新可能な試用版を提供します</a> </ td>
+   </ tr>
+  <tr>
    <td>教育</td>
    <td>ほとんどのCADパッケージと同様に、Fusion 360は、学生、教師、教育機関向けの教育ライセンスを提供しています。</ td>
   </tr>
@@ -313,6 +317,10 @@
 
     mkdir -p "$HOME/.fusion360/bin" && cd "$HOME/.fusion360/bin" && wget -N https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/install.sh && chmod +x install.sh && ./install.sh
     
+🔹または、AutodeskFusion360をFlatpakアプリとしてインストールして使用します。
+
+     https://usebottles.com/app/#fusion360
+
 🔹これで、AutodeskFusion360を<a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues/44#issuecomment-890552181">使用</a>できるようになりました Linuxシステムで！
   </br> </br>
   <h3>📖利用可能なスクリプトリリースはどれですか？</h3>
