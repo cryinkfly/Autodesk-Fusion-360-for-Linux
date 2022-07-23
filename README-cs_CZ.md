@@ -149,6 +149,10 @@
    <td>Autodesk nabízí 30denní bezplatnou zkušební verzi po registraci.</td>
   </tr>
   <tr>
+   <td>Osobní</td>
+   <td><a href="https://www.autodesk.com/products/fusion-360/personal">Autodesk nabízí</a> bezplatnou roční zkušební verzi s omezeným počtem funkcí, kterou lze obnovit pouze pro osobní použití</td>
+  </tr>
+  <tr>
    <td>Vzdělávání</td>
    <td>Stejně jako většina balíčků CAD nabízí Fusion 360 vzdělávací licenci pro studenty, učitele a vzdělávací instituce.</td>
   </tr>
@@ -312,6 +316,11 @@
 </br></br>
 
     mkdir -p "$HOME/.fusion360/bin" && cd "$HOME/.fusion360/bin" && wget -N https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/install.sh && chmod +x install.sh && ./install.sh
+    
+🔹 Nebo nainstalujete a použijete Autodesk Fusion 360 jako aplikaci Flatpak: 
+
+    https://usebottles.com/app/#fusion360    
+    
     
 🔹 Nyní můžete <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues/44#issuecomment-890552181">použít</a> Autodesk Fusion 360 na vašem systému Linux!
  </br></br>
