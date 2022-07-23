@@ -149,6 +149,10 @@
     <td>Autodesk bietet nach der Registrierung eine kostenlose 30-Tage-Testversion an.</td>
    </tr>
    <tr>
+   <td>Personal</td>
+   <td><a href="https://www.autodesk.com/products/fusion-360/personal">Autodesk bietet</a> eine kostenlose, funktionsbeschränkte, einjährige, verlängerbare Testversion nur für den persönlichen Gebrauch an.</td>
+  </tr>
+   <tr>
     <td>Bildung</td>
     <td>Wie die meisten CAD-Pakete bietet Fusion 360 eine Bildungslizenz für Schüler, Lehrer und Bildungseinrichtungen.</td>
    </tr>
@@ -312,6 +316,10 @@
 </br></br>
 
     mkdir -p "$HOME/.fusion360/bin" && cd "$HOME/.fusion360/bin" && wget -N https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/install.sh && chmod +x install.sh && ./install.sh
+    
+🔹 Oder Sie installieren und verwenden Autodesk Fusion 360 als Flatpak-App:
+
+    https://usebottles.com/app/#fusion360 
     
 🔹 Jetzt können Sie Autodesk Fusion 360 <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues/44#issuecomment-890552181">verwenden</a>!
   </br></br>
