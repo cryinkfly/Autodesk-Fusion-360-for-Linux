@@ -316,7 +316,11 @@
 </br></br>
 
     mkdir -p "$HOME/.fusion360/bin" && cd "$HOME/.fusion360/bin" && wget -N https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/install.sh && chmod +x install.sh && ./install.sh
-    
+
+🔹 Or you install and use Autodesk Fusion 360 as a Flatpak app: 
+
+    https://usebottles.com/app/#fusion360
+
 🔹 Now, You can <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues/44#issuecomment-890552181">use</a> Autodesk Fusion 360 on your Linux system!
  </br></br>
  <h3>📖 Which script releases are available?</h3>
