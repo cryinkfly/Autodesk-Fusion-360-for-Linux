@@ -149,6 +149,10 @@
    <td>Autodesk는 등록 후 30일 무료 평가판을 제공합니다.</td>
   </tr>
   <tr>
+    <td>개인</td>
+    <td><a href="https://www.autodesk.com/products/fusion-360/personal">Autodesk는 기능이 제한된 1년 무료 평가판을 제공</a>합니다. </td>
+   </tr>
+  <tr>
    <td>교육</td>
    <td>대부분의 CAD 패키지와 마찬가지로 Fusion 360은 학생, 교사 및 교육 기관을 위한 교육용 라이선스를 제공합니다.</td>
   </tr>
@@ -313,6 +317,10 @@
 
     mkdir -p "$HOME/.fusion360/bin" && cd "$HOME/.fusion360/bin" && wget -N https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/install.sh && chmod +x install.sh && ./install.sh
     
+🔹 또는 Autodesk Fusion 360을 Flatpak 앱으로 설치하고 사용합니다.
+
+     https://usebottles.com/app/#fusion360
+
 🔹 이제 Autodesk Fusion 360을 <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues/44#issuecomment-890552181">사용</a>할 수 있습니다. 당신의 리눅스 시스템에!
   </br></br>
   <h3>📖 어떤 스크립트 릴리스를 사용할 수 있나요?</h3>
