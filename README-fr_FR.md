@@ -308,9 +308,9 @@
 </br>
 🔹 Vérifiez si vos <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/extras/network/etc">paramètres réseau</a> sont correctement configuré !
 </br>
-🔹 Vérifiez si votre système répond à tous les <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/edit/main/files/builds/development-branch/README.md#- quelles-sont-les-configurations-système-pour-autodesk-fusion-360">configurations</a> !
+🔹 Vérifiez si votre système répond à tous les <a href="#fusion360-requirements-2">configurations</a> !
 </br>
-🔹 Vous avez besoin d'un Fusion 360 actif <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/edit/main/files/builds/development-branch/README.md#-how -beaucoup-de-fusion-360-coût">licence</a> !
+🔹 Vous avez besoin d'un Fusion 360 actif <a href="#-how-much-does-fusion-360-cost">licence</a> !
 </br></br>
 🔹 Ouvrez un terminal et lancez cette commande :
 </br></br>
