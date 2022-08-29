@@ -308,9 +308,9 @@
 </br>
 🔹 检查您的 <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/extras/network/etc">网络设置</a>是否正确配置！
 </br>
-🔹 检查您的系统是否满足所有 <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/edit/main/files/builds/development-branch/README.md#- autodesk-fusion-360">系统要求是什么</a>！
+🔹 检查您的系统是否满足所有 <a href="#fusion360-requirements-2">系统要求是什么</a>！
 </br>
-🔹 你需要一个活跃的 Fusion 360 <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/edit/main/files/builds/development-branch/README.md#-how -much-does-fusion-360-cost">许可</a>！
+🔹 你需要一个活跃的 Fusion 360 <a href="#-how-much-does-fusion-360-cost">许可</a>！
 </br></br>
 🔹 打开终端并运行以下命令：
 </br></br>
