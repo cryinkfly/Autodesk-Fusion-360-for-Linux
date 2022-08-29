@@ -308,9 +308,9 @@
 </br>
 🔹<a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/extras/network/etc">ネットワーク設定</a>が正しく構成されています</a>！
 </br>
-🔹システムがすべての<a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/edit/main/files/builds/development-branch/README.md#-を満たしているかどうかを確認しますwhat-are-the-system-requirements-for-autodesk-fusion-360">要件</a>！
+🔹システムがすべての<a href="#fusion360-requirements-2">要件</a>！
 </br>
-🔹アクティブなFusion360が必要です<a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/edit/main/files/builds/development-branch/README.md#-how -much-does-fusion-360-cost">ライセンス</a>！
+🔹アクティブなFusion360が必要です<a href="#-how-much-does-fusion-360-cost">ライセンス</a>！
 </br> </br>
 🔹ターミナルを開き、次のコマンドを実行します：
 </br> </br>
