@@ -308,9 +308,9 @@
 </br>
 🔹 <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/extras/network/etc">네트워크 설정</a>이 다음과 같은지 확인하세요. 올바르게 구성되었습니다!
 </br>
-🔹 시스템이 모든 <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/edit/main/files/builds/development-branch/README.md#-를 충족하는지 확인하십시오. what-are-the-system-requirements-for-autodesk-fusion-360">요구 사항</a>!
+🔹 시스템이 모든 <a href="#fusion360-requirements-2">요구 사항</a>!
 </br>
-🔹 활성 Fusion 360이 필요합니다. <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/edit/main/files/builds/development-branch/README.md#-how -much-does-fusion-360-cost">라이센스</a>!
+🔹 활성 Fusion 360이 필요합니다. <a href="#-how-much-does-fusion-360-cost">라이센스</a>!
 </br></br>
 🔹 터미널을 열고 다음 명령을 실행하십시오:
 </br></br>
