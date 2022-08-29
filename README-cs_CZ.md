@@ -308,9 +308,9 @@
 </br>
 🔹 Zkontrolujte, zda jsou vaše <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/extras/network/etc">nastavení sítě</a> správně nakonfigurováno!
 </br>
-🔹 Zkontrolujte, zda váš systém splňuje všechny <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/edit/main/files/builds/development-branch/README.md#- co-are-the-system-requirements-for-autodesk-fusion-360">požadavky</a>!
+🔹 Zkontrolujte, zda váš systém splňuje všechny <a href="#fusion360-requirements-2">požadavky</a>!
 </br>
-🔹 Potřebujete aktivní Fusion 360 <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/edit/main/files/builds/development-branch/README.md#-how -much-does-fusion-360-cost">licence</a>!
+🔹 Potřebujete aktivní Fusion 360 <a href="#-how-much-does-fusion-360-cost">licence</a>!
 </br></br>
 🔹 Otevřete terminál a spusťte tento příkaz:
 </br></br>
