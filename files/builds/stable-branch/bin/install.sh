@@ -442,7 +442,7 @@ function SP_FUSION360_INSTALL {
   mkdir -p "$WP_DIRECTORY/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options"
   cd "$WP_DIRECTORY/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options" || return
   SP_DXVK_OPENGL_2
-  cd "SP_PATH/bin" || return
+  cd "$SP_PATH/bin" || return
   SP_GET_WINEPREFIX_TYPE
   SP_FUSION360_SHORTCUTS_LOAD
   SP_FUSION360_EXTENSIONS
