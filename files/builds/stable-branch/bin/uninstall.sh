@@ -32,37 +32,47 @@ function DL_GET_FILES {
 ###############################################################################################################################################################
 
 function DL_LOAD_LOCALE {
-  DL_LOCALE=`cat /tmp/fusion360/settings.txt | awk 'NR == 1'`
+  DL_LOCALE=$(awk 'NR == 1' /tmp/fusion360/settings.txt)
   if [[ $DL_LOCALE = "Czech" ]]; then
     echo "CS"
-    . $DL_PATH/locale/cs-CZ/locale-cs.sh
+    # shellcheck source=../locale/cs-CZ/locale-cs.sh
+    source "$DL_PATH/locale/cs-CZ/locale-cs.sh"
   elif [[ $DL_LOCALE = "English" ]]; then
     echo "EN"
-    . $DL_PATH/locale/en-US/locale-en.sh
+    # shellcheck source=../locale/en-US/locale-en.sh
+    source "$DL_PATH/locale/en-US/locale-en.sh"
   elif [[ $DL_LOCALE = "German" ]]; then
     echo "DE"
-    . $DL_PATH/locale/de-DE/locale-de.sh
+    # shellcheck source=../locale/de-DE/locale-de.sh
+    source "$DL_PATH/locale/de-DE/locale-de.sh"
   elif [[ $DL_LOCALE = "Spanish" ]]; then
     echo "ES"
-    . $DL_PATH0/locale/es-ES/locale-es.sh
+    # shellcheck source=../locale/es-ES/locale-es.sh
+    source "$DL_PATH/locale/es-ES/locale-es.sh"
   elif [[ $DL_LOCALE = "French" ]]; then
     echo "FR"
-    . $DL_PATH/locale/fr-FR/locale-fr.sh
+    # shellcheck source=../locale/fr-FR/locale-fr.sh
+    source "$DL_PATH/locale/fr-FR/locale-fr.sh"
   elif [[ $DL_LOCALE = "Italian" ]]; then
     echo "IT"
-    . $DL_PATH/locale/it-IT/locale-it.sh
+    # shellcheck source=../locale/it-IT/locale-it.sh
+    source "$DL_PATH/locale/it-IT/locale-it.sh"
   elif [[ $DL_LOCALE = "Japanese" ]]; then
     echo "JP"
-    . $DL_PATH/locale/ja-JP/locale-ja.sh
+    # shellcheck source=../locale/ja-JP/locale-ja.sh
+    source "$DL_PATH/locale/ja-JP/locale-ja.sh"
   elif [[ $DL_LOCALE = "Korean" ]]; then
     echo "KO"
-    . $DL_PATH/locale/ko-KR/locale-ko.sh
+    # shellcheck source=../locale/ko-KR/locale-ko.sh
+    source "$DL_PATH/locale/ko-KR/locale-ko.sh"
   elif [[ $DL_LOCALE = "Chinese" ]]; then
     echo "ZH"
-    . $DL_PATH/locale/zh-CN/locale-zh.sh
-  else 
+    # shellcheck source=../locale/zh-CN/locale-zh.sh
+    source "$DL_PATH/locale/zh-CN/locale-zh.sh"
+  else
    echo "EN"
-   . $DL_PATH/locale/en-US/locale-en.sh
+   # shellcheck source=../locale/en-US/locale-en.sh
+   source "$DL_PATH/locale/en-US/locale-en.sh"
   fi
 }
 
@@ -76,10 +86,10 @@ function DL_WINEPREFIXES_ACT {
   # VAR 2 = default
   # VAR 3 = DXVK
   # VAR 4 = $HOME/.fusion360/wineprefixes/default
- 
+
   # Get info if the user is sure with there choise ...
   DL_WINEPREFIXES_DEL_INFO
-}  
+}
 
 ###############################################################################################################################################################
 
@@ -88,40 +98,40 @@ function DL_WINEPREFIXES_DEL {
   # Filtering (Wineprefix-Directory):
   DL_WINEPREFIXES=${DL_WINEPREFIXES_STRING/#TRUE}
   # Remove VAR 3 (line)
-  DL_WINEPREFIXES_VAR_4=`grep -n "$DL_WINEPREFIXES" /tmp/fusion360/logs/wineprefixes.log | grep -Eo '^[^:]+'` 
+  DL_WINEPREFIXES_VAR_4=$(grep -n "$DL_WINEPREFIXES" /tmp/fusion360/logs/wineprefixes.log | grep -Eo '^[^:]+')
   DL_WINEPREFIXES_VAR_3=1
-  DL_WINEPREFIXES_VAR_SUM=`echo $(( DL_WINEPREFIXES_VAR_4 - DL_WINEPREFIXES_VAR_3 ))`  
+  DL_WINEPREFIXES_VAR_SUM=$(( DL_WINEPREFIXES_VAR_4 - DL_WINEPREFIXES_VAR_3 ))
   sed --in-place "${DL_WINEPREFIXES_VAR_SUM}d" /tmp/fusion360/logs/wineprefixes.log
   # Remove VAR 2 (line)
-  DL_WINEPREFIXES_VAR_4=`grep -n "$DL_WINEPREFIXES" /tmp/fusion360/logs/wineprefixes.log | grep -Eo '^[^:]+'`
+  DL_WINEPREFIXES_VAR_4=$(grep -n "$DL_WINEPREFIXES" /tmp/fusion360/logs/wineprefixes.log | grep -Eo '^[^:]+')
   DL_WINEPREFIXES_VAR_2=1
-  DL_WINEPREFIXES_VAR_SUM=`echo $(( DL_WINEPREFIXES_VAR_4 - DL_WINEPREFIXES_VAR_2 ))`
-  DL_SHORTCUTS=`cat /tmp/fusion360/logs/wineprefixes.log | awk -v nr="$DL_WINEPREFIXES_VAR_SUM" 'NR==nr'`
+  DL_WINEPREFIXES_VAR_SUM=$(( DL_WINEPREFIXES_VAR_4 - DL_WINEPREFIXES_VAR_2 ))
+  DL_SHORTCUTS=$(awk -v nr="$DL_WINEPREFIXES_VAR_SUM" 'NR==nr' /tmp/fusion360/logs/wineprefixes.log)
   sed --in-place "${DL_WINEPREFIXES_VAR_SUM}d" /tmp/fusion360/logs/wineprefixes.log
   # Remove VAR 1 (line)
-  DL_WINEPREFIXES_VAR_4=`grep -n "$DL_WINEPREFIXES" /tmp/fusion360/logs/wineprefixes.log | grep -Eo '^[^:]+'`
+  DL_WINEPREFIXES_VAR_4=$(grep -n "$DL_WINEPREFIXES" /tmp/fusion360/logs/wineprefixes.log | grep -Eo '^[^:]+')
   DL_WINEPREFIXES_VAR_1=1
-  DL_WINEPREFIXES_VAR_SUM=`echo $(( DL_WINEPREFIXES_VAR_4 - DL_WINEPREFIXES_VAR_1 ))`
+  DL_WINEPREFIXES_VAR_SUM=$(( DL_WINEPREFIXES_VAR_4 - DL_WINEPREFIXES_VAR_1 ))
   sed --in-place "${DL_WINEPREFIXES_VAR_SUM}d" /tmp/fusion360/logs/wineprefixes.log
   # Remove VAR 4 (line)
-  DL_WINEPREFIXES_VAR_4=`grep -n "$DL_WINEPREFIXES" /tmp/fusion360/logs/wineprefixes.log | grep -Eo '^[^:]+'` 
+  DL_WINEPREFIXES_VAR_4=$(grep -n "$DL_WINEPREFIXES" /tmp/fusion360/logs/wineprefixes.log | grep -Eo '^[^:]+')
   sed --in-place "${DL_WINEPREFIXES_VAR_1}d" /tmp/fusion360/logs/wineprefixes.log
   # Continue with removing ...
-  rmdir $DL_WINEPREFIXES
-  rmdir $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$DL_SHORTCUTS
+  rmdir "$DL_WINEPREFIXES"
+  rmdir "$HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$DL_SHORTCUTS"
   DL_WINEPREFIXES_DEL_ALL
 }
 
-############################################################################################################################################################### 
- 
+###############################################################################################################################################################
+
 function DL_WINEPREFIXES_DEL_ALL {
- if [[ ! -z $(cat /tmp/fusion360/logs/wineprefixes.log) ]] ; then
+ if [[ -n $(cat /tmp/fusion360/logs/wineprefixes.log) ]] ; then
    # Do nothing!
    echo "There is at least one installed Wineprefix on your system!"
  else
    echo "There are no more Wineprefixes installed on your system!"
-   rmdir $DL_PATH
-   rmdir $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360
+   rmdir "$DL_PATH"
+   rmdir "$HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360"
  fi
 }
 

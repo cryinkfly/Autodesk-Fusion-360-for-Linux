@@ -31,37 +31,47 @@ function UP_GET_FILES {
 ###############################################################################################################################################################
 
 function UP_LOAD_LOCALE {
-  UP_LOCALE=`cat /tmp/fusion360/settings.txt | awk 'NR == 1'`
+  UP_LOCALE=$(awk 'NR == 1' /tmp/fusion360/settings.txt)
   if [[ $UP_LOCALE = "Czech" ]]; then
     echo "CS"
-    . $DL_PATH/locale/cs-CZ/locale-cs.sh
+    # shellcheck source=../locale/cs-CZ/locale-cs.sh
+    source "$DL_PATH/locale/cs-CZ/locale-cs.sh"
   elif [[ $UP_LOCALE = "English" ]]; then
     echo "EN"
-    . $DL_PATH/locale/en-US/locale-en.sh
+    # shellcheck source=../locale/en-US/locale-en.sh
+    source "$DL_PATH/locale/en-US/locale-en.sh"
   elif [[ $UP_LOCALE = "German" ]]; then
     echo "DE"
-    . $DL_PATH/locale/de-DE/locale-de.sh
+    # shellcheck source=../locale/de-DE/locale-de.sh
+    source "$DL_PATH/locale/de-DE/locale-de.sh"
   elif [[ $UP_LOCALE = "Spanish" ]]; then
     echo "ES"
-    . $DL_PATH0/locale/es-ES/locale-es.sh
+    # shellcheck source=../locale/es-ES/locale-es.sh
+    source "$DL_PATH/locale/es-ES/locale-es.sh"
   elif [[ $UP_LOCALE = "French" ]]; then
     echo "FR"
-    . $DL_PATH/locale/fr-FR/locale-fr.sh
+    # shellcheck source=../locale/fr-FR/locale-fr.sh
+    source "$DL_PATH/locale/fr-FR/locale-fr.sh"
   elif [[ $UP_LOCALE = "Italian" ]]; then
     echo "IT"
-    . $DL_PATH/locale/it-IT/locale-it.sh
+    # shellcheck source=../locale/it-IT/locale-it.sh
+    source "$DL_PATH/locale/it-IT/locale-it.sh"
   elif [[ $UP_LOCALE = "Japanese" ]]; then
     echo "JP"
-    . $DL_PATH/locale/ja-JP/locale-ja.sh
+    # shellcheck source=../locale/ja-JP/locale-ja.sh
+    source "$DL_PATH/locale/ja-JP/locale-ja.sh"
   elif [[ $UP_LOCALE = "Korean" ]]; then
     echo "KO"
-    . $DL_PATH/locale/ko-KR/locale-ko.sh
+    # shellcheck source=../locale/ko-KR/locale-ko.sh
+    source "$DL_PATH/locale/ko-KR/locale-ko.sh"
   elif [[ $UP_LOCALE = "Chinese" ]]; then
     echo "ZH"
-    . $DL_PATH/locale/zh-CN/locale-zh.sh
-  else 
+    # shellcheck source=../locale/zh-CN/locale-zh.sh
+    source "$DL_PATH/locale/zh-CN/locale-zh.sh"
+  else
    echo "EN"
-   . $DL_PATH/locale/en-US/locale-en.sh
+   # shellcheck source=../locale/en-US/locale-en.sh
+   source "$DL_PATH/locale/en-US/locale-en.sh"
   fi
 }
 
@@ -69,11 +79,11 @@ function UP_LOAD_LOCALE {
 
 # Checks if there is an update for Autodesk Fusion 360.
 function UP_CHECK_INFO {
-  if [ $GET_UPDATE -eq 1 ]; then
+  if [ "$GET_UPDATE" -eq 1 ]; then
     UP_QUESTION
-  elif [ $GET_UPDATE -eq 0 ]; then
+  elif [ "$GET_UPDATE" -eq 0 ]; then
     UP_NO_UPDATE_INFO
-  else    
+  else
     UP_NO_CONNECTION_WARNING
   fi
 }
@@ -90,24 +100,24 @@ function UP_GET_UPDATE {
 
 # Start Fusion360installer.exe - Part 1
 function UP_FUSION360_INSTALL_START_1 {
-  WINEPREFIX=$WP_BOX wine $WP_BOX/drive_c/users/$USER/Downloads/Fusion360installer.exe
+  WINEPREFIX="$WP_BOX" wine "$WP_BOX/drive_c/users/$USER/Downloads/Fusion360installer.exe"
 }
 
 # Stop Fusion360installer.exe - Part 1
 function UP_FUSION360_INSTALL_STOP_1 {
   sleep 3m
-  kill -9 $(ps aux |grep -i '\.exe' |awk '{print $2}'|tr '\n' ' ')
+  pkill -9 -f '\.exe'
 }
 
 # Start Fusion360installer.exe - Part 2
 function UP_FUSION360_INSTALL_START_2 {
-  WINEPREFIX=$WP_BOX wine $WP_BOX/drive_c/users/$USER/Downloads/Fusion360installer.exe
+  WINEPREFIX="$WP_BOX" wine "$WP_BOX/drive_c/users/$USER/Downloads/Fusion360installer.exe"
 }
 
 # Stop Fusion360installer.exe - Part 2
 function UP_FUSION360_INSTALL_STOP_2 {
   sleep 1m
-  kill -9 $(ps aux |grep -i '\.exe' |awk '{print $2}'|tr '\n' ' ')
+  pkill -9 -f '\.exe'
 }
 
 ###############################################################################################################################################################
@@ -141,10 +151,10 @@ function UP_NO_CONNECTION_WARNING {
 # The user will be asked if he wants to update or not.
 function UP_QUESTION {
   yad --title="$UP_TITLE" --text="$UP_QUESTION_LABEL" --text-align=center --button=gtk-cancel:0 --button=gtk-ok:1
-  
+
   answer=$?
 
-  if [ "$answer" -eq 0 ]; then    
+  if [ "$answer" -eq 0 ]; then
     UP_GET_UPDATE
     UP_FUSION360_INSTALL_UPDATE_PROGRESS
   elif [ "$answer" -eq 1 ]; then
@@ -163,14 +173,14 @@ function UP_PROGRESS {
     echo "100" ; sleep 3
     echo "UP_PROGRESS_LABEL_3" ; sleep 1
   }
-  
+
   UP_PROGRESS_MAIN | yad --title="$UP_TITLE" --progress --progress-text "$UP_PROGRESS_LABEL_1" --percentage=0 --button=gtk-cancel:0 --button=gtk-ok:1
 
   ret=$?
 
   # Responses to above button presses are below:
   if [[ $ret -eq 0 ]]; then
-    UP_SKIP_INFO 
+    UP_SKIP_INFO
   elif [[ $ret -eq 1 ]]; then
     UP_CHECK_INFO
   fi
