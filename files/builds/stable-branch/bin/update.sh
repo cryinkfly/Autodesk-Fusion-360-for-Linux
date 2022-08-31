@@ -191,6 +191,7 @@ function UP_PROGRESS {
 function UP_FUSION360_INSTALL_UPDATE_PROGRESS {
 
 UP_FUSION360_INSTALL_PROGRESS_MAIN () {
+cd "$WP_DIRECTORY" || return
 echo "20"
 UP_FUSION360_INSTALL_START_1 & UP_FUSION360_INSTALL_STOP_1 # These two commands run in the same time.
 echo "70"
