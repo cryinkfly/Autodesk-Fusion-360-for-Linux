@@ -277,9 +277,9 @@ function SP_FUSION360_INSTALLER_LOAD {
 function SP_FUSION360_SHORTCUTS_LOAD {
   # Create a .desktop file (launcher.sh) for Autodesk Fusion 360!
   wget -N -P "$SP_PATH/graphics" https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/fusion360.svg
-  rm "$HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk\ Fusion\ 360.desktop"
+  rm "$HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk Fusion 360.desktop"
   mkdir -p "$HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE"
-  "$HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop" << EOF
+  cat >> "$HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop" << EOF
 [Desktop Entry]
 Name=Autodesk Fusion 360 - $WP_TYPE
 GenericName=CAD Application
@@ -311,7 +311,7 @@ EOF
 
   # Create a .desktop file (uninstall.sh) for Autodesk Fusion 360!
   wget -N -P "$SP_PATH/graphics" https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/fusion360-uninstall.svg
-  "$HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop" << EOF
+  cat >> "$HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop" << EOF
 [Desktop Entry]
 Name=Autodesk Fusion 360 (Uninstall) - $WP_TYPE
 Name[cs]=Autodesk Fusion 360 (Odinstalovat) - $WP_TYPE
@@ -341,7 +341,7 @@ Path=$SP_PATH/bin
 EOF
 
   # Create a link to the Wineprefixes Box:
-  "$WP_DIRECTORY/box-run.sh" << EOF
+  cat >> "$WP_DIRECTORY/box-run.sh" << EOF
 #!/bin/bash
 WP_BOX='$WP_DIRECTORY' source $SP_PATH/bin/launcher.sh
 EOF
@@ -419,6 +419,8 @@ function SP_FUSION360_INSTALL {
   # It protects against errors rather than malice. It's useful for, e.g., keeping games from saving their settings in random subdirectories of your home directory.
   # But it still ensures that wine, for example, no longer has access permissions to Home!
   # For this reason, the EXE files must be located directly in the Wineprefix folder!
+  mkdir -p "$WP_DIRECTORY"
+  cd "$WP_DIRECTORY" || return
   WINEPREFIX="$WP_DIRECTORY" sh "$SP_PATH/bin/winetricks" -q sandbox
   sleep 5s
   # We must install some packages!
@@ -1153,9 +1155,8 @@ function SP_COMPLETED {
   --align=center \
   --field=":TXT" "$SP_COMPLETED_TEXT" \
   --field="$SP_COMPLETED_CHECK_LABEL:CHK" )
-  export SP_COMPLETED_CHECK
 
-  if [[ $SP_COMPLETED_CHECK_LABEL = *"TRUE"* ]]; then
+  if [[ $SP_COMPLETED_CHECK = *"TRUE"* ]]; then
     echo "TRUE"
     # shellcheck source=/dev/null
     source "$WP_DIRECTORY/box-run.sh"

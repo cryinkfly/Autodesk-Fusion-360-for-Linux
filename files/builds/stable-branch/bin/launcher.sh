@@ -43,7 +43,7 @@ function LAUNCHER_CHECK_UPDATE {
 }
 
 function LAUNCHER_CHECK_UPDATE_VERSION {
-  SYSTEM_BUILD_VERSION=$(cat "$WP_BOX/drive_c/users/$USER/AppData/Roaming/Autodesk/Autodesk\ Fusion\ 360/API/version.txt")
+  SYSTEM_BUILD_VERSION=$(cat "$WP_BOX/drive_c/users/$USER/AppData/Roaming/Autodesk/Autodesk Fusion 360/API/version.txt")
   echo "System Build-Version: $SYSTEM_BUILD_VERSION"
   if [ "$ONLINE_BUILD_VERSION" = "$SYSTEM_BUILD_VERSION" ] || [ "$ONLINE_INSIDER_BUILD_VERSION" = "$SYSTEM_BUILD_VERSION" ]; then
     echo "Do nothing!"
