@@ -440,6 +440,12 @@
 Pokud si myslíte, že je na tomto projektu nebo jeho dokumentaci něco špatného, ​​<a href="https://github.com/cryinkfly/cryinkfly/blob/main/SPONSORSHIP.md">pomozte</a> jakýmkoli způsobem je to lepší, než si na to stěžovat – tohle je konec konců open source projekt! 🎈
  </br></br>
  Existuje také <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/.github/CODE_OF_CONDUCT.md">Kodex chování přispěvatele</a> , který také poskytuje další informace. 📚
+   </br></br>
+  <a href="https://www.amazon.de/hz/wishlist/ls/MOK18Y12W61L#"><img src="https://user-images.githubusercontent.com/79079633/189486813-a101df9f-35dd-4aaa-8724-dd9fd1e5e86c.png" /></a>
+ </br>
+<p align="center">OR</>
+</br>
+<a href="https://www.paypal.com/donate/?hosted_button_id=TBVAGT45LMR6W"><img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-small.png" alt="Check out with PayPal" /></a>
 </div>
 
 ---
