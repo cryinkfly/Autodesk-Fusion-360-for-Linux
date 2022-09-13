@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    21:00/20.07.2022                                                                   #
-# Version:      1.8.2                                                                              #
+# Time/Date:    15:30/13.09.2022                                                                   #
+# Version:      1.8.3                                                                              #
 ####################################################################################################
 
 # Path: /$HOME/.fusion360/bin/install.sh
@@ -364,6 +364,7 @@ function SP_DXVK_OPENGL_1 {
   if [[ $WP_DRIVER = "DXVK" ]]; then
     WINEPREFIX=$WP_DIRECTORY sh "$SP_PATH/bin/winetricks" -q dxvk
     wget -N -P "$WP_DIRECTORY/drive_c/users/$USER/Downloads" https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/driver/video/dxvk/DXVK.reg
+    # Add the "return"-option. Here you can read more about it -> https://github.com/koalaman/shellcheck/issues/592
     cd "$WP_DIRECTORY/drive_c/users/$USER/Downloads" || return
     WINEPREFIX=$WP_DIRECTORY wine regedit.exe DXVK.reg
   fi
