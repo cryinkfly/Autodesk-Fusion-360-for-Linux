@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    21:00/20.07.2022                                                                   #
-# Version:      1.8.2                                                                              #
+# Time/Date:    15:30/13.09.2022                                                                   #
+# Version:      1.8.3                                                                              #
 ####################################################################################################
 
 # Path: /$HOME/.fusion360/bin/install.sh
@@ -42,28 +42,28 @@ SP_FUSION360_CHANGE=0
 ###############################################################################################################################################################
 
 function SP_STRUCTURE {
-  mkdir -p $SP_PATH/bin
-  mkdir -p $SP_PATH/logs
-  mkdir -p $SP_PATH/config
-  mkdir -p $SP_PATH/graphics
-  mkdir -p $SP_PATH/downloads
-  mkdir -p $SP_PATH/extensions
-  mkdir -p $SP_PATH/wineprefixes
-  mkdir -p $SP_PATH/locale/cs-CZ
-  mkdir -p $SP_PATH/locale/de-DE
-  mkdir -p $SP_PATH/locale/en-US
-  mkdir -p $SP_PATH/locale/es-ES
-  mkdir -p $SP_PATH/locale/fr-FR
-  mkdir -p $SP_PATH/locale/it-IT
-  mkdir -p $SP_PATH/locale/ja-JP
-  mkdir -p $SP_PATH/locale/ko-KR
-  mkdir -p $SP_PATH/locale/zh-CN
+  mkdir -p "$SP_PATH/bin"
+  mkdir -p "$SP_PATH/logs"
+  mkdir -p "$SP_PATH/config"
+  mkdir -p "$SP_PATH/graphics"
+  mkdir -p "$SP_PATH/downloads"
+  mkdir -p "$SP_PATH/extensions"
+  mkdir -p "$SP_PATH/wineprefixes"
+  mkdir -p "$SP_PATH/locale/cs-CZ"
+  mkdir -p "$SP_PATH/locale/de-DE"
+  mkdir -p "$SP_PATH/locale/en-US"
+  mkdir -p "$SP_PATH/locale/es-ES"
+  mkdir -p "$SP_PATH/locale/fr-FR"
+  mkdir -p "$SP_PATH/locale/it-IT"
+  mkdir -p "$SP_PATH/locale/ja-JP"
+  mkdir -p "$SP_PATH/locale/ko-KR"
+  mkdir -p "$SP_PATH/locale/zh-CN"
   # Create a temporary folder with some information for the next step:
   mkdir -p /tmp/fusion360
   echo "English" > /tmp/fusion360/settings.txt
   echo "DXVK" >> /tmp/fusion360/settings.txt
-  echo "English" > $SP_PATH/config/settings.txt
-  echo "DXVK" >> $SP_PATH/config/settings.txt
+  echo "English" > "$SP_PATH/config/settings.txt"
+  echo "DXVK" >> "$SP_PATH/config/settings.txt"
 }
 
 ###############################################################################################################################################################
@@ -72,7 +72,7 @@ function SP_STRUCTURE {
 
 # Provides information about setup actions during installation.
 function SP_LOGFILE_INSTALL {
-  exec 5> $SP_PATH/logs/setupact.log
+  exec 5> "$SP_PATH/logs/setupact.log"
   BASH_XTRACEFD="5"
   set -x
 }
@@ -107,7 +107,7 @@ function SP_ADD_CUSTOM_WINEPREFIX_TYPE {
   if [[ -e $WP_TYPE || -L $WP_TYPE ]] ; then
     i=0
     while [[ -e $WP_TYPE-$i || -L $WP_TYPE-$i ]] ; do
-        let i++
+        (( i++ ))
     done
     WP_TYPE=$WP_TYPE-$i
   fi
@@ -117,10 +117,10 @@ function SP_ADD_CUSTOM_WINEPREFIX_TYPE {
 
 function SP_LOGFILE_WINEPREFIX {
 if [ $SP_FUSION360_CHANGE -eq 1 ]; then
-  echo "FALSE" >> $SP_PATH/logs/wineprefixes.log
-  echo "$WP_TYPE" >> $SP_PATH/logs/wineprefixes.log
-  echo "$WP_DRIVER" >> $SP_PATH/logs/wineprefixes.log
-  echo "$WP_DIRECTORY" >> $SP_PATH/logs/wineprefixes.log
+  echo "FALSE" >> "$SP_PATH/logs/wineprefixes.log"
+  echo "$WP_TYPE" >> "$SP_PATH/logs/wineprefixes.log"
+  echo "$WP_DRIVER" >> "$SP_PATH/logs/wineprefixes.log"
+  echo "$WP_DIRECTORY" >> "$SP_PATH/logs/wineprefixes.log"
 fi
 }
 
@@ -145,62 +145,72 @@ fi
 
 # Load the index of locale files:
 function SP_LOCALE_INDEX {
-  wget -N -P $SP_PATH/locale https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/locale/locale.sh
-  chmod +x $SP_PATH/locale/locale.sh
-  . $SP_PATH/locale/locale.sh
+  wget -N -P "$SP_PATH/locale" https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/locale/locale.sh
+  chmod +x "$SP_PATH/locale/locale.sh"
+  # shellcheck source=../locale/locale.sh
+  source "$SP_PATH/locale/locale.sh"
   SP_LOCALE_EN
 }
 
 # Czech:
 function SP_LOCALE_CS {
-  . $SP_PATH/locale/cs-CZ/locale-cs.sh
+  # shellcheck source=../locale/cs-CZ/locale-cs.sh
+  source "$SP_PATH/locale/cs-CZ/locale-cs.sh"
 }
 
 # German:
 function SP_LOCALE_DE {
-  . $SP_PATH/locale/de-DE/locale-de.sh
+  # shellcheck source=../locale/de-DE/locale-de.sh
+  source "$SP_PATH/locale/de-DE/locale-de.sh"
 }
 
 # English:
 function SP_LOCALE_EN {
-  . $SP_PATH/locale/en-US/locale-en.sh
+  # shellcheck source=../locale/en-US/locale-en.sh
+  source "$SP_PATH/locale/en-US/locale-en.sh"
 }
 
 # Spanish:
 function SP_LOCALE_ES {
-  . $SP_PATH/locale/es-ES/locale-es.sh
+  # shellcheck source=../locale/es-ES/locale-es.sh
+  source "$SP_PATH/locale/es-ES/locale-es.sh"
 }
 
 # French:
 function SP_LOCALE_FR {
-  . $SP_PATH/locale/fr-FR/locale-fr.sh
+  # shellcheck source=../locale/fr-FR/locale-fr.sh
+  source "$SP_PATH/locale/fr-FR/locale-fr.sh"
 }
 
 
 # Italian:
 function SP_LOCALE_IT {
-  . $SP_PATH/locale/it-IT/locale-it.sh
+  # shellcheck source=../locale/it-IT/locale-it.sh
+  source "$SP_PATH/locale/it-IT/locale-it.sh"
 }
 
 # Japanese:
 function SP_LOCALE_JA {
-  . $SP_PATH/locale/ja-JP/locale-ja.sh
+  # shellcheck source=../locale/ja-JP/locale-ja.sh
+  source "$SP_PATH/locale/ja-JP/locale-ja.sh"
 }
 
 # Korean:
 function SP_LOCALE_KO {
-  . $SP_PATH/locale/ko-KR/locale-ko.sh
+  # shellcheck source=../locale/ko-KR/locale-ko.sh
+  source "$SP_PATH/locale/ko-KR/locale-ko.sh"
 }
 
 # Chinese:
 function SP_LOCALE_ZH {
-  . $SP_PATH/locale/zh-CN/locale-zh.sh
+  # shellcheck source=../locale/zh-CN/locale-zh.sh
+  source "$SP_PATH/locale/zh-CN/locale-zh.sh"
 }
 
 ###############################################################################################################################################################
 
 function SP_LOCALE_SETTINGS {
-SP_LOCALE=`cat /tmp/fusion360/settings.txt | awk 'NR == 1'`
+SP_LOCALE=$(awk 'NR == 1' /tmp/fusion360/settings.txt)
 if [[ $SP_LOCALE = "Czech" ]]; then
     echo "CS"
     SP_LOCALE_CS
@@ -228,7 +238,7 @@ elif [[ $SP_LOCALE = "Korean" ]]; then
 elif [[ $SP_LOCALE = "Chinese" ]]; then
     echo "ZH"
     SP_LOCALE_ZH
-else 
+else
    echo "EN"
    SP_LOCALE_EN
 fi
@@ -240,8 +250,8 @@ fi
 
 # Load the newest winetricks version:
 function SP_WINETRICKS_LOAD {
-  wget -N -P $SP_PATH/bin https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks
-  chmod +x $SP_PATH/bin/winetricks
+  wget -N -P "$SP_PATH/bin" https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks
+  chmod +x "$SP_PATH/bin/winetricks"
 }
 
 ###############################################################################################################################################################
@@ -266,75 +276,84 @@ function SP_FUSION360_INSTALLER_LOAD {
 # Load the icons and .desktop-files:
 function SP_FUSION360_SHORTCUTS_LOAD {
   # Create a .desktop file (launcher.sh) for Autodesk Fusion 360!
-  wget -N -P $SP_PATH/graphics https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/fusion360.svg
-  rm $HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk\ Fusion\ 360.desktop
-  mkdir -p $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE
-  echo "[Desktop Entry]" > $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop
-  echo "Name=Autodesk Fusion 360 - $WP_TYPE" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop
-  echo "GenericName=CAD Application" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop
-  echo "GenericName[cs]=Aplikace CAD" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop
-  echo "GenericName[de]=CAD-Anwendung" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop
-  echo "GenericName[es]=Aplicación CAD" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop
-  echo "GenericName[fr]=Application CAO" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop
-  echo "GenericName[it]=Applicazione CAD" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop
-  echo "GenericName[ja]=CADアプリケーション" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop
-  echo "GenericName[ko]=CAD 응용" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop
-  echo "GenericName[zh_CN]=计算机辅助设计应用" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop
-  echo "Comment=Autodesk Fusion 360 is a cloud-based 3D modeling, CAD, CAM, and PCB software platform for product design and manufacturing." >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop
-  echo "Comment[cs]=Autodesk Fusion 360 je cloudová platforma pro 3D modelování, CAD, CAM a PCB určená k navrhování a výrobě produktů." >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop
-  echo "Comment[de]=Autodesk Fusion 360 ist eine cloudbasierte Softwareplattform für Modellierung, CAD, CAM, CAE und Leiterplatten in 3D für Produktdesign und Fertigung." >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop
-  echo "Comment[es]=Autodesk Fusion 360 es una plataforma de software de modelado 3D, CAD, CAM y PCB basada en la nube destinada al diseño y la fabricación de productos." >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop
-  echo "Comment[fr]=Autodesk Fusion 360 est une plate-forme logicielle 3D cloud de modélisation, de CAO, de FAO, d’IAO et de conception de circuits imprimés destinée à la conception et à la fabrication de produits." >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop
-  echo "Comment[it]=Autodesk Fusion 360 è una piattaforma software di modellazione 3D, CAD, CAM, CAE e PCB basata sul cloud per la progettazione e la realizzazione di prodotti." >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop
-  echo "Comment[ja]=Autodesk Fusion 360は、製品の設計と製造のためのクラウドベースの3Dモデリング、CAD、CAM、およびPCBソフトウェアプラットフォームです。" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop
-  echo "Comment[ko]=Autodesk Fusion 360은 제품 설계 및 제조를 위한 클라우드 기반 3D 모델링, CAD, CAM 및 PCB 소프트웨어 플랫폼입니다." >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop
-  echo "Comment[zh_CN]=Autodesk Fusion 360 是一个基于云的 3D 建模、CAD、CAM 和 PCB 软件平台，用于产品设计和制造。" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop
-  echo "Exec=$WP_DIRECTORY/box-run.sh" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop
-  echo "Type=Application" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop
-  echo "Categories=Education;Engineering;" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop
-  echo "StartupNotify=true" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop
-  echo "Icon=$SP_PATH/graphics/fusion360.svg" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop
-  echo "Terminal=false" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop
-  echo "Path=$WP_DIRECTORY" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop
+  wget -N -P "$SP_PATH/graphics" https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/fusion360.svg
+  rm "$HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk Fusion 360.desktop"
+  mkdir -p "$HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE"
+  cat >> "$HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop" << EOF
+[Desktop Entry]
+Name=Autodesk Fusion 360 - $WP_TYPE
+GenericName=CAD Application
+GenericName[cs]=Aplikace CAD
+GenericName[de]=CAD-Anwendung
+GenericName[es]=Aplicación CAD
+GenericName[fr]=Application CAO
+GenericName[it]=Applicazione CAD
+GenericName[ja]=CADアプリケーション
+GenericName[ko]=CAD 응용
+GenericName[zh_CN]=计算机辅助设计应用
+Comment=Autodesk Fusion 360 is a cloud-based 3D modeling, CAD, CAM, and PCB software platform for product design and manufacturing.
+Comment[cs]=Autodesk Fusion 360 je cloudová platforma pro 3D modelování, CAD, CAM a PCB určená k navrhování a výrobě produktů.
+Comment[de]=Autodesk Fusion 360 ist eine cloudbasierte Softwareplattform für Modellierung, CAD, CAM, CAE und Leiterplatten in 3D für Produktdesign und Fertigung.
+Comment[es]=Autodesk Fusion 360 es una plataforma de software de modelado 3D, CAD, CAM y PCB basada en la nube destinada al diseño y la fabricación de productos.
+Comment[fr]=Autodesk Fusion 360 est une plate-forme logicielle 3D cloud de modélisation, de CAO, de FAO, d’IAO et de conception de circuits imprimés destinée à la conception et à la fabrication de produits.
+Comment[it]=Autodesk Fusion 360 è una piattaforma software di modellazione 3D, CAD, CAM, CAE e PCB basata sul cloud per la progettazione e la realizzazione di prodotti.
+Comment[ja]=Autodesk Fusion 360は、製品の設計と製造のためのクラウドベースの3Dモデリング、CAD、CAM、およびPCBソフトウェアプラットフォームです。
+Comment[ko]=Autodesk Fusion 360은 제품 설계 및 제조를 위한 클라우드 기반 3D 모델링, CAD, CAM 및 PCB 소프트웨어 플랫폼입니다.
+Comment[zh_CN]=Autodesk Fusion 360 是一个基于云的 3D 建模、CAD、CAM 和 PCB 软件平台，用于产品设计和制造。
+Exec=$WP_DIRECTORY/box-run.sh
+Type=Application
+Categories=Education;Engineering;
+StartupNotify=true
+Icon=$SP_PATH/graphics/fusion360.svg
+Terminal=false
+Path=$WP_DIRECTORY
+EOF
+
   # Create a .desktop file (uninstall.sh) for Autodesk Fusion 360!
-  wget -N -P $SP_PATH/graphics https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/fusion360-uninstall.svg
-  echo "[Desktop Entry]" > $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop
-  echo "Name=Autodesk Fusion 360 (Uninstall) - $WP_TYPE" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop
-  echo "Name[cs]=Autodesk Fusion 360 (Odinstalovat) - $WP_TYPE" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop
-  echo "Name[de]=Autodesk Fusion 360 (Deinstallieren) - $WP_TYPE" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop
-  echo "Name[es]=Autodesk Fusion 360 (Desinstalar) - $WP_TYPE" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop
-  echo "Name[fr]=Autodesk Fusion 360 (Désinstaller) - $WP_TYPE" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop
-  echo "Name[it]=Autodesk Fusion 360 (Disinstalla) - $WP_TYPE" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop
-  echo "Name[ja]=Autodesk Fusion 360 (アンインストール) - $WP_TYPE" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop
-  echo "Name[ko]=Autodesk Fusion 360 (제거) - $WP_TYPE" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop
-  echo "Name[zh_CN]=Autodesk Fusion 360 (卸载) - $WP_TYPE" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop
-  echo "Comment=With this program you can delete Autodesk Fusion 360 on your system!" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop
-  echo "Comment[cs]=Pomocí tohoto programu můžete odstranit Autodesk Fusion 360 ze svého systému!" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop
-  echo "Comment[de]=Mit diesem Programm können Sie Autodesk Fusion 360 auf Ihrem System löschen!" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop
-  echo "Comment[es]=¡Con este programa puede eliminar Autodesk Fusion 360 en su sistema!" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop
-  echo "Comment[fr]=Avec ce programme, vous pouvez supprimer Autodesk Fusion 360 sur votre système !" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop
-  echo "Comment[it]=Con questo programma puoi eliminare Autodesk Fusion 360 sul tuo sistema!" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop
-  echo "Comment[ja]=このプログラムを使用すると、システム上のAutodeskFusion360を削除できます。" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop
-  echo "Comment[ko]=이 프로그램을 사용하면 시스템에서 Autodesk Fusion 360을 삭제할 수 있습니다!" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop
-  echo "Comment[zh_CN]=使用此程序，您可以删除系统上的 Autodesk Fusion 360！" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop
-  echo "Exec=bash ./uninstall.sh" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop
-  echo "Type=Application" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop
-  echo "Categories=Education;Engineering;" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop
-  echo "StartupNotify=true" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop
-  echo "Icon=$SP_PATH/graphics/fusion360-uninstall.svg" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop
-  echo "Terminal=false" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop
-  echo "Path=$SP_PATH/bin" >> $HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop
+  wget -N -P "$SP_PATH/graphics" https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/fusion360-uninstall.svg
+  cat >> "$HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop" << EOF
+[Desktop Entry]
+Name=Autodesk Fusion 360 (Uninstall) - $WP_TYPE
+Name[cs]=Autodesk Fusion 360 (Odinstalovat) - $WP_TYPE
+Name[de]=Autodesk Fusion 360 (Deinstallieren) - $WP_TYPE
+Name[es]=Autodesk Fusion 360 (Desinstalar) - $WP_TYPE
+Name[fr]=Autodesk Fusion 360 (Désinstaller) - $WP_TYPE
+Name[it]=Autodesk Fusion 360 (Disinstalla) - $WP_TYPE
+Name[ja]=Autodesk Fusion 360 (アンインストール) - $WP_TYPE
+Name[ko]=Autodesk Fusion 360 (제거) - $WP_TYPE
+Name[zh_CN]=Autodesk Fusion 360 (卸载) - $WP_TYPE
+Comment=With this program you can delete Autodesk Fusion 360 on your system!
+Comment[cs]=Pomocí tohoto programu můžete odstranit Autodesk Fusion 360 ze svého systému!
+Comment[de]=Mit diesem Programm können Sie Autodesk Fusion 360 auf Ihrem System löschen!
+Comment[es]=¡Con este programa puede eliminar Autodesk Fusion 360 en su sistema!
+Comment[fr]=Avec ce programme, vous pouvez supprimer Autodesk Fusion 360 sur votre système !
+Comment[it]=Con questo programma puoi eliminare Autodesk Fusion 360 sul tuo sistema!
+Comment[ja]=このプログラムを使用すると、システム上のAutodeskFusion360を削除できます。
+Comment[ko]=이 프로그램을 사용하면 시스템에서 Autodesk Fusion 360을 삭제할 수 있습니다!
+Comment[zh_CN]=使用此程序，您可以删除系统上的 Autodesk Fusion 360！
+Exec=bash ./uninstall.sh
+Type=Application
+Categories=Education;Engineering;
+StartupNotify=true
+Icon=$SP_PATH/graphics/fusion360-uninstall.svg
+Terminal=false
+Path=$SP_PATH/bin
+EOF
+
   # Create a link to the Wineprefixes Box:
-  echo "#!/bin/bash" > $WP_DIRECTORY/box-run.sh
-  echo "WP_BOX='$WP_DIRECTORY' . $SP_PATH/bin/launcher.sh" >> $WP_DIRECTORY/box-run.sh
-  chmod +x $WP_DIRECTORY/box-run.sh 
+  cat >> "$WP_DIRECTORY/box-run.sh" << EOF
+#!/bin/bash
+WP_BOX='$WP_DIRECTORY' source $SP_PATH/bin/launcher.sh
+EOF
+  chmod +x "$WP_DIRECTORY/box-run.sh"
+
   # Download some script files for Autodesk Fusion 360!
-  wget -N -P $SP_PATH/bin https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/uninstall.sh
-  chmod +x $SP_PATH/bin/uninstall.sh  
-  wget -N -P $SP_PATH/bin https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/launcher.sh
-  chmod +x $SP_PATH/bin/launcher.sh
-  wget -N -P $SP_PATH/bin https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/update.sh
-  chmod +x $SP_PATH/bin/update.sh
+  wget -N -P "$SP_PATH/bin" https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/uninstall.sh
+  chmod +x "$SP_PATH/bin/uninstall.sh"
+  wget -N -P "$SP_PATH/bin" https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/launcher.sh
+  chmod +x "$SP_PATH/bin/launcher.sh"
+  wget -N -P "$SP_PATH/bin" https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/update.sh
+  chmod +x "$SP_PATH/bin/update.sh"
 }
 
 ###############################################################################################################################################################
@@ -343,9 +362,10 @@ function SP_FUSION360_SHORTCUTS_LOAD {
 
 function SP_DXVK_OPENGL_1 {
   if [[ $WP_DRIVER = "DXVK" ]]; then
-    WINEPREFIX=$WP_DIRECTORY sh $SP_PATH/bin/winetricks -q dxvk
-    wget -N -P $WP_DIRECTORY/drive_c/users/$USER/Downloads https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/driver/video/dxvk/DXVK.reg
-    cd "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
+    WINEPREFIX=$WP_DIRECTORY sh "$SP_PATH/bin/winetricks" -q dxvk
+    wget -N -P "$WP_DIRECTORY/drive_c/users/$USER/Downloads" https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/driver/video/dxvk/DXVK.reg
+    # Add the "return"-option. Here you can read more about it -> https://github.com/koalaman/shellcheck/issues/592
+    cd "$WP_DIRECTORY/drive_c/users/$USER/Downloads" || return
     WINEPREFIX=$WP_DIRECTORY wine regedit.exe DXVK.reg
   fi
 }
@@ -361,7 +381,7 @@ function SP_DXVK_OPENGL_2 {
 ###############################################################################################################################################################
 
 function SP_DRIVER_SETTINGS {
-WP_DRIVER=`cat /tmp/fusion360/settings.txt | awk 'NR == 2'`
+WP_DRIVER=$(awk 'NR == 2' /tmp/fusion360/settings.txt)
 }
 
 ###############################################################################################################################################################
@@ -370,24 +390,24 @@ WP_DRIVER=`cat /tmp/fusion360/settings.txt | awk 'NR == 2'`
 
 # Start Fusion360installer.exe - Part 1
 function SP_FUSION360_INSTALL_DEFAULT_1 {
-  WINEPREFIX=$WP_DIRECTORY timeout -k 10m 9m wine $WP_DIRECTORY/drive_c/users/$USER/Downloads/Fusion360installer.exe
+  WINEPREFIX="$WP_DIRECTORY" timeout -k 10m 9m wine "$WP_DIRECTORY/drive_c/users/$USER/Downloads/Fusion360installer.exe"
 }
 
 # Start Fusion360installer.exe - Part 2
 function SP_FUSION360_INSTALL_DEFAULT_2 {
-  WINEPREFIX=$WP_DIRECTORY timeout -k 5m 4m wine $WP_DIRECTORY/drive_c/users/$USER/Downloads/Fusion360installer.exe
+  WINEPREFIX="$WP_DIRECTORY" timeout -k 5m 4m wine "$WP_DIRECTORY/drive_c/users/$USER/Downloads/Fusion360installer.exe"
 }
 
 ###############################################################################################################################################################
 
 # Start Fusion360installer.exe - Part 1 (Refresh)
 function SP_FUSION360_INSTALL_REFRESH_1 {
-  WINEPREFIX=$WP_WINEPREFIXES_REFRESH timeout -k 10m 9m wine $WP_WINEPREFIXES_REFRESH/drive_c/users/$USER/Downloads/Fusion360installer.exe
+  WINEPREFIX="$WP_WINEPREFIXES_REFRESH" timeout -k 10m 9m wine "$WP_WINEPREFIXES_REFRESH/drive_c/users/$USER/Downloads/Fusion360installer.exe"
 }
 
 # Start Fusion360installer.exe - Part 2 (Refresh)
 function SP_FUSION360_INSTALL_REFRESH_2 {
-  WINEPREFIX=$WP_WINEPREFIXES_REFRESH timeout -k 5m 4m wine $WP_WINEPREFIXES_REFRESH/drive_c/users/$USER/Downloads/Fusion360installer.exe
+  WINEPREFIX="$WP_WINEPREFIXES_REFRESH" timeout -k 5m 4m wine "$WP_WINEPREFIXES_REFRESH/drive_c/users/$USER/Downloads/Fusion360installer.exe"
 }
 
 ###############################################################################################################################################################
@@ -397,33 +417,35 @@ function SP_FUSION360_INSTALL {
   SP_WINETRICKS_LOAD
   SP_FUSION360_INSTALLER_LOAD
   # Note that the winetricks sandbox verb merely removes the desktop integration and Z: drive symlinks and is not a "true" sandbox.
-  # It protects against errors rather than malice. It's useful for, e.g., keeping games from saving their settings in random subdirectories of your home directory. 
-  # But it still ensures that wine, for example, no longer has access permissions to Home! 
+  # It protects against errors rather than malice. It's useful for, e.g., keeping games from saving their settings in random subdirectories of your home directory.
+  # But it still ensures that wine, for example, no longer has access permissions to Home!
   # For this reason, the EXE files must be located directly in the Wineprefix folder!
-  WINEPREFIX=$WP_DIRECTORY sh $SP_PATH/bin/winetricks -q sandbox
+  mkdir -p "$WP_DIRECTORY"
+  cd "$WP_DIRECTORY" || return
+  WINEPREFIX="$WP_DIRECTORY" sh "$SP_PATH/bin/winetricks" -q sandbox
   sleep 5s
   # We must install some packages!
-  WINEPREFIX=$WP_DIRECTORY sh $SP_PATH/bin/winetricks -q atmlib gdiplus corefonts cjkfonts dotnet452 msxml4 msxml6 vcrun2017 fontsmooth=rgb winhttp win10
+  WINEPREFIX="$WP_DIRECTORY" sh "$SP_PATH/bin/winetricks" -q atmlib gdiplus corefonts cjkfonts dotnet452 msxml4 msxml6 vcrun2017 fontsmooth=rgb winhttp win10
   sleep 5s
   # We must install cjkfonts again then sometimes it doesn't work in the first time!
-  WINEPREFIX=$WP_DIRECTORY sh $SP_PATH/bin/winetricks -q cjkfonts
+  WINEPREFIX="$WP_DIRECTORY" sh "$SP_PATH/bin/winetricks" -q cjkfonts
   sleep 5s
   SP_DXVK_OPENGL_1
   # We must copy the EXE-file directly in the Wineprefix folder (Sandbox-Mode)!
   cp "$SP_PATH/downloads/Fusion360installer.exe" "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
-  # This start and stop the installer automatically after a time! 
+  # This start and stop the installer automatically after a time!
   # For more information check this link: https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/issues/232
   SP_FUSION360_INSTALL_PROGRESS
   mkdir -p "$WP_DIRECTORY/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options"
-  cd "$WP_DIRECTORY/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options"
+  cd "$WP_DIRECTORY/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options" || return
   SP_DXVK_OPENGL_2
   mkdir -p "$WP_DIRECTORY/drive_c/users/$USER/AppData/Local/Autodesk/Neutron Platform/Options"
-  cd "$WP_DIRECTORY/drive_c/users/$USER/AppData/Local/Autodesk/Neutron Platform/Options"
+  cd "$WP_DIRECTORY/drive_c/users/$USER/AppData/Local/Autodesk/Neutron Platform/Options" || return
   SP_DXVK_OPENGL_2
   mkdir -p "$WP_DIRECTORY/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options"
-  cd "$WP_DIRECTORY/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options"
+  cd "$WP_DIRECTORY/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options" || return
   SP_DXVK_OPENGL_2
-  cd "SP_PATH/bin"
+  cd "$SP_PATH/bin" || return
   SP_GET_WINEPREFIX_TYPE
   SP_FUSION360_SHORTCUTS_LOAD
   SP_FUSION360_EXTENSIONS
@@ -431,8 +453,8 @@ function SP_FUSION360_INSTALL {
   SP_COMPLETED
 }
 
-function SP_FUSION360_REFRESH { 
-  wget $SP_SERVER_21 -O Fusion360installer.exe
+function SP_FUSION360_REFRESH {
+  wget "$SP_SERVER_21" -O Fusion360installer.exe
   mv "Fusion360installer.exe" "$SP_PATH/downloads/Fusion360installer.exe"
   rmdir "$WP_WINEPREFIXES_REFRESH/drive_c/users/$USER/Downloads/Fusion360installer.exe"
   cp "$SP_PATH/downloads/Fusion360installer.exe" "$WP_WINEPREFIXES_REFRESH/drive_c/users/$USER/Downloads"
@@ -459,7 +481,7 @@ function OS_ARCHLINUX {
 }
 
 function ARCHLINUX_VERIFY_MULTILIB {
-  if cat /etc/pacman.conf | grep -q '^\[multilib\]$' ; then
+  if grep -q '^\[multilib\]$' /etc/pacman.conf ; then
     true
   else
     false
@@ -470,7 +492,7 @@ function ARCHLINUX_VERIFY_MULTILIB {
 
 function DEBIAN_BASED_1 {
   # Some systems require this command for all repositories to work properly and for the packages to be downloaded for installation!
-  pkexec sudo apt-get --allow-releaseinfo-change update  
+  pkexec sudo apt-get --allow-releaseinfo-change update
   # Added i386 support for wine!
   sudo dpkg --add-architecture i386
 }
@@ -517,7 +539,7 @@ function OS_UBUNTU_22 {
 function FEDORA_BASED_1 {
   pkexec sudo dnf update
   sudo dnf upgrade
-  sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+  sudo dnf install "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm"
 }
 
 function FEDORA_BASED_2 {
@@ -596,10 +618,10 @@ function OS_GENTOO_LINUX {
 
 # Install a extension: Airfoil Tools
 function EXTENSION_AIRFOIL_TOOLS {
-  cd "$SP_PATH/extensions"
+  cd "$SP_PATH/extensions" || return
   wget -N https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/raw/main/files/extensions/AirfoilTools_win64.msi &&
   cp AirfoilTools_win64.msi "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
-  cd "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
+  cd "$WP_DIRECTORY/drive_c/users/$USER/Downloads" || return
   WINEPREFIX=$WP_DIRECTORY wine msiexec /i AirfoilTools_win64.msi
 }
 
@@ -607,10 +629,10 @@ function EXTENSION_AIRFOIL_TOOLS {
 
 # Install a extension: Additive Assistant (FFF)
 function EXTENSION_ADDITIVE_ASSISTANT {
-  cd "$SP_PATH/extensions"
+  cd "$SP_PATH/extensions" || return
   wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/AdditiveAssistant.bundle-win64.msi &&
   cp AdditiveAssistant.bundle-win64.msi "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
-  cd "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
+  cd "$WP_DIRECTORY/drive_c/users/$USER/Downloads" || return
   WINEPREFIX=$WP_DIRECTORY wine msiexec /i AdditiveAssistant.bundle-win64.msi
 }
 
@@ -619,75 +641,75 @@ function EXTENSION_ADDITIVE_ASSISTANT {
 # Install a extension: Czech localization for F360
 function EXTENSION_CZECH_LOCALE {
   SP_SEARCH_EXTENSION_CZECH_LOCALE &&
-  cp $CZECH_LOCALE_EXTENSION "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
-  cd "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
-  WINEPREFIX=$WP_DIRECTORY wine msiexec /i $CZECH_LOCALE_EXTENSION
+  cp "$CZECH_LOCALE_EXTENSION" "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
+  cd "$WP_DIRECTORY/drive_c/users/$USER/Downloads" || return
+  WINEPREFIX="$WP_DIRECTORY" wine msiexec /i "$CZECH_LOCALE_EXTENSION"
 }
 
 ###############################################################################################################################################################
 
 # Install a extension: HP 3D Printers for Autodesk® Fusion 360™
 function EXTENSION_HP_3DPRINTER_CONNECTOR {
-  cd "$SP_PATH/extensions"
+  cd "$SP_PATH/extensions" || return
   wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/HP_3DPrinters_for_Fusion360-win64.msi &&
   cp HP_3DPrinters_for_Fusion360-win64.msi "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
-  cd "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
-  WINEPREFIX=$WP_DIRECTORY wine msiexec /i HP_3DPrinters_for_Fusion360-win64.msi
+  cd "$WP_DIRECTORY/drive_c/users/$USER/Downloads" || return
+  WINEPREFIX="$WP_DIRECTORY" wine msiexec /i HP_3DPrinters_for_Fusion360-win64.msi
 }
 
 ###############################################################################################################################################################
 
 # Install a extension: Helical Gear Generator
 function EXTENSION_HELICAL_GEAR_GENERATOR {
-  cd "$SP_PATH/extensions"
+  cd "$SP_PATH/extensions" || return
   wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/HelicalGear_win64.msi &&
   cp HelicalGear_win64.msi "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
-  cd "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
-  WINEPREFIX=$WP_DIRECTORY wine msiexec /i HelicalGear_win64.msi
+  cd "$WP_DIRECTORY/drive_c/users/$USER/Downloads" || return
+  WINEPREFIX="$WP_DIRECTORY" wine msiexec /i HelicalGear_win64.msi
 }
 
 ###############################################################################################################################################################
 
 # Install a extension: OctoPrint for Autodesk® Fusion 360™
 function EXTENSION_OCTOPRINT {
-  cd "$SP_PATH/extensions"
+  cd "$SP_PATH/extensions" || return
   wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/OctoPrint_for_Fusion360-win64.msi &&
   cp OctoPrint_for_Fusion360-win64.msi "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
-  cd "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
-  WINEPREFIX=$WP_DIRECTORY wine msiexec /i OctoPrint_for_Fusion360-win64.msi
+  cd "$WP_DIRECTORY/drive_c/users/$USER/Downloads" || return
+  WINEPREFIX="$WP_DIRECTORY" wine msiexec /i OctoPrint_for_Fusion360-win64.msi
 }
 
 ###############################################################################################################################################################
 
 # Install a extension: Parameter I/O
 function EXTENSION_PARAMETER_IO {
-  cd "$SP_PATH/extensions" 
+  cd "$SP_PATH/extensions" || return
   wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/ParameterIO_win64.msi &&
   cp ParameterIO_win64.msi "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
-  cd "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
-  WINEPREFIX=$WP_DIRECTORY wine msiexec /i ParameterIO_win64.msi
+  cd "$WP_DIRECTORY/drive_c/users/$USER/Downloads" || return
+  WINEPREFIX="$WP_DIRECTORY" wine msiexec /i ParameterIO_win64.msi
 }
 
 ###############################################################################################################################################################
 
 # Install a extension: RoboDK
 function EXTENSION_ROBODK {
-  cd "$SP_PATH/extensions"  
+  cd "$SP_PATH/extensions" || return
   wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/RoboDK.bundle-win64.msi &&
   cp RoboDK.bundle-win64.msi "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
-  cd "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
-  WINEPREFIX=$WP_DIRECTORY wine msiexec /i RoboDK.bundle-win64.msi
+  cd "$WP_DIRECTORY/drive_c/users/$USER/Downloads" || return
+  WINEPREFIX="$WP_DIRECTORY" wine msiexec /i RoboDK.bundle-win64.msi
 }
 
 ###############################################################################################################################################################
 
 # Install a extension: Ultimaker Digital Factory for Autodesk Fusion 360™
 function EXTENSION_ULTIMAKER_DIGITAL_FACTORY {
-  cd "$SP_PATH/extensions"
+  cd "$SP_PATH/extensions" || return
   wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/Ultimaker_Digital_Factory-win64.msi &&
   cp Ultimaker_Digital_Factory-win64.msi "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
-  cd "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
-  WINEPREFIX=$WP_DIRECTORY wine msiexec /i Ultimaker_Digital_Factory-win64.msi
+  cd "$WP_DIRECTORY/drive_c/users/$USER/Downloads" || return
+  WINEPREFIX="$WP_DIRECTORY" wine msiexec /i Ultimaker_Digital_Factory-win64.msi
 }
 
 ###############################################################################################################################################################
@@ -744,8 +766,8 @@ yad --title="$SP_TITLE" \
 --field="$WP_DRIVER_LABEL:CB" \
 --field="$SP_SETTINGS_LABEL_2:LBL" \
 "" "" "" "$SP_LOCALE_SELECT" "$WP_DRIVER_SELECT" "" | while read line; do
-echo "`echo $line | awk -F',' '{print $4}'`" > /tmp/fusion360/settings.txt
-echo "`echo $line | awk -F',' '{print $5}'`" >> /tmp/fusion360/settings.txt
+echo "$line" | awk -F',' '{print $4}' > /tmp/fusion360/settings.txt
+echo "$line" | awk -F',' '{print $5}' >> /tmp/fusion360/settings.txt
 cp "/tmp/fusion360/settings.txt" "$SP_PATH/config"
 done
 }
@@ -753,7 +775,7 @@ done
 ###############################################################################################################################################################
 
 function SP_LICENSE {
-SP_LICENSE_TEXT=$(cat $SP_LICENSE)
+SP_LICENSE_TEXT=$(cat "$SP_LICENSE")
 SP_LICENSE_CHECK=$(yad \
 --title="$SP_TITLE" \
 --form \
@@ -798,7 +820,7 @@ ret=$?
 
 # Responses to above button presses are below:
 if [[ $ret -eq 1 ]]; then
-    SP_INSTALLDIR 
+    SP_INSTALLDIR
 elif [[ $ret -eq 2 ]]; then
     # Get informations about the current wineprefix - Repair
     WP_WINEPREFIXES_STRING=$(yad --height=300 --separator="" --list --radiolist --column="$SELECT" --column="$WINEPREFIXES_TYPE" --column="$WINEPREFIXES_DRIVER" --column="$WINEPREFIXES_DIRECTORY" < /tmp/fusion360/logs/wineprefixes.log)
@@ -806,7 +828,8 @@ elif [[ $ret -eq 2 ]]; then
     SP_FUSION360_REFRESH
 elif [[ $ret -eq 3 ]]; then
     # Get informations about the current wineprefix - Delete
-    . $SP_PATH/bin/uninstall.sh
+    # shellcheck source=./uninstall.sh
+    source "$SP_PATH/bin/uninstall.sh"
 fi
 }
 
@@ -852,7 +875,7 @@ ret=$?
 
 # Responses to above button presses are below:
 if [[ $ret -eq 1 ]]; then
-    SP_INSTALLDIR 
+    SP_INSTALLDIR
 fi
 }
 
@@ -876,35 +899,35 @@ WINE_VERSION=$(yad --title="$SP_TITLE" \
 if [[ $WINE_VERSION = "Verze vína (Staging)" ]]; then
     echo "Install Wine on your system!"
     SP_OS_SETTINGS
-# German:    
+# German:
 elif [[ $WINE_VERSION = "Wine Version (Entwicklungsversion)" ]]; then
     echo "Install Wine on your system!"
     SP_OS_SETTINGS
-# English:    
+# English:
 elif [[ $WINE_VERSION = "Wine Version (Staging)" ]]; then
     echo "Install Wine on your system!"
     SP_OS_SETTINGS
-# Spanish:    
+# Spanish:
 elif [[ $WINE_VERSION = "Versión Vino (Puesta en Escena)" ]]; then
     echo "Install Wine on your system!"
     SP_OS_SETTINGS
-# French:    
+# French:
 elif [[ $WINE_VERSION = "Version Vin (Mise en scène)" ]]; then
     echo "Install Wine on your system!"
     SP_OS_SETTINGS
-# Italian:    
+# Italian:
 elif [[ $WINE_VERSION = "Versione vino (messa in scena)" ]]; then
     echo "Install Wine on your system!"
     SP_OS_SETTINGS
-# Japanese:    
+# Japanese:
 elif [[ $WINE_VERSION = "ワインバージョン（ステージング）" ]]; then
     echo "Install Wine on your system!"
     SP_OS_SETTINGS
-# Korean:    
+# Korean:
 elif [[ $WINE_VERSION = "와인 버전(스테이징)" ]]; then
     echo "Install Wine on your system!"
     SP_OS_SETTINGS
-# Chinese:    
+# Chinese:
 elif [[ $WINE_VERSION = "葡萄酒版（分期）" ]]; then
     echo "Install Wine on your system!"
     SP_OS_SETTINGS
@@ -1020,6 +1043,7 @@ fi
 function SP_FUSION360_INSTALL_PROGRESS {
 
 SP_FUSION360_INSTALL_PROGRESS_MAIN () {
+cd "$WP_DIRECTORY" || return
 echo "20"
 SP_FUSION360_INSTALL_DEFAULT_1
 echo "70"
@@ -1036,6 +1060,7 @@ SP_FUSION360_INSTALL_PROGRESS_MAIN | yad --progress --progress-text "$SP_INSTALL
 function SP_FUSION360_INSTALL_PROGRESS_REFRESH {
 
 SP_FUSION360_INSTALL_PROGRESS_MAIN_REFRESH () {
+cd "$WP_DIRECTORY" || return
 echo "20"
 SP_FUSION360_INSTALL_REFRESH_1
 echo "70"
@@ -1050,7 +1075,7 @@ SP_FUSION360_INSTALL_PROGRESS_MAIN_REFRESH | yad --title="$SP_TITLE" --borders=1
 ###############################################################################################################################################################
 
 function SP_FUSION360_EXTENSIONS {
-EXTENSIONS=$(yad --title="$SP_TITLE" --borders=15 --button=gtk-cancel:99 --button=gtk-ok:0 --height=300 --list --multiple --checklist --column=$SP_EXTENSION_SELECT --column=$SP_EXTENSION_NAME --column=$SP_EXTENSION_DESCRIPTION < $SP_EXTENSION_LIST)
+EXTENSIONS=$(yad --title="$SP_TITLE" --borders=15 --button=gtk-cancel:99 --button=gtk-ok:0 --height=300 --list --multiple --checklist --column="$SP_EXTENSION_SELECT" --column="$SP_EXTENSION_NAME" --column="$SP_EXTENSION_DESCRIPTION" < "$SP_EXTENSION_LIST")
 
 if [[ $EXTENSIONS = *"Airfoil Tools"* ]]; then
     echo "Airfoil Tools"
@@ -1132,9 +1157,10 @@ function SP_COMPLETED {
   --field=":TXT" "$SP_COMPLETED_TEXT" \
   --field="$SP_COMPLETED_CHECK_LABEL:CHK" )
 
-  if [[ $SP_COMPLETED_CHECK_LABEL = *"TRUE"* ]]; then
+  if [[ $SP_COMPLETED_CHECK = *"TRUE"* ]]; then
     echo "TRUE"
-    . $WP_DIRECTORY/box-run.sh
+    # shellcheck source=/dev/null
+    source "$WP_DIRECTORY/box-run.sh"
   else
     echo "FALSE"
   fi
