@@ -213,6 +213,14 @@ def change_distro_logo(event):
    notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/fedora.png"))
    notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
    notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
+ elif selected_linux_distro.get() == 'MX Linux 19.4':
+   notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/fedora.png"))
+   notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
+   notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
+ elif selected_linux_distro.get() == 'MX Linux 21.1':
+   notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/mxlinux.png"))
+   notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
+   notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
  elif selected_linux_distro.get() == 'Linux Mint 19.x':
    notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/linuxmint.png"))
    notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
@@ -274,11 +282,11 @@ def change_distro_logo(event):
    notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
    notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
  elif selected_linux_distro.get() == 'Void Linux':
-   notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/voidlinux.png"))
+   notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/void.png"))
    notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
    notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
  elif selected_linux_distro.get() == 'Gentoo Linux':
-   notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/gentoolinux.png"))
+   notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/gentoo.png"))
    notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
    notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
 
@@ -294,7 +302,8 @@ linux_distros = ['Arch Linux',
 'Fedora 36',
 'Linux Mint 19.x',
 'Linux Mint 20.x',
-'MX Linux 19.4', 
+'MX Linux 19.4',
+'MX Linux 21.1', 
 'openSUSE Leap 15.2',
 'openSUSE Leap 15.3', 
 'openSUSE Tumbleweed',
@@ -339,7 +348,7 @@ notebook2_tab2_frame_button1.grid(row=0, column=0, padx=5, pady=5)
 notebook2_tab2_frame_button1.grid_rowconfigure(0, weight=1)
 notebook2_tab2_frame_button2 = tk.Button(notebook2_tab2_frame_button,text='Cancel',width=6,height=1, underline=0, command=lambda:window.quit(), background=color4)
 notebook2_tab2_frame_button2.grid(row=0, column=1, padx=5, pady=5)
-notebook2_tab2_frame_button3 = tk.Button(notebook2_tab2_frame_button,text='Next >',width=6,height=1, underline=0, command=show_selected_linux_distro, background=color4)
+notebook2_tab2_frame_button3 = tk.Button(notebook2_tab2_frame_button,text='Next >',width=6,height=1, underline=0, command=change_distro_logo, background=color4)
 notebook2_tab2_frame_button3.grid(row=0, column=2, padx=5, pady=5)
 notebook2_tab2_frame_button4 = tk.Button(notebook2_tab2_frame_button,text='Help',width=6,height=1, underline=0, command=lambda:notebook.select(notebook_tab7), background=color4)
 notebook2_tab2_frame_button4.grid(row=0, column=3, padx=5, pady=5)
