@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    xx:00/xx.xx.2022                                                                   #
+# Time/Date:    20:00/19.09.2022                                                                   #
 # Version:      1.8.1 > 1.8.2                                                                      #
 ####################################################################################################
 
@@ -29,6 +29,7 @@
 import tkinter as tk
 from tkinter import ttk
 from tkinter.messagebox import askokcancel, showinfo, WARNING
+from PIL import Image, ImageTk
 import os
 
 ###############################################################################################################################################################
@@ -36,13 +37,15 @@ import os
 ###############################################################################################################################################################
 
 # Set up the color:
-white = "#ffffff"
-dark = "#222222"
+color1 = "#ff6b00"
+color2 = "#222222"
+color3 = "#efefef"
+color4 = "#ffffff"
 
 # Create this window:
 window = tk.Tk()
 window.title('Setup Wizard - Autodesk Fusion 360 for Linux')
-window.configure(background='white')
+window.configure(bg=color1)
 
 # ----------------------------------------------------------------------------------------------- #
 
@@ -65,27 +68,29 @@ window.geometry("{}x{}+{}+{}".format(window_width, window_height, x_cordinate, y
 # CREATE A ROOT-CONTAINER FOR THE NOTEBOOK-TABS HERE:                                                                                                         #
 ###############################################################################################################################################################
 
+img = tk.PhotoImage(file='./images/welcome.png')
+
 notebook_style1 = ttk.Style()
 notebook_style1.theme_create( "theme_notebook_tabs", parent="alt", settings={
         "TNotebook": {"configure": {"tabmargins": [2, 5, 2, 0] } },
         "TNotebook.Tab": {
-            "configure": {"padding": [5, 1], "background": white },
-            "map":       {"background": [("selected", dark)], "foreground": [("selected", white)],
+            "configure": {"padding": [5, 1], "background": color3 },
+            "map":       {"background": [("selected", color2)], "foreground": [("selected", color1)],
                           "expand": [("selected", [1, 1, 1, 0])] } } } )
 
 notebook_style1.theme_use("theme_notebook_tabs")
 
 notebook_style1 = ttk.Style(window)
-notebook_style1.configure('lefttab.TNotebook', background=white, tabposition='nw')
+notebook_style1.configure('lefttab.TNotebook', background=color1, tabposition='nw')
 notebook1 = ttk.Notebook(window, style='lefttab.TNotebook')
 
 # Configure the tabs:
-notebook1_tab1 = tk.Frame(notebook1, width=700, height=400)
-notebook1_tab2 = tk.Frame(notebook1, width=700, height=400)
-notebook1_tab3 = tk.Frame(notebook1, width=700, height=400)
-notebook1_tab4 = tk.Frame(notebook1, width=700, height=400)
-notebook1_tab5 = tk.Frame(notebook1, width=700, height=400)
-notebook1_tab6 = tk.Frame(notebook1, width=700, height=400)
+notebook1_tab1 = tk.Frame(notebook1, width=700, height=400, bg=color3)
+notebook1_tab2 = tk.Frame(notebook1, width=700, height=400, bg=color3)
+notebook1_tab3 = tk.Frame(notebook1, width=700, height=400, bg=color3)
+notebook1_tab4 = tk.Frame(notebook1, width=700, height=400, bg=color3)
+notebook1_tab5 = tk.Frame(notebook1, width=700, height=400, bg=color3)
+notebook1_tab6 = tk.Frame(notebook1, width=700, height=400, bg=color3)
 
 # Add the tabs to Notebook widget:
 notebook1.add(notebook1_tab1, text='Welcome',)
@@ -103,46 +108,46 @@ notebook1.pack(pady=20,padx=20, expand=True)
 ###############################################################################################################################################################
 
 # Frame 1 - Left-Side:
-notebook1_tab1_frame_photo = tk.PhotoImage(file='/home/steve/Vorlagen/welcome.png')
+notebook1_tab1_frame_photo = tk.PhotoImage(file='./images/welcome.png')
 notebook1_tab1_frame_image_label = ttk.Label(notebook1_tab1, image=notebook1_tab1_frame_photo)
 notebook1_tab1_frame_image_label.pack(padx=20, pady=20, side='left', fill='both', expand=True)
 
 # ----------------------------------------------------------------------------------------------- #
 
 # Frame 2 - Right-Side:
-notebook1_tab1_frame_text = tk.Frame(notebook1_tab1)
+notebook1_tab1_frame_text = tk.Frame(notebook1_tab1, background=color3)
 notebook1_tab1_frame_text.pack(padx=40)
 
-notebook1_tab1_frame_title = tk.Label(notebook1_tab1_frame_text, text="Welcome to the Autodesk Fusion 360 for Linux Setup Wizard", font=(24))
+notebook1_tab1_frame_title = tk.Label(notebook1_tab1_frame_text, text="Welcome to the Autodesk Fusion 360 for Linux Setup Wizard", font=(24), background=color3)
 notebook1_tab1_frame_title.pack(pady=20, anchor="w")
 
-notebook1_tab1_frame_label1 = tk.Label(notebook1_tab1_frame_text, text="Many thanks to you for deciding to use my setup wizard to be able to use Autodesk Fusion 360 on your computer.", wraplength=430, justify="left")
+notebook1_tab1_frame_label1 = tk.Label(notebook1_tab1_frame_text, text="Many thanks to you for deciding to use my setup wizard to be able to use Autodesk Fusion 360 on your computer.", wraplength=430, justify="left", background=color3)
 notebook1_tab1_frame_label1.pack(pady=5, anchor="w")
-notebook1_tab1_frame_label2 = tk.Label(notebook1_tab1_frame_text, text="This quick setup wizard will help you configure the basic settings and install the program. Furthermore, it is possible to install some tested plugins after the installation.", wraplength=430, justify="left")
+notebook1_tab1_frame_label2 = tk.Label(notebook1_tab1_frame_text, text="This quick setup wizard will help you configure the basic settings and install the program. Furthermore, it is possible to install some tested plugins after the installation.", wraplength=430, justify="left", background=color3)
 notebook1_tab1_frame_label2.pack(pady=5, anchor="w")
-notebook1_tab1_frame_label3 = tk.Label(notebook1_tab1_frame_text, text="Depending on your current environment, setup may involve:", wraplength=430)
+notebook1_tab1_frame_label3 = tk.Label(notebook1_tab1_frame_text, text="Depending on your current environment, setup may involve:", wraplength=430, background=color3)
 notebook1_tab1_frame_label3.pack(pady=5, anchor="w")
-notebook1_tab1_frame_label4 = tk.Label(notebook1_tab1_frame_text, text="- Checking your system for minimum installation requirements.", wraplength=430)
+notebook1_tab1_frame_label4 = tk.Label(notebook1_tab1_frame_text, text="- Checking your system for minimum installation requirements.", wraplength=430, background=color3)
 notebook1_tab1_frame_label4.pack(anchor="w")
-notebook1_tab1_frame_label5 = tk.Label(notebook1_tab1_frame_text, text="- It is recommended that you close all other applications before continuing.", wraplength=430)
+notebook1_tab1_frame_label5 = tk.Label(notebook1_tab1_frame_text, text="- It is recommended that you close all other applications before continuing.", wraplength=430, background=color3)
 notebook1_tab1_frame_label5.pack(anchor="w")
-notebook1_tab1_frame_label6 = tk.Label(notebook1_tab1_frame_text, text="Click Next to continue, or Cancel to exit the Setup Wizard.", wraplength=430)
+notebook1_tab1_frame_label6 = tk.Label(notebook1_tab1_frame_text, text="Click Next to continue, or Cancel to exit the Setup Wizard.", wraplength=430, background=color3)
 notebook1_tab1_frame_label6.pack(pady=20, anchor="w")
 
 # ----------------------------------------------------------------------------------------------- #
 
 # Frame 3 - Right-Side:
-notebook1_tab1_frame_button = tk.Frame(notebook1_tab1)
+notebook1_tab1_frame_button = tk.Frame(notebook1_tab1, background=color3)
 notebook1_tab1_frame_button.pack(padx=15, pady=15, side='bottom', anchor="e")
 
-notebook1_tab1_frame_button1 = tk.Button(notebook1_tab1_frame_button,text='< Back',width=6,height=1, underline=2, state=tk.DISABLED)
+notebook1_tab1_frame_button1 = tk.Button(notebook1_tab1_frame_button,text='< Back',width=6,height=1, underline=2, state=tk.DISABLED, background=color4)
 notebook1_tab1_frame_button1.grid(row=0, column=0, padx=5, pady=5)
 notebook1_tab1_frame_button1.grid_rowconfigure(0, weight=1)
-notebook1_tab1_frame_button2 = tk.Button(notebook1_tab1_frame_button,text='Cancel',width=6,height=1, underline=0, command=lambda:window.quit())
+notebook1_tab1_frame_button2 = tk.Button(notebook1_tab1_frame_button,text='Cancel',width=6,height=1, underline=0, command=lambda:window.quit(), background=color4)
 notebook1_tab1_frame_button2.grid(row=0, column=1, padx=5, pady=5)
-notebook1_tab1_frame_button3 = tk.Button(notebook1_tab1_frame_button,text='Next >',width=6,height=1, underline=0, command=lambda:notebook.select(notebook_tab2))
+notebook1_tab1_frame_button3 = tk.Button(notebook1_tab1_frame_button,text='Next >',width=6,height=1, underline=0, command=lambda:notebook.select(notebook_tab2), background=color4)
 notebook1_tab1_frame_button3.grid(row=0, column=2, padx=5, pady=5)
-notebook1_tab1_frame_button4 = tk.Button(notebook1_tab1_frame_button,text='Help',width=6,height=1, underline=0, command=lambda:notebook.select(notebook_tab7))
+notebook1_tab1_frame_button4 = tk.Button(notebook1_tab1_frame_button,text='Help',width=6,height=1, underline=0, command=lambda:notebook.select(notebook_tab7), background=color4)
 notebook1_tab1_frame_button4.grid(row=0, column=3, padx=5, pady=5)
 
 ###############################################################################################################################################################
@@ -150,13 +155,13 @@ notebook1_tab1_frame_button4.grid(row=0, column=3, padx=5, pady=5)
 ###############################################################################################################################################################
 
 notebook_style2 = ttk.Style(notebook1_tab2)
-notebook_style2.configure('bottomtab.TNotebook', tabposition='se')
+notebook_style2.configure('bottomtab.TNotebook', tabposition='se', background=color3)
 
 notebook2 = ttk.Notebook(notebook1_tab2, style='bottomtab.TNotebook')
-notebook2_tab1 = tk.Frame(notebook2)
-notebook2_tab2 = tk.Frame(notebook2)
-notebook2_tab3 = tk.Frame(notebook2)
-notebook2_tab4 = tk.Frame(notebook2)
+notebook2_tab1 = tk.Frame(notebook2, background=color3)
+notebook2_tab2 = tk.Frame(notebook2, background=color3)
+notebook2_tab3 = tk.Frame(notebook2, background=color3)
+notebook2_tab4 = tk.Frame(notebook2, background=color3)
 notebook2.add(notebook2_tab1, text='1')
 notebook2.add(notebook2_tab2, text='2')
 notebook2.add(notebook2_tab3, text='3')
@@ -168,160 +173,175 @@ notebook2.pack(expand=True)
 ###############################################################################################################################################################
 
 # Frame 1 - Left-Side:
-notebook2_tab2_frame_photo = tk.PhotoImage(file='/home/steve/Vorlagen/welcome.png')
+notebook2_tab2_frame_photo = tk.PhotoImage(file='./images/welcome.png')
 notebook2_tab2_frame_image_label = ttk.Label(notebook2_tab1, image=notebook2_tab2_frame_photo)
 notebook2_tab2_frame_image_label.pack(padx=20, pady=20, side='left', fill='both', expand=True)
 
 # ----------------------------------------------------------------------------------------------- #
 
 # Frame 2 - Right-Side:
-notebook2_tab2_frame_text = tk.Frame(notebook2_tab1)
+notebook2_tab2_frame_text = tk.Frame(notebook2_tab1, background=color3)
 notebook2_tab2_frame_text.pack(padx=40, anchor="w")
 
-notebook2_tab2_frame_title = tk.Label(notebook2_tab2_frame_text, text="Welcome to the Autodesk Fusion 360 for Linux Setup Wizard", font=(24))
-notebook2_tab2_frame_title = tk.Label(notebook2_tab2_frame_text, text="Configure the Autodesk Fusion 360 for Linux Setup Wizard", font=(24))
+notebook2_tab2_frame_title = tk.Label(notebook2_tab2_frame_text, text="Welcome to the Autodesk Fusion 360 for Linux Setup Wizard", font=(24), background=color3)
+notebook2_tab2_frame_title = tk.Label(notebook2_tab2_frame_text, text="Configure the Autodesk Fusion 360 for Linux Setup Wizard", font=(24), background=color3)
 notebook2_tab2_frame_title.pack(pady=20, anchor="w")
 
-notebook2_tab2_frame_label1 = tk.Label(notebook2_tab2_frame_text, text="In this step you can change some settings to apply your desired configuration of Autodesk Fusion 360 on your computer.", wraplength=430, justify="left")
+notebook2_tab2_frame_label1 = tk.Label(notebook2_tab2_frame_text, text="In this step you can change some settings to apply your desired configuration of Autodesk Fusion 360 on your computer.", wraplength=430, justify="left", background=color3)
 notebook2_tab2_frame_label1.pack(pady=5, anchor="w")
 
 # ----------------------------------------------------------------------------------------------- #
 
-def setup_selected_linux_distro():
-    if selected_linux_distro.get() == 'Arch Linux, Manjaro Linux, EndeavourOS, ...':
-      showinfo(
-        title='Configure - Linux Distro',
-        message="Arch Linux, Manjaro Linux, EndeavourOS, ... will be set up ...")
-      os.system("firefox")
-    elif selected_linux_distro.get() == 'Debian 10, MX Linux 19.4, Raspberry Pi Desktop, ...':
-      showinfo(
-        title='Configure - Linux Distro',
-        message="Debian 10, MX Linux 19.4, Raspberry Pi Desktop, ... will be set up ...")
-      os.system("firefox")
-    elif selected_linux_distro.get() == 'Debian 11':
-      showinfo(
-        title='Configure - Linux Distro',
-        message="Debian 11 will be set up ...")
-      os.system("firefox")
-    elif selected_linux_distro.get() == 'Fedora 35':
-      showinfo(
-        title='Configure - Linux Distro',
-        message="Fedora 35 will be set up ...")
-      os.system("firefox")
-    elif selected_linux_distro.get() == 'Fedora 36':
-      showinfo(
-        title='Configure - Linux Distro',
-        message="Fedora 36 will be set up ...")
-      os.system("firefox")
-    elif selected_linux_distro.get() == 'openSUSE Leap 15.2':
-      showinfo(
-        title='Configure - Linux Distro',
-        message="openSUSE Leap 15.2 will be set up ...")
-      os.system("firefox")
-    elif selected_linux_distro.get() == 'openSUSE Leap 15.3':
-      showinfo(
-        title='Configure - Linux Distro',
-        message="openSUSE Leap 15.3 will be set up ...")
-      os.system("firefox")
-    elif selected_linux_distro.get() == 'openSUSE Tumbleweed':
-      showinfo(
-        title='Configure - Linux Distro',
-        message="openSUSE Tumbleweed will be set up ...")
-      os.system("firefox")
-    elif selected_linux_distro.get() == 'Red Hat Enterprise Linux 8.x':
-      showinfo(
-        title='Configure - Linux Distro',
-        message="Red Hat Enterprise Linux 8.x will be set up ...")
-      os.system("firefox")
-    elif selected_linux_distro.get() == 'Red Hat Enterprise Linux 9.x':
-      showinfo(
-        title='Configure - Linux Distro',
-        message="Red Hat Enterprise Linux 9.x will be set up ...")
-      os.system("firefox")
-    elif selected_linux_distro.get() == 'Solus':
-      showinfo(
-        title='Configure - Linux Distro',
-        message="Solus will be set up ...")
-      os.system("firefox")
-    elif selected_linux_distro.get() == 'Ubuntu 18.04, Linux Mint 19.x, ...':
-      showinfo(
-        title='Configure - Linux Distro',
-        message="Ubuntu 18.04, Linux Mint 19.x, ... will be set up ...")
-      os.system("firefox")
-    elif selected_linux_distro.get() == 'Ubuntu 20.04, Linux Mint 20.x, Pop!_OS 20.04, ...':
-      showinfo(
-        title='Configure - Linux Distro',
-        message="Ubuntu 20.04, Linux Mint 20.x, Pop!_OS 20.04, ... will be set up ...")
-      os.system("firefox")
-    elif selected_linux_distro.get() == 'Ubuntu 22.04, Pop!_OS 22.04, ...':
-      showinfo(
-        title='Configure - Linux Distro',
-        message="Ubuntu 22.04, Pop!_OS 22.04, ... will be set up ...")
-      os.system("firefox")
-    elif selected_linux_distro.get() == 'Void Linux':
-      showinfo(
-        title='Configure - Linux Distro',
-        message="Void Linux will be set up ...")
-      os.system("firefox")
-    elif selected_linux_distro.get() == 'Gentoo Linux':
-      showinfo(
-        title='Configure - Linux Distro',
-        message="Gentoo Linux will be set up ...")
-      os.system("firefox")
-
-
-def show_selected_linux_distro():
-    MsgBox = tk.messagebox.askquestion ('Save Configuration','Do you want to continue with your settings?',icon = 'question')
-    if MsgBox == 'yes':
-       setup_selected_linux_distro()
-    else:
-        tk.messagebox.showinfo('Return Configuration','You will be returned to the settings and can change them again or Cancel the installation.')
-
-
+def change_distro_logo(event):
+ if selected_linux_distro.get() == 'Arch Linux':
+   notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/archlinux.png"))
+   notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
+   notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
+ elif selected_linux_distro.get() == 'Debian 10':
+   notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/debian.png"))
+   notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
+   notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
+ elif selected_linux_distro.get() == 'Debian 11':
+   notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/debian.png"))
+   notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
+   notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
+ elif selected_linux_distro.get() == 'Fedora 35':
+   notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/fedora.png"))
+   notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
+   notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
+ elif selected_linux_distro.get() == 'Fedora 36':
+   notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/fedora.png"))
+   notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
+   notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
+ elif selected_linux_distro.get() == 'Linux Mint 19.x':
+   notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/linuxmint.png"))
+   notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
+   notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
+ elif selected_linux_distro.get() == 'Linux Mint 20.x':
+   notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/linuxmint.png"))
+   notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
+   notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
+ elif selected_linux_distro.get() == 'openSUSE Leap 15.2':
+   notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/opensuse.png"))
+   notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
+   notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
+ elif selected_linux_distro.get() == 'openSUSE Leap 15.3':
+   notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/opensuse.png"))
+   notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
+   notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
+ elif selected_linux_distro.get() == 'openSUSE Leap 15.4':
+   notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/opensuse.png"))
+   notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
+   notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
+ elif selected_linux_distro.get() == 'openSUSE Tumbleweed':
+   notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/opensuse.png"))
+   notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
+   notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
+ elif selected_linux_distro.get() == 'Pop!_OS 20.04':
+   notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/popos.png"))
+   notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
+   notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
+ elif selected_linux_distro.get() == 'Pop!_OS 22.04':
+   notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/popos.png"))
+   notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
+   notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
+ elif selected_linux_distro.get() == 'Raspberry Pi Desktop':
+   notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/rpios.png"))
+   notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
+   notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
+ elif selected_linux_distro.get() == 'Red Hat Enterprise Linux 8.x':
+   notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/redhat.png"))
+   notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
+   notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
+ elif selected_linux_distro.get() == 'Red Hat Enterprise Linux 9.x':
+   notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/redhat.png"))
+   notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
+   notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
+ elif selected_linux_distro.get() == 'Solus':
+   notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/solus.png"))
+   notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
+   notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
+ elif selected_linux_distro.get() == 'Ubuntu 18.04':
+   notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/ubuntu.png"))
+   notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
+   notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
+ elif selected_linux_distro.get() == 'Ubuntu 20.04':
+   notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/ubuntu.png"))
+   notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
+   notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
+ elif selected_linux_distro.get() == 'Ubuntu 22.04':
+   notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/ubuntu.png"))
+   notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
+   notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
+ elif selected_linux_distro.get() == 'Void Linux':
+   notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/voidlinux.png"))
+   notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
+   notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
+ elif selected_linux_distro.get() == 'Gentoo Linux':
+   notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/gentoolinux.png"))
+   notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
+   notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
 
 # ----------------------------------------------------------------------------------------------- #
 
 # Show a list of supported Linux Distro's
 selected_linux_distro = tk.StringVar()
-linux_distros = ['Arch Linux, Manjaro Linux, EndeavourOS, ...', 
-'Debian 10, MX Linux 19.4, Raspberry Pi Desktop, ...', 
+linux_distros = ['Arch Linux',
+'Manjaro',
+'Debian 10', 
 'Debian 11',
 'Fedora 35', 
-'Fedora 36', 
+'Fedora 36',
+'Linux Mint 19.x',
+'Linux Mint 20.x',
+'MX Linux 19.4', 
 'openSUSE Leap 15.2',
 'openSUSE Leap 15.3', 
 'openSUSE Tumbleweed',
+'Pop!_OS 20.04',
+'Pop!_OS 22.04',
+'Raspberry Pi Desktop',
 'Red Hat Enterprise Linux 8.x',
 'Red Hat Enterprise Linux 9.x',  
 'Solus', 
-'Ubuntu 18.04, Linux Mint 19.x, ...',
-'Ubuntu 20.04, Linux Mint 20.x, Pop!_OS 20.04, ...', 
-'Ubuntu 22.04, Pop!_OS 22.04, ...',  
+'Ubuntu 18.04',
+'Ubuntu 20.04', 
+'Ubuntu 22.04',  
 'Void Linux', 
 'Gentoo Linux']
 
-notebook2_tab2_frame_label2 = ttk.Label(notebook2_tab2_frame_text, text="1.) Select your installed Linux distro:")
+style_missed_combobox = ttk.Style()
+style_missed_combobox.configure("Red.TCombobox", fieldbackground=color4, background=color1, foreground=color2, selectforeground=color2, selectbackground=color4)
+
+notebook2_tab2_frame_label2 = ttk.Label(notebook2_tab2_frame_text, text="1.) Select your installed Linux distro:", background=color3)
 notebook2_tab2_frame_label2.pack(fill='x', padx=5, pady=5)
 
-notebook2_tab2_frame_combobox1 = ttk.Combobox(notebook2_tab2_frame_text, values=linux_distros, textvariable=selected_linux_distro, width=50)
-notebook2_tab2_frame_combobox1.pack(fill='x', padx=15, pady=5)
-notebook2_tab2_frame_combobox1.set('Arch Linux, Manjaro Linux, EndeavourOS, ...') # default selected option
+notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/archlinux.png"))
+notebook2_tab2_frame_image_label1 = ttk.Label(notebook2_tab2_frame_text, image=notebook2_tab2_frame_photo1, background=color3)
+notebook2_tab2_frame_image_label1.pack(side='left')
+
+notebook2_tab2_frame_combobox1 = ttk.Combobox(notebook2_tab2_frame_text, values=linux_distros, textvariable=selected_linux_distro, width=25, justify='center', style="Red.TCombobox")
+notebook2_tab2_frame_combobox1.pack(side='left', fill='x', padx=5, pady=5)
+notebook2_tab2_frame_combobox1.set('Arch Linux') # default selected option
 notebook2_tab2_frame_combobox1['state'] = 'readonly'
+notebook2_tab2_frame_combobox1.bind("<<ComboboxSelected>>", change_distro_logo)
+
+
 
 # ----------------------------------------------------------------------------------------------- #
 
 # Frame 3 - Right-Side:
-notebook2_tab2_frame_button = tk.Frame(notebook2_tab1)
+notebook2_tab2_frame_button = tk.Frame(notebook2_tab1, background=color3)
 notebook2_tab2_frame_button.pack(padx=15, pady=15, side='bottom', anchor="e")
 
-notebook2_tab2_frame_button1 = tk.Button(notebook2_tab2_frame_button,text='< Back',width=6,height=1, underline=2, command=lambda:notebook.select(notebook_tab1))
+notebook2_tab2_frame_button1 = tk.Button(notebook2_tab2_frame_button,text='< Back',width=6,height=1, underline=2, command=lambda:notebook.select(notebook_tab1), background=color4)
 notebook2_tab2_frame_button1.grid(row=0, column=0, padx=5, pady=5)
 notebook2_tab2_frame_button1.grid_rowconfigure(0, weight=1)
-notebook2_tab2_frame_button2 = tk.Button(notebook2_tab2_frame_button,text='Cancel',width=6,height=1, underline=0, command=lambda:window.quit())
+notebook2_tab2_frame_button2 = tk.Button(notebook2_tab2_frame_button,text='Cancel',width=6,height=1, underline=0, command=lambda:window.quit(), background=color4)
 notebook2_tab2_frame_button2.grid(row=0, column=1, padx=5, pady=5)
-notebook2_tab2_frame_button3 = tk.Button(notebook2_tab2_frame_button,text='Next >',width=6,height=1, underline=0, command=show_selected_linux_distro)
+notebook2_tab2_frame_button3 = tk.Button(notebook2_tab2_frame_button,text='Next >',width=6,height=1, underline=0, command=show_selected_linux_distro, background=color4)
 notebook2_tab2_frame_button3.grid(row=0, column=2, padx=5, pady=5)
-notebook2_tab2_frame_button4 = tk.Button(notebook2_tab2_frame_button,text='Help',width=6,height=1, underline=0, command=lambda:notebook.select(notebook_tab7))
+notebook2_tab2_frame_button4 = tk.Button(notebook2_tab2_frame_button,text='Help',width=6,height=1, underline=0, command=lambda:notebook.select(notebook_tab7), background=color4)
 notebook2_tab2_frame_button4.grid(row=0, column=3, padx=5, pady=5)
 
 window.mainloop()
