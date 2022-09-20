@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    20:00/19.09.2022                                                                   #
+# Time/Date:    17:13/20.09.2022                                                                   #
 # Version:      1.8.1 > 1.8.2                                                                      #
 ####################################################################################################
 
@@ -42,6 +42,8 @@ color2 = "#222222"
 color3 = "#efefef"
 color4 = "#ffffff"
 
+# ----------------------------------------------------------------------------------------------- #
+
 # Create this window:
 window = tk.Tk()
 window.title('Setup Wizard - Autodesk Fusion 360 for Linux')
@@ -75,7 +77,7 @@ notebook_style1.theme_create( "theme_notebook_tabs", parent="alt", settings={
         "TNotebook": {"configure": {"tabmargins": [2, 5, 2, 0] } },
         "TNotebook.Tab": {
             "configure": {"padding": [5, 1], "background": color3 },
-            "map":       {"background": [("selected", color2)], "foreground": [("selected", color1)],
+            "map":       {"background": [("selected", color2)], "foreground": [("selected", color3)],
                           "expand": [("selected", [1, 1, 1, 0])] } } } )
 
 notebook_style1.theme_use("theme_notebook_tabs")
@@ -197,71 +199,39 @@ def change_distro_logo(event):
    notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/archlinux.png"))
    notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
    notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
- elif selected_linux_distro.get() == 'Debian 10':
+ elif selected_linux_distro.get() == 'Debian':
    notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/debian.png"))
    notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
    notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
- elif selected_linux_distro.get() == 'Debian 11':
-   notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/debian.png"))
-   notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
-   notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
- elif selected_linux_distro.get() == 'Fedora 35':
+ elif selected_linux_distro.get() == 'Fedora':
    notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/fedora.png"))
    notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
    notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
- elif selected_linux_distro.get() == 'Fedora 36':
-   notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/fedora.png"))
-   notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
-   notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
- elif selected_linux_distro.get() == 'MX Linux 19.4':
-   notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/fedora.png"))
-   notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
-   notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
- elif selected_linux_distro.get() == 'MX Linux 21.1':
+ elif selected_linux_distro.get() == 'MX Linux':
    notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/mxlinux.png"))
    notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
    notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
- elif selected_linux_distro.get() == 'Linux Mint 19.x':
+ elif selected_linux_distro.get() == 'Manjaro':
+   notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/manjaro.png"))
+   notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
+   notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
+ elif selected_linux_distro.get() == 'Linux Mint':
    notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/linuxmint.png"))
    notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
    notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
- elif selected_linux_distro.get() == 'Linux Mint 20.x':
-   notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/linuxmint.png"))
-   notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
-   notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
- elif selected_linux_distro.get() == 'openSUSE Leap 15.2':
+ elif selected_linux_distro.get() == 'openSUSE':
    notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/opensuse.png"))
    notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
    notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
- elif selected_linux_distro.get() == 'openSUSE Leap 15.3':
-   notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/opensuse.png"))
-   notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
-   notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
- elif selected_linux_distro.get() == 'openSUSE Leap 15.4':
-   notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/opensuse.png"))
-   notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
-   notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
- elif selected_linux_distro.get() == 'openSUSE Tumbleweed':
-   notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/opensuse.png"))
-   notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
-   notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
- elif selected_linux_distro.get() == 'Pop!_OS 20.04':
+ elif selected_linux_distro.get() == 'Pop!_OS':
    notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/popos.png"))
    notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
    notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
- elif selected_linux_distro.get() == 'Pop!_OS 22.04':
-   notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/popos.png"))
-   notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
-   notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
- elif selected_linux_distro.get() == 'Raspberry Pi Desktop':
+ elif selected_linux_distro.get() == 'RPi Desktop':
    notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/rpios.png"))
    notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
    notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
- elif selected_linux_distro.get() == 'Red Hat Enterprise Linux 8.x':
-   notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/redhat.png"))
-   notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
-   notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
- elif selected_linux_distro.get() == 'Red Hat Enterprise Linux 9.x':
+ elif selected_linux_distro.get() == 'Red Hat':
    notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/redhat.png"))
    notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
    notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
@@ -269,15 +239,7 @@ def change_distro_logo(event):
    notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/solus.png"))
    notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
    notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
- elif selected_linux_distro.get() == 'Ubuntu 18.04':
-   notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/ubuntu.png"))
-   notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
-   notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
- elif selected_linux_distro.get() == 'Ubuntu 20.04':
-   notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/ubuntu.png"))
-   notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
-   notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
- elif selected_linux_distro.get() == 'Ubuntu 22.04':
+ elif selected_linux_distro.get() == 'Ubuntu':
    notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/ubuntu.png"))
    notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
    notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
@@ -285,39 +247,43 @@ def change_distro_logo(event):
    notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/void.png"))
    notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
    notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
- elif selected_linux_distro.get() == 'Gentoo Linux':
+ elif selected_linux_distro.get() == 'Gentoo':
    notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/gentoo.png"))
    notebook2_tab2_frame_image_label1.configure(image=notebook2_tab2_frame_photo1)
    notebook2_tab2_frame_image_label1.image = notebook2_tab2_frame_photo1
+   
+def change_gpu_logo(event):
+ if selected_gpu.get() == 'AMD':
+   notebook2_tab2_frame_photo2 = ImageTk.PhotoImage(Image.open("./images/amd.png"))
+   notebook2_tab2_frame_image_label2.configure(image=notebook2_tab2_frame_photo2)
+   notebook2_tab2_frame_image_label2.image = notebook2_tab2_frame_photo2
+ elif selected_gpu.get() == 'INTEL':
+   notebook2_tab2_frame_photo2 = ImageTk.PhotoImage(Image.open("./images/intel.png"))
+   notebook2_tab2_frame_image_label2.configure(image=notebook2_tab2_frame_photo2)
+   notebook2_tab2_frame_image_label2.image = notebook2_tab2_frame_photo2
+ elif selected_gpu.get() == 'NVIDIA':
+   notebook2_tab2_frame_photo2 = ImageTk.PhotoImage(Image.open("./images/nvidia.png"))
+   notebook2_tab2_frame_image_label2.configure(image=notebook2_tab2_frame_photo2)
+   notebook2_tab2_frame_image_label2.image = notebook2_tab2_frame_photo2   
 
 # ----------------------------------------------------------------------------------------------- #
 
 # Show a list of supported Linux Distro's
 selected_linux_distro = tk.StringVar()
 linux_distros = ['Arch Linux',
-'Manjaro',
-'Debian 10', 
-'Debian 11',
-'Fedora 35', 
-'Fedora 36',
-'Linux Mint 19.x',
-'Linux Mint 20.x',
-'MX Linux 19.4',
-'MX Linux 21.1', 
-'openSUSE Leap 15.2',
-'openSUSE Leap 15.3', 
-'openSUSE Tumbleweed',
-'Pop!_OS 20.04',
-'Pop!_OS 22.04',
-'Raspberry Pi Desktop',
-'Red Hat Enterprise Linux 8.x',
-'Red Hat Enterprise Linux 9.x',  
+'Debian', 
+'Fedora', 
+'Linux Mint',
+'MX Linux',
+'Manjaro', 
+'openSUSE',
+'Pop!_OS',
+'RPi Desktop',
+'Red Hat',  
 'Solus', 
-'Ubuntu 18.04',
-'Ubuntu 20.04', 
-'Ubuntu 22.04',  
+'Ubuntu',
 'Void Linux', 
-'Gentoo Linux']
+'Gentoo']
 
 style_missed_combobox = ttk.Style()
 style_missed_combobox.configure("Red.TCombobox", fieldbackground=color4, background=color1, foreground=color2, selectforeground=color2, selectbackground=color4)
@@ -325,15 +291,37 @@ style_missed_combobox.configure("Red.TCombobox", fieldbackground=color4, backgro
 notebook2_tab2_frame_label2 = ttk.Label(notebook2_tab2_frame_text, text="1.) Select your installed Linux distro:", background=color3)
 notebook2_tab2_frame_label2.pack(fill='x', padx=5, pady=5)
 
-notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/archlinux.png"))
+notebook2_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("./images/opensuse.png"))
 notebook2_tab2_frame_image_label1 = ttk.Label(notebook2_tab2_frame_text, image=notebook2_tab2_frame_photo1, background=color3)
-notebook2_tab2_frame_image_label1.pack(side='left')
-
-notebook2_tab2_frame_combobox1 = ttk.Combobox(notebook2_tab2_frame_text, values=linux_distros, textvariable=selected_linux_distro, width=25, justify='center', style="Red.TCombobox")
-notebook2_tab2_frame_combobox1.pack(side='left', fill='x', padx=5, pady=5)
-notebook2_tab2_frame_combobox1.set('Arch Linux') # default selected option
+notebook2_tab2_frame_image_label1.pack(side='left', padx=(20, 10))
+notebook2_tab2_frame_combobox1 = ttk.Combobox(notebook2_tab2_frame_text, values=linux_distros, textvariable=selected_linux_distro, width=15, justify='center', style="Red.TCombobox")
+notebook2_tab2_frame_combobox1.pack(side='left', fill='x')
+notebook2_tab2_frame_combobox1.set('openSUSE') # default selected option
 notebook2_tab2_frame_combobox1['state'] = 'readonly'
 notebook2_tab2_frame_combobox1.bind("<<ComboboxSelected>>", change_distro_logo)
+
+
+# ----------------------------------------------------------------------------------------------- #
+
+notebook2_tab2_frame_text2 = tk.Frame(notebook2_tab1, background=color3)
+notebook2_tab2_frame_text2.pack(padx=40, pady=10, anchor="w")
+
+
+# Show a list of supported Linux Distro's
+selected_gpu = tk.StringVar()
+gpu_list = ['AMD','INTEL','NVIDIA']
+
+notebook2_tab2_frame_label3 = ttk.Label(notebook2_tab2_frame_text2, text="2.) Select your graphics card model:", background=color3)
+notebook2_tab2_frame_label3.pack(fill='x', padx=5, pady=5)
+
+notebook2_tab2_frame_photo2 = ImageTk.PhotoImage(Image.open("./images/amd.png"))
+notebook2_tab2_frame_image_label2 = ttk.Label(notebook2_tab2_frame_text2, image=notebook2_tab2_frame_photo2, background=color3)
+notebook2_tab2_frame_image_label2.pack(side='left', padx=(20, 10))
+notebook2_tab2_frame_combobox2 = ttk.Combobox(notebook2_tab2_frame_text2, values=gpu_list, textvariable=selected_gpu, width=10, justify='center', style="Red.TCombobox")
+notebook2_tab2_frame_combobox2.pack(side='left', fill='x')
+notebook2_tab2_frame_combobox2.set('AMD') # default selected option
+notebook2_tab2_frame_combobox2['state'] = 'readonly'
+notebook2_tab2_frame_combobox2.bind("<<ComboboxSelected>>", change_gpu_logo)
 
 
 
