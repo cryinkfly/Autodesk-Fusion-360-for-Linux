@@ -290,27 +290,27 @@ notebook_root_tab4_frame_label1.pack(pady=5, anchor="w")
 
 system_hostname = os.uname()[1]
 
-system_os = os.system("lsb_release -d")
+system_os = os.popen('source /etc/os-release && echo "$PRETTY_NAME"').read()
 
 system_kernel = os.uname()[2]
 
-system_cpu = ""
+system_cpu = os.popen('cat /proc/cpuinfo | grep "model name" | uniq | cut -d":" -f2-').read()
 
-system_gpu = ""
+system_gpu = os.popen('glxinfo | grep "Device"').read()
 
-system_shell = ""
+system_shell = os.popen('echo $SHELL && $SHELL --version').read()
 
-system_resolution = ""
+system_resolution = os.popen('').read()
 
-system_de = ""
+system_de = os.popen('').read()
 
-system_wm = ""
+system_wm = os.popen('').read()
 
-system_wm_theme = ""
+system_wm_theme = os.popen('s').read()
 
-system_theme = ""
+system_theme = os.popen('').read()
 
-system_icons = ""
+system_icons = os.popen('').read()
 
 
 
@@ -318,11 +318,11 @@ system_icons = ""
 
 notebook_root_tab4_frame_label2 = tk.Label(notebook_root_tab4_frame_text, text="Hostname: " + system_hostname, wraplength=430, justify="left", background=color3, foreground=color2)
 notebook_root_tab4_frame_label2.pack(anchor="w")
-notebook_root_tab4_frame_label3 = tk.Label(notebook_root_tab4_frame_text, text="OS: " + system_os, wraplength=430, justify="left", background=color3, foreground=color2)
+notebook_root_tab4_frame_label3 = tk.Label(notebook_root_tab4_frame_text, text="OS: " + str(system_os), wraplength=430, justify="left", background=color3, foreground=color2)
 notebook_root_tab4_frame_label3.pack(anchor="w")
 notebook_root_tab4_frame_label4 = tk.Label(notebook_root_tab4_frame_text, text="Kernel: " + system_kernel, wraplength=430, justify="left", background=color3, foreground=color2)
 notebook_root_tab4_frame_label4.pack(anchor="w")
-notebook_root_tab4_frame_label5 = tk.Label(notebook_root_tab4_frame_text, text="CPU: " + system_cpu, wraplength=430, justify="left", background=color3, foreground=color2)
+notebook_root_tab4_frame_label5 = tk.Label(notebook_root_tab4_frame_text, text="CPU:" + system_cpu, wraplength=430, justify="left", background=color3, foreground=color2)
 notebook_root_tab4_frame_label5.pack(anchor="w")
 notebook_root_tab4_frame_label6 = tk.Label(notebook_root_tab4_frame_text, text="GPU: " + system_gpu, wraplength=430, justify="left", background=color3, foreground=color2)
 notebook_root_tab4_frame_label6.pack(anchor="w")
