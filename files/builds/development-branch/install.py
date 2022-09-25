@@ -139,11 +139,11 @@ notebook_root.pack(pady=20,padx=20, expand=True)
 # Frame 1 - Left-Side:
 notebook_root_tab1_frame_photo = tk.PhotoImage(file='./images/welcome.png')
 notebook_root_tab1_frame_image_label = ttk.Label(notebook_root_tab1, image=notebook_root_tab1_frame_photo)
-notebook_root_tab1_frame_image_label.pack(padx=20, pady=20, side='left', fill='both', expand=True)
+notebook_root_tab1_frame_image_label.pack(padx=20, pady=20, side='left', fill='both', expand=False)
 
 # ----------------------------------------------------------------------------------------------- #
 
-# Frame 2 - Right-Side:
+# Frame 1 - Right-Side:
 notebook_root_tab1_frame_text = tk.Frame(notebook_root_tab1, background=color3)
 notebook_root_tab1_frame_text.pack(padx=40)
 notebook_root_tab1_frame_title = tk.Label(notebook_root_tab1_frame_text, text="Welcome to the Autodesk Fusion 360 for Linux Setup Wizard", font=(24), background=color3, foreground=color2)
@@ -216,7 +216,7 @@ notebook_root_tab1_frame_combobox1.bind("<<ComboboxSelected>>", change_language)
 
 # ----------------------------------------------------------------------------------------------- #
 
-# Frame 3 - Right-Side:
+# Frame 2 - Right-Side:
 notebook_root_tab1_frame_button_area = tk.Frame(notebook_root_tab1, background=color3)
 notebook_root_tab1_frame_button_area.pack(padx=15, pady=15, side='bottom', anchor="e")
 notebook_root_tab1_frame_button_back = tk.Button(notebook_root_tab1_frame_button_area,text='< Back',width=6,height=1, underline=2, state=tk.DISABLED, background=color2, foreground=color3)
@@ -236,17 +236,32 @@ notebook_root_tab1_frame_button_help.grid(row=0, column=3, padx=5, pady=5)
 # Frame 1 - Left-Side:
 notebook_root_tab2_frame_photo = tk.PhotoImage(file='./images/welcome.png')
 notebook_root_tab2_frame_image_label = ttk.Label(notebook_root_tab2, image=notebook_root_tab2_frame_photo)
-notebook_root_tab2_frame_image_label.pack(padx=20, pady=20, side='left', fill='both', expand=True)
+notebook_root_tab2_frame_image_label.pack(padx=20, pady=20, side='left', fill='both', expand=False)
 
 # ----------------------------------------------------------------------------------------------- #
 
-# Frame 2 - Right-Side:
+# Frame 1 - Right-Side:
 notebook_root_tab2_frame_text = tk.Frame(notebook_root_tab2, background=color3)
 notebook_root_tab2_frame_text.pack(padx=40, anchor="w")
 notebook_root_tab2_frame_title = tk.Label(notebook_root_tab2_frame_text, text="Configure the Autodesk Fusion 360 for Linux Setup Wizard", font=(24), background=color3, foreground=color2)
 notebook_root_tab2_frame_title.pack(pady=20, anchor="w")
 notebook_root_tab2_frame_label1 = tk.Label(notebook_root_tab2_frame_text, text="In this step you can change some settings to apply your desired configuration of Autodesk Fusion 360 on your computer.", wraplength=430, justify="left", background=color3, foreground=color2)
 notebook_root_tab2_frame_label1.pack(pady=5, anchor="w")
+
+# ----------------------------------------------------------------------------------------------- #
+
+# Frame 2 - Right-Side:
+notebook_root_tab2_frame_button_area = tk.Frame(notebook_root_tab2, background=color3)
+notebook_root_tab2_frame_button_area.pack(padx=15, pady=15, side='bottom', anchor="e")
+notebook_root_tab2_frame_button_back = tk.Button(notebook_root_tab2_frame_button_area,text='< Back',width=6,height=1, underline=2, command=lambda:notebook_root.select(notebook_root_tab1), background=color2, foreground=color3)
+notebook_root_tab2_frame_button_back.grid(row=0, column=0, padx=5, pady=5)
+notebook_root_tab2_frame_button_back.grid_rowconfigure(0, weight=1)
+notebook_root_tab2_frame_button_cancel = tk.Button(notebook_root_tab2_frame_button_area,text='Cancel',width=6,height=1, underline=0, command=lambda:window.quit(), background=color2, foreground=color3)
+notebook_root_tab2_frame_button_cancel.grid(row=0, column=1, padx=5, pady=5)
+notebook_root_tab2_frame_button_next = tk.Button(notebook_root_tab2_frame_button_area,text='Next >',width=6,height=1, underline=0, command=lambda:notebook_root.select(notebook_root_tab3), background=color2, foreground=color3)
+notebook_root_tab2_frame_button_next.grid(row=0, column=2, padx=5, pady=5)
+notebook_root_tab2_frame_button_help = tk.Button(notebook_root_tab2_frame_button_area,text='Help',width=6,height=1, underline=0, command=lambda:notebook_root.select(notebook_root_tab6), background=color2, foreground=color3)
+notebook_root_tab2_frame_button_help.grid(row=0, column=3, padx=5, pady=5)
 
 ###############################################################################################################################################################
 # CREATE ELEMENTS INTO NOTEBOOK_ROOT_TAB3 ARE ARRANGED HERE:                                                                                                  #
@@ -255,17 +270,32 @@ notebook_root_tab2_frame_label1.pack(pady=5, anchor="w")
 # Frame 1 - Left-Side:
 notebook_root_tab3_frame_photo = tk.PhotoImage(file='./images/welcome.png')
 notebook_root_tab3_frame_image_label = ttk.Label(notebook_root_tab3, image=notebook_root_tab3_frame_photo)
-notebook_root_tab3_frame_image_label.pack(padx=20, pady=20, side='left', fill='both', expand=True)
+notebook_root_tab3_frame_image_label.pack(padx=20, pady=20, side='left', fill='both', expand=False)
 
 # ----------------------------------------------------------------------------------------------- #
 
-# Frame 2 - Right-Side:
+# Frame 1 - Right-Side:
 notebook_root_tab3_frame_text = tk.Frame(notebook_root_tab3, background=color3)
 notebook_root_tab3_frame_text.pack(padx=40, anchor="w")
 notebook_root_tab3_frame_title = tk.Label(notebook_root_tab3_frame_text, text="Configure the plugins", font=(24), background=color3, foreground=color2)
 notebook_root_tab3_frame_title.pack(pady=20, anchor="w")
 notebook_root_tab3_frame_label1 = tk.Label(notebook_root_tab3_frame_text, text="In this step you can see a list of available and tested plugins for Autodesk Fusion 360. It is recommended if you want to add additional functionality to your workflow.", wraplength=430, justify="left", background=color3, foreground=color2)
 notebook_root_tab3_frame_label1.pack(pady=5, anchor="w")
+
+# ----------------------------------------------------------------------------------------------- #
+
+# Frame 2 - Right-Side:
+notebook_root_tab3_frame_button_area = tk.Frame(notebook_root_tab3, background=color3)
+notebook_root_tab3_frame_button_area.pack(padx=15, pady=15, side='bottom', anchor="e")
+notebook_root_tab3_frame_button_back = tk.Button(notebook_root_tab3_frame_button_area,text='< Back',width=6,height=1, underline=2, command=lambda:notebook_root.select(notebook_root_tab2), background=color2, foreground=color3)
+notebook_root_tab3_frame_button_back.grid(row=0, column=0, padx=5, pady=5)
+notebook_root_tab3_frame_button_back.grid_rowconfigure(0, weight=1)
+notebook_root_tab3_frame_button_cancel = tk.Button(notebook_root_tab3_frame_button_area,text='Cancel',width=6,height=1, underline=0, command=lambda:window.quit(), background=color2, foreground=color3)
+notebook_root_tab3_frame_button_cancel.grid(row=0, column=1, padx=5, pady=5)
+notebook_root_tab3_frame_button_next = tk.Button(notebook_root_tab3_frame_button_area,text='Next >',width=6,height=1, underline=0, command=lambda:notebook_root.select(notebook_root_tab4), background=color2, foreground=color3)
+notebook_root_tab3_frame_button_next.grid(row=0, column=2, padx=5, pady=5)
+notebook_root_tab3_frame_button_help = tk.Button(notebook_root_tab3_frame_button_area,text='Help',width=6,height=1, underline=0, command=lambda:notebook_root.select(notebook_root_tab6), background=color2, foreground=color3)
+notebook_root_tab3_frame_button_help.grid(row=0, column=3, padx=5, pady=5)
 
 ###############################################################################################################################################################
 # CREATE ELEMENTS INTO NOTEBOOK_ROOT_TAB4 ARE ARRANGED HERE:                                                                                                  #
@@ -274,11 +304,11 @@ notebook_root_tab3_frame_label1.pack(pady=5, anchor="w")
 # Frame 1 - Left-Side:
 notebook_root_tab4_frame_photo = tk.PhotoImage(file='./images/welcome.png')
 notebook_root_tab4_frame_image_label = ttk.Label(notebook_root_tab4, image=notebook_root_tab4_frame_photo)
-notebook_root_tab4_frame_image_label.pack(padx=20, pady=20, side='left', fill='both', expand=True)
+notebook_root_tab4_frame_image_label.pack(padx=20, pady=20, side='left', fill='both', expand=False)
 
 # ----------------------------------------------------------------------------------------------- #
 
-# Frame 2 - Right-Side:
+# Frame 1 - Right-Side:
 notebook_root_tab4_frame_text = tk.Frame(notebook_root_tab4, background=color3)
 notebook_root_tab4_frame_text.pack(padx=40, anchor="w")
 notebook_root_tab4_frame_title = tk.Label(notebook_root_tab4_frame_text, text="System Information", font=(24), background=color3, foreground=color2)
@@ -341,7 +371,88 @@ notebook_root_tab4_frame_label12.pack(anchor="w")
 notebook_root_tab4_frame_label13 = tk.Label(notebook_root_tab4_frame_text, text="Icons: " + system_icons, wraplength=430, justify="left", background=color3, foreground=color2)
 notebook_root_tab4_frame_label13.pack(anchor="w")
 
+# ----------------------------------------------------------------------------------------------- #
 
+# Frame 2 - Right-Side:
+notebook_root_tab4_frame_button_area = tk.Frame(notebook_root_tab4, background=color3)
+notebook_root_tab4_frame_button_area.pack(padx=15, pady=15, side='bottom', anchor="e")
+notebook_root_tab4_frame_button_back = tk.Button(notebook_root_tab4_frame_button_area,text='< Back',width=6,height=1, underline=2, command=lambda:notebook_root.select(notebook_root_tab3), foreground=color3)
+notebook_root_tab4_frame_button_back.grid(row=0, column=0, padx=5, pady=5)
+notebook_root_tab4_frame_button_back.grid_rowconfigure(0, weight=1)
+notebook_root_tab4_frame_button_cancel = tk.Button(notebook_root_tab4_frame_button_area,text='Cancel',width=6,height=1, underline=0, command=lambda:window.quit(), background=color2, foreground=color3)
+notebook_root_tab4_frame_button_cancel.grid(row=0, column=1, padx=5, pady=5)
+notebook_root_tab4_frame_button_next = tk.Button(notebook_root_tab4_frame_button_area,text='Next >',width=6,height=1, underline=0, command=lambda:notebook_root.select(notebook_root_tab5), background=color2, foreground=color3)
+notebook_root_tab4_frame_button_next.grid(row=0, column=2, padx=5, pady=5)
+notebook_root_tab4_frame_button_help = tk.Button(notebook_root_tab4_frame_button_area,text='Help',width=6,height=1, underline=0, command=lambda:notebook_root.select(notebook_root_tab6), background=color2, foreground=color3)
+notebook_root_tab4_frame_button_help.grid(row=0, column=3, padx=5, pady=5)
+
+###############################################################################################################################################################
+# CREATE ELEMENTS INTO NOTEBOOK_ROOT_TAB5 ARE ARRANGED HERE:                                                                                                  #
+###############################################################################################################################################################
+
+# Frame 1 - Left-Side:
+notebook_root_tab5_frame_photo = tk.PhotoImage(file='./images/welcome.png')
+notebook_root_tab5_frame_image_label = ttk.Label(notebook_root_tab5, image=notebook_root_tab5_frame_photo)
+notebook_root_tab5_frame_image_label.pack(padx=20, pady=20, side='left', fill='both', expand=False)
+
+# ----------------------------------------------------------------------------------------------- #
+
+# Frame 1 - Right-Side:
+notebook_root_tab5_frame_text = tk.Frame(notebook_root_tab5, background=color3, width=100)
+notebook_root_tab5_frame_text.pack(padx=40, anchor="w")
+notebook_root_tab5_frame_title = tk.Label(notebook_root_tab5_frame_text, text="About", font=(24), background=color3, foreground=color2)
+notebook_root_tab5_frame_title.pack(pady=20, anchor="w")
+notebook_root_tab5_frame_label1 = tk.Label(notebook_root_tab5_frame_text, text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.", wraplength=430, justify="left", background=color3, foreground=color2)
+notebook_root_tab5_frame_label1.pack(pady=5, anchor="w")
+
+# ----------------------------------------------------------------------------------------------- #
+
+# Frame 2 - Right-Side:
+notebook_root_tab5_frame_button_area = tk.Frame(notebook_root_tab5, background=color3)
+notebook_root_tab5_frame_button_area.pack(padx=15, pady=15, side='bottom', anchor="e")
+notebook_root_tab5_frame_button_back = tk.Button(notebook_root_tab5_frame_button_area,text='< Back',width=6,height=1, underline=2, command=lambda:notebook_root.select(notebook_root_tab4), background=color2, foreground=color3)
+notebook_root_tab5_frame_button_back.grid(row=0, column=0, padx=5, pady=5)
+notebook_root_tab5_frame_button_back.grid_rowconfigure(0, weight=1)
+notebook_root_tab5_frame_button_cancel = tk.Button(notebook_root_tab5_frame_button_area,text='Cancel',width=6,height=1, underline=0, command=lambda:window.quit(), background=color2, foreground=color3)
+notebook_root_tab5_frame_button_cancel.grid(row=0, column=1, padx=5, pady=5)
+notebook_root_tab5_frame_button_next = tk.Button(notebook_root_tab5_frame_button_area,text='Next >',width=6,height=1, underline=0, command=lambda:notebook_root.select(notebook_root_tab6), background=color2, foreground=color3)
+notebook_root_tab5_frame_button_next.grid(row=0, column=2, padx=5, pady=5)
+notebook_root_tab5_frame_button_help = tk.Button(notebook_root_tab5_frame_button_area,text='Help',width=6,height=1, underline=0, command=lambda:notebook_root.select(notebook_root_tab6), background=color2, foreground=color3)
+notebook_root_tab5_frame_button_help.grid(row=0, column=3, padx=5, pady=5)
+
+###############################################################################################################################################################
+# CREATE ELEMENTS INTO NOTEBOOK_ROOT_TAB6 ARE ARRANGED HERE:                                                                                                  #
+###############################################################################################################################################################
+
+# Frame 1 - Left-Side:
+notebook_root_tab6_frame_photo = tk.PhotoImage(file='./images/welcome.png')
+notebook_root_tab6_frame_image_label = ttk.Label(notebook_root_tab6, image=notebook_root_tab2_frame_photo)
+notebook_root_tab6_frame_image_label.pack(padx=20, pady=20, side='left', fill='both', expand=False)
+
+# ----------------------------------------------------------------------------------------------- #
+
+# Frame 1 - Right-Side:
+notebook_root_tab6_frame_text = tk.Frame(notebook_root_tab6, background=color3)
+notebook_root_tab6_frame_text.pack(padx=40, anchor="w")
+notebook_root_tab6_frame_title = tk.Label(notebook_root_tab6_frame_text, text="Documentation", font=(24), background=color3, foreground=color2)
+notebook_root_tab6_frame_title.pack(pady=20, anchor="w")
+notebook_root_tab6_frame_label1 = tk.Label(notebook_root_tab6_frame_text, text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.", wraplength=430, justify="left", background=color3, foreground=color2)
+notebook_root_tab6_frame_label1.pack(pady=5, anchor="w")
+
+# ----------------------------------------------------------------------------------------------- #
+
+# Frame 2 - Right-Side:
+notebook_root_tab6_frame_button_area = tk.Frame(notebook_root_tab6, background=color3)
+notebook_root_tab6_frame_button_area.pack(padx=15, pady=15, side='bottom', anchor="e")
+notebook_root_tab6_frame_button_back = tk.Button(notebook_root_tab6_frame_button_area,text='< Back',width=6,height=1, underline=2, command=lambda:notebook_root.select(notebook_root_tab5), background=color2, foreground=color3)
+notebook_root_tab6_frame_button_back.grid(row=0, column=0, padx=5, pady=5)
+notebook_root_tab6_frame_button_back.grid_rowconfigure(0, weight=1)
+notebook_root_tab6_frame_button_cancel = tk.Button(notebook_root_tab6_frame_button_area,text='Cancel',width=6,height=1, underline=0, command=lambda:window.quit(), background=color2, foreground=color3)
+notebook_root_tab6_frame_button_cancel.grid(row=0, column=1, padx=5, pady=5)
+notebook_root_tab6_frame_button_next = tk.Button(notebook_root_tab6_frame_button_area,text='Next >',width=6,height=1, underline=0, command=lambda:notebook_root.select(notebook_root_tab6), background=color2, foreground=color3)
+notebook_root_tab6_frame_button_next.grid(row=0, column=2, padx=5, pady=5)
+notebook_root_tab6_frame_button_help = tk.Button(notebook_root_tab6_frame_button_area,text='Help',width=6,height=1, underline=0, state=tk.DISABLED, background=color2, foreground=color3)
+notebook_root_tab6_frame_button_help.grid(row=0, column=3, padx=5, pady=5)
 
 
 ###############################################################################################################################################################
