@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 
 ####################################################################################################
 # Name:         Autodesk Fusion 360 - Setup Wizard (Linux)                                         #
@@ -285,6 +285,65 @@ notebook_root_tab3_frame_label1.pack(pady=5, anchor="w")
 # ----------------------------------------------------------------------------------------------- #
 
 # Frame 2 - Right-Side:
+plugins = ('Airfoil Tools', 
+           'Additive Assistant (FFF)', 
+           'HP 3D Printers for Autodesk® Fusion 360™', 
+           'Helical Gear Generator', 
+           'OctoPrint for Autodesk® Fusion 360™',
+           'Parameter I/O', 
+           'RoboDK', 
+           'Ultimaker Digital Factory for Autodesk Fusion 360™')
+
+var_plugins = tk.Variable(value=plugins)
+listbox_plugins = tk.Listbox(
+    notebook_root_tab3_frame_text,
+    listvariable=var_plugins,
+    width=50,
+    height=6,
+    selectmode=tk.MULTIPLE)
+
+listbox_plugins.pack(expand=True, fill=tk.BOTH, side=tk.LEFT)
+scrollbar_plugins = ttk.Scrollbar(notebook_root_tab3_frame_text, orient=tk.VERTICAL, command=listbox_plugins.yview)
+listbox_plugins['yscrollcommand'] = scrollbar_plugins.set
+scrollbar_plugins.pack(side=tk.LEFT, expand=True, fill=tk.Y)
+
+def add_selected_plugins(event):
+    selected_indices = listbox_plugins.curselection()
+    selected_plugins = ",".join([listbox_plugins.get(i) for i in selected_indices])
+    if selected_plugins == 'Airfoil Tools':
+     print("Airfoil Tools selected!")
+     plugin_0 = 1 # 0=disabled/1=activated
+    if selected_plugins == 'Additive Assistant (FFF)':
+     print("Additive Assistant (FFF) selected!")
+     plugin_1 = 1 # 0=disabled/1=activated
+    if selected_plugins == 'HP 3D Printers for Autodesk® Fusion 360™':
+     print("HP 3D Printers for Autodesk® Fusion 360™ selected!")
+     plugin_2 = 1 # 0=disabled/1=activated
+    if selected_plugins == 'Helical Gear Generator':
+     print("Helical Gear Generator selected!")
+     plugin_3 = 1 # 0=disabled/1=activated
+    if selected_plugins == 'OctoPrint for Autodesk® Fusion 360™':
+     print("OctoPrint for Autodesk® Fusion 360™ selected!")
+     plugin_4 = 1 # 0=disabled/1=activated
+    if selected_plugins == 'Parameter I/O':
+     print("Parameter I/O selected!")
+     plugin_5 = 1 # 0=disabled/1=activated
+    if selected_plugins == 'RoboDK':
+     print("RoboDK selected!")
+     plugin_6 = 1 # 0=disabled/1=activated
+    if selected_plugins == 'Ultimaker Digital Factory for Autodesk Fusion 360™':
+     print("Ultimaker Digital Factory for Autodesk Fusion 360™ selected!")
+     plugin_7 = 1 # 0=disabled/1=activated
+
+listbox_plugins.bind('<<ListboxSelect>>', add_selected_plugins)
+
+# --> Create a text element for the description of the last selected plugin:
+
+   # Next ...
+
+# ----------------------------------------------------------------------------------------------- #
+
+# Frame 3 - Right-Side:
 notebook_root_tab3_frame_button_area = tk.Frame(notebook_root_tab3, background=color3)
 notebook_root_tab3_frame_button_area.pack(padx=15, pady=15, side='bottom', anchor="e")
 notebook_root_tab3_frame_button_back = tk.Button(notebook_root_tab3_frame_button_area,text='< Back',width=6,height=1, underline=2, command=lambda:notebook_root.select(notebook_root_tab2), background=color2, foreground=color3)
