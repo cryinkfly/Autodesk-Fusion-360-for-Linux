@@ -49,6 +49,10 @@ from PIL import Image, ImageTk
 # The OS module in Python gives you access to some functions of the operating system.
 import os
 
+import webbrowser
+
+
+
 ###############################################################################################################################################################
 # SET UP THE COLOR SHEME FOR THE SETUP WIZARD HERE:                                                                                                           #
 ###############################################################################################################################################################
@@ -250,6 +254,101 @@ notebook_root_tab2_frame_label1.pack(pady=5, anchor="w")
 
 # ----------------------------------------------------------------------------------------------- #
 
+# Change the logo of the selected Linux Distro:
+def change_distro_logo(event):
+ if selected_linux_distro.get() == 'Arch Linux':
+   notebook_root_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("../images/archlinux.png"))
+   notebook_root_tab2_frame_image_label1.configure(image=notebook_root_tab2_frame_photo1)
+   notebook_root_tab2_frame_image_label1.image = notebook_root_tab2_frame_photo1
+ elif selected_linux_distro.get() == 'Debian':
+   notebook_root_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("../images/debian.png"))
+   notebook_root_tab2_frame_image_label1.configure(image=notebook_root_tab2_frame_photo1)
+   notebook_root_tab2_frame_image_label1.image = notebook_root_tab2_frame_photo1
+ elif selected_linux_distro.get() == 'Fedora':
+   notebook_root_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("../images/fedora.png"))
+   notebook_root_tab2_frame_image_label1.configure(image=notebook_root_tab2_frame_photo1)
+   notebook_root_tab2_frame_image_label1.image = notebook_root_tab2_frame_photo1
+ elif selected_linux_distro.get() == 'MX Linux':
+   notebook_root_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("../images/mxlinux.png"))
+   notebook_root_tab2_frame_image_label1.configure(image=notebook_root_tab2_frame_photo1)
+   notebook_root_tab2_frame_image_label1.image = notebook_root_tab2_frame_photo1
+ elif selected_linux_distro.get() == 'Manjaro':
+   notebook_root_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("../images/manjaro.png"))
+   notebook_root_tab2_frame_image_label1.configure(image=notebook_root_tab2_frame_photo1)
+   notebook_root_tab2_frame_image_label1.image = notebook_root_tab2_frame_photo1
+ elif selected_linux_distro.get() == 'Linux Mint':
+   notebook_root_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("../images/linuxmint.png"))
+   notebook_root_tab2_frame_image_label1.configure(image=notebook_root_tab2_frame_photo1)
+   notebook_root_tab2_frame_image_label1.image = notebook_root_tab2_frame_photo1
+ elif selected_linux_distro.get() == 'openSUSE':
+   notebook_root_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("../images/opensuse.png"))
+   notebook_root_tab2_frame_image_label1.configure(image=notebook_root_tab2_frame_photo1)
+   notebook_root_tab2_frame_image_label1.image = notebook_root_tab2_frame_photo1
+ elif selected_linux_distro.get() == 'Pop!_OS':
+   notebook_root_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("../images/popos.png"))
+   notebook_root_tab2_frame_image_label1.configure(image=notebook_root_tab2_frame_photo1)
+   notebook_root_tab2_frame_image_label1.image = notebook_root_tab2_frame_photo1
+ elif selected_linux_distro.get() == 'RPi Desktop':
+   notebook_root_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("../images/rpios.png"))
+   notebook_root_tab2_frame_image_label1.configure(image=notebook_root_tab2_frame_photo1)
+   notebook_root_tab2_frame_image_label1.image = notebook_root_tab2_frame_photo1
+ elif selected_linux_distro.get() == 'Red Hat':
+   notebook_root_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("../images/redhat.png"))
+   notebook_root_tab2_frame_image_label1.configure(image=notebook_root_tab2_frame_photo1)
+   notebook_root_tab2_frame_image_label1.image = notebook_root_tab2_frame_photo1
+ elif selected_linux_distro.get() == 'Solus':
+   notebook_root_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("../images/solus.png"))
+   notebook_root_tab2_frame_image_label1.configure(image=notebook_root_tab2_frame_photo1)
+   notebook_root_tab2_frame_image_label1.image = notebook_root_tab2_frame_photo1
+ elif selected_linux_distro.get() == 'Ubuntu':
+   notebook_root_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("../images/ubuntu.png"))
+   notebook_root_tab2_frame_image_label1.configure(image=notebook_root_tab2_frame_photo1)
+   notebook_root_tab2_frame_image_label1.image = notebook_root_tab2_frame_photo1
+ elif selected_linux_distro.get() == 'Void Linux':
+   notebook_root_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("../images/void.png"))
+   notebook_root_tab2_frame_image_label1.configure(image=notebook_root_tab2_frame_photo1)
+   notebook_root_tab2_frame_image_label1.image = notebook_root_tab2_frame_photo1
+ elif selected_linux_distro.get() == 'Gentoo':
+   notebook_root_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("../images/gentoo.png"))
+   notebook_root_tab2_frame_image_label1.configure(image=notebook_root_tab2_frame_photo1)
+   notebook_root_tab2_frame_image_label1.image = notebook_root_tab2_frame_photo1
+
+# ----------------------------------------------------------------------------------------------- #
+
+# Show a list of supported Linux Distro's
+selected_linux_distro = tk.StringVar()
+linux_distros = ['Arch Linux',
+'Debian', 
+'Fedora', 
+'Linux Mint',
+'MX Linux',
+'Manjaro', 
+'openSUSE',
+'Pop!_OS',
+'RPi Desktop',
+'Red Hat',  
+'Solus', 
+'Ubuntu',
+'Void Linux', 
+'Gentoo']
+
+style_missed_combobox = ttk.Style()
+style_missed_combobox.configure("Red.TCombobox", fieldbackground=color3, background=color1, foreground=color2, selectforeground=color2, selectbackground=color3)
+
+notebook_root_tab2_frame_label2 = ttk.Label(notebook_root_tab2_frame_text, text="1.) Select your installed Linux distro:", background=color3)
+notebook_root_tab2_frame_label2.pack(fill='x', padx=5, pady=5)
+
+notebook_root_tab2_frame_photo1 = ImageTk.PhotoImage(Image.open("../images/opensuse.png"))
+notebook_root_tab2_frame_image_label1 = ttk.Label(notebook_root_tab2_frame_text, image=notebook_root_tab2_frame_photo1, background=color3)
+notebook_root_tab2_frame_image_label1.pack(side='left', padx=(20, 10))
+notebook_root_tab2_frame_combobox1 = ttk.Combobox(notebook_root_tab2_frame_text, values=linux_distros, textvariable=selected_linux_distro, width=15, justify='center', style="Red.TCombobox")
+notebook_root_tab2_frame_combobox1.pack(side='left', fill='x')
+notebook_root_tab2_frame_combobox1.set('openSUSE') # default selected option
+notebook_root_tab2_frame_combobox1['state'] = 'readonly'
+notebook_root_tab2_frame_combobox1.bind("<<ComboboxSelected>>", change_distro_logo)
+
+# ----------------------------------------------------------------------------------------------- #
+
 # Frame 2 - Right-Side:
 notebook_root_tab2_frame_button_area = tk.Frame(notebook_root_tab2, background=color3)
 notebook_root_tab2_frame_button_area.pack(padx=15, pady=15, side='bottom', anchor="e")
@@ -284,6 +383,9 @@ notebook_root_tab3_frame_label1.pack(pady=5, anchor="w")
 
 # ----------------------------------------------------------------------------------------------- #
 
+notebook_root_tab3_frame_plugins = tk.Frame(notebook_root_tab3, background=color3)
+notebook_root_tab3_frame_plugins.pack(pady=15, padx=43, anchor="w")
+
 # Frame 2 - Right-Side:
 plugins = ('Airfoil Tools', 
            'Additive Assistant (FFF)', 
@@ -296,14 +398,14 @@ plugins = ('Airfoil Tools',
 
 var_plugins = tk.Variable(value=plugins)
 listbox_plugins = tk.Listbox(
-    notebook_root_tab3_frame_text,
+    notebook_root_tab3_frame_plugins,
     listvariable=var_plugins,
     width=50,
     height=6,
     selectmode=tk.MULTIPLE)
 
 listbox_plugins.pack(expand=True, fill=tk.BOTH, side=tk.LEFT)
-scrollbar_plugins = ttk.Scrollbar(notebook_root_tab3_frame_text, orient=tk.VERTICAL, command=listbox_plugins.yview)
+scrollbar_plugins = ttk.Scrollbar(notebook_root_tab3_frame_plugins, orient=tk.VERTICAL, command=listbox_plugins.yview)
 listbox_plugins['yscrollcommand'] = scrollbar_plugins.set
 scrollbar_plugins.pack(side=tk.LEFT, expand=True, fill=tk.Y)
 
@@ -340,6 +442,22 @@ listbox_plugins.bind('<<ListboxSelect>>', add_selected_plugins)
 # --> Create a text element for the description of the last selected plugin:
 
    # Next ...
+   
+   
+notebook_root_tab3_frame_text_notice = tk.Frame(notebook_root_tab3, background=color3)
+notebook_root_tab3_frame_text_notice.pack(padx=40, anchor="w")   
+   
+notebook_root_tab4_frame_label2 = tk.Label(notebook_root_tab3_frame_text_notice, text="More information can be found here:", wraplength=430, justify="left", background=color3, foreground=color2)
+notebook_root_tab4_frame_label2.pack(side=tk.LEFT)
+
+# Open the documentation:
+def plugins_callback(url):
+    webbrowser.open_new(url)
+
+notebook_root_tab4_frame_label3 = tk.Label(notebook_root_tab3_frame_text_notice, text="Extensions for Autodesk Fusion 360", fg=color4, bg=color3, cursor="hand2")
+notebook_root_tab4_frame_label3.pack(side=tk.LEFT)
+notebook_root_tab4_frame_label3.bind("<Button-1>", lambda e: plugins_callback("https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/docs/en-US/extensions"))   
+
 
 # ----------------------------------------------------------------------------------------------- #
 
@@ -378,25 +496,31 @@ notebook_root_tab4_frame_label1.pack(pady=5, anchor="w")
 # ----------------------------------------------------------------------------------------------- #
 
 system_hostname_get = os.popen('hostname=$(hostname) && echo "Hostname: $hostname" > "../logs/system-info.txt"').read()
-system_os_get = os.popen('system_os=$(source /etc/os-release && echo "$PRETTY_NAME") && echo "OS: $system_os" >> "../logs/system-info.txt"').read()
+system_os_get = os.popen('system_os=$(source /etc/os-release && echo "$PRETTY_NAME") && system_de=$(echo $XDG_CURRENT_DESKTOP) && echo "OS: $system_os ($system_de)" >> "../logs/system-info.txt"').read()
 system_kernel_get = os.popen('system_kernel=$(uname -r) && echo "Kernel: $system_kernel" >> "../logs/system-info.txt"').read()
 system_cpu_get = os.popen('system_cpu=$(cat /proc/cpuinfo | grep "model name" | uniq | cut -d":" -f2-) && echo "CPU: $system_cpu" >> "../logs/system-info.txt"').read()
-system_gpu_get = os.popen('system_gpu=$(glxinfo | grep "Device") && echo "GPU: $system_gpu" >> "../logs/system-info.txt"').read()
-system_shell_get = os.popen('system_shell0=$(echo $SHELL) && system_shell1=$($SHELL --version | grep "bash" | cut -f 4 -d " " | cut -d "-" -f 1  | cut -d "(" -f 1) && echo "Shell: $system_shell0 (Version: $system_shell1)" >> "../logs/system-info.txt"').read()
-system_resolution_get = os.popen('system_resolution=$(xrandr |awk "/\*/ {print $1}") && echo "Resolution: $system_resolution" >> "../logs/system-info.txt"').read()
-system_de_get = os.popen('system_de=$(echo $XDG_CURRENT_DESKTOP) && echo "DE: $system_de" >> "../logs/system-info.txt"').read()
-system_wm_get = os.popen('').read()
-system_wm_theme_get = os.popen('').read()
-system_theme_get = os.popen('').read()
-system_icons_get = os.popen('').read()
-
+system_gpu_get = os.popen('system_gpu=$(glxinfo | grep "Device" | sed s/" "// | sed s/" Device: "//) && echo "GPU:$system_gpu" >> "../logs/system-info.txt"').read()
+system_gpu_ram = os.popen('system_gpu_ram=$(glxinfo | egrep -i "device|memory" | sed s/" "// | grep "Video memory" | sed s/" Video memory: "// | sed s/"MB"//) && echo "GPU (RAM):$system_gpu_ram MB" >> "../logs/system-info.txt"').read()
+system_ram = os.popen('system_ram=$(echo $(($(getconf _AVPHYS_PAGES) * $(getconf PAGE_SIZE) / (1024 * 1024)))) && echo "RAM: $system_ram MB" >> "../logs/system-info.txt"').read()
 system_info_get = open('../logs/system-info.txt', "r")
 system_info = system_info_get.read()
 
 # ----------------------------------------------------------------------------------------------- #
 
 notebook_root_tab4_frame_label2 = tk.Label(notebook_root_tab4_frame_text, text="" + system_info, wraplength=430, justify="left", background=color3, foreground=color2)
-notebook_root_tab4_frame_label2.pack(anchor="w")
+notebook_root_tab4_frame_label2.pack(pady=10, anchor="w")
+
+notebook_root_tab4_frame_label3 = tk.Label(notebook_root_tab4_frame_text, text="More information can be found here:", wraplength=430, justify="left", background=color3, foreground=color2)
+notebook_root_tab4_frame_label3.pack(side=tk.LEFT)
+
+# Open the documentation:
+def documentation_callback(url):
+    webbrowser.open_new(url)
+
+notebook_root_tab4_frame_label4 = tk.Label(notebook_root_tab4_frame_text, text="Project Documentation", fg=color4, bg=color3, cursor="hand2")
+notebook_root_tab4_frame_label4.pack(side=tk.LEFT)
+notebook_root_tab4_frame_label4.bind("<Button-1>", lambda e: documentation_callback("https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/wiki/Documentation"))
+
 
 # ----------------------------------------------------------------------------------------------- #
 
