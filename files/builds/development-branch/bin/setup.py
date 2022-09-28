@@ -380,24 +380,14 @@ notebook_root_tab4_frame_label1.pack(pady=5, anchor="w")
 system_hostname_get = os.popen('hostname=$(hostname) && echo "Hostname: $hostname" > "../logs/system-info.txt"').read()
 system_os_get = os.popen('system_os=$(source /etc/os-release && echo "$PRETTY_NAME") && echo "OS: $system_os" >> "../logs/system-info.txt"').read()
 system_kernel_get = os.popen('system_kernel=$(uname -r) && echo "Kernel: $system_kernel" >> "../logs/system-info.txt"').read()
-
-
 system_cpu_get = os.popen('system_cpu=$(cat /proc/cpuinfo | grep "model name" | uniq | cut -d":" -f2-) && echo "CPU: $system_cpu" >> "../logs/system-info.txt"').read()
-
 system_gpu_get = os.popen('system_gpu=$(glxinfo | grep "Device") && echo "GPU: $system_gpu" >> "../logs/system-info.txt"').read()
-
 system_shell_get = os.popen('system_shell0=$(echo $SHELL) && system_shell1=$($SHELL --version | grep "bash" | cut -f 4 -d " " | cut -d "-" -f 1  | cut -d "(" -f 1) && echo "Shell: $system_shell0 (Version: $system_shell1)" >> "../logs/system-info.txt"').read()
-
 system_resolution_get = os.popen('system_resolution=$(xrandr |awk "/\*/ {print $1}") && echo "Resolution: $system_resolution" >> "../logs/system-info.txt"').read()
-
 system_de_get = os.popen('system_de=$(echo $XDG_CURRENT_DESKTOP) && echo "DE: $system_de" >> "../logs/system-info.txt"').read()
-
 system_wm_get = os.popen('').read()
-
 system_wm_theme_get = os.popen('').read()
-
 system_theme_get = os.popen('').read()
-
 system_icons_get = os.popen('').read()
 
 system_info_get = open('../logs/system-info.txt', "r")
