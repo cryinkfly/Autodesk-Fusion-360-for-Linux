@@ -75,7 +75,7 @@ window_width = 750
 window = tk.Tk()
 window.title('Setup Wizard - Autodesk Fusion 360 for Linux')
 window.configure(bg=color1)
-window.iconphoto(False, tk.PhotoImage(file='./images/fusion360.png'))
+window.iconphoto(False, tk.PhotoImage(file='../images/fusion360.png'))
 
 ###############################################################################################################################################################
 # CONFIGURE THE WINDOW OF THE SETUP WIZARD HERE:                                                                                                              #
@@ -137,7 +137,7 @@ notebook_root.pack(pady=20,padx=20, expand=True)
 ###############################################################################################################################################################
 
 # Frame 1 - Left-Side:
-notebook_root_tab1_frame_photo = tk.PhotoImage(file='./images/welcome.png')
+notebook_root_tab1_frame_photo = tk.PhotoImage(file='../images/welcome.png')
 notebook_root_tab1_frame_image_label = ttk.Label(notebook_root_tab1, image=notebook_root_tab1_frame_photo)
 notebook_root_tab1_frame_image_label.pack(padx=20, pady=20, side='left', fill='both', expand=False)
 
@@ -234,7 +234,7 @@ notebook_root_tab1_frame_button_help.grid(row=0, column=3, padx=5, pady=5)
 ###############################################################################################################################################################
 
 # Frame 1 - Left-Side:
-notebook_root_tab2_frame_photo = tk.PhotoImage(file='./images/welcome.png')
+notebook_root_tab2_frame_photo = tk.PhotoImage(file='../images/welcome.png')
 notebook_root_tab2_frame_image_label = ttk.Label(notebook_root_tab2, image=notebook_root_tab2_frame_photo)
 notebook_root_tab2_frame_image_label.pack(padx=20, pady=20, side='left', fill='both', expand=False)
 
@@ -268,7 +268,7 @@ notebook_root_tab2_frame_button_help.grid(row=0, column=3, padx=5, pady=5)
 ###############################################################################################################################################################
 
 # Frame 1 - Left-Side:
-notebook_root_tab3_frame_photo = tk.PhotoImage(file='./images/welcome.png')
+notebook_root_tab3_frame_photo = tk.PhotoImage(file='../images/welcome.png')
 notebook_root_tab3_frame_image_label = ttk.Label(notebook_root_tab3, image=notebook_root_tab3_frame_photo)
 notebook_root_tab3_frame_image_label.pack(padx=20, pady=20, side='left', fill='both', expand=False)
 
@@ -361,7 +361,7 @@ notebook_root_tab3_frame_button_help.grid(row=0, column=3, padx=5, pady=5)
 ###############################################################################################################################################################
 
 # Frame 1 - Left-Side:
-notebook_root_tab4_frame_photo = tk.PhotoImage(file='./images/welcome.png')
+notebook_root_tab4_frame_photo = tk.PhotoImage(file='../images/welcome.png')
 notebook_root_tab4_frame_image_label = ttk.Label(notebook_root_tab4, image=notebook_root_tab4_frame_photo)
 notebook_root_tab4_frame_image_label.pack(padx=20, pady=20, side='left', fill='both', expand=False)
 
@@ -377,65 +377,43 @@ notebook_root_tab4_frame_label1.pack(pady=5, anchor="w")
 
 # ----------------------------------------------------------------------------------------------- #
 
-system_hostname = os.uname()[1]
-
-system_os = os.popen('source /etc/os-release && echo "$PRETTY_NAME"').read()
-
-system_kernel = os.uname()[2]
-
-system_cpu = os.popen('cat /proc/cpuinfo | grep "model name" | uniq | cut -d":" -f2-').read()
-
-system_gpu = os.popen('glxinfo | grep "Device"').read()
-
-system_shell = os.popen('echo $SHELL && $SHELL --version').read()
-
-system_resolution = os.popen('').read()
-
-system_de = os.popen('').read()
-
-system_wm = os.popen('').read()
-
-system_wm_theme = os.popen('s').read()
-
-system_theme = os.popen('').read()
-
-system_icons = os.popen('').read()
+system_hostname_get = os.popen('hostname=$(hostname) && echo "Hostname: $hostname" > "../logs/system-info.txt"').read()
+system_os_get = os.popen('system_os=$(source /etc/os-release && echo "$PRETTY_NAME") && echo "OS: $system_os" >> "../logs/system-info.txt"').read()
+system_kernel_get = os.popen('system_kernel=$(uname -r) && echo "Kernel: $system_kernel" >> "../logs/system-info.txt"').read()
 
 
+system_cpu_get = os.popen('system_cpu=$(cat /proc/cpuinfo | grep "model name" | uniq | cut -d":" -f2-) && echo "CPU: $system_cpu" >> "../logs/system-info.txt"').read()
+
+system_gpu_get = os.popen('system_gpu=$(glxinfo | grep "Device") && echo "GPU: $system_gpu" >> "../logs/system-info.txt"').read()
+
+system_shell_get = os.popen('system_shell0=$(echo $SHELL) && system_shell1=$($SHELL --version | grep "bash" | cut -f 4 -d " " | cut -d "-" -f 1  | cut -d "(" -f 1) && echo "Shell: $system_shell0 (Version: $system_shell1)" >> "../logs/system-info.txt"').read()
+
+system_resolution_get = os.popen('system_resolution=$(xrandr |awk "/\*/ {print $1}") && echo "Resolution: $system_resolution" >> "../logs/system-info.txt"').read()
+
+system_de_get = os.popen('system_de=$(echo $XDG_CURRENT_DESKTOP) && echo "DE: $system_de" >> "../logs/system-info.txt"').read()
+
+system_wm_get = os.popen('').read()
+
+system_wm_theme_get = os.popen('').read()
+
+system_theme_get = os.popen('').read()
+
+system_icons_get = os.popen('').read()
+
+system_info_get = open('../logs/system-info.txt', "r")
+system_info = system_info_get.read()
 
 # ----------------------------------------------------------------------------------------------- #
 
-notebook_root_tab4_frame_label2 = tk.Label(notebook_root_tab4_frame_text, text="Hostname: " + system_hostname, wraplength=430, justify="left", background=color3, foreground=color2)
+notebook_root_tab4_frame_label2 = tk.Label(notebook_root_tab4_frame_text, text="" + system_info, wraplength=430, justify="left", background=color3, foreground=color2)
 notebook_root_tab4_frame_label2.pack(anchor="w")
-notebook_root_tab4_frame_label3 = tk.Label(notebook_root_tab4_frame_text, text="OS: " + str(system_os), wraplength=430, justify="left", background=color3, foreground=color2)
-notebook_root_tab4_frame_label3.pack(anchor="w")
-notebook_root_tab4_frame_label4 = tk.Label(notebook_root_tab4_frame_text, text="Kernel: " + system_kernel, wraplength=430, justify="left", background=color3, foreground=color2)
-notebook_root_tab4_frame_label4.pack(anchor="w")
-notebook_root_tab4_frame_label5 = tk.Label(notebook_root_tab4_frame_text, text="CPU:" + system_cpu, wraplength=430, justify="left", background=color3, foreground=color2)
-notebook_root_tab4_frame_label5.pack(anchor="w")
-notebook_root_tab4_frame_label6 = tk.Label(notebook_root_tab4_frame_text, text="GPU: " + system_gpu, wraplength=430, justify="left", background=color3, foreground=color2)
-notebook_root_tab4_frame_label6.pack(anchor="w")
-notebook_root_tab4_frame_label7 = tk.Label(notebook_root_tab4_frame_text, text="Shell: " + system_shell, wraplength=430, justify="left", background=color3, foreground=color2)
-notebook_root_tab4_frame_label7.pack(anchor="w")
-notebook_root_tab4_frame_label8 = tk.Label(notebook_root_tab4_frame_text, text="Resolution: " + system_resolution, wraplength=430, justify="left", background=color3, foreground=color2)
-notebook_root_tab4_frame_label8.pack(anchor="w")
-notebook_root_tab4_frame_label9 = tk.Label(notebook_root_tab4_frame_text, text="DE: " + system_de, wraplength=430, justify="left", background=color3, foreground=color2)
-notebook_root_tab4_frame_label9.pack(anchor="w")
-notebook_root_tab4_frame_label10 = tk.Label(notebook_root_tab4_frame_text, text="WM: " + system_wm, wraplength=430, justify="left", background=color3, foreground=color2)
-notebook_root_tab4_frame_label10.pack(anchor="w")
-notebook_root_tab4_frame_label11 = tk.Label(notebook_root_tab4_frame_text, text="WM-Theme: " + system_wm_theme, wraplength=430, justify="left", background=color3, foreground=color2)
-notebook_root_tab4_frame_label11.pack(anchor="w")
-notebook_root_tab4_frame_label12 = tk.Label(notebook_root_tab4_frame_text, text="Theme: " + system_theme, wraplength=430, justify="left", background=color3, foreground=color2)
-notebook_root_tab4_frame_label12.pack(anchor="w")
-notebook_root_tab4_frame_label13 = tk.Label(notebook_root_tab4_frame_text, text="Icons: " + system_icons, wraplength=430, justify="left", background=color3, foreground=color2)
-notebook_root_tab4_frame_label13.pack(anchor="w")
 
 # ----------------------------------------------------------------------------------------------- #
 
 # Frame 2 - Right-Side:
 notebook_root_tab4_frame_button_area = tk.Frame(notebook_root_tab4, background=color3)
 notebook_root_tab4_frame_button_area.pack(padx=15, pady=15, side='bottom', anchor="e")
-notebook_root_tab4_frame_button_back = tk.Button(notebook_root_tab4_frame_button_area,text='< Back',width=6,height=1, underline=2, command=lambda:notebook_root.select(notebook_root_tab3), foreground=color3)
+notebook_root_tab4_frame_button_back = tk.Button(notebook_root_tab4_frame_button_area,text='< Back',width=6,height=1, underline=2, command=lambda:notebook_root.select(notebook_root_tab3), background=color2, foreground=color3)
 notebook_root_tab4_frame_button_back.grid(row=0, column=0, padx=5, pady=5)
 notebook_root_tab4_frame_button_back.grid_rowconfigure(0, weight=1)
 notebook_root_tab4_frame_button_cancel = tk.Button(notebook_root_tab4_frame_button_area,text='Cancel',width=6,height=1, underline=0, command=lambda:window.quit(), background=color2, foreground=color3)
@@ -450,7 +428,7 @@ notebook_root_tab4_frame_button_help.grid(row=0, column=3, padx=5, pady=5)
 ###############################################################################################################################################################
 
 # Frame 1 - Left-Side:
-notebook_root_tab5_frame_photo = tk.PhotoImage(file='./images/welcome.png')
+notebook_root_tab5_frame_photo = tk.PhotoImage(file='../images/welcome.png')
 notebook_root_tab5_frame_image_label = ttk.Label(notebook_root_tab5, image=notebook_root_tab5_frame_photo)
 notebook_root_tab5_frame_image_label.pack(padx=20, pady=20, side='left', fill='both', expand=False)
 
@@ -484,7 +462,7 @@ notebook_root_tab5_frame_button_help.grid(row=0, column=3, padx=5, pady=5)
 ###############################################################################################################################################################
 
 # Frame 1 - Left-Side:
-notebook_root_tab6_frame_photo = tk.PhotoImage(file='./images/welcome.png')
+notebook_root_tab6_frame_photo = tk.PhotoImage(file='../images/welcome.png')
 notebook_root_tab6_frame_image_label = ttk.Label(notebook_root_tab6, image=notebook_root_tab2_frame_photo)
 notebook_root_tab6_frame_image_label.pack(padx=20, pady=20, side='left', fill='both', expand=False)
 
