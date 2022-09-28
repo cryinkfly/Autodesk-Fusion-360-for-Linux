@@ -8,7 +8,7 @@
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
 # Time/Date:    xx:xx/xx.xx.2022                                                                   #
-# Version:      1.8.1 > 1.8.2                                                                      #
+# Version:      1.8.1 > 7.7.0 (Adaptation to release publications)                                 #
 ####################################################################################################
 
 # Path: /$HOME/.fusion360/bin/setup.py
