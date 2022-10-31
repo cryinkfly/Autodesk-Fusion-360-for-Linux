@@ -294,7 +294,7 @@
  </br>
  🔹 You must have installed the <a href="https://github.com/lutris/docs/blob/master/InstallingDrivers.md">latest graphics driver</a>!
  </br>
- 🔹 You need the <a href="https://www.winehq.org/">latest version of wine (6.23 and newer)</a> and <a href="https://github.com/Winetricks/winetricks">winetricks</a>!
+ 🔹 You need the <a href="https://www.winehq.org/">latest version of wine (6.23 and newer)</a> and <a href="https://github.com/Winetricks/winetricks">winetricks</a>! <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/issues/244#issuecomment-1192513720">Installing yad </a> is also recomended to resolve potential instalation issues. 
  </br></br>
  🧩 And would you like to use <a href="https://apps.autodesk.com/FUSION/de/Home/Index">extra functions</a> or languages as like the Czech language later in Autodesk Fusion 360, then you need a <a href="https://apps.autodesk.com/FUSION/en/Detail/Index?id=9151466655844643882">special extension</a> what you must have bought and downloaded before you can install this with my Setup Wizard! 🧩
  </br></br>
