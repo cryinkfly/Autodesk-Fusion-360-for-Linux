@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    08:15/09.06.2022                                                                   #
-# Version:      1.1                                                                                #
+# Time/Date:    15:15/12.12.2022                                                                   #
+# Version:      1.2                                                                                #
 ####################################################################################################
 
 # Path: /$HOME/.fusion360/bin/update.sh
@@ -154,10 +154,10 @@ function UP_QUESTION {
 
   answer=$?
 
-  if [ "$answer" -eq 0 ]; then
+  if [ "$answer" -eq 1 ]; then
     UP_GET_UPDATE
     UP_FUSION360_INSTALL_UPDATE_PROGRESS
-  elif [ "$answer" -eq 1 ]; then
+  elif [ "$answer" -eq 0 ]; then
     UP_SKIP_INFO
   fi
 }
