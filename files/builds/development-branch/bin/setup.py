@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+!/usr/bin/python3
 
 ####################################################################################################
 # Name:         Autodesk Fusion 360 - Setup Wizard (Linux)                                         #
@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    xx:xx/xx.xx.2022                                                                   #
+# Time/Date:    12:00/13.12.2022                                                                   #
 # Version:      1.8.1 > 1.8.2                                                                      #
 ####################################################################################################
 
@@ -52,7 +52,8 @@ import os
 # Python can very easily use an Internet browser installed on the system via the webbrowser module and transfer it a URL.
 import webbrowser
 
-# The linecache module allows one to get any line from a Python source file, while attempting to optimize internally, using a cache, the common case where many lines are read from a single file.
+# The linecache module allows one to get any line from a Python source file, while attempting to optimize internally, using a cache, 
+# the common case where many lines are read from a single file.
 import linecache
 
 ###############################################################################################################################################################
@@ -62,13 +63,21 @@ import linecache
 # Reading lines from a file includes the newline newline character. It can be easily subtracted with this extension:
 # linecache.getline('../textfile.txt', 1) + .rstrip('\n')
 
-label_window_title = linecache.getline('../locale/en-EN/en-locale.txt', 1).rstrip('\n')
-label_root_tab_name0 = linecache.getline('../locale/en-EN/en-locale.txt', 2).rstrip('\n')
-label_root_tab_name1 = linecache.getline('../locale/en-EN/en-locale.txt', 3).rstrip('\n')
-label_root_tab_name2 = linecache.getline('../locale/en-EN/en-locale.txt', 4).rstrip('\n')
-label_root_tab_name3 = linecache.getline('../locale/en-EN/en-locale.txt', 5).rstrip('\n')
-label_root_tab_name4 = linecache.getline('../locale/en-EN/en-locale.txt', 6).rstrip('\n')
-label_root_tab_name5 = linecache.getline('../locale/en-EN/en-locale.txt', 7).rstrip('\n')
+label_window_title = linecache.getline('../locale/en-EN/locale-en.txt', 1).rstrip('\n')
+label_root_tab_name0 = linecache.getline('../locale/en-EN/locale-en.txt', 2).rstrip('\n')
+label_root_tab_name1 = linecache.getline('../locale/en-EN/locale-en.txt', 3).rstrip('\n')
+label_root_tab_name2 = linecache.getline('../locale/en-EN/locale-en.txt', 4).rstrip('\n')
+label_root_tab_name3 = linecache.getline('../locale/en-EN/locale-en.txt', 5).rstrip('\n')
+label_root_tab_name4 = linecache.getline('../locale/en-EN/locale-en.txt', 6).rstrip('\n')
+label_root_tab_name5 = linecache.getline('../locale/en-EN/locale-en.txt', 7).rstrip('\n')
+notebook_root_tab1_frame_title_text = linecache.getline('../locale/en-EN/locale-en.txt', 8).rstrip('\n')
+notebook_root_tab1_frame_label1_text = linecache.getline('../locale/en-EN/locale-en.txt', 9).rstrip('\n')
+notebook_root_tab1_frame_label2_text = linecache.getline('../locale/en-EN/locale-en.txt', 10).rstrip('\n')
+notebook_root_tab1_frame_label3_text = linecache.getline('../locale/en-EN/locale-en.txt', 11).rstrip('\n')
+notebook_root_tab1_frame_label4_text = linecache.getline('../locale/en-EN/locale-en.txt', 12).rstrip('\n')
+notebook_root_tab1_frame_label5_text = linecache.getline('../locale/en-EN/locale-en.txt', 13).rstrip('\n')
+notebook_root_tab1_frame_label6_text = linecache.getline('../locale/en-EN/locale-en.txt', 14).rstrip('\n')
+notebook_root_tab1_frame_label7_text = linecache.getline('../locale/en-EN/locale-en.txt', 15).rstrip('\n')
 
 ###############################################################################################################################################################
 # SET UP THE COLOR SHEME FOR THE SETUP WIZARD HERE:                                                                                                           #
@@ -86,7 +95,7 @@ color4 = "#30BA78" # Jungle Green
 # SET UP HEIGHT AND WIDTH OF THE SETUP WIZARD WINDOW HERE:                                                                                                    #
 ###############################################################################################################################################################
 
-window_height = 450
+window_height = 520
 window_width = 750
 
 ###############################################################################################################################################################
@@ -137,12 +146,12 @@ notebook_style_root.configure('lefttab.TNotebook', background=color1, tabpositio
 notebook_root = ttk.Notebook(window, style='lefttab.TNotebook')
 
 # Configure the tabs:
-notebook_root_tab1 = tk.Frame(notebook_root, width=700, height=400, bg=color3)
-notebook_root_tab2 = tk.Frame(notebook_root, width=700, height=400, bg=color3)
-notebook_root_tab3 = tk.Frame(notebook_root, width=700, height=400, bg=color3)
-notebook_root_tab4 = tk.Frame(notebook_root, width=700, height=400, bg=color3)
-notebook_root_tab5 = tk.Frame(notebook_root, width=700, height=400, bg=color3)
-notebook_root_tab6 = tk.Frame(notebook_root, width=700, height=400, bg=color3)
+notebook_root_tab1 = tk.Frame(notebook_root, width=700, height=500, bg=color3)
+notebook_root_tab2 = tk.Frame(notebook_root, width=700, height=500, bg=color3)
+notebook_root_tab3 = tk.Frame(notebook_root, width=700, height=500, bg=color3)
+notebook_root_tab4 = tk.Frame(notebook_root, width=700, height=500, bg=color3)
+notebook_root_tab5 = tk.Frame(notebook_root, width=700, height=500, bg=color3)
+notebook_root_tab6 = tk.Frame(notebook_root, width=700, height=500, bg=color3)
 
 # Add the tabs to Notebook widget:
 notebook_root.add(notebook_root_tab1, text=label_root_tab_name0)
@@ -167,21 +176,69 @@ notebook_root_tab1_frame_image_label.pack(padx=20, side='left',  expand=False)
 # Frame 1 - Right-Side:
 notebook_root_tab1_frame_text = tk.Frame(notebook_root_tab1, background=color3)
 notebook_root_tab1_frame_text.pack(padx=40)
-notebook_root_tab1_frame_title = tk.Label(notebook_root_tab1_frame_text, text="Welcome to the Autodesk Fusion 360 for Linux Setup Wizard", wraplength=430, justify="left", font=(24), background=color3, foreground=color2)
+
+notebook_root_tab1_frame_title = tk.Label(notebook_root_tab1_frame_text, 
+    text=notebook_root_tab1_frame_title_text, 
+    wraplength=430, 
+    justify="left", 
+    font=(24), 
+    background=color3, 
+    foreground=color2)
 notebook_root_tab1_frame_title.pack(pady=20, anchor="w")
-notebook_root_tab1_frame_label1 = tk.Label(notebook_root_tab1_frame_text, text="Many thanks to you for deciding to use my setup wizard to be able to use Autodesk Fusion 360 on your computer.", wraplength=430, justify="left", background=color3, foreground=color2)
+
+notebook_root_tab1_frame_label1 = tk.Label(notebook_root_tab1_frame_text, 
+    text=notebook_root_tab1_frame_label1_text, 
+    wraplength=430, 
+    justify="left", 
+    background=color3, 
+    foreground=color2)
 notebook_root_tab1_frame_label1.pack(pady=5, anchor="w")
-notebook_root_tab1_frame_label2 = tk.Label(notebook_root_tab1_frame_text, text="This quick setup wizard will help you configure the basic settings and install the program. Furthermore, it is possible to install some tested plugins after the installation.", wraplength=430, justify="left", background=color3, foreground=color2)
+
+notebook_root_tab1_frame_label2 = tk.Label(notebook_root_tab1_frame_text, 
+    text=notebook_root_tab1_frame_label2_text, 
+    wraplength=430, 
+    justify="left", 
+    background=color3, 
+    foreground=color2)
 notebook_root_tab1_frame_label2.pack(pady=5, anchor="w")
-notebook_root_tab1_frame_label3 = tk.Label(notebook_root_tab1_frame_text, text="Depending on your current environment, setup may involve:", wraplength=430, justify="left", background=color3, foreground=color2)
+
+notebook_root_tab1_frame_label3 = tk.Label(notebook_root_tab1_frame_text, 
+    text=notebook_root_tab1_frame_label3_text, 
+    wraplength=430, 
+    justify="left", 
+    background=color3, 
+    foreground=color2)
 notebook_root_tab1_frame_label3.pack(pady=5, anchor="w")
-notebook_root_tab1_frame_label4 = tk.Label(notebook_root_tab1_frame_text, text="- Checking your system for minimum installation requirements.", wraplength=430, justify="left", background=color3, foreground=color2)
+
+notebook_root_tab1_frame_label4 = tk.Label(notebook_root_tab1_frame_text, 
+    text=notebook_root_tab1_frame_label4_text, 
+    wraplength=430, 
+    justify="left", 
+    background=color3, 
+    foreground=color2)
 notebook_root_tab1_frame_label4.pack(anchor="w")
-notebook_root_tab1_frame_label5 = tk.Label(notebook_root_tab1_frame_text, text="- It is recommended that you close all other applications before continuing.", wraplength=430, justify="left", background=color3, foreground=color2)
+
+notebook_root_tab1_frame_label5 = tk.Label(notebook_root_tab1_frame_text, 
+    text=notebook_root_tab1_frame_label5_text, 
+    wraplength=430, 
+    justify="left", 
+    background=color3, 
+    foreground=color2)
 notebook_root_tab1_frame_label5.pack(anchor="w")
-notebook_root_tab1_frame_label6 = tk.Label(notebook_root_tab1_frame_text, text="Click Next to continue, or Cancel to exit the Setup Wizard.", wraplength=430, justify="left", background=color3, foreground=color2)
+
+notebook_root_tab1_frame_label6 = tk.Label(notebook_root_tab1_frame_text, 
+    text=notebook_root_tab1_frame_label6_text, 
+    wraplength=430, 
+    justify="left", 
+    background=color3, 
+    foreground=color2)
 notebook_root_tab1_frame_label6.pack(pady=10, anchor="w")
-notebook_root_tab1_frame_label7 = ttk.Label(notebook_root_tab1_frame_text, text="Select Language:", justify="left", background=color3, foreground=color2)
+
+notebook_root_tab1_frame_label7 = ttk.Label(notebook_root_tab1_frame_text, 
+    text=notebook_root_tab1_frame_label7_text, 
+    justify="left", 
+    background=color3, 
+    foreground=color2)
 notebook_root_tab1_frame_label7.pack(side='left', pady=5, padx=(0, 10))
 
 # --------------------------------------------------- #
@@ -192,9 +249,17 @@ def change_language(event):
    print("Čeština selected!")
  elif selected_language.get() == 'English':
    print("English selected!")
+   notebook_root_tab1_frame_title['text'] = linecache.getline('../locale/en-EN/locale-en.txt', 8).rstrip('\n')
+   notebook_root_tab1_frame_label1['text'] = linecache.getline('../locale/en-EN/locale-en.txt', 9).rstrip('\n')
+   notebook_root_tab1_frame_label2['text'] = linecache.getline('../locale/en-EN/locale-en.txt', 10).rstrip('\n')
+   notebook_root_tab1_frame_label3['text'] = linecache.getline('../locale/en-EN/locale-en.txt', 11).rstrip('\n')
+   notebook_root_tab1_frame_label4['text'] = linecache.getline('../locale/en-EN/locale-en.txt', 12).rstrip('\n')
+   notebook_root_tab1_frame_label5['text'] = linecache.getline('../locale/en-EN/locale-en.txt', 13).rstrip('\n')
+   notebook_root_tab1_frame_label6['text'] = linecache.getline('../locale/en-EN/locale-en.txt', 14).rstrip('\n')
+   notebook_root_tab1_frame_label7['text'] = linecache.getline('../locale/en-EN/locale-en.txt', 15).rstrip('\n')
  elif selected_language.get() == 'Deutsch':
    print("Deutsch selected!")
-   #label_root_tab_name1['text'] = linecache.getline('../locale/de-DE/de-locale.txt', 2).rstrip('\n')
+   #label_root_tab_name0['text'] = linecache.getline('../locale/de-DE/de-locale.txt', 2).rstrip('\n')
    #label_root_tab_name1 = linecache.getline('../locale/de-DE/de-locale.txt', 3).rstrip('\n')
    #label_root_tab_name2 = linecache.getline('../locale/de-DE/de-locale.txt', 4).rstrip('\n')
    #label_root_tab_name3 = linecache.getline('../locale/de-DE/de-locale.txt', 5).rstrip('\n')
@@ -202,14 +267,14 @@ def change_language(event):
    #label_root_tab_name5 = linecache.getline('../locale/de-DE/de-locale.txt', 7).rstrip('\n')
    
    # Content of Tab1:
-   notebook_root_tab1_frame_title['text'] = linecache.getline('../locale/de-DE/de-locale.txt', 8).rstrip('\n')
-   notebook_root_tab1_frame_label1['text'] = linecache.getline('../locale/de-DE/de-locale.txt', 9).rstrip('\n')
-   notebook_root_tab1_frame_label2['text'] = linecache.getline('../locale/de-DE/de-locale.txt', 10).rstrip('\n')
-   notebook_root_tab1_frame_label3['text'] = linecache.getline('../locale/de-DE/de-locale.txt', 11).rstrip('\n')
-   notebook_root_tab1_frame_label4['text'] = linecache.getline('../locale/de-DE/de-locale.txt', 12).rstrip('\n')
-   notebook_root_tab1_frame_label5['text'] = linecache.getline('../locale/de-DE/de-locale.txt', 13).rstrip('\n')
-   notebook_root_tab1_frame_label6['text'] = linecache.getline('../locale/de-DE/de-locale.txt', 14).rstrip('\n')
-   notebook_root_tab1_frame_label7['text'] = linecache.getline('../locale/de-DE/de-locale.txt', 15).rstrip('\n')
+   notebook_root_tab1_frame_title['text'] = linecache.getline('../locale/de-DE/locale-de.txt', 8).rstrip('\n')
+   notebook_root_tab1_frame_label1['text'] = linecache.getline('../locale/de-DE/locale-de.txt', 9).rstrip('\n')
+   notebook_root_tab1_frame_label2['text'] = linecache.getline('../locale/de-DE/locale-de.txt', 10).rstrip('\n')
+   notebook_root_tab1_frame_label3['text'] = linecache.getline('../locale/de-DE/locale-de.txt', 11).rstrip('\n')
+   notebook_root_tab1_frame_label4['text'] = linecache.getline('../locale/de-DE/locale-de.txt', 12).rstrip('\n')
+   notebook_root_tab1_frame_label5['text'] = linecache.getline('../locale/de-DE/locale-de.txt', 13).rstrip('\n')
+   notebook_root_tab1_frame_label6['text'] = linecache.getline('../locale/de-DE/locale-de.txt', 14).rstrip('\n')
+   notebook_root_tab1_frame_label7['text'] = linecache.getline('../locale/de-DE/locale-de.txt', 15).rstrip('\n')
  elif selected_language.get() == 'Español':
    print("Español selected!")
  elif selected_language.get() == 'Français':
