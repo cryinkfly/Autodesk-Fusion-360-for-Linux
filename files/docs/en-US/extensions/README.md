@@ -65,15 +65,15 @@ You can use this localization for all types of Fusion 360 licenses, including it
 
 #### Details:
 
-Download Size: 3.4 MB
+Download Size: 3.5 MB
 <br>
 Release Date: 08.02.2021
 <br>
-Last Updated: 25.03.2022
+Last Updated: 02.11.2022
 <br>
-Version Info: 7.2
+Version Info: 7.6
 <br>
-Link: [Czech localization for F360](https://apps.autodesk.com/FUSION/en/Detail/Index?id=9151466655844643882)
+Link: [Czech localization for F360](https://apps.autodesk.com/FUSION/de/Detail/Index?id=9151466655844643882&appLang=en&os=Win64)
 
 ---
 
