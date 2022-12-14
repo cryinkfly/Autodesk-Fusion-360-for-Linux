@@ -240,8 +240,8 @@ Download Size: 3.7 MB
 <br>
 Release Date: 20.04.2021
 <br>
-Last Updated: 06.10.2021
+Last Updated: 18.05.2022
 <br>
-Version Info: 1.1.0.58
+Version Info: 1.1.0.65
 <br>
 Link: [Ultimaker Digital Factory for Autodesk Fusion 360™](https://apps.autodesk.com/FUSION/de/Detail/Index?id=3902215446994700895&appLang=en&os=Win64)
