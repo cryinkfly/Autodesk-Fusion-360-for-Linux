@@ -98,9 +98,9 @@ Download Size: 1.0 MB
 <br>
 Release Date: 15.03.2021
 <br>
-Last Updated: 14.09.2021
+Last Updated: 13.12.2022
 <br>
-Version Info: 1.0.0.29
+Version Info: 1.0.0.50
 <br>
 Link: [HP 3D Printers for Autodesk® Fusion 360™](https://apps.autodesk.com/FUSION/en/Detail/Index?id=5739757793764591673&appLang=en&os=Win64)
 
