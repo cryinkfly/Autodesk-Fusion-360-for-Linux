@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    15:30/13.09.2022                                                                   #
-# Version:      1.8.3                                                                              #
+# Time/Date:    12:15/14.09.2022                                                                   #
+# Version:      1.8.4                                                                              #
 ####################################################################################################
 
 # Path: /$HOME/.fusion360/bin/install.sh
@@ -640,10 +640,11 @@ function EXTENSION_ADDITIVE_ASSISTANT {
 
 # Install a extension: Czech localization for F360
 function EXTENSION_CZECH_LOCALE {
-  SP_SEARCH_EXTENSION_CZECH_LOCALE &&
-  cp "$CZECH_LOCALE_EXTENSION" "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
+  cd "$SP_PATH/extensions" || return
+  wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/Ceska_lokalizace_pro_Autodesk_Fusion_360_v7.exe &&
+  cp "Ceska_lokalizace_pro_Autodesk_Fusion_360_v7.exe" "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
   cd "$WP_DIRECTORY/drive_c/users/$USER/Downloads" || return
-  WINEPREFIX="$WP_DIRECTORY" wine msiexec /i "$CZECH_LOCALE_EXTENSION"
+  WINEPREFIX="$WP_DIRECTORY" wine Ceska_lokalizace_pro_Autodesk_Fusion_360_v7.exe
 }
 
 ###############################################################################################################################################################
@@ -1121,24 +1122,6 @@ if [[ $EXTENSIONS = *"Ultimaker Digital Factory for Autodesk Fusion 360™"* ]];
     echo "Ultimaker Digital Factory for Autodesk Fusion 360™"
     EXTENSION_ULTIMAKER_DIGITAL_FACTORY
 fi
-}
-
-###############################################################################################################################################################
-
-# Select the downloaded installer for this special extension!
-function SP_SEARCH_EXTENSION_CZECH_LOCALE {
-  CZECH_LOCALE_EXTENSION=$(yad --title="$SP_TITLE" \
-  --form --separator="" \
-  --borders=15 \
-  --width=550 \
-  --buttons-layout=center \
-  --align=center \
-  --field="<big><b>$SP_SEARCH_EXTENSION_CZECH_LOCALE_TITLE</b></big>:LBL" \
-  --field=":LBL" \
-  --field="<b>$SP_SEARCH_EXTENSION_CZECH_LOCALE_LABEL_1</b>:LBL" \
-  --field="$SP_SEARCH_EXTENSION_CZECH_LOCALE_LABEL_2:FL" \
-  --field="<b>$SP_SEARCH_EXTENSION_CZECH_LOCALE_LABEL_3</b>:LBL" \
-  "" "" "" "$HOME" "" )
 }
 
 ###############################################################################################################################################################
