@@ -1,0 +1,15 @@
+Setup Wizard - Autodesk Fusion 360 for Linux
+Willkommen
+Installation
+Plugins
+System Info
+Über
+Hilfe
+Willkommen zum Setup-Assistenten von Autodesk Fusion 360 für Linux
+Vielen Dank, dass Sie sich entschieden haben, meinen Einrichtungsassistenten zu verwenden, um Autodesk Fusion 360 auf Ihrem Computer verwenden zu können.
+Dieser Schnellinstallationsassistent hilft Ihnen bei der Konfiguration der Grundeinstellungen und der Installation des Programms. Darüber hinaus ist es möglich, einige getestete Plugins nach der Installation zu installieren.
+Abhängig von Ihrem aktuellen System sind folgende Punkte zu beachten:
+- Überprüfen Sie Ihr System auf Mindestanforderungen für die Installation.
+- Es wird empfohlen, dass Sie alle anderen Anwendungen schließen, bevor Sie fortfahren.
+Klicken Sie auf Weiter, um fortzufahren, oder auf Abbrechen, um den Setup-Assistenten zu beenden.
+Sprache auswählen:
