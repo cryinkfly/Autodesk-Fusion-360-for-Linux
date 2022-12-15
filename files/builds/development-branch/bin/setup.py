@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    11:55/14.12.2022                                                                   #
+# Time/Date:    13:20/15.12.2022                                                                   #
 # Version:      1.8.1 > 1.8.2                                                                      #
 ####################################################################################################
 
@@ -38,7 +38,7 @@
 import tkinter as tk
 
 # The basic idea for tkinter.ttk is to separate, to the extent possible, the code implementing a widget’s behavior from the code implementing its appearance.
-from tkinter import ttk
+from tkinter import ttk, filedialog
 
 # The tkinter.messagebox module provides a template base class as well as a variety of convenience methods for commonly used configurations.
 from tkinter.messagebox import askokcancel, showinfo, WARNING
@@ -539,6 +539,36 @@ notebook_root_tab2_frame_image_label2=ttk.Label(notebook_root_tab2_frame_text2,
     image=notebook_root_tab2_frame_photo2,
     background=color3)
 notebook_root_tab2_frame_image_label2.pack(side='left',padx=5)
+
+# ----------------------------------------------------------------------------------------------- #
+
+def directory():
+    # get a directory path by user
+    installation_path=filedialog.askdirectory(initialdir=r"~/.fusion360/wineprefixes/default",
+                                    title="Dialog box")
+    notebook_root_tab2_frame_label5.configure(text=installation_path)
+
+
+# ----------------------------------------------------------------------------------------------- #
+
+notebook_root_tab2_frame_text3=tk.Frame(notebook_root_tab2,background=color3)
+notebook_root_tab2_frame_text3.pack(padx=40,anchor="w")
+notebook_root_tab2_frame_label4=ttk.Label(notebook_root_tab2_frame_text3,
+    text="3.) Installation Path:",
+    background=color3)
+notebook_root_tab2_frame_label4.pack(side='left',padx=5,pady=5,anchor="w")
+notebook_root_tab2_frame_label5=ttk.Label(notebook_root_tab2_frame_text3,
+    text="~/.fusion360/wineprefixes/default",
+    font=('italic 8'),
+    background=color3)
+notebook_root_tab2_frame_label5.pack(side='left',padx=5,pady=5,anchor="w")
+config_installation_path_img=ImageTk.PhotoImage(Image.open("../images/open-folder.png"))
+notebook_root_tab2_frame_image_label3= ttk.Label(image=config_installation_path_img)
+config_installation_path_btn=tk.Button(notebook_root_tab2_frame_text3,
+    image=config_installation_path_img,
+    command=directory)
+config_installation_path_btn.pack()
+
 
 # ----------------------------------------------------------------------------------------------- #
 
