@@ -39,7 +39,25 @@ WP_DRIVER="DXVK"
 # Reset the logfile-value for the installation of Autodesk Fusion 360!
 SP_FUSION360_CHANGE=0
 
+REQUIRED_COMMANDS=(
+    "yad"
+    "wine"
+)
+
 ###############################################################################################################################################################
+
+function SP_CHECK_REQUIRED_COMMANDS {
+    for cmd in "${REQUIRED_COMMANDS[@]}"; do
+        echo "Testing presence of ${cmd} ..."
+        local path="$(command -v "${cmd}")"
+        if [ -n "${path}" ]; then
+            echo "Found: ${path}"
+        else
+            echo "No ${cmd} found in \$PATH!"
+            exit 1
+        fi
+    done
+}
 
 function SP_STRUCTURE {
   mkdir -p "$SP_PATH/bin"
@@ -1153,6 +1171,7 @@ function SP_COMPLETED {
 # THE INSTALLATION PROGRAM IS STARTED HERE:                                                                                                                   #
 ###############################################################################################################################################################
 
+SP_CHECK_REQUIRED_COMMANDS
 SP_STRUCTURE
 SP_LOGFILE_INSTALL
 SP_LOCALE_INDEX
