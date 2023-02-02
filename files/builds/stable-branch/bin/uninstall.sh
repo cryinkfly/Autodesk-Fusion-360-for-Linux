@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                          #
 # License:      MIT                                                            #
 # Copyright (c) 2020-2022                                                      #
-# Time/Date:    21:30/08.06.2022                                               #
-# Version:      0.8                                                            #
+# Time/Date:    14:15/02.02.2023                                               #
+# Version:      0.9                                                            #
 ################################################################################
 
 # Path: /$HOME/.fusion360/bin/uninstall.sh
@@ -20,7 +20,24 @@
 # Default-Path:
 DL_PATH="$HOME/.fusion360"
 
+REQUIRED_COMMANDS=(
+    "yad"
+)
+
 ###############################################################################################################################################################
+
+function SP_CHECK_REQUIRED_COMMANDS {
+    for cmd in "${REQUIRED_COMMANDS[@]}"; do
+        echo "Testing presence of ${cmd} ..."
+        local path="$(command -v "${cmd}")"
+        if [ -n "${path}" ]; then
+            echo "Found: ${path}"
+        else
+            echo "No ${cmd} found in \$PATH!"
+            exit 1
+        fi
+    done
+}
 
 # Copy the file where the user can see the exits Wineprefixes of Autodesk Fusion 360 on the system.
 function DL_GET_FILES {
@@ -204,6 +221,7 @@ function DL_WINEPREFIXES_DEL_INFO {
 # THE INSTALLATION PROGRAM IS STARTED HERE:                                                                                                                   #
 ###############################################################################################################################################################
 
+SP_CHECK_REQUIRED_COMMANDS
 DL_GET_FILES
 DL_LOAD_LOCALE
 DL_WELCOME
