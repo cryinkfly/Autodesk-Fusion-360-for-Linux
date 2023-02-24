@@ -448,6 +448,9 @@ function SP_FUSION360_INSTALL {
   WINEPREFIX="$WP_DIRECTORY" sh "$SP_PATH/bin/winetricks" -q cjkfonts
   sleep 5s
   SP_DXVK_OPENGL_1
+  # We must set to Windows 10 again because some other winetricks sometimes set it back to Windows XP
+  WINEPREFIX="$WP_DIRECTORY" sh "$SP_PATH/bin/winetricks" -q win10
+  sleep 5s
   # We must copy the EXE-file directly in the Wineprefix folder (Sandbox-Mode)!
   cp "$SP_PATH/downloads/Fusion360installer.exe" "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
   # This start and stop the installer automatically after a time!
