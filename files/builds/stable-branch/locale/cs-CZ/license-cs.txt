@@ -5,7 +5,7 @@ Popis: Pomocí tohoto Průvodce instalací můžete nainstalovat Autodesk Fusion
 Autor: Steve Zabka
 Autor URI: https://cryinkfly.com
 Licence: MIT
-Copyright (c) 2020-2022
+Copyright (c) 2020-2023
 
 Tímto se bezplatně uděluje jakékoli osobě, která získá kopii tohoto softwaru a souvisejících dokumentačních souborů (dále jen „software“), nakládat se softwarem bez omezení, mimo jiné včetně práv na používání, kopírování, úpravy, sloučení , publikovat, distribuovat, sublicencovat a/nebo prodávat kopie Softwaru a umožnit osobám, kterým je Software poskytnut, aby tak učinily, za následujících podmínek:
 
