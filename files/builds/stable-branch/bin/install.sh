@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    14:15/02.02.2023                                                                   #
-# Version:      1.8.5                                                                              #
+# Time/Date:    09:30/26.02.2023                                                                   #
+# Version:      1.8.6                                                                              #
 ####################################################################################################
 
 # Path: /$HOME/.fusion360/bin/install.sh
@@ -448,7 +448,7 @@ function SP_FUSION360_INSTALL {
   WINEPREFIX="$WP_DIRECTORY" sh "$SP_PATH/bin/winetricks" -q cjkfonts
   sleep 5s
   SP_DXVK_OPENGL_1
-  # We must set to Windows 10 again because some other winetricks sometimes set it back to Windows XP
+  # We must set to Windows 10 again because some other winetricks sometimes set it back to Windows XP!
   WINEPREFIX="$WP_DIRECTORY" sh "$SP_PATH/bin/winetricks" -q win10
   sleep 5s
   # We must copy the EXE-file directly in the Wineprefix folder (Sandbox-Mode)!
