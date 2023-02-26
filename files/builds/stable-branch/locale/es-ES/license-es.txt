@@ -5,7 +5,7 @@ Descripción: Con este asistente de configuración, puede instalar Autodesk Fusi
 Autor: Steve Zabka
 URI del autor: https://cryinkfly.com
 Licencia: MIT
-Copyright (c) 2020-2022
+Copyright (c) 2020-2023
 
 Por la presente se otorga permiso, sin cargo, a cualquier persona que obtenga una copia de este software y los archivos de documentación asociados (el "Software"), para utilizar el Software sin restricciones, incluidos, entre otros, los derechos de uso, copia, modificación, fusión , publicar, distribuir, sublicenciar y / o vender copias del Software, y permitir que las personas a las que se les proporcione el Software lo hagan, sujeto a las siguientes condiciones:
 
