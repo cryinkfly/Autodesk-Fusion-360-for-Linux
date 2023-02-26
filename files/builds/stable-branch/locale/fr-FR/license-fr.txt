@@ -5,7 +5,7 @@ Description : Avec cet assistant d'installation, vous pouvez installer Autodesk 
 Auteur : Steve Zabka
 URI de l'auteur : https://cryinkfly.com
 Licence : MIT
-Droit d'auteur (c) 2020-2022
+Droit d'auteur (c) 2020-2023
 
 L'autorisation est par la présente accordée, gratuitement, à toute personne obtenant une copie de ce logiciel et des fichiers de documentation associés (le "Logiciel"), de traiter le Logiciel sans restriction, y compris, sans limitation, les droits d'utilisation, de copie, de modification, de fusion , publier, distribuer, sous-licencier et/ou vendre des copies du Logiciel, et permettre aux personnes auxquelles le Logiciel est fourni de le faire, sous réserve des conditions suivantes :
 
