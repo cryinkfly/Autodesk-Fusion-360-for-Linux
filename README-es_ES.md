@@ -17,7 +17,6 @@
  <img align="center" src="https://img.shields.io/github/issues-raw/cryinkfly/Fusion-360---Linux-Wine-Version-?style=flat"> 
  <img align="center" src="https://img.shields.io/github/stars/cryinkfly/Fusion-360---Linux-Wine-Version-?style=flat"> 
  <img align="center" src="https://img.shields.io/github/forks/cryinkfly/Fusion-360---Linux-Wine-Version-?style=flat"> 
- <img align="center" src="https://img.shields.io/github/sponsors/cryinkfly">
  </br></br>
  <h2>🗒 ¿Qué es Autodesk Fusion 360?</h2>
  <a href="https://www.autodesk.com/products/fusion-360/features">Autodesk Fusion 360</a> es una plataforma de software de modelado 3D, CAD, CAM, CAE y PCB basada en la nube para diseño y fabricación de productos que ofrecen una alternativa asequible y potente a otras soluciones conocidas en el mercado. ⚗️ 🔭 🔬 🔩 🛠
