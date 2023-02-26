@@ -17,7 +17,6 @@
  <img align="center" src="https://img.shields.io/github/issues-raw/cryinkfly/Fusion-360---Linux-Wine-Version-?style=flat"> 
  <img align="center" src="https://img.shields.io/github/stars/cryinkfly/Fusion-360---Linux-Wine-Version-?style=flat"> 
  <img align="center" src="https://img.shields.io/github/forks/cryinkfly/Fusion-360---Linux-Wine-Version-?style=flat"> 
- <img align="center" src="https://img.shields.io/github/sponsors/cryinkfly">
  </br></br>
 <h2>🗒 Autodesk Fusion 360이란 무엇입니까?</h2>
  <a href="https://www.autodesk.com/products/fusion-360/features">Autodesk Fusion 360</a>은 다음을 위한 클라우드 기반 3D 모델링, CAD, CAM, CAE 및 PCB 소프트웨어 플랫폼입니다. 시장에서 잘 알려진 다른 솔루션에 대한 저렴하고 강력한 대안을 제공하는 제품 설계 및 제조. ⚗️ 🔭 🔬 🔩 🛠
