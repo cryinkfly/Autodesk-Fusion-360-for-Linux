@@ -435,7 +435,7 @@
 <h2>📮 Would you like to contribute?</h2>
  Contributions of all kinds are welcome, not only in the form of code, but also in terms of the <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/wiki/Documentation">official documentation</a>, debugging help in the <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/issues">bug tracker</a>, support from other users in the <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/discussions">discussion section</a> here on GitHub or in the comments section of my published videos on my <a href="https://www.youtube.com/channel/UCJO-EOBPtlVv5OycHkFPcRg">official YouTube channel</a> and also <a href="https://github.com/sponsors/cryinkfly">financially</a>.
 </br></br>
-If you think something is bad about this project or its documentation, please <a href="https://github.com/cryinkfly/cryinkfly/blob/main/SPONSORSHIP.md">help</a> in any way to make it better instead of just complaining about it - this is an open source project after all! 🎈
+If you think something is bad about this project or its documentation, please <a href="https://cryinkfly.com/become-partners/">help</a> in any way to make it better instead of just complaining about it - this is an open source project after all! 🎈
  </br></br>
  There is also a <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/.github/CODE_OF_CONDUCT.md">Contributor Covenant Code of Conduct</a>, which also provides additional information. 📚
   </br></br>
