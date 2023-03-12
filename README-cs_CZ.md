@@ -436,7 +436,7 @@
 <h2>📮 Rádi byste přispěli?</h2>
  Vítány jsou příspěvky všeho druhu, nejen ve formě kódu, ale také ve smyslu <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/wiki/Documentation" >oficiální dokumentace</a>, nápověda k ladění v <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/issues">sledovači chyb</a>, podpora od jiných uživatelé v <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/discussions">sekce diskuzí</a> zde na GitHubu nebo v sekci komentářů mých videí publikovaných na můj <a href="https://www.youtube.com/channel/UCJO-EOBPtlVv5OycHkFPcRg">oficiální kanál YouTube</a> a také <a href="https://github.com/sponsors/cryinkfly"> finančně</a>.
 </br></br>
-Pokud si myslíte, že je na tomto projektu nebo jeho dokumentaci něco špatného, ​​<a href="https://github.com/cryinkfly/cryinkfly/blob/main/SPONSORSHIP.md">pomozte</a> jakýmkoli způsobem je to lepší, než si na to stěžovat – tohle je konec konců open source projekt! 🎈
+Pokud si myslíte, že je na tomto projektu nebo jeho dokumentaci něco špatného, ​​<a href="https://cryinkfly.com/become-partners/">pomozte</a> jakýmkoli způsobem je to lepší, než si na to stěžovat – tohle je konec konců open source projekt! 🎈
  </br></br>
  Existuje také <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/.github/CODE_OF_CONDUCT.md">Kodex chování přispěvatele</a> , který také poskytuje další informace. 📚
    </br></br>
