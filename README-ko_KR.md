@@ -435,7 +435,7 @@
 <h2>📮 기여하시겠습니까?</h2>
  코드 형식뿐만 아니라 <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/wiki/Documentation" 측면에서도 모든 종류의 기여를 환영합니다. >공식 문서</a>, <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/issues">버그 추적기</a>의 디버깅 도움말, 기타 지원 GitHub의 <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/discussions">토론 섹션</a> 또는 게시된 동영상의 댓글 섹션에 있는 사용자 내 <a href="https://www.youtube.com/channel/UCJO-EOBPtlVv5OycHkFPcRg">공식 YouTube 채널</a> 및 <a href="https://github.com/sponsors/cryinkfly"> 재정적으로</a>.
 </br></br>
-이 프로젝트나 문서에 대해 잘못된 점이 있다고 생각되면 어떤 식으로든 <a href="https://github.com/cryinkfly/cryinkfly/blob/main/SPONSORSHIP.md">도와주세요</a> 그것에 대해 불평하는 것보다 낫습니다. 이것은 결국 오픈 소스 프로젝트입니다! 🎈
+이 프로젝트나 문서에 대해 잘못된 점이 있다고 생각되면 어떤 식으로든 <a href="https://cryinkfly.com/become-partners/">도와주세요</a> 그것에 대해 불평하는 것보다 낫습니다. 이것은 결국 오픈 소스 프로젝트입니다! 🎈
  </br></br>
  <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/.github/CODE_OF_CONDUCT.md">기여자 서약 행동 강령</a>도 있습니다. , 추가 정보도 제공합니다. 📚
    </br></br>
