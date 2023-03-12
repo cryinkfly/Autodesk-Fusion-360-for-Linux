@@ -435,7 +435,7 @@
 <h2>📮 ¿Te gustaría contribuir?</h2>
  Las contribuciones de todo tipo son bienvenidas, no solo en forma de código, sino también en términos de <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/wiki/Documentation" >documentación oficial</a>, ayuda de depuración en el <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/issues">bug tracker</a>, soporte de otros usuarios en la <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/discussions">sección de discusión</a> aquí en GitHub o en la sección de comentarios de mis videos publicados en mi <a href="https://www.youtube.com/channel/UCJO-EOBPtlVv5OycHkFPcRg">canal oficial de YouTube</a> y también <a href="https://github.com/sponsors/cryinkfly"> financieramente</a>.
 </br></br>
-Si cree que algo está mal con respecto a este proyecto o su documentación, <a href="https://github.com/cryinkfly/cryinkfly/blob/main/SPONSORSHIP.md">ayúdenos</a> de alguna manera a hacer mejor en lugar de simplemente quejarse: ¡después de todo, este es un proyecto de código abierto! 🎈
+Si cree que algo está mal con respecto a este proyecto o su documentación, <a href="https://cryinkfly.com/become-partners/">ayúdenos</a> de alguna manera a hacer mejor en lugar de simplemente quejarse: ¡después de todo, este es un proyecto de código abierto! 🎈
  </br></br>
  También hay un <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/.github/CODE_OF_CONDUCT.md">Código de conducta del pacto de colaboradores</a> , que también proporciona información adicional. 📚
    </br></br>
