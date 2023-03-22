@@ -165,19 +165,19 @@ function SP_LOAD_OS_PACKAGES {
     elif [[ $SP_OS_VERSION = "12" ]]; then
         echo "Gentoo Linux" && OS_GENTOO_LINUX
     else
-        echo "No Linux distribution was selected!" # Replace with a dialogue!
+        echo "No Linux distribution was selected!" # <-- Replace with a GUI!
     fi
 }
 
 ###############################################################################################################################################################
 
 function OS_ARCHLINUX {
-    echo "Checking for multilib..."
+    echo "Checking for multilib..." # <-- Replace with a GUI!
     if ARCHLINUX_VERIFY_MULTILIB ; then
-        echo "multilib found. Continuing..."
+        echo "multilib found. Continuing..." # <-- Replace with a GUI!
         pkexec sudo pacman -Sy --needed wine wine-mono wine_gecko winetricks p7zip curl cabextract samba ppp
     else
-        echo "Enabling multilib..."
+        echo "Enabling multilib..." # <-- Replace with a GUI!
         echo "[multilib]" | sudo tee -a /etc/pacman.conf
         echo "Include = /etc/pacman.d/mirrorlist" | sudo tee -a /etc/pacman.conf
         pkexec sudo pacman -Sy --needed wine wine-mono wine_gecko winetricks p7zip curl cabextract samba ppp
@@ -205,7 +205,7 @@ function OS_DEBIAN {
         OS_DEBIAN_11
         DEBIAN_BASED_2
     else
-        echo "Your Linux distribution is not supported yet!"
+        echo "Your Linux distribution is not supported yet!" # <-- Replace with a GUI!
     fi
 }
 
@@ -263,7 +263,7 @@ function OS_UBUNTU {
         OS_UBUNTU_22
         DEBIAN_BASED_2
     else
-        echo "Your Linux distribution is not supported yet!"
+        echo "Your Linux distribution is not supported yet!" # <-- Replace with a GUI!
     fi
 }
 
@@ -302,7 +302,7 @@ function OS_FEDORA {
         OS_FEDORA_RAWHIDE
         FEDORA_BASED_2
     else
-        echo "Your Linux distribution is not supported yet!"
+        echo "Your Linux distribution is not supported yet!" # <-- Replace with a GUI!
     fi
 }
 
@@ -339,7 +339,7 @@ function OS_OPENSUSE {
     elif [[ $SP_OS_VERSION == *"openSUSE"*"MicroOS"* ]]; then
         OS_OPENSUSE_MICROOS # This option is still in experimental status and is for using Fusion 360 into a Distrobox-Container!
     else
-        echo "Your Linux distribution is not supported yet!"
+        echo "Your Linux distribution is not supported yet!" # <-- Replace with a GUI!
     fi
 }
 
@@ -369,7 +369,7 @@ function OS_REDHAT_LINUX {
     elif [[ $SP_OS_VERSION == *"Red Hat Enterprise Linux"*"9"* ]]; then
         OS_REDHAT_LINUX_9
     else
-        echo "Your Linux distribution is not supported yet!"
+        echo "Your Linux distribution is not supported yet!" # <-- Replace with a GUI!
     fi
 }
 
@@ -426,7 +426,7 @@ function SP_INSTALL_SPACENAVD {
     elif VERB="$( which emerge )" 2> /dev/null; then
        echo "Gentoo-based" && sudo emerge -av app-misc/spacenavd
     else
-       echo "${RED}I can't find your package manager!${NOCOLOR}"
+       echo "${RED}I can't find your package manager!${NOCOLOR}" # <-- Replace with a GUI!
        exit;
     fi
 }
@@ -439,9 +439,9 @@ function SP_INSTALL_SPACENAVD {
 function SP_CHECK_REQUIRED_WINE_VERSION {
     SP_REQUIRED_WINE_VERSION=$(wine --version)
     if [[ $SP_REQUIRED_WINE_VERSION == *"wine-6.23"* ]] || [[ $SP_REQUIRED_WINE_VERSION == *"wine-7"* ]] || [[ $SP_REQUIRED_WINE_VERSION == *"wine-8"* ]]; then
-        SP_SELECT_WINE_GPU_DRIVER
+        SP_INSTALL_SPACENAVD && SP_SELECT_WINE_GPU_DRIVER
     else
-        SP_INSTALL_OS_PACKAGES && SP_SELECT_WINE_GPU_DRIVER
+        SP_INSTALL_OS_PACKAGES && SP_INSTALL_SPACENAVD && SP_SELECT_WINE_GPU_DRIVER
     fi
 }
 
@@ -544,7 +544,7 @@ function SP_WELCOME {
     elif [ $PIPESTATUS -eq 1 ]; then
         SP_LOCALE=$(echo $LANG) && SP_WELCOME_EXIT # Displays a warning to the user whether the program should really be terminated.
     elif [ $PIPESTATUS -eq 255 ]; then
-        echo "[ESC] key pressed." # Program has been terminated manually!
+        echo "[ESC] key pressed." # Program has been terminated manually! <-- Replace with a GUI!
     else
         exit;
     fi
@@ -559,14 +559,14 @@ function SP_WELCOME_EXIT {
         case $response in
             0) clear && exit;; # Program has been terminated manually!
             1) SP_WELCOME;; # Go back to the welcome window!
-            255) echo "[ESC] key pressed.";; # Program has been terminated manually!
+            255) echo "[ESC] key pressed.";; # Program has been terminated manually! <-- Replace with a GUI!
         esac
 }
 
 ###############################################################################################################################################################
 
 function SP_LICENSE_SHOW {
-    SP_LICENSE_CHECK=$(dialog --backtitle "SP_TITLE" \
+    SP_LICENSE_CHECK=$(dialog --backtitle "$SP_TITLE" \
         --title "$SP_LICENSE_SHOW_SUBTITLE" \
         --checklist "`cat $SP_LICENSE_FILE`" 0 0 0 \
             "$SP_LICENSE_SHOW_TEXT_1" "$SP_LICENSE_SHOW_TEXT_2" off 3>&1 1>&2 2>&3 3>&-;)
@@ -576,7 +576,7 @@ function SP_LICENSE_SHOW {
     elif [ $PIPESTATUS -eq 1 ]; then
         SP_WELCOME
     elif [ $PIPESTATUS -eq 255 ]; then
-        echo "[ESC] key pressed." # Program has been terminated manually!
+        echo "[ESC] key pressed." # Program has been terminated manually! <-- Replace with a GUI!
     else
         exit;
     fi
@@ -591,16 +591,16 @@ function SP_SHOW_LICENSE_WARNING {
         case $response in
             0) SP_LICENSE_SHOW;; # Open the next dialog for accept the license.
             1) exit;; # Program has been terminated manually!
-            255) echo "[ESC] key pressed.";; # Program has been terminated manually!
+            255) echo "[ESC] key pressed.";; # Program has been terminated manually! <-- Replace with a GUI!
         esac
 }
 
 ###############################################################################################################################################################
 
 function SP_SELECT_OS_VERSION {
-    SP_OS_VERSION=$(dialog --backtitle "Setup - Autodesk Fusion 360 for Linux [Build Version 1.9.0]" \
-        --title "Linux distribution - Configuration" \
-        --radiolist "Please select your Linux distribution to install the required packages for the installation:" 0 0 0 \
+    SP_OS_VERSION=$(dialog --backtitle "$SP_TITLE" \
+        --title "$SP_SELECT_OS_VERSION_SUBTITLE" \
+        --radiolist "$SP_SELECT_OS_VERSION_TEXT" 0 0 0 \
             01 "Arch Linux" off\
             02 "Debian" off\
             03 "EndeavourOS" off\
@@ -619,7 +619,7 @@ function SP_SELECT_OS_VERSION {
     elif [ $PIPESTATUS -eq 1 ]; then
         SP_LICENSE_SHOW
     elif [ $PIPESTATUS -eq 255 ]; then
-        echo "[ESC] key pressed." # Program has been terminated manually!
+        echo "[ESC] key pressed." # Program has been terminated manually! <-- Replace with a GUI!
     else
         exit;
     fi
