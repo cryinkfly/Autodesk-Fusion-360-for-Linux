@@ -412,7 +412,7 @@ function OS_OPENSUSE {
     elif [[ $OS_OPENSUSE_VERSION == *"openSUSE"*"Tumbleweed"* ]]; then
         OS_OPENSUSE_TW
     elif [[ $OS_OPENSUSE_VERSION == *"openSUSE"*"MicroOS"* ]]; then
-        OS_OPENSUSE_MICROOS # This option is still in experimental status!
+        OS_OPENSUSE_TW # This option is still in experimental status!
     else
         echo "Your Linux distribution is not supported yet!"
     fi
@@ -428,10 +428,6 @@ function OS_OPENSUSE_155 {
 }
 
 function OS_OPENSUSE_TW {
-    sudo zypper up && sudo zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Tumbleweed/ wine && sudo zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Tumbleweed/ wine && sudo zypper install p7zip-full curl wine cabextract
-}
-
-function OS_OPENSUSE_MICROOS {
     sudo zypper up && sudo zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Tumbleweed/ wine && sudo zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Tumbleweed/ wine && sudo zypper install p7zip-full curl wine cabextract
 }
 
