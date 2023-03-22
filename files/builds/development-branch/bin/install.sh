@@ -55,7 +55,7 @@ function SP_INSTALL_REQUIRED_COMMANDS {
     elif VERB="$( which pacman )" 2> /dev/null; then
        echo "Arch-based" && sudo pacman -Syu --needed dialog wget lsb-release coreutils
     elif VERB="$( which zypper )" 2> /dev/null; then
-       echo "openSUSE-based" && su -c 'zypper up && zypper in dialog wget lsb-release coreutils'
+       echo "openSUSE-based" && sudo zypper up && sudo zypper in dialog wget lsb-release coreutils
     elif VERB="$( which xbps-install )" 2> /dev/null; then
        echo "Void-based" && sudo xbps-install -Sy dialog wget lsb-release coreutils
     elif VERB="$( which eopkg )" 2> /dev/null; then
@@ -80,7 +80,19 @@ function SP_LOG_INSTALLATION {
 }
 
 ###############################################################################################################################################################
-# ALL LOG-,CHECK- & CREATE-FUNCTIONS OF WINEPREFIXES ARE ARRANGED HERE:                                                                                       #
+# ALL LOG- & CHECK-FUNCTIONS OF WINE & WINEPREFIXES ARE ARRANGED HERE:                                                                                        #
+###############################################################################################################################################################
+
+# Checks if "Wine" exists in a specific version:
+function SP_CHECK_REQUIRED_WINE_VERSION {
+    SP_REQUIRED_WINE_VERSION=$(wine --version)
+    if [[ $SP_REQUIRED_WINE_VERSION == *"wine-6.23"* ]] || [[ $SP_REQUIRED_WINE_VERSION == *"wine-7"* ]] || [[ $SP_REQUIRED_WINE_VERSION == *"wine-8"* ]]; then
+        # OK
+    else
+        # Install packages ...
+    fi
+}
+
 ###############################################################################################################################################################
 
 # Check if already exists a Autodesk Fusion 360 installation on your system.
@@ -234,14 +246,12 @@ function OS_ARCHLINUX {
     echo "Checking for multilib..."
     if ARCHLINUX_VERIFY_MULTILIB ; then
         echo "multilib found. Continuing..."
-        pkexec sudo pacman -Sy --needed wine wine-mono wine_gecko winetricks p7zip curl cabextract samba ppp libspnav
-        SP_FUSION360_INSTALL
+        pkexec sudo pacman -Sy --needed wine wine-mono wine_gecko winetricks p7zip curl cabextract samba ppp
     else
         echo "Enabling multilib..."
         echo "[multilib]" | sudo tee -a /etc/pacman.conf
         echo "Include = /etc/pacman.d/mirrorlist" | sudo tee -a /etc/pacman.conf
-        pkexec sudo pacman -Sy --needed wine wine-mono wine_gecko winetricks p7zip curl cabextract samba ppp libspnav
-        SP_FUSION360_INSTALL
+        pkexec sudo pacman -Sy --needed wine wine-mono wine_gecko winetricks p7zip curl cabextract samba ppp
     fi
 }
 
@@ -280,9 +290,8 @@ function DEBIAN_BASED_1 {
 
 function DEBIAN_BASED_2 {
     sudo apt-get update
-    sudo apt-get install p7zip p7zip-full p7zip-rar curl winbind cabextract wget spacenavd
+    sudo apt-get install p7zip p7zip-full p7zip-rar curl winbind cabextract
     sudo apt-get install --install-recommends winehq-staging
-    SP_FUSION360_INSTALL
 }
 
 function OS_DEBIAN_10 {
@@ -378,8 +387,7 @@ function FEDORA_BASED_1 {
 }
 
 function FEDORA_BASED_2 {
-    sudo dnf install p7zip p7zip-plugins curl wget wine cabextract spacenavd
-    SP_FUSION360_INSTALL
+    sudo dnf install p7zip p7zip-plugins curl wine cabextract
 }
 
 function OS_FEDORA_36 {
@@ -411,24 +419,20 @@ function OS_OPENSUSE {
 }
 
 function OS_OPENSUSE_154 {
-    pkexec su -c 'zypper up && zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.4/ wine && zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.4/ wine && zypper install p7zip-full curl wget wine cabextract spacenavd'
-    SP_FUSION360_INSTALL
+    sudo zypper up && sudo zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.4/ wine && sudo zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.4/ wine && sudo zypper install p7zip-full curl wine cabextract
 }
 
 # Has not been published yet!
 function OS_OPENSUSE_155 {
-    pkexec su -c 'zypper up && zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.5/ wine && zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.5/ wine && zypper install p7zip-full curl wget wine cabextract spacenavd'
-    SP_FUSION360_INSTALL
+    sudo zypper up && sudo zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.5/ wine && sudo zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.5/ wine && sudo zypper install p7zip-full curl wine cabextract
 }
 
 function OS_OPENSUSE_TW {
-    pkexec su -c 'zypper up && zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Tumbleweed/ wine && zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Tumbleweed/ wine && zypper install p7zip-full curl wget wine cabextract spacenavd'
-    SP_FUSION360_INSTALL
+    sudo zypper up && sudo zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Tumbleweed/ wine && sudo zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Tumbleweed/ wine && sudo zypper install p7zip-full curl wine cabextract
 }
 
 function OS_OPENSUSE_MICROOS {
-    sudo zypper up && sudo zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Tumbleweed/ wine && sudo zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Tumbleweed/ wine && sudo zypper install p7zip-full curl wget wine cabextract spacenavd
-    SP_FUSION360_INSTALL
+    sudo zypper up && sudo zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Tumbleweed/ wine && sudo zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Tumbleweed/ wine && sudo zypper install p7zip-full curl wine cabextract
 }
 
 ###############################################################################################################################################################
@@ -449,35 +453,56 @@ function OS_REDHAT_LINUX_8 {
     pkexec sudo subscription-manager repos --enable codeready-builder-for-rhel-8-x86_64-rpms
     sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
     sudo dnf upgrade
-    sudo dnf install wine spacenavd
-    SP_FUSION360_INSTALL
+    sudo dnf install wine
 }
 
 function OS_REDHAT_LINUX_9 {
     pkexec sudo subscription-manager repos --enable codeready-builder-for-rhel-9-x86_64-rpms
     sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
     sudo dnf upgrade
-    sudo dnf install wine spacenavd
-    SP_FUSION360_INSTALL
+    sudo dnf install wine
 }
 
 ###############################################################################################################################################################
 
 function OS_SOLUS_LINUX {
-    pkexec sudo eopkg install -y wine winetricks p7zip curl cabextract samba ppp spacenavd
-    SP_FUSION360_INSTALL
+    pkexec sudo eopkg install -y wine winetricks p7zip curl cabextract samba ppp
 }
 
 ###############################################################################################################################################################
 
 function OS_VOID_LINUX {
-    pkexec sudo xbps-install -Sy wine wine-mono wine-gecko winetricks p7zip curl cabextract samba ppp spacenavd
-    SP_FUSION360_INSTALL
+    pkexec sudo xbps-install -Sy wine wine-mono wine-gecko winetricks p7zip curl cabextract samba ppp
 }
 
 ###############################################################################################################################################################
 
 function OS_GENTOO_LINUX {
-    pkexec sudo emerge -nav virtual/wine app-emulation/winetricks app-emulation/wine-mono app-emulation/wine-gecko app-arch/p7zip app-arch/cabextract net-misc/curl net-fs/samba net-dialup/ppp app-misc/spacenavd
-    SP_FUSION360_INSTALL
+    pkexec sudo emerge -nav virtual/wine app-emulation/winetricks app-emulation/wine-mono app-emulation/wine-gecko app-arch/p7zip app-arch/cabextract net-misc/curl net-fs/samba net-dialup/ppp
+}
+
+###############################################################################################################################################################
+# ALL SPACENAVD-FUNCTIONS ARE ARRANGED HERE:                                                                                                                  #
+###############################################################################################################################################################
+
+# Install Spacenavd on the system:
+function SP_INSTALL_SPACENAVD {
+    if VERB="$( which apt-get )" 2> /dev/null; then
+       echo "Debian-based" && sudo apt-get update && sudo apt-get install spacenavd
+    elif VERB="$( which dnf )" 2> /dev/null; then
+       echo "RedHat-based" && sudo dnf update && sudo dnf install spacenavd
+    elif VERB="$( which pacman )" 2> /dev/null; then
+       echo "Arch-based" && sudo pacman -Syu --needed spacenavd
+    elif VERB="$( which zypper )" 2> /dev/null; then
+       echo "openSUSE-based" && sudo zypper up && sudo zypper in spacenavd
+    elif VERB="$( which xbps-install )" 2> /dev/null; then
+       echo "Void-based" && sudo xbps-install -Sy spacenavd
+    elif VERB="$( which eopkg )" 2> /dev/null; then
+       echo "Solus-based" && sudo eopkg install spacenavd
+    elif VERB="$( which emerge )" 2> /dev/null; then
+       echo "Gentoo-based" && sudo emerge -av app-misc/spacenavd
+    else
+       echo "${RED}I can't find your package manager!${NOCOLOR}"
+       exit;
+    fi
 }
