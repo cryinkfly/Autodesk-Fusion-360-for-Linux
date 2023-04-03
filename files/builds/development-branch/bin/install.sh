@@ -126,7 +126,7 @@ function CHECK_INSTALL_PACKAGES {
                 # Install the latest driver for AMD graphics card if not installed:
                 if [[ $(glxinfo | grep -A 10 -B 1 Vendor) == *"AMD"* ]]; then
                     echo "AMD graphics card detected."
-                    if [[$(grep ^[^#] /etc/apt/sources.list /etc/apt/sources.list.d/*) == *"contrib"*]] && [[$(grep ^[^#] /etc/apt/sources.list /etc/apt/sources.list.d/*) == *"non-free"*]]; then
+                    if [[ $(grep ^[^#] /etc/apt/sources.list /etc/apt/sources.list.d/*) == *"contrib"*]] && [[ $(grep ^[^#] /etc/apt/sources.list /etc/apt/sources.list.d/*) == *"non-free"*]]; then
                         echo "Latest driver for AMD graphics card already installed."
                     else
                         sudo apt-get update && sudo apt-get install -y software-properties-common
@@ -143,7 +143,7 @@ function CHECK_INSTALL_PACKAGES {
                 # Install the latest driver for Nvidia graphics card if not installed:
                 elif [[ $(glxinfo | grep -A 10 -B 1 Vendor) == *"NVIDIA"* ]]; then
                     echo "Nvidia graphics card detected."
-                    if [[$(grep ^[^#] /etc/apt/sources.list /etc/apt/sources.list.d/*) == *"contrib"*]] && [[$(grep ^[^#] /etc/apt/sources.list /etc/apt/sources.list.d/*) == *"non-free"*]]; then
+                    if [[ $(grep ^[^#] /etc/apt/sources.list /etc/apt/sources.list.d/*) == *"contrib"*]] && [[ $(grep ^[^#] /etc/apt/sources.list /etc/apt/sources.list.d/*) == *"non-free"*]]; then
                         echo "Latest closed driver for Nvidia graphics card already installed."
                     else
                         sudo apt-get update && sudo apt-get install -y software-properties-common
@@ -192,7 +192,7 @@ function CHECK_INSTALL_PACKAGES {
                 # Install the latest driver for Nvidia graphics card if not installed:
                 elif [[ $(glxinfo | grep -A 10 -B 1 Vendor) == *"NVIDIA"* ]]; then
                     echo "Nvidia graphics card detected."
-                    if [[$(grep ^[^#] /etc/apt/sources.list /etc/apt/sources.list.d/*) == *"contrib"*]] && [[$(grep ^[^#] /etc/apt/sources.list /etc/apt/sources.list.d/*) == *"non-free"*]]; then
+                    if [[ $(grep ^[^#] /etc/apt/sources.list /etc/apt/sources.list.d/*) == *"contrib"*]] && [[ $(grep ^[^#] /etc/apt/sources.list /etc/apt/sources.list.d/*) == *"non-free"*]]; then
                         echo "Latest closed driver for Nvidia graphics card already installed."
                     else
                         sudo apt-get update && sudo apt-get install -y software-properties-common
@@ -224,7 +224,7 @@ function CHECK_INSTALL_PACKAGES {
                 # Install the latest driver for AMD graphics card if not installed:
                 if [[ $(glxinfo | grep -A 10 -B 1 Vendor) == *"AMD"* ]]; then
                     echo "AMD graphics card detected."
-                    if [[$(grep ^[^#] /etc/apt/sources.list /etc/apt/sources.list.d/*) == *"contrib"*]] && [[$(grep ^[^#] /etc/apt/sources.list /etc/apt/sources.list.d/*) == *"non-free"*]]; then
+                    if [[ $(grep ^[^#] /etc/apt/sources.list /etc/apt/sources.list.d/*) == *"contrib"*]] && [[ $(grep ^[^#] /etc/apt/sources.list /etc/apt/sources.list.d/*) == *"non-free"*]]; then
                         echo "Latest driver for AMD graphics card already installed."
                     else
                         sudo apt-get update && sudo apt-get install -y software-properties-common
@@ -241,7 +241,7 @@ function CHECK_INSTALL_PACKAGES {
                 # Install the latest driver for Nvidia graphics card if not installed:
                 elif [[ $(glxinfo | grep -A 10 -B 1 Vendor) == *"NVIDIA"* ]]; then
                     echo "Nvidia graphics card detected."
-                    if [[$(grep ^[^#] /etc/apt/sources.list /etc/apt/sources.list.d/*) == *"contrib"*]] && [[$(grep ^[^#] /etc/apt/sources.list /etc/apt/sources.list.d/*) == *"non-free"*]]; then
+                    if [[ $(grep ^[^#] /etc/apt/sources.list /etc/apt/sources.list.d/*) == *"contrib"*]] && [[ $(grep ^[^#] /etc/apt/sources.list /etc/apt/sources.list.d/*) == *"non-free"*]]; then
                         echo "Latest closed driver for Nvidia graphics card already installed."
                     else
                         sudo apt-get update && sudo apt-get install -y software-properties-common
@@ -281,7 +281,7 @@ function CHECK_INSTALL_PACKAGES {
                 # Install the latest driver for Nvidia graphics card if not installed:
                 elif [[ $(glxinfo | grep -A 10 -B 1 Vendor) == *"NVIDIA"* ]]; then
                     echo "Nvidia graphics card detected."
-                    if [[$(sudo dnf repolist all) == *"rpmfusion-free-release"*]] && [[$(sudo dnf repolist all) == *"rpmfusion-nonfree-release"*]]; then
+                    if [[ $(sudo dnf repolist all) == *"rpmfusion-free-release"*]] && [[ $(sudo dnf repolist all) == *"rpmfusion-nonfree-release"*]]; then
                         echo "Nvidia graphics driver is already installed."
                     else
                         sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm 
@@ -294,7 +294,7 @@ function CHECK_INSTALL_PACKAGES {
                     echo "Unsupported graphics card detected."
                 fi
             elif [ $CHECK_INSTALL_WINE_PACKAGES -eq 1 ]; then
-                if [[$(sudo dnf repolist all) == *"rpmfusion-free-release"*]] && [[$(sudo dnf repolist all) == *"rpmfusion-nonfree-release"*]] && [[$(sudo dnf repolist all) == *"wine"*]]; then
+                if [[ $(sudo dnf repolist all) == *"rpmfusion-free-release"*]] && [[ $(sudo dnf repolist all) == *"rpmfusion-nonfree-release"*]] && [[ $(sudo dnf repolist all) == *"wine"*]]; then
                     echo "Required Repo allready exists!"
                     sudo dnf install p7zip p7zip-plugins curl wine cabextract
                     echo "Installed latest Wine version."
@@ -324,7 +324,7 @@ function CHECK_INSTALL_PACKAGES {
                 # Install the latest driver for Nvidia graphics card if not installed:
                 elif [[ $(glxinfo | grep -A 10 -B 1 Vendor) == *"NVIDIA"* ]]; then
                     echo "Nvidia graphics card detected."
-                    if [[$(sudo dnf repolist all) == *"rpmfusion-free-release"*]] && [[$(sudo dnf repolist all) == *"rpmfusion-nonfree-release"*]]; then
+                    if [[ $(sudo dnf repolist all) == *"rpmfusion-free-release"*]] && [[ $(sudo dnf repolist all) == *"rpmfusion-nonfree-release"*]]; then
                         echo "Nvidia graphics driver is already installed."
                     else
                         sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm 
@@ -337,7 +337,7 @@ function CHECK_INSTALL_PACKAGES {
                     echo "Unsupported graphics card detected."
                 fi
             elif [ $CHECK_INSTALL_WINE_PACKAGES -eq 1 ]; then
-                if [[$(sudo dnf repolist all) == *"rpmfusion-free-release"*]] && [[$(sudo dnf repolist all) == *"rpmfusion-nonfree-release"*]] && [[$(sudo dnf repolist all) == *"wine"*]]; then
+                if [[ $(sudo dnf repolist all) == *"rpmfusion-free-release"*]] && [[ $(sudo dnf repolist all) == *"rpmfusion-nonfree-release"*]] && [[ $(sudo dnf repolist all) == *"wine"*]]; then
                     echo "Required Repo allready exists!"
                     sudo dnf install p7zip p7zip-plugins curl wine cabextract
                     echo "Installed latest Wine version."
@@ -367,7 +367,7 @@ function CHECK_INSTALL_PACKAGES {
                 # Install the latest driver for Nvidia graphics card if not installed:
                 elif [[ $(glxinfo | grep -A 10 -B 1 Vendor) == *"NVIDIA"* ]]; then
                     echo "Nvidia graphics card detected."
-                    if [[$(sudo dnf repolist all) == *"rpmfusion-free-release"*]] && [[$(sudo dnf repolist all) == *"rpmfusion-nonfree-release"*]]; then
+                    if [[ $(sudo dnf repolist all) == *"rpmfusion-free-release"*]] && [[ $(sudo dnf repolist all) == *"rpmfusion-nonfree-release"*]]; then
                         echo "Nvidia graphics driver is already installed."
                     else
                         sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm 
@@ -380,7 +380,7 @@ function CHECK_INSTALL_PACKAGES {
                     echo "Unsupported graphics card detected."
                 fi
             elif [ $CHECK_INSTALL_WINE_PACKAGES -eq 1 ]; then
-                if [[$(sudo dnf repolist all) == *"rpmfusion-free-release"*]] && [[$(sudo dnf repolist all) == *"rpmfusion-nonfree-release"*]] && [[$(sudo dnf repolist all) == *"wine"*]]; then
+                if [[ $(sudo dnf repolist all) == *"rpmfusion-free-release"*]] && [[ $(sudo dnf repolist all) == *"rpmfusion-nonfree-release"*]] && [[ $(sudo dnf repolist all) == *"wine"*]]; then
                     echo "Required Repo allready exists!"
                     sudo dnf install p7zip p7zip-plugins curl wine cabextract
                     echo "Installed latest Wine version."
@@ -506,7 +506,7 @@ function CHECK_INSTALL_PACKAGES {
                 # Install the latest driver for Nvidia graphics card if not installed:
                 elif [[ $(glxinfo | grep -A 10 -B 1 Vendor) == *"NVIDIA"* ]]; then
                     echo "Nvidia graphics card detected."
-                    if [[$(zypper lr -u) == *"https://download.nvidia.com/opensuse/leap/15.4/"*]] || [[$(zypper lr -u) == *"https://developer.download.nvidia.com/compute/cuda/repos/opensuse15/x86_64/cuda-opensuse15.repo"*]]; then
+                    if [[ $(zypper lr -u) == *"https://download.nvidia.com/opensuse/leap/15.4/"*]] || [[ $(zypper lr -u) == *"https://developer.download.nvidia.com/compute/cuda/repos/opensuse15/x86_64/cuda-opensuse15.repo"*]]; then
                         if [[ $(zypper search -i x11-video-nvidiaG05 | grep -c "Version") -eq 0 ]]; then
                             echo "Installing the newest Nvidia graphics card driver."
                             sudo zypper install x11-video-nvidiaG05
@@ -554,7 +554,7 @@ function CHECK_INSTALL_PACKAGES {
                 # Install the latest driver for Nvidia graphics card if not installed:
                 elif [[ $(glxinfo | grep -A 10 -B 1 Vendor) == *"NVIDIA"* ]]; then
                     echo "Nvidia graphics card detected."
-                    if [[$(zypper lr -u) == *"https://download.nvidia.com/opensuse/leap/15.5/"*]] || [[$(zypper lr -u) == *"https://developer.download.nvidia.com/compute/cuda/repos/opensuse15/x86_64/cuda-opensuse15.repo"*]]; then
+                    if [[ $(zypper lr -u) == *"https://download.nvidia.com/opensuse/leap/15.5/"*]] || [[ $(zypper lr -u) == *"https://developer.download.nvidia.com/compute/cuda/repos/opensuse15/x86_64/cuda-opensuse15.repo"*]]; then
                         if [[ $(zypper search -i x11-video-nvidiaG05 | grep -c "Version") -eq 0 ]]; then
                             echo "Installing the newest Nvidia graphics card driver."
                             sudo zypper install x11-video-nvidiaG05
@@ -602,7 +602,7 @@ function CHECK_INSTALL_PACKAGES {
                 # Install the latest driver for Nvidia graphics card if not installed:
                 elif [[ $(glxinfo | grep -A 10 -B 1 Vendor) == *"NVIDIA"* ]]; then
                     echo "Nvidia graphics card detected."
-                    if [[$(zypper lr -u) == *"https://download.nvidia.com/opensuse/tumbleweed"*]]; then
+                    if [[ $(zypper lr -u) == *"https://download.nvidia.com/opensuse/tumbleweed"*]]; then
                         if [[ $(zypper search -i x11-video-nvidiaG05 | grep -c "Version") -eq 0 ]]; then
                             echo "Installing the newest Nvidia graphics card driver."
                             sudo zypper install x11-video-nvidiaG05
@@ -699,7 +699,7 @@ function CHECK_INSTALL_PACKAGES {
                 # Install the latest driver for AMD graphics card if not installed:
                 if [[ $(glxinfo | grep -A 10 -B 1 Vendor) == *"AMD"* ]]; then
                     echo "AMD graphics card detected."
-                    if [[$(sudo grep -rhE ^deb /etc/apt/sources.list*) == *"https://ppa.launchpadcontent.net/oibaf/graphics-drivers/ubuntu"*]]; then
+                    if [[ $(sudo grep -rhE ^deb /etc/apt/sources.list*) == *"https://ppa.launchpadcontent.net/oibaf/graphics-drivers/ubuntu"*]]; then
                         sudo apt-get update && sudo apt-get upgrade -y
                         echo "Latest driver for AMD graphics card already installed."
                     else
@@ -712,7 +712,7 @@ function CHECK_INSTALL_PACKAGES {
                 # Install the latest driver for Intel graphics card if not installed:
                 elif [[ $(glxinfo | grep -A 10 -B 1 Vendor) == *"Intel"* ]]; then
                     echo "Intel graphics card detected."
-                    if [[$(sudo grep -rhE ^deb /etc/apt/sources.list*) == *"https://ppa.launchpadcontent.net/oibaf/graphics-drivers/ubuntu"*]]; then
+                    if [[ $(sudo grep -rhE ^deb /etc/apt/sources.list*) == *"https://ppa.launchpadcontent.net/oibaf/graphics-drivers/ubuntu"*]]; then
                         sudo apt-get update && sudo apt-get upgrade -y
                         echo "Latest driver for Intel graphics card already installed."
                     else
@@ -748,7 +748,7 @@ function CHECK_INSTALL_PACKAGES {
                 # Install the latest driver for AMD graphics card if not installed:
                 if [[ $(glxinfo | grep -A 10 -B 1 Vendor) == *"AMD"* ]]; then
                     echo "AMD graphics card detected."
-                    if [[$(sudo grep -rhE ^deb /etc/apt/sources.list*) == *"https://ppa.launchpadcontent.net/oibaf/graphics-drivers/ubuntu"*]]; then
+                    if [[ $(sudo grep -rhE ^deb /etc/apt/sources.list*) == *"https://ppa.launchpadcontent.net/oibaf/graphics-drivers/ubuntu"*]]; then
                         sudo apt-get update && sudo apt-get upgrade -y
                         echo "Latest driver for AMD graphics card already installed."
                     else
@@ -761,7 +761,7 @@ function CHECK_INSTALL_PACKAGES {
                 # Install the latest driver for Intel graphics card if not installed:
                 elif [[ $(glxinfo | grep -A 10 -B 1 Vendor) == *"Intel"* ]]; then
                     echo "Intel graphics card detected."
-                    if [[$(sudo grep -rhE ^deb /etc/apt/sources.list*) == *"https://ppa.launchpadcontent.net/oibaf/graphics-drivers/ubuntu"*]]; then
+                    if [[ $(sudo grep -rhE ^deb /etc/apt/sources.list*) == *"https://ppa.launchpadcontent.net/oibaf/graphics-drivers/ubuntu"*]]; then
                         sudo apt-get update && sudo apt-get upgrade -y
                         echo "Latest driver for Intel graphics card already installed."
                     else
@@ -773,7 +773,7 @@ function CHECK_INSTALL_PACKAGES {
                 # Install the latest driver for Nvidia graphics card if not installed:
                 elif [[ $(glxinfo | grep -A 10 -B 1 Vendor) == *"NVIDIA"* ]]; then
                     echo "Nvidia graphics card detected."
-                    if [[$(sudo grep -rhE ^deb /etc/apt/sources.list*) == *"https://ppa.launchpadcontent.net/graphics-drivers/ppa/ubuntu"*]]; then
+                    if [[ $(sudo grep -rhE ^deb /etc/apt/sources.list*) == *"https://ppa.launchpadcontent.net/graphics-drivers/ppa/ubuntu"*]]; then
                         sudo apt-get update && sudo apt-get upgrade -y
                         echo "Latest driver for Nvidia graphics card already installed."
                     else
@@ -797,7 +797,7 @@ function CHECK_INSTALL_PACKAGES {
                 # Install the latest driver for AMD graphics card if not installed:
                 if [[ $(glxinfo | grep -A 10 -B 1 Vendor) == *"AMD"* ]]; then
                     echo "AMD graphics card detected."
-                    if [[$(sudo grep -rhE ^deb /etc/apt/sources.list*) == *"https://ppa.launchpadcontent.net/oibaf/graphics-drivers/ubuntu"*]]; then
+                    if [[ $(sudo grep -rhE ^deb /etc/apt/sources.list*) == *"https://ppa.launchpadcontent.net/oibaf/graphics-drivers/ubuntu"*]]; then
                         sudo apt-get update && sudo apt-get upgrade -y
                         echo "Latest driver for AMD graphics card already installed."
                     else
@@ -810,7 +810,7 @@ function CHECK_INSTALL_PACKAGES {
                 # Install the latest driver for Intel graphics card if not installed:
                 elif [[ $(glxinfo | grep -A 10 -B 1 Vendor) == *"Intel"* ]]; then
                     echo "Intel graphics card detected."
-                    if [[$(sudo grep -rhE ^deb /etc/apt/sources.list*) == *"https://ppa.launchpadcontent.net/oibaf/graphics-drivers/ubuntu"*]]; then
+                    if [[ $(sudo grep -rhE ^deb /etc/apt/sources.list*) == *"https://ppa.launchpadcontent.net/oibaf/graphics-drivers/ubuntu"*]]; then
                         sudo apt-get update && sudo apt-get upgrade -y
                         echo "Latest driver for Intel graphics card already installed."
                     else
@@ -822,7 +822,7 @@ function CHECK_INSTALL_PACKAGES {
                 # Install the latest driver for Nvidia graphics card if not installed:
                 elif [[ $(glxinfo | grep -A 10 -B 1 Vendor) == *"NVIDIA"* ]]; then
                     echo "Nvidia graphics card detected."
-                    if [[$(sudo grep -rhE ^deb /etc/apt/sources.list*) == *"https://ppa.launchpadcontent.net/graphics-drivers/ppa/ubuntu"*]]; then
+                    if [[ $(sudo grep -rhE ^deb /etc/apt/sources.list*) == *"https://ppa.launchpadcontent.net/graphics-drivers/ppa/ubuntu"*]]; then
                         sudo apt-get update && sudo apt-get upgrade -y
                         echo "Latest driver for Nvidia graphics card already installed."
                     else
