@@ -433,7 +433,7 @@ function CHECK_INSTALL_PACKAGES {
                     echo "Unsupported graphics card detected."
                 fi
             elif [ $CHECK_INSTALL_WINE_PACKAGES -eq 1 ]; then
-                # ...
+                sudo emerge -nav virtual/wine app-emulation/winetricks app-emulation/wine-mono app-emulation/wine-gecko app-arch/p7zip app-arch/cabextract net-misc/curl net-fs/samba net-dialup/ppp
             else
                 # ...
             fi
@@ -475,7 +475,7 @@ function CHECK_INSTALL_PACKAGES {
                     echo "Unsupported graphics card detected."
                 fi
             elif [ $CHECK_INSTALL_WINE_PACKAGES -eq 1 ]; then
-                # ...
+                sudo nix-env -iA curl cabextract p7zip winePackages.staging
             else
                 # ...
             fi
@@ -523,7 +523,9 @@ function CHECK_INSTALL_PACKAGES {
                     echo "Unsupported graphics card detected."
                 fi
             elif [ $CHECK_INSTALL_WINE_PACKAGES -eq 1 ]; then
-                # ...
+                sudo zypper up && sudo zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.4/ wine
+                sudo zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.4/ wine
+                sudo zypper install p7zip-full curl wine cabextract
             else
                 # ...
             fi
@@ -571,7 +573,9 @@ function CHECK_INSTALL_PACKAGES {
                     echo "Unsupported graphics card detected."
                 fi
             elif [ $CHECK_INSTALL_WINE_PACKAGES -eq 1 ]; then
-                # ...
+                sudo zypper up && sudo zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.5/ wine
+                sudo zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.5/ wine
+                sudo zypper install p7zip-full curl wine cabextract
             else
                 # ...
             fi
@@ -619,7 +623,9 @@ function CHECK_INSTALL_PACKAGES {
                     echo "Unsupported graphics card detected."
                 fi
             elif [ $CHECK_INSTALL_WINE_PACKAGES -eq 1 ]; then
-                # ...
+                sudo zypper up && sudo zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Tumbleweed/ wine
+                sudo zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Tumbleweed/ wine
+                sudo zypper install p7zip-full curl wine cabextract
             else
                 # ...
             fi
@@ -640,7 +646,10 @@ function CHECK_INSTALL_PACKAGES {
                     echo "Unsupported graphics card detected."
                 fi
             elif [ $CHECK_INSTALL_WINE_PACKAGES -eq 1 ]; then
-                # ...
+                sudo subscription-manager repos --enable codeready-builder-for-rhel-8-x86_64-rpms
+                sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+                sudo dnf upgrade
+                sudo dnf install wine
             else
                 # ...
             fi
@@ -661,7 +670,10 @@ function CHECK_INSTALL_PACKAGES {
                     echo "Unsupported graphics card detected."
                 fi
             elif [ $CHECK_INSTALL_WINE_PACKAGES -eq 1 ]; then
-                # ...
+                sudo subscription-manager repos --enable codeready-builder-for-rhel-9-x86_64-rpms
+                sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
+                sudo dnf upgrade
+                sudo dnf install wine
             else
                 # ...
             fi
@@ -688,7 +700,7 @@ function CHECK_INSTALL_PACKAGES {
                     echo "Unsupported graphics card detected."
                 fi
             elif [ $CHECK_INSTALL_WINE_PACKAGES -eq 1 ]; then
-                # ...
+                sudo eopkg install -y wine winetricks p7zip curl cabextract samba ppp
             else
                 # ...
             fi
@@ -873,7 +885,7 @@ function CHECK_INSTALL_PACKAGES {
                     echo "Unsupported graphics card detected."
                 fi
             elif [ $CHECK_INSTALL_WINE_PACKAGES -eq 1 ]; then
-                # ...
+                sudo xbps-install -Sy wine wine-mono wine-gecko winetricks p7zip curl cabextract samba ppp
             else
                 # ...
             fi
