@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    15:20/06.04.2023                                                                   #
+# Time/Date:    16:40/06.04.2023                                                                   #
 # Version:      1.8.7                                                                              #
 ####################################################################################################
 
@@ -450,14 +450,6 @@ function SP_FUSION360_INSTALL {
   SP_DXVK_OPENGL_1
   # We must set to Windows 10 again because some other winetricks sometimes set it back to Windows XP!
   WINEPREFIX="$WP_DIRECTORY" sh "$SP_PATH/bin/winetricks" -q win10
-  sleep 5s
-  # Solved the bug with the login mask of Fusion 360 (internet browser):
-  cd "$WP_DIRECTORY/drive_c/users/$USER/Downloads" || return
-  wget -N https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/driver/web-browser/web.reg
-  WINEPREFIX=$WP_DIRECTORY wine regedit.exe web.reg
-  wget https://ftp.mozilla.org/pub/firefox/releases/111.0/win64/en-US/Firefox%20Setup%20111.0.exe -O Firefox.exe
-  WINEPREFIX=$HOME/.fusion360/wineprefixes/default wine Firefox.exe
-  cd "$WP_DIRECTORY" || return
   sleep 5s
   # We must copy the EXE-file directly in the Wineprefix folder (Sandbox-Mode)!
   cp "$SP_PATH/downloads/Fusion360installer.exe" "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
