@@ -316,7 +316,7 @@
     mkdir -p "$HOME/.fusion360/bin" && cd "$HOME/.fusion360/bin" && wget -N https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/install.sh && chmod +x install.sh && ./install.sh
 </br>
 
-🔹 Currently, Fusion 360 for Linux is broken. Autodesk requires your browser to open to a page to log in to Fusion 360, but do not yet have a solution for this problem. Please bear with us as we research and develop a solution. In the meantime, you can use this command to install Fusion 360 for Linux with an older version of Fusion 360 that does not require browser sign-in:
+🔹 Currently, Fusion 360 for Linux is broken. Autodesk requires your browser to open to a page to log in to Fusion 360, but we do not yet have a way to open the link in a browser. Please bear with us as we research and develop a solution. In the meantime, you can use this command to install Fusion 360 for Linux with an older version of Fusion 360 that does not require browser sign-in:
 </br></br>
 
     mkdir -p "$HOME/.fusion360/bin" && cd "$HOME/.fusion360/bin" && wget -N https://raw.githubusercontent.com/alextrical/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/install.sh && chmod +x install.sh && ./install.sh
