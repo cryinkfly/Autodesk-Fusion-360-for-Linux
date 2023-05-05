@@ -281,7 +281,7 @@ function SP_FUSION360_INSTALLER_LOAD {
     echo "The Autodesk Fusion 360 installer exist!"
   else
     echo "The Autodesk Fusion 360 installer doesn't exist and will be downloaded for you!"
-    wget https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe -O Fusion360installer.exe
+    wget -T 15 -t 0 -N -c 'https://web.archive.org/web/20230317210714id_/https://dl.appstreaming.autodesk.com/production/installers/Fusion 360 Admin Install.exe' -O Fusion360installer.exe
     mv "Fusion360installer.exe" "$SP_PATH/downloads/Fusion360installer.exe"
   fi
 }
@@ -552,6 +552,12 @@ function OS_UBUNTU_22 {
   sudo add-apt-repository -r 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main'
   wget -q https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_22.04/Release.key -O Release.key -O- | sudo apt-key add -
   sudo apt-add-repository 'deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_22.04/ ./'
+}
+
+function OS_UBUNTU_23 {
+  sudo add-apt-repository -r 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main'
+  wget -q https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_23.04/Release.key -O Release.key -O- | sudo apt-key add -
+  sudo apt-add-repository 'deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_23.04/ ./'
 }
 
 ###############################################################################################################################################################
@@ -1014,6 +1020,11 @@ elif [[ $SP_OS = "Linux Mint 21.x" ]]; then
     DEBIAN_BASED_1
     OS_UBUNTU_22
     DEBIAN_BASED_1
+elif [[ $SP_OS = "Linux Mint 22.x" ]]; then
+    echo "Linux Mint 22.x"
+    DEBIAN_BASED_1
+    OS_UBUNTU_23
+    DEBIAN_BASED_1
 elif [[ $SP_OS = "Manjaro Linux" ]]; then
     echo "Manjaro Linux"
     OS_ARCHLINUX
@@ -1049,6 +1060,11 @@ elif [[ $SP_OS = "Ubuntu 22.04" ]]; then
     echo "Ubuntu 22.04"
     DEBIAN_BASED_1
     OS_UBUNTU_22
+    DEBIAN_BASED_2
+elif [[ $SP_OS = "Ubuntu 23.04" ]]; then
+    echo "Ubuntu 23.04"
+    DEBIAN_BASED_1
+    OS_UBUNTU_23
     DEBIAN_BASED_2
 elif [[ $SP_OS = "Void Linux" ]]; then
     echo "Void Linux"
