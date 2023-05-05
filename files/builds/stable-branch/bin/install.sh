@@ -6,9 +6,9 @@
 # Author:       Steve Zabka                                                                        #
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
-# Copyright (c) 2020-2022                                                                          #
-# Time/Date:    16:40/06.04.2023                                                                   #
-# Version:      1.8.7                                                                              #
+# Copyright (c) 2020-2023                                                                          #
+# Time/Date:    07:40/05.05.2023                                                                   #
+# Version:      1.8.8                                                                              #
 ####################################################################################################
 
 # Path: /$HOME/.fusion360/bin/install.sh

@@ -315,7 +315,14 @@
 </br></br>
 
     mkdir -p "$HOME/.fusion360/bin" && cd "$HOME/.fusion360/bin" && wget -N https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/install.sh && chmod +x install.sh && ./install.sh
-    
+</br>
+
+🔹 目前，适用于 Linux 的 Fusion 360 已损坏。 Autodesk 需要您的浏览器打开一个页面才能登录 Fusion 360，但目前还没有针对此问题的解决方案。请耐心等待我们研究和开发解决方案。同时，您可以使用此命令安装适用于 Linux 的 Fusion 360 以及不需要浏览器登录的旧版本 Fusion 360:
+</br></br>
+
+    mkdir -p "$HOME/.fusion360/bin" && cd "$HOME/.fusion360/bin" && wget -N https://raw.githubusercontent.com/alextrical/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/install.sh && chmod +x install.sh && ./install.sh
+</br>
+
 🔹 或者您安装 Autodesk Fusion 360 并将其用作 Flatpak 应用程序：
 
     https://usebottles.com/app/#fusion360    

@@ -315,7 +315,15 @@
 </br></br>
 
     mkdir -p "$HOME/.fusion360/bin" && cd "$HOME/.fusion360/bin" && wget -N https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/install.sh && chmod +x install.sh && ./install.sh
-    
+</br>
+
+🔹 Actualmente, Fusion 360 para Linux no funciona. Autodesk requiere que su navegador abra una página para iniciar sesión en Fusion 360, pero aún no tiene una solución para este problema. Tenga paciencia con nosotros mientras investigamos y desarrollamos una solución. Mientras tanto, puede usar este comando para instalar Fusion 360 para Linux con una versión anterior de Fusion 360 que no requiere iniciar sesión en el navegador:
+</br></br>
+
+    mkdir -p "$HOME/.fusion360/bin" && cd "$HOME/.fusion360/bin" && wget -N https://raw.githubusercontent.com/alextrical/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/install.sh && chmod +x install.sh && ./install.sh
+</br>
+
+
 🔹 O instala y usa Autodesk Fusion 360 como una aplicación Flatpak:
 
     https://usebottles.com/app/#fusion360
