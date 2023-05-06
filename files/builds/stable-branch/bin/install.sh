@@ -519,8 +519,8 @@ function DEBIAN_BASED_1 {
 
 function DEBIAN_BASED_2 {
   sudo apt-get update
-  sudo apt-get install p7zip p7zip-full p7zip-rar curl winbind cabextract wget
-  sudo apt-get install --install-recommends winehq-staging
+  sudo apt-get install -y p7zip p7zip-full p7zip-rar curl winbind cabextract wget
+  sudo apt-get install -y --install-recommends winehq-staging
   SP_FUSION360_INSTALL
 }
 
