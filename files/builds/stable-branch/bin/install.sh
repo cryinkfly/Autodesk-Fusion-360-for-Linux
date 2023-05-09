@@ -519,8 +519,8 @@ function DEBIAN_BASED_1 {
 
 function DEBIAN_BASED_2 {
   sudo apt-get update
-  sudo apt-get install p7zip p7zip-full p7zip-rar curl winbind cabextract wget
-  sudo apt-get install --install-recommends winehq-staging
+  sudo apt-get install -y p7zip p7zip-full p7zip-rar curl winbind cabextract wget
+  sudo apt-get install -y --install-recommends winehq-staging
   SP_FUSION360_INSTALL
 }
 
@@ -986,12 +986,12 @@ elif [[ $SP_OS = "Debian 10" ]]; then
     echo "Debian 10"
     DEBIAN_BASED_1
     OS_DEBIAN_10
-    DEBIAN_BASED_1
+    DEBIAN_BASED_2
 elif [[ $SP_OS = "Debian 11" ]]; then
     echo "Debian 11"
     DEBIAN_BASED_1
     OS_DEBIAN_11
-    DEBIAN_BASED_1
+    DEBIAN_BASED_2
 elif [[ $SP_OS = "EndeavourOS" ]]; then
     echo "EndeavourOS"
     OS_ARCHLINUX
@@ -1014,17 +1014,17 @@ elif [[ $SP_OS = "Linux Mint 20.x" ]]; then
     echo "Linux Mint 20.x"
     DEBIAN_BASED_1
     OS_UBUNTU_20
-    DEBIAN_BASED_1
+    DEBIAN_BASED_2
 elif [[ $SP_OS = "Linux Mint 21.x" ]]; then
     echo "Linux Mint 21.x"
     DEBIAN_BASED_1
     OS_UBUNTU_22
-    DEBIAN_BASED_1
+    DEBIAN_BASED_2
 elif [[ $SP_OS = "Linux Mint 22.x" ]]; then
     echo "Linux Mint 22.x"
     DEBIAN_BASED_1
     OS_UBUNTU_23
-    DEBIAN_BASED_1
+    DEBIAN_BASED_2
 elif [[ $SP_OS = "Manjaro Linux" ]]; then
     echo "Manjaro Linux"
     OS_ARCHLINUX
