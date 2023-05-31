@@ -281,7 +281,7 @@ function SP_FUSION360_INSTALLER_LOAD {
     echo "The Autodesk Fusion 360 installer exist!"
   else
     echo "The Autodesk Fusion 360 installer doesn't exist and will be downloaded for you!"
-    wget -T 15 -t 0 -N -c 'https://web.archive.org/web/20230317210714id_/https://dl.appstreaming.autodesk.com/production/installers/Fusion 360 Admin Install.exe' -O Fusion360installer.exe
+    wget https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe -O Fusion360installer.exe
     mv "Fusion360installer.exe" "$SP_PATH/downloads/Fusion360installer.exe"
   fi
 }
@@ -293,7 +293,7 @@ function SP_FUSION360_INSTALLER_LOAD {
 # Load the icons and .desktop-files:
 function SP_FUSION360_SHORTCUTS_LOAD {
   # Create a .desktop file (launcher.sh) for Autodesk Fusion 360!
-  wget -N -P "$SP_PATH/graphics" https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/fusion360.svg
+  wget -N -P "$SP_PATH/graphics" https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/Fusion360.ico
   rm "$HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk Fusion 360.desktop"
   mkdir -p "$HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE"
   cat >> "$HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop" << EOF
@@ -321,13 +321,13 @@ Exec=$WP_DIRECTORY/box-run.sh
 Type=Application
 Categories=Education;Engineering;
 StartupNotify=true
-Icon=$SP_PATH/graphics/fusion360.svg
+Icon=$SP_PATH/graphics/Fusion360.ico
 Terminal=false
 Path=$WP_DIRECTORY
 EOF
 
   # Create a .desktop file (uninstall.sh) for Autodesk Fusion 360!
-  wget -N -P "$SP_PATH/graphics" https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/fusion360-uninstall.svg
+  wget -N -P "$SP_PATH/graphics" https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/Fusion360.ico
   cat >> "$HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop" << EOF
 [Desktop Entry]
 Name=Autodesk Fusion 360 (Uninstall) - $WP_TYPE
@@ -352,7 +352,7 @@ Exec=bash ./uninstall.sh
 Type=Application
 Categories=Education;Engineering;
 StartupNotify=true
-Icon=$SP_PATH/graphics/fusion360-uninstall.svg
+Icon=$SP_PATH/graphics/Fusion360.ico
 Terminal=false
 Path=$SP_PATH/bin
 EOF
