@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2023                                                                          #
-# Time/Date:    07:40/05.05.2023                                                                   #
-# Version:      1.8.8                                                                              #
+# Time/Date:    17:20/31.05.2023                                                                   #
+# Version:      1.8.9                                                                              #
 ####################################################################################################
 
 # Path: /$HOME/.fusion360/bin/install.sh
@@ -293,7 +293,7 @@ function SP_FUSION360_INSTALLER_LOAD {
 # Load the icons and .desktop-files:
 function SP_FUSION360_SHORTCUTS_LOAD {
   # Create a .desktop file (launcher.sh) for Autodesk Fusion 360!
-  wget -N -P "$SP_PATH/graphics" https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/Fusion360.ico
+  wget -N -P "$SP_PATH/graphics" https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/fusion360.svg
   rm "$HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk Fusion 360.desktop"
   mkdir -p "$HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE"
   cat >> "$HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop" << EOF
@@ -321,13 +321,13 @@ Exec=$WP_DIRECTORY/box-run.sh
 Type=Application
 Categories=Education;Engineering;
 StartupNotify=true
-Icon=$SP_PATH/graphics/Fusion360.ico
+Icon=$SP_PATH/graphics/fusion360.svg
 Terminal=false
 Path=$WP_DIRECTORY
 EOF
 
   # Create a .desktop file (uninstall.sh) for Autodesk Fusion 360!
-  wget -N -P "$SP_PATH/graphics" https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/Fusion360.ico
+  wget -N -P "$SP_PATH/graphics" https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/fusion360.svg
   cat >> "$HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop" << EOF
 [Desktop Entry]
 Name=Autodesk Fusion 360 (Uninstall) - $WP_TYPE
@@ -352,7 +352,7 @@ Exec=bash ./uninstall.sh
 Type=Application
 Categories=Education;Engineering;
 StartupNotify=true
-Icon=$SP_PATH/graphics/Fusion360.ico
+Icon=$SP_PATH/graphics/fusion360.svg
 Terminal=false
 Path=$SP_PATH/bin
 EOF
