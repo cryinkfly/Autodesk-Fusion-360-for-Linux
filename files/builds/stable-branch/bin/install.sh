@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2023                                                                          #
-# Time/Date:    07:40/05.05.2023                                                                   #
-# Version:      1.8.8                                                                              #
+# Time/Date:    17:20/31.05.2023                                                                   #
+# Version:      1.8.9                                                                              #
 ####################################################################################################
 
 # Path: /$HOME/.fusion360/bin/install.sh
@@ -281,7 +281,7 @@ function SP_FUSION360_INSTALLER_LOAD {
     echo "The Autodesk Fusion 360 installer exist!"
   else
     echo "The Autodesk Fusion 360 installer doesn't exist and will be downloaded for you!"
-    wget -T 15 -t 0 -N -c 'https://web.archive.org/web/20230317210714id_/https://dl.appstreaming.autodesk.com/production/installers/Fusion 360 Admin Install.exe' -O Fusion360installer.exe
+    wget https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe -O Fusion360installer.exe
     mv "Fusion360installer.exe" "$SP_PATH/downloads/Fusion360installer.exe"
   fi
 }
@@ -327,7 +327,7 @@ Path=$WP_DIRECTORY
 EOF
 
   # Create a .desktop file (uninstall.sh) for Autodesk Fusion 360!
-  wget -N -P "$SP_PATH/graphics" https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/fusion360-uninstall.svg
+  wget -N -P "$SP_PATH/graphics" https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/fusion360.svg
   cat >> "$HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop" << EOF
 [Desktop Entry]
 Name=Autodesk Fusion 360 (Uninstall) - $WP_TYPE
@@ -352,7 +352,7 @@ Exec=bash ./uninstall.sh
 Type=Application
 Categories=Education;Engineering;
 StartupNotify=true
-Icon=$SP_PATH/graphics/fusion360-uninstall.svg
+Icon=$SP_PATH/graphics/fusion360.svg
 Terminal=false
 Path=$SP_PATH/bin
 EOF
@@ -519,8 +519,8 @@ function DEBIAN_BASED_1 {
 
 function DEBIAN_BASED_2 {
   sudo apt-get update
-  sudo apt-get install p7zip p7zip-full p7zip-rar curl winbind cabextract wget
-  sudo apt-get install --install-recommends winehq-staging
+  sudo apt-get install -y p7zip p7zip-full p7zip-rar curl winbind cabextract wget
+  sudo apt-get install -y --install-recommends winehq-staging
   SP_FUSION360_INSTALL
 }
 
@@ -986,12 +986,12 @@ elif [[ $SP_OS = "Debian 10" ]]; then
     echo "Debian 10"
     DEBIAN_BASED_1
     OS_DEBIAN_10
-    DEBIAN_BASED_1
+    DEBIAN_BASED_2
 elif [[ $SP_OS = "Debian 11" ]]; then
     echo "Debian 11"
     DEBIAN_BASED_1
     OS_DEBIAN_11
-    DEBIAN_BASED_1
+    DEBIAN_BASED_2
 elif [[ $SP_OS = "EndeavourOS" ]]; then
     echo "EndeavourOS"
     OS_ARCHLINUX
@@ -1014,17 +1014,17 @@ elif [[ $SP_OS = "Linux Mint 20.x" ]]; then
     echo "Linux Mint 20.x"
     DEBIAN_BASED_1
     OS_UBUNTU_20
-    DEBIAN_BASED_1
+    DEBIAN_BASED_2
 elif [[ $SP_OS = "Linux Mint 21.x" ]]; then
     echo "Linux Mint 21.x"
     DEBIAN_BASED_1
     OS_UBUNTU_22
-    DEBIAN_BASED_1
+    DEBIAN_BASED_2
 elif [[ $SP_OS = "Linux Mint 22.x" ]]; then
     echo "Linux Mint 22.x"
     DEBIAN_BASED_1
     OS_UBUNTU_23
-    DEBIAN_BASED_1
+    DEBIAN_BASED_2
 elif [[ $SP_OS = "Manjaro Linux" ]]; then
     echo "Manjaro Linux"
     OS_ARCHLINUX
