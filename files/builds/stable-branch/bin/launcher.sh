@@ -58,7 +58,7 @@ function LAUNCHER_CHECK_UPDATE_VERSION {
 
 # You must change the first part ($HOME/.wineprefixes/fusion360) and the last part (WINEPREFIX="$HOME/.wineprefixes/fusion360") when you have installed Autodesk Fusion 360 into another directory!
 function LAUNCHER_RUN_FUSION360 {
-  WINEPREFIX="$WP_BOX" FUSION_IDSDK=false WINEDEBUG=-all wine "C:\users\Public\Desktop\Autodesk Fusion 360.lnk"
+  LAUNCHER="$(find "$WP_BOX" -name Fusion360.exe -printf "%T+ %p\n" | sort -r 2>&1 | head -n 1 | sed -r 's/.+0000000000 (.+)/\1/')" && WINEPREFIX="$WP_BOX" FUSION_IDSDK=false WINEDEBUG=-all wine "$LAUNCHER"
 }
 
 ###############################################################################################################################################################
