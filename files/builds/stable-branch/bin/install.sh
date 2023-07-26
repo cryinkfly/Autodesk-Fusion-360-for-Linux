@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2023                                                                          #
-# Time/Date:    17:20/31.05.2023                                                                   #
-# Version:      1.8.9                                                                              #
+# Time/Date:    17:50/26.07.2023                                                                   #
+# Version:      1.9.0                                                                              #
 ####################################################################################################
 
 # Path: /$HOME/.fusion360/bin/install.sh
@@ -65,7 +65,7 @@ function SP_STRUCTURE {
   mkdir -p "$SP_PATH/graphics"
   mkdir -p "$SP_PATH/downloads"
   mkdir -p "$SP_PATH/extensions"
-  mkdir -p "$SP_PATH/wineprefixes"
+  mkdir -p "$SP_PATH/wineprefixes/default" # Fixes a bug in the standard installation routine!
   mkdir -p "$SP_PATH/locale/cs-CZ"
   mkdir -p "$SP_PATH/locale/de-DE"
   mkdir -p "$SP_PATH/locale/en-US"
@@ -1018,12 +1018,12 @@ elif [[ $SP_OS = "Linux Mint 20.x" ]]; then
 elif [[ $SP_OS = "Linux Mint 21.x" ]]; then
     echo "Linux Mint 21.x"
     DEBIAN_BASED_1
-    OS_UBUNTU_22
-    DEBIAN_BASED_2
-elif [[ $SP_OS = "Linux Mint 22.x" ]]; then
-    echo "Linux Mint 22.x"
-    DEBIAN_BASED_1
     OS_UBUNTU_23
+    DEBIAN_BASED_2
+elif [[ $SP_OS = "Linux Mint 5.x - LMDE Version" ]]; then
+    echo "Linux Mint 21.x"
+    DEBIAN_BASED_1
+    OS_DEBIAN_11
     DEBIAN_BASED_2
 elif [[ $SP_OS = "Manjaro Linux" ]]; then
     echo "Manjaro Linux"
