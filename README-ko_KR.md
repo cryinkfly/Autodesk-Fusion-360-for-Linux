@@ -317,8 +317,10 @@
     mkdir -p "$HOME/.fusion360/bin" && cd "$HOME/.fusion360/bin" && wget -N https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/install.sh && chmod +x install.sh && ./install.sh
 </br>
 
-🔹 현재, Linux용 Fusion 360은 작동하지 않습니다. Autodesk는 Fusion 360에 로그인하기 위해 브라우저를 열도록 요구하지만, 이 문제에 대한 해결책은 아직 없습니다. 문제를 연구하고 해결책을 개발하는 동안 양해 부탁드립니다. 한편, 브라우저 로그인이 필요하지 않은 이전 버전의 Fusion 360으로 Linux용 Fusion 360을 설치하려면 이 명령을 사용할 수 있습니다:
-</br></br>
+<del>🔹 현재, Linux용 Fusion 360은 작동하지 않습니다. Autodesk는 Fusion 360에 로그인하기 위해 브라우저를 열도록 요구하지만, 이 문제에 대한 해결책은 아직 없습니다. 문제를 연구하고 해결책을 개발하는 동안 양해 부탁드립니다. 한편, 브라우저 로그인이 필요하지 않은 이전 버전의 Fusion 360으로 Linux용 Fusion 360을 설치하려면 이 명령을 사용할 수 있습니다:</del>
+</br>
+
+-> 이 버그가 수정되었습니다!
 
     mkdir -p "$HOME/.fusion360/bin" && cd "$HOME/.fusion360/bin" && wget -N https://raw.githubusercontent.com/alextrical/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/install.sh && chmod +x install.sh && ./install.sh
 </br>
@@ -440,9 +442,9 @@
 
 <div id="fusion360-contribute" align="center">
 <h2>📮 기여하시겠습니까?</h2>
- 코드 형식뿐만 아니라 <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/wiki/Documentation" 측면에서도 모든 종류의 기여를 환영합니다. >공식 문서</a>, <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/issues">버그 추적기</a>의 디버깅 도움말, 기타 지원 GitHub의 <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/discussions">토론 섹션</a> 또는 게시된 동영상의 댓글 섹션에 있는 사용자 내 <a href="https://www.youtube.com/channel/UCJO-EOBPtlVv5OycHkFPcRg">공식 YouTube 채널</a> 및 <a href="https://github.com/sponsors/cryinkfly"> 재정적으로</a>.
+ 코드 형식뿐만 아니라 <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/wiki/Documentation" 측면에서도 모든 종류의 기여를 환영합니다. >공식 문서</a>, <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/issues">버그 추적기</a>의 디버깅 도움말, 기타 지원 GitHub의 <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/discussions">토론 섹션</a> 또는 게시된 동영상의 댓글 섹션에 있는 사용자 내 <a href="https://www.youtube.com/channel/UCJO-EOBPtlVv5OycHkFPcRg">공식 YouTube 채널</a> 및 <a href="https://cryinkfly.com/sponsoring/"> 재정적으로</a>.
 </br></br>
-이 프로젝트나 문서에 대해 잘못된 점이 있다고 생각되면 어떤 식으로든 <a href="https://cryinkfly.com/become-partners/">도와주세요</a> 그것에 대해 불평하는 것보다 낫습니다. 이것은 결국 오픈 소스 프로젝트입니다! 🎈
+이 프로젝트나 문서에 대해 잘못된 점이 있다고 생각되면 어떤 식으로든 <a href="https://cryinkfly.com/sponsoring/">도와주세요</a> 그것에 대해 불평하는 것보다 낫습니다. 이것은 결국 오픈 소스 프로젝트입니다! 🎈
  </br></br>
  <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/.github/CODE_OF_CONDUCT.md">기여자 서약 행동 강령</a>도 있습니다. , 추가 정보도 제공합니다. 📚
    </br></br>
