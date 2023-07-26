@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2022                                                                          #
-# Time/Date:    18:00/26.07.2023                                                                   #
-# Version:      1.6.1                                                                              #
+# Time/Date:    19:00/26.07.2023                                                                   #
+# Version:      1.6.2                                                                              #
 ####################################################################################################
 
 # Path: /$HOME/.fusion360/locale/ja-JP/locale-ja.sh
@@ -60,7 +60,7 @@ SP_LOGFILE_WINEPREFIX_INFO_TOOLTIP_3="システムから現在のWineprefixを�
 SP_OS_TITLE="Linuxディストリビューション-構成"
 SP_OS_LABEL_1="このステップでは、Linuxディストリビューションを選択して、インストールに必要なパッケージをインストールできます。"
 SP_OS_LABEL_2="Linuxディストリビューション："
-SP_OS_SELECT=$(echo "Arch Linux,Debian 10,Debian 11,EndeavourOS,Fedora 35,Fedora 36,Linux Mint 19.x,Linux Mint 20.x,Linux Mint 21.x,Linux Mint 5.x - LMDE Version,Manjaro Linux,openSUSE Leap 15.3,openSUSE Leap 15.4,openSUSE Tumbleweed,Red Hat Enterprise Linux 8.x,Red Hat Enterprise Linux 9.x,Solus,Ubuntu 18.04,Ubuntu 20.04,Ubuntu 22.04,Ubuntu 23.04,Void Linux,Gentoo Linux")
+SP_OS_SELECT=$(echo "Arch Linux,Debian 11,Debian 12, Debian Testing,EndeavourOS,Fedora 37,Fedora 38,Fedora Rawhide,Linux Mint 20.x,Linux Mint 21.x,Linux Mint 5.x - LMDE Version,Manjaro Linux,openSUSE Leap 15.4,openSUSE Leap 15.5,openSUSE Tumbleweed,Red Hat Enterprise Linux 8.x,Red Hat Enterprise Linux 9.x,Solus,Ubuntu 20.04,Ubuntu 22.04,Ubuntu 23.04,Void Linux,Gentoo Linux")
 
 ###############################################################################################################################################################
 
