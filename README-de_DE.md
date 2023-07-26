@@ -442,9 +442,9 @@
 
 <div id="fusion360-contribute" align="center">
 <h2>📮 Möchtest du etwas beitragen?</h2>
- Beiträge aller Art sind willkommen, nicht nur in Form von Code, sondern auch in Bezug auf die <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/wiki/Documentation" >offizielle Dokumentation</a>, Debugging-Hilfe im <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/issues">Bug-Tracker</a>, Unterstützung durch andere Benutzer im <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/discussions">Diskussionsbereich</a> hier auf GitHub oder im Kommentarbereich meiner veröffentlichten Videos auf meinem <a href="https://www.youtube.com/channel/UCJO-EOBPtlVv5OycHkFPcRg">offiziellen YouTube-Kanal</a> und auch <a href="https://github.com/sponsors/cryinkfly"> finanziell</a>.
+ Beiträge aller Art sind willkommen, nicht nur in Form von Code, sondern auch in Bezug auf die <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/wiki/Documentation" >offizielle Dokumentation</a>, Debugging-Hilfe im <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/issues">Bug-Tracker</a>, Unterstützung durch andere Benutzer im <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/discussions">Diskussionsbereich</a> hier auf GitHub oder im Kommentarbereich meiner veröffentlichten Videos auf meinem <a href="https://www.youtube.com/channel/UCJO-EOBPtlVv5OycHkFPcRg">offiziellen YouTube-Kanal</a> und auch <a href="https://cryinkfly.com/sponsoring/"> finanziell</a>.
 </br></br>
-Wenn Sie der Meinung sind, dass etwas an diesem Projekt oder seiner Dokumentation schlecht ist, <a href="https://cryinkfly.com/become-partners/">helfen Sie bitte</a> in irgendeiner Weise, als sich darüber zu beschweren - schließlich ist dies ein Open-Source-Projekt! 🎈
+Wenn Sie der Meinung sind, dass etwas an diesem Projekt oder seiner Dokumentation schlecht ist, <a href="https://cryinkfly.com/sponsoring/">helfen Sie bitte</a> in irgendeiner Weise, als sich darüber zu beschweren - schließlich ist dies ein Open-Source-Projekt! 🎈
  </br></br>
  Es gibt auch einen <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/.github/CODE_OF_CONDUCT.md">Verhaltenskodex für Beitragende</a>, die auch zusätzliche Informationen enthält. 📚
    </br></br>
