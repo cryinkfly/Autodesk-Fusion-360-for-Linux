@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2023                                                                          #
-# Time/Date:    17:50/26.07.2023                                                                   #
+# Time/Date:    18:00/26.07.2023                                                                   #
 # Version:      1.9.0                                                                              #
 ####################################################################################################
 
@@ -1021,7 +1021,7 @@ elif [[ $SP_OS = "Linux Mint 21.x" ]]; then
     OS_UBUNTU_23
     DEBIAN_BASED_2
 elif [[ $SP_OS = "Linux Mint 5.x - LMDE Version" ]]; then
-    echo "Linux Mint 21.x"
+    echo "Linux Mint 5.x - LMDE Version"
     DEBIAN_BASED_1
     OS_DEBIAN_11
     DEBIAN_BASED_2
