@@ -317,8 +317,10 @@
     mkdir -p "$HOME/.fusion360/bin" && cd "$HOME/.fusion360/bin" && wget -N https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/install.sh && chmod +x install.sh && ./install.sh
 </br>
 
-🔹 Actuellement, Fusion 360 pour Linux est en panne. Autodesk nécessite que votre navigateur ouvre une page pour se connecter à Fusion 360, mais n'a pas encore de solution à ce problème. Veuillez patienter avec nous pendant que nous recherchons et développons une solution. En attendant, vous pouvez utiliser cette commande pour installer Fusion 360 pour Linux avec une ancienne version de Fusion 360 qui ne nécessite pas de connexion au navigateur:
-</br></br>
+<del>🔹 Actuellement, Fusion 360 pour Linux est en panne. Autodesk nécessite que votre navigateur ouvre une page pour se connecter à Fusion 360, mais n'a pas encore de solution à ce problème. Veuillez patienter avec nous pendant que nous recherchons et développons une solution. En attendant, vous pouvez utiliser cette commande pour installer Fusion 360 pour Linux avec une ancienne version de Fusion 360 qui ne nécessite pas de connexion au navigateur:</del>
+</br>
+
+-> Ce bug a été corrigé!
 
     mkdir -p "$HOME/.fusion360/bin" && cd "$HOME/.fusion360/bin" && wget -N https://raw.githubusercontent.com/alextrical/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/install.sh && chmod +x install.sh && ./install.sh
 </br>
@@ -440,9 +442,9 @@
 
 <div id="fusion360-contribute" align="center">
 <h2>📮 Souhaitez-vous contribuer ?</h2>
- Les contributions de toutes sortes sont les bienvenues, non seulement sous forme de code, mais aussi en termes de <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/wiki/Documentation" >documentation officielle</a>, aide au débogage dans le <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/issues">bogue tracker</a>, prise en charge d'autres utilisateurs dans la <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/discussions">section de discussion</a> ici sur GitHub ou dans la section des commentaires de mes vidéos publiées sur ma <a href="https://www.youtube.com/channel/UCJO-EOBPtlVv5OycHkFPcRg">chaîne YouTube officielle</a> et aussi <a href="https://github.com/sponsors/cryinkfly"> financièrement</a>.
+ Les contributions de toutes sortes sont les bienvenues, non seulement sous forme de code, mais aussi en termes de <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/wiki/Documentation" >documentation officielle</a>, aide au débogage dans le <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/issues">bogue tracker</a>, prise en charge d'autres utilisateurs dans la <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/discussions">section de discussion</a> ici sur GitHub ou dans la section des commentaires de mes vidéos publiées sur ma <a href="https://www.youtube.com/channel/UCJO-EOBPtlVv5OycHkFPcRg">chaîne YouTube officielle</a> et aussi <a href="https://cryinkfly.com/sponsoring/"> financièrement</a>.
 </br></br>
-Si vous pensez que quelque chose ne va pas avec ce projet ou sa documentation, veuillez <a href="https://cryinkfly.com/become-partners/">aider</a> de quelque manière que ce soit à faire c'est mieux au lieu de simplement s'en plaindre - c'est un projet open source après tout ! 🎈
+Si vous pensez que quelque chose ne va pas avec ce projet ou sa documentation, veuillez <a href="https://cryinkfly.com/sponsoring/">aider</a> de quelque manière que ce soit à faire c'est mieux au lieu de simplement s'en plaindre - c'est un projet open source après tout ! 🎈
  </br></br>
  Il existe également un <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/.github/CODE_OF_CONDUCT.md">Code de conduite de l'engagement des contributeurs</a> , qui fournit également des informations supplémentaires. 📚
    </br></br>
