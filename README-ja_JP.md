@@ -317,8 +317,10 @@
     mkdir -p "$HOME/.fusion360/bin" && cd "$HOME/.fusion360/bin" && wget -N https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/install.sh && chmod +x install.sh && ./install.sh
 </br>
 
-🔹 現在、Linux 用の Fusion 360 は壊れています。 Autodesk では、ブラウザで Fusion 360 にログインするページを開く必要がありますが、この問題の解決策はまだありません。解決策を研究および開発していますので、しばらくお待ちください。それまでの間、次のコマンドを使用して、ブラウザ サインインを必要としない古いバージョンの Fusion 360 で Linux 用の Fusion 360 をインストールできます。
-</br></br>
+<del>🔹 現在、Linux 用の Fusion 360 は壊れています。 Autodesk では、ブラウザで Fusion 360 にログインするページを開く必要がありますが、この問題の解決策はまだありません。解決策を研究および開発していますので、しばらくお待ちください。それまでの間、次のコマンドを使用して、ブラウザ サインインを必要としない古いバージョンの Fusion 360 で Linux 用の Fusion 360 をインストールできます。</del>
+</br>
+
+-> このバグは修正されました!
 
     mkdir -p "$HOME/.fusion360/bin" && cd "$HOME/.fusion360/bin" && wget -N https://raw.githubusercontent.com/alextrical/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/install.sh && chmod +x install.sh && ./install.sh
 </br>
@@ -440,9 +442,9 @@
 
 <div id = "fusion360-contribute" align="center">
 <h2>📮貢献しますか？</h2>
- コード形式だけでなく、<a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/wiki/Documentation">の観点からも、あらゆる種類の貢献を歓迎します。 >公式ドキュメント</a>、<a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/issues">バグトラッカー</a>のデバッグヘルプ、他からのサポートここGitHubの<a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/discussions">ディスカッションセクション</a>または上の公開ビデオのコメントセクションのユーザー私の<a href="https://www.youtube.com/channel/UCJO-EOBPtlVv5OycHkFPcRg">公式YouTubeチャンネル</a>と<a href="https://github.com/sponsors/cryinkfly">財政的に</a>。
+ コード形式だけでなく、<a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/wiki/Documentation">の観点からも、あらゆる種類の貢献を歓迎します。 >公式ドキュメント</a>、<a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/issues">バグトラッカー</a>のデバッグヘルプ、他からのサポートここGitHubの<a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/discussions">ディスカッションセクション</a>または上の公開ビデオのコメントセクションのユーザー私の<a href="https://www.youtube.com/channel/UCJO-EOBPtlVv5OycHkFPcRg">公式YouTubeチャンネル</a>と<a href="https://cryinkfly.com/sponsoring/">財政的に</a>。
 </br> </br>
-このプロジェクトまたはそのドキュメントに問題があると思われる場合は、何らかの方法で<a href="https://cryinkfly.com/become-partners/">ヘルプ</a>を作成してください。ただ文句を言うよりはましです-これは結局のところオープンソースプロジェクトです！ 🎈
+このプロジェクトまたはそのドキュメントに問題があると思われる場合は、何らかの方法で<a href="https://cryinkfly.com/sponsoring/">ヘルプ</a>を作成してください。ただ文句を言うよりはましです-これは結局のところオープンソースプロジェクトです！ 🎈
  </br> </br>
  <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/.github/CODE_OF_CONDUCT.md">寄稿者規約行動規範</a>もあります。 、追加情報も提供します。 📚
    </br></br>
