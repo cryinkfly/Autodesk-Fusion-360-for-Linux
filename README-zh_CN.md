@@ -317,8 +317,10 @@
     mkdir -p "$HOME/.fusion360/bin" && cd "$HOME/.fusion360/bin" && wget -N https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/install.sh && chmod +x install.sh && ./install.sh
 </br>
 
-🔹 目前，适用于 Linux 的 Fusion 360 已损坏。 Autodesk 需要您的浏览器打开一个页面才能登录 Fusion 360，但目前还没有针对此问题的解决方案。请耐心等待我们研究和开发解决方案。同时，您可以使用此命令安装适用于 Linux 的 Fusion 360 以及不需要浏览器登录的旧版本 Fusion 360:
-</br></br>
+<del>🔹 目前，适用于 Linux 的 Fusion 360 已损坏。 Autodesk 需要您的浏览器打开一个页面才能登录 Fusion 360，但目前还没有针对此问题的解决方案。请耐心等待我们研究和开发解决方案。同时，您可以使用此命令安装适用于 Linux 的 Fusion 360 以及不需要浏览器登录的旧版本 Fusion 360:</del>
+</br>
+
+-> 此错误已修复！
 
     mkdir -p "$HOME/.fusion360/bin" && cd "$HOME/.fusion360/bin" && wget -N https://raw.githubusercontent.com/alextrical/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/install.sh && chmod +x install.sh && ./install.sh
 </br>
@@ -440,9 +442,9 @@
 
 <div id="fusion360-contribute" align="center">
 <h2>📮 你愿意投稿吗？</h2>
- 欢迎各种形式的贡献，不仅是代码形式，还包括 <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/wiki/Documentation" >官方文档</a>，<a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/issues">bug tracker</a>中的调试帮助，来自其他方面的支持GitHub 上 <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/discussions">讨论部分</a> 或我发布的视频的评论部分中的用户我的 <a href="https://www.youtube.com/channel/UCJO-EOBPtlVv5OycHkFPcRg">官方 YouTube 频道</a> 以及 <a href="https://github.com/sponsors/cryinkfly">经济上</a>。
+ 欢迎各种形式的贡献，不仅是代码形式，还包括 <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/wiki/Documentation" >官方文档</a>，<a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/issues">bug tracker</a>中的调试帮助，来自其他方面的支持GitHub 上 <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/discussions">讨论部分</a> 或我发布的视频的评论部分中的用户我的 <a href="https://www.youtube.com/channel/UCJO-EOBPtlVv5OycHkFPcRg">官方 YouTube 频道</a> 以及 <a href="https://cryinkfly.com/sponsoring/">经济上</a>。
 </br></br>
-如果您认为此项目或其文档有问题，请以任何方式<a href="https://cryinkfly.com/become-partners/">帮助</a>最好不要仅仅抱怨它——毕竟这是一个开源项目！ 🎈
+如果您认为此项目或其文档有问题，请以任何方式<a href="https://cryinkfly.com/sponsoring/">帮助</a>最好不要仅仅抱怨它——毕竟这是一个开源项目！ 🎈
  </br></br>
  还有一个<a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/.github/CODE_OF_CONDUCT.md">贡献者契约行为准则</a> ，它还提供了其他信息。 📚
    </br></br>
