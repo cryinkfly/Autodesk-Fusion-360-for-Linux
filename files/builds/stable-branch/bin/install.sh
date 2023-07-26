@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2023                                                                          #
-# Time/Date:    18:00/26.07.2023                                                                   #
-# Version:      1.9.0                                                                              #
+# Time/Date:    19:00/26.07.2023                                                                   #
+# Version:      1.9.1                                                                              #
 ####################################################################################################
 
 # Path: /$HOME/.fusion360/bin/install.sh
@@ -524,22 +524,22 @@ function DEBIAN_BASED_2 {
   SP_FUSION360_INSTALL
 }
 
-function OS_DEBIAN_10 {
-  sudo apt-add-repository -r 'deb https://dl.winehq.org/wine-builds/debian/ buster main'
-  wget -q https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/Debian_10//Release.key -O Release.key -O- | sudo apt-key add -
-  sudo apt-add-repository 'deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/Debian_10/ ./'
-}
-
 function OS_DEBIAN_11 {
   sudo apt-add-repository -r 'deb https://dl.winehq.org/wine-builds/debian/ bullseye main'
   wget -q https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/Debian_11//Release.key -O Release.key -O- | sudo apt-key add -
   sudo apt-add-repository 'deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/Debian_11/ ./'
 }
 
-function OS_UBUNTU_18 {
-  sudo apt-add-repository -r 'deb https://dl.winehq.org/wine-builds/ubuntu/ bionic main'
-  wget -q https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_18.04/Release.key -O Release.key -O- | sudo apt-key add -
-  sudo apt-add-repository 'deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_18.04/ ./'
+function OS_DEBIAN_12 {
+  sudo apt-add-repository -r 'deb https://dl.winehq.org/wine-builds/debian/ bookworm main'
+  wget -q https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/Debian_12//Release.key -O Release.key -O- | sudo apt-key add -
+  sudo apt-add-repository 'deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/Debian_12/ ./'
+}
+
+function OS_DEBIAN_TESTING {
+  sudo apt-add-repository -r 'deb https://dl.winehq.org/wine-builds/debian/ testing main'
+  wget -q https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/Debian_Testing_standard//Release.key -O Release.key -O- | sudo apt-key add -
+  sudo apt-add-repository 'deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/Debian_Testing_standard/ ./'
 }
 
 function OS_UBUNTU_20 {
@@ -549,13 +549,13 @@ function OS_UBUNTU_20 {
 }
 
 function OS_UBUNTU_22 {
-  sudo add-apt-repository -r 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main'
+  sudo add-apt-repository -r 'deb https://dl.winehq.org/wine-builds/ubuntu/ jammy main'
   wget -q https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_22.04/Release.key -O Release.key -O- | sudo apt-key add -
   sudo apt-add-repository 'deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_22.04/ ./'
 }
 
 function OS_UBUNTU_23 {
-  sudo add-apt-repository -r 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main'
+  sudo add-apt-repository -r 'deb https://dl.winehq.org/wine-builds/ubuntu/ lunar main'
   wget -q https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_23.04/Release.key -O Release.key -O- | sudo apt-key add -
   sudo apt-add-repository 'deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_23.04/ ./'
 }
@@ -573,24 +573,28 @@ function FEDORA_BASED_2 {
   SP_FUSION360_INSTALL
 }
 
-function OS_FEDORA_35 {
-  sudo dnf config-manager --add-repo https://download.opensuse.org/repositories/Emulators:/Wine:/Fedora/Fedora_35/Emulators:Wine:Fedora.repo
+function OS_FEDORA_37 {
+  sudo dnf config-manager --add-repo https://download.opensuse.org/repositories/Emulators:/Wine:/Fedora/Fedora_37/Emulators:Wine:Fedora.repo
 }
 
-function OS_FEDORA_36 {
-  sudo dnf config-manager --add-repo https://download.opensuse.org/repositories/Emulators:/Wine:/Fedora/Fedora_36/Emulators:Wine:Fedora.repo
+function OS_FEDORA_38 {
+  sudo dnf config-manager --add-repo https://download.opensuse.org/repositories/Emulators:/Wine:/Fedora/Fedora_38/Emulators:Wine:Fedora.repo
+}
+
+function OS_FEDORA_RAWHIDE {
+  sudo dnf config-manager --add-repo https://download.opensuse.org/repositories/Emulators:/Wine:/Fedora/Fedora_Rawhide/Emulators:Wine:Fedora.repo
 }
 
 ###############################################################################################################################################################
 
-function OS_OPENSUSE_153 {
-  pkexec su -c 'zypper up && zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.3/ wine && zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.3/ wine && zypper install p7zip-full curl wget wine cabextract'
+function OS_OPENSUSE_154 {
+  pkexec su -c 'zypper up && zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.4/ wine && zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.4/ wine && zypper install p7zip-full curl wget wine cabextract'
   SP_FUSION360_INSTALL
 }
 
 # Has not been published yet!
-function OS_OPENSUSE_154 {
-  pkexec su -c 'zypper up && zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.4/ wine && zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.4/ wine && zypper install p7zip-full curl wget wine cabextract'
+function OS_OPENSUSE_155 {
+  pkexec su -c 'zypper up && zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.5/ wine && zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.5/ wine && zypper install p7zip-full curl wget wine cabextract'
   SP_FUSION360_INSTALL
 }
 
@@ -982,34 +986,39 @@ SP_OS=$(yad --title="$SP_TITLE" \
 if [[ $SP_OS = "Arch Linux" ]]; then
     echo "Arch Linux"
     OS_ARCHLINUX
-elif [[ $SP_OS = "Debian 10" ]]; then
-    echo "Debian 10"
-    DEBIAN_BASED_1
-    OS_DEBIAN_10
-    DEBIAN_BASED_2
 elif [[ $SP_OS = "Debian 11" ]]; then
     echo "Debian 11"
     DEBIAN_BASED_1
     OS_DEBIAN_11
     DEBIAN_BASED_2
+elif [[ $SP_OS = "Debian 12" ]]; then
+    echo "Debian 12"
+    DEBIAN_BASED_1
+    OS_DEBIAN_12
+    DEBIAN_BASED_2
+elif [[ $SP_OS = "Debian Testing" ]]; then
+    echo "Debian Testing"
+    DEBIAN_BASED_1
+    OS_DEBIAN_TESTING
+    DEBIAN_BASED_2
 elif [[ $SP_OS = "EndeavourOS" ]]; then
     echo "EndeavourOS"
     OS_ARCHLINUX
-elif [[ $SP_OS = "Fedora 35" ]]; then
-    echo "Fedora 35"
+elif [[ $SP_OS = "Fedora 37" ]]; then
+    echo "Fedora 37"
     FEDORA_BASED_1
-    OS_FEDORA_35
+    OS_FEDORA_37
     FEDORA_BASED_2
-elif [[ $SP_OS = "Fedora 36" ]]; then
-    echo "Fedora 36"
+elif [[ $SP_OS = "Fedora 38" ]]; then
+    echo "Fedora 38"
     FEDORA_BASED_1
-    OS_FEDORA_36
+    OS_FEDORA_38
     FEDORA_BASED_2
-elif [[ $SP_OS = "Linux Mint 19.x" ]]; then
-    echo "Linux Mint 19.x"
-    DEBIAN_BASED_1
-    OS_UBUNTU_18
-    DEBIAN_BASED_2
+elif [[ $SP_OS = "Fedora Rawhide" ]]; then
+    echo "Fedora Rawhide"
+    FEDORA_BASED_1
+    OS_FEDORA_RAWHIDE
+    FEDORA_BASED_2
 elif [[ $SP_OS = "Linux Mint 20.x" ]]; then
     echo "Linux Mint 20.x"
     DEBIAN_BASED_1
@@ -1028,12 +1037,12 @@ elif [[ $SP_OS = "Linux Mint 5.x - LMDE Version" ]]; then
 elif [[ $SP_OS = "Manjaro Linux" ]]; then
     echo "Manjaro Linux"
     OS_ARCHLINUX
-elif [[ $SP_OS = "openSUSE Leap 15.3" ]]; then
-    echo "openSUSE Leap 15.3"
-    OS_OPENSUSE_153
 elif [[ $SP_OS = "openSUSE Leap 15.4" ]]; then
     echo "openSUSE Leap 15.4"
     OS_OPENSUSE_154
+elif [[ $SP_OS = "openSUSE Leap 15.5" ]]; then
+    echo "openSUSE Leap 15.5"
+    OS_OPENSUSE_155
 elif [[ $SP_OS = "openSUSE Tumbleweed" ]]; then
     echo "openSUSE Tumbleweed"
     OS_OPENSUSE_TW
