@@ -204,21 +204,22 @@
      <u>Linux-Distributionen</u>
       <ul>
        <li><p>Arch Linux, Manjaro Linux, EndeavourOS, ...</p></li>
-       <li><p>Debian 10, MX Linux 19.4, Raspberry Pi Desktop, ...</p></li>
-       <li><p>Debian 11</p></li>
-       <li><p>Fedora 35</p></li>
-       <li><p>Fedora 36</p></li>
-       <li><p>openSUSE Leap 15.2</p></li>
-       <li><p>openSUSE Leap 15.3</p></li>
-       <li><p>openSUSE Leap 15.4 (demnächst erhältlich!)</p></li>
+       <li><p>Debian 11, Raspberry Pi Desktop, ...</p></li>
+       <li><p>Debian 12</p></li>
+       <li><p>Debian Testing</p></li>
+       <li><p>Fedora 37</p></li>
+       <li><p>Fedora 38</p></li>
+       <li><p>Fedora Rawhide</p></li>
+       <li><p>openSUSE Leap 15.4</p></li>
+       <li><p>openSUSE Leap 15.5</p></li>
        <li><p>openSUSE Tumbleweed</p></li>
        <li><p>Red Hat Enterprise Linux 8.x</p></li>
        <li><p>Red Hat Enterprise Linux 9.x</p></li>
-       <li><p>Solus</p></li>
-       <li><p>Ubuntu 18.04, Linux Mint 19.x, ...</p></li>
        <li><p>Ubuntu 20.04, Linux Mint 20.x, Pop!_OS 20.04, ...</p></li>
        <li><p>Ubuntu 22.04, Pop!_OS 22.04, ...</p></li>
-       <li><p>Ungültiges Linux</p></li>
+       <li><p>Ubuntu 23.04, Pop!_OS 23.04, ...</p></li>
+       <li><p>Solus</p></li>
+       <li><p>Void Linux</p></li>
        <li><p>Gentoo Linux</p></li>
       </ul><p><b>Hinweis</b>: Diese Linux-Distributionen werden nicht offiziell von Autodesk unterstützt!</p></td>
     </tr>
