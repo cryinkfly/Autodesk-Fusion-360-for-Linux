@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2023                                                                          #
-# Time/Date:    19:00/26.07.2023                                                                   #
-# Version:      1.9.1                                                                              #
+# Time/Date:    13:30/03.08.2023                                                                   #
+# Version:      1.9.2                                                                              #
 ####################################################################################################
 
 # Path: /$HOME/.fusion360/bin/install.sh
@@ -489,13 +489,13 @@ function OS_ARCHLINUX {
   echo "Checking for multilib..."
   if ARCHLINUX_VERIFY_MULTILIB ; then
     echo "multilib found. Continuing..."
-    pkexec sudo pacman -Sy --needed wine wine-mono wine_gecko winetricks p7zip curl cabextract samba ppp
+    pkexec sudo pacman -Syu --needed wine wine-mono wine_gecko winetricks p7zip curl cabextract samba ppp
     SP_FUSION360_INSTALL
   else
     echo "Enabling multilib..."
     echo "[multilib]" | sudo tee -a /etc/pacman.conf
     echo "Include = /etc/pacman.d/mirrorlist" | sudo tee -a /etc/pacman.conf
-    pkexec sudo pacman -Sy --needed wine wine-mono wine_gecko winetricks p7zip curl cabextract samba ppp
+    pkexec sudo pacman -Syu --needed wine wine-mono wine_gecko winetricks p7zip curl cabextract samba ppp
     SP_FUSION360_INSTALL
   fi
 }
