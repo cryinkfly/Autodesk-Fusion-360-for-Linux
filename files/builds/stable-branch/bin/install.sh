@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2023                                                                          #
-# Time/Date:    13:30/03.08.2023                                                                   #
-# Version:      1.9.2                                                                              #
+# Time/Date:    12:10/23.09.2023                                                                   #
+# Version:      1.9.3                                                                              #
 ####################################################################################################
 
 # Path: /$HOME/.fusion360/bin/install.sh
@@ -42,6 +42,9 @@ SP_FUSION360_CHANGE=0
 REQUIRED_COMMANDS=(
     "yad"
 )
+
+# URL to download Fusion360Installer.exe
+SP_FUSION360_INSTALLER_URL="https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe"
 
 ###############################################################################################################################################################
 
@@ -281,7 +284,7 @@ function SP_FUSION360_INSTALLER_LOAD {
     echo "The Autodesk Fusion 360 installer exist!"
   else
     echo "The Autodesk Fusion 360 installer doesn't exist and will be downloaded for you!"
-    wget https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe -O Fusion360installer.exe
+    wget "$SP_FUSION360_INSTALLER_URL" -O Fusion360installer.exe
     mv "Fusion360installer.exe" "$SP_PATH/downloads/Fusion360installer.exe"
   fi
 }
@@ -474,7 +477,7 @@ function SP_FUSION360_INSTALL {
 }
 
 function SP_FUSION360_REFRESH {
-  wget "$SP_SERVER_21" -O Fusion360installer.exe
+  wget "$SP_FUSION360_INSTALLER_URL" -O Fusion360installer.exe
   mv "Fusion360installer.exe" "$SP_PATH/downloads/Fusion360installer.exe"
   rmdir "$WP_WINEPREFIXES_REFRESH/drive_c/users/$USER/Downloads/Fusion360installer.exe"
   cp "$SP_PATH/downloads/Fusion360installer.exe" "$WP_WINEPREFIXES_REFRESH/drive_c/users/$USER/Downloads"
@@ -854,8 +857,8 @@ if [[ $ret -eq 1 ]]; then
     SP_INSTALLDIR
 elif [[ $ret -eq 2 ]]; then
     # Get informations about the current wineprefix - Repair
-    WP_WINEPREFIXES_STRING=$(yad --height=300 --separator="" --list --radiolist --column="$SELECT" --column="$WINEPREFIXES_TYPE" --column="$WINEPREFIXES_DRIVER" --column="$WINEPREFIXES_DIRECTORY" < /tmp/fusion360/logs/wineprefixes.log)
-    WP_WINEPREFIXES_REFRESH=${WP_WINEPREFIXES_STRING/#TRUE}
+    WP_WINEPREFIXES_STRING=$(yad --height=300 --separator="|" --list --radiolist --column="$SELECT" --column="$WINEPREFIXES_TYPE" --column="$WINEPREFIXES_DRIVER" --column="$WINEPREFIXES_DIRECTORY" < /tmp/fusion360/logs/wineprefixes.log)
+    WP_WINEPREFIXES_REFRESH=$(echo "$WP_WINEPREFIXES_STRING" | awk -F'|' '{print $4}')
     SP_FUSION360_REFRESH
 elif [[ $ret -eq 3 ]]; then
     # Get informations about the current wineprefix - Delete
