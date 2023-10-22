@@ -284,7 +284,7 @@ function SP_FUSION360_INSTALLER_LOAD {
     echo "The Autodesk Fusion 360 installer exist!"
   else
     echo "The Autodesk Fusion 360 installer doesn't exist and will be downloaded for you!"
-    wget "$SP_FUSION360_INSTALLER_URL" -O Fusion360installer.exe
+    wget "$SP_FUSION360_INSTALLER_URL" -cO Fusion360installer.exe
     mv "Fusion360installer.exe" "$SP_PATH/downloads/Fusion360installer.exe"
   fi
 }
