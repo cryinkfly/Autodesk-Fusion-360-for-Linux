@@ -41,6 +41,7 @@ SP_FUSION360_CHANGE=0
 
 REQUIRED_COMMANDS=(
     "yad"
+    "wget"
 )
 
 # URL to download Fusion360Installer.exe
