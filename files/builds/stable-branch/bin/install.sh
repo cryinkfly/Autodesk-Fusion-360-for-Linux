@@ -41,9 +41,7 @@ SP_FUSION360_CHANGE=0
 
 REQUIRED_COMMANDS=(
     "yad"
-    "wine"
     "wget"
-    "cabextract"
 )
 
 # URL to download Fusion360Installer.exe
