@@ -232,37 +232,48 @@ function SP_LOCALE_ZH {
 
 function SP_LOCALE_SETTINGS {
 SP_LOCALE=$(awk 'NR == 1' /tmp/fusion360/settings.txt)
-if [[ $SP_LOCALE = "Czech" ]]; then
+case "$SP_LOCALE" in
+  "Czech")
     echo "CS"
     SP_LOCALE_CS
-elif [[ $SP_LOCALE = "English" ]]; then
+    ;;
+  "English")
     echo "EN"
     SP_LOCALE_EN
-elif [[ $SP_LOCALE = "German" ]]; then
+    ;;
+  "German")
     echo "DE"
     SP_LOCALE_DE
-elif [[ $SP_LOCALE = "Spanish" ]]; then
+    ;;
+  "Spanish")
     echo "ES"
     SP_LOCALE_ES
-elif [[ $SP_LOCALE = "French" ]]; then
+    ;;
+  "French")
     echo "FR"
     SP_LOCALE_FR
-elif [[ $SP_LOCALE = "Italian" ]]; then
+    ;;
+  "Italian")
     echo "IT"
     SP_LOCALE_IT
-elif [[ $SP_LOCALE = "Japanese" ]]; then
+    ;;
+  "Japanese")
     echo "JP"
-    SP_LOCALE_JA
-elif [[ $SP_LOCALE = "Korean" ]]; then
+    SP_LOCALE_JP
+    ;;
+  "Korean")
     echo "KO"
     SP_LOCALE_KO
-elif [[ $SP_LOCALE = "Chinese" ]]; then
+    ;;
+  "Chinese")
     echo "ZH"
     SP_LOCALE_ZH
-else
-   echo "EN"
-   SP_LOCALE_EN
-fi
+    ;;
+  *)
+    echo "EN"
+    SP_LOCALE_EN
+    ;;
+esac
 }
 
 ###############################################################################################################################################################
@@ -772,17 +783,21 @@ yad \
 ret=$?
 
 # Responses to above button presses are below:
-if [[ $ret -eq 1 ]]; then
+case $ret in
+  1)
     xdg-open https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux
     SP_WELCOME
-elif [[ $ret -eq 2 ]]; then
+    ;;
+  2)
     SP_SETTINGS
     SP_LOCALE_SETTINGS
     SP_DRIVER_SETTINGS
     SP_WELCOME
-elif [[ $ret -eq 3 ]]; then
+    ;;
+  3)
     SP_LICENSE
-fi
+    ;;
+esac
 }
 
 ###############################################################################################################################################################
@@ -854,18 +869,22 @@ yad \
 ret=$?
 
 # Responses to above button presses are below:
-if [[ $ret -eq 1 ]]; then
+case $ret in
+  1)
     SP_INSTALLDIR
-elif [[ $ret -eq 2 ]]; then
+    ;;
+  2)
     # Get informations about the current wineprefix - Repair
     WP_WINEPREFIXES_STRING=$(yad --height=300 --separator="|" --list --radiolist --column="$SELECT" --column="$WINEPREFIXES_TYPE" --column="$WINEPREFIXES_DRIVER" --column="$WINEPREFIXES_DIRECTORY" < /tmp/fusion360/logs/wineprefixes.log)
     WP_WINEPREFIXES_REFRESH=$(echo "$WP_WINEPREFIXES_STRING" | awk -F'|' '{print $4}')
     SP_FUSION360_REFRESH
-elif [[ $ret -eq 3 ]]; then
+    ;;
+  3)
     # Get informations about the current wineprefix - Delete
     # shellcheck source=./uninstall.sh
     source "$SP_PATH/bin/uninstall.sh"
-fi
+    ;;
+esac
 }
 
 ###############################################################################################################################################################
@@ -930,46 +949,58 @@ WINE_VERSION=$(yad --title="$SP_TITLE" \
 --field="<b>$SP_WINE_SETTINGS_LABEL_3</b>:LBL" \
 "" "" "" "$SP_WINE_VERSION_SELECT" "" )
 
-# Czech:
-if [[ $WINE_VERSION = "Verze vína (Staging)" ]]; then
+
+case "$WINE_VERSION" in
+  # Czech:
+  "Verze vína (Staging)")
     echo "Install Wine on your system!"
     SP_OS_SETTINGS
-# German:
-elif [[ $WINE_VERSION = "Wine Version (Entwicklungsversion)" ]]; then
+    ;;
+  # German:      
+  "Wine Version (Entwicklungsversion)")
     echo "Install Wine on your system!"
     SP_OS_SETTINGS
-# English:
-elif [[ $WINE_VERSION = "Wine Version (Staging)" ]]; then
+    ;;
+  # English:
+  "Wine Version (Staging)")
     echo "Install Wine on your system!"
     SP_OS_SETTINGS
-# Spanish:
-elif [[ $WINE_VERSION = "Versión Vino (Puesta en Escena)" ]]; then
+    ;;
+  # Spanish:
+  "Versión Vino (Puesta en Escena)")
     echo "Install Wine on your system!"
     SP_OS_SETTINGS
-# French:
-elif [[ $WINE_VERSION = "Version Vin (Mise en scène)" ]]; then
+    ;;
+  # French:
+  "Version Vin (Mise en scène)")
     echo "Install Wine on your system!"
     SP_OS_SETTINGS
-# Italian:
-elif [[ $WINE_VERSION = "Versione vino (messa in scena)" ]]; then
+    ;;
+  # Italian
+  "Versione vino (messa in scena)")
     echo "Install Wine on your system!"
     SP_OS_SETTINGS
-# Japanese:
-elif [[ $WINE_VERSION = "ワインバージョン（ステージング）" ]]; then
+    ;;
+  # Japanese:
+  "ワインバージョン（ステージング）")
     echo "Install Wine on your system!"
     SP_OS_SETTINGS
-# Korean:
-elif [[ $WINE_VERSION = "와인 버전(스테이징)" ]]; then
+    ;;
+  # Korean:
+  "와인 버전(스테이징)")
     echo "Install Wine on your system!"
     SP_OS_SETTINGS
-# Chinese:
-elif [[ $WINE_VERSION = "葡萄酒版（分期）" ]]; then
+    ;;
+  # Chinese:
+  "葡萄酒版（分期）")
     echo "Install Wine on your system!"
     SP_OS_SETTINGS
-else
+    ;;
+  *)
     echo "Wine version (6.23 or higher) is already installed on the system!"
     SP_FUSION360_INSTALL
-fi
+    ;;
+esac
 }
 
 ###############################################################################################################################################################
@@ -987,105 +1018,130 @@ SP_OS=$(yad --title="$SP_TITLE" \
 --field="$SP_OS_LABEL_2:CB" \
 "" "" "" "$SP_OS_SELECT" )
 
-if [[ $SP_OS = "Arch Linux" ]]; then
+case "$SP_OS" in
+  "Arch Linux")
     echo "Arch Linux"
     OS_ARCHLINUX
-elif [[ $SP_OS = "Debian 11" ]]; then
+    ;;
+  "Debian 11")
     echo "Debian 11"
     DEBIAN_BASED_1
     OS_DEBIAN_11
     DEBIAN_BASED_2
-elif [[ $SP_OS = "Debian 12" ]]; then
+    ;;
+  "Debian 12")
     echo "Debian 12"
     DEBIAN_BASED_1
     OS_DEBIAN_12
     DEBIAN_BASED_2
-elif [[ $SP_OS = "Debian Testing" ]]; then
+    ;;
+  "Debian Testing")
     echo "Debian Testing"
     DEBIAN_BASED_1
     OS_DEBIAN_TESTING
     DEBIAN_BASED_2
-elif [[ $SP_OS = "EndeavourOS" ]]; then
+    ;;
+  "EndeavourOS")
     echo "EndeavourOS"
     OS_ARCHLINUX
-elif [[ $SP_OS = "Fedora 37" ]]; then
+    ;;
+  "Fedora 37")
     echo "Fedora 37"
     FEDORA_BASED_1
     OS_FEDORA_37
     FEDORA_BASED_2
-elif [[ $SP_OS = "Fedora 38" ]]; then
+    ;;
+  "Fedora 38")
     echo "Fedora 38"
     FEDORA_BASED_1
     OS_FEDORA_38
     FEDORA_BASED_2
-elif [[ $SP_OS = "Fedora Rawhide" ]]; then
+    ;;
+  "Fedora Rawhide")
     echo "Fedora Rawhide"
     FEDORA_BASED_1
     OS_FEDORA_RAWHIDE
     FEDORA_BASED_2
-elif [[ $SP_OS = "Linux Mint 20.x" ]]; then
+    ;;
+  "Linux Mint 20.x")
     echo "Linux Mint 20.x"
     DEBIAN_BASED_1
     OS_UBUNTU_20
     DEBIAN_BASED_2
-elif [[ $SP_OS = "Linux Mint 21.x" ]]; then
+    ;;
+  "Linux Mint 21.x")
     echo "Linux Mint 21.x"
     DEBIAN_BASED_1
     OS_UBUNTU_23
     DEBIAN_BASED_2
-elif [[ $SP_OS = "Linux Mint 5.x - LMDE Version" ]]; then
+    ;;
+  "Linux Mint 5.x - LMDE Version")
     echo "Linux Mint 5.x - LMDE Version"
     DEBIAN_BASED_1
     OS_DEBIAN_11
     DEBIAN_BASED_2
-elif [[ $SP_OS = "Manjaro Linux" ]]; then
+    ;;
+  "Manjaro Linux")
     echo "Manjaro Linux"
     OS_ARCHLINUX
-elif [[ $SP_OS = "openSUSE Leap 15.4" ]]; then
+    ;;
+  "openSUSE Leap 15.4")
     echo "openSUSE Leap 15.4"
     OS_OPENSUSE_154
-elif [[ $SP_OS = "openSUSE Leap 15.5" ]]; then
+    ;;
+  "openSUSE Leap 15.5")
     echo "openSUSE Leap 15.5"
     OS_OPENSUSE_155
-elif [[ $SP_OS = "openSUSE Tumbleweed" ]]; then
+    ;;
+  "openSUSE Tumbleweed")
     echo "openSUSE Tumbleweed"
     OS_OPENSUSE_TW
-elif [[ $SP_OS = "Red Hat Enterprise Linux 8.x" ]]; then
+    ;;
+  "Red Hat Enterprise Linux 8.x")
     echo "Red Hat Enterprise Linux 8.x"
     OS_REDHAT_LINUX_8
-elif [[ $SP_OS = "Red Hat Enterprise Linux 9.x" ]]; then
+    ;;
+  "Red Hat Enterprise Linux 9.x")
     echo "Red Hat Enterprise Linux 9.x"
     OS_REDHAT_LINUX_9
-elif [[ $SP_OS = "Solus" ]]; then
+    ;;
+  "Solus")
     echo "Solus"
     OS_SOLUS_LINUX
-elif [[ $SP_OS = "Ubuntu 18.04" ]]; then
+    ;;
+  "Ubuntu 18.04")
     echo "Ubuntu 18.04"
     DEBIAN_BASED_1
     OS_UBUNTU_18
     DEBIAN_BASED_2
-elif [[ $SP_OS = "Ubuntu 20.04" ]]; then
+    ;;
+  "Ubuntu 20.04")
     echo "Ubuntu 20.04"
     DEBIAN_BASED_1
     OS_UBUNTU_20
     DEBIAN_BASED_2
-elif [[ $SP_OS = "Ubuntu 22.04" ]]; then
+    ;;
+  "Ubuntu 22.04")
     echo "Ubuntu 22.04"
     DEBIAN_BASED_1
     OS_UBUNTU_22
     DEBIAN_BASED_2
-elif [[ $SP_OS = "Ubuntu 23.04" ]]; then
+    ;;
+  "Ubuntu 23.04")
     echo "Ubuntu 23.04"
     DEBIAN_BASED_1
     OS_UBUNTU_23
     DEBIAN_BASED_2
-elif [[ $SP_OS = "Void Linux" ]]; then
+    ;;
+  "Void Linux")
     echo "Void Linux"
     OS_VOID_LINUX
-elif [[ $SP_OS = "Gentoo Linux" ]]; then
+    ;;
+  "Gentoo Linux")
     echo "Gentoo Linux"
     OS_GENTOO_LINUX
-fi
+    ;;
+esac
 }
 
 ###############################################################################################################################################################
