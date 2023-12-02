@@ -282,7 +282,7 @@ esac
 
 # Load the newest winetricks version:
 function SP_WINETRICKS_LOAD {
-  wget -NPc "$SP_PATH/bin" https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks
+  wget -Nc -P "$SP_PATH/bin" https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks
   chmod +x "$SP_PATH/bin/winetricks"
 }
 
@@ -308,7 +308,7 @@ function SP_FUSION360_INSTALLER_LOAD {
 # Load the icons and .desktop-files:
 function SP_FUSION360_SHORTCUTS_LOAD {
   # Create a .desktop file (launcher.sh) for Autodesk Fusion 360!
-  wget -NPc "$SP_PATH/graphics" https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/fusion360.svg
+  wget -Nc -P "$SP_PATH/graphics" https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/fusion360.svg
   rm "$HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk Fusion 360.desktop"
   mkdir -p "$HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE"
   cat >> "$HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop" << EOF
@@ -342,7 +342,7 @@ Path=$WP_DIRECTORY
 EOF
 
   # Create a .desktop file (uninstall.sh) for Autodesk Fusion 360!
-  wget -NPc "$SP_PATH/graphics" https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/fusion360.svg
+  wget -Nc -P "$SP_PATH/graphics" https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/fusion360.svg
   cat >> "$HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop" << EOF
 [Desktop Entry]
 Name=Autodesk Fusion 360 (Uninstall) - $WP_TYPE
@@ -395,7 +395,7 @@ EOF
 function SP_DXVK_OPENGL_1 {
   if [[ $WP_DRIVER = "DXVK" ]]; then
     WINEPREFIX=$WP_DIRECTORY sh "$SP_PATH/bin/winetricks" -q dxvk
-    wget -NPc "$WP_DIRECTORY/drive_c/users/$USER/Downloads" https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/driver/video/dxvk/DXVK.reg
+    wget -Nc -P "$WP_DIRECTORY/drive_c/users/$USER/Downloads" https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/driver/video/dxvk/DXVK.reg
     # Add the "return"-option. Here you can read more about it -> https://github.com/koalaman/shellcheck/issues/592
     cd "$WP_DIRECTORY/drive_c/users/$USER/Downloads" || return
     WINEPREFIX=$WP_DIRECTORY wine regedit.exe DXVK.reg
