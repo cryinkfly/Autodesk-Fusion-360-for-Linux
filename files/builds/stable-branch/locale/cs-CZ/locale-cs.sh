@@ -129,14 +129,14 @@ SP_COMPLETED_CHECK_LABEL="Spusťte Autodesk Fusion 360"
 
 UP_TITLE="Autodesk Fusion 360 pro Linux - Launcher"
 UP_NO_UPDATE_INFO_LABEL="Nebyla nalezena žádná novější verze, takže váš Autodesk fusion 360 je aktuální!"
-UP_SKIP_INFO_LABEL="Aktualizace byla přeskočena! Aktualizujte prosím svou verzi Autodesk Fusion 360 brzy!"
+UP_SKIP_INFO_LABEL="Aktualizace byla přeskočena! Zvažte prosím příště kontrolu aktualizací."
 UP_SKIP_UPDATE_QUESTION_LABEL="Opravdu chcete přeskočit hledání aktualizace Autodesk Fusion 360?"
 
 UP_QUESTION_LABEL="Byla vydána nová verze! Chcete provést aktualizaci?"
 
 UP_NO_CONNECTION_WARNING_LABEL="Připojení k serveru nelze navázat! Kontrola nových aktualizací byla přeskočena! Zkontrolujte prosím své internetové připojení!"
 
-UP_WANT_TO_CHECK_FOR_UPDATES="Would you like to check for updates to Fusion360 before launching?"
+UP_WANT_TO_CHECK_FOR_UPDATES="Chcete před spuštěním zkontrolovat aktualizace Fusion 360?"
 
 UP_INSTALL_UPDATE_PROGRESS_LABEL="Autodesk Fusion 360 bude aktualizován na novější verzi ..."
 

@@ -126,14 +126,14 @@ SP_COMPLETED_CHECK_LABEL="Ejecutar Autodesk Fusion 360"
 
 UP_TITLE="Autodesk Fusion 360 para Linux - Iniciador"
 UP_NO_UPDATE_INFO_LABEL="¡No se encontró una versión más nueva, por lo que su Autodesk fusion 360 está actualizado!"
-UP_SKIP_INFO_LABEL="¡Se omitió la actualización! ¡Actualice su versión de Autodesk Fusion 360 pronto!"
+UP_SKIP_INFO_LABEL="¡Se omitió la actualización! Considere buscar actualizaciones la próxima vez."
 UP_SKIP_UPDATE_QUESTION_LABEL="¿Está seguro de que desea omitir la búsqueda de una actualización de Autodesk Fusion 360?"
 
 UP_QUESTION_LABEL="¡Se ha lanzado una nueva versión! ¿Quiere actualizar ahora?"
 
 UP_NO_CONNECTION_WARNING_LABEL="¡No se pudo establecer la conexión con el servidor! ¡Se ha omitido la búsqueda de nuevas actualizaciones! ¡Compruebe su conexión a Internet!"
 
-UP_WANT_TO_CHECK_FOR_UPDATES="Would you like to check for updates to Fusion360 before launching?"
+UP_WANT_TO_CHECK_FOR_UPDATES="¿Le gustaría buscar actualizaciones de Fusion 360 antes del lanzamiento?"
 
 UP_INSTALL_UPDATE_PROGRESS_LABEL="Autodesk Fusion 360 se actualizará a una versión más reciente ..."
 
