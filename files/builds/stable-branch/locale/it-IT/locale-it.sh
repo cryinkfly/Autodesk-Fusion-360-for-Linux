@@ -136,9 +136,8 @@ UP_QUESTION_LABEL="Una nuova versione è stata rilasciata! Vuoi aggiornare ora?"
 
 UP_NO_CONNECTION_WARNING_LABEL="Impossibile stabilire la connessione al server! Il controllo dei nuovi aggiornamenti è stato saltato! Controlla la tua connessione Internet!"
 
-UP_PROGRESS_LABEL_1="Connessione al server ..."
-UP_PROGRESS_LABEL_2="# Controlla tutti i file .."
-UP_PROGRESS_LABEL_3="# Tutti i file sono stati controllati!"
+UP_WANT_TO_CHECK_FOR_UPDATES="Would you like to check for updates to Fusion360 before launching?"
+
 UP_INSTALL_UPDATE_PROGRESS_LABEL="Autodesk Fusion 360 verrà aggiornato a una versione più recente ..."
 
 ###############################################################################################################################################################

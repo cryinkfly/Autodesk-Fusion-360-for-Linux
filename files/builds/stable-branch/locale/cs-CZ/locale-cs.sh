@@ -136,9 +136,8 @@ UP_QUESTION_LABEL="Byla vydána nová verze! Chcete provést aktualizaci?"
 
 UP_NO_CONNECTION_WARNING_LABEL="Připojení k serveru nelze navázat! Kontrola nových aktualizací byla přeskočena! Zkontrolujte prosím své internetové připojení!"
 
-UP_PROGRESS_LABEL_1="Připojování k serveru ..."
-UP_PROGRESS_LABEL_2="# Zkontrolovat všechny soubory .."
-UP_PROGRESS_LABEL_3="# Všechny soubory jsou zkontrolovány!"
+UP_WANT_TO_CHECK_FOR_UPDATES="Would you like to check for updates to Fusion360 before launching?"
+
 UP_INSTALL_UPDATE_PROGRESS_LABEL="Autodesk Fusion 360 bude aktualizován na novější verzi ..."
 
 ###############################################################################################################################################################

@@ -136,9 +136,8 @@ UP_QUESTION_LABEL="새 버전이 출시되었습니다! 지금 업데이트하�
 
 UP_NO_CONNECTION_WARNING_LABEL="서버에 연결할 수 없습니다! 새 업데이트 확인을 건너뛰었습니다! 인터넷 연결을 확인하십시오!"
 
-UP_PROGRESS_LABEL_1="서버에 연결하는 중..."
-UP_PROGRESS_LABEL_2="# 모든 파일 확인 .."
-UP_PROGRESS_LABEL_3="# 모든 파일을 확인했습니다!"
+UP_WANT_TO_CHECK_FOR_UPDATES="Would you like to check for updates to Fusion360 before launching?"
+
 UP_INSTALL_UPDATE_PROGRESS_LABEL="Autodesk Fusion 360이 최신 버전으로 업데이트됩니다 ..."
 
 ###############################################################################################################################################################

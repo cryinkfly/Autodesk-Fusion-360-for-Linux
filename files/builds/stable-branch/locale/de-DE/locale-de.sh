@@ -136,9 +136,8 @@ UP_QUESTION_LABEL="Eine neue Version wurde veröffentlicht! Möchten Sie jetzt a
 
 UP_NO_CONNECTION_WARNING_LABEL="Die Verbindung zum Server konnte nicht hergestellt werden! Die Suche nach neuen Updates wurde übersprungen! Bitte überprüfen Sie Ihre Internetverbindung!"
 
-UP_PROGRESS_LABEL_1="Verbinde mit dem Server ..."
-UP_PROGRESS_LABEL_2="# Alle Dateien werden geprüft .."
-UP_PROGRESS_LABEL_3="# Alle Dateien wurden geprüft!"
+UP_WANT_TO_CHECK_FOR_UPDATES="Would you like to check for updates to Fusion360 before launching?"
+
 UP_INSTALL_UPDATE_PROGRESS_LABEL="Autodesk Fusion 360 wird auf eine neuere Version aktualisiert ..."
 
 ###############################################################################################################################################################

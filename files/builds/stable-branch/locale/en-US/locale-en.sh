@@ -136,11 +136,12 @@ UP_QUESTION_LABEL="A new version has been released! Do you want to update now?"
 
 UP_NO_CONNECTION_WARNING_LABEL="The connection to the server could not be established! Checking for new updates has been skipped! Please check your internet connection!"
 
+# Added - New question dialog
 UP_WANT_TO_CHECK_FOR_UPDATES="Would you like to check for updates to Fusion360 before launching?"
 
-# UP_PROGRESS_LABEL_1="Connecting to the server ..."
-# UP_PROGRESS_LABEL_2="# Check all files .."
-# UP_PROGRESS_LABEL_3="# All files are checked!"
+# REMOVED - UP_PROGRESS_LABEL_1="Connecting to the server ..."
+# REMOVED - UP_PROGRESS_LABEL_2="# Check all files .."
+# REMOVED - UP_PROGRESS_LABEL_3="# All files are checked!"
 UP_INSTALL_UPDATE_PROGRESS_LABEL="Autodesk Fusion 360 will be updated to a newer version ..."
 
 ###############################################################################################################################################################

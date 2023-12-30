@@ -164,9 +164,8 @@ function UP_QUESTION {
 
 ###############################################################################################################################################################
 
-# A progress bar is displayed here.
+# A question dialog is displayed here.
 function UP_PROGRESS {
-
   yad --image dialog-question --title="$UP_TITLE" --text "$UP_WANT_TO_CHECK_FOR_UPDATES" --text-align=center --button=gtk-no:0 --button=gtk-yes:1
 
   ret=$?

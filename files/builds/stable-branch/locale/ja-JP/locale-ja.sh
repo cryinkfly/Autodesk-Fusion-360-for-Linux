@@ -136,9 +136,8 @@ UP_QUESTION_LABEL="新しいバージョンがリリースされました！今�
 
 UP_NO_CONNECTION_WARNING_LABEL="サーバーへの接続を確立できませんでした！新しい更新の確認はスキップされました！インターネット接続を確認してください！"
 
-UP_PROGRESS_LABEL_1="サーバーに接続しています..."
-UP_PROGRESS_LABEL_2="＃すべてのファイルを確認してください.."
-UP_PROGRESS_LABEL_3="＃すべてのファイルがチェックされます！"
+UP_WANT_TO_CHECK_FOR_UPDATES="Would you like to check for updates to Fusion360 before launching?"
+
 UP_INSTALL_UPDATE_PROGRESS_LABEL="AutodeskFusion360は新しいバージョンに更新されます ..."
 
 ###############################################################################################################################################################

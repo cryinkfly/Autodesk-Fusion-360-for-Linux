@@ -136,9 +136,8 @@ UP_QUESTION_LABEL="新版本已发布！您要立即更新吗？"
 
 UP_NO_CONNECTION_WARNING_LABEL="无法建立与服务器的连接！已跳过检查新更新！请检查您的互联网连接！"
 
-UP_PROGRESS_LABEL_1="正在连接服务器 ..."
-UP_PROGRESS_LABEL_2="# 检查所有文件 ..."
-UP_PROGRESS_LABEL_3="#所有文件都被检查了！"
+UP_WANT_TO_CHECK_FOR_UPDATES="Would you like to check for updates to Fusion360 before launching?"
+
 UP_INSTALL_UPDATE_PROGRESS_LABEL="Autodesk Fusion 360 将更新到更新版本 ..."
 
 ###############################################################################################################################################################
