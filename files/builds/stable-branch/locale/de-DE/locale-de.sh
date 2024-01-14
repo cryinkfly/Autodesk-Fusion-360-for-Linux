@@ -129,16 +129,15 @@ SP_COMPLETED_CHECK_LABEL="Autodesk Fusion 360 ausführen"
 
 UP_TITLE="Autodesk Fusion 360 für Linux – Launcher"
 UP_NO_UPDATE_INFO_LABEL="Es wurde keine neuere Version gefunden, daher ist Ihr Autodesk Fusion 360 auf dem neuesten Stand!"
-UP_SKIP_INFO_LABEL="Das Update wurde übersprungen! Bitte aktualisieren Sie bald Ihre Autodesk Fusion 360 Version!"
+UP_SKIP_INFO_LABEL="Das Update wurde übersprungen! Bitte schauen Sie beim nächsten Mal nach Updates."
 UP_SKIP_UPDATE_QUESTION_LABEL="Sind Sie sicher, dass Sie die Suche nach einem Autodesk Fusion 360 Update überspringen möchten?"
 
 UP_QUESTION_LABEL="Eine neue Version wurde veröffentlicht! Möchten Sie jetzt aktualisieren?"
 
 UP_NO_CONNECTION_WARNING_LABEL="Die Verbindung zum Server konnte nicht hergestellt werden! Die Suche nach neuen Updates wurde übersprungen! Bitte überprüfen Sie Ihre Internetverbindung!"
 
-UP_PROGRESS_LABEL_1="Verbinde mit dem Server ..."
-UP_PROGRESS_LABEL_2="# Alle Dateien werden geprüft .."
-UP_PROGRESS_LABEL_3="# Alle Dateien wurden geprüft!"
+UP_WANT_TO_CHECK_FOR_UPDATES="Möchten Sie vor dem Start nach Updates für Fusion 360 suchen?"
+
 UP_INSTALL_UPDATE_PROGRESS_LABEL="Autodesk Fusion 360 wird auf eine neuere Version aktualisiert ..."
 
 ###############################################################################################################################################################

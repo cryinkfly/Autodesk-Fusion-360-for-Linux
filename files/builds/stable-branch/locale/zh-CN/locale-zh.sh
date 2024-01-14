@@ -129,16 +129,15 @@ SP_COMPLETED_CHECK_LABEL="运行 Autodesk Fusion 360"
 
 UP_TITLE="Autodesk Fusion 360 for Linux - 启动器"
 UP_NO_UPDATE_INFO_LABEL="未找到更新版本，因此您的 Autodesk fusion 360 是最新的！"
-UP_SKIP_INFO_LABEL="已跳过更新！请尽快更新您的 Autodesk Fusion 360 版本！"
+UP_SKIP_INFO_LABEL="更新被跳过！ 请考虑下次检查更新。"
 UP_SKIP_UPDATE_QUESTION_LABEL="您确定要跳过搜索 Autodesk Fusion 360 更新吗？"
 
 UP_QUESTION_LABEL="新版本已发布！您要立即更新吗？"
 
 UP_NO_CONNECTION_WARNING_LABEL="无法建立与服务器的连接！已跳过检查新更新！请检查您的互联网连接！"
 
-UP_PROGRESS_LABEL_1="正在连接服务器 ..."
-UP_PROGRESS_LABEL_2="# 检查所有文件 ..."
-UP_PROGRESS_LABEL_3="#所有文件都被检查了！"
+UP_WANT_TO_CHECK_FOR_UPDATES="您想在启动之前检查 Fusion 360 的更新吗？"
+
 UP_INSTALL_UPDATE_PROGRESS_LABEL="Autodesk Fusion 360 将更新到更新版本 ..."
 
 ###############################################################################################################################################################

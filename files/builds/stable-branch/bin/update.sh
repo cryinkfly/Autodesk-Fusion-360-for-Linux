@@ -126,7 +126,7 @@ function UP_FUSION360_INSTALL_STOP_2 {
 
 # The user get a informationt that no newer version of Autodesk Fusion 360 was found!
 function UP_NO_UPDATE_INFO {
-  yad --title="$UP_TITLE" --text="$UP_NO_UPDATE_INFO_LABEL" --text-align=center
+  yad --image dialog-information --title="$UP_TITLE" --text="$UP_NO_UPDATE_INFO_LABEL" --text-align=center --button=gtk-ok:1
   LAUNCHER_RUN_FUSION360
 }
 
@@ -134,7 +134,7 @@ function UP_NO_UPDATE_INFO {
 
 # The user will be informed that he is skipping the update!
 function UP_SKIP_INFO {
-  yad --title="$UP_TITLE" --text="$UP_SKIP_INFO_LABEL" --text-align=center
+  yad --image dialog-information --title="$UP_TITLE" --text="$UP_SKIP_INFO_LABEL" --text-align=center --button=gtk-ok:1
   LAUNCHER_RUN_FUSION360
 }
 
@@ -142,7 +142,7 @@ function UP_SKIP_INFO {
 
 # The user get a informationt that there is no connection to the server!
 function UP_NO_CONNECTION_WARNING {
-  yad --title="$UP_TITLE" --text="$UP_NO_CONNECTION_WARNING_LABEL" --text-align=center
+  yad --image dialog-warning --title="$UP_TITLE" --text="$UP_NO_CONNECTION_WARNING_LABEL" --text-align=center --button=gtk-ok:1
   LAUNCHER_RUN_FUSION360
 }
 
@@ -150,7 +150,7 @@ function UP_NO_CONNECTION_WARNING {
 
 # The user will be asked if he wants to update or not.
 function UP_QUESTION {
-  yad --title="$UP_TITLE" --text="$UP_QUESTION_LABEL" --text-align=center --button=gtk-cancel:0 --button=gtk-ok:1
+  yad --image dialog-question --title="$UP_TITLE" --text="$UP_QUESTION_LABEL" --text-align=center --button=gtk-no:0 --button=gtk-yes:1
 
   answer=$?
 
@@ -164,17 +164,9 @@ function UP_QUESTION {
 
 ###############################################################################################################################################################
 
-# A progress bar is displayed here.
+# A question dialog is displayed here.
 function UP_PROGRESS {
-  UP_PROGRESS_MAIN () {
-    echo "30" ; sleep 5
-    echo "50" ; sleep 1
-    echo "UP_PROGRESS_LABEL_2" ; sleep 5
-    echo "100" ; sleep 3
-    echo "UP_PROGRESS_LABEL_3" ; sleep 1
-  }
-
-  UP_PROGRESS_MAIN | yad --title="$UP_TITLE" --progress --progress-text "$UP_PROGRESS_LABEL_1" --percentage=0 --button=gtk-cancel:0 --button=gtk-ok:1
+  yad --image dialog-question --title="$UP_TITLE" --text "$UP_WANT_TO_CHECK_FOR_UPDATES" --text-align=center --button=gtk-no:0 --button=gtk-yes:1
 
   ret=$?
 
