@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2024                                                                          #
-# Time/Date:    16:15/03.02.2024                                                                   #
-# Version:      1.9.4                                                                              #
+# Time/Date:    16:00/05.02.2024                                                                   #
+# Version:      1.9.5                                                                              #
 ####################################################################################################
 
 # Path: /$HOME/.fusion360/bin/install.sh
@@ -47,6 +47,9 @@ REQUIRED_COMMANDS=(
 # URL to download Fusion360Installer.exe
 #SP_FUSION360_INSTALLER_URL="https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe" <-- Old Link!!!
 SP_FUSION360_INSTALLER_URL="https://dl.appstreaming.autodesk.com/production/installers/Fusion%20Admin%20Install.exe"
+
+# URL to download Microsoft Edge WebView2.Exec
+SP_WEBVIEW2_INSTALLER_URL="https://github.com/aedancullen/webview2-evergreen-standalone-installer-archive/releases/download/109.0.1518.78/MicrosoftEdgeWebView2RuntimeInstallerX64.exe"
 
 ###############################################################################################################################################################
 
@@ -159,6 +162,20 @@ else
     SP_FUSION360_CHANGE=1
     SP_WINE_SETTINGS
 fi
+}
+
+###############################################################################################################################################################
+
+function SP_CHECK_WINE_VERSION {
+    #Wine version checking, warn user if their wine install is out of date
+    WINE_VERSION="$(wine --version  | cut -d ' ' -f1 | sed -e 's/wine-//' -e 's/-rc.*//')"
+    WINE_VERSION_MINIMUM=8.14
+    if (( $(echo "$WINE_VERSION < $WINE_VERSION_MINIMUM" | bc -l) )); then
+        echo "Your version of wine ${WINE_VERSION} is too old and will not work with Autodesk Fusion. You should upgrade to at least ${WINE_VERSION_MINIMUM}"
+        SP_OS_SETTINGS
+    else
+        SP_FUSION360_INSTALL
+    fi
 }
 
 ###############################################################################################################################################################
@@ -278,7 +295,7 @@ esac
 }
 
 ###############################################################################################################################################################
-# DONWLOAD WINETRICKS AND AUTODESK FUSION 360:                                                                                                                #
+# DONWLOAD WINETRICKS, AUTODESK FUSION 360 AND WEBVIEW2:                                                                                                                #
 ###############################################################################################################################################################
 
 # Load the newest winetricks version:
@@ -299,6 +316,21 @@ function SP_FUSION360_INSTALLER_LOAD {
     echo "The Autodesk Fusion 360 installer doesn't exist and will be downloaded for you!"
     wget "$SP_FUSION360_INSTALLER_URL" -cO Fusion360installer.exe
     mv "Fusion360installer.exe" "$SP_PATH/downloads/Fusion360installer.exe"
+  fi
+}
+
+###############################################################################################################################################################
+
+# Load newest WebView2 installer version for the Setup Wizard!
+function SP_WEBVIEW2_INSTALLER_LOAD {
+  # Search for a existing installer of WEBVIEW2
+  WEBVIEW2_INSTALLER="$SP_PATH/downloads/WebView2installer.exe"
+  if [ -f "WEBVIEW2_INSTALLER" ]; then
+    echo "The WebView2installer installer exist!"
+  else
+    echo "The WebView2installer installer doesn't exist and will be downloaded for you!"
+    wget "$SP_WEBVIEW2_INSTALLER_URL" -cO WebView2installer.exe
+    mv "WebView2installer.exe" "$SP_PATH/downloads/WebView2installer.exe"
   fi
 }
 
@@ -373,6 +405,20 @@ Terminal=false
 Path=$SP_PATH/bin
 EOF
 
+  #Create mimetype link to handle web login call backs to the Identity Manager
+  cat > $HOME/.local/share/applications/adskidmgr-opener.desktop << EOL
+[Desktop Entry]
+Type=Application
+Name=adskidmgr Scheme Handler
+Exec=env WINEPREFIX="$WP_DIRECTORY" wine "C:\Program Files\Autodesk\webdeploy\production\99249ee497b13684a43f5bacd5f1f09974049c6b\Autodesk Identity Manager\AdskIdentityManager.exe" %u
+StartupNotify=false
+MimeType=x-scheme-handler/adskidmgr;
+EOL
+xdg-mime default adskidmgr-opener.desktop x-scheme-handler/adskidmgr
+
+  #Disable Debug messages on regular runs, we dont have a terminal, so speed up the system by not wasting time prining them into the Void
+  sed -i 's/=env WINEPREFIX=/=env WINEDEBUG=-all env WINEPREFIX=/g' "$HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop"
+
   # Create a link to the Wineprefixes Box:
   cat >> "$WP_DIRECTORY/box-run.sh" << EOF
 #!/bin/bash
@@ -423,24 +469,24 @@ WP_DRIVER=$(awk 'NR == 2' /tmp/fusion360/settings.txt)
 
 # Start Fusion360installer.exe - Part 1
 function SP_FUSION360_INSTALL_DEFAULT_1 {
-  WINEPREFIX="$WP_DIRECTORY" timeout -k 10m 9m wine "$WP_DIRECTORY/drive_c/users/$USER/Downloads/Fusion360installer.exe"
+  WINEPREFIX="$WP_DIRECTORY" timeout -k 10m 9m wine "$WP_DIRECTORY/drive_c/users/$USER/Downloads/Fusion360installer.exe" --quiet
 }
 
 # Start Fusion360installer.exe - Part 2
 function SP_FUSION360_INSTALL_DEFAULT_2 {
-  WINEPREFIX="$WP_DIRECTORY" timeout -k 5m 4m wine "$WP_DIRECTORY/drive_c/users/$USER/Downloads/Fusion360installer.exe"
+  WINEPREFIX="$WP_DIRECTORY" timeout -k 5m 4m wine "$WP_DIRECTORY/drive_c/users/$USER/Downloads/Fusion360installer.exe" --quiet
 }
 
 ###############################################################################################################################################################
 
 # Start Fusion360installer.exe - Part 1 (Refresh)
 function SP_FUSION360_INSTALL_REFRESH_1 {
-  WINEPREFIX="$WP_WINEPREFIXES_REFRESH" timeout -k 10m 9m wine "$WP_WINEPREFIXES_REFRESH/drive_c/users/$USER/Downloads/Fusion360installer.exe"
+  WINEPREFIX="$WP_WINEPREFIXES_REFRESH" timeout -k 10m 9m wine "$WP_WINEPREFIXES_REFRESH/drive_c/users/$USER/Downloads/Fusion360installer.exe" --quiet
 }
 
 # Start Fusion360installer.exe - Part 2 (Refresh)
 function SP_FUSION360_INSTALL_REFRESH_2 {
-  WINEPREFIX="$WP_WINEPREFIXES_REFRESH" timeout -k 5m 4m wine "$WP_WINEPREFIXES_REFRESH/drive_c/users/$USER/Downloads/Fusion360installer.exe"
+  WINEPREFIX="$WP_WINEPREFIXES_REFRESH" timeout -k 5m 4m wine "$WP_WINEPREFIXES_REFRESH/drive_c/users/$USER/Downloads/Fusion360installer.exe" --quiet
 }
 
 ###############################################################################################################################################################
@@ -449,6 +495,7 @@ function SP_FUSION360_INSTALL_REFRESH_2 {
 function SP_FUSION360_INSTALL {
   SP_WINETRICKS_LOAD
   SP_FUSION360_INSTALLER_LOAD
+  SP_WEBVIEW2_INSTALLER_LOAD
   # Note that the winetricks sandbox verb merely removes the desktop integration and Z: drive symlinks and is not a "true" sandbox.
   # It protects against errors rather than malice. It's useful for, e.g., keeping games from saving their settings in random subdirectories of your home directory.
   # But it still ensures that wine, for example, no longer has access permissions to Home!
@@ -457,8 +504,10 @@ function SP_FUSION360_INSTALL {
   cd "$WP_DIRECTORY" || return
   WINEPREFIX="$WP_DIRECTORY" sh "$SP_PATH/bin/winetricks" -q sandbox
   sleep 5s
+  WINEPREFIX="$WP_DIRECTORY" sh "$SP_PATH/bin/winetricks" -q sandbox
+  sleep 5s
   # We must install some packages!
-  WINEPREFIX="$WP_DIRECTORY" sh "$SP_PATH/bin/winetricks" -q atmlib gdiplus corefonts cjkfonts dotnet452 msxml4 msxml6 vcrun2017 fontsmooth=rgb winhttp win10
+  WINEPREFIX="$WP_DIRECTORY" sh "$SP_PATH/bin/winetricks" -q atmlib gdiplus arial corefonts cjkfonts dotnet452 msxml4 msxml6 vcrun2017 fontsmooth=rgb winhttp win10
   sleep 5s
   # We must install cjkfonts again then sometimes it doesn't work in the first time!
   WINEPREFIX="$WP_DIRECTORY" sh "$SP_PATH/bin/winetricks" -q cjkfonts
@@ -466,6 +515,18 @@ function SP_FUSION360_INSTALL {
   SP_DXVK_OPENGL_1
   # We must set to Windows 10 again because some other winetricks sometimes set it back to Windows XP!
   WINEPREFIX="$WP_DIRECTORY" sh "$SP_PATH/bin/winetricks" -q win10
+  sleep 5s
+  #Remove tracking metrics/calling home
+  WINEPREFIX="$WP_DIRECTORY" wine REG ADD "HKCU\Software\Wine\DllOverrides" /v "adpclientservice.exe" /t REG_SZ /d "" /f
+  #Navigation bar does not work well with anything other than the wine builtin DX9
+  WINEPREFIX="$WP_DIRECTORY" wine REG ADD "HKCU\Software\Wine\DllOverrides" /v "AdCefWebBrowser.exe" /t REG_SZ /d builtin /f
+  #Use Visual Studio Redist that is bundled with the application
+  WINEPREFIX="$WP_DIRECTORY" wine REG ADD "HKCU\Software\Wine\DllOverrides" /v "msvcp140" /t REG_SZ /d native /f
+  WINEPREFIX="$WP_DIRECTORY" wine REG ADD "HKCU\Software\Wine\DllOverrides" /v "mfc140u" /t REG_SZ /d native /f
+  sleep 5s
+  #Download and install WebView2 to handle Login attempts, required even though we redirect to your default browser
+  cp "$SP_PATH/downloads/WebView2installer.exe" "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
+  WINEPREFIX="$WP_DIRECTORY" wine "$WP_DIRECTORY/drive_c/users/$USER/Downloads/WebView2installer.exe" /install #/silent
   sleep 5s
   # We must copy the EXE-file directly in the Wineprefix folder (Sandbox-Mode)!
   cp "$SP_PATH/downloads/Fusion360installer.exe" "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
@@ -542,13 +603,13 @@ function DEBIAN_BASED_2 {
 
 function OS_DEBIAN_11 {
   sudo apt-add-repository -r 'deb https://dl.winehq.org/wine-builds/debian/ bullseye main'
-  wget -q https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/Debian_11//Release.key -O Release.key -O- | sudo apt-key add -
+  wget -q https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/Debian_11/Release.key -O Release.key -O- | sudo apt-key add -
   sudo apt-add-repository 'deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/Debian_11/ ./'
 }
 
 function OS_DEBIAN_12 {
   sudo apt-add-repository -r 'deb https://dl.winehq.org/wine-builds/debian/ bookworm main'
-  wget -q https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/Debian_12//Release.key -O Release.key -O- | sudo apt-key add -
+  wget -q https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/Debian_12/Release.key -O Release.key -O- | sudo apt-key add -
   sudo apt-add-repository 'deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/Debian_12/ ./'
 }
 
@@ -589,12 +650,12 @@ function FEDORA_BASED_2 {
   SP_FUSION360_INSTALL
 }
 
-function OS_FEDORA_37 {
-  sudo dnf config-manager --add-repo https://download.opensuse.org/repositories/Emulators:/Wine:/Fedora/Fedora_37/Emulators:Wine:Fedora.repo
-}
-
 function OS_FEDORA_38 {
   sudo dnf config-manager --add-repo https://download.opensuse.org/repositories/Emulators:/Wine:/Fedora/Fedora_38/Emulators:Wine:Fedora.repo
+}
+
+function OS_FEDORA_39 {
+  sudo dnf config-manager --add-repo https://download.opensuse.org/repositories/Emulators:/Wine:/Fedora/Fedora_39/Emulators:Wine:Fedora.repo
 }
 
 function OS_FEDORA_RAWHIDE {
@@ -604,13 +665,13 @@ function OS_FEDORA_RAWHIDE {
 ###############################################################################################################################################################
 
 function OS_OPENSUSE_154 {
-  pkexec su -c 'zypper up && zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.4/ wine && zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.4/ wine && zypper install p7zip-full curl wget wine cabextract'
+  pkexec su -c 'zypper up && zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/15.4/ wine && zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/15.4/ wine && zypper install p7zip-full curl wget wine cabextract'
   SP_FUSION360_INSTALL
 }
 
 # Has not been published yet!
 function OS_OPENSUSE_155 {
-  pkexec su -c 'zypper up && zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.5/ wine && zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.5/ wine && zypper install p7zip-full curl wget wine cabextract'
+  pkexec su -c 'zypper up && zypper rr https://download.opensuse.org/repositories/Emulators:/Wine/15.5/ wine && zypper ar -cfp 95 https://download.opensuse.org/repositories/Emulators:/Wine/15.5/ wine && zypper install p7zip-full curl wget wine cabextract'
   SP_FUSION360_INSTALL
 }
 
@@ -957,7 +1018,7 @@ case "$WINE_VERSION" in
     echo "Install Wine on your system!"
     SP_OS_SETTINGS
     ;;
-  # German:      
+  # German:
   "Wine Version (Entwicklungsversion)")
     echo "Install Wine on your system!"
     SP_OS_SETTINGS
@@ -998,8 +1059,9 @@ case "$WINE_VERSION" in
     SP_OS_SETTINGS
     ;;
   *)
-    echo "Wine version (6.23 or higher) is already installed on the system!"
-    SP_FUSION360_INSTALL
+    echo "Wine version (8.14 or higher) is already installed on the system!"
+    # Check the correct Wine Version before continuing!
+    SP_CHECK_WINE_VERSION
     ;;
 esac
 }
@@ -1046,14 +1108,14 @@ case "$SP_OS" in
     echo "EndeavourOS"
     OS_ARCHLINUX
     ;;
-  "Fedora 37")
-    echo "Fedora 37"
+  "Fedora 38")
+    echo "Fedora 38"
     FEDORA_BASED_1
     OS_FEDORA_37
     FEDORA_BASED_2
     ;;
-  "Fedora 38")
-    echo "Fedora 38"
+  "Fedora 39")
+    echo "Fedora 39"
     FEDORA_BASED_1
     OS_FEDORA_38
     FEDORA_BASED_2
