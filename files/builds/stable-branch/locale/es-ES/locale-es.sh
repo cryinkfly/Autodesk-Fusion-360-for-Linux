@@ -6,9 +6,9 @@
 # Author:       Steve Zabka                                                                        #
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
-# Copyright (c) 2020-2022                                                                          #
-# Time/Date:    19:00/26.07.2023                                                                   #
-# Version:      1.6.2                                                                              #
+# Copyright (c) 2020-2024                                                                          #
+# Time/Date:    16:00/05.02.2024                                                                   #
+# Version:      1.6.3                                                                              #
 ####################################################################################################
 
 # Path: /$HOME/.fusion360/locale/es-ES/locale-es.sh
@@ -60,7 +60,7 @@ SP_LOGFILE_WINEPREFIX_INFO_TOOLTIP_3="¡Elimine un Wineprefix actual de su siste
 SP_OS_TITLE="Distribución Linux - Configuración"
 SP_OS_LABEL_1="En este paso ahora puede seleccionar su distribución de Linux para instalar los paquetes necesarios para la instalación."
 SP_OS_LABEL_2="Distribución de Linux:"
-SP_OS_SELECT=$(echo "Arch Linux,Debian 11,Debian 12, Debian Testing,EndeavourOS,Fedora 37,Fedora 38,Fedora Rawhide,Linux Mint 20.x,Linux Mint 21.x,Linux Mint 5.x - LMDE Version,Manjaro Linux,openSUSE Leap 15.4,openSUSE Leap 15.5,openSUSE Tumbleweed,Red Hat Enterprise Linux 8.x,Red Hat Enterprise Linux 9.x,Solus,Ubuntu 20.04,Ubuntu 22.04,Ubuntu 23.04,Void Linux,Gentoo Linux")
+SP_OS_SELECT=$(echo "Arch Linux,Debian 11,Debian 12, Debian Testing,EndeavourOS,Fedora 38,Fedora 39,Fedora Rawhide,Linux Mint 20.x,Linux Mint 21.x,Linux Mint 5.x - LMDE Version,Manjaro Linux,openSUSE Leap 15.4,openSUSE Leap 15.5,openSUSE Tumbleweed,Red Hat Enterprise Linux 8.x,Red Hat Enterprise Linux 9.x,Solus,Ubuntu 20.04,Ubuntu 22.04,Ubuntu 23.04,Void Linux,Gentoo Linux")
 
 ###############################################################################################################################################################
 
@@ -82,7 +82,7 @@ SP_INSTALLDIR_INFO_LABEL_2="Seleccione un directorio diferente".
 SP_WINE_SETTINGS_TITLE="Seleccionar versión de vino"
 SP_WINE_SETTINGS_LABEL_1="Aquí tienes que decidir entre dos opciones*."
 SP_WINE_SETTINGS_LABEL_2="Seleccionar:"
-SP_WINE_VERSION_SELECT=$(echo "La versión de Wine (puesta en escena), la versión de Wine (6.23 o superior) ya está instalada en el sistema!")
+SP_WINE_VERSION_SELECT=$(echo "La versión de Wine (puesta en escena), la versión de Wine (8.14 o superior) ya está instalada en el sistema!")
 SP_WINE_SETTINGS_LABEL_3="*Dependiendo de la opción seleccionada, ¡se instalarán más paquetes en su sistema!"
 
 ###############################################################################################################################################################
