@@ -5,7 +5,7 @@ Beschreibung: Mit diesem Setup-Assistenten können Sie Autodesk Fusion 360 auf v
 Autor: Steve Zabka
 Autoren-URI: https://cryinkfly.com
 Lizenz: MIT
-Copyright (c) 2020-2023
+Copyright (c) 2020-2024
 
 Hiermit wird jeder Person, die eine Kopie dieser Software und der zugehörigen Dokumentationsdateien (die "Software") erhält, kostenlos die Erlaubnis erteilt, mit der Software ohne Einschränkung zu handeln, einschließlich und ohne Einschränkung der Rechte zur Nutzung, zum Kopieren, Ändern, Zusammenführen , Kopien der Software zu veröffentlichen, zu verteilen, unterzulizenzieren und/oder zu verkaufen und Personen, denen die Software zur Verfügung gestellt wird, dies zu gestatten, vorbehaltlich der folgenden Bedingungen:
 
