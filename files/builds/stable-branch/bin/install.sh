@@ -633,8 +633,8 @@ function OS_UBUNTU_22 {
 
 function OS_UBUNTU_23 {
   sudo add-apt-repository -r 'deb https://dl.winehq.org/wine-builds/ubuntu/ lunar main'
-  wget -q https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_23.04/Release.key -O Release.key -O- | sudo apt-key add -
-  sudo apt-add-repository 'deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_23.04/ ./'
+  wget -q https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_23.10/Release.key -O Release.key -O- | sudo apt-key add -
+  sudo apt-add-repository 'deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_23.10/ ./'
 }
 
 ###############################################################################################################################################################
@@ -1190,8 +1190,8 @@ case "$SP_OS" in
     OS_UBUNTU_22
     DEBIAN_BASED_2
     ;;
-  "Ubuntu 23.04")
-    echo "Ubuntu 23.04"
+  "Ubuntu 23.10")
+    echo "Ubuntu 23.10"
     DEBIAN_BASED_1
     OS_UBUNTU_23
     DEBIAN_BASED_2
