@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 ####################################################################################################
 # Name:         Autodesk Fusion 360 - Setup Wizard (Linux)                                         #
@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2024                                                                          #
-# Time/Date:    09:40/18.03.2024                                                                   #
-# Version:      1.9.6                                                                              #
+# Time/Date:    07:29/23.03.2024                                                                   #
+# Version:      1.9.7                                                                              #
 ####################################################################################################
 
 # Path: /$HOME/.fusion360/bin/install.sh
@@ -421,7 +421,7 @@ xdg-mime default adskidmgr-opener.desktop x-scheme-handler/adskidmgr
 
   # Create a link to the Wineprefixes Box:
   cat >> "$WP_DIRECTORY/box-run.sh" << EOF
-#!/bin/bash
+#!/usr/bin/env bash
 WP_BOX='$WP_DIRECTORY' source $SP_PATH/bin/launcher.sh
 EOF
   chmod +x "$WP_DIRECTORY/box-run.sh"

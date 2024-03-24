@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 ##############################################################################
 # Name:         OctoPrint (Server) - Installationsskript (Linux)
