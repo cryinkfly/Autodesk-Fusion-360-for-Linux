@@ -325,7 +325,7 @@ function SP_FUSION360_INSTALLER_LOAD {
 function SP_WEBVIEW2_INSTALLER_LOAD {
   # Search for a existing installer of WEBVIEW2
   WEBVIEW2_INSTALLER="$SP_PATH/downloads/WebView2installer.exe"
-  if [ -f "WEBVIEW2_INSTALLER" ]; then
+  if [ -f "$WEBVIEW2_INSTALLER" ]; then
     echo "The WebView2installer installer exist!"
   else
     echo "The WebView2installer installer doesn't exist and will be downloaded for you!"
