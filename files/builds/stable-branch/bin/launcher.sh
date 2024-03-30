@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 #############################################################################
 # Name:         Autodesk Fusion 360 - Launcher (Linux)                      #
