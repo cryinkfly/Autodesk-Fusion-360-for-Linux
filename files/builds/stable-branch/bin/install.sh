@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2024                                                                          #
-# Time/Date:    07:29/23.03.2024                                                                   #
-# Version:      1.9.7                                                                              #
+# Time/Date:    16:00/05.05.2024                                                                   #
+# Version:      1.9.8                                                                              #
 ####################################################################################################
 
 # Path: /$HOME/.fusion360/bin/install.sh
@@ -169,7 +169,7 @@ fi
 function SP_CHECK_WINE_VERSION {
     #Wine version checking, warn user if their wine install is out of date
     WINE_VERSION="$(wine --version  | cut -d ' ' -f1 | sed -e 's/wine-//' -e 's/-rc.*//')"
-    WINE_VERSION_MINIMUM=8.14
+    WINE_VERSION_MINIMUM=9.8
     if (( $(echo "$WINE_VERSION < $WINE_VERSION_MINIMUM" | bc -l) )); then
         echo "Your version of wine ${WINE_VERSION} is too old and will not work with Autodesk Fusion. You should upgrade to at least ${WINE_VERSION_MINIMUM}"
         SP_OS_SETTINGS
@@ -528,6 +528,8 @@ function SP_FUSION360_INSTALL {
   cp "$SP_PATH/downloads/WebView2installer.exe" "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
   WINEPREFIX="$WP_DIRECTORY" wine "$WP_DIRECTORY/drive_c/users/$USER/Downloads/WebView2installer.exe" /install #/silent
   sleep 5s
+  # Pre-create shortcut directory for latest re-branding
+  mkdir -p "$WP_DIRECTORY/drive_c/users/$USER/AppData/Roaming/Microsoft/Internet Explorer/Quick Launch/User Pinned/"
   # We must copy the EXE-file directly in the Wineprefix folder (Sandbox-Mode)!
   cp "$SP_PATH/downloads/Fusion360installer.exe" "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
   # This start and stop the installer automatically after a time!
