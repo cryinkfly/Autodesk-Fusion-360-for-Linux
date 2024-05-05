@@ -528,6 +528,8 @@ function SP_FUSION360_INSTALL {
   cp "$SP_PATH/downloads/WebView2installer.exe" "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
   WINEPREFIX="$WP_DIRECTORY" wine "$WP_DIRECTORY/drive_c/users/$USER/Downloads/WebView2installer.exe" /install #/silent
   sleep 5s
+  # Pre-create shortcut directory for latest re-branding
+  mkdir -p "$WP_DIRECTORY/drive_c/users/$USER/AppData/Roaming/Microsoft/Internet Explorer/Quick Launch/User Pinned/"
   # We must copy the EXE-file directly in the Wineprefix folder (Sandbox-Mode)!
   cp "$SP_PATH/downloads/Fusion360installer.exe" "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
   # This start and stop the installer automatically after a time!
