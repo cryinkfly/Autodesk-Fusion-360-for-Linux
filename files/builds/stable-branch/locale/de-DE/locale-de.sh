@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 ####################################################################################################
 # Name:         Autodesk Fusion 360 - Setup Wizard (Linux)                                         #
@@ -6,9 +6,9 @@
 # Author:       Steve Zabka                                                                        #
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
-# Copyright (c) 2020-2022                                                                          #
-# Time/Date:    19:00/26.07.2023                                                                   #
-# Version:      1.6.2                                                                              #
+# Copyright (c) 2020-2024                                                                          #
+# Time/Date:    16:00/05.02.2024                                                                   #
+# Version:      1.6.3                                                                              #
 ####################################################################################################
 
 # Path: /$HOME/.fusion360/locale/de-DE/locale-de.sh
@@ -60,7 +60,7 @@ SP_LOGFILE_WINEPREFIX_INFO_TOOLTIP_3="Entfernen Sie eine aktuelle Wineprefix von
 SP_OS_TITLE="Linux-Distribution - Konfiguration"
 SP_OS_LABEL_1="In diesem Schritt können Sie nun Ihre Linux-Distribution auswählen, um die benötigten Pakete für die Installation zu installieren."
 SP_OS_LABEL_2="Linux-Distribution:"
-SP_OS_SELECT=$(echo "Arch Linux,Debian 11,Debian 12, Debian Testing,EndeavourOS,Fedora 37,Fedora 38,Fedora Rawhide,Linux Mint 20.x,Linux Mint 21.x,Linux Mint 5.x - LMDE Version,Manjaro Linux,openSUSE Leap 15.4,openSUSE Leap 15.5,openSUSE Tumbleweed,Red Hat Enterprise Linux 8.x,Red Hat Enterprise Linux 9.x,Solus,Ubuntu 20.04,Ubuntu 22.04,Ubuntu 23.04,Void Linux,Gentoo Linux")
+SP_OS_SELECT=$(echo "Arch Linux,Debian 11,Debian 12, Debian Testing,EndeavourOS,Fedora 38,Fedora 39,Fedora Rawhide,Linux Mint 20.x,Linux Mint 21.x,Linux Mint 5.x - LMDE Version,Manjaro Linux,openSUSE Leap 15.4,openSUSE Leap 15.5,openSUSE Tumbleweed,Red Hat Enterprise Linux 8.x,Red Hat Enterprise Linux 9.x,Solus,Ubuntu 20.04,Ubuntu 22.04,Ubuntu 23.10,Void Linux,Gentoo Linux")
 
 ###############################################################################################################################################################
 
@@ -83,7 +83,7 @@ SP_INSTALLDIR_INFO_LABEL_2="Bitte wählen Sie ein anderes Verzeichnis."
 SP_WINE_SETTINGS_TITLE="Wählen Sie Wine-Version"
 SP_WINE_SETTINGS_LABEL_1="Hier müssen Sie sich zwischen zwei Optionen* entscheiden."
 SP_WINE_SETTINGS_LABEL_2="Auswählen:"
-SP_WINE_VERSION_SELECT=$(echo "Wine-Version (Staging),Wine-Version (6.23 oder höher) ist bereits auf dem System installiert!")
+SP_WINE_VERSION_SELECT=$(echo "Wine-Version (Staging),Wine-Version (8.14 oder höher) ist bereits auf dem System installiert!")
 SP_WINE_SETTINGS_LABEL_3="*Je nach gewählter Option werden weitere Pakete auf Ihrem System installiert!"
 
 ###############################################################################################################################################################

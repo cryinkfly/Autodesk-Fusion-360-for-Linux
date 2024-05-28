@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 ####################################################################################################
 # Name:         Autodesk Fusion 360 - Setup Wizard (Linux)                                         #
@@ -6,9 +6,9 @@
 # Author:       Steve Zabka                                                                        #
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
-# Copyright (c) 2020-2022                                                                          #
-# Time/Date:    19:00/26.07.2023                                                                   #
-# Version:      1.6.2                                                                              #
+# Copyright (c) 2020-2024                                                                          #
+# Time/Date:    16:00/05.02.2024                                                                   #
+# Version:      1.6.3                                                                              #
 ####################################################################################################
 
 # Path: /$HOME/.fusion360/locale/zh-CN/locale-zh.sh
@@ -60,7 +60,7 @@ SP_LOGFILE_WINEPREFIX_INFO_TOOLTIP_3="从您的系统中删除当前的 Winepref
 SP_OS_TITLE="Linux 发行版 - 配置"
 SP_OS_LABEL_1="在此步骤中，您现在可以选择您的 Linux 发行版来安装安装所需的软件包。"
 SP_OS_LABEL_2="Linux 发行版："
-SP_OS_SELECT=$(echo "Arch Linux,Debian 11,Debian 12, Debian Testing,EndeavourOS,Fedora 37,Fedora 38,Fedora Rawhide,Linux Mint 20.x,Linux Mint 21.x,Linux Mint 5.x - LMDE Version,Manjaro Linux,openSUSE Leap 15.4,openSUSE Leap 15.5,openSUSE Tumbleweed,Red Hat Enterprise Linux 8.x,Red Hat Enterprise Linux 9.x,Solus,Ubuntu 20.04,Ubuntu 22.04,Ubuntu 23.04,Void Linux,Gentoo Linux")
+SP_OS_SELECT=$(echo "Arch Linux,Debian 11,Debian 12, Debian Testing,EndeavourOS,Fedora 38,Fedora 39,Fedora Rawhide,Linux Mint 20.x,Linux Mint 21.x,Linux Mint 5.x - LMDE Version,Manjaro Linux,openSUSE Leap 15.4,openSUSE Leap 15.5,openSUSE Tumbleweed,Red Hat Enterprise Linux 8.x,Red Hat Enterprise Linux 9.x,Solus,Ubuntu 20.04,Ubuntu 22.04,Ubuntu 23.10,Void Linux,Gentoo Linux")
 
 ###############################################################################################################################################################
 
@@ -83,7 +83,7 @@ SP_INSTALLDIR_INFO_LABEL_2="请选择其他目录。"
 SP_WINE_SETTINGS_TITLE="选择葡萄酒版本"
 SP_WINE_SETTINGS_LABEL_1="你必须在两个选项之间做出决定*。"
 SP_WINE_SETTINGS_LABEL_2="选择："
-SP_WINE_VERSION_SELECT=$(echo "葡萄酒版（分期）,Wine 版本（6.23 或更高版本）已安装在系统上！")
+SP_WINE_VERSION_SELECT=$(echo "葡萄酒版（分期）,Wine 版本（8.14 或更高版本）已安装在系统上！")
 SP_WINE_SETTINGS_LABEL_3="*根据选择的选项，您的系统上将安装更多软件包！"
 
 ###############################################################################################################################################################
