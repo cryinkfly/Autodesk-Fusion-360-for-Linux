@@ -338,6 +338,17 @@ function SP_WEBVIEW2_INSTALLER_LOAD {
 # ALL FUNCTIONS FOR DESKTOP-FILES START HERE:                                                                                                                 #
 ###############################################################################################################################################################
 
+# Helper function for the following function. The AdskIdentityManager.exe can be installed 
+# into a variable alphanumeric folder.
+# This function finds that folder alphanumeric folder name.
+function SP_DETERMINE_VARIABLE_FOLDER_NAME_FOR_IDENTITY_MANAGER {
+  echo "Searching for the variable location of the Fusion 360 identity manager..."
+  IDENT_MAN_PATH=$(find "$WP_DIRECTORY" -name 'AdskIdentityManager.exe')
+  # Get the dirname of the identity manager's alphanumeric folder.
+  # With the full path of the identity manager, go 2 folders up and isolate the folder name.
+  IDENT_MAN_VARIABLE_DIRECTORY=$(basename "$(dirname "$(dirname "$IDENT_MAN_PATH")")")
+}
+
 # Load the icons and .desktop-files:
 function SP_FUSION360_SHORTCUTS_LOAD {
   # Create a .desktop file (launcher.sh) for Autodesk Fusion 360!
@@ -405,12 +416,15 @@ Terminal=false
 Path=$SP_PATH/bin
 EOF
 
+  # Execute function
+  SP_DETERMINE_VARIABLE_FOLDER_NAME_FOR_IDENTITY_MANAGER
+
   #Create mimetype link to handle web login call backs to the Identity Manager
   cat > $HOME/.local/share/applications/adskidmgr-opener.desktop << EOL
 [Desktop Entry]
 Type=Application
 Name=adskidmgr Scheme Handler
-Exec=env WINEPREFIX="$WP_DIRECTORY" wine "C:\Program Files\Autodesk\webdeploy\production\99249ee497b13684a43f5bacd5f1f09974049c6b\Autodesk Identity Manager\AdskIdentityManager.exe" %u
+Exec=env WINEPREFIX="$WP_DIRECTORY" wine "C:\Program Files\Autodesk\webdeploy\production\$IDENT_MAN_VARIABLE_DIRECTORY\Autodesk Identity Manager\AdskIdentityManager.exe" %u
 StartupNotify=false
 MimeType=x-scheme-handler/adskidmgr;
 EOL
