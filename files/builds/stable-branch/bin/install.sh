@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2024                                                                          #
-# Time/Date:    16:00/05.05.2024                                                                   #
-# Version:      1.9.8                                                                              #
+# Time/Date:    01:30/02.06.2024                                                                   #
+# Version:      1.9.9                                                                              #
 ####################################################################################################
 
 # Path: /$HOME/.fusion360/bin/install.sh
