@@ -424,7 +424,7 @@ EOF
 [Desktop Entry]
 Type=Application
 Name=adskidmgr Scheme Handler
-Exec=env WINEPREFIX="$WP_DIRECTORY" wine "C:\Program Files\Autodesk\webdeploy\production\$IDENT_MAN_VARIABLE_DIRECTORY\Autodesk Identity Manager\AdskIdentityManager.exe" %u
+Exec=env WINEPREFIX="$WP_DIRECTORY" wine "C:\Program Files\Autodesk\webdeploy\production\\$IDENT_MAN_VARIABLE_DIRECTORY\Autodesk Identity Manager\AdskIdentityManager.exe" %u
 StartupNotify=false
 MimeType=x-scheme-handler/adskidmgr;
 EOL
