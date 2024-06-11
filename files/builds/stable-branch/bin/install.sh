@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2024                                                                          #
-# Time/Date:    01:30/02.06.2024                                                                   #
-# Version:      1.9.9                                                                              #
+# Time/Date:    11:29/11.06.2024                                                                   #
+# Version:      1.9.10                                                                              #
 ####################################################################################################
 
 # Path: /$HOME/.fusion360/bin/install.sh
@@ -169,8 +169,19 @@ fi
 function SP_CHECK_WINE_VERSION {
     #Wine version checking, warn user if their wine install is out of date
     WINE_VERSION="$(wine --version  | cut -d ' ' -f1 | sed -e 's/wine-//' -e 's/-rc.*//')"
+    WINE_VERSION_SERIES="$(echo $WINE_VERSION | cut -d '.' -f1)"
+    WINE_VERSION_SERIES_RELEASE="$(echo $WINE_VERSION | cut -d '.' -f2)"
+
     WINE_VERSION_MINIMUM=9.8
-    if (( $(echo "$WINE_VERSION < $WINE_VERSION_MINIMUM" | bc -l) )); then
+    WINE_VERSION_SERIES_MINIMUM=9
+    WINE_VERSION_SERIES_RELEASE_MINIMUM=8
+    
+    if [ $WINE_VERSION_SERIES -lt $WINE_VERSION_SERIES_MINIMUM ]; then
+        # Wine was below the needed series - no need to check anything else.
+        echo "Your version of wine ${WINE_VERSION} is too old and will not work with Autodesk Fusion. You should upgrade to at least ${WINE_VERSION_MINIMUM}"
+        SP_OS_SETTINGS
+    elif [ $WINE_VERSION_SERIES -eq $WINE_VERSION_SERIES_MINIMUM ] && [ $WINE_VERSION_SERIES_RELEASE -lt $WINE_VERSION_SERIES_RELEASE_MINIMUM ]; then
+        # Wine is the same series as the minimum requirement, but the dot release was below the minimum.
         echo "Your version of wine ${WINE_VERSION} is too old and will not work with Autodesk Fusion. You should upgrade to at least ${WINE_VERSION_MINIMUM}"
         SP_OS_SETTINGS
     else
