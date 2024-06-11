@@ -179,12 +179,13 @@ function SP_CHECK_WINE_VERSION {
     if [ $WINE_VERSION_SERIES -lt $WINE_VERSION_SERIES_MINIMUM ]; then
         # Wine was below the needed series - no need to check anything else.
         echo "Your version of wine ${WINE_VERSION} is too old and will not work with Autodesk Fusion. You should upgrade to at least ${WINE_VERSION_MINIMUM}"
+        SP_OS_SETTINGS
     elif [ $WINE_VERSION_SERIES -eq $WINE_VERSION_SERIES_MINIMUM ] && [ $WINE_VERSION_SERIES_RELEASE -lt $WINE_VERSION_SERIES_RELEASE_MINIMUM ]; then
-        # Wine is the same series as the minimum
+        # Wine is the same series as the minimum requirement, but the dot release was below the minimum.
         echo "Your version of wine ${WINE_VERSION} is too old and will not work with Autodesk Fusion. You should upgrade to at least ${WINE_VERSION_MINIMUM}"
-        
+        SP_OS_SETTINGS
     else
-        echo "Everything is awesome!"
+        SP_FUSION360_INSTALL
     fi
 }
 
