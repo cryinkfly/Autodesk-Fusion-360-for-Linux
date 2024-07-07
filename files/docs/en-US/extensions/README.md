@@ -28,6 +28,8 @@ Version Info: 1.2.0
 <br>
 Link: [Airfoil Tools](https://apps.autodesk.com/FUSION/en/Detail/Index?id=5447707798035545266&appLang=en&os=Win64)
 
+-> No more updates!
+
 ---
 
 ### Additive Assistant (FFF):
@@ -47,6 +49,8 @@ Last Updated: 15.09.2021
 Version Info: 1.0.0.0
 <br>
 Link: [Additive Assistant (FFF)](https://apps.autodesk.com/FUSION/en/Detail/Index?id=9068625559069345798&appLang=en&os=Win64)
+
+-> No more updates!
 
 ---
 
@@ -69,9 +73,9 @@ Download Size: 3.5 MB
 <br>
 Release Date: 08.02.2021
 <br>
-Last Updated: 02.11.2022
+Last Updated: 24.05.2024
 <br>
-Version Info: 7.6
+Version Info: 8.9
 <br>
 Link: [Czech localization for F360](https://apps.autodesk.com/FUSION/de/Detail/Index?id=9151466655844643882&appLang=en&os=Win64)
 
@@ -98,9 +102,9 @@ Download Size: 1.0 MB
 <br>
 Release Date: 15.03.2021
 <br>
-Last Updated: 13.12.2022
+Last Updated: 18.06.2024
 <br>
-Version Info: 1.0.0.50
+Version Info: 1.0.0.86
 <br>
 Link: [HP 3D Printers for Autodesk® Fusion 360™](https://apps.autodesk.com/FUSION/en/Detail/Index?id=5739757793764591673&appLang=en&os=Win64)
 
@@ -129,6 +133,7 @@ Version Info: 1.0.4
 <br>
 Link: [Helical Gear Generator](https://apps.autodesk.com/FUSION/de/Detail/Index?id=9029586664984391977&appLang=en&os=Win64)
 
+-> No more updates!
 
 ---
 
@@ -154,9 +159,9 @@ Download Size: 3.6 MB
 <br>
 Release Date: 03.12.2020
 <br>
-Last Updated: 01.10.2021
+Last Updated: 16.02.2024
 <br>
-Version Info: 1.2.0.90
+Version Info: 1.2.0.100
 <br>
 Link: [OctoPrint for Autodesk® Fusion 360™](https://apps.autodesk.com/FUSION/en/Detail/Index?id=5679198834514673847&appLang=en&os=Mac)
 
@@ -182,6 +187,8 @@ Last Updated: 06.10.2021
 Version Info: 1.5.0
 <br>
 Link: [Parameter I/O](https://apps.autodesk.com/FUSION/de/Detail/Index?id=1801418194626000805&appLang=en&os=Win64)
+
+-> No more updates!
 
 ---
 
@@ -225,6 +232,8 @@ Version Info: 4.2.3
 <br>
 Link: [RoboDK](https://apps.autodesk.com/FUSION/en/Detail/Index?id=6894286262130884430&appLang=en&os=Win64)
 
+-> No more updates and no longer in the App Store!
+
 ---
 
 
@@ -240,8 +249,8 @@ Download Size: 3.7 MB
 <br>
 Release Date: 20.04.2021
 <br>
-Last Updated: 18.05.2022
+Last Updated: 16.02.2024
 <br>
-Version Info: 1.1.0.65
+Version Info: 1.1.0.92
 <br>
 Link: [Ultimaker Digital Factory for Autodesk Fusion 360™](https://apps.autodesk.com/FUSION/de/Detail/Index?id=3902215446994700895&appLang=en&os=Win64)
