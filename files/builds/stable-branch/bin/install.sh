@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2024                                                                          #
-# Time/Date:    13:00/29.07.2024                                                                   #
-# Version:      1.9.11                                                                              #
+# Time/Date:    15:00/29.07.2024                                                                   #
+# Version:      1.9.12                                                                              #
 ####################################################################################################
 
 # Path: /$HOME/.fusion360/bin/install.sh
@@ -435,7 +435,7 @@ EOF
 [Desktop Entry]
 Type=Application
 Name=adskidmgr Scheme Handler
-Exec=env WINEPREFIX="$WP_DIRECTORY" wine "C:\Program Files\Autodesk\webdeploy\production\\$IDENT_MAN_VARIABLE_DIRECTORY\Autodesk Identity Manager\AdskIdentityManager.exe" %u
+Exec=sh -c 'env WINEPREFIX="$WP_DIRECTORY" wine "$(find $WP_DIRECTORY/ -name "AdskIdentityManager.exe" | head -1 | xargs -I '{}' echo {})" "%u"'
 StartupNotify=false
 MimeType=x-scheme-handler/adskidmgr;
 EOL
