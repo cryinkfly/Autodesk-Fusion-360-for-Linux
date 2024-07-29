@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2024                                                                          #
-# Time/Date:    11:29/11.06.2024                                                                   #
-# Version:      1.9.10                                                                              #
+# Time/Date:    13:00/29.07.2024                                                                   #
+# Version:      1.9.11                                                                              #
 ####################################################################################################
 
 # Path: /$HOME/.fusion360/bin/install.sh
@@ -548,6 +548,8 @@ function SP_FUSION360_INSTALL {
   #Use Visual Studio Redist that is bundled with the application
   WINEPREFIX="$WP_DIRECTORY" wine REG ADD "HKCU\Software\Wine\DllOverrides" /v "msvcp140" /t REG_SZ /d native /f
   WINEPREFIX="$WP_DIRECTORY" wine REG ADD "HKCU\Software\Wine\DllOverrides" /v "mfc140u" /t REG_SZ /d native /f
+  # Fixed the problem with the bcp47langs issue and now the login works again!
+  WINEPREFIX="$WP_DIRECTORY" wine reg add "HKCU\Software\Wine\DllOverrides" /v "bcp47langs" /t REG_SZ /d "" /f
   sleep 5s
   #Download and install WebView2 to handle Login attempts, required even though we redirect to your default browser
   cp "$SP_PATH/downloads/WebView2installer.exe" "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
