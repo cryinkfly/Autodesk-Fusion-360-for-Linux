@@ -1,0 +1,155 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: ja_JP\n"
+
+msgid "Close"
+msgstr "近い"
+
+msgid "Abort"
+msgstr "中止"
+
+msgid "Previous"
+msgstr "前の"
+
+msgid "Next"
+msgstr "次"
+
+msgid "Fusion 360 - Linux Installer"
+msgstr "Fusion 360 - Linux インストーラー"
+
+msgid "Welcome"
+msgstr "いらっしゃいませ"
+
+msgid "License Agreement"
+msgstr "ライセンス契約"
+
+msgid ""
+"LICENSE AGREEMENT\n"
+"\n"
+"Name: Autodesk Fusion 360 - Setup Wizard (Linux)\n"
+"Description: With this Setup Wizard you can install Autodesk Fusion 360 on various Linux distributions.\n"
+"Author: Steve Zabka\n"
+"Author URI: https://cryinkfly.com\n"
+"License: MIT\n"
+"Copyright (c) 2020-2024\n"
+"\n"
+"Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the „Software“), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n"
+"\n"
+"The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n"
+"\n"
+"THE SOFTWARE IS PROVIDED „AS IS“, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+msgstr ""
+"ライセンス契約\n"
+"\n"
+"名前: Autodesk Fusion 360 - セットアップウィザード (Linux)\n"
+"説明: このセットアップウィザードを使用して、さまざまな Linux ディストリビューションに Autodesk Fusion 360 をインストールできます。\n"
+"著者: Steve Zabka\n"
+"著者 URI: https://cryinkfly.com\n"
+"ライセンス: MIT\n"
+"著作権 (c) 2020-2024\n"
+"\n"
+"このソフトウェアおよび関連するドキュメントファイル (以下「ソフトウェア」という) のコピーを入手するすべての人に対して、以下の条件に従って、ソフトウェアを制限なしで取り扱う権利が無償で付与されます。これには、ソフトウェアの使用、コピー、変更、統合、公開、配布、サブライセンス、および/またはソフトウェアのコピーの販売、およびソフトウェアが提供された人に対して、ソフトウェアを使用する権利が含まれます。ただし、以下の条件に従うものとします。\n"
+"\n"
+"上記の著作権表示およびこの許諾表示は、ソフトウェアのすべてのコピーまたは実質的な部分に含まれるものとします。\n"
+"\n"
+"本ソフトウェアは、明示または黙示を問わず、商品性、特定目的への適合性、および非侵害に関する保証を含め、いかなる種類の保証もなしに提供されます。著者または著作権保持者は、ソフトウェアまたはソフトウェアの使用またはその他のソフトウェアの使用に関連する、またはその他のソフトウェアの使用に関連する、請求、損害、その他の責任について、契約、不法行為、その他の行為に基づくものであるかどうかを問わず、一切の責任を負いません。"
+
+msgid "I have read and agree to the License Agreement."
+msgstr "ライセンス契約を読み、同意しました。"
+
+msgid "Select the installation type:"
+msgstr "インストールタイプを選択します:"
+
+msgid "Basic"
+msgstr "基本"
+
+msgid "Select the Basic installation type for a seamless setup process. This option offers a default configuration, simplifying installation and minimizing setup time. Get Fusion 360 up and running quickly, allowing you to focus on your projects without unnecessary delays."
+msgstr "シームレスなセットアップ プロセスには、基本インストール タイプを選択します。このオプションでは、デフォルトの構成が提供され、インストールが簡素化され、セットアップ時間が最小限に抑えられます。Fusion 360 をすばやく起動して実行できるため、不要な遅延なくプロジェクトに集中できます。"
+
+msgid "Complete"
+msgstr "完全"
+
+msgid "Select the Complete installation type to seamlessly install Fusion 360 along with various extensions like OctoPrint for Autodesk® Fusion 360™. These extensions are Linux-tested for optimal compatibility and performance, ensuring a smooth and efficient experience."
+msgstr "完全インストール タイプを選択すると、Autodesk® Fusion 360™ 用の OctoPrint などのさまざまな拡張機能とともに Fusion 360 がシームレスにインストールされます。これらの拡張機能は、最適な互換性とパフォーマンスを実現するために Linux でテストされており、スムーズで効率的なエクスペリエンスが保証されます。"
+
+msgid "Custom"
+msgstr "カスタム"
+
+msgid "Select the Custom installation type to personalize your Fusion 360 setup on Linux. Adjust settings such as the installation directory and select verified extensions for Fusion 360. Although it is more detailed, it ensures a custom configuration that meets your needs."
+msgstr "カスタム インストール タイプを選択すると、Linux での Fusion 360 セットアップをカスタマイズできます。インストール ディレクトリなどの設定を調整し、Fusion 360 の検証済み拡張機能を選択します。より詳細ですが、ニーズを満たすカスタム構成が保証されます。"
+
+msgid "Select the installation directory:"
+msgstr "インストール ディレクトリを選択します:"
+
+msgid ""
+"By default, Fusion 360 installs in your home directory, but if you prefer a "
+"different location, you can specify the desired installation directory here. \n\n"
+"This allows for better organization and management of your software installations, especially "
+"if you have multiple users or limited space in your home directory."
+msgstr ""
+"デフォルトでは、Fusion 360 はホームディレクトリにインストールされますが、異なる場所を希望する場合は、ここで希望のインストールディレクトリを指定できます。\n\n"
+"これにより、特に複数のユーザーがいる場合やホームディレクトリのスペースが限られている場合など、ソフトウェアのインストールをよりよく組織化および管理できます。"
+
+msgid "Browse"
+msgstr "参照"
+
+msgid "Please select the extensions."
+msgstr "拡張機能を選択してください。"
+
+msgid "Czech localization for F360"
+msgstr ""
+
+msgid "With the help of this free extension, the user can also use the Czech language in Fusion 360."
+msgstr "この無料の拡張機能を使用すると、ユーザーは Fusion 360 でチェコ語を使用できます。"
+
+msgid "HP 3D Printers for Autodesk® Fusion®"
+msgstr ""
+
+msgid "This extension allows you to connect Autodesk Fusion 360 with HP SmartStream software and send jobs directly to the HP software."
+msgstr "この拡張機能を使用すると、Autodesk Fusion 360 を HP SmartStream ソフトウェアに接続し、ジョブを直接 HP ソフトウェアに送信できます。"
+
+msgid "Markforged for Autodesk® Fusion®"
+msgstr ""
+
+msgid "This extension allows you to connect Autodesk Fusion 360 with Markforged software (https://www.eiger.io)."
+msgstr "この拡張機能を使用すると、Autodesk Fusion 360 を Markforged ソフトウェア (https://www.eiger.io) に接続できます。"
+
+msgid "OctoPrint for Autodesk® Fusion 360™"
+msgstr ""
+
+msgid "With this extension you can send the G-code of your created 3D models directly to the OctoPrint server via Autodesk Fusion 360."
+msgstr "この拡張機能を使用すると、作成した 3D モデルの G コードを Autodesk Fusion 360 を介して直接 OctoPrint サーバーに送信できます。"
+
+msgid "Ultimaker Digital Factory for Autodesk Fusion 360™"
+msgstr ""
+
+msgid "This is a connector between Autodesk® Fusion 360™ and the Ultimaker Digital Factory site and its services."
+msgstr "これは、Autodesk® Fusion 360™ と Ultimaker Digital Factory サイトおよびそのサービスとの接続です。"
+
+msgid "Please wait ..."
+msgstr "お待ちください..."
+
+msgid "Step 1: Preparing files for installation ..."
+msgstr "ステップ 1: インストール用のファイルを準備中..."
+
+msgid "Step 2: Setting up Wine for installation ..."
+msgstr "ステップ 2: インストール用の Wine を設定中..."
+
+msgid "Step 3: Installing Autodesk Fusion ..."
+msgstr "ステップ 3: Autodesk Fusion をインストール中..."
+
+msgid "Step 4: Installing Autodesk Fusion extensions ..."
+msgstr "ステップ 4: Autodesk Fusion 拡張機能をインストール中..."
+
+msgid "Step 5: Completing the installation ..."
+msgstr "ステップ 5: インストールを完了中..."
+
+msgid "You are all set!"
+msgstr "すべて設定されました！"
+
+msgid "Thank you for installing Fusion 360 on Linux."
+msgstr "Linux に Fusion 360 をインストールしていただき、ありがとうございます。"
+
+msgid "Start using Fusion 360"
+msgstr "Fusion 360 の使用を開始"
