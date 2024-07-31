@@ -827,7 +827,7 @@ class InstallationProgressWindow(Gtk.Window):
         argument2 = self.selected_directory
         argument3 = str(self.selected_extensions).replace(" ", "").replace("[", "").replace("]", "").replace("'", "")
 
-        command = f"./data/autodesk_fusion_installer.sh {argument1} {argument2} {argument3}"
+        command = f"./autodesk_fusion_installer.sh {argument1} {argument2} {argument3}"
         subprocess.call(command, shell=True)
 
         # Update GUI from the main thread
