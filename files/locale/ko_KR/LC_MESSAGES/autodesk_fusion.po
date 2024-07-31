@@ -1,0 +1,155 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: ko_KR\n"
+
+msgid "Close"
+msgstr "닫다"
+
+msgid "Abort"
+msgstr "중단"
+
+msgid "Previous"
+msgstr "이전의"
+
+msgid "Next"
+msgstr "다음"
+
+msgid "Fusion 360 - Linux Installer"
+msgstr "Fusion 360 - Linux 설치 프로그램"
+
+msgid "Welcome"
+msgstr "환영"
+
+msgid "License Agreement"
+msgstr "라이센스 계약"
+
+msgid ""
+"LICENSE AGREEMENT\n"
+"\n"
+"Name: Autodesk Fusion 360 - Setup Wizard (Linux)\n"
+"Description: With this Setup Wizard you can install Autodesk Fusion 360 on various Linux distributions.\n"
+"Author: Steve Zabka\n"
+"Author URI: https://cryinkfly.com\n"
+"License: MIT\n"
+"Copyright (c) 2020-2024\n"
+"\n"
+"Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the „Software“), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n"
+"\n"
+"The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n"
+"\n"
+"THE SOFTWARE IS PROVIDED „AS IS“, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+msgstr ""
+"라이센스 계약\n"
+"\n"
+"이름: Autodesk Fusion 360 - 설치 마법사 (Linux)\n"
+"설명: 이 설치 마법사를 사용하여 다양한 Linux 배포판에 Autodesk Fusion 360을 설치할 수 있습니다.\n"
+"저자: Steve Zabka\n"
+"저자 URI: https://cryinkfly.com\n"
+"라이센스: MIT\n"
+"저작권 (c) 2020-2024\n"
+"\n"
+"이 소프트웨어 및 관련 문서 파일 („소프트웨어“)의 사본을 얻는 모든 사람에게 무료로 제공되며, 소프트웨어를 제한 없이 사용할 수 있습니다. 이는 사용, 복사, 수정, 병합, 게시, 배포, 하위 라이선스 부여 및/또는 소프트웨어의 사본을 판매하고 소프트웨어를 제공받은 사람들이 이를 수행할 수 있도록 허용합니다. 다음 조건에 따라야 합니다.\n"
+"\n"
+"위의 저작권 고지와 이 허가 고지는 소프트웨어의 모든 사본 또는 중요한 부분에 포함되어야 합니다.\n"
+"\n"
+"소프트웨어는 „있는 그대로“ 제공되며, 명시적이거나 묵시적인 어떠한 종류의 보증도 없이 제공됩니다. 상품성, 특정 목적에의 적합성 및 비침해성에 대한 보증을 포함하되 이에 국한되지 않습니다. 저작권자 또는 저작권 보유자는 소프트웨어 또는 사용 또는 기타 소프트웨어의 사용 또는 기타 거래로 인해 발생하는 어떠한 청구, 손해 또는 기타 책임에 대해서도 어떠한 경우에도 책임을 지지 않습니다."
+
+msgid "I have read and agree to the License Agreement."
+msgstr "라이센스 계약을 읽었으며 동의합니다."
+
+msgid "Select the installation type:"
+msgstr "설치 유형을 선택하세요."
+
+msgid "Basic"
+msgstr "기초적인"
+
+msgid "Select the Basic installation type for a seamless setup process. This option offers a default configuration, simplifying installation and minimizing setup time. Get Fusion 360 up and running quickly, allowing you to focus on your projects without unnecessary delays."
+msgstr "원활한 설치 프로세스를 위해 기본 설치 유형을 선택하세요. 이 옵션은 기본 구성을 제공하여 설치를 단순화하고 설정 시간을 최소화합니다. Fusion 360을 빠르게 실행하여 불필요한 지연 없이 프로젝트에 집중할 수 있습니다."
+
+msgid "Complete"
+msgstr "완벽한"
+
+msgid "Select the Complete installation type to seamlessly install Fusion 360 along with various extensions like OctoPrint for Autodesk® Fusion 360™. These extensions are Linux-tested for optimal compatibility and performance, ensuring a smooth and efficient experience."
+msgstr "Autodesk® Fusion 360™용 OctoPrint와 같은 다양한 확장 기능과 함께 Fusion 360을 원활하게 설치하려면 전체 설치 유형을 선택하십시오. 이러한 확장은 최적의 호환성과 성능을 위해 Linux 테스트를 거쳐 원활하고 효율적인 경험을 보장합니다."
+
+msgid "Custom"
+msgstr "관습"
+
+msgid "Select the Custom installation type to personalize your Fusion 360 setup on Linux. Adjust settings such as the installation directory and select verified extensions for Fusion 360. Although it is more detailed, it ensures a custom configuration that meets your needs."
+msgstr "Linux에서 Fusion 360 설정을 개인화하려면 사용자 정의 설치 유형을 선택하십시오. 설치 디렉토리와 같은 설정을 조정하고 Fusion 360에 대해 확인된 확장을 선택합니다. 더 자세하지만 요구 사항을 충족하는 사용자 정의 구성을 보장합니다."
+
+msgid "Select the installation directory:"
+msgstr "설치 디렉토리를 선택하세요."
+
+msgid ""
+"By default, Fusion 360 installs in your home directory, but if you prefer a "
+"different location, you can specify the desired installation directory here. \n\n"
+"This allows for better organization and management of your software installations, especially "
+"if you have multiple users or limited space in your home directory."
+msgstr ""
+"기본적으로 Fusion 360은 홈 디렉토리에 설치되지만 다른 위치를 선호하는 경우 여기에서 원하는 설치 디렉토리를 지정할 수 있습니다. \n\n"
+"이를 통해 소프트웨어 설치를 더 잘 조직하고 관리할 수 있으며 특히 홈 디렉토리에 여러 사용자가 있거나 공간이 제한된 경우에 유용합니다."
+
+msgid "Browse"
+msgstr "찾아보기"
+
+msgid "Please select the extensions."
+msgstr "확장 기능을 선택하세요."
+
+msgid "Czech localization for F360"
+msgstr ""
+
+msgid "With the help of this free extension, the user can also use the Czech language in Fusion 360."
+msgstr "이 무료 확장 기능을 사용하면 사용자는 Fusion 360에서 체코어를 사용할 수 있습니다."
+
+msgid "HP 3D Printers for Autodesk® Fusion®"
+msgstr ""
+
+msgid "This extension allows you to connect Autodesk Fusion 360 with HP SmartStream software and send jobs directly to the HP software."
+msgstr "이 확장 기능을 사용하면 Autodesk Fusion 360을 HP SmartStream 소프트웨어에 연결하고 작업을 직접 HP 소프트웨어로 보낼 수 있습니다."
+
+msgid "Markforged for Autodesk® Fusion®"
+msgstr ""
+
+msgid "This extension allows you to connect Autodesk Fusion 360 with Markforged software (https://www.eiger.io)."
+msgstr "이 확장 기능을 사용하면 Autodesk Fusion 360을 Markforged 소프트웨어(https://www.eiger.io)에 연결할 수 있습니다."
+
+msgid "OctoPrint for Autodesk® Fusion 360™"
+msgstr ""
+
+msgid "With this extension you can send the G-code of your created 3D models directly to the OctoPrint server via Autodesk Fusion 360."
+msgstr "이 확장 기능을 사용하면 Autodesk Fusion 360을 통해 생성된 3D 모델의 G 코드를 직접 OctoPrint 서버로 보낼 수 있습니다."
+
+msgid "Ultimaker Digital Factory for Autodesk Fusion 360™"
+msgstr ""
+
+msgid "This is a connector between Autodesk® Fusion 360™ and the Ultimaker Digital Factory site and its services."
+msgstr "Autodesk® Fusion 360™과 Ultimaker Digital Factory 사이트 및 해당 서비스 간의 연결자입니다."
+
+msgid "Please wait ..."
+msgstr "기다려 주십시오 ..."
+
+msgid "Step 1: Preparing files for installation ..."
+msgstr "1단계: 설치를 위한 파일 준비 ..."
+
+msgid "Step 2: Setting up Wine for installation ..."
+msgstr "2단계: 설치를 위한 Wine 설정 ..."
+
+msgid "Step 3: Installing Autodesk Fusion ..."
+msgstr "3단계: Autodesk Fusion 설치 ..."
+
+msgid "Step 4: Installing Autodesk Fusion extensions ..."
+msgstr "4단계: Autodesk Fusion 확장 기능 설치 ..."
+
+msgid "Step 5: Completing the installation ..."
+msgstr "5단계: 설치 완료 ..."
+
+msgid "You are all set!"
+msgstr "모두 설정되었습니다!"
+
+msgid "Thank you for installing Fusion 360 on Linux."
+msgstr "Linux에 Fusion 360을 설치해 주셔서 감사합니다."
+
+msgid "Start using Fusion 360"
+msgstr "Fusion 360 사용 시작"
