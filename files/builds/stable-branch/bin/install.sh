@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2024                                                                          #
-# Time/Date:    15:00/29.07.2024                                                                   #
-# Version:      1.9.12                                                                              #
+# Time/Date:    20:40/31.07.2024                                                                   #
+# Version:      1.9.13                                                                              #
 ####################################################################################################
 
 # Path: /$HOME/.fusion360/bin/install.sh
@@ -46,7 +46,7 @@ REQUIRED_COMMANDS=(
 
 # URL to download Fusion360Installer.exe
 #SP_FUSION360_INSTALLER_URL="https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe" <-- Old Link!!!
-SP_FUSION360_INSTALLER_URL="https://dl.appstreaming.autodesk.com/production/installers/Fusion%20Admin%20Install.exe"
+SP_FUSION360_INSTALLER_URL="https://dl.appstreaming.autodesk.com/production/installers/Fusion%20Client%20Downloader.exe"
 
 # URL to download Microsoft Edge WebView2.Exec
 SP_WEBVIEW2_INSTALLER_URL="https://github.com/aedancullen/webview2-evergreen-standalone-installer-archive/releases/download/109.0.1518.78/MicrosoftEdgeWebView2RuntimeInstallerX64.exe"
