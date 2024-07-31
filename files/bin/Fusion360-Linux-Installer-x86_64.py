@@ -21,7 +21,12 @@ import subprocess
 ####################################################################################################
 
 # Create structure ...
-# Still in progress!!!
+# $HOME/Downloads/autodesk_fusion_installer/Fusion360-Linux-Installer-x86_64.py
+# $HOME/Downloads/autodesk_fusion_installer/data/autodesk_fusion_installer.sh
+# $HOME/Downloads/autodesk_fusion_installer/graphics/welcome.svg
+# $HOME/Downloads/autodesk_fusion_installer/locale/...
+# $HOME/Downloads/autodesk_fusion_installer/styles/fusion360-dark.css
+# $HOME/Downloads/autodesk_fusion_installer/styles/fusion360-light.css
 
 ####################################################################################################
 
@@ -832,7 +837,7 @@ class InstallationProgressWindow(Gtk.Window):
         argument2 = self.selected_directory
         argument3 = str(self.selected_extensions).replace(" ", "").replace("[", "").replace("]", "").replace("'", "")
 
-        command = f"./autodesk_fusion_installer.sh {argument1} {argument2} {argument3}"
+        command = f"./data/autodesk_fusion_installer.sh {argument1} {argument2} {argument3}"
         subprocess.call(command, shell=True)
 
         # Update GUI from the main thread
