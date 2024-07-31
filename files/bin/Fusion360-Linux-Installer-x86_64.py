@@ -20,6 +20,11 @@ import subprocess
 
 ####################################################################################################
 
+# Create structure ...
+# Still in progress!!!
+
+####################################################################################################
+
 # Set the locale directory for gettext (/locale/en_US/LC_MESSAGES/messages.mo, /locale/de_DE/LC_MESSAGES/messages.mo, ...)
 language_domain = 'autodesk_fusion'  # Your gettext domain
 translation_directory = 'locale'  # Directory containing your .mo files
