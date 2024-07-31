@@ -1,0 +1,30 @@
+/* /styles/fusion360.css */
+
+#list-box {
+    border: 2px solid rgb(52, 58, 72);
+    border-radius: 5px;
+    padding: 15px;
+    background-color: rgb(59, 66, 82);
+    font-size: 16px;
+}
+
+#box {
+    border: 2px solid rgb(52, 58, 72);
+    border-radius: 5px;
+    padding: 15px;
+    background-color: rgb(59, 66, 82);
+    font-size: 16px;
+}
+
+#box-button {
+    font-weight: 700;
+}
+
+#box-button-text {
+    margin-left: 25px;
+    font-size: 18px;
+}
+
+#box-text {
+    font-size: 18px;
+}
