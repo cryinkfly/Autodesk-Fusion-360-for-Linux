@@ -1,0 +1,155 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: tr_TR\n"
+
+msgid "Close"
+msgstr "Kapalı"
+
+msgid "Abort"
+msgstr "İptal"
+
+msgid "Previous"
+msgstr "Önceki"
+
+msgid "Next"
+msgstr "Sonraki"
+
+msgid "Fusion 360 - Linux Installer"
+msgstr "Fusion 360 - Linux Yükleyici"
+
+msgid "Welcome"
+msgstr "Hoş geldin"
+
+msgid "License Agreement"
+msgstr "Lisans Sözleşmesi"
+
+msgid ""
+"LICENSE AGREEMENT\n"
+"\n"
+"Name: Autodesk Fusion 360 - Setup Wizard (Linux)\n"
+"Description: With this Setup Wizard you can install Autodesk Fusion 360 on various Linux distributions.\n"
+"Author: Steve Zabka\n"
+"Author URI: https://cryinkfly.com\n"
+"License: MIT\n"
+"Copyright (c) 2020-2024\n"
+"\n"
+"Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the „Software“), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n"
+"\n"
+"The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n"
+"\n"
+"THE SOFTWARE IS PROVIDED „AS IS“, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+msgstr ""
+"LİSANS SÖZLEŞMESİ\n"
+"\n"
+"Ad: Autodesk Fusion 360 - Kurulum Sihirbazı (Linux)\n"
+"Açıklama: Bu Kurulum Sihirbazı ile Autodesk Fusion 360'ı çeşitli Linux dağıtımlarına yükleyebilirsiniz.\n"
+"Yazar: Steve Zabka\n"
+"Yazar URI: https://cryinkfly.com\n"
+"Lisans: MIT\n"
+"Telif Hakkı (c) 2020-2024\n"
+"\n"
+"Bu yazılımın ve ilişkili belgelendirme dosyalarının („Yazılım“) bir kopyasını elde eden herhangi bir kişiye, aşağıdaki koşullara tabi olarak, Yazılımı herhangi bir kısıtlama olmaksızın kullanma, kopyalama, değiştirme, birleştirme, yayınlama, dağıtma, alt lisanslama ve/veya Yazılımın kopyalarını satma izni ücretsiz olarak verilir:\n"
+"\n"
+"Yukarıdaki telif hakkı bildirimi ve bu izin bildirimi, Yazılımın tüm kopyalarında veya önemli bölümlerinde yer almalıdır.\n"
+"\n"
+"YAZILIM „OLDUĞU GİBİ“ SAĞLANIR, HİÇBİR TÜRDEKİ, AÇIK VEYA ZIMNİ GARANTİLER DAHİL ANCAK BUNLARLA SINIRLI OLMAMAK ÜZERE SATILABİLİRLİK, BELİRLİ BİR AMACA UYGUNLUK VE İHLAL ETMEME GARANTİLERİ OLMADAN SAĞLANIR. YAZARLAR VEYA TELİF HAKKI SAHİPLERİ, YAZILIMLA İLGİLİ HERHANGİ BİR TALEP, HASAR VEYA DİĞER SORUMLULUK İÇİN, SÖZLEŞME, HAKSIZ FİİL VEYA DİĞER EYLEMLERDEN KAYNAKLANAN, KAYNAKLANAN VEYA İLE İLGİLİ OLARAK HERHANGİ BİR SORUMLULUK ALTINDA DEĞİLDİR."
+
+msgid "I have read and agree to the License Agreement."
+msgstr "Lisans Sözleşmesini okudum ve kabul ediyorum."
+
+msgid "Select the installation type:"
+msgstr "Kurulum türünü seçin:"
+
+msgid "Basic"
+msgstr "Temel"
+
+msgid "Select the Basic installation type for a seamless setup process. This option offers a default configuration, simplifying installation and minimizing setup time. Get Fusion 360 up and running quickly, allowing you to focus on your projects without unnecessary delays."
+msgstr "Sorunsuz bir kurulum işlemi için Temel kurulum türünü seçin. Bu seçenek, kurulumu basitleştiren ve kurulum süresini en aza indiren varsayılan bir yapılandırma sunar. Fusion 360'ı hızlı bir şekilde çalışır hale getirin, böylece gereksiz gecikmeler olmadan projelerinize odaklanın."
+
+msgid "Complete"
+msgstr "Tamamlamak"
+
+msgid "Select the Complete installation type to seamlessly install Fusion 360 along with various extensions like OctoPrint for Autodesk® Fusion 360™. These extensions are Linux-tested for optimal compatibility and performance, ensuring a smooth and efficient experience."
+msgstr "Fusion 360'ı Autodesk® Fusion 360™ için OctoPrint gibi çeşitli uzantılarla birlikte sorunsuz bir şekilde yüklemek için Tam kurulum türünü seçin. Bu uzantılar, optimum uyumluluk ve performans açısından Linux tarafından test edilmiş olup sorunsuz ve verimli bir deneyim sağlar."
+
+msgid "Custom"
+msgstr "Gelenek"
+
+msgid "Select the Custom installation type to personalize your Fusion 360 setup on Linux. Adjust settings such as the installation directory and select verified extensions for Fusion 360. Although it is more detailed, it ensures a custom configuration that meets your needs."
+msgstr "Linux'ta Fusion 360 kurulumunuzu kişiselleştirmek için Özel kurulum türünü seçin. Kurulum dizini gibi ayarları yapın ve Fusion 360 için doğrulanmış uzantıları seçin. Daha ayrıntılı olmasına rağmen ihtiyaçlarınızı karşılayan özel bir yapılandırma sağlar."
+
+msgid "Select the installation directory:"
+msgstr "Kurulum dizetini seçin:"
+
+msgid ""
+"By default, Fusion 360 installs in your home directory, but if you prefer a "
+"different location, you can specify the desired installation directory here. \n\n"
+"This allows for better organization and management of your software installations, especially "
+"if you have multiple users or limited space in your home directory."
+msgstr ""
+"Varsayılan olarak, Fusion 360 ev dizininize yüklenir, ancak farklı bir konuyu tercih ederseniz, istediğiniz kurulum dizetini burada belirtebilirsiniz. \n\n"
+"Bu, özellikle birden fazla kullanıcınız veya ev dizetinizde sınırlı alanınız varsa, yazılım yüklemelerinizi daha iyi organize etmenize ve yönetmenize olanak tanır."
+
+msgid "Browse"
+msgstr "Gözat"
+
+msgid "Please select the extensions."
+msgstr "Lütfen uzantıları seçin."
+
+msgid "Czech localization for F360"
+msgstr ""
+
+msgid "With the help of this free extension, the user can also use the Czech language in Fusion 360."
+msgstr "Bu ücretsiz uzantının yardımıyla kullanıcı, Fusion 360'ta Çekçe dilini de kullanabilir."
+
+msgid "HP 3D Printers for Autodesk® Fusion®"
+msgstr ""
+
+msgid "This extension allows you to connect Autodesk Fusion 360 with HP SmartStream software and send jobs directly to the HP software."
+msgstr "Bu uzantı, Autodesk Fusion 360'ı HP SmartStream yazılımıyla bağlamanıza ve işleri doğrudan HP yazılımına göndermenize olanak tanır."
+
+msgid "Markforged for Autodesk® Fusion®"
+msgstr ""
+
+msgid "This extension allows you to connect Autodesk Fusion 360 with Markforged software (https://www.eiger.io)."
+msgstr "Bu uzantı, Autodesk Fusion 360'ı Markforged yazılımıyla (https://www.eiger.io) bağlamanıza olanak tanır."
+
+msgid "OctoPrint for Autodesk® Fusion 360™"
+msgstr ""
+
+msgid "With this extension you can send the G-code of your created 3D models directly to the OctoPrint server via Autodesk Fusion 360."
+msgstr "Bu uzantı ile oluşturduğunuz 3D modellerin G-kodunu doğrudan Autodesk Fusion 360 aracılığıyla OctoPrint sunucusuna gönderebilirsiniz."
+
+msgid "Ultimaker Digital Factory for Autodesk Fusion 360™"
+msgstr ""
+
+msgid "This is a connector between Autodesk® Fusion 360™ and the Ultimaker Digital Factory site and its services."
+msgstr "Bu, Autodesk® Fusion 360™ ve Ultimaker Dijital Fabrikası sitesi ve hizmetleri arasındaki bir bağlantıdır."
+
+msgid "Please wait ..."
+msgstr "Lütfen bekleyin ..."
+
+msgid "Step 1: Preparing files for installation ..."
+msgstr "Adım 1: Kurulum dosyalarını hazırlama ..."
+
+msgid "Step 2: Setting up Wine for installation ..."
+msgstr "Adım 2: Kurulum için Wine'ı ayarlama ..."
+
+msgid "Step 3: Installing Autodesk Fusion ..."
+msgstr "Adım 3: Autodesk Fusion'ı yükleme ..."
+
+msgid "Step 4: Installing Autodesk Fusion extensions ..."
+msgstr "Adım 4: Autodesk Fusion uzantılarını yükleme ..."
+
+msgid "Step 5: Completing the installation ..."
+msgstr "Adım 5: Kurulumu tamamlama ..."
+
+msgid "You are all set!"
+msgstr "Hepsi hazır!"
+
+msgid "Thank you for installing Fusion 360 on Linux."
+msgstr "Linux'ta Fusion 360 yüklediğiniz için teşekkür ederiz."
+
+msgid "Start using Fusion 360"
+msgstr "Fusion 360'ı kullanmaya başlayın"
