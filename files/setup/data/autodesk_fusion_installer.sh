@@ -447,7 +447,7 @@ EOL
 
     # Download some script files for Autodesk Fusion 360!
     wget -NP "$selected_directory/bin" https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/data/autodesk_fusion_launcher.sh
-    chmod +x "$selected_directory/bin/launcher.sh"
+    chmod +x "$selected_directory/bin/autodesk_fusion_launcher.sh"
 }
 
 ########################################################################################
