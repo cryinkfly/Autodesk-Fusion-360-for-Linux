@@ -368,7 +368,7 @@ function dxvk_opengl_2 {
 
 # Execute the installation of Autodesk Fusion 360
 function fusion360_install_update {
-    cp "Fusion360installer.exe" "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/Fusion360installer.exe"
+    cp "$selected_directory/downloads/Fusion360installer.exe" "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/Fusion360installer.exe"
     WINEPREFIX="$selected_directory/wineprefixes/default" timeout -k 2m 1m wine "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/Fusion360installer.exe" --quiet
     WINEPREFIX="$selected_directory/wineprefixes/default" timeout -k 2m 1m wine "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/Fusion360installer.exe" --quiet
 }
@@ -489,7 +489,7 @@ function wine_fusion360_config() {
     WINEPREFIX="$selected_directory/wineprefixes/default" wine reg add "HKCU\Software\Wine\DllOverrides" /v "bcp47langs" /t REG_SZ /d "" /f
     sleep 5s
     # Download and install WebView2 to handle Login attempts, required even though we redirect to your default browser
-    cp "WebView2installer.exe" "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/WebView2installer.exe"
+    cp "$selected_directory/downloads/WebView2installer.exe" "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/WebView2installer.exe"
     WINEPREFIX="$selected_directory/wineprefixes/default" wine "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/WebView2installer.exe" /install # /silent
     sleep 5s
     # Pre-create shortcut directory for latest re-branding Microsoft Edge WebView2
