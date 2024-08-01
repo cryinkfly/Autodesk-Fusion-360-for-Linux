@@ -13,7 +13,7 @@
 
 mkdir -p autodesk_fusion_360_installer_client/{data,graphics,locale,logs,styles}
 curl -o autodesk_fusion_360_installer_client/Fusion360-Linux-Installer-x86_64.py -L https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/Fusion360-Linux-Installer-x86_64.py
-curl -o autodesk_fusion_360_installer_client/data/autodesk_fusion_installer.sh -L https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/bin/autodesk_fusion_installer.sh
+curl -o autodesk_fusion_360_installer_client/data/autodesk_fusion_installer.sh -L https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/data/autodesk_fusion_installer.sh
 curl -o autodesk_fusion_360_installer_client/graphics/welcome.svg -L https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/resource/graphics/welcome.svg
 curl -o autodesk_fusion_360_installer_client/styles/fusion360-dark.css -L https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/resource/styles/fusion360-dark.css
 curl -o autodesk_fusion_360_installer_client/styles/fusion360-light.css -L https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/resource/styles/fusion360-light.css
