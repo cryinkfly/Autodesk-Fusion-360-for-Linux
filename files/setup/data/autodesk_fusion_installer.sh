@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2024                                                                          #
-# Time/Date:    23:30/31.07.2024                                                                   #
+# Time/Date:    23:00/01.08.2024                                                                   #
 # Version:      2.0.0                                                                              #
 ####################################################################################################
 
@@ -353,7 +353,7 @@ function check_gpu_driver() {
 function dxvk_opengl_1 {
     if [[ $gpu_driver = "DXVK" ]]; then
         WINEPREFIX="$selected_directory/wineprefixes/default" sh "$selected_directory/bin/winetricks" -q dxvk
-        wget -Nc -P "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads" https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/driver/video/dxvk/DXVK.reg
+        wget -Nc -P "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads" https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/setup/resource/video_driver/dxvk/DXVK.reg
         # Add the "return"-option. Here you can read more about it -> https://github.com/koalaman/shellcheck/issues/592
         cd "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads" || return
         WINEPREFIX="$selected_directory/wineprefixes/default" wine regedit.exe DXVK.reg
@@ -362,9 +362,9 @@ function dxvk_opengl_1 {
 
 function dxvk_opengl_2 {
     if [[ $gpu_driver = "DXVK" ]]; then
-        wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/driver/video/dxvk/NMachineSpecificOptions.xml
+        wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/setup/resource/video_driver/dxvk/NMachineSpecificOptions.xml
     else
-        wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/driver/video/opengl/NMachineSpecificOptions.xml
+        wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/setup/resource/video_driver/opengl/NMachineSpecificOptions.xml
     fi
 }
 
@@ -394,7 +394,7 @@ function determine_variable_folder_name_for_identity_manager {
 # Load the icons and .desktop-files:
 function fusion360_shortcuts_load {
     # Create a .desktop file (launcher.sh) for Autodesk Fusion 360!
-    wget -Nc -P "$selected_directory/graphics" https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/fusion360.svg
+    wget -Nc -P "$selected_directory/graphics" https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/resource/graphics/autodesk_fusion.svg
     rm "$HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk Fusion 360.desktop"
     cat >> "$HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/fusion360.desktop" << EOF
 [Desktop Entry]
@@ -417,42 +417,11 @@ Comment[it]=Autodesk Fusion 360 è una piattaforma software di modellazione 3D, 
 Comment[ja]=Autodesk Fusion 360は、製品の設計と製造のためのクラウドベースの3Dモデリング、CAD、CAM、およびPCBソフトウェアプラットフォームです。
 Comment[ko]=Autodesk Fusion 360은 제품 설계 및 제조를 위한 클라우드 기반 3D 모델링, CAD, CAM 및 PCB 소프트웨어 플랫폼입니다.
 Comment[zh_CN]=Autodesk Fusion 360 是一个基于云的 3D 建模、CAD、CAM 和 PCB 软件平台，用于产品设计和制造。
-Exec=$selected_directory/bin/launcher.sh
+Exec=$selected_directory/bin/autodesk_fusion_launcher.sh
 Type=Application
 Categories=Education;Engineering;
 StartupNotify=true
-Icon=$selected_directory/graphics/fusion360.svg
-Terminal=false
-Path=$selected_directory/bin
-EOF
-
-    # Create a .desktop file (uninstall.sh) for Autodesk Fusion 360!
-    wget -Nc -P "$selected_directory/graphics" https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/fusion360.svg
-    cat >> "$HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/fusion360uninstall.desktop" << EOF
-[Desktop Entry]
-Name=Autodesk Fusion 360 (Uninstall)
-Name[cs]=Autodesk Fusion 360 (Odinstalovat)
-Name[de]=Autodesk Fusion 360 (Deinstallieren)
-Name[es]=Autodesk Fusion 360 (Desinstalar)
-Name[fr]=Autodesk Fusion 360 (Désinstaller)
-Name[it]=Autodesk Fusion 360 (Disinstalla)
-Name[ja]=Autodesk Fusion 360 (アンインストール)
-Name[ko]=Autodesk Fusion 360 (제거)
-Name[zh_CN]=Autodesk Fusion 360 (卸载)
-Comment=With this program you can delete Autodesk Fusion 360 on your system!
-Comment[cs]=Pomocí tohoto programu můžete odstranit Autodesk Fusion 360 ze svého systému!
-Comment[de]=Mit diesem Programm können Sie Autodesk Fusion 360 auf Ihrem System löschen!
-Comment[es]=¡Con este programa puede eliminar Autodesk Fusion 360 en su sistema!
-Comment[fr]=Avec ce programme, vous pouvez supprimer Autodesk Fusion 360 sur votre système !
-Comment[it]=Con questo programma puoi eliminare Autodesk Fusion 360 sul tuo sistema!
-Comment[ja]=このプログラムを使用すると、システム上のAutodeskFusion360を削除できます。
-Comment[ko]=이 프로그램을 사용하면 시스템에서 Autodesk Fusion 360을 삭제할 수 있습니다!
-Comment[zh_CN]=使用此程序，您可以删除系统上的 Autodesk Fusion 360！
-Exec=bash ./uninstall.sh
-Type=Application
-Categories=Education;Engineering;
-StartupNotify=true
-Icon=$selected_directory/graphics/fusion360.svg
+Icon=$selected_directory/graphics/autodesk_fusion.svg
 Terminal=false
 Path=$selected_directory/bin
 EOF
@@ -477,12 +446,8 @@ EOL
     sed -i 's/=env WINEPREFIX=/=env WINEDEBUG=-all env WINEPREFIX=/g' "$HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/fusion360.desktop"
 
     # Download some script files for Autodesk Fusion 360!
-    wget -NP "$selected_directory/bin" https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/uninstall.sh
-    chmod +x "$selected_directory/bin/uninstall.sh"
-    wget -NP "$selected_directory/bin" https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/launcher.sh
+    wget -NP "$selected_directory/bin" https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/data/autodesk_fusion_launcher.sh
     chmod +x "$selected_directory/bin/launcher.sh"
-    wget -NP "$selected_directory/bin" https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/update.sh
-    chmod +x "$selected_directory/bin/update.sh"
 }
 
 ########################################################################################
