@@ -99,14 +99,12 @@ function create_data_structure() {
             curl -L "$fusion360_installer_url" -o Fusion360installer.exe
             mv -f Fusion360installer.exe "$fusion360_installer"
             rm -rf "$fusion360_installer"
-            cp "Fusion360installer.exe" "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/Fusion360installer.exe"
         fi
     else
         echo "The Autodesk Fusion 360 installer doesn't exist and will be downloaded for you!"
         fusion360_installer_url="https://dl.appstreaming.autodesk.com/production/installers/Fusion%20Client%20Downloader.exe"
         curl -L "$fusion360_installer_url" -o "$fusion360_installer"
         mv -f Fusion360installer.exe "$fusion360_installer"
-        cp "Fusion360installer.exe" "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/Fusion360installer.exe"
     fi
 
     # Search for an existing installer of WEBVIEW2
@@ -118,14 +116,12 @@ function create_data_structure() {
             curl -L "$webview2_installer_url" -o WebView2installer.exe
             mv -f WebView2installer.exe "$webview2_installer"
             rm -rf "$webview2_installer"
-            cp "WebView2installer.exe" "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/WebView2installer.exe"
         fi
     else
         echo "The WebView2installer installer doesn't exist and will be downloaded for you!"
         webview2_installer_url="https://github.com/aedancullen/webview2-evergreen-standalone-installer-archive/releases/download/109.0.1518.78/MicrosoftEdgeWebView2RuntimeInstallerX64.exe"
         curl -L "$webview2_installer_url" -o "$webview2_installer"
         mv -f WebView2installer.exe "$webview2_installer"
-        cp "WebView2installer.exe" "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/WebView2installer.exe"
     fi
 
     # Download all tested extensions for Autodesk Fusion 360 on Linux
@@ -372,6 +368,7 @@ function dxvk_opengl_2 {
 
 # Execute the installation of Autodesk Fusion 360
 function fusion360_install_update {
+    cp "Fusion360installer.exe" "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/Fusion360installer.exe"
     WINEPREFIX="$selected_directory/wineprefixes/default" timeout -k 2m 1m wine "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/Fusion360installer.exe" --quiet
     WINEPREFIX="$selected_directory/wineprefixes/default" timeout -k 2m 1m wine "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/Fusion360installer.exe" --quiet
 }
@@ -492,6 +489,7 @@ function wine_fusion360_config() {
     WINEPREFIX="$selected_directory/wineprefixes/default" wine reg add "HKCU\Software\Wine\DllOverrides" /v "bcp47langs" /t REG_SZ /d "" /f
     sleep 5s
     # Download and install WebView2 to handle Login attempts, required even though we redirect to your default browser
+    cp "WebView2installer.exe" "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/WebView2installer.exe"
     WINEPREFIX="$selected_directory/wineprefixes/default" wine "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/WebView2installer.exe" /install # /silent
     sleep 5s
     # Pre-create shortcut directory for latest re-branding Microsoft Edge WebView2
