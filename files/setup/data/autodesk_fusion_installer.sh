@@ -95,17 +95,36 @@ function create_data_structure() {
     if [ -f "$fusion360_installer" ]; then
         echo "The Autodesk Fusion 360 installer exists!"
         if find "$fusion360_installer" -mtime +7 | grep -q .; then
-            fusion360_installer_url="https://dl.appstreaming.autodesk.com/production/installers/Fusion%20Client%20Downloader.exe"
+            fusion360_installer_url="https://dl.appstreaming.autodesk.com/production/installers/Fusion%20Admin%20Install.exe"
             curl -L "$fusion360_installer_url" -o Fusion360installer.exe
-            mv -f Fusion360installer.exe "$fusion360_installer"
             rm -rf "$fusion360_installer"
+            mv -f Fusion360installer.exe "$fusion360_installer"
         fi
     else
         echo "The Autodesk Fusion 360 installer doesn't exist and will be downloaded for you!"
-        fusion360_installer_url="https://dl.appstreaming.autodesk.com/production/installers/Fusion%20Client%20Downloader.exe"
+        fusion360_installer_url="https://dl.appstreaming.autodesk.com/production/installers/Fusion%20Admin%20Install.exe"
         curl -L "$fusion360_installer_url" -o "$fusion360_installer"
         mv -f Fusion360installer.exe "$fusion360_installer"
     fi
+
+    # Search for an existing installer of Autodesk Fusion 360 (Client)
+    fusion360_installer_client="$selected_directory/downloads/Fusion360Clientinstaller.exe"
+    if [ -f "$fusion360_installer_client" ]; then
+        echo "The Autodesk Fusion 360 installer exists!"
+        if find "$fusion360_installer_client" -mtime +7 | grep -q .; then
+            fusion360_installer_client_url="https://dl.appstreaming.autodesk.com/production/installers/Fusion%20Client%20Downloader.exe"
+            curl -L "$fusion360_installer_client_url" -o Fusion360Clientinstaller.exe
+            rm -rf "$fusion360_installer_client"
+            mv -f Fusion360Clientinstaller.exe "$fusion360_installer_client"
+        fi
+    else
+        echo "The Autodesk Fusion 360 installer doesn't exist and will be downloaded for you!"
+        fusion360_installer_client_url="https://dl.appstreaming.autodesk.com/production/installers/Fusion%20Client%20Downloader.exe"
+        curl -L "$fusion360_installer_client_url" -o "$fusion360_installer"
+        mv -f Fusion360Clientinstaller.exe "$fusion360_installer_client"
+    fi
+
+    https://dl.appstreaming.autodesk.com/production/installers/Fusion%20Client%20Downloader.exe
 
     # Search for an existing installer of WEBVIEW2
     webview2_installer="$selected_directory/downloads/WebView2installer.exe"
@@ -367,8 +386,8 @@ function dxvk_opengl_2 {
 
 # Execute the installation of Autodesk Fusion 360
 function fusion360_install_update {
-    WINEPREFIX="$selected_directory/wineprefixes/default" timeout -k 10m 1m wine "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/Fusion360installer.exe" --quiet
     WINEPREFIX="$selected_directory/wineprefixes/default" timeout -k 2m 1m wine "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/Fusion360installer.exe" --quiet
+    WINEPREFIX="$selected_directory/wineprefixes/default" timeout -k 2m 1m wine "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/Fusion360Clientinstaller.exe" --quiet
 }
 
 ########################################################################################
@@ -487,6 +506,7 @@ function wine_fusion360_config() {
     cd "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads" &&
     dxvk_opengl_1 &&
     cp "$selected_directory/downloads/Fusion360installer.exe" "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/Fusion360installer.exe" &&
+    cp "$selected_directory/downloads/Fusion360installer.exe" "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/Fusion360Clientinstaller.exe" &&
     fusion360_install_update &&
     mkdir -p "$selected_directory/wineprefixes/default/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options" &&
     mv "NMachineSpecificOptions.xml" "$selected_directory/wineprefixes/default/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options" &&
