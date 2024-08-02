@@ -17,7 +17,6 @@ from gi.repository import Gtk, Gdk, GdkPixbuf, GLib
 import gettext
 import threading
 import subprocess
-import subprocess
 
 ####################################################################################################
 
