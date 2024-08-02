@@ -199,7 +199,7 @@ function SP_LOCALE_INDEX {
   chmod +x "$SP_PATH/locale/locale.sh"
   # shellcheck source=../locale/locale.sh
   source "$SP_PATH/locale/locale.sh"
-  SP_LOCALE_EN
+  source "$SP_PATH/locale/en-US/locale-en.sh"
 }
 
 # Czech:
