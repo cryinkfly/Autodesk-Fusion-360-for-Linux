@@ -349,18 +349,17 @@ function check_gpu_driver() {
 function dxvk_opengl_1 {
     if [[ $gpu_driver = "DXVK" ]]; then
         WINEPREFIX="$selected_directory/wineprefixes/default" sh "$selected_directory/bin/winetricks" -q dxvk
-        wget -Nc -P "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads" https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/setup/resource/video_driver/dxvk/DXVK.reg
+        curl -o DXVK.reg https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/setup/resource/video_driver/dxvk/DXVK.reg
         # Add the "return"-option. Here you can read more about it -> https://github.com/koalaman/shellcheck/issues/592
-        cd "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads" || return
         WINEPREFIX="$selected_directory/wineprefixes/default" wine regedit.exe DXVK.reg
     fi
 }
 
 function dxvk_opengl_2 {
     if [[ $gpu_driver = "DXVK" ]]; then
-        wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/setup/resource/video_driver/dxvk/NMachineSpecificOptions.xml
+        curl -o NMachineSpecificOptions.xml https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/setup/resource/video_driver/dxvk/NMachineSpecificOptions.xml
     else
-        wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/setup/resource/video_driver/opengl/NMachineSpecificOptions.xml
+        curl -o NMachineSpecificOptions.xml https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/setup/resource/video_driver/opengl/NMachineSpecificOptions.xml
     fi
 }
 
@@ -369,8 +368,8 @@ function dxvk_opengl_2 {
 # Execute the installation of Autodesk Fusion 360
 function fusion360_install_update {
     cp "$selected_directory/downloads/Fusion360installer.exe" "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/Fusion360installer.exe"
-    WINEPREFIX="$selected_directory/wineprefixes/default" timeout -k 2m 1m wine "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/Fusion360installer.exe" --quiet
-    WINEPREFIX="$selected_directory/wineprefixes/default" timeout -k 2m 1m wine "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/Fusion360installer.exe" --quiet
+    #WINEPREFIX="$selected_directory/wineprefixes/default" timeout -k 2m 1m wine "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/Fusion360installer.exe" --quiet
+    WINEPREFIX="$selected_directory/wineprefixes/default" wine "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/Fusion360installer.exe" --quiet
 }
 
 ########################################################################################
@@ -465,19 +464,14 @@ function wine_fusion360_config() {
     # For this reason, the EXE files must be located directly in the Wineprefix folder!
 
     mkdir -p "$selected_directory/wineprefixes/default"
-    cd "$selected_directory/wineprefixes/default" || return
+    cd "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads" || return
     WINEPREFIX="$selected_directory/wineprefixes/default" sh "$selected_directory/bin/winetricks" -q sandbox
-    sleep 5s
     # We must install some packages!
-    WINEPREFIX="$selected_directory/wineprefixes/default" sh "$selected_directory/bin/winetricks" -q atmlib gdiplus arial corefonts cjkfonts dotnet452 msxml4 msxml6 vcrun2017 fontsmooth=rgb winhttp win10
-    sleep 5s
+    WINEPREFIX="$selected_directory/wineprefixes/default" sh "$selected_directory/bin/winetricks" -q atmlib gdiplus arial corefonts cjkfonts dotnet452 msxml4 msxml6 vcrun2017 fontsmooth=rgb winhttp win11 # win10
     # We must install cjkfonts again then sometimes it doesn't work in the first time!
     WINEPREFIX="$selected_directory/wineprefixes/default" sh "$selected_directory/bin/winetricks" -q cjkfonts
-    sleep 5s
-    dxvk_opengl_1
     # We must set to Windows 10 or 11 again because some other winetricks sometimes set it back to Windows XP!
     WINEPREFIX="$selected_directory/wineprefixes/default" sh "$selected_directory/bin/winetricks" -q win11 # win10
-    sleep 5s
     # Remove tracking metrics/calling home
     WINEPREFIX="$selected_directory/wineprefixes/default" wine REG ADD "HKCU\Software\Wine\DllOverrides" /v "adpclientservice.exe" /t REG_SZ /d "" /f
     # Navigation bar does not work well with anything other than the wine builtin DX9
@@ -487,26 +481,22 @@ function wine_fusion360_config() {
     WINEPREFIX="$selected_directory/wineprefixes/default" wine REG ADD "HKCU\Software\Wine\DllOverrides" /v "mfc140u" /t REG_SZ /d native /f
     # Fixed the problem with the bcp47langs issue and now the login works again!
     WINEPREFIX="$selected_directory/wineprefixes/default" wine reg add "HKCU\Software\Wine\DllOverrides" /v "bcp47langs" /t REG_SZ /d "" /f
-    sleep 5s
     # Download and install WebView2 to handle Login attempts, required even though we redirect to your default browser
     cp "$selected_directory/downloads/WebView2installer.exe" "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/WebView2installer.exe"
     WINEPREFIX="$selected_directory/wineprefixes/default" wine "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/WebView2installer.exe" /install # /silent
-    sleep 5s
     # Pre-create shortcut directory for latest re-branding Microsoft Edge WebView2
     mkdir -p "$selected_directory/wineprefixes/default/drive_c/users/$USER/AppData/Roaming/Microsoft/Internet Explorer/Quick Launch/User Pinned/"
-    # This start and stop the installer automatically after a time!
-    # For more information check this link: https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/issues/232
-    fusion360_install_update
+    dxvk_opengl_1
     mkdir -p "$selected_directory/wineprefixes/default/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options"
-    cd "$selected_directory/wineprefixes/default/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options" || return
+    mv "NMachineSpecificOptions.xml" "$selected_directory/wineprefixes/default/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options" || return
     dxvk_opengl_2
     mkdir -p "$selected_directory/wineprefixes/default/drive_c/users/$USER/AppData/Local/Autodesk/Neutron Platform/Options"
-    cd "$selected_directory/wineprefixes/default/drive_c/users/$USER/AppData/Local/Autodesk/Neutron Platform/Options" || return
+    mv "NMachineSpecificOptions.xml" "$selected_directory/wineprefixes/default/drive_c/users/$USER/AppData/Local/Autodesk/Neutron Platform/Options" || return
     dxvk_opengl_2
     mkdir -p "$selected_directory/wineprefixes/default/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options"
-    cd "$selected_directory/wineprefixes/default/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options" || return
+    mv "NMachineSpecificOptions.xml" "$selected_directory/wineprefixes/default/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options" || return
     dxvk_opengl_2
-    cd "$selected_directory/bin" || return
+    fusion360_install_update # This start and stop the installer automatically after a time! Link: https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/issues/232
 }
 ########################################################################################
 
@@ -552,7 +542,6 @@ function extension_ultimaker_digital_factory {
 function install_extension {
     local extension_file="$1"
     cp "$selected_directory/extensions/$extension_file" "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads"
-    cd "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads" || return
     if [[ "$extension_file" == *.msi ]]; then
         WINEPREFIX="$selected_directory/wineprefixes/default" wine msiexec /i "$extension_file"
     else
