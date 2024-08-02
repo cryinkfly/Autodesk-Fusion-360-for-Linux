@@ -367,7 +367,6 @@ function dxvk_opengl_2 {
 
 # Execute the installation of Autodesk Fusion 360
 function fusion360_install_update {
-    cp "$selected_directory/downloads/Fusion360installer.exe" "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/Fusion360installer.exe"
     #WINEPREFIX="$selected_directory/wineprefixes/default" timeout -k 2m 1m wine "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/Fusion360installer.exe" --quiet
     WINEPREFIX="$selected_directory/wineprefixes/default" wine "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/Fusion360installer.exe" --quiet
 }
@@ -487,6 +486,8 @@ function wine_fusion360_config() {
     mkdir -p "$selected_directory/wineprefixes/default/drive_c/users/$USER/AppData/Roaming/Microsoft/Internet Explorer/Quick Launch/User Pinned/"
     cd "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads" || return
     dxvk_opengl_1
+    cp "$selected_directory/downloads/Fusion360installer.exe" "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/Fusion360installer.exe"
+    fusion360_install_update # This start and stop the installer automatically after a time! Link: https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/issues/232
     mkdir -p "$selected_directory/wineprefixes/default/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options"
     mv "NMachineSpecificOptions.xml" "$selected_directory/wineprefixes/default/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options" || return
     dxvk_opengl_2
@@ -496,7 +497,6 @@ function wine_fusion360_config() {
     mkdir -p "$selected_directory/wineprefixes/default/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options"
     mv "NMachineSpecificOptions.xml" "$selected_directory/wineprefixes/default/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options" || return
     dxvk_opengl_2
-    fusion360_install_update # This start and stop the installer automatically after a time! Link: https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/issues/232
 }
 ########################################################################################
 
