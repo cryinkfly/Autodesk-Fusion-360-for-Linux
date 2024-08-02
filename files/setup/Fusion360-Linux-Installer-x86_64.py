@@ -17,16 +17,30 @@ from gi.repository import Gtk, Gdk, GdkPixbuf, GLib
 import gettext
 import threading
 import subprocess
+import subprocess
 
 ####################################################################################################
 
-# Create structure ...
-# $HOME/Downloads/autodesk_fusion_installer/Fusion360-Linux-Installer-x86_64.py
-# $HOME/Downloads/autodesk_fusion_installer/data/autodesk_fusion_installer.sh
-# $HOME/Downloads/autodesk_fusion_installer/graphics/welcome.svg
-# $HOME/Downloads/autodesk_fusion_installer/locale/...
-# $HOME/Downloads/autodesk_fusion_installer/styles/fusion360-dark.css
-# $HOME/Downloads/autodesk_fusion_installer/styles/fusion360-light.css
+create_structure = '''
+mkdir -p {data,graphics,locale,logs,styles}
+curl -o data/autodesk_fusion_installer.sh -L https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/data/autodesk_fusion_installer.sh
+curl -o graphics/welcome.svg -L https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/resource/graphics/welcome.svg
+curl -o styles/fusion360-dark.css -L https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/resource/styles/fusion360-dark.css
+curl -o styles/fusion360-light.css -L https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/resource/styles/fusion360-light.css
+for lang in cs_CZ de_DE en_US es_ES fr_FR it_IT ja_JP ko_KR pl_PL pt_BR tr_TR zh_CN zh_TW; do
+    mkdir -p locale/$lang/LC_MESSAGES  
+    # Download the .po files
+    curl -o locale/$lang/LC_MESSAGES/autodesk_fusion.po -L https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/locale/$lang/LC_MESSAGES/autodesk_fusion.po
+done
+curl -o locale/update-locale.sh -L https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/locale/update-locale.sh
+chmod +x locale/update-locale.sh
+chmod +x data/autodesk_fusion_installer.sh
+echo "The Autodesk Fusion 360 installer client has been downloaded successfully!"
+# Run update-locale.sh in an extra terminal to update the locale files and close the terminal after the update
+source ./locale/update-locale.sh
+'''
+
+subprocess.call(create_structure, shell=True)
 
 ####################################################################################################
 
