@@ -484,7 +484,7 @@ function wine_fusion360_config() {
     mkdir -p "$selected_directory/wineprefixes/default" &&
     WINEPREFIX="$selected_directory/wineprefixes/default" sh "$selected_directory/bin/winetricks" -q sandbox &&
     # We must install some packages!
-    WINEPREFIX="$selected_directory/wineprefixes/default" sh "$selected_directory/bin/winetricks" -q atmlib gdiplus arial corefonts cjkfonts dotnet452 msxml4 msxml6 vcrun2017 fontsmooth=rgb winhttp win11 &&
+    WINEPREFIX="$selected_directory/wineprefixes/default" sh "$selected_directory/bin/winetricks" -q atmlib gdiplus arial corefonts cjkfonts dotnet452 msxml4 msxml6 vcrun2017 fontsmooth=rgb winhttp win10 &&
     # We must install cjkfonts again then sometimes it doesn't work in the first time!
     WINEPREFIX="$selected_directory/wineprefixes/default" sh "$selected_directory/bin/winetricks" -q cjkfonts &&
     # We must set to Windows 10 or 11 again because some other winetricks sometimes set it back to Windows XP!
