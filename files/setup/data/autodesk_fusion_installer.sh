@@ -123,9 +123,7 @@ function create_data_structure() {
         curl -L "$fusion360_installer_client_url" -o "$fusion360_installer"
         mv -f Fusion360Clientinstaller.exe "$fusion360_installer_client"
     fi
-
-    https://dl.appstreaming.autodesk.com/production/installers/Fusion%20Client%20Downloader.exe
-
+    
     # Search for an existing installer of WEBVIEW2
     webview2_installer="$selected_directory/downloads/WebView2installer.exe"
     if [ -f "$webview2_installer" ]; then
