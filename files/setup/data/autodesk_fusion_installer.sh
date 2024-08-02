@@ -385,7 +385,7 @@ function dxvk_opengl_2 {
 # Execute the installation of Autodesk Fusion 360
 function fusion360_install_update {
     WINEPREFIX="$selected_directory/wineprefixes/default" timeout -k 2m 1m wine "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/Fusion360installer.exe" --quiet
-    WINEPREFIX="$selected_directory/wineprefixes/default" timeout -k 2m 1m wine "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/Fusion360Clientinstaller.exe" --quiet
+    WINEPREFIX="$selected_directory/wineprefixes/default" timeout -k 2m 1m wine "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/Fusion360Clientinstaller.exe"
 }
 
 ########################################################################################
@@ -506,7 +506,7 @@ function wine_fusion360_config() {
     cd "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads" &&
     dxvk_opengl_1 &&
     cp "$selected_directory/downloads/Fusion360installer.exe" "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/Fusion360installer.exe" &&
-    cp "$selected_directory/downloads/Fusion360installer.exe" "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/Fusion360Clientinstaller.exe" &&
+    cp "$selected_directory/downloads/Fusion360Clientinstaller.exe" "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/Fusion360Clientinstaller.exe" &&
     fusion360_install_update &&
     mkdir -p "$selected_directory/wineprefixes/default/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options" &&
     mv "NMachineSpecificOptions.xml" "$selected_directory/wineprefixes/default/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options" &&
