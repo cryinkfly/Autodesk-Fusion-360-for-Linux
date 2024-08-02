@@ -367,8 +367,8 @@ function dxvk_opengl_2 {
 
 # Execute the installation of Autodesk Fusion 360
 function fusion360_install_update {
-    #WINEPREFIX="$selected_directory/wineprefixes/default" timeout -k 2m 1m wine "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/Fusion360installer.exe" --quiet
-    WINEPREFIX="$selected_directory/wineprefixes/default" wine "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/Fusion360installer.exe" --quiet
+    WINEPREFIX="$selected_directory/wineprefixes/default" timeout -k 10m 1m wine "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/Fusion360installer.exe" --quiet
+    WINEPREFIX="$selected_directory/wineprefixes/default" timeout -k 2m 1m wine "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/Fusion360installer.exe" --quiet
 }
 
 ########################################################################################
@@ -462,42 +462,43 @@ function wine_fusion360_config() {
     # But it still ensures that wine, for example, no longer has access permissions to Home!
     # For this reason, the EXE files must be located directly in the Wineprefix folder!
 
-    mkdir -p "$selected_directory/wineprefixes/default"
-    WINEPREFIX="$selected_directory/wineprefixes/default" sh "$selected_directory/bin/winetricks" -q sandbox
+    mkdir -p "$selected_directory/wineprefixes/default" &&
+    WINEPREFIX="$selected_directory/wineprefixes/default" sh "$selected_directory/bin/winetricks" -q sandbox &&
     # We must install some packages!
-    WINEPREFIX="$selected_directory/wineprefixes/default" sh "$selected_directory/bin/winetricks" -q atmlib gdiplus arial corefonts cjkfonts dotnet452 msxml4 msxml6 vcrun2017 fontsmooth=rgb winhttp win11 # win10
+    WINEPREFIX="$selected_directory/wineprefixes/default" sh "$selected_directory/bin/winetricks" -q atmlib gdiplus arial corefonts cjkfonts dotnet452 msxml4 msxml6 vcrun2017 fontsmooth=rgb winhttp win11 &&
     # We must install cjkfonts again then sometimes it doesn't work in the first time!
-    WINEPREFIX="$selected_directory/wineprefixes/default" sh "$selected_directory/bin/winetricks" -q cjkfonts
+    WINEPREFIX="$selected_directory/wineprefixes/default" sh "$selected_directory/bin/winetricks" -q cjkfonts &&
     # We must set to Windows 10 or 11 again because some other winetricks sometimes set it back to Windows XP!
-    WINEPREFIX="$selected_directory/wineprefixes/default" sh "$selected_directory/bin/winetricks" -q win11 # win10
+    WINEPREFIX="$selected_directory/wineprefixes/default" sh "$selected_directory/bin/winetricks" -q win11 &&
     # Remove tracking metrics/calling home
-    WINEPREFIX="$selected_directory/wineprefixes/default" wine REG ADD "HKCU\Software\Wine\DllOverrides" /v "adpclientservice.exe" /t REG_SZ /d "" /f
+    WINEPREFIX="$selected_directory/wineprefixes/default" wine REG ADD "HKCU\Software\Wine\DllOverrides" /v "adpclientservice.exe" /t REG_SZ /d "" /f &&
     # Navigation bar does not work well with anything other than the wine builtin DX9
-    WINEPREFIX="$selected_directory/wineprefixes/default" wine REG ADD "HKCU\Software\Wine\DllOverrides" /v "AdCefWebBrowser.exe" /t REG_SZ /d builtin /f
+    WINEPREFIX="$selected_directory/wineprefixes/default" wine REG ADD "HKCU\Software\Wine\DllOverrides" /v "AdCefWebBrowser.exe" /t REG_SZ /d builtin /f &&
     # Use Visual Studio Redist that is bundled with the application
-    WINEPREFIX="$selected_directory/wineprefixes/default" wine REG ADD "HKCU\Software\Wine\DllOverrides" /v "msvcp140" /t REG_SZ /d native /f
-    WINEPREFIX="$selected_directory/wineprefixes/default" wine REG ADD "HKCU\Software\Wine\DllOverrides" /v "mfc140u" /t REG_SZ /d native /f
+    WINEPREFIX="$selected_directory/wineprefixes/default" wine REG ADD "HKCU\Software\Wine\DllOverrides" /v "msvcp140" /t REG_SZ /d native /f &&
+    WINEPREFIX="$selected_directory/wineprefixes/default" wine REG ADD "HKCU\Software\Wine\DllOverrides" /v "mfc140u" /t REG_SZ /d native /f &&
     # Fixed the problem with the bcp47langs issue and now the login works again!
-    WINEPREFIX="$selected_directory/wineprefixes/default" wine reg add "HKCU\Software\Wine\DllOverrides" /v "bcp47langs" /t REG_SZ /d "" /f
+    WINEPREFIX="$selected_directory/wineprefixes/default" wine reg add "HKCU\Software\Wine\DllOverrides" /v "bcp47langs" /t REG_SZ /d "" /f &&
     # Download and install WebView2 to handle Login attempts, required even though we redirect to your default browser
-    cp "$selected_directory/downloads/WebView2installer.exe" "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/WebView2installer.exe"
-    WINEPREFIX="$selected_directory/wineprefixes/default" wine "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/WebView2installer.exe" /install # /silent
+    cp "$selected_directory/downloads/WebView2installer.exe" "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/WebView2installer.exe" &&
+    WINEPREFIX="$selected_directory/wineprefixes/default" wine "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/WebView2installer.exe" /install &&
     # Pre-create shortcut directory for latest re-branding Microsoft Edge WebView2
-    mkdir -p "$selected_directory/wineprefixes/default/drive_c/users/$USER/AppData/Roaming/Microsoft/Internet Explorer/Quick Launch/User Pinned/"
-    cd "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads" || return
-    dxvk_opengl_1
-    cp "$selected_directory/downloads/Fusion360installer.exe" "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/Fusion360installer.exe"
-    fusion360_install_update # This start and stop the installer automatically after a time! Link: https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/issues/232
-    mkdir -p "$selected_directory/wineprefixes/default/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options"
-    mv "NMachineSpecificOptions.xml" "$selected_directory/wineprefixes/default/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options" || return
-    dxvk_opengl_2
-    mkdir -p "$selected_directory/wineprefixes/default/drive_c/users/$USER/AppData/Local/Autodesk/Neutron Platform/Options"
-    mv "NMachineSpecificOptions.xml" "$selected_directory/wineprefixes/default/drive_c/users/$USER/AppData/Local/Autodesk/Neutron Platform/Options" || return
-    dxvk_opengl_2
-    mkdir -p "$selected_directory/wineprefixes/default/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options"
-    mv "NMachineSpecificOptions.xml" "$selected_directory/wineprefixes/default/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options" || return
+    mkdir -p "$selected_directory/wineprefixes/default/drive_c/users/$USER/AppData/Roaming/Microsoft/Internet Explorer/Quick Launch/User Pinned/" &&
+    cd "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads" &&
+    dxvk_opengl_1 &&
+    cp "$selected_directory/downloads/Fusion360installer.exe" "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/Fusion360installer.exe" &&
+    fusion360_install_update &&
+    mkdir -p "$selected_directory/wineprefixes/default/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options" &&
+    mv "NMachineSpecificOptions.xml" "$selected_directory/wineprefixes/default/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options" &&
+    dxvk_opengl_2 &&
+    mkdir -p "$selected_directory/wineprefixes/default/drive_c/users/$USER/AppData/Local/Autodesk/Neutron Platform/Options" &&
+    mv "NMachineSpecificOptions.xml" "$selected_directory/wineprefixes/default/drive_c/users/$USER/AppData/Local/Autodesk/Neutron Platform/Options" &&
+    dxvk_opengl_2 &&
+    mkdir -p "$selected_directory/wineprefixes/default/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options" &&
+    mv "NMachineSpecificOptions.xml" "$selected_directory/wineprefixes/default/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options" &&
     dxvk_opengl_2
 }
+
 ########################################################################################
 
 # Check and install the selected extensions
