@@ -479,7 +479,9 @@ function wine_fusion360_config() {
     # But it still ensures that wine, for example, no longer has access permissions to Home!
     # For this reason, the EXE files must be located directly in the Wineprefix folder!
 
-    mkdir -p "$selected_directory/wineprefixes/default" &&
+    mkdir -p "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads" &&
+    cd "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads"
+    WINEPREFIX="$selected_directory/wineprefixes/default" sh "$selected_directory/bin/winetricks" -q sandbox &&
     WINEPREFIX="$selected_directory/wineprefixes/default" sh "$selected_directory/bin/winetricks" -q sandbox &&
     # We must install some packages!
     WINEPREFIX="$selected_directory/wineprefixes/default" sh "$selected_directory/bin/winetricks" -q atmlib gdiplus arial corefonts cjkfonts dotnet452 msxml4 msxml6 vcrun2017 fontsmooth=rgb winhttp win10 &&
