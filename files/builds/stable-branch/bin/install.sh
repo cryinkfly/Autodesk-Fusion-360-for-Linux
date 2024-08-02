@@ -363,7 +363,7 @@ function SP_DETERMINE_VARIABLE_FOLDER_NAME_FOR_IDENTITY_MANAGER {
 # Load the icons and .desktop-files:
 function SP_FUSION360_SHORTCUTS_LOAD {
   # Create a .desktop file (launcher.sh) for Autodesk Fusion 360!
-  wget -Nc -P "$SP_PATH/graphics" https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/fusion360.svg
+  wget -Nc -P "$SP_PATH/graphics" https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/resource/graphics/autodesk_fusion.svg
   rm "$HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk Fusion 360.desktop"
   mkdir -p "$HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE"
   cat >> "$HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360.desktop" << EOF
@@ -391,13 +391,13 @@ Exec=$WP_DIRECTORY/box-run.sh
 Type=Application
 Categories=Education;Engineering;
 StartupNotify=true
-Icon=$SP_PATH/graphics/fusion360.svg
+Icon=$SP_PATH/graphics/autodesk_fusion.svg
 Terminal=false
 Path=$WP_DIRECTORY
 EOF
 
   # Create a .desktop file (uninstall.sh) for Autodesk Fusion 360!
-  wget -Nc -P "$SP_PATH/graphics" https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/fusion360.svg
+  wget -Nc -P "$SP_PATH/graphics" https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/resource/graphics/autodesk_fusion.svg
   cat >> "$HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/$WP_TYPE/fusion360uninstall.desktop" << EOF
 [Desktop Entry]
 Name=Autodesk Fusion 360 (Uninstall) - $WP_TYPE
@@ -422,7 +422,7 @@ Exec=bash ./uninstall.sh
 Type=Application
 Categories=Education;Engineering;
 StartupNotify=true
-Icon=$SP_PATH/graphics/fusion360.svg
+Icon=$SP_PATH/graphics/autodesk_fusion.svg
 Terminal=false
 Path=$SP_PATH/bin
 EOF
@@ -467,7 +467,7 @@ EOF
 function SP_DXVK_OPENGL_1 {
   if [[ $WP_DRIVER = "DXVK" ]]; then
     WINEPREFIX=$WP_DIRECTORY sh "$SP_PATH/bin/winetricks" -q dxvk
-    wget -Nc -P "$WP_DIRECTORY/drive_c/users/$USER/Downloads" https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/driver/video/dxvk/DXVK.reg
+    wget -Nc -P "$WP_DIRECTORY/drive_c/users/$USER/Downloads" https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/setup/resource/video_driver/dxvk/DXVK.reg
     # Add the "return"-option. Here you can read more about it -> https://github.com/koalaman/shellcheck/issues/592
     cd "$WP_DIRECTORY/drive_c/users/$USER/Downloads" || return
     WINEPREFIX=$WP_DIRECTORY wine regedit.exe DXVK.reg
@@ -476,9 +476,9 @@ function SP_DXVK_OPENGL_1 {
 
 function SP_DXVK_OPENGL_2 {
   if [[ $WP_DRIVER = "DXVK" ]]; then
-    wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/driver/video/dxvk/NMachineSpecificOptions.xml
+    wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/setup/resource/video_driver/dxvk/NMachineSpecificOptions.xml
   else
-    wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/builds/stable-branch/driver/video/opengl/NMachineSpecificOptions.xml
+    wget -N https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/setup/resource/video_driver/opengl/NMachineSpecificOptions.xml
   fi
 }
 
@@ -752,35 +752,13 @@ function OS_GENTOO_LINUX {
 # ALL FUNCTIONS FOR THE EXTENSIONS START HERE:                                                                                                                #
 ###############################################################################################################################################################
 
-# Install a extension: Airfoil Tools
-function EXTENSION_AIRFOIL_TOOLS {
-  cd "$SP_PATH/extensions" || return
-  wget -Nc https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/raw/main/files/extensions/AirfoilTools_win64.msi &&
-  cp AirfoilTools_win64.msi "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
-  cd "$WP_DIRECTORY/drive_c/users/$USER/Downloads" || return
-  WINEPREFIX=$WP_DIRECTORY wine msiexec /i AirfoilTools_win64.msi
-}
-
-###############################################################################################################################################################
-
-# Install a extension: Additive Assistant (FFF)
-function EXTENSION_ADDITIVE_ASSISTANT {
-  cd "$SP_PATH/extensions" || return
-  wget -Nc https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/AdditiveAssistant.bundle-win64.msi &&
-  cp AdditiveAssistant.bundle-win64.msi "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
-  cd "$WP_DIRECTORY/drive_c/users/$USER/Downloads" || return
-  WINEPREFIX=$WP_DIRECTORY wine msiexec /i AdditiveAssistant.bundle-win64.msi
-}
-
-###############################################################################################################################################################
-
 # Install a extension: Czech localization for F360
 function EXTENSION_CZECH_LOCALE {
   cd "$SP_PATH/extensions" || return
-  wget -Nc https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/Ceska_lokalizace_pro_Autodesk_Fusion_360_v7.exe &&
-  cp "Ceska_lokalizace_pro_Autodesk_Fusion_360_v7.exe" "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
+  wget -Nc https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/Ceska_lokalizace_pro_Autodesk_Fusion.exe &&
+  cp "Ceska_lokalizace_pro_Autodesk_Fusion.exe" "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
   cd "$WP_DIRECTORY/drive_c/users/$USER/Downloads" || return
-  WINEPREFIX="$WP_DIRECTORY" wine Ceska_lokalizace_pro_Autodesk_Fusion_360_v7.exe
+  WINEPREFIX="$WP_DIRECTORY" wine Ceska_lokalizace_pro_Autodesk_Fusion.exe
 }
 
 ###############################################################################################################################################################
@@ -796,17 +774,6 @@ function EXTENSION_HP_3DPRINTER_CONNECTOR {
 
 ###############################################################################################################################################################
 
-# Install a extension: Helical Gear Generator
-function EXTENSION_HELICAL_GEAR_GENERATOR {
-  cd "$SP_PATH/extensions" || return
-  wget -Nc https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/HelicalGear_win64.msi &&
-  cp HelicalGear_win64.msi "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
-  cd "$WP_DIRECTORY/drive_c/users/$USER/Downloads" || return
-  WINEPREFIX="$WP_DIRECTORY" wine msiexec /i HelicalGear_win64.msi
-}
-
-###############################################################################################################################################################
-
 # Install a extension: OctoPrint for Autodesk® Fusion 360™
 function EXTENSION_OCTOPRINT {
   cd "$SP_PATH/extensions" || return
@@ -818,25 +785,6 @@ function EXTENSION_OCTOPRINT {
 
 ###############################################################################################################################################################
 
-# Install a extension: Parameter I/O
-function EXTENSION_PARAMETER_IO {
-  cd "$SP_PATH/extensions" || return
-  wget -Nc https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/ParameterIO_win64.msi &&
-  cp ParameterIO_win64.msi "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
-  cd "$WP_DIRECTORY/drive_c/users/$USER/Downloads" || return
-  WINEPREFIX="$WP_DIRECTORY" wine msiexec /i ParameterIO_win64.msi
-}
-
-###############################################################################################################################################################
-
-# Install a extension: RoboDK
-function EXTENSION_ROBODK {
-  cd "$SP_PATH/extensions" || return
-  wget -Nc https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/RoboDK.bundle-win64.msi &&
-  cp RoboDK.bundle-win64.msi "$WP_DIRECTORY/drive_c/users/$USER/Downloads"
-  cd "$WP_DIRECTORY/drive_c/users/$USER/Downloads" || return
-  WINEPREFIX="$WP_DIRECTORY" wine msiexec /i RoboDK.bundle-win64.msi
-}
 
 ###############################################################################################################################################################
 
@@ -1275,16 +1223,6 @@ SP_FUSION360_INSTALL_PROGRESS_MAIN_REFRESH | yad --title="$SP_TITLE" --borders=1
 function SP_FUSION360_EXTENSIONS {
 EXTENSIONS=$(yad --title="$SP_TITLE" --borders=15 --button=gtk-cancel:99 --button=gtk-ok:0 --height=300 --list --multiple --checklist --column="$SP_EXTENSION_SELECT" --column="$SP_EXTENSION_NAME" --column="$SP_EXTENSION_DESCRIPTION" < "$SP_EXTENSION_LIST")
 
-if [[ $EXTENSIONS = *"Airfoil Tools"* ]]; then
-    echo "Airfoil Tools"
-    EXTENSION_AIRFOIL_TOOLS
-fi
-
-if [[ $EXTENSIONS = *"Additive Assistant (FFF)"* ]]; then
-    echo "Additive Assistant (FFF)"
-    EXTENSION_ADDITIVE_ASSISTANT
-fi
-
 if [[ $EXTENSIONS = *"Czech localization for F360"* ]]; then
     echo "Czech localization for F360"
     EXTENSION_CZECH_LOCALE
@@ -1295,24 +1233,9 @@ if [[ $EXTENSIONS = *"HP 3D Printers for Autodesk® Fusion 360™"* ]]; then
     EXTENSION_HP_3DPRINTER_CONNECTOR
 fi
 
-if [[ $EXTENSIONS = *"Helical Gear Generator"* ]]; then
-    echo "Helical Gear Generator"
-    EXTENSION_HELICAL_GEAR_GENERATOR
-fi
-
 if [[ $EXTENSIONS = *"OctoPrint for Autodesk® Fusion 360™"* ]]; then
     echo "OctoPrint for Autodesk® Fusion 360™"
     EXTENSION_OCTOPRINT
-fi
-
-if [[ $EXTENSIONS = *"Parameter I/O"* ]]; then
-    echo "Parameter I/O"
-    EXTENSION_PARAMETER_IO
-fi
-
-if [[ $EXTENSIONS = *"RoboDK"* ]]; then
-    echo "RoboDK"
-    EXTENSION_ROBODK
 fi
 
 if [[ $EXTENSIONS = *"Ultimaker Digital Factory for Autodesk Fusion 360™"* ]]; then
