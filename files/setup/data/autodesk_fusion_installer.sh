@@ -57,7 +57,7 @@ function check_option() {
             ;;
         "install_part4")
             echo "Step 4: Installing Autodesk Fusion extensions ..."
-            fusion360_extensions
+            check_and_install_extensions
             sleep 5
             ;;
         "install_part5")
