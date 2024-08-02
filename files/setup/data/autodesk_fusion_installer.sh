@@ -464,7 +464,6 @@ function wine_fusion360_config() {
     # For this reason, the EXE files must be located directly in the Wineprefix folder!
 
     mkdir -p "$selected_directory/wineprefixes/default"
-    cd "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads" || return
     WINEPREFIX="$selected_directory/wineprefixes/default" sh "$selected_directory/bin/winetricks" -q sandbox
     # We must install some packages!
     WINEPREFIX="$selected_directory/wineprefixes/default" sh "$selected_directory/bin/winetricks" -q atmlib gdiplus arial corefonts cjkfonts dotnet452 msxml4 msxml6 vcrun2017 fontsmooth=rgb winhttp win11 # win10
@@ -486,6 +485,7 @@ function wine_fusion360_config() {
     WINEPREFIX="$selected_directory/wineprefixes/default" wine "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/WebView2installer.exe" /install # /silent
     # Pre-create shortcut directory for latest re-branding Microsoft Edge WebView2
     mkdir -p "$selected_directory/wineprefixes/default/drive_c/users/$USER/AppData/Roaming/Microsoft/Internet Explorer/Quick Launch/User Pinned/"
+    cd "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads" || return
     dxvk_opengl_1
     mkdir -p "$selected_directory/wineprefixes/default/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options"
     mv "NMachineSpecificOptions.xml" "$selected_directory/wineprefixes/default/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options" || return
