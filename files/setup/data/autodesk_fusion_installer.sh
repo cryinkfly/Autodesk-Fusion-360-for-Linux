@@ -37,8 +37,8 @@ echo "Selected extensions: $selected_extensions"
 winetricks_url="https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks"
 
 # URL to download Fusion360Installer.exe files
-#fusion360_installer_url="https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe" <-- Old Link!!!
-fusion360_installer_url="https://dl.appstreaming.autodesk.com/production/installers/Fusion%20Admin%20Install.exe"
+#autodesk_fusion_installer_url="https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe" <-- Old Link!!!
+autodesk_fusion_installer_url="https://dl.appstreaming.autodesk.com/production/installers/Fusion%20Admin%20Install.exe"
 #autodesk_fusion_installer_url="https://dl.appstreaming.autodesk.com/production/installers/Fusion%20Client%20Downloader.exe"
 
 # URL to download Microsoft Edge WebView2.Exec
