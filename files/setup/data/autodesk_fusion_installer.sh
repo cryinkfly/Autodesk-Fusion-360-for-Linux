@@ -377,8 +377,7 @@ function determine_variable_folder_name_for_identity_manager {
 function autodesk_fusion_shortcuts_load {
     # Create a .desktop file (launcher.sh) for Autodesk Fusion!
     wget -Nc -P "$selected_directory/graphics" https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/resource/graphics/autodesk_fusion.svg
-    rm "$HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk Fusion.desktop"
-    cat >> "$HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/Autodesk Fusion.desktop" << EOF
+    cat > "$HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/Autodesk Fusion.desktop" << EOF
 [Desktop Entry]
 Name=Autodesk Fusion
 GenericName=CAD Application
