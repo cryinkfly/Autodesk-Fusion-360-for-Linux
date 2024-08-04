@@ -2,7 +2,7 @@
 
 ####################################################################################################
 # Name:         Autodesk Fusion 360 - Setup Wizard (Linux)                                         #
-# Description:  With this file you can install Autodesk Fusion 360 on Linux.                       #
+# Description:  With this file you can install Autodesk Fusion on Linux.                           #
 # Author:       Steve Zabka                                                                        #
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
@@ -38,15 +38,15 @@ winetricks_url="https://raw.githubusercontent.com/Winetricks/winetricks/master/s
 
 # URL to download Fusion360Installer.exe files
 #fusion360_installer_url="https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe" <-- Old Link!!!
-fusion360_installer_url="https://dl.appstreaming.autodesk.com/production/installers/Fusion%20Admin%20Install.exe"
-fusion360_installer_client_url="https://dl.appstreaming.autodesk.com/production/installers/Fusion%20Client%20Downloader.exe"
+#fusion360_installer_url="https://dl.appstreaming.autodesk.com/production/installers/Fusion%20Admin%20Install.exe"
+autodesk_fusion_installer_url="https://dl.appstreaming.autodesk.com/production/installers/Fusion%20Client%20Downloader.exe"
 
 # URL to download Microsoft Edge WebView2.Exec
 webview2_installer_url="https://github.com/aedancullen/webview2-evergreen-standalone-installer-archive/releases/download/109.0.1518.78/MicrosoftEdgeWebView2RuntimeInstallerX64.exe"
 
 ###############################################################################################################################################################
 
-# Write a function to check which option is selected for example: f360-installer.sh $1 = "abort" $2
+# Write a function to check which option is selected for example: autodesk_fusion_installer.sh $1 = "abort" $2
 function check_option() {
     case "$1" in
         "abort")
@@ -58,32 +58,38 @@ function check_option() {
             deactivate_window_not_responding_dialog
             create_data_structure
             sleep 5
+            exit
             ;;
         "install_part2")
             echo "Step 2: Setting up Wine for installation ..."
             check_and_install_wine
             check_gpu_driver
             sleep 5
+            exit
             ;;
         "install_part3")
             echo "Step 3: Installing Autodesk Fusion ..."
-            wine_fusion360_config
+            wine_autodesk_fusion_config
             sleep 5
+            exit
             ;;
         "install_part4")
             echo "Step 4: Installing Autodesk Fusion extensions ..."
             check_and_install_extensions
             sleep 5
+            exit
             ;;
         "install_part5")
             echo "Step 5: Completing the installation ..."
-            fusion360_shortcuts_load
+            autodesk_fusion_shortcuts_load
             logfile_wineprefix
             reset_window_not_responding_dialog
             sleep 5
+            exit
             ;;
         *)
             echo "Invalid option selected. Please select either 'abort' or 'install'."
+            exit
             ;;
     esac
 }
@@ -123,30 +129,17 @@ function create_data_structure() {
     curl -o "$selected_directory/bin/winetricks" "$winetricks_url" 
     chmod +x "$selected_directory/bin/winetricks"
 
-    # Search for an existing installer of Autodesk Fusion 360
-    fusion360_installer="$selected_directory/downloads/Fusion360installer.exe"
-    if [ -f "$fusion360_installer" ]; then
-        echo "The Autodesk Fusion 360 installer exists!"
-        if find "$fusion360_installer" -mtime +7 | grep -q .; then
-            rm -rf "$fusion360_installer"
-            curl -L "$fusion360_installer_url" -o "$fusion360_installer"
+    # Search for an existing installer of Autodesk Fusion
+    autodesk_fusion_installer="$selected_directory/downloads/FusionClientInstaller.exe"
+    if [ -f "$autodesk_fusion_installer" ]; then
+        echo "The Autodesk Fusion installer exists!"
+        if find "$autodesk_fusion_installer" -mtime +7 | grep -q .; then
+            rm -rf "$autodesk_fusion_installer"
+            curl -L "$autodesk_fusion_installer_url" -o "$autodesk_fusion_installer"
         fi
     else
-        echo "The Autodesk Fusion 360 installer doesn't exist and will be downloaded for you!"
-        curl -L "$fusion360_installer_url" -o "$fusion360_installer"
-    fi
-
-    # Search for an existing installer of Autodesk Fusion 360 (Client)
-    fusion360_installer_client="$selected_directory/downloads/Fusion360Clientinstaller.exe"
-    if [ -f "$fusion360_installer_client" ]; then
-        echo "The Autodesk Fusion 360 installer exists!"
-        if find "$fusion360_installer_client" -mtime +7 | grep -q .; then
-            rm -rf "$fusion360_installer_client"
-            curl -L "$fusion360_installer_client_url" -o "$fusion360_installer_client"
-        fi
-    else
-        echo "The Autodesk Fusion 360 installer doesn't exist and will be downloaded for you!"
-        curl -L "$fusion360_installer_client_url" -o "$fusion360_installer_client"
+        echo "The Autodesk Fusion installer doesn't exist and will be downloaded for you!"
+        curl -L "$autodesk_fusion_installer_url" -o "$autodesk_fusion_installer"
     fi
     
     # Search for an existing installer of WEBVIEW2
@@ -197,7 +190,7 @@ function download_extension {
 ###############################################################################################################################################################
 
 # Check if Wine is installed or which version is installed and install it if it doesn't exist and install the required components
-# Wine version 9.8 is required for Autodesk Fusion 360
+# Wine version 9.8 is required for Autodesk Fusion
 function check_and_install_wine() {
     # Check if wine is installed
     if [ -x "$(command -v wine)" ]; then
@@ -377,7 +370,7 @@ function check_gpu_driver() {
 # into a variable alphanumeric folder.
 # This function finds that folder alphanumeric folder name.
 function determine_variable_folder_name_for_identity_manager {
-    echo "Searching for the variable location of the Fusion 360 identity manager..."
+    echo "Searching for the variable location of the Autodesk Fusion identity manager..."
     ident_man_path=$(find "$selected_directory/wineprefixes/default" -name 'AdskIdentityManager.exe')
     # Get the dirname of the identity manager's alphanumeric folder.
     # With the full path of the identity manager, go 2 folders up and isolate the folder name.
@@ -387,13 +380,13 @@ function determine_variable_folder_name_for_identity_manager {
 ########################################################################################
 
 # Load the icons and .desktop-files:
-function fusion360_shortcuts_load {
-    # Create a .desktop file (launcher.sh) for Autodesk Fusion 360!
+function autodesk_fusion_shortcuts_load {
+    # Create a .desktop file (launcher.sh) for Autodesk Fusion!
     wget -Nc -P "$selected_directory/graphics" https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/resource/graphics/autodesk_fusion.svg
-    rm "$HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk Fusion 360.desktop"
-    cat >> "$HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/Autodesk Fusion 360.desktop" << EOF
+    rm "$HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk Fusion.desktop"
+    cat >> "$HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/Autodesk Fusion.desktop" << EOF
 [Desktop Entry]
-Name=Autodesk Fusion 360
+Name=Autodesk Fusion
 GenericName=CAD Application
 GenericName[cs]=Aplikace CAD
 GenericName[de]=CAD-Anwendung
@@ -403,15 +396,15 @@ GenericName[it]=Applicazione CAD
 GenericName[ja]=CADアプリケーション
 GenericName[ko]=CAD 응용
 GenericName[zh_CN]=计算机辅助设计应用
-Comment=Autodesk Fusion 360 is a cloud-based 3D modeling, CAD, CAM, and PCB software platform for product design and manufacturing.
-Comment[cs]=Autodesk Fusion 360 je cloudová platforma pro 3D modelování, CAD, CAM a PCB určená k navrhování a výrobě produktů.
-Comment[de]=Autodesk Fusion 360 ist eine cloudbasierte Softwareplattform für Modellierung, CAD, CAM, CAE und Leiterplatten in 3D für Produktdesign und Fertigung.
-Comment[es]=Autodesk Fusion 360 es una plataforma de software de modelado 3D, CAD, CAM y PCB basada en la nube destinada al diseño y la fabricación de productos.
-Comment[fr]=Autodesk Fusion 360 est une plate-forme logicielle 3D cloud de modélisation, de CAO, de FAO, d’IAO et de conception de circuits imprimés destinée à la conception et à la fabrication de produits.
-Comment[it]=Autodesk Fusion 360 è una piattaforma software di modellazione 3D, CAD, CAM, CAE e PCB basata sul cloud per la progettazione e la realizzazione di prodotti.
-Comment[ja]=Autodesk Fusion 360は、製品の設計と製造のためのクラウドベースの3Dモデリング、CAD、CAM、およびPCBソフトウェアプラットフォームです。
-Comment[ko]=Autodesk Fusion 360은 제품 설계 및 제조를 위한 클라우드 기반 3D 모델링, CAD, CAM 및 PCB 소프트웨어 플랫폼입니다.
-Comment[zh_CN]=Autodesk Fusion 360 是一个基于云的 3D 建模、CAD、CAM 和 PCB 软件平台，用于产品设计和制造。
+Comment=Autodesk Fusion is a cloud-based 3D modeling, CAD, CAM, and PCB software platform for product design and manufacturing.
+Comment[cs]=Autodesk Fusion je cloudová platforma pro 3D modelování, CAD, CAM a PCB určená k navrhování a výrobě produktů.
+Comment[de]=Autodesk Fusion ist eine cloudbasierte Softwareplattform für Modellierung, CAD, CAM, CAE und Leiterplatten in 3D für Produktdesign und Fertigung.
+Comment[es]=Autodesk Fusion es una plataforma de software de modelado 3D, CAD, CAM y PCB basada en la nube destinada al diseño y la fabricación de productos.
+Comment[fr]=Autodesk Fusion est une plate-forme logicielle 3D cloud de modélisation, de CAO, de FAO, d’IAO et de conception de circuits imprimés destinée à la conception et à la fabrication de produits.
+Comment[it]=Autodesk Fusion è una piattaforma software di modellazione 3D, CAD, CAM, CAE e PCB basata sul cloud per la progettazione e la realizzazione di prodotti.
+Comment[ja]=Autodesk Fusion、製品の設計と製造のためのクラウドベースの3Dモデリング、CAD、CAM、およびPCBソフトウェアプラットフォームです。
+Comment[ko]=Autodesk Fusion 제품 설계 및 제조를 위한 클라우드 기반 3D 모델링, CAD, CAM 및 PCB 소프트웨어 플랫폼입니다.
+Comment[zh_CN]=Autodesk Fusion 是一个基于云的 3D 建模、CAD、CAM 和 PCB 软件平台，用于产品设计和制造。
 Exec=$selected_directory/bin/autodesk_fusion_launcher.sh
 Type=Application
 Categories=Education;Engineering;
@@ -438,7 +431,7 @@ EOL
     xdg-mime default adskidmgr-opener.desktop x-scheme-handler/adskidmgr
 
     #Disable Debug messages on regular runs, we dont have a terminal, so speed up the system by not wasting time prining them into the Void
-    sed -i 's/=env WINEPREFIX=/=env WINEDEBUG=-all env WINEPREFIX=/g' "$HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/Autodesk Fusion 360.desktop"
+    sed -i 's/=env WINEPREFIX=/=env WINEDEBUG=-all env WINEPREFIX=/g' "$HOME/.local/share/applications/wine/Programs/Autodesk/Fusion360/Autodesk Fusion.desktop"
 
     # Download some script files for Autodesk Fusion 360!
     wget -NP "$selected_directory/bin" https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/data/autodesk_fusion_launcher.sh
@@ -467,19 +460,19 @@ function dxvk_opengl_2 {
 
 ###############################################################################################################################################################
 
-# Execute the installation of Autodesk Fusion 360
+# Execute the installation of Autodesk Fusion
 function autodesk_fusion_install {
     cd "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads"
     #WINEPREFIX="$selected_directory/wineprefixes/default" timeout -k 5m 1m wine "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/Fusion360Clientinstaller.exe" --quiet
-    WINEPREFIX="$selected_directory/wineprefixes/default" timeout -k 10m 9m wine "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/Fusion360installer.exe" --quiet
+    WINEPREFIX="$selected_directory/wineprefixes/default" timeout -k 10m 9m wine "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/FusionClientInstaller.exe" --quiet
     sleep 5s
-    WINEPREFIX="$selected_directory/wineprefixes/default" timeout -k 5m 1m wine "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/Fusion360installer.exe" --quiet
+    WINEPREFIX="$selected_directory/wineprefixes/default" timeout -k 5m 1m wine "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/FusionClientInstaller.exe" --quiet
 }
 
 ###############################################################################################################################################################
 
-# Wine configuration for Autodesk Fusion 360
-function wine_fusion360_config() {
+# Wine configuration for Autodesk Fusion
+function wine_autodesk_fusion_config() {
     # Note that the winetricks sandbox verb merely removes the desktop integration and Z: drive symlinks and is not a "true" sandbox.
     # It protects against errors rather than malice. It's useful for, e.g., keeping games from saving their settings in random subdirectories of your home directory.
     # But it still ensures that wine, for example, no longer has access permissions to Home!
@@ -516,8 +509,7 @@ function wine_fusion360_config() {
     # Pre-create shortcut directory for latest re-branding Microsoft Edge WebView2
     mkdir -p "$selected_directory/wineprefixes/default/drive_c/users/$USER/AppData/Roaming/Microsoft/Internet Explorer/Quick Launch/User Pinned/"
     dxvk_opengl_1
-    cp "$selected_directory/downloads/Fusion360installer.exe" "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads"
-    cp "$selected_directory/downloads/Fusion360Clientinstaller.exe" "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads"
+    cp "$selected_directory/downloads/FusionClientInstaller.exe" "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads"
     autodesk_fusion_install
     mkdir -p "$selected_directory/wineprefixes/default/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options"
     cd "$selected_directory/wineprefixes/default/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options" || return
