@@ -25,7 +25,7 @@
 echo "The current working directory is: $PWD"
 launcher_root_path=$(cd .. && echo "$PWD")
 wineprefix_log_file=$launcher_root_path/logs/wineprefixes.log
-wineprefix=$(awk 'NR == 2' "$wineprefix_log_file")
+wineprefix=$(cat "$wineprefix_log_file")
 
 # This feature will check if there is a new version of Autodesk Fusion 360.
 function check_autodesk_fusion_online_versions {
@@ -38,7 +38,7 @@ function check_autodesk_fusion_online_versions {
 
 function check_version_file {
     # Find the newest version.txt file from the Autodesk Fusion 360 installation.
-    autodesk_fusion_api_version=$(find "$wineprefix" -name version.txt -printf "%T+ %p\n" | sort -r 2>&1 | head -n 1 | sed -r 's/.+0000000000 (.+)/\1/')
+    autodesk_fusion_api_version=$(find "$wineprefix" -name fusion_version.txt -printf "%T+ %p\n" | sort -r 2>&1 | head -n 1 | sed -r 's/.+0000000000 (.+)/\1/')
     if [ -f "$autodesk_fusion_api_version" ]; then
         echo "The version.txt file exists!"
         check_versions
@@ -50,7 +50,7 @@ function check_version_file {
 
 function check_versions {
     # Get the string from the version.txt file from FUSION360_API_VERSION
-    system_build_version=$(awk 'NR == 1' "$autodesk_fusion_api_version")
+    system_build_version=$(cat "$autodesk_fusion_api_version")
     echo "System Build-Version: $system_build_version"
     if [ "$online_build_version" = "$system_build_version" ] || [ "$online_insider_build_version" = "$system_build_version" ]; then
         echo "Do nothing!"
