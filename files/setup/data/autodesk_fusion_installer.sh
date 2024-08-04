@@ -58,26 +58,22 @@ function check_option() {
             deactivate_window_not_responding_dialog
             create_data_structure
             sleep 5
-            exit
             ;;
         "install_part2")
             echo "Step 2: Setting up Wine for installation ..."
             check_and_install_wine
             check_gpu_driver
             sleep 5
-            exit
             ;;
         "install_part3")
             echo "Step 3: Installing Autodesk Fusion ..."
             wine_autodesk_fusion_config
             sleep 5
-            exit
             ;;
         "install_part4")
             echo "Step 4: Installing Autodesk Fusion extensions ..."
             check_and_install_extensions
             sleep 5
-            exit
             ;;
         "install_part5")
             echo "Step 5: Completing the installation ..."
@@ -85,11 +81,9 @@ function check_option() {
             logfile_wineprefix
             reset_window_not_responding_dialog
             sleep 5
-            exit
             ;;
         *)
             echo "Invalid option selected. Please select either 'abort' or 'install'."
-            exit
             ;;
     esac
 }
