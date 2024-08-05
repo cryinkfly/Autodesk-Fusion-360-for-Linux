@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2024                                                                          #
-# Time/Date:    xx:xx/xx.xx.2024                                                                   #
-# Version:      2.0.0                                                                              #
+# Time/Date:    22:00/05.08.2024                                                                   #
+# Version:      2.0.0-Alpha                                                                        #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -35,7 +35,7 @@ if [ "$SELECTED_EXTENSIONS" == "--full" ]; then
     SELECTED_EXTENSIONS="CzechlocalizationforF360,HP3DPrintersforAutodesk®Fusion®,MarkforgedforAutodesk®Fusion®,OctoPrintforAutodesk®Fusion360™,UltimakerDigitalFactoryforAutodeskFusion360™"
 fi
 
-# # URL to download translations po. files
+# URL to download translations po. files <-- Still in progress!!!
 UPDATER_TRANSLATIONS_URL="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/locale/update-locale.sh"
 declare -A TRANSLATION_URLS=(
     ["cs_CZ"]="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/locale/cs_CZ/LC_MESSAGES/autodesk_fusion.po"
@@ -173,6 +173,7 @@ function install_required_packages {
 # DOWNLOAD THE TRANSLATIONS FOR THE INSTALLER:                                                                                                                              #
 ##############################################################################################################################################################################
 
+# <-- Still in progress!!!
 function download_translations {
     curl -o "./locale/update-locale.sh" "$UPDATER_TRANSLATIONS_URL"
     chmod +x "./locale/update-locale.sh"
@@ -511,7 +512,7 @@ function check_and_install_wine() {
 
     # Check wine status 0 and install Wine version 
     if [ "$WINE_STATUS" -eq 0 ]; then
-        DISTRO_VERSION=$(lsb_release -ds) # Check which Linux Distro is used!
+        DISTRO_VERSION=$(lsb_release -ds) # Check which Linux Distro is used! <-- Still in progress!!!
         if [[ $DISTRO_VERSION == *"Arch"*"Linux"* ]] || [[ $DISTRO_VERSION == *"Manjaro"*"Linux"* ]] || [[ $DISTRO_VERSION == *"EndeavourOS"* ]]; then
             echo "Installing Wine for Arch Linux ..."
             if grep -q '^\[multilib\]$' /etc/pacman.conf; then
