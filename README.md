@@ -209,17 +209,16 @@
        <li><p>Debian 11, Raspberry Pi Desktop, ...</p></li>
        <li><p>Debian 12</p></li>
        <li><p>Debian Testing</p></li>
-       <li><p>Fedora 37</p></li>
-       <li><p>Fedora 38</p></li>
+       <li><p>Fedora 40</p></li>
        <li><p>Fedora Rawhide</p></li>
-       <li><p>openSUSE Leap 15.4</p></li>
-       <li><p>openSUSE Leap 15.5</p></li>
+       <li><p>openSUSE Leap 15.6</p></li>
        <li><p>openSUSE Tumbleweed</p></li>
        <li><p>Red Hat Enterprise Linux 8.x</p></li>
        <li><p>Red Hat Enterprise Linux 9.x</p></li>
        <li><p>Ubuntu 20.04, Linux Mint 20.x, Pop!_OS 20.04, ...</p></li>
        <li><p>Ubuntu 22.04, Pop!_OS 22.04, ...</p></li>
-       <li><p>Ubuntu 23.04, Pop!_OS 23.04, ...</p></li>
+       <li><p>Ubuntu 24.04, Pop!_OS 24.04, ...</p></li>
+       <li><p>NixOS</p></li>
        <li><p>Solus</p></li>
        <li><p>Void Linux</p></li>
        <li><p>Gentoo Linux</p></li>
@@ -260,7 +259,7 @@
     </tr>
     <tr>
      <td><strong>Dependencies</strong></td>
-     <td>SSL 3.0, TLS 1.2+,&nbsp; yad, dialog, p7zip, p7zip-full, p7zip-rar, curl, wget, winbind, cabextract, wine, wine-mono, wine-gecko, winetricks; .NET Framework 4.5 (winetricks) or newer required to submit crash reports</td>
+     <td>SSL 3.0, TLS 1.2+,&nbsp; p7zip, p7zip-full, p7zip-rar, curl, wget, winbind, cabextract, wine, wine-mono, wine-gecko, winetricks; .NET Framework 4.5 (winetricks) or newer required to submit crash reports</td>
     </tr>
    </tbody>
   </table>
@@ -314,22 +313,26 @@
 </br>
 🔹 You need an active Fusion 360 <a href="#-how-much-does-fusion-360-cost">license</a>!
 </br></br>
-🔹 Open a terminal and run this command:
+🔹 Open a terminal and run this command to install the basic Autodesk Fusion:
+</br></br>
+ 
+    curl -o https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/autodesk_fusion_installer_x86-64.sh && chmod +x autodesk_fusion_installer_x86-64.sh && ./autodesk_fusion_installer_x86-64.sh --install --default
 
-    mkdir -p "$HOME/.fusion360/bin" && cd "$HOME/.fusion360/bin" && wget -N https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/install.sh && chmod +x install.sh && ./install.sh
+🔹 Open a terminal and run this command to install Autodesk Fusion will all tested extensions:
 </br>
 
-<del> 🔹 Currently, Fusion 360 for Linux is broken. Autodesk requires your browser to open to a page to log in to Fusion 360, but we do not yet have a way to open the link in a browser. Please bear with us as we research and develop a solution. In the meantime, you can use this command to install Fusion 360 for Linux with an older version of Fusion 360 that does not require browser sign-in:</del>
+    curl -o https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/autodesk_fusion_installer_x86-64.sh && chmod +x autodesk_fusion_installer_x86-64.sh && ./autodesk_fusion_installer_x86-64.sh --install --default --full
+
+🔹 Open a terminal and run this command to uninstall:
+</br>
+ 
+    curl -o https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/autodesk_fusion_installer_x86-64.sh && chmod +x autodesk_fusion_installer_x86-64.sh && ./autodesk_fusion_installer_x86-64.sh --uninstall
+
 </br>
 
--> This bug has been fixed!
+🔹  <del>Or you install and use Autodesk Fusion 360 as a Flatpak app:</del> 
 
-<del>     mkdir -p "$HOME/.fusion360/bin" && cd "$HOME/.fusion360/bin" && wget -N https://raw.githubusercontent.com/alextrical/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/install.sh && chmod +x install.sh && ./install.sh</del>
-</br>
-
-🔹 Or you install and use Autodesk Fusion 360 as a Flatpak app: 
-
-    https://usebottles.com/app/#fusion360
+ <del>    https://usebottles.com/app/#fusion360 </del>
 
 🔹 Now, You can <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues/44#issuecomment-890552181">use</a> Autodesk Fusion 360 on your Linux system!
  </br></br>
