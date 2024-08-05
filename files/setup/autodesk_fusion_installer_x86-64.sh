@@ -264,7 +264,9 @@ function check_option() {
             echo -e "$(gettext "${GREEN}Selected extensions: ${YELLOW}$SELECTED_EXTENSIONS${NOCOLOR}")"
             sleep 2
             deactivate_window_not_responding_dialog
+            check_ram
             check_gpu_driver
+            check_disk_space
             create_data_structure
             download_files
             check_and_install_wine
@@ -296,6 +298,28 @@ function deactivate_window_not_responding_dialog() {
 }
 
 ##############################################################################################################################################################################
+# CHECKING THE MINIMUM RAM (RANDOM ACCESS MEMORY) REQUIREMENT:                                                                                                               #
+##############################################################################################################################################################################
+
+function check_ram {
+    GET_RAM_KILOBYTES=$(grep MemTotal /proc/meminfo | awk '{print $2}') # Get total RAM space in kilobytes
+    CONVERT_RAM_GIGABYTES=$(echo "scale=2; $GET_RAM_KILOBYTES / 1024 / 1024" | bc) # Convert kilobytes to gigabytes
+    if (( $(echo "$CONVERT_RAM_GIGABYTES > 4" | bc -l) )); then # Check if RAM is greater than 4 GB
+        echo -e "$(gettext "${GREEN}The total RAM (Random Access Memory) is greater than 4 GByte ($CONVERT_RAM_GIGABYTES GByte) and Autodesk Fusion will run more stable later!${NOCOLOR}")"
+    else
+        echo -e "$(gettext "${RED}The total RAM (Random Access Memory) is not greater than 4 GByte ($CONVERT_RAM_GIGABYTES GByte) and Autodesk Fusion may run unstable later with insufficient RAM memory!${NOCOLOR}")"
+        read -p "$(gettext "${YELLOW}Are you sure you want to continue with the installation? (y/n)${NOCOLOR}")" yn
+            case $yn in 
+	            y ) ...;;
+                n ) echo -e "$(gettext "${RED}The installer has been terminated!${NOCOLOR}")";
+                     exit;;
+                * ) echo -e "$(gettext "${RED}The installer was terminated for inexplicable reasons!${NOCOLOR}")";
+                    exit 1;;
+            esac
+    fi
+}
+
+##############################################################################################################################################################################
 # CHECK GPU DRIVER FOR THE INSTALLER:                                                                                                                                        #
 ##############################################################################################################################################################################
 
@@ -307,24 +331,69 @@ function check_gpu_driver {
         echo -e "$(gettext "${GREEN}The DXVK GPU driver will be used for the installation!${NOCOLOR}")"
         GPU_DRIVER="DXVK"
         sleep 2
+        check_gpu_vram
     elif glxinfo | grep -q "OpenGL vendor string: AMD"; then
         echo -e "$(gettext "${GREEN}The AMD GPU driver is installed!${NOCOLOR}")"
         sleep 2
         echo -e "$(gettext "${GREEN}The OpenGL GPU driver will be used for the installation!${NOCOLOR}")"
         GPU_DRIVER="OpenGL"
         sleep 2
+        check_gpu_vram
     elif glxinfo | grep -q "OpenGL vendor string: Intel"; then
         echo -e "$(gettext "${GREEN}The Intel GPU driver is installed!${NOCOLOR}")"
         sleep 2
         echo -e "$(gettext "${GREEN}The OpenGL GPU driver will be used for the installation!${NOCOLOR}")"
         GPU_DRIVER="OpenGL"
         sleep 2
+        check_gpu_vram
     else
         echo -e "$(gettext "${red}The GPU driver is not installed or not found on your system!${NOCOLOR}")"
         sleep 2
         echo -e "$(gettext "${GREEN}The OpenGL GPU driver will be used for the installation!${NOCOLOR}")"
         GPU_DRIVER="OpenGL"
         sleep 2
+        check_gpu_vram
+    fi
+}
+
+##############################################################################################################################################################################
+# CHECKING THE MINIMUM VRAM (VIDEO RAM) REQUIREMENT:                                                                                                                         #
+##############################################################################################################################################################################
+
+function check_gpu_vram {
+    # Get the total memory of the graphics card
+    GET_VRAM_MEGABYTES=$(dmesg | grep -o -P -i "(?<=vram:).*(?=M 0x)")
+    # Check if the total memory is greater than 1 GByte
+    if [ "$GET_VRAM_MEGABYTES" -gt 1024 ]; then
+        echo -e "$(gettext "${GREEN}The total VRAM (Video RAM) is greater than 1 GByte ($CONVERT_RAM_GIGABYTES GByte) and Autodesk Fusion will run more stable later!${NOCOLOR}")"
+    else
+        echo -e "$(gettext "${RED}The total VRAM (Video RAM) is not greater than 1 GByte ($CONVERT_RAM_GIGABYTES GByte) and Autodesk Fusion may run unstable later with insufficient VRAM memory!${NOCOLOR}")"
+        read -p "$(gettext "${YELLOW}Are you sure you want to continue with the installation? (y/n)${NOCOLOR}")" yn
+        case $yn in 
+            y ) ...;;
+            n ) echo -e "$(gettext "${RED}The installer has been terminated!${NOCOLOR}")";
+                exit;;
+            * ) echo -e "$(gettext "${RED}The installer was terminated for inexplicable reasons!${NOCOLOR}")";
+                exit 1;;
+        esac
+    fi
+}
+
+##############################################################################################################################################################################
+# CHECKING THE MINIMUM DISK SPACE (DEFAULT: HOME-PARTITION) REQUIREMENT:                                                                                                     #
+##############################################################################################################################################################################
+
+function check_disk_space {
+    # Get the free disk memory size in GB
+    GET_DISK_SPACE=$(df -h $SELECTED_DIRECTORY | awk '{print $4}' | tail -1)
+    echo -e "$(gettext "${GREEN}The free disk memory size is: $GET_DISK_SPACE${NOCOLOR}")"
+    if [[ $GET_DISK_SPACE > 10G ]]; then # Check if the selected disk memory is greater than 10GB
+        echo -e "$(gettext "${GREEN}The free disk memory size is greater than 10GB.${NOCOLOR}")"
+    else
+        echo -e "$(gettext "${YELLOW}There is not enough disk free memory to continue installing Fusion on your system!${NOCOLOR}")"
+        echo -e "$(gettext "${YELLOW}Make more space in your selected disk or select a different hard drive.${NOCOLOR}")"
+        echo -e "$(gettext "${RED}The installer has been terminated!${NOCOLOR}")"
+        exit;
     fi
 }
 
