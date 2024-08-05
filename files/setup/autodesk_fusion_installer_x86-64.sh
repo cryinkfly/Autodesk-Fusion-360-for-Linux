@@ -611,7 +611,7 @@ EOF
     determine_variable_folder_name_for_identity_manager
 
     #Create mimetype link to handle web login call backs to the Identity Manager
-    cat > $HOME/.local/share/applications/adskidmgr-opener.desktop << EOL
+    cat >> $HOME/.local/share/applications/adskidmgr-opener.desktop << EOL
 [Desktop Entry]
 Type=Application
 Name=adskidmgr Scheme Handler
