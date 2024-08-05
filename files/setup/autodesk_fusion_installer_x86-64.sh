@@ -607,6 +607,9 @@ Terminal=false
 Path=$SELECTED_DIRECTORY/bin
 EOF
 
+    # Set the permissions for the .desktop file to read-only
+    chmod 444 "$HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk Fusion.desktop"
+
     # Execute function
     determine_variable_folder_name_for_identity_manager
 
@@ -619,6 +622,9 @@ Exec=sh -c 'env WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine "$(fi
 StartupNotify=false
 MimeType=x-scheme-handler/adskidmgr;
 EOL
+
+    #Set the permissions for the .desktop file to read-only
+    chmod 444 $HOME/.local/share/applications/adskidmgr-opener.desktop
     
     #Set the mimetype handler for the Identity Manager
     xdg-mime default adskidmgr-opener.desktop x-scheme-handler/adskidmgr
