@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                       #
 # License:      MIT                                                         #
 # Copyright (c) 2020-2024                                                   #
-# Time/Date:    xx:xx/xx.xx.2024                                            #
-# Version:      2.0.0                                                       #
+# Time/Date:    22:00/05.08.2024                                            #
+# Version:      2.0.0-Alpha                                                 #
 #############################################################################
 
 # Path: SELECTED__INSTALLATION_PATH/bin/autodesk_fusion_launcher.sh
