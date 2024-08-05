@@ -524,57 +524,57 @@ function check_and_install_wine() {
             fi
         elif [[ $DISTRO_VERSION == *"Debian"*"11"* ]]; then
             echo "Installing Wine for Debian 11 ..."
-            pkexec bash -c 'sudo apt-get --allow-releaseinfo-change update &&
-            sudo dpkg --add-architecture i386 &&
-            sudo apt-add-repository -r "deb https://dl.winehq.org/wine-builds/debian/ bullseye main" &&
-            curl -s https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add - &&
-            sudo apt-add-repository "deb https://dl.winehq.org/wine-builds/debian/ bullseye main" &&
-            sudo apt-get update &&
-            sudo apt-get install -y p7zip p7zip-full p7zip-rar curl winbind cabextract wget &&
+            pkexec bash -c 'sudo apt-get --allow-releaseinfo-change update
+            sudo dpkg --add-architecture i386
+            sudo apt-add-repository -r "deb https://dl.winehq.org/wine-builds/debian/ bullseye main"
+            curl -s https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
+            sudo apt-add-repository "deb https://dl.winehq.org/wine-builds/debian/ bullseye main"
+            sudo apt-get update
+            sudo apt-get install -y p7zip p7zip-full p7zip-rar curl winbind cabextract wget
             sudo apt-get install -y --install-recommends winehq-staging'
         elif [[ $DISTRO_VERSION == *"Debian"*"12"* ]]; then
             echo "Installing Wine for Debian 12 ..."
-            pkexec bash -c 'sudo apt-get --allow-releaseinfo-change update &&
-            sudo dpkg --add-architecture i386 &&
-            sudo apt-add-repository -r "deb https://dl.winehq.org/wine-builds/debian/ bookworm main" &&
-            curl -s https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add - &&
-            sudo apt-add-repository "deb https://dl.winehq.org/wine-builds/debian/ bookworm main" &&
-            sudo apt-get update &&
-            sudo apt-get install -y p7zip p7zip-full p7zip-rar curl winbind cabextract wget &&
+            pkexec bash -c 'sudo apt-get --allow-releaseinfo-change update
+            sudo dpkg --add-architecture i386
+            sudo apt-add-repository -r "deb https://dl.winehq.org/wine-builds/debian/ bookworm main"
+            curl -s https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
+            sudo apt-add-repository "deb https://dl.winehq.org/wine-builds/debian/ bookworm main"
+            sudo apt-get update
+            sudo apt-get install -y p7zip p7zip-full p7zip-rar curl winbind cabextract wget
             sudo apt-get install -y --install-recommends winehq-staging'
         elif [[ $DISTRO_VERSION == *"Debian"*"Testing"* ]] || [[ $DISTRO_VERSION == *"Debian"*"testing"* ]]; then
             echo "Installing Wine for Debian testing ..."
-            pkexec bash -c 'sudo apt-get --allow-releaseinfo-change update &&
-            sudo dpkg --add-architecture i386 &&
-            sudo apt-add-repository -r "deb https://dl.winehq.org/wine-builds/debian/ testing main" &&
-            curl -s https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add - &&
-            sudo apt-add-repository "deb https://dl.winehq.org/wine-builds/debian/ testing main" &&
-            sudo apt-get update &&
-            sudo apt-get install -y p7zip p7zip-full p7zip-rar curl winbind cabextract wget &&
+            pkexec bash -c 'sudo apt-get --allow-releaseinfo-change update
+            sudo dpkg --add-architecture i386
+            sudo apt-add-repository -r "deb https://dl.winehq.org/wine-builds/debian/ testing main"
+            curl -s https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
+            sudo apt-add-repository "deb https://dl.winehq.org/wine-builds/debian/ testing main"
+            sudo apt-get update
+            sudo apt-get install -y p7zip p7zip-full p7zip-rar curl winbind cabextract wget
             sudo apt-get install -y --install-recommends winehq-staging'
         elif [[ $DISTRO_VERSION == *"Ubuntu"*"20.04"* ]]; then
             echo "Installing Wine for Ubuntu 20.04 ..."
-            pkexec bash -c 'sudo dpkg --add-architecture i386 &&
-            wget -qO - https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add - &&
-            sudo apt-add-repository "deb https://dl.winehq.org/wine-builds/ubuntu/ focal main" &&
-            sudo apt-get update &&
-            sudo apt-get install -y p7zip p7zip-full p7zip-rar curl winbind cabextract wget &&
+            pkexec bash -c 'sudo dpkg --add-architecture i386
+            wget -qO - https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
+            sudo apt-add-repository "deb https://dl.winehq.org/wine-builds/ubuntu/ focal main"
+            sudo apt-get update
+            sudo apt-get install -y p7zip p7zip-full p7zip-rar curl winbind cabextract wget
             sudo apt-get install -y --install-recommends winehq-staging'
         elif [[ $DISTRO_VERSION == *"Ubuntu"*"22.04"* ]]; then
             echo "Installing Wine for Ubuntu 22.04 ..."
-            pkexec bash -c 'sudo dpkg --add-architecture i386 &&
-            wget -qO - https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add - &&
-            sudo apt-add-repository "deb https://dl.winehq.org/wine-builds/ubuntu/ jammy main" &&
+            pkexec bash -c 'sudo dpkg --add-architecture i386
+            wget -qO - https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
+            sudo apt-add-repository "deb https://dl.winehq.org/wine-builds/ubuntu/ jammy main"
             sudo apt-get update &&
-            sudo apt-get install -y p7zip p7zip-full p7zip-rar curl winbind cabextract wget &&
+            sudo apt-get install -y p7zip p7zip-full p7zip-rar curl winbind cabextract wget
             sudo apt-get install -y --install-recommends winehq-staging'
         elif [[ $DISTRO_VERSION == *"Ubuntu"*"24.04"* ]]; then
             echo "Installing Wine for Ubuntu 24.04 ..."
-            pkexec bash -c 'sudo dpkg --add-architecture i386 &&
-            wget -qO - https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add - &&
-            sudo apt-add-repository "deb https://dl.winehq.org/wine-builds/ubuntu/ impish main" &&
+            pkexec bash -c 'sudo dpkg --add-architecture i386
+            wget -qO - https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
+            sudo apt-add-repository "deb https://dl.winehq.org/wine-builds/ubuntu/ impish main"
             sudo apt-get update &&
-            sudo apt-get install -y p7zip p7zip-full p7zip-rar curl winbind cabextract wget &&
+            sudo apt-get install -y p7zip p7zip-full p7zip-rar curl winbind cabextract wget
             sudo apt-get install -y --install-recommends winehq-staging'
         elif [[ $DISTRO_VERSION == *"Fedora"*"40"* ]]; then
             echo "Installing Wine for Fedora 40 ..."
@@ -598,15 +598,15 @@ function check_and_install_wine() {
             sudo zypper install -y p7zip-full curl wine cabextract'
         elif [[ $DISTRO_VERSION == *"Red Hat Enterprise Linux"*"8"* ]]; then
             echo "Installing Wine for RHEL 8 ..."
-            pkexec bash -c 'sudo subscription-manager repos --enable codeready-builder-for-rhel-8-x86_64-rpms &&
-            sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm &&
-            sudo dnf upgrade &&
+            pkexec bash -c 'sudo subscription-manager repos --enable codeready-builder-for-rhel-8-x86_64-rpms
+            sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+            sudo dnf upgrade
             sudo dnf install -y p7zip p7zip-plugins curl wget winehq-staging cabextract'
         elif [[ $DISTRO_VERSION == *"Red Hat Enterprise Linux"*"9"* ]]; then
             echo "Installing Wine for RHEL 9 ..."
-            pkexec bash -c 'sudo subscription-manager repos --enable codeready-builder-for-rhel-9-x86_64-rpms &&
-            sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm &&
-            sudo dnf upgrade &&
+            pkexec bash -c 'sudo subscription-manager repos --enable codeready-builder-for-rhel-9-x86_64-rpms
+            sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
+            sudo dnf upgrade
             sudo dnf install -y p7zip p7zip-plugins curl wget winehq-staging cabextract'
         elif [[ $DISTRO_VERSION == *"Solus"* ]]; then
             echo "Installing Wine for Solus ..."
