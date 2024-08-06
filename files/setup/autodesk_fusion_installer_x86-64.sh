@@ -110,57 +110,56 @@ function install_required_packages {
     echo -e "$(gettext "${YELLOW}The installer will install the required packages for the installation!")${NOCOLOR}"
     echo -e "$(gettext "${RED}Missing package: ${cmd}")${NOCOLOR}"
     sleep 2
-        if [[ $DISTRO_VERSION == *"Arch"*"Linux"* ]] || [[ $DISTRO_VERSION == *"Manjaro"*"Linux"* ]]; then
+        if [[ $DISTRO_VERSION == *"arch"* ]] || [[ $DISTRO_VERSION == *"manjaro"* ]] || [[ $DISTRO_VERSION == *"endeavouros"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
             sudo pacman -S curl lsb-release coreutils mesa-demos polkit
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
             sleep 2
-        elif [[ $DISTRO_VERSION == *"Debian"*"10"* ]] || [[ $DISTRO_VERSION == *"Debian"*"11"* ]] || [[ $DISTRO_VERSION == *"Debian"*"Sid"* ]] || [[ $DISTRO_VERSION == *"Ubuntu"*"18.04"* ]] \
-        || [[ $DISTRO_VERSION == *"Linux Mint"*"19"* ]] || [[ $DISTRO_VERSION == *"Ubuntu"*"20.04"* ]] || [[ $DISTRO_VERSION == *"Linux Mint"*"20"* ]] \
-        || [[ $DISTRO_VERSION == *"Ubuntu"*"22.04"* ]] || [[ $DISTRO_VERSION == *"Linux Mint"*"21"* ]] || [[ $DISTRO_VERSION == *"Linux Mint"*"22"* ]]; then
+        elif [[ $DISTRO_VERSION == *"debian"* ]] || [[ $DISTRO_VERSION == *"ubuntu"* ]] \
+        || [[ $DISTRO_VERSION == *"linux"*"mint"* ]] || [[ $DISTRO_VERSION == *"pop"*"os"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
             sudo apt-get install -y curl lsb-release coreutils mesa-utils policykit-1 
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
             sleep 2
-        elif [[ $DISTRO_VERSION == *"Fedora"*"37"* ]] || [[ $DISTRO_VERSION == *"Fedora"*"38"* ]] || [[ $DISTRO_VERSION == *"Fedora"*"Rawhide"* ]]; then
+        elif [[ $DISTRO_VERSION == *"fedora"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
             sudo dnf install -y curl lsb-release coreutils mesa-utils polkit
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
             sleep 2
-        elif [[ $DISTRO_VERSION == *"Gentoo"*"Linux"* ]]; then
+        elif [[ $DISTRO_VERSION == *"gentoo"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
             sudo emerge -q net-misc/curl sys-apps/lsb-release sys-apps/coreutils x11-apps/mesa-progs sys-auth/polkit
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
             sleep 2
-        elif [[ $DISTRO_VERSION == *"nixos"* ]] || [[ $DISTRO_VERSION == *"NixOS"* ]]; then
+        elif [[ $DISTRO_VERSION == *"nixos"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
             sudo nix-env -iA nixos.curl nixos.lsb_release nixos.coreutils nixos.mesa-utils nixos.polkit
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
             sleep 2
-        elif [[ $DISTRO_VERSION == *"openSUSE"*"15.5"* ]] || [[ $DISTRO_VERSION == *"openSUSE"*"15.6"* ]] || [[ $DISTRO_VERSION == *"openSUSE"*"Tumbleweed"* ]] || [[ $DISTRO_VERSION == *"opensuse"*"tumbleweed"* ]]; then
+        elif [[ $DISTRO_VERSION == *"opensuse"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
             sudo zypper install -y curl lsb-release coreutils Mesa-demo-x polkit
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
             sleep 2
-        elif [[ $DISTRO_VERSION == *"Red Hat Enterprise Linux"*"8"* ]] || [[ $DISTRO_VERSION == *"Red Hat Enterprise Linux"*"9"* ]]; then
+        elif [[ $DISTRO_VERSION == *"red"*"hat"*"enterprise"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
             sudo dnf install -y curl lsb-release coreutils mesa-utils policykit-1
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
             sleep 2
-        elif [[ $DISTRO_VERSION == *"Solus"*"Linux"* ]]; then
+        elif [[ $DISTRO_VERSION == *"solus"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
             sudo eopkg -y install curl lsb-release coreutils mesa-utils polkit
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
             sleep 2
-        elif [[ $DISTRO_VERSION == *"Void"*"Linux"* ]]; then
+        elif [[ $DISTRO_VERSION == *"void"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
             sudo xbps-install -Sy curl lsb-release coreutils mesa-demos polkit
@@ -563,7 +562,7 @@ function check_and_install_wine() {
             sudo apt-get update
             sudo apt-get install -y p7zip p7zip-full p7zip-rar winbind cabextract
             sudo apt-get install -y --install-recommends winehq-staging'
-        elif [[ $DISTRO_VERSION == *"Ubuntu"*"20.04"* ]]; then
+        elif [[ $DISTRO_VERSION == *"Ubuntu"*"20.04"* ]] || [[ $DISTRO_VERSION == *"Linux"*"Mint"*"20"* ]] || [[ $DISTRO_VERSION == *"Pop"*"OS"*"20.04"* ]]; then
             echo "Installing Wine for Ubuntu 20.04 ..."
             pkexec bash -c 'sudo dpkg --add-architecture i386
             curl -s https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
@@ -571,7 +570,7 @@ function check_and_install_wine() {
             sudo apt-get update
             sudo apt-get install -y p7zip p7zip-full p7zip-rar winbind cabextract
             sudo apt-get install -y --install-recommends winehq-staging'
-        elif [[ $DISTRO_VERSION == *"Ubuntu"*"22.04"* ]]; then
+        elif [[ $DISTRO_VERSION == *"Ubuntu"*"22.04"* ]] || [[ $DISTRO_VERSION == *"Linux"*"Mint"*"21"* ]] || [[ $DISTRO_VERSION == *"Pop"*"OS"*"22.04"* ]]; then
             echo "Installing Wine for Ubuntu 22.04 ..."
             pkexec bash -c 'sudo dpkg --add-architecture i386
             curl -s https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
@@ -579,7 +578,7 @@ function check_and_install_wine() {
             sudo apt-get update &&
             sudo apt-get install -y p7zip p7zip-full p7zip-rar winbind cabextract
             sudo apt-get install -y --install-recommends winehq-staging'
-        elif [[ $DISTRO_VERSION == *"Ubuntu"*"24.04"* ]]; then
+        elif [[ $DISTRO_VERSION == *"Ubuntu"*"24.04"* ]] || [[ $DISTRO_VERSION == *"Linux"*"Mint"*"22"* ]] || [[ $DISTRO_VERSION == *"Pop"*"OS"*"24.04"* ]]; then
             echo "Installing Wine for Ubuntu 24.04 ..."
             pkexec bash -c 'sudo dpkg --add-architecture i386
             curl -s https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
@@ -607,13 +606,13 @@ function check_and_install_wine() {
             pkexec bash -c 'sudo zypper addrepo -cfp 90 "https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Tumbleweed/" wine
             sudo zypper refresh
             sudo zypper install -y p7zip-full wine cabextract'
-        elif [[ $DISTRO_VERSION == *"Red Hat Enterprise Linux"*"8"* ]]; then
+        elif [[ $DISTRO_VERSION == *"Red"*"Hat"*"Enterprise"*"Linux"*"8"* ]]; then
             echo "Installing Wine for RHEL 8 ..."
             pkexec bash -c 'sudo subscription-manager repos --enable codeready-builder-for-rhel-8-x86_64-rpms
             sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
             sudo dnf upgrade
             sudo dnf install -y p7zip p7zip-plugins winehq-staging cabextract'
-        elif [[ $DISTRO_VERSION == *"Red Hat Enterprise Linux"*"9"* ]]; then
+        elif [[ $DISTRO_VERSION == *"Red"*"Hat"*"Enterprise"*"Linux"*"9"* ]]; then
             echo "Installing Wine for RHEL 9 ..."
             pkexec bash -c 'sudo subscription-manager repos --enable codeready-builder-for-rhel-9-x86_64-rpms
             sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
