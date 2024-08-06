@@ -33,6 +33,8 @@ fi
 # if selected_extensions is set to --full, then all extensions will be installed
 if [ "$SELECTED_EXTENSIONS" == "--full" ]; then
     SELECTED_EXTENSIONS="CzechlocalizationforF360,HP3DPrintersforAutodesk®Fusion®,MarkforgedforAutodesk®Fusion®,OctoPrintforAutodesk®Fusion360™,UltimakerDigitalFactoryforAutodeskFusion360™"
+else
+    SELECTED_EXTENSIONS=""
 fi
 
 # URL to download translations po. files <-- Still in progress!!!
@@ -116,7 +118,7 @@ function install_required_packages {
             sleep 2
         elif [[ $DISTRO_VERSION == *"Debian"*"10"* ]] || [[ $DISTRO_VERSION == *"Debian"*"11"* ]] || [[ $DISTRO_VERSION == *"Debian"*"Sid"* ]] || [[ $DISTRO_VERSION == *"Ubuntu"*"18.04"* ]] \
         || [[ $DISTRO_VERSION == *"Linux Mint"*"19"* ]] || [[ $DISTRO_VERSION == *"Ubuntu"*"20.04"* ]] || [[ $DISTRO_VERSION == *"Linux Mint"*"20"* ]] \
-        || [[ $DISTRO_VERSION == *"Ubuntu"*"22.04"* ]] || [[ $DISTRO_VERSION == *"Linux Mint"*"21"* ]]; then
+        || [[ $DISTRO_VERSION == *"Ubuntu"*"22.04"* ]] || [[ $DISTRO_VERSION == *"Linux Mint"*"21"* ]] || [[ $DISTRO_VERSION == *"Linux Mint"*"22"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
             sudo apt-get install -y curl lsb-release coreutils mesa-utils policykit-1 
