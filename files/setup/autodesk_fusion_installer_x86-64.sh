@@ -64,6 +64,9 @@ AUTODESK_FUSION_INSTALLER_URL="https://dl.appstreaming.autodesk.com/production/i
 # URL to download Microsoft Edge WebView2.Exec
 WEBVIEW2_INSTALLER_URL="https://github.com/aedancullen/webview2-evergreen-standalone-installer-archive/releases/download/109.0.1518.78/MicrosoftEdgeWebView2RuntimeInstallerX64.exe"
 
+# URL to download the patched Qt6WebEngineCore.dll file
+QT6_WEBENGINECORE_URL="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/extras/patched-dlls/Qt6WebEngineCore.dll.7z"
+
 ##############################################################################################################################################################################
 # CHECK THE REQUIRED PACKAGES FOR THE INSTALLER:                                                                                                                             #
 ##############################################################################################################################################################################
@@ -272,12 +275,14 @@ function check_option() {
             download_files
             check_and_install_wine
             wine_autodesk_fusion_install
+            autodesk_fusion_patch_qt6webenginecore
             wine_autodesk_fusion_check_extensions
             wine_autodesk_fusion_install_extensions
             autodesk_fusion_shortcuts_load
             autodesk_fusion_safe_logfile
             reset_window_not_responding_dialog
             xdg-open "https://cryinkfly.com/sponsoring/"
+            run_wine_autodesk_fusion
             exit;;
         *)
             echo -e "$(gettext "${RED}Invalid option! Please use the --install or --uninstall flag!")${NOCOLOR}";
@@ -422,7 +427,7 @@ function download_files() {
     sleep 2
     # Download the newest winetricks version:
     echo -e "$(gettext "${YELLOW}Downloading the newest winetricks version ...${NOCOLOR}")"
-    curl -o "$SELECTED_DIRECTORY/bin/winetricks" "$WINETRICKS_URL"
+    curl -L "$WINETRICKS_URL" -o "$SELECTED_DIRECTORY/bin/winetricks"
     chmod +x "$SELECTED_DIRECTORY/bin/winetricks"
     # Search for an existing installer of Autodesk Fusion and download it if it doesn't exist or is older than 7 days
     AUTODESK_FUSION_INSTALLER="$SELECTED_DIRECTORY/downloads/FusionClientInstaller.exe"
@@ -452,6 +457,10 @@ function download_files() {
     fi
     # Download all tested extensions for Autodesk Fusion 360 on Linux
     download_extensions_files
+    # Download the patched Qt6WebEngineCore.dll file
+    curl -L "$QT6_WEBENGINECORE_URL" -o "$SELECTED_DIRECTORY/downloads/Qt6WebEngineCore.dll.7z"
+    # Extract the patched t6WebEngineCore.dll.7z file
+    7z x "$SELECTED_DIRECTORY/downloads/Qt6WebEngineCore.dll.7z" -o"$SELECTED_DIRECTORY/downloads/"
 }
 
 # Download an extension if it doesn't exist or is older than 7 days
@@ -530,7 +539,7 @@ function check_and_install_wine() {
             curl -s https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
             sudo apt-add-repository "deb https://dl.winehq.org/wine-builds/debian/ bullseye main"
             sudo apt-get update
-            sudo apt-get install -y p7zip p7zip-full p7zip-rar curl winbind cabextract wget
+            sudo apt-get install -y p7zip p7zip-full p7zip-rar winbind cabextract
             sudo apt-get install -y --install-recommends winehq-staging'
         elif [[ $DISTRO_VERSION == *"Debian"*"12"* ]]; then
             echo "Installing Wine for Debian 12 ..."
@@ -540,7 +549,7 @@ function check_and_install_wine() {
             curl -s https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
             sudo apt-add-repository "deb https://dl.winehq.org/wine-builds/debian/ bookworm main"
             sudo apt-get update
-            sudo apt-get install -y p7zip p7zip-full p7zip-rar curl winbind cabextract wget
+            sudo apt-get install -y p7zip p7zip-full p7zip-rar winbind cabextract
             sudo apt-get install -y --install-recommends winehq-staging'
         elif [[ $DISTRO_VERSION == *"Debian"*"Testing"* ]] || [[ $DISTRO_VERSION == *"Debian"*"testing"* ]]; then
             echo "Installing Wine for Debian testing ..."
@@ -550,73 +559,73 @@ function check_and_install_wine() {
             curl -s https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
             sudo apt-add-repository "deb https://dl.winehq.org/wine-builds/debian/ testing main"
             sudo apt-get update
-            sudo apt-get install -y p7zip p7zip-full p7zip-rar curl winbind cabextract wget
+            sudo apt-get install -y p7zip p7zip-full p7zip-rar winbind cabextract
             sudo apt-get install -y --install-recommends winehq-staging'
         elif [[ $DISTRO_VERSION == *"Ubuntu"*"20.04"* ]]; then
             echo "Installing Wine for Ubuntu 20.04 ..."
             pkexec bash -c 'sudo dpkg --add-architecture i386
-            wget -qO - https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
+            curl -s https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
             sudo apt-add-repository "deb https://dl.winehq.org/wine-builds/ubuntu/ focal main"
             sudo apt-get update
-            sudo apt-get install -y p7zip p7zip-full p7zip-rar curl winbind cabextract wget
+            sudo apt-get install -y p7zip p7zip-full p7zip-rar winbind cabextract
             sudo apt-get install -y --install-recommends winehq-staging'
         elif [[ $DISTRO_VERSION == *"Ubuntu"*"22.04"* ]]; then
             echo "Installing Wine for Ubuntu 22.04 ..."
             pkexec bash -c 'sudo dpkg --add-architecture i386
-            wget -qO - https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
+            curl -s https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
             sudo apt-add-repository "deb https://dl.winehq.org/wine-builds/ubuntu/ jammy main"
             sudo apt-get update &&
-            sudo apt-get install -y p7zip p7zip-full p7zip-rar curl winbind cabextract wget
+            sudo apt-get install -y p7zip p7zip-full p7zip-rar winbind cabextract
             sudo apt-get install -y --install-recommends winehq-staging'
         elif [[ $DISTRO_VERSION == *"Ubuntu"*"24.04"* ]]; then
             echo "Installing Wine for Ubuntu 24.04 ..."
             pkexec bash -c 'sudo dpkg --add-architecture i386
-            wget -qO - https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
+            curl -s https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
             sudo apt-add-repository "deb https://dl.winehq.org/wine-builds/ubuntu/ impish main"
             sudo apt-get update &&
-            sudo apt-get install -y p7zip p7zip-full p7zip-rar curl winbind cabextract wget
+            sudo apt-get install -y p7zip p7zip-full p7zip-rar winbind cabextract
             sudo apt-get install -y --install-recommends winehq-staging'
         elif [[ $DISTRO_VERSION == *"Fedora"*"40"* ]]; then
             echo "Installing Wine for Fedora 40 ..."
             # show a password prompt for the user to enter the root password with pkexec
-            pkexec bash -c "dnf config-manager --add-repo https://dl.winehq.org/wine-builds/fedora/40/winehq.repo && dnf install -y p7zip p7zip-plugins curl wget winehq-staging cabextract"
+            pkexec bash -c "dnf config-manager --add-repo https://dl.winehq.org/wine-builds/fedora/40/winehq.repo && dnf install -y p7zip p7zip-plugins winehq-staging cabextract"
         elif [[ $DISTRO_VERSION == *"Fedora"*"Rawhide"* ]]; then
             echo "Installing Wine for Fedora rawhide ..."
-            pkexec bash -c "dnf config-manager --add-repo https://dl.winehq.org/wine-builds/fedora/rawhide/winehq.repo && dnf install -y p7zip p7zip-plugins curl wget winehq-staging cabextract"
+            pkexec bash -c "dnf config-manager --add-repo https://dl.winehq.org/wine-builds/fedora/rawhide/winehq.repo && dnf install -y p7zip p7zip-plugins winehq-staging cabextract"
         elif [[ $DISTRO_VERSION == *"Gentoo"* ]]; then
             echo "Installing Wine for Gentoo ..."
-            pkexec emerge -av p7zip curl wget wine cabextract
+            pkexec emerge -av p7zip wine cabextract
         elif [[ $DISTRO_VERSION == *"openSUSE"*"15.6"* ]]; then
             echo "Installing Wine for openSUSE 15.6 ..."
             pkexec bash -c 'sudo zypper addrepo -cfp 90 "https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.6/" wine
             sudo zypper refresh
-            sudo zypper install -y p7zip-full curl wine cabextract'
+            sudo zypper install -y p7zip-full wine cabextract'
         elif [[ $DISTRO_VERSION == *"openSUSE"*"Tumbleweed"* ]]; then
             echo "Installing Wine for openSUSE tumbleweed ..."
             pkexec bash -c 'sudo zypper addrepo -cfp 90 "https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Tumbleweed/" wine
             sudo zypper refresh
-            sudo zypper install -y p7zip-full curl wine cabextract'
+            sudo zypper install -y p7zip-full wine cabextract'
         elif [[ $DISTRO_VERSION == *"Red Hat Enterprise Linux"*"8"* ]]; then
             echo "Installing Wine for RHEL 8 ..."
             pkexec bash -c 'sudo subscription-manager repos --enable codeready-builder-for-rhel-8-x86_64-rpms
             sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
             sudo dnf upgrade
-            sudo dnf install -y p7zip p7zip-plugins curl wget winehq-staging cabextract'
+            sudo dnf install -y p7zip p7zip-plugins winehq-staging cabextract'
         elif [[ $DISTRO_VERSION == *"Red Hat Enterprise Linux"*"9"* ]]; then
             echo "Installing Wine for RHEL 9 ..."
             pkexec bash -c 'sudo subscription-manager repos --enable codeready-builder-for-rhel-9-x86_64-rpms
             sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
             sudo dnf upgrade
-            sudo dnf install -y p7zip p7zip-plugins curl wget winehq-staging cabextract'
+            sudo dnf install -y p7zip p7zip-plugins winehq-staging cabextract'
         elif [[ $DISTRO_VERSION == *"Solus"* ]]; then
             echo "Installing Wine for Solus ..."
-            pkexec eopkg install -y p7zip p7zip-plugins curl wget winehq-staging cabextract
+            pkexec eopkg install -y p7zip p7zip-plugins winehq-staging cabextract
         elif [[ $DISTRO_VERSION == *"Void"* ]]; then
             echo "Installing Wine for Void Linux ..."
-            pkexec xbps-install -Syu --yes p7zip p7zip-plugins curl wget wine cabextract
+            pkexec xbps-install -Syu --yes p7zip p7zip-plugins wine cabextract
         elif [[ $DISTRO_VERSION == *"NixOS"* ]] || [[ $DISTRO_VERSION == *"nixos"* ]]; then
             echo "Installing Wine for NixOS ..."
-            pkexec nix-env -iA nixos.p7zip nixos.curl nixos.wget nixos.wine nixos.cabextract nixos.samba nixos.ppp nixos.winetricks --yes
+            pkexec nix-env -iA nixos.p7zip nixos.wine nixos.cabextract nixos.samba nixos.ppp nixos.winetricks --yes
         # Add more distributions and versions here ...
         # elif ...
         else
@@ -646,7 +655,7 @@ function determine_variable_folder_name_for_identity_manager {
 # Load the icons and .desktop-files:
 function autodesk_fusion_shortcuts_load {
     # Create a .desktop file (launcher.sh) for Autodesk Fusion!
-    wget -Nc -P "$SELECTED_DIRECTORY/resources/graphics" https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/resource/graphics/autodesk_fusion.svg
+    curl -L https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/resource/graphics/autodesk_fusion.svg -o "$SELECTED_DIRECTORY/resources/graphics/autodesk_fusion.svg"
     cat >> "$HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk Fusion.desktop" << EOF
 [Desktop Entry]
 Name=Autodesk Fusion
@@ -703,7 +712,7 @@ EOL
     sed -i 's/=env WINEPREFIX=/=env WINEDEBUG=-all env WINEPREFIX=/g' "$HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk Fusion.desktop"
 
     # Download some script files for Autodesk Fusion 360!
-    wget -NP "$SELECTED_DIRECTORY/bin" https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/data/autodesk_fusion_launcher.sh
+    curl -L https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/data/autodesk_fusion_launcher.sh -o "$SELECTED_DIRECTORY/bin"
     chmod +x "$SELECTED_DIRECTORY/bin/autodesk_fusion_launcher.sh"
 }
 
@@ -712,7 +721,7 @@ EOL
 function dxvk_opengl_1 {
     if [[ $GPU_DRIVER = "DXVK" ]]; then
         WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" sh "$SELECTED_DIRECTORY/bin/winetricks" -q dxvk
-        curl -o DXVK.reg https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/resource/video_driver/dxvk/DXVK.reg -o "$SELECTED_DIRECTORY/drive_c/users/$USER/Downloads"
+        curl -L https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/resource/video_driver/dxvk/DXVK.reg -o "$SELECTED_DIRECTORY/drive_c/users/$USER/Downloads/DXVK.reg"
         # Add the "return"-option. Here you can read more about it -> https://github.com/koalaman/shellcheck/issues/592
         cd "$SELECTED_DIRECTORY/drive_c/users/$USER/Downloads" || return
         WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine regedit.exe DXVK.reg
@@ -721,9 +730,9 @@ function dxvk_opengl_1 {
 
 function dxvk_opengl_2 {
     if [[ $GPU_DRIVER = "DXVK" ]]; then
-        curl -o NMachineSpecificOptions.xml https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/resource/video_driver/dxvk/NMachineSpecificOptions.xml
+        curl -L https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/resource/video_driver/dxvk/NMachineSpecificOptions.xml -o "NMachineSpecificOptions.xml"
     else
-        curl -o NMachineSpecificOptions.xml https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/resource/video_driver/opengl/NMachineSpecificOptions.xml
+        curl -L https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/resource/video_driver/opengl/NMachineSpecificOptions.xml -o "NMachineSpecificOptions.xml"
     fi
 }
 
@@ -737,6 +746,22 @@ function autodesk_fusion_run_install_client {
     sleep 5s
     WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" timeout -k 5m 1m wine "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Downloads/FusionClientInstaller.exe" --quiet
 }
+
+###############################################################################################################################################################
+
+# Patch the Qt6WebEngineCore.dll to fix the login issue and other issues
+function autodesk_fusion_patch_qt6webenginecore {
+    # Find the Qt6WebEngineCore.dll file in the Autodesk Fusion directory
+    QT6_WEBENGINECORE=$(find "$SELECTED_DIRECTORY/wineprefixes/default" -name 'Qt6WebEngineCore.dll' -printf "%T+ %p\n" | sort -r 2>&1 | head -n 1 | sed -r 's/.+0000000000 (.+)/\1/')
+    # Backup the Qt6WebEngineCore.dll file
+    cp "$QT6_WEBENGINECORE" "$QT6_WEBENGINECORE.bak"
+    # Patch the Qt6WebEngineCore.dll file
+    echo -e "$(gettext "${YELLOW}Patching the Qt6WebEngineCore.dll file for Autodesk Fusion ...${NOCOLOR}")"
+    sleep 2
+    # Copy the patched Qt6WebEngineCore.dll file to the Autodesk Fusion directory
+    cp "$SELECTED_DIRECTORY/downloads/Qt6WebEngineCore.dll" "$QT6_WEBENGINECORE"
+    echo -e "$(gettext "${GREEN}The Qt6WebEngineCore.dll file is patched successfully!${NOCOLOR}")"
+}      
 
 ###############################################################################################################################################################
 
@@ -865,6 +890,17 @@ function reset_window_not_responding_dialog() {
         echo -e "$(gettext "${GREEN}The 'Window not responding' Dialog in GNOME will be reset!")${NOCOLOR}"
         gsettings reset org.gnome.mutter check-alive-timeout
     fi
+}
+
+##############################################################################################################################################################################
+# RUN AUTODESK FUSION:                                                                                                                                                       #
+##############################################################################################################################################################################
+
+function run_wine_autodesk_fusion() {
+    # Execute the Autodesk Fusion 360
+    echo -e "$(gettext "${GREEN}Starting Autodesk Fusion 360 ...${NOCOLOR}")"
+    sleep 2
+    source "$SELECTED_DIRECTORY/bin/autodesk_fusion_launcher.sh"
 }
 
 ##############################################################################################################################################################################
