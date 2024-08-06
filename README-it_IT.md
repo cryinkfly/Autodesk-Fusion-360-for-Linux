@@ -209,17 +209,16 @@
        <li><p>Debian 11, Raspberry Pi Desktop, ...</p></li>
        <li><p>Debian 12</p></li>
        <li><p>Debian Testing</p></li>
-       <li><p>Fedora 37</p></li>
-       <li><p>Fedora 38</p></li>
+       <li><p>Fedora 40</p></li>
        <li><p>Fedora Rawhide</p></li>
-       <li><p>openSUSE Leap 15.4</p></li>
-       <li><p>openSUSE Leap 15.5</p></li>
+       <li><p>openSUSE Leap 15.6</p></li>
        <li><p>openSUSE Tumbleweed</p></li>
        <li><p>Red Hat Enterprise Linux 8.x</p></li>
        <li><p>Red Hat Enterprise Linux 9.x</p></li>
        <li><p>Ubuntu 20.04, Linux Mint 20.x, Pop!_OS 20.04, ...</p></li>
        <li><p>Ubuntu 22.04, Pop!_OS 22.04, ...</p></li>
-       <li><p>Ubuntu 23.04, Pop!_OS 23.04, ...</p></li>
+       <li><p>Ubuntu 24.04, Pop!_OS 24.04, ...</p></li>
+       <li><p>NixOS</p></li>
        <li><p>Solus</p></li>
        <li><p>Void Linux</p></li>
        <li><p>Gentoo Linux</p></li>
@@ -314,21 +313,24 @@
 </br>
 🔹 Hai bisogno di un Fusion 360 attivo <a href="#-how-much-does-fusion-360-cost">licenza</a>!
 </br></br>
-🔹 Apri un terminale ed esegui questo comando:
+🔹 Aprire un terminale ed eseguire questo comando per installare Autodesk Fusion di base:
 </br></br>
+ 
+    curl -o https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/autodesk_fusion_installer_x86-64.sh && chmod +x autodesk_fusion_installer_x86-64.sh && ./autodesk_fusion_installer_x86-64.sh --install --default
 
-    mkdir -p "$HOME/.fusion360/bin" && cd "$HOME/.fusion360/bin" && wget -N https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/install.sh && chmod +x install.sh && ./install.sh
+🔹 Aprire un terminale ed eseguire questo comando per installare Autodesk Fusion con tutte le estensioni testate:
 </br>
 
-<del>🔹 Attualmente, Fusion 360 per Linux non funziona. Autodesk richiede che il browser si apra a una pagina per accedere a Fusion 360, ma non ha ancora una soluzione per questo problema. Abbi pazienza mentre cerchiamo e sviluppiamo una soluzione. Nel frattempo, puoi utilizzare questo comando per installare Fusion 360 per Linux con una versione precedente di Fusion 360 che non richiede l'accesso al browser:</del>
+    curl -o https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/autodesk_fusion_installer_x86-64.sh && chmod +x autodesk_fusion_installer_x86-64.sh && ./autodesk_fusion_installer_x86-64.sh --install --default --full
+
+🔹 Apri un terminale ed esegui questo comando per disinstallare:
+</br>
+ 
+    curl -o https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/autodesk_fusion_installer_x86-64.sh && chmod +x autodesk_fusion_installer_x86-64.sh && ./autodesk_fusion_installer_x86-64.sh --uninstall
+
 </br>
 
--> Questo errore è stato corretto!
-
-    mkdir -p "$HOME/.fusion360/bin" && cd "$HOME/.fusion360/bin" && wget -N https://raw.githubusercontent.com/alextrical/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/install.sh && chmod +x install.sh && ./install.sh
-</br>
-
-🔹 Oppure installi e utilizzi Autodesk Fusion 360 come app Flatpak:
+🔹  Oppure puoi installare e utilizzare Autodesk Fusion 360 come app Flatpak:
 
      https://usebottles.com/app/#fusion360
     

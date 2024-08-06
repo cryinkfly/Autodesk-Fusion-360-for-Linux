@@ -330,9 +330,9 @@
 
 </br>
 
-🔹  <del>Or you install and use Autodesk Fusion 360 as a Flatpak app:</del> 
+🔹 Or you install and use Autodesk Fusion 360 as a Flatpak app:
 
- <del>    https://usebottles.com/app/#fusion360 </del>
+     https://usebottles.com/app/#fusion360
 
 🔹 Now, You can <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues/44#issuecomment-890552181">use</a> Autodesk Fusion 360 on your Linux system!
  </br></br>

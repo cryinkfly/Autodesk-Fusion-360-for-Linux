@@ -209,17 +209,16 @@
        <li><p>Debian 11, Raspberry Pi Desktop, ...</p></li>
        <li><p>Debian 12</p></li>
        <li><p>Debian Testing</p></li>
-       <li><p>Fedora 37</p></li>
-       <li><p>Fedora 38</p></li>
+       <li><p>Fedora 40</p></li>
        <li><p>Fedora Rawhide</p></li>
-       <li><p>openSUSE Leap 15.4</p></li>
-       <li><p>openSUSE Leap 15.5</p></li>
+       <li><p>openSUSE Leap 15.6</p></li>
        <li><p>openSUSE Tumbleweed</p></li>
        <li><p>Red Hat Enterprise Linux 8.x</p></li>
        <li><p>Red Hat Enterprise Linux 9.x</p></li>
        <li><p>Ubuntu 20.04, Linux Mint 20.x, Pop!_OS 20.04, ...</p></li>
        <li><p>Ubuntu 22.04, Pop!_OS 22.04, ...</p></li>
-       <li><p>Ubuntu 23.04, Pop!_OS 23.04, ...</p></li>
+       <li><p>Ubuntu 24.04, Pop!_OS 24.04, ...</p></li>
+       <li><p>NixOS</p></li>
        <li><p>Solus</p></li>
        <li><p>Void Linux</p></li>
        <li><p>Gentoo Linux</p></li>
@@ -306,7 +305,7 @@
 
 <div id="fusion360-安装" align="center">
 <h2>⚙️ 开始</h3>
-🔹 检查我的 <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/wiki/Documentation">GitHub-Documentation</a> 和 <a href="https ://www.youtube.com/watch?v=-BktJspJKgs&list=PLzwMdS5iu_BIsO6RTy7Hy1MbzLMrQE2xe">视频</a> 在您的系统上安装 Autodesk Fusion 360 之前！
+🔹 检查我的 <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/wiki/Documentation">GitHub 文档</a> 和 <a href="https ://www.youtube.com/watch?v=-BktJspJKgs&list=PLzwMdS5iu_BIsO6RTy7Hy1MbzLMrQE2xe">视频</a> 在您的系统上安装 Autodesk Fusion 360 之前！
 </br>
 🔹 检查您的 <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/extras/network/etc">网络设置</a>是否正确配置！
 </br>
@@ -314,18 +313,21 @@
 </br>
 🔹 你需要一个活跃的 Fusion 360 <a href="#-how-much-does-fusion-360-cost">许可</a>！
 </br></br>
-🔹 打开终端并运行以下命令：
+🔹 打开终端并运行此命令来安装基本的 Autodesk Fusion：
 </br></br>
+ 
+    curl -o https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/autodesk_fusion_installer_x86-64.sh && chmod +x autodesk_fusion_installer_x86-64.sh && ./autodesk_fusion_installer_x86-64.sh --install --default
 
-    mkdir -p "$HOME/.fusion360/bin" && cd "$HOME/.fusion360/bin" && wget -N https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/install.sh && chmod +x install.sh && ./install.sh
+🔹 打开终端并运行此命令来安装 Autodesk Fusion 的所有经过测试的扩展：
 </br>
 
-<del>🔹 目前，适用于 Linux 的 Fusion 360 已损坏。 Autodesk 需要您的浏览器打开一个页面才能登录 Fusion 360，但目前还没有针对此问题的解决方案。请耐心等待我们研究和开发解决方案。同时，您可以使用此命令安装适用于 Linux 的 Fusion 360 以及不需要浏览器登录的旧版本 Fusion 360:</del>
+    curl -o https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/autodesk_fusion_installer_x86-64.sh && chmod +x autodesk_fusion_installer_x86-64.sh && ./autodesk_fusion_installer_x86-64.sh --install --default --full
+
+🔹 打开终端并运行此命令进行卸载：
 </br>
+ 
+    curl -o https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/autodesk_fusion_installer_x86-64.sh && chmod +x autodesk_fusion_installer_x86-64.sh && ./autodesk_fusion_installer_x86-64.sh --uninstall
 
--> 此错误已修复！
-
-    mkdir -p "$HOME/.fusion360/bin" && cd "$HOME/.fusion360/bin" && wget -N https://raw.githubusercontent.com/alextrical/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/install.sh && chmod +x install.sh && ./install.sh
 </br>
 
 🔹 或者您安装 Autodesk Fusion 360 并将其用作 Flatpak 应用程序：

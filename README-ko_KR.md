@@ -209,17 +209,16 @@
        <li><p>Debian 11, Raspberry Pi Desktop, ...</p></li>
        <li><p>Debian 12</p></li>
        <li><p>Debian Testing</p></li>
-       <li><p>Fedora 37</p></li>
-       <li><p>Fedora 38</p></li>
+       <li><p>Fedora 40</p></li>
        <li><p>Fedora Rawhide</p></li>
-       <li><p>openSUSE Leap 15.4</p></li>
-       <li><p>openSUSE Leap 15.5</p></li>
+       <li><p>openSUSE Leap 15.6</p></li>
        <li><p>openSUSE Tumbleweed</p></li>
        <li><p>Red Hat Enterprise Linux 8.x</p></li>
        <li><p>Red Hat Enterprise Linux 9.x</p></li>
        <li><p>Ubuntu 20.04, Linux Mint 20.x, Pop!_OS 20.04, ...</p></li>
        <li><p>Ubuntu 22.04, Pop!_OS 22.04, ...</p></li>
-       <li><p>Ubuntu 23.04, Pop!_OS 23.04, ...</p></li>
+       <li><p>Ubuntu 24.04, Pop!_OS 24.04, ...</p></li>
+       <li><p>NixOS</p></li>
        <li><p>Solus</p></li>
        <li><p>Void Linux</p></li>
        <li><p>Gentoo Linux</p></li>
@@ -314,23 +313,26 @@
 </br>
 🔹 활성 Fusion 360이 필요합니다. <a href="#-how-much-does-fusion-360-cost">라이센스</a>!
 </br></br>
-🔹 터미널을 열고 다음 명령을 실행하십시오:
+🔹 터미널을 열고 이 명령을 실행하여 기본 Autodesk Fusion을 설치하세요.
 </br></br>
+ 
+    curl -o https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/autodesk_fusion_installer_x86-64.sh && chmod +x autodesk_fusion_installer_x86-64.sh && ./autodesk_fusion_installer_x86-64.sh --install --default
 
-    mkdir -p "$HOME/.fusion360/bin" && cd "$HOME/.fusion360/bin" && wget -N https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/install.sh && chmod +x install.sh && ./install.sh
+🔹 터미널을 열고 이 명령을 실행하여 테스트된 모든 확장 프로그램에 Autodesk Fusion을 설치합니다.
 </br>
 
-<del>🔹 현재, Linux용 Fusion 360은 작동하지 않습니다. Autodesk는 Fusion 360에 로그인하기 위해 브라우저를 열도록 요구하지만, 이 문제에 대한 해결책은 아직 없습니다. 문제를 연구하고 해결책을 개발하는 동안 양해 부탁드립니다. 한편, 브라우저 로그인이 필요하지 않은 이전 버전의 Fusion 360으로 Linux용 Fusion 360을 설치하려면 이 명령을 사용할 수 있습니다:</del>
+    curl -o https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/autodesk_fusion_installer_x86-64.sh && chmod +x autodesk_fusion_installer_x86-64.sh && ./autodesk_fusion_installer_x86-64.sh --install --default --full
+
+🔹 터미널을 열고 다음 명령을 실행하여 제거하세요.
+</br>
+ 
+    curl -o https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/autodesk_fusion_installer_x86-64.sh && chmod +x autodesk_fusion_installer_x86-64.sh && ./autodesk_fusion_installer_x86-64.sh --uninstall
+
 </br>
 
--> 이 버그가 수정되었습니다!
+🔹  <del>또는 Autodesk Fusion 360을 Flatpak 앱으로 설치하여 사용합니다.</del> 
 
-    mkdir -p "$HOME/.fusion360/bin" && cd "$HOME/.fusion360/bin" && wget -N https://raw.githubusercontent.com/alextrical/Autodesk-Fusion-360-for-Linux/main/files/builds/stable-branch/bin/install.sh && chmod +x install.sh && ./install.sh
-</br>
-
-🔹 또는 Autodesk Fusion 360을 Flatpak 앱으로 설치하고 사용합니다.
-
-     https://usebottles.com/app/#fusion360
+ <del>    https://usebottles.com/app/#fusion360 </del>
 
 🔹 이제 Autodesk Fusion 360을 <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues/44#issuecomment-890552181">사용</a>할 수 있습니다. 당신의 리눅스 시스템에!
   </br></br>
