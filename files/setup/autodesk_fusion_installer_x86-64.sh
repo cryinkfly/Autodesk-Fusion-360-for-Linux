@@ -269,10 +269,11 @@ function check_option() {
             echo -e "$(gettext "${GREEN}Selected extensions: ${YELLOW}$SELECTED_EXTENSIONS${NOCOLOR}")"
             sleep 2
             deactivate_window_not_responding_dialog
+            create_data_structure
             check_ram
+            check_gpu_vram
             check_gpu_driver
             check_disk_space
-            create_data_structure
             download_files
             check_and_install_wine
             wine_autodesk_fusion_install
@@ -305,24 +306,83 @@ function deactivate_window_not_responding_dialog() {
 }
 
 ##############################################################################################################################################################################
+# CREATE THE DATA STRUCTURE FOR THE INSTALLER:                                                                                                                               #
+##############################################################################################################################################################################
+
+function create_data_structure() {
+    mkdir -p "$SELECTED_DIRECTORY/bin" \
+        "$SELECTED_DIRECTORY/config" \
+        "$SELECTED_DIRECTORY/downloads/extensions" \
+        "$SELECTED_DIRECTORY/logs" \
+        "$SELECTED_DIRECTORY/locale" \
+        "$SELECTED_DIRECTORY/resources/graphics" \
+        "$SELECTED_DIRECTORY/resources/styles" \
+        "$SELECTED_DIRECTORY/wineprefixes/default"
+}
+
+##############################################################################################################################################################################
 # CHECKING THE MINIMUM RAM (RANDOM ACCESS MEMORY) REQUIREMENT:                                                                                                               #
 ##############################################################################################################################################################################
 
 function check_ram {
-    GET_RAM_KILOBYTES=$(grep MemTotal /proc/meminfo | awk '{print $2}') # Get total RAM space in kilobytes
-    CONVERT_RAM_GIGABYTES=$(echo "scale=2; $GET_RAM_KILOBYTES / 1024 / 1024" | bc) # Convert kilobytes to gigabytes
-    if (( $(echo "$CONVERT_RAM_GIGABYTES > 4" | bc -l) )); then # Check if RAM is greater than 4 GB
+    # Get total RAM space in kilobytes
+    GET_RAM_KILOBYTES=$(grep MemTotal /proc/meminfo | awk '{print $2}')
+    
+    # Convert kilobytes to gigabytes
+    CONVERT_RAM_GIGABYTES=$(awk "BEGIN {print $GET_RAM_KILOBYTES / 1024 / 1024}")
+    
+    # Check if RAM is greater than 4 GB
+    if awk "BEGIN {exit !($CONVERT_RAM_GIGABYTES > 4)}"; then
         echo -e "$(gettext "${GREEN}The total RAM (Random Access Memory) is greater than 4 GByte ($CONVERT_RAM_GIGABYTES GByte) and Autodesk Fusion will run more stable later!${NOCOLOR}")"
     else
         echo -e "$(gettext "${RED}The total RAM (Random Access Memory) is not greater than 4 GByte ($CONVERT_RAM_GIGABYTES GByte) and Autodesk Fusion may run unstable later with insufficient RAM memory!${NOCOLOR}")"
         read -p "$(gettext "${YELLOW}Are you sure you want to continue with the installation? (y/n)${NOCOLOR}")" yn
-            case $yn in 
-	            y ) ...;;
-                n ) echo -e "$(gettext "${RED}The installer has been terminated!${NOCOLOR}")";
-                     exit;;
-                * ) echo -e "$(gettext "${RED}The installer was terminated for inexplicable reasons!${NOCOLOR}")";
-                    exit 1;;
-            esac
+        case $yn in 
+            y|Y ) 
+                echo -e "$(gettext "${YELLOW}Continuing with the installation...${NOCOLOR}")"
+                ;;
+            n|N ) 
+                echo -e "$(gettext "${RED}The installer has been terminated!${NOCOLOR}")"
+                exit
+                ;;
+            * ) 
+                echo -e "$(gettext "${RED}Invalid input! The installer was terminated.${NOCOLOR}")"
+                rm -rf "$SELECTED_DIRECTORY"
+                exit 1
+                ;;
+        esac
+    fi
+}
+
+##############################################################################################################################################################################
+# CHECKING THE MINIMUM VRAM (VIDEO RAM) REQUIREMENT:                                                                                                                         #
+##############################################################################################################################################################################
+
+function check_gpu_vram {
+    # Get the total memory of the graphics card in megabytes
+    GET_VRAM_MEGABYTES=$(dmesg | grep -o -P -i "(?<=vram: )[0-9]+(?=M)")
+
+    if [ -z "$GET_VRAM_MEGABYTES" ]; then
+        echo -e "$(gettext "${RED}Could not determine VRAM size.${NOCOLOR}")"
+        exit 1
+    fi
+    
+    # Check if the total memory is greater than 1000 Megabytes
+    if awk -v vram="$GET_VRAM_MEGABYTES" 'BEGIN {exit !(vram > 1024)}'; then
+        CONVERT_RAM_GIGABYTES=$(awk "BEGIN {printf \"%.2f\", $GET_VRAM_MEGABYTES / 1024}")
+        echo -e "$(gettext "${GREEN}The total VRAM (Video RAM) is greater than 1 GByte (${CONVERT_RAM_GIGABYTES} GByte) and Autodesk Fusion will run more stable later!${NOCOLOR}")"
+    else
+        CONVERT_RAM_GIGABYTES=$(awk "BEGIN {printf \"%.2f\", $GET_VRAM_MEGABYTES / 1024}")
+        echo -e "$(gettext "${RED}The total VRAM (Video RAM) is not greater than 1 GByte (${CONVERT_RAM_GIGABYTES} GByte) and Autodesk Fusion may run unstable later with insufficient VRAM memory!${NOCOLOR}")"
+        read -p "$(gettext "${YELLOW}Are you sure you want to continue with the installation? (y/n)${NOCOLOR}")" yn
+        case $yn in 
+            y|Y ) echo -e "$(gettext "${GREEN}Continuing with the installation...${NOCOLOR}")";;
+            n|N ) echo -e "$(gettext "${RED}The installer has been terminated!${NOCOLOR}")";
+                  exit;;
+            * ) echo -e "$(gettext "${RED}Invalid input. The installer has been terminated!${NOCOLOR}")";
+                rm -rf "$SELECTED_DIRECTORY"
+                exit 1;;
+        esac
     fi
 }
 
@@ -338,51 +398,24 @@ function check_gpu_driver {
         echo -e "$(gettext "${GREEN}The DXVK GPU driver will be used for the installation!${NOCOLOR}")"
         GPU_DRIVER="DXVK"
         sleep 2
-        check_gpu_vram
     elif glxinfo | grep -q "OpenGL vendor string: AMD"; then
         echo -e "$(gettext "${GREEN}The AMD GPU driver is installed!${NOCOLOR}")"
         sleep 2
         echo -e "$(gettext "${GREEN}The OpenGL GPU driver will be used for the installation!${NOCOLOR}")"
         GPU_DRIVER="OpenGL"
         sleep 2
-        check_gpu_vram
     elif glxinfo | grep -q "OpenGL vendor string: Intel"; then
         echo -e "$(gettext "${GREEN}The Intel GPU driver is installed!${NOCOLOR}")"
         sleep 2
         echo -e "$(gettext "${GREEN}The OpenGL GPU driver will be used for the installation!${NOCOLOR}")"
         GPU_DRIVER="OpenGL"
         sleep 2
-        check_gpu_vram
     else
         echo -e "$(gettext "${red}The GPU driver is not installed or not found on your system!${NOCOLOR}")"
         sleep 2
         echo -e "$(gettext "${GREEN}The OpenGL GPU driver will be used for the installation!${NOCOLOR}")"
         GPU_DRIVER="OpenGL"
         sleep 2
-        check_gpu_vram
-    fi
-}
-
-##############################################################################################################################################################################
-# CHECKING THE MINIMUM VRAM (VIDEO RAM) REQUIREMENT:                                                                                                                         #
-##############################################################################################################################################################################
-
-function check_gpu_vram {
-    # Get the total memory of the graphics card
-    GET_VRAM_MEGABYTES=$(dmesg | grep -o -P -i "(?<=vram:).*(?=M 0x)")
-    # Check if the total memory is greater than 1 GByte
-    if [ "$GET_VRAM_MEGABYTES" -gt 1024 ]; then
-        echo -e "$(gettext "${GREEN}The total VRAM (Video RAM) is greater than 1 GByte ($CONVERT_RAM_GIGABYTES GByte) and Autodesk Fusion will run more stable later!${NOCOLOR}")"
-    else
-        echo -e "$(gettext "${RED}The total VRAM (Video RAM) is not greater than 1 GByte ($CONVERT_RAM_GIGABYTES GByte) and Autodesk Fusion may run unstable later with insufficient VRAM memory!${NOCOLOR}")"
-        read -p "$(gettext "${YELLOW}Are you sure you want to continue with the installation? (y/n)${NOCOLOR}")" yn
-        case $yn in 
-            y ) ...;;
-            n ) echo -e "$(gettext "${RED}The installer has been terminated!${NOCOLOR}")";
-                exit;;
-            * ) echo -e "$(gettext "${RED}The installer was terminated for inexplicable reasons!${NOCOLOR}")";
-                exit 1;;
-        esac
     fi
 }
 
@@ -402,21 +435,6 @@ function check_disk_space {
         echo -e "$(gettext "${RED}The installer has been terminated!${NOCOLOR}")"
         exit;
     fi
-}
-
-##############################################################################################################################################################################
-# CREATE THE DATA STRUCTURE FOR THE INSTALLER:                                                                                                                               #
-##############################################################################################################################################################################
-
-function create_data_structure() {
-    mkdir -p "$SELECTED_DIRECTORY/bin" \
-        "$SELECTED_DIRECTORY/config" \
-        "$SELECTED_DIRECTORY/downloads/extensions" \
-        "$SELECTED_DIRECTORY/logs" \
-        "$SELECTED_DIRECTORY/locale" \
-        "$SELECTED_DIRECTORY/resources/graphics" \
-        "$SELECTED_DIRECTORY/resources/styles" \
-        "$SELECTED_DIRECTORY/wineprefixes/default"
 }
 
 ##############################################################################################################################################################################
