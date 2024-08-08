@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2024                                                                          #
-# Time/Date:    14:00/06.08.2024                                                                   #
+# Time/Date:    21:00/08.08.2024                                                                   #
 # Version:      2.0.0-Alpha                                                                        #
 ####################################################################################################
 
@@ -360,7 +360,7 @@ function check_ram {
 
 function check_gpu_vram {
     # Get the total memory of the graphics card in megabytes
-    GET_VRAM_MEGABYTES=$(dmesg | grep -o -P -i "(?<=vram: )[0-9]+(?=M)")
+    GET_VRAM_MEGABYTES=$(glxinfo | grep -i "Video memory" | grep -Eo '[0-9]+MB' | grep -Eo '[0-9]+')
 
     if [ -z "$GET_VRAM_MEGABYTES" ]; then
         echo -e "$(gettext "${RED}Could not determine VRAM size.${NOCOLOR}")"
