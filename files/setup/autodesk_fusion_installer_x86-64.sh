@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2024                                                                          #
-# Time/Date:    17:00/09.08.2024                                                                   #
+# Time/Date:    17:45/09.08.2024                                                                   #
 # Version:      2.0.0-Alpha                                                                        #
 ####################################################################################################
 
@@ -546,98 +546,154 @@ function check_and_install_wine() {
             echo "Installing Wine for Arch Linux ..."
             if grep -q '^\[multilib\]$' /etc/pacman.conf; then
                 echo "Multilib is already enabled!"
-                pkexec pacman -Syu --needed wine wine-mono wine_gecko winetricks p7zip curl cabextract samba ppp
+                pkexec bash -c '
+                    pacman -R wine wine-mono wine_gecko winetricks --noconfirm
+                    pacman -Syu --needed wine wine-mono wine_gecko winetricks p7zip curl cabextract samba ppp'
             else
                 echo "Enabling Multilib ..."
-                pkexec sh -c 'echo -e "[multilib]\nInclude = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf && pacman -Syu --needed wine wine-mono wine_gecko winetricks p7zip curl cabextract samba ppp'
+                pkexec sh -c '
+                    echo -e "[multilib]\nInclude = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
+                    pacman -R wine wine-mono wine_gecko winetricks --noconfirm
+                    pacman -Syu --needed wine wine-mono wine_gecko winetricks p7zip curl cabextract samba ppp'
             fi
         elif [[ $DISTRO_VERSION == *"Debian"*"11"* ]]; then
             echo "Installing Wine for Debian 11 ..."
-            pkexec bash -c 'sudo apt-get --allow-releaseinfo-change update
-            sudo dpkg --add-architecture i386
-            sudo mkdir -pm755 /etc/apt/keyrings
-            sudo curl -o /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
-            sudo curl -o /etc/apt/sources.list.d/winehq-bullseye.sources https://dl.winehq.org/wine-builds/debian/dists/bullseye/winehq-bullseye.sources
-            sudo apt-get update
-            sudo apt-get install -y p7zip p7zip-full p7zip-rar winbind cabextract
-            sudo apt-get install -y --install-recommends winehq-staging'
+            pkexec bash -c '
+                apt-get --allow-releaseinfo-change update
+                dpkg --add-architecture i386
+                rm /etc/apt/sources.list.d/wine* /etc/apt/trusted.gpg.d/wine*
+                apt-get update
+                curl -sSL https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/Debian_11/Release.key | sudo apt-key add -
+                apt-add-repository 'deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/Debian_11/ ./'
+                apt-get update
+                apt-get remove wine* --purge
+                apt-get autoremove -y
+                apt-get install -y p7zip p7zip-full p7zip-rar winbind cabextract
+                apt-get install -y --install-recommends winehq-staging'
         elif [[ $DISTRO_VERSION == *"Debian"*"12"* ]]; then
             echo "Installing Wine for Debian 12 ..."
-            pkexec bash -c 'sudo apt-get --allow-releaseinfo-change update
-            sudo dpkg --add-architecture i386
-            sudo mkdir -pm755 /etc/apt/keyrings
-            sudo curl -o /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
-            sudo curl -o /etc/apt/sources.list.d/winehq-bookworm.sources https://dl.winehq.org/wine-builds/debian/dists/bookworm/winehq-bookworm.sources
-            sudo apt-get update
-            sudo apt-get install -y p7zip p7zip-full p7zip-rar winbind cabextract
-            sudo apt-get install -y --install-recommends winehq-staging'
+            pkexec bash -c '
+                apt-get --allow-releaseinfo-change update
+                dpkg --add-architecture i386
+                rm /etc/apt/sources.list.d/wine* /etc/apt/trusted.gpg.d/wine*
+                apt-get update
+                curl -sSL https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/Debian_12/Release.key | sudo apt-key add -
+                apt-add-repository 'deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/Debian_12/ ./'
+                apt-get update
+                apt-get remove wine* --purge
+                apt-get autoremove -y
+                apt-get install -y p7zip p7zip-full p7zip-rar winbind cabextract
+                apt-get install -y --install-recommends winehq-staging'
         elif [[ $DISTRO_VERSION == *"Debian"*"Testing"* ]] || [[ $DISTRO_VERSION == *"Debian"*"testing"* ]]; then
             echo "Installing Wine for Debian testing ..."
-            pkexec bash -c 'sudo apt-get --allow-releaseinfo-change update
-            sudo dpkg --add-architecture i386
-            sudo mkdir -pm755 /etc/apt/keyrings
-            sudo curl -o /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
-            sudo curl -o /etc/apt/sources.list.d/winehq-trixie.sources https://dl.winehq.org/wine-builds/debian/dists/trixie/winehq-trixie.sources
-            sudo apt-get update
-            sudo apt-get install -y p7zip p7zip-full p7zip-rar winbind cabextract
-            sudo apt-get install -y --install-recommends winehq-staging'
+            pkexec bash -c '
+                apt-get --allow-releaseinfo-change update
+                dpkg --add-architecture i386
+                rm /etc/apt/sources.list.d/wine* /etc/apt/trusted.gpg.d/wine*
+                apt-get update
+                curl -sSL https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/Debian_Testing_standard/Release.key | sudo apt-key add -
+                apt-add-repository 'deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/Debian_Testing_standard/ ./'
+                apt-get update
+                apt-get remove wine* --purge
+                apt-get autoremove -y
+                apt-get install -y p7zip p7zip-full p7zip-rar winbind cabextract
+                apt-get install -y --install-recommends winehq-staging'
         elif [[ $DISTRO_VERSION == *"Ubuntu"*"20.04"* ]] || [[ $DISTRO_VERSION == *"Linux"*"Mint"*"20"* ]] || [[ $DISTRO_VERSION == *"Pop"*"OS"*"20.04"* ]]; then
             echo "Installing Wine for Ubuntu 20.04 ..."
-            pkexec bash -c 'sudo dpkg --add-architecture i386
-            sudo mkdir -pm755 /etc/apt/keyrings
-            sudo curl -o /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
-            sudo curl -o /etc/apt/sources.list.d/winehq-focal.sources https://dl.winehq.org/wine-builds/ubuntu/dists/focal/winehq-focal.sources
-            sudo apt-get update
-            sudo apt-get install -y p7zip p7zip-full p7zip-rar winbind cabextract
-            sudo apt-get install -y --install-recommends winehq-staging'
+            pkexec bash -c '
+                dpkg --add-architecture i386
+                rm /etc/apt/sources.list.d/wine* /etc/apt/trusted.gpg.d/wine*
+                apt-get update
+                curl -sSL https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_20.04/Release.key | sudo apt-key add -
+                apt-add-repository 'deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_20.04/ ./'
+                apt-get update
+                apt-get remove wine* --purge
+                apt-get autoremove -y
+                apt-get install -y p7zip p7zip-full p7zip-rar winbind cabextract
+                apt-get install -y --install-recommends winehq-staging'
         elif [[ $DISTRO_VERSION == *"Ubuntu"*"22.04"* ]] || [[ $DISTRO_VERSION == *"Linux"*"Mint"*"21"* ]] || [[ $DISTRO_VERSION == *"Pop"*"OS"*"22.04"* ]]; then
             echo "Installing Wine for Ubuntu 22.04 ..."
-            pkexec bash -c 'sudo dpkg --add-architecture i386
-            sudo mkdir -pm755 /etc/apt/keyrings
-            sudo curl -o /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
-            sudo curl -o /etc/apt/sources.list.d/winehq-jammy.sources https://dl.winehq.org/wine-builds/ubuntu/dists/jammy/winehq-jammy.sources
-            sudo apt-get update &&
-            sudo apt-get install -y p7zip p7zip-full p7zip-rar winbind cabextract
-            sudo apt-get install -y --install-recommends winehq-staging'
+            pkexec bash -c '
+                dpkg --add-architecture i386
+                rm /etc/apt/sources.list.d/wine* /etc/apt/trusted.gpg.d/wine*
+                apt-get update
+                curl -sSL https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_22.04/Release.key | sudo apt-key add -
+                apt-add-repository 'deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_22.04/ ./'
+                apt-get update
+                apt-get remove wine* --purge
+                apt-get autoremove -y
+                apt-get install -y p7zip p7zip-full p7zip-rar winbind cabextract
+                apt-get install -y --install-recommends winehq-staging'
         elif [[ $DISTRO_VERSION == *"Ubuntu"*"24.04"* ]] || [[ $DISTRO_VERSION == *"Linux"*"Mint"*"22"* ]] || [[ $DISTRO_VERSION == *"Pop"*"OS"*"24.04"* ]]; then
             echo "Installing Wine for Ubuntu 24.04 ..."
-            pkexec bash -c 'sudo dpkg --add-architecture i386
-            sudo mkdir -pm755 /etc/apt/keyrings
-            sudo curl -o /etc/apt/sources.list.d/winehq-noble.sources https://dl.winehq.org/wine-builds/ubuntu/dists/noble/winehq-noble.sources
-            sudo apt-get update &&
-            sudo apt-get install -y p7zip p7zip-full p7zip-rar winbind cabextract
-            sudo apt-get install -y --install-recommends winehq-staging'
+            pkexec bash -c '
+                dpkg --add-architecture i386
+                rm /etc/apt/sources.list.d/wine* /etc/apt/trusted.gpg.d/wine*
+                apt-get update
+                curl -sSL https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_24.04/Release.key | sudo apt-key add -
+                apt-add-repository 'deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_24.04/ ./'
+                apt-get update
+                apt-get remove wine* --purge
+                apt-get autoremove -y
+                apt-get install -y p7zip p7zip-full p7zip-rar winbind cabextract
+                apt-get install -y --install-recommends winehq-staging'
         elif [[ $DISTRO_VERSION == *"Fedora"*"40"* ]]; then
             echo "Installing Wine for Fedora 40 ..."
-            pkexec bash -c "dnf config-manager --add-repo https://dl.winehq.org/wine-builds/fedora/40/winehq.repo && dnf install -y p7zip p7zip-plugins winehq-staging cabextract"
+            pkexec bash -c '
+                dnf config-manager --add-repo https://download.opensuse.org/repositories/Emulators:/Wine:/Fedora/Fedora_40/
+                dnf remove wine wine-*
+                dnf install -y p7zip p7zip-plugins winehq-staging cabextract'
         elif [[ $DISTRO_VERSION == *"Fedora"*"Rawhide"* ]]; then
             echo "Installing Wine for Fedora rawhide ..."
-            pkexec bash -c "dnf config-manager --add-repo https://dl.winehq.org/wine-builds/fedora/rawhide/winehq.repo && dnf install -y p7zip p7zip-plugins winehq-staging cabextract"
+            pkexec bash -c '
+                dnf config-manager --add-repo https://download.opensuse.org/repositories/Emulators:/Wine:/Fedora/Fedora_Rawhide/
+                dnf remove wine wine-*
+                dnf install -y p7zip p7zip-plugins winehq-staging cabextract'
         elif [[ $DISTRO_VERSION == *"Gentoo"* ]]; then
             echo "Installing Wine for Gentoo ..."
             pkexec emerge -av p7zip wine cabextract
         elif [[ $DISTRO_VERSION == *"openSUSE"*"15.6"* ]]; then
             echo "Installing Wine for openSUSE 15.6 ..."
-            pkexec bash -c 'sudo zypper addrepo -cfp 90 "https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.6/" wine
-            sudo zypper refresh
-            sudo zypper install -y p7zip-full wine cabextract'
+            pkexec bash -c '
+                repos=$(zypper repos --uri | grep wine | awk '{print $1}')
+                # Remove each identified repository
+                for repo in $repos; do
+                    echo "Removing repository: $repo"
+                    zypper removerepo "$repo"
+                done
+                zypper addrepo -cfp 90 "https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.6/" wine
+                zypper refresh
+                zypper remove wine wine-* winetricks --no-confirm
+                zypper install -y p7zip-full wine cabextract'
         elif [[ $DISTRO_VERSION == *"openSUSE"*"Tumbleweed"* ]]; then
             echo "Installing Wine for openSUSE tumbleweed ..."
-            pkexec bash -c 'sudo zypper addrepo -cfp 90 "https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Tumbleweed/" wine
-            sudo zypper refresh
-            sudo zypper install -y p7zip-full wine cabextract'
+            pkexec bash -c '
+                repos=$(zypper repos --uri | grep wine | awk '{print $1}')
+                # Remove each identified repository
+                for repo in $repos; do
+                    echo "Removing repository: $repo"
+                    zypper removerepo "$repo"
+                done
+                zypper addrepo -cfp 90 "https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Tumbleweed/" wine
+                zypper refresh
+                zypper remove wine wine-* winetricks --no-confirm
+                zypper install -y p7zip-full wine cabextract'
         elif [[ $DISTRO_VERSION == *"Red"*"Hat"*"Enterprise"*"Linux"*"8"* ]]; then
             echo "Installing Wine for RHEL 8 ..."
-            pkexec bash -c 'sudo subscription-manager repos --enable codeready-builder-for-rhel-8-x86_64-rpms
-            sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
-            sudo dnf upgrade
-            sudo dnf install -y p7zip p7zip-plugins winehq-staging cabextract'
+            pkexec bash -c '
+                subscription-manager repos --enable codeready-builder-for-rhel-8-x86_64-rpms
+                rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+                dnf upgrade
+                dnf remove wine wine-*
+                dnf install -y p7zip p7zip-plugins winehq-staging cabextract'
         elif [[ $DISTRO_VERSION == *"Red"*"Hat"*"Enterprise"*"Linux"*"9"* ]]; then
             echo "Installing Wine for RHEL 9 ..."
-            pkexec bash -c 'sudo subscription-manager repos --enable codeready-builder-for-rhel-9-x86_64-rpms
-            sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
-            sudo dnf upgrade
-            sudo dnf install -y p7zip p7zip-plugins winehq-staging cabextract'
+            pkexec bash -c '
+                subscription-manager repos --enable codeready-builder-for-rhel-9-x86_64-rpms
+                rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
+                dnf upgrade
+                dnf remove wine wine-*
+                dnf install -y p7zip p7zip-plugins winehq-staging cabextract'
         elif [[ $DISTRO_VERSION == *"Solus"* ]]; then
             echo "Installing Wine for Solus ..."
             pkexec eopkg install -y p7zip p7zip-plugins winehq-staging cabextract
