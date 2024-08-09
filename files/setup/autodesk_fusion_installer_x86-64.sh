@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2024                                                                          #
-# Time/Date:    17:45/09.08.2024                                                                   #
+# Time/Date:    20:30/09.08.2024                                                                   #
 # Version:      2.0.0-Alpha                                                                        #
 ####################################################################################################
 
@@ -77,7 +77,7 @@ function check_required_packages {
     DISTRO=$(grep "^ID=" /etc/*-release | cut -d'=' -f2 | tr -d '"')
     VERSION=$(grep "^VERSION_ID=" /etc/*-release | cut -d'=' -f2 | tr -d '"')    
     DISTRO_VERSION="$DISTRO $VERSION"
-    REQUIRED_COMMANDS=("curl" "lsb-release" "glxinfo" "pkexec")
+    REQUIRED_COMMANDS=("curl" "lsb-release" "glxinfo" "pkexec" "wget" "xdg-open") # Example required commands
     COREUTILS_NEEDED=("ls" "cat" "echo" "awk") # Example coreutils commands
 
     # Check for individual coreutils commands
@@ -113,56 +113,56 @@ function install_required_packages {
         if [[ $DISTRO_VERSION == *"arch"* ]] || [[ $DISTRO_VERSION == *"manjaro"* ]] || [[ $DISTRO_VERSION == *"endeavouros"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
-            sudo pacman -S curl lsb-release coreutils mesa-demos polkit awk
+            sudo pacman -S curl lsb-release coreutils mesa-demos polkit awk wget xdg-utils --noconfirm
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
             sleep 2
         elif [[ $DISTRO_VERSION == *"debian"* ]] || [[ $DISTRO_VERSION == *"ubuntu"* ]] \
         || [[ $DISTRO_VERSION == *"linux"*"mint"* ]] || [[ $DISTRO_VERSION == *"pop"*"os"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
-            sudo apt-get install -y curl lsb-release coreutils mesa-utils policykit-1 awk
+            sudo apt-get install -y curl lsb-release coreutils mesa-utils policykit-1 awk wget xdg-utils
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
             sleep 2
         elif [[ $DISTRO_VERSION == *"fedora"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
-            sudo dnf install -y curl lsb-release coreutils mesa-utils polkit awk
+            sudo dnf install -y curl lsb-release coreutils mesa-utils polkit awk wget xdg-utils
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
             sleep 2
         elif [[ $DISTRO_VERSION == *"gentoo"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
-            sudo emerge -q net-misc/curl sys-apps/lsb-release sys-apps/coreutils x11-apps/mesa-progs sys-auth/polkit sys-apps/gawk
+            sudo emerge -q net-misc/curl sys-apps/lsb-release sys-apps/coreutils x11-apps/mesa-progs sys-auth/polkit sys-apps/gawk net-misc/wget x11-misc/xdg-utils
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
             sleep 2
         elif [[ $DISTRO_VERSION == *"nixos"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
-            sudo nix-env -iA nixos.curl nixos.lsb_release nixos.coreutils nixos.mesa-utils nixos.polkit gawk
+            sudo nix-env -iA nixos.curl nixos.lsb_release nixos.coreutils nixos.mesa-utils nixos.polkit gawk nixos.wget nixos.xdg_utils
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
             sleep 2
         elif [[ $DISTRO_VERSION == *"opensuse"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
-            sudo zypper install -y curl lsb-release coreutils Mesa-demo-x polkit gawk
+            sudo zypper install -y curl lsb-release coreutils Mesa-demo-x polkit gawk wget xdg-utils
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
             sleep 2
         elif [[ $DISTRO_VERSION == *"red"*"hat"*"enterprise"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
-            sudo dnf install -y curl lsb-release coreutils mesa-utils policykit-1 awk
+            sudo dnf install -y curl lsb-release coreutils mesa-utils policykit-1 awk wget xdg-utils
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
             sleep 2
         elif [[ $DISTRO_VERSION == *"solus"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
-            sudo eopkg -y install curl lsb-release coreutils mesa-utils polkit awk
+            sudo eopkg -y install curl lsb-release coreutils mesa-utils polkit awk wget xdg-utils
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
             sleep 2
         elif [[ $DISTRO_VERSION == *"void"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
-            sudo xbps-install -Sy curl lsb-release coreutils mesa-demos polkit awk
+            sudo xbps-install -Sy curl lsb-release coreutils mesa-demos polkit awk wget xdg-utils
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
             sleep 2
         else
@@ -561,10 +561,11 @@ function check_and_install_wine() {
             pkexec bash -c '
                 apt-get --allow-releaseinfo-change update
                 dpkg --add-architecture i386
-                rm /etc/apt/sources.list.d/wine* /etc/apt/trusted.gpg.d/wine*
-                apt-get update
-                curl -sSL https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/Debian_11/Release.key | sudo apt-key add -
-                apt-add-repository 'deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/Debian_11/ ./'
+                rm /etc/apt/sources.list.d/wine* /etc/apt/sources.list.d/*wine* 2>/dev/null
+                apt-key list | grep -A 2 "wine" | grep "pub" | awk "{print \$2}" | cut -d"/" -f2 | xargs -r apt-key del
+                mkdir -pm755 /etc/apt/keyrings
+                wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
+                wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/bullseye/winehq-bullseye.sources
                 apt-get update
                 apt-get remove wine* --purge
                 apt-get autoremove -y
@@ -575,10 +576,11 @@ function check_and_install_wine() {
             pkexec bash -c '
                 apt-get --allow-releaseinfo-change update
                 dpkg --add-architecture i386
-                rm /etc/apt/sources.list.d/wine* /etc/apt/trusted.gpg.d/wine*
-                apt-get update
-                curl -sSL https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/Debian_12/Release.key | sudo apt-key add -
-                apt-add-repository 'deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/Debian_12/ ./'
+                rm /etc/apt/sources.list.d/wine* /etc/apt/sources.list.d/*wine* 2>/dev/null
+                apt-key list | grep -A 2 "wine" | grep "pub" | awk "{print \$2}" | cut -d"/" -f2 | xargs -r apt-key del
+                mkdir -pm755 /etc/apt/keyrings
+                wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
+                wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/bookworm/winehq-bookworm.sources
                 apt-get update
                 apt-get remove wine* --purge
                 apt-get autoremove -y
@@ -589,10 +591,11 @@ function check_and_install_wine() {
             pkexec bash -c '
                 apt-get --allow-releaseinfo-change update
                 dpkg --add-architecture i386
-                rm /etc/apt/sources.list.d/wine* /etc/apt/trusted.gpg.d/wine*
-                apt-get update
-                curl -sSL https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/Debian_Testing_standard/Release.key | sudo apt-key add -
-                apt-add-repository 'deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/Debian_Testing_standard/ ./'
+                rm /etc/apt/sources.list.d/wine* /etc/apt/sources.list.d/*wine* 2>/dev/null
+                apt-key list | grep -A 2 "wine" | grep "pub" | awk "{print \$2}" | cut -d"/" -f2 | xargs -r apt-key del
+                mkdir -pm755 /etc/apt/keyrings
+                wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
+                wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/trixie/winehq-trixie.sources
                 apt-get update
                 apt-get remove wine* --purge
                 apt-get autoremove -y
@@ -602,10 +605,11 @@ function check_and_install_wine() {
             echo "Installing Wine for Ubuntu 20.04 ..."
             pkexec bash -c '
                 dpkg --add-architecture i386
-                rm /etc/apt/sources.list.d/wine* /etc/apt/trusted.gpg.d/wine*
-                apt-get update
-                curl -sSL https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_20.04/Release.key | sudo apt-key add -
-                apt-add-repository 'deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_20.04/ ./'
+                rm /etc/apt/sources.list.d/wine* /etc/apt/sources.list.d/*wine* 2>/dev/null
+                apt-key list | grep -A 2 "wine" | grep "pub" | awk "{print \$2}" | cut -d"/" -f2 | xargs -r apt-key del
+                mkdir -pm755 /etc/apt/keyrings
+                wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
+                wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/focal/winehq-focal.sources
                 apt-get update
                 apt-get remove wine* --purge
                 apt-get autoremove -y
@@ -615,10 +619,11 @@ function check_and_install_wine() {
             echo "Installing Wine for Ubuntu 22.04 ..."
             pkexec bash -c '
                 dpkg --add-architecture i386
-                rm /etc/apt/sources.list.d/wine* /etc/apt/trusted.gpg.d/wine*
-                apt-get update
-                curl -sSL https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_22.04/Release.key | sudo apt-key add -
-                apt-add-repository 'deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_22.04/ ./'
+                rm /etc/apt/sources.list.d/wine* /etc/apt/sources.list.d/*wine* 2>/dev/null
+                apt-key list | grep -A 2 "wine" | grep "pub" | awk "{print \$2}" | cut -d"/" -f2 | xargs -r apt-key del
+                mkdir -pm755 /etc/apt/keyrings
+                wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
+                wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/jammy/winehq-jammy.sources
                 apt-get update
                 apt-get remove wine* --purge
                 apt-get autoremove -y
@@ -628,10 +633,11 @@ function check_and_install_wine() {
             echo "Installing Wine for Ubuntu 24.04 ..."
             pkexec bash -c '
                 dpkg --add-architecture i386
-                rm /etc/apt/sources.list.d/wine* /etc/apt/trusted.gpg.d/wine*
-                apt-get update
-                curl -sSL https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_24.04/Release.key | sudo apt-key add -
-                apt-add-repository 'deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_24.04/ ./'
+                rm /etc/apt/sources.list.d/wine* /etc/apt/sources.list.d/*wine* 2>/dev/null
+                apt-key list | grep -A 2 "wine" | grep "pub" | awk "{print \$2}" | cut -d"/" -f2 | xargs -r apt-key del
+                mkdir -pm755 /etc/apt/keyrings
+                wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
+                wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/noble/winehq-noble.sources
                 apt-get update
                 apt-get remove wine* --purge
                 apt-get autoremove -y
