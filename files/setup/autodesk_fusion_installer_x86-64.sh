@@ -278,7 +278,6 @@ function check_option() {
             check_and_install_wine
             wine_autodesk_fusion_install
             autodesk_fusion_patch_qt6webenginecore
-            wine_autodesk_fusion_check_extensions
             wine_autodesk_fusion_install_extensions
             autodesk_fusion_shortcuts_load
             autodesk_fusion_safe_logfile
@@ -775,8 +774,10 @@ function autodesk_fusion_run_install_client {
 function autodesk_fusion_patch_qt6webenginecore {
     # Find the Qt6WebEngineCore.dll file in the Autodesk Fusion directory
     QT6_WEBENGINECORE=$(find "$SELECTED_DIRECTORY/wineprefixes/default" -name 'Qt6WebEngineCore.dll' -printf "%T+ %p\n" | sort -r 2>&1 | head -n 1 | sed -r 's/.+0000000000 (.+)/\1/')
+    echo -e "$(gettext "${YELLOW}The old Qt6WebEngineCore.dll file is located in the following directory: $QT6_WEBENGINECORE${NOCOLOR}")"
     # Backup the Qt6WebEngineCore.dll file
     cp "$QT6_WEBENGINECORE" "$QT6_WEBENGINECORE.bak"
+    echo -e "$(gettext "${GREEN}The Qt6WebEngineCore.dll file is backed up as Qt6WebEngineCore.dll.bak!${NOCOLOR}")"
     # Patch the Qt6WebEngineCore.dll file
     echo -e "$(gettext "${YELLOW}Patching the Qt6WebEngineCore.dll file for Autodesk Fusion ...${NOCOLOR}")"
     sleep 2
