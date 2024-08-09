@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2024                                                                          #
-# Time/Date:    21:00/08.08.2024                                                                   #
+# Time/Date:    07:20/09.08.2024                                                                   #
 # Version:      2.0.0-Alpha                                                                        #
 ####################################################################################################
 
@@ -271,8 +271,8 @@ function check_option() {
             deactivate_window_not_responding_dialog
             create_data_structure
             check_ram
-            check_gpu_vram
             check_gpu_driver
+            check_gpu_vram
             check_disk_space
             download_files
             check_and_install_wine
@@ -355,12 +355,48 @@ function check_ram {
 }
 
 ##############################################################################################################################################################################
+# CHECK GPU DRIVER FOR THE INSTALLER:                                                                                                                                        #
+##############################################################################################################################################################################
+
+function check_gpu_driver {
+    echo -e "$(gettext "${YELLOW}Checking the GPU driver for the installer ...${NOCOLOR}")"
+    if glxinfo | grep -q "OpenGL vendor string: NVIDIA"; then
+        echo -e "$(gettext "${GREEN}The NVIDIA GPU driver is installed!${NOCOLOR}")"
+        sleep 2
+        GET_VRAM_MEGABYTES=$(nvidia-smi --query-gpu=memory.total --format=csv,noheader,nounits)
+        echo -e "$(gettext "${GREEN}The DXVK GPU driver will be used for the installation!${NOCOLOR}")"
+        GPU_DRIVER="DXVK"
+        sleep 2
+    elif glxinfo | grep -q "OpenGL vendor string: AMD"; then
+        echo -e "$(gettext "${GREEN}The AMD GPU driver is installed!${NOCOLOR}")"
+        sleep 2
+        GET_VRAM_MEGABYTES=$(glxinfo | grep -i "Video memory" | grep -Eo '[0-9]+MB' | grep -Eo '[0-9]+')
+        echo -e "$(gettext "${GREEN}The OpenGL GPU driver will be used for the installation!${NOCOLOR}")"
+        GPU_DRIVER="OpenGL"
+        sleep 2
+    elif glxinfo | grep -q "OpenGL vendor string: Intel"; then
+        echo -e "$(gettext "${GREEN}The Intel GPU driver is installed!${NOCOLOR}")"
+        sleep 2
+        GET_VRAM_MEGABYTES=$(glxinfo | grep -i "Video memory" | grep -Eo '[0-9]+MB' | grep -Eo '[0-9]+')
+        echo -e "$(gettext "${GREEN}The OpenGL GPU driver will be used for the installation!${NOCOLOR}")"
+        GPU_DRIVER="OpenGL"
+        sleep 2
+    else
+        echo -e "$(gettext "${red}The GPU driver is not installed or not found on your system!${NOCOLOR}")"
+        sleep 2
+        GET_VRAM_MEGABYTES=$(glxinfo | grep -i "Video memory" | grep -Eo '[0-9]+MB' | grep -Eo '[0-9]+')
+        echo -e "$(gettext "${GREEN}The OpenGL GPU driver will be used for the installation!${NOCOLOR}")"
+        GPU_DRIVER="OpenGL"
+        sleep 2
+    fi
+}
+
+##############################################################################################################################################################################
 # CHECKING THE MINIMUM VRAM (VIDEO RAM) REQUIREMENT:                                                                                                                         #
 ##############################################################################################################################################################################
 
 function check_gpu_vram {
-    # Get the total memory of the graphics card in megabytes
-    GET_VRAM_MEGABYTES=$(glxinfo | grep -i "Video memory" | grep -Eo '[0-9]+MB' | grep -Eo '[0-9]+')
+    # Get the total memory of the graphics card in megabytes from check_gpu_driver
 
     if [ -z "$GET_VRAM_MEGABYTES" ]; then
         echo -e "$(gettext "${RED}Could not determine VRAM size.${NOCOLOR}")"
@@ -383,39 +419,6 @@ function check_gpu_vram {
                 rm -rf "$SELECTED_DIRECTORY"
                 exit 1;;
         esac
-    fi
-}
-
-##############################################################################################################################################################################
-# CHECK GPU DRIVER FOR THE INSTALLER:                                                                                                                                        #
-##############################################################################################################################################################################
-
-function check_gpu_driver {
-    echo -e "$(gettext "${YELLOW}Checking the GPU driver for the installer ...${NOCOLOR}")"
-    if glxinfo | grep -q "OpenGL vendor string: NVIDIA"; then
-        echo -e "$(gettext "${GREEN}The NVIDIA GPU driver is installed!${NOCOLOR}")"
-        sleep 2
-        echo -e "$(gettext "${GREEN}The DXVK GPU driver will be used for the installation!${NOCOLOR}")"
-        GPU_DRIVER="DXVK"
-        sleep 2
-    elif glxinfo | grep -q "OpenGL vendor string: AMD"; then
-        echo -e "$(gettext "${GREEN}The AMD GPU driver is installed!${NOCOLOR}")"
-        sleep 2
-        echo -e "$(gettext "${GREEN}The OpenGL GPU driver will be used for the installation!${NOCOLOR}")"
-        GPU_DRIVER="OpenGL"
-        sleep 2
-    elif glxinfo | grep -q "OpenGL vendor string: Intel"; then
-        echo -e "$(gettext "${GREEN}The Intel GPU driver is installed!${NOCOLOR}")"
-        sleep 2
-        echo -e "$(gettext "${GREEN}The OpenGL GPU driver will be used for the installation!${NOCOLOR}")"
-        GPU_DRIVER="OpenGL"
-        sleep 2
-    else
-        echo -e "$(gettext "${red}The GPU driver is not installed or not found on your system!${NOCOLOR}")"
-        sleep 2
-        echo -e "$(gettext "${GREEN}The OpenGL GPU driver will be used for the installation!${NOCOLOR}")"
-        GPU_DRIVER="OpenGL"
-        sleep 2
     fi
 }
 
