@@ -78,7 +78,7 @@ function check_required_packages {
     VERSION=$(grep "^VERSION_ID=" /etc/*-release | cut -d'=' -f2 | tr -d '"')    
     DISTRO_VERSION="$DISTRO $VERSION"
     REQUIRED_COMMANDS=("curl" "lsb-release" "glxinfo" "pkexec")
-    COREUTILS_NEEDED=("ls" "cat" "echo") # Example coreutils commands
+    COREUTILS_NEEDED=("ls" "cat" "echo" "awk") # Example coreutils commands
 
     # Check for individual coreutils commands
     for cmd in "${COREUTILS_NEEDED[@]}"; do
@@ -113,56 +113,56 @@ function install_required_packages {
         if [[ $DISTRO_VERSION == *"arch"* ]] || [[ $DISTRO_VERSION == *"manjaro"* ]] || [[ $DISTRO_VERSION == *"endeavouros"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
-            sudo pacman -S curl lsb-release coreutils mesa-demos polkit
+            sudo pacman -S curl lsb-release coreutils mesa-demos polkit awk
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
             sleep 2
         elif [[ $DISTRO_VERSION == *"debian"* ]] || [[ $DISTRO_VERSION == *"ubuntu"* ]] \
         || [[ $DISTRO_VERSION == *"linux"*"mint"* ]] || [[ $DISTRO_VERSION == *"pop"*"os"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
-            sudo apt-get install -y curl lsb-release coreutils mesa-utils policykit-1 
+            sudo apt-get install -y curl lsb-release coreutils mesa-utils policykit-1 awk
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
             sleep 2
         elif [[ $DISTRO_VERSION == *"fedora"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
-            sudo dnf install -y curl lsb-release coreutils mesa-utils polkit
+            sudo dnf install -y curl lsb-release coreutils mesa-utils polkit awk
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
             sleep 2
         elif [[ $DISTRO_VERSION == *"gentoo"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
-            sudo emerge -q net-misc/curl sys-apps/lsb-release sys-apps/coreutils x11-apps/mesa-progs sys-auth/polkit
+            sudo emerge -q net-misc/curl sys-apps/lsb-release sys-apps/coreutils x11-apps/mesa-progs sys-auth/polkit sys-apps/gawk
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
             sleep 2
         elif [[ $DISTRO_VERSION == *"nixos"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
-            sudo nix-env -iA nixos.curl nixos.lsb_release nixos.coreutils nixos.mesa-utils nixos.polkit
+            sudo nix-env -iA nixos.curl nixos.lsb_release nixos.coreutils nixos.mesa-utils nixos.polkit gawk
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
             sleep 2
         elif [[ $DISTRO_VERSION == *"opensuse"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
-            sudo zypper install -y curl lsb-release coreutils Mesa-demo-x polkit
+            sudo zypper install -y curl lsb-release coreutils Mesa-demo-x polkit gawk
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
             sleep 2
         elif [[ $DISTRO_VERSION == *"red"*"hat"*"enterprise"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
-            sudo dnf install -y curl lsb-release coreutils mesa-utils policykit-1
+            sudo dnf install -y curl lsb-release coreutils mesa-utils policykit-1 awk
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
             sleep 2
         elif [[ $DISTRO_VERSION == *"solus"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
-            sudo eopkg -y install curl lsb-release coreutils mesa-utils polkit
+            sudo eopkg -y install curl lsb-release coreutils mesa-utils polkit awk
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
             sleep 2
         elif [[ $DISTRO_VERSION == *"void"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
-            sudo xbps-install -Sy curl lsb-release coreutils mesa-demos polkit
+            sudo xbps-install -Sy curl lsb-release coreutils mesa-demos polkit awk
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
             sleep 2
         else
@@ -328,13 +328,12 @@ function check_ram {
     # Get total RAM space in kilobytes
     GET_RAM_KILOBYTES=$(grep MemTotal /proc/meminfo | awk '{print $2}')
     
-    # Convert kilobytes to gigabytes
-    CONVERT_RAM_GIGABYTES=$(awk "BEGIN {print $GET_RAM_KILOBYTES / 1024 / 1024}")
-    
-    # Check if RAM is greater than 4 GB
-    if awk "BEGIN {exit !($CONVERT_RAM_GIGABYTES > 4)}"; then
+    # Check if the total memory is greater than 4000 Megabytes
+    if awk "BEGIN {exit !($GET_RAM_KILOBYTES > 4000 * 1024)}"; then
+        CONVERT_RAM_GIGABYTES=$(awk "BEGIN {printf \"%.2f\", $GET_RAM_KILOBYTES / 1024 / 1024}")
         echo -e "$(gettext "${GREEN}The total RAM (Random Access Memory) is greater than 4 GByte ($CONVERT_RAM_GIGABYTES GByte) and Autodesk Fusion will run more stable later!${NOCOLOR}")"
     else
+        CONVERT_RAM_GIGABYTES=$(awk "BEGIN {printf \"%.2f\", $GET_RAM_KILOBYTES / 1024 / 1024}")
         echo -e "$(gettext "${RED}The total RAM (Random Access Memory) is not greater than 4 GByte ($CONVERT_RAM_GIGABYTES GByte) and Autodesk Fusion may run unstable later with insufficient RAM memory!${NOCOLOR}")"
         read -p "$(gettext "${YELLOW}Are you sure you want to continue with the installation? (y/n)${NOCOLOR}")" yn
         case $yn in 
@@ -404,11 +403,11 @@ function check_gpu_vram {
     fi
     
     # Check if the total memory is greater than 1000 Megabytes
-    if awk -v vram="$GET_VRAM_MEGABYTES" 'BEGIN {exit !(vram > 1024)}'; then
-        CONVERT_RAM_GIGABYTES=$(awk "BEGIN {printf \"%.2f\", $GET_VRAM_MEGABYTES / 1024}")
+    if awk -v vram="$GET_VRAM_MEGABYTES" 'BEGIN {exit !(vram > 1000)}'; then
+        CONVERT_RAM_GIGABYTES=$(awk "BEGIN {printf \"%.2f\", $GET_VRAM_MEGABYTES / 1000}")
         echo -e "$(gettext "${GREEN}The total VRAM (Video RAM) is greater than 1 GByte (${CONVERT_RAM_GIGABYTES} GByte) and Autodesk Fusion will run more stable later!${NOCOLOR}")"
     else
-        CONVERT_RAM_GIGABYTES=$(awk "BEGIN {printf \"%.2f\", $GET_VRAM_MEGABYTES / 1024}")
+        CONVERT_RAM_GIGABYTES=$(awk "BEGIN {printf \"%.2f\", $GET_VRAM_MEGABYTES / 1000}")
         echo -e "$(gettext "${RED}The total VRAM (Video RAM) is not greater than 1 GByte (${CONVERT_RAM_GIGABYTES} GByte) and Autodesk Fusion may run unstable later with insufficient VRAM memory!${NOCOLOR}")"
         read -p "$(gettext "${YELLOW}Are you sure you want to continue with the installation? (y/n)${NOCOLOR}")" yn
         case $yn in 
@@ -557,9 +556,9 @@ function check_and_install_wine() {
             echo "Installing Wine for Debian 11 ..."
             pkexec bash -c 'sudo apt-get --allow-releaseinfo-change update
             sudo dpkg --add-architecture i386
-            sudo apt-add-repository -r "deb https://dl.winehq.org/wine-builds/debian/ bullseye main"
-            curl -s https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
-            sudo apt-add-repository "deb https://dl.winehq.org/wine-builds/debian/ bullseye main"
+            sudo mkdir -pm755 /etc/apt/keyrings
+            sudo curl -o /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
+            sudo curl -o /etc/apt/sources.list.d/winehq-bullseye.sources https://dl.winehq.org/wine-builds/debian/dists/bullseye/winehq-bullseye.sources
             sudo apt-get update
             sudo apt-get install -y p7zip p7zip-full p7zip-rar winbind cabextract
             sudo apt-get install -y --install-recommends winehq-staging'
@@ -567,9 +566,9 @@ function check_and_install_wine() {
             echo "Installing Wine for Debian 12 ..."
             pkexec bash -c 'sudo apt-get --allow-releaseinfo-change update
             sudo dpkg --add-architecture i386
-            sudo apt-add-repository -r "deb https://dl.winehq.org/wine-builds/debian/ bookworm main"
-            curl -s https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
-            sudo apt-add-repository "deb https://dl.winehq.org/wine-builds/debian/ bookworm main"
+            sudo mkdir -pm755 /etc/apt/keyrings
+            sudo curl -o /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
+            sudo curl -o /etc/apt/sources.list.d/winehq-bookworm.sources https://dl.winehq.org/wine-builds/debian/dists/bookworm/winehq-bookworm.sources
             sudo apt-get update
             sudo apt-get install -y p7zip p7zip-full p7zip-rar winbind cabextract
             sudo apt-get install -y --install-recommends winehq-staging'
@@ -577,39 +576,40 @@ function check_and_install_wine() {
             echo "Installing Wine for Debian testing ..."
             pkexec bash -c 'sudo apt-get --allow-releaseinfo-change update
             sudo dpkg --add-architecture i386
-            sudo apt-add-repository -r "deb https://dl.winehq.org/wine-builds/debian/ testing main"
-            curl -s https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
-            sudo apt-add-repository "deb https://dl.winehq.org/wine-builds/debian/ testing main"
+            sudo mkdir -pm755 /etc/apt/keyrings
+            sudo curl -o /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
+            sudo curl -o /etc/apt/sources.list.d/winehq-trixie.sources https://dl.winehq.org/wine-builds/debian/dists/trixie/winehq-trixie.sources
             sudo apt-get update
             sudo apt-get install -y p7zip p7zip-full p7zip-rar winbind cabextract
             sudo apt-get install -y --install-recommends winehq-staging'
         elif [[ $DISTRO_VERSION == *"Ubuntu"*"20.04"* ]] || [[ $DISTRO_VERSION == *"Linux"*"Mint"*"20"* ]] || [[ $DISTRO_VERSION == *"Pop"*"OS"*"20.04"* ]]; then
             echo "Installing Wine for Ubuntu 20.04 ..."
             pkexec bash -c 'sudo dpkg --add-architecture i386
-            curl -s https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
-            sudo apt-add-repository "deb https://dl.winehq.org/wine-builds/ubuntu/ focal main"
+            sudo mkdir -pm755 /etc/apt/keyrings
+            sudo curl -o /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
+            sudo curl -o /etc/apt/sources.list.d/winehq-focal.sources https://dl.winehq.org/wine-builds/ubuntu/dists/focal/winehq-focal.sources
             sudo apt-get update
             sudo apt-get install -y p7zip p7zip-full p7zip-rar winbind cabextract
             sudo apt-get install -y --install-recommends winehq-staging'
         elif [[ $DISTRO_VERSION == *"Ubuntu"*"22.04"* ]] || [[ $DISTRO_VERSION == *"Linux"*"Mint"*"21"* ]] || [[ $DISTRO_VERSION == *"Pop"*"OS"*"22.04"* ]]; then
             echo "Installing Wine for Ubuntu 22.04 ..."
             pkexec bash -c 'sudo dpkg --add-architecture i386
-            curl -s https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
-            sudo apt-add-repository "deb https://dl.winehq.org/wine-builds/ubuntu/ jammy main"
+            sudo mkdir -pm755 /etc/apt/keyrings
+            sudo curl -o /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
+            sudo curl -o /etc/apt/sources.list.d/winehq-jammy.sources https://dl.winehq.org/wine-builds/ubuntu/dists/jammy/winehq-jammy.sources
             sudo apt-get update &&
             sudo apt-get install -y p7zip p7zip-full p7zip-rar winbind cabextract
             sudo apt-get install -y --install-recommends winehq-staging'
         elif [[ $DISTRO_VERSION == *"Ubuntu"*"24.04"* ]] || [[ $DISTRO_VERSION == *"Linux"*"Mint"*"22"* ]] || [[ $DISTRO_VERSION == *"Pop"*"OS"*"24.04"* ]]; then
             echo "Installing Wine for Ubuntu 24.04 ..."
             pkexec bash -c 'sudo dpkg --add-architecture i386
-            curl -s https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
-            sudo apt-add-repository "deb https://dl.winehq.org/wine-builds/ubuntu/ impish main"
+            sudo mkdir -pm755 /etc/apt/keyrings
+            sudo curl -o /etc/apt/sources.list.d/winehq-noble.sources https://dl.winehq.org/wine-builds/ubuntu/dists/noble/winehq-noble.sources
             sudo apt-get update &&
             sudo apt-get install -y p7zip p7zip-full p7zip-rar winbind cabextract
             sudo apt-get install -y --install-recommends winehq-staging'
         elif [[ $DISTRO_VERSION == *"Fedora"*"40"* ]]; then
             echo "Installing Wine for Fedora 40 ..."
-            # show a password prompt for the user to enter the root password with pkexec
             pkexec bash -c "dnf config-manager --add-repo https://dl.winehq.org/wine-builds/fedora/40/winehq.repo && dnf install -y p7zip p7zip-plugins winehq-staging cabextract"
         elif [[ $DISTRO_VERSION == *"Fedora"*"Rawhide"* ]]; then
             echo "Installing Wine for Fedora rawhide ..."
