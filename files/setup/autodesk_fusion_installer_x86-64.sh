@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2024                                                                          #
-# Time/Date:    20:30/09.08.2024                                                                   #
+# Time/Date:    19:00/11.08.2024                                                                   #
 # Version:      2.0.0-Alpha                                                                        #
 ####################################################################################################
 
@@ -667,7 +667,7 @@ function check_and_install_wine() {
                     echo "Removing repository: $repo"
                     zypper removerepo "$repo"
                 done
-                zypper addrepo -cfp 90 "https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Leap_15.6/" wine
+                zypper addrepo -cfp 90 "https://download.opensuse.org/repositories/Emulators:/Wine/15.6/" wine
                 zypper refresh
                 zypper remove wine wine-* winetricks --no-confirm
                 zypper install -y p7zip-full wine cabextract'
