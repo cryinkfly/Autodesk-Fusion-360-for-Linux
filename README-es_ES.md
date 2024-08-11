@@ -177,14 +177,14 @@
 <div id="fusion360-version-info" align="center">
 <h2>🕑 ¿Cuál es la última versión de Fusion 360?</h2>
   <h4>Complete los siguientes pasos:</h4>
-  🔹 Visite el <a href="https://www.autodesk.com/products/fusion-360/blog?s=what%27s+new">Novedades del blog de Fusion</a> (donde encontrará actualizaciones de productos para Fusion 360 son crónicas).
+  🔹 Visite el <a href="https://www.autodesk.com/products/fusion-360/blog?s=what%27s+new">blog de Novedades de Fusion 360</a> (donde encontrará actualizaciones de productos para Fusion 360).
   </br>
   🔹 Haga clic en la última actualización del producto (el primer elemento de la lista).
   </br>
   🔹 El número de versión* está documentado aquí.
   </br></br>
-  *Aviso: cómo comprobar qué <a href="https://knowledge.autodesk.com/support/fusion-360/troubleshooting/caas/sfdcarticles/sfdcarticles/How-to-check-what-version-of-Fusion- 360-is-installed.html">¿Se está utilizando la versión de Fusion 360</a> en su sistema?
-  </br></br>
+  
+  
 </div>
 
 ---
@@ -291,13 +291,13 @@
 
 <div id="fusion360-requirements-4" align="center">
 <h3>📖 ¿Qué más hay que considerar cuando se trata de los requisitos?</h3>
-  🔹 ¡Consulte el <a href="https://health.autodesk.com/">Panel de control de salud</a>!
+  🔹 ¡Consulte el <a href="https://health.autodesk.com/">Panel de status</a>!
   </br>
   🔹 ¡Debes tener instalado el <a href="https://github.com/lutris/docs/blob/master/InstallingDrivers.md">último controlador de gráficos</a>!
   </br>
   🔹 Necesitas la <a href="https://www.winehq.org/">última versión de wine (6.23 y posteriores)</a> y <a href="https://github.com/Winetricks/winetricks">WineTricks</a>!
   </br></br>
-  🧩 ¿Y le gustaría usar <a href="https://apps.autodesk.com/FUSION/de/Home/Index">funciones adicionales</a> o idiomas como el idioma checo más adelante en Autodesk Fusion 360? entonces necesita una <a href="https://apps.autodesk.com/FUSION/en/Detail/Index?id=9151466655844643882">extensión especial</a> que debe haber comprado y descargado antes de poder instalar este con mi asistente de configuración! 🧩
+  🧩 ¿Y le gustaría usar <a href="https://apps.autodesk.com/FUSION/de/Home/Index">funciones adicionales</a> o idiomas como el checo más adelante en Autodesk Fusion 360? entonces necesita una <a href="https://apps.autodesk.com/FUSION/en/Detail/Index?id=9151466655844643882">extensión especial</a> que debe haber comprado y descargado antes de poder instalar este con mi asistente de configuración! 🧩
   </br></br>
 </div>
 
