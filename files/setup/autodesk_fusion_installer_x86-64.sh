@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2024                                                                          #
-# Time/Date:    19:00/11.08.2024                                                                   #
+# Time/Date:    07:20/17.08.2024                                                                   #
 # Version:      2.0.0-Alpha                                                                        #
 ####################################################################################################
 
@@ -117,7 +117,7 @@ function install_required_packages {
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
             sleep 2
         elif [[ $DISTRO_VERSION == *"debian"* ]] || [[ $DISTRO_VERSION == *"ubuntu"* ]] \
-        || [[ $DISTRO_VERSION == *"linux"*"mint"* ]] || [[ $DISTRO_VERSION == *"pop"*"os"* ]] || [[ $DISTRO_VERSION == *"pop"* ]]; then
+        || [[ $DISTRO_VERSION == *"mint"* ]] || [[ $DISTRO_VERSION == *"pop"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
             sudo apt-get install -y curl lsb-release coreutils mesa-utils policykit-1 awk wget xdg-utils
@@ -638,7 +638,7 @@ function check_and_install_wine() {
                 apt-get autoremove -y
                 apt-get install -y p7zip p7zip-full p7zip-rar winbind cabextract
                 apt-get install -y --install-recommends winehq-staging'
-        elif [[ $DISTRO_VERSION == *"Ubuntu"*"22.04"* ]] || [[ $DISTRO_VERSION == *"Linux"*"Mint"*"21"* ]] || [[ $DISTRO_VERSION == *"Pop"*"OS"*"22.04"* ]] || [[ $DISTRO_VERSION == *"pop"*"22.04"* ]]; then
+        elif [[ $DISTRO_VERSION == *"Ubuntu"*"22.04"* ]] || [[ $DISTRO_VERSION == *"Linux"*"Mint"*"21"* ]] || [[ $DISTRO_VERSION == *"Pop"*"22.04"* ]]; then
             echo "Installing Wine for Ubuntu 22.04 ..."
             pkexec bash -c '
                 dpkg --add-architecture i386
@@ -652,7 +652,7 @@ function check_and_install_wine() {
                 apt-get autoremove -y
                 apt-get install -y p7zip p7zip-full p7zip-rar winbind cabextract
                 apt-get install -y --install-recommends winehq-staging'
-        elif [[ $DISTRO_VERSION == *"Ubuntu"*"24.04"* ]] || [[ $DISTRO_VERSION == *"Linux"*"Mint"*"22"* ]] || [[ $DISTRO_VERSION == *"Pop"*"OS"*"24.04"* ]]; then
+        elif [[ $DISTRO_VERSION == *"Ubuntu"*"24.04"* ]] || [[ $DISTRO_VERSION == *"Linux"*"Mint"*"22"* ]] || [[ $DISTRO_VERSION == *"Pop"*"24.04"* ]]; then
             echo "Installing Wine for Ubuntu 24.04 ..."
             pkexec bash -c '
                 dpkg --add-architecture i386
