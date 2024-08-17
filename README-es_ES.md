@@ -177,14 +177,14 @@
 <div id="fusion360-version-info" align="center">
 <h2>🕑 ¿Cuál es la última versión de Fusion 360?</h2>
   <h4>Complete los siguientes pasos:</h4>
-  🔹 Visite el <a href="https://www.autodesk.com/products/fusion-360/blog?s=what%27s+new">Novedades del blog de Fusion</a> (donde encontrará actualizaciones de productos para Fusion 360 son crónicas).
+  🔹 Visite el <a href="https://www.autodesk.com/products/fusion-360/blog?s=what%27s+new">blog de Novedades de Fusion 360</a> (donde encontrará actualizaciones de productos para Fusion 360).
   </br>
   🔹 Haga clic en la última actualización del producto (el primer elemento de la lista).
   </br>
   🔹 El número de versión* está documentado aquí.
   </br></br>
-  *Aviso: cómo comprobar qué <a href="https://knowledge.autodesk.com/support/fusion-360/troubleshooting/caas/sfdcarticles/sfdcarticles/How-to-check-what-version-of-Fusion- 360-is-installed.html">¿Se está utilizando la versión de Fusion 360</a> en su sistema?
-  </br></br>
+  
+  
 </div>
 
 ---
@@ -291,13 +291,13 @@
 
 <div id="fusion360-requirements-4" align="center">
 <h3>📖 ¿Qué más hay que considerar cuando se trata de los requisitos?</h3>
-  🔹 ¡Consulte el <a href="https://health.autodesk.com/">Panel de control de salud</a>!
+  🔹 ¡Consulte el <a href="https://health.autodesk.com/">Panel de status</a>!
   </br>
   🔹 ¡Debes tener instalado el <a href="https://github.com/lutris/docs/blob/master/InstallingDrivers.md">último controlador de gráficos</a>!
   </br>
-  🔹 Necesitas la <a href="https://www.winehq.org/">última versión de wine (6.23 y posteriores)</a> y <a href="https://github.com/Winetricks/ trucos de vino">trucos de vino</a>!
+  🔹 Necesitas la <a href="https://www.winehq.org/">última versión de wine (6.23 y posteriores)</a> y <a href="https://github.com/Winetricks/winetricks">WineTricks</a>!
   </br></br>
-  🧩 ¿Y le gustaría usar <a href="https://apps.autodesk.com/FUSION/de/Home/Index">funciones adicionales</a> o idiomas como el idioma checo más adelante en Autodesk Fusion 360? entonces necesita una <a href="https://apps.autodesk.com/FUSION/en/Detail/Index?id=9151466655844643882">extensión especial</a> que debe haber comprado y descargado antes de poder instalar este con mi asistente de configuración! 🧩
+  🧩 ¿Y le gustaría usar <a href="https://apps.autodesk.com/FUSION/de/Home/Index">funciones adicionales</a> o idiomas como el checo más adelante en Autodesk Fusion 360? entonces necesita una <a href="https://apps.autodesk.com/FUSION/en/Detail/Index?id=9151466655844643882">extensión especial</a> que debe haber comprado y descargado antes de poder instalar este con mi asistente de configuración! 🧩
   </br></br>
 </div>
 
@@ -307,11 +307,11 @@
 <h2>⚙️ Primeros pasos</h3>
 🔹 Consulte mi <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/wiki/Documentation">Documentación de GitHub</a> & <a href="https ://www.youtube.com/watch?v=-BktJspJKgs&list=PLzwMdS5iu_BIsO6RTy7Hy1MbzLMrQE2xe">Videos</a> antes de instalar Autodesk Fusion 360 en su sistema.
 </br>
-🔹 Compruebe si su <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/extras/network/etc">configuración de red</a> es configurado correctamente!
+🔹 Compruebe que la <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/extras/network/etc">configuración de red</a> esté correctamente configurada!
 </br>
 🔹 Compruebe si su sistema cumple con todos los <a href="#fusion360-requirements-2">requisitos</a>!
 </br>
-🔹 Necesita un Fusion 360 activo <a href="#-how-much-does-fusion-360-cost">licencia</a>!
+🔹 Necesita una <a href="#-how-much-does-fusion-360-cost">licencia</a> activa de Fusion 360!
 </br></br>
 </br></br>
 🔹 Abra una terminal y ejecute este comando para instalar el Autodesk Fusion básico:
@@ -337,7 +337,7 @@
 
 🔹 Ahora, puede <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues/44#issuecomment-890552181">usar</a> Autodesk Fusion 360 en su sistema Linux!
   </br></br>
-  <h3>📖 ¿Qué lanzamientos de guiones están disponibles?</h3>
+  <h3>📖 ¿Qué versiones del script están disponibles?</h3>
   Hay algunas <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/builds">versiones de script</a> disponibles, creadas a partir de los objetivos de la versión. . Se recomienda que, si es nuevo, comience con las compilaciones estables. Las compilaciones de desarrollo están disponibles aquí si las necesita, pero en consecuencia pueden ser menos estables. En la <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/builds/development-branch">rama de desarrollo</a> encontrará, por ejemplo, las próximas versiones de mi asistente de configuración, así como las compilaciones que se ejecutan con la ayuda de Flatpak o Docker/Podman.
   </br></br>
 </div>
@@ -368,7 +368,7 @@
 <td style="text-align: center;"><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
 </tr>
 <tr>
-<td>Representación</td>
+<td>Rederizado</td>
 <td><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
 <td><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
 <td><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
@@ -404,7 +404,7 @@
 <td style="text-align: center;"><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
 </tr>
 <tr>
-<td>Modo en línea y fuera de línea</td>
+<td>Modo OnLine y OffLine</td>
 <td style="text-align: center;"><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
 <td style="text-align: center;"><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
 <td style="text-align: center;"><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
@@ -422,7 +422,7 @@
 <td style="text-align: center;"><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
 </tr>
 <tr>
-<td>Streamcast-Grabador</td>
+<td>Streamcast-recorder</td>
 <td><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
 <td><g-emoji class="g-emoji" alias="heavy_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png"><img class="emoji" alt="heavy_check_mark" src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png" width="20" height="20"></g-emoji></td>
 <td><g-emoji class="g-emoji" alias="heavy_multiplication_x" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2716.png"><img class="emoji" alt="heavy_multiplication_x" src="https://github.githubassets.com/images/icons/emoji/unicode/2716.png" width="20" height="20"></g-emoji></td>
