@@ -117,7 +117,7 @@ function install_required_packages {
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
             sleep 2
         elif [[ $DISTRO_VERSION == *"debian"* ]] || [[ $DISTRO_VERSION == *"ubuntu"* ]] \
-        || [[ $DISTRO_VERSION == *"linux"*"mint"* ]] || [[ $DISTRO_VERSION == *"pop"*"os"* ]]; then
+        || [[ $DISTRO_VERSION == *"linux"*"mint"* ]] || [[ $DISTRO_VERSION == *"pop"*"os"* ]] || [[ $DISTRO_VERSION == *"pop"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
             sudo apt-get install -y curl lsb-release coreutils mesa-utils policykit-1 awk wget xdg-utils
@@ -357,36 +357,59 @@ function check_ram {
 ##############################################################################################################################################################################
 
 function check_gpu_driver {
-    echo -e "$(gettext "${YELLOW}Checking the GPU driver for the installer ...${NOCOLOR}")"
-    if glxinfo | grep -q "OpenGL vendor string: NVIDIA"; then
-        echo -e "$(gettext "${GREEN}The NVIDIA GPU driver is installed!${NOCOLOR}")"
-        sleep 2
-        GET_VRAM_MEGABYTES=$(nvidia-smi --query-gpu=memory.total --format=csv,noheader,nounits)
-        echo -e "$(gettext "${GREEN}The DXVK GPU driver will be used for the installation!${NOCOLOR}")"
-        GPU_DRIVER="DXVK"
-        sleep 2
-    elif glxinfo | grep -q "OpenGL vendor string: AMD"; then
-        echo -e "$(gettext "${GREEN}The AMD GPU driver is installed!${NOCOLOR}")"
-        sleep 2
-        GET_VRAM_MEGABYTES=$(glxinfo | grep -i "Video memory" | grep -Eo '[0-9]+MB' | grep -Eo '[0-9]+')
-        echo -e "$(gettext "${GREEN}The OpenGL GPU driver will be used for the installation!${NOCOLOR}")"
-        GPU_DRIVER="OpenGL"
-        sleep 2
-    elif glxinfo | grep -q "OpenGL vendor string: Intel"; then
-        echo -e "$(gettext "${GREEN}The Intel GPU driver is installed!${NOCOLOR}")"
-        sleep 2
-        GET_VRAM_MEGABYTES=$(glxinfo | grep -i "Video memory" | grep -Eo '[0-9]+MB' | grep -Eo '[0-9]+')
-        echo -e "$(gettext "${GREEN}The OpenGL GPU driver will be used for the installation!${NOCOLOR}")"
-        GPU_DRIVER="OpenGL"
-        sleep 2
-    else
-        echo -e "$(gettext "${red}The GPU driver is not installed or not found on your system!${NOCOLOR}")"
-        sleep 2
-        GET_VRAM_MEGABYTES=$(glxinfo | grep -i "Video memory" | grep -Eo '[0-9]+MB' | grep -Eo '[0-9]+')
-        echo -e "$(gettext "${GREEN}The OpenGL GPU driver will be used for the installation!${NOCOLOR}")"
-        GPU_DRIVER="OpenGL"
-        sleep 2
+    echo -e "$(gettext "${YELLOW}Checking the GPU drivers for the installer ...${NOCOLOR}")"
+    
+    if nvidia-smi &>/dev/null; then
+        NVIDIA_PRESENT=true
+        NVIDIA_VRAM=$(nvidia-smi --query-gpu=memory.total --format=csv,noheader,nounits | head -n1)
+        echo -e "$(gettext "${GREEN}NVIDIA GPU detected with ${NVIDIA_VRAM}MB VRAM${NOCOLOR}")"
     fi
+
+    INTEL_AMD_GPU=$(glxinfo | grep "OpenGL vendor string" | cut -d: -f2 | tr -d ' ')
+    if [[ $INTEL_AMD_GPU == "Intel" || $INTEL_AMD_GPU == "AMD" ]]; then
+        INTEL_AMD_PRESENT=true
+        INTEL_AMD_VRAM=$(glxinfo | grep -i "Video memory" | grep -Eo '[0-9]+MB' | grep -Eo '[0-9]+' | head -n1)
+        echo -e "$(gettext "${GREEN}${INTEL_AMD_GPU} GPU detected with ${INTEL_AMD_VRAM}MB VRAM${NOCOLOR}")"
+    fi
+
+    if [[ $NVIDIA_PRESENT && $INTEL_AMD_PRESENT ]]; then
+        echo -e "$(gettext "${YELLOW}Multiple GPUs detected. Please choose which to use:${NOCOLOR}")"
+        echo "1) NVIDIA"
+        echo "2) ${INTEL_AMD_GPU}"
+        read -p "Enter your choice (1 or 2): " gpu_choice
+        
+        case $gpu_choice in
+            1)
+                GPU_DRIVER="DXVK"
+                GET_VRAM_MEGABYTES=$NVIDIA_VRAM
+                echo -e "$(gettext "${GREEN}NVIDIA GPU selected. The DXVK GPU driver will be used for the installation.${NOCOLOR}")"
+                ;;
+            2)
+                GPU_DRIVER="OpenGL"
+                GET_VRAM_MEGABYTES=$INTEL_AMD_VRAM
+                echo -e "$(gettext "${GREEN}${INTEL_AMD_GPU} GPU selected. The OpenGL GPU driver will be used for the installation.${NOCOLOR}")"
+                ;;
+            *)
+                echo -e "$(gettext "${RED}Invalid choice. Defaulting to ${INTEL_AMD_GPU} GPU.${NOCOLOR}")"
+                GPU_DRIVER="OpenGL"
+                GET_VRAM_MEGABYTES=$INTEL_AMD_VRAM
+                ;;
+        esac
+    elif [[ $NVIDIA_PRESENT ]]; then
+        GPU_DRIVER="DXVK"
+        GET_VRAM_MEGABYTES=$NVIDIA_VRAM
+        echo -e "$(gettext "${GREEN}The DXVK GPU driver will be used for the installation.${NOCOLOR}")"
+    elif [[ $INTEL_AMD_PRESENT ]]; then
+        GPU_DRIVER="OpenGL"
+        GET_VRAM_MEGABYTES=$INTEL_AMD_VRAM
+        echo -e "$(gettext "${GREEN}The OpenGL GPU driver will be used for the installation.${NOCOLOR}")"
+    else
+        echo -e "$(gettext "${RED}No GPU driver detected on your system!${NOCOLOR}")"
+        GPU_DRIVER="OpenGL"
+        GET_VRAM_MEGABYTES=0
+    fi
+
+    sleep 2
 }
 
 ##############################################################################################################################################################################
@@ -601,7 +624,7 @@ function check_and_install_wine() {
                 apt-get autoremove -y
                 apt-get install -y p7zip p7zip-full p7zip-rar winbind cabextract
                 apt-get install -y --install-recommends winehq-staging'
-        elif [[ $DISTRO_VERSION == *"Ubuntu"*"20.04"* ]] || [[ $DISTRO_VERSION == *"Linux"*"Mint"*"20"* ]] || [[ $DISTRO_VERSION == *"Pop"*"OS"*"20.04"* ]]; then
+        elif [[ $DISTRO_VERSION == *"Ubuntu"*"20.04"* ]] || [[ $DISTRO_VERSION == *"Linux"*"Mint"*"20"* ]] || [[ $DISTRO_VERSION == *"Pop"*"OS"*"20.04"* ]] || [[ $DISTRO_VERSION == *"pop"*"20.04"* ]]; then
             echo "Installing Wine for Ubuntu 20.04 ..."
             pkexec bash -c '
                 dpkg --add-architecture i386
@@ -615,7 +638,7 @@ function check_and_install_wine() {
                 apt-get autoremove -y
                 apt-get install -y p7zip p7zip-full p7zip-rar winbind cabextract
                 apt-get install -y --install-recommends winehq-staging'
-        elif [[ $DISTRO_VERSION == *"Ubuntu"*"22.04"* ]] || [[ $DISTRO_VERSION == *"Linux"*"Mint"*"21"* ]] || [[ $DISTRO_VERSION == *"Pop"*"OS"*"22.04"* ]]; then
+        elif [[ $DISTRO_VERSION == *"Ubuntu"*"22.04"* ]] || [[ $DISTRO_VERSION == *"Linux"*"Mint"*"21"* ]] || [[ $DISTRO_VERSION == *"Pop"*"OS"*"22.04"* ]] || [[ $DISTRO_VERSION == *"pop"*"22.04"* ]]; then
             echo "Installing Wine for Ubuntu 22.04 ..."
             pkexec bash -c '
                 dpkg --add-architecture i386
