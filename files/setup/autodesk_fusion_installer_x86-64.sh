@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2024                                                                          #
-# Time/Date:    10:00/19.08.2024                                                                   #
+# Time/Date:    10:30/19.08.2024                                                                   #
 # Version:      2.0.0-Alpha                                                                        #
 ####################################################################################################
 
@@ -185,10 +185,14 @@ function install_required_packages {
             sudo zypper install -y cabextract coreutils curl gawk lsb-release Mesa-demo-x p7zip-full polkit samba samba-client samba-winbind wget wine xdg-utils
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
             sleep 2
-        elif [[ $DISTRO_VERSION == *"red"*"hat"*"enterprise"* ]]; then
+        elif [[ $DISTRO_VERSION == *"red"*"hat"*"enterprise"* ]] || [[ $DISTRO_VERSION == *"alma"* ]] || [[ $DISTRO_VERSION == *"rocky"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
-            sudo dnf install -y cabextract coreutils curl gawk lsb_release mesa-demos p7zip p7zip-plugins polkit samba-dc samba-winbind samba-winbind-clients wget xdg-utils
+            if command -v dnf &> /dev/null; then # Use dnf for newer distributions
+                sudo dnf install -y cabextract coreutils curl gawk lsb_release mesa-demos p7zip p7zip-plugins polkit samba-dc samba-winbind samba-winbind-clients wget xdg-utils
+            else  # Use yum for older distributions
+                sudo yum install -y cabextract coreutils curl gawk lsb_release mesa-demos p7zip p7zip-plugins polkit samba-dc samba-winbind samba-winbind-clients wget xdg-utils
+            fi
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
             sleep 2
         elif [[ $DISTRO_VERSION == *"solus"* ]]; then
@@ -764,22 +768,27 @@ function check_and_install_wine() {
                 zypper refresh
                 zypper remove wine wine-* winetricks --no-confirm
                 zypper install -y wine'
-        elif [[ $DISTRO_VERSION == *"Red"*"Hat"*"Enterprise"*"Linux"*"8"* ]]; then
-            echo "Installing Wine for RHEL 8 ..."
-            pkexec bash -c '
-                subscription-manager repos --enable codeready-builder-for-rhel-8-x86_64-rpms
-                rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
-                dnf upgrade
-                dnf remove wine wine-*
-                dnf install -y winehq-staging'
-        elif [[ $DISTRO_VERSION == *"Red"*"Hat"*"Enterprise"*"Linux"*"9"* ]]; then
-            echo "Installing Wine for RHEL 9 ..."
-            pkexec bash -c '
-                subscription-manager repos --enable codeready-builder-for-rhel-9-x86_64-rpms
-                rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
-                dnf upgrade
-                dnf remove wine wine-*
-                dnf install -y winehq-staging'
+        elif [[ $DISTRO_VERSION == *"Red"*"Hat"*"Enterprise"*"Linux"* ]] || [[ $DISTRO_VERSION == *"Alma"*"Linux"* ]] || [[ $DISTRO_VERSION == *"Rocky"*"Linux"* ]]; then
+            echo "Installing Wine for RHEL 8, 9, ..."
+            if command -v dnf &> /dev/null; then # Use dnf for newer distributions
+                pkexec bash -c '
+                    dnf -y groupinstall 'Development Tools'
+                    dnf -y install gcc libX11-devel freetype-devel zlib-devel libxcb-devel libxslt-devel
+                    curl -L https://dl.winehq.org/wine/source/9.x/wine-9.15.tar.xz -o /tmp/wine-9.15.tar.xz
+                    tar -xvf /tmp/wine-9.15.tar.xz -C /tmp/
+                    ./tmp/wine-9.15/configure --enable-win64
+                    make -C /tmp/wine-9.15
+                    make -C /tmp/wine-9.15 install'
+            else  # Use yum for older distributions
+                pkexec bash -c '
+                    yum -y groupinstall 'Development Tools'
+                    yum install gcc libX11-devel freetype-devel zlib-devel libxcb-devel libxslt-devel
+                    curl -L https://dl.winehq.org/wine/source/9.x/wine-9.15.tar.xz -o /tmp/wine-9.15.tar.xz
+                    tar -xvf /tmp/wine-9.15.tar.xz -C /tmp/
+                    ./tmp/wine-9.15/configure --enable-win64
+                    make -C /tmp/wine-9.15
+                    make -C /tmp/wine-9.15 install'
+            fi
         elif [[ $DISTRO_VERSION == *"Solus"* ]]; then
             echo "Installing Wine for Solus ..."
             pkexec eopkg install -y winehq-staging
