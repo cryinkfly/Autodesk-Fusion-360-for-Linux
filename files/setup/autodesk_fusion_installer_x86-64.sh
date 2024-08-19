@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2024                                                                          #
-# Time/Date:    09:45/19.08.2024                                                                   #
+# Time/Date:    10:00/19.08.2024                                                                   #
 # Version:      2.0.0-Alpha                                                                        #
 ####################################################################################################
 
@@ -716,6 +716,7 @@ function check_and_install_wine() {
                 2)
                     echo -e "$(gettext "${GREEN}openSUSE-Wine-OBS Repository selected. The openSUSE-Wine-OBS Repository will be used for the installation.${NOCOLOR}")"
                     pkexec bash -c '
+                        rpm --import https://download.opensuse.org/repositories/Emulators:/Wine:/Fedora/Fedora_40/repodata/repomd.xml.key
                         dnf config-manager --add-repo https://download.opensuse.org/repositories/Emulators:/Wine:/Fedora/Fedora_40/
                         dnf remove -y wine wine-*
                         dnf install -y winehq-staging'
