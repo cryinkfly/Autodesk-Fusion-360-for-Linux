@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2024                                                                          #
-# Time/Date:    07:20/17.08.2024                                                                   #
+# Time/Date:    09:45/19.08.2024                                                                   #
 # Version:      2.0.0-Alpha                                                                        #
 ####################################################################################################
 
@@ -73,33 +73,71 @@ QT6_WEBENGINECORE_URL="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusi
 # CHECK THE REQUIRED PACKAGES FOR THE INSTALLER:                                                                                                                             #
 ##############################################################################################################################################################################
 
-function check_required_packages {
+check_required_packages() {
+    # Extracting the Linux distribution ID and version
     DISTRO=$(grep "^ID=" /etc/*-release | cut -d'=' -f2 | tr -d '"')
-    VERSION=$(grep "^VERSION_ID=" /etc/*-release | cut -d'=' -f2 | tr -d '"')    
+    VERSION=$(grep "^VERSION_ID=" /etc/*-release | cut -d'=' -f2 | tr -d '"')
     DISTRO_VERSION="$DISTRO $VERSION"
-    REQUIRED_COMMANDS=("curl" "lsb-release" "glxinfo" "pkexec" "wget" "xdg-open") # Example required commands
-    COREUTILS_NEEDED=("ls" "cat" "echo" "awk") # Example coreutils commands
 
-    # Check for individual coreutils commands
-    for cmd in "${COREUTILS_NEEDED[@]}"; do
-        if ! command -v "${cmd}" &>/dev/null; then
-                echo -e "$(gettext "${RED}A required coreutils command (${cmd}) is not installed!")${NOCOLOR}"
-            install_required_packages
-            return
-        fi
-    done
+    # Example required commands
+    REQUIRED_COMMANDS=("curl" "lsb_release" "glxinfo" "pkexec" "wget" "xdg-open" "ls" "cat" "echo" "awk" "7z" "cabextract" "samba" "wbinfo")
 
-    # Check for other required commands
+    # Array to store missing commands
+    MISSING_COMMANDS=()
+
+    # Check for required commands
     for cmd in "${REQUIRED_COMMANDS[@]}"; do
-        echo -e "$(gettext "${YELLOW}Checking for required package: ${cmd} ...")${NOCOLOR}"
-        if ! command -v "${cmd}" &>/dev/null; then
-            echo -e "$(gettext "${RED}The required package (${cmd}) is not installed!")${NOCOLOR}"
-            install_required_packages
-            return
+        echo -e "${YELLOW}Checking for required command: ${cmd} ...${NOCOLOR}"
+        if command -v "$cmd" &>/dev/null; then
+            case "$cmd" in
+                7z)
+                    if ! 7z &>/dev/null; then
+                        echo -e "${RED}The required command (${cmd}) is not available!${NOCOLOR}"
+                        MISSING_COMMANDS+=("$cmd")
+                    else
+                        echo -e "${GREEN}The required command (${cmd}) is available!${NOCOLOR}"
+                    fi
+                    ;;
+                cabextract)
+                    if ! cabextract --version &>/dev/null; then
+                        echo -e "${RED}The required command (${cmd}) is not available!${NOCOLOR}"
+                        MISSING_COMMANDS+=("$cmd")
+                    else
+                        echo -e "${GREEN}The required command (${cmd}) is available!${NOCOLOR}"
+                    fi
+                    ;;
+                samba)
+                    if ! samba --version &>/dev/null; then
+                        echo -e "${RED}The required command (${cmd}) is not available!${NOCOLOR}"
+                        MISSING_COMMANDS+=("$cmd")
+                    else
+                        echo -e "${GREEN}The required command (${cmd}) is available!${NOCOLOR}"
+                    fi
+                    ;;
+                wbinfo)
+                    if ! wbinfo --version &>/dev/null; then
+                        echo -e "${RED}The required command (${cmd}) is not available!${NOCOLOR}"
+                        MISSING_COMMANDS+=("$cmd")
+                    else
+                        echo -e "${GREEN}The required command (${cmd}) is available!${NOCOLOR}"
+                    fi
+                    ;;
+                *)
+                    echo -e "${GREEN}The required command (${cmd}) is available!${NOCOLOR}"
+                    ;;
+            esac
+        else
+            echo -e "${RED}The required command (${cmd}) is not available!${NOCOLOR}"
+            MISSING_COMMANDS+=("$cmd")
         fi
     done
 
-    clear
+    # If there are missing commands, install them
+    if [ ${#MISSING_COMMANDS[@]} -gt 0 ]; then
+        install_required_packages
+    else
+        echo -e "${GREEN}All required commands are available!${NOCOLOR}"
+    fi
 }
 
 ##############################################################################################################################################################################
@@ -113,56 +151,56 @@ function install_required_packages {
         if [[ $DISTRO_VERSION == *"arch"* ]] || [[ $DISTRO_VERSION == *"manjaro"* ]] || [[ $DISTRO_VERSION == *"endeavouros"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
-            sudo pacman -S curl lsb-release coreutils mesa-demos polkit awk wget xdg-utils --noconfirm
+            sudo pacman -S awk cabextract coreutils curl lsb-release mesa-demos p7zip polkit samba winbind wget xdg-utils --noconfirm
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
             sleep 2
         elif [[ $DISTRO_VERSION == *"debian"* ]] || [[ $DISTRO_VERSION == *"ubuntu"* ]] \
         || [[ $DISTRO_VERSION == *"mint"* ]] || [[ $DISTRO_VERSION == *"pop"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
-            sudo apt-get install -y curl lsb-release coreutils mesa-utils policykit-1 awk wget xdg-utils
+            sudo apt-get install -y awk cabextract coreutils curl lsb-release mesa-utils p7zip p7zip-full p7zip-rar policykit-1 samba winbind wget xdg-utils
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
             sleep 2
         elif [[ $DISTRO_VERSION == *"fedora"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
-            sudo dnf install -y curl lsb-release coreutils mesa-utils polkit awk wget xdg-utils
+            sudo dnf install -y cabextract coreutils curl gawk lsb_release mesa-demos p7zip p7zip-plugins polkit samba-dc samba-winbind samba-winbind-clients wget xdg-utils
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
             sleep 2
         elif [[ $DISTRO_VERSION == *"gentoo"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
-            sudo emerge -q net-misc/curl sys-apps/lsb-release sys-apps/coreutils x11-apps/mesa-progs sys-auth/polkit sys-apps/gawk net-misc/wget x11-misc/xdg-utils
+            sudo emerge -q app-admin/samba app-arch/cabextract app-arch/p7zip net-misc/curl net-misc/wget sys-apps/coreutils sys-apps/gawk sys-apps/lsb-release sys-auth/polkit x11-apps/mesa-progs x11-misc/xdg-utils
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
             sleep 2
         elif [[ $DISTRO_VERSION == *"nixos"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
-            sudo nix-env -iA nixos.curl nixos.lsb_release nixos.coreutils nixos.mesa-utils nixos.polkit gawk nixos.wget nixos.xdg_utils
+            sudo nix-env -iA gawk nixos.cabextract nixos.coreutils nixos.curl nixos.lsb_release nixos.mesa-utils nixos.p7zip nixos.polkit nixos.samba nixos.wget nixos.winbind nixos.xdg_utils
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
             sleep 2
         elif [[ $DISTRO_VERSION == *"opensuse"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
-            sudo zypper install -y curl lsb-release coreutils Mesa-demo-x polkit gawk wget xdg-utils
+            sudo zypper install -y cabextract coreutils curl gawk lsb-release Mesa-demo-x p7zip-full polkit samba samba-client samba-winbind wget wine xdg-utils
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
             sleep 2
         elif [[ $DISTRO_VERSION == *"red"*"hat"*"enterprise"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
-            sudo dnf install -y curl lsb-release coreutils mesa-utils policykit-1 awk wget xdg-utils
+            sudo dnf install -y cabextract coreutils curl gawk lsb_release mesa-demos p7zip p7zip-plugins polkit samba-dc samba-winbind samba-winbind-clients wget xdg-utils
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
             sleep 2
         elif [[ $DISTRO_VERSION == *"solus"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
-            sudo eopkg -y install curl lsb-release coreutils mesa-utils polkit awk wget xdg-utils
+            sudo eopkg -y install awk cabextract coreutils curl lsb-release mesa-utils p7zip p7zip-plugins polkit wget winbind xdg-utils
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
             sleep 2
         elif [[ $DISTRO_VERSION == *"void"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
-            sudo xbps-install -Sy curl lsb-release coreutils mesa-demos polkit awk wget xdg-utils
+            sudo xbps-install -Sy awk cabextract coreutils curl lsb-release mesa-demos p7zip-full polkit samba-winbind wget xdg-utils
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
             sleep 2
         else
@@ -571,13 +609,13 @@ function check_and_install_wine() {
                 echo "Multilib is already enabled!"
                 pkexec bash -c '
                     pacman -R wine wine-mono wine_gecko winetricks --noconfirm
-                    pacman -Syu --needed wine wine-mono wine_gecko winetricks p7zip curl cabextract samba ppp'
+                    pacman -Syu --needed wine wine-mono wine_gecko winetricks'
             else
                 echo "Enabling Multilib ..."
                 pkexec sh -c '
                     echo -e "[multilib]\nInclude = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
                     pacman -R wine wine-mono wine_gecko winetricks --noconfirm
-                    pacman -Syu --needed wine wine-mono wine_gecko winetricks p7zip curl cabextract samba ppp'
+                    pacman -Syu --needed wine wine-mono wine_gecko winetricks'
             fi
         elif [[ $DISTRO_VERSION == *"Debian"*"11"* ]]; then
             echo "Installing Wine for Debian 11 ..."
@@ -592,7 +630,6 @@ function check_and_install_wine() {
                 apt-get update
                 apt-get remove wine* --purge
                 apt-get autoremove -y
-                apt-get install -y p7zip p7zip-full p7zip-rar winbind cabextract
                 apt-get install -y --install-recommends winehq-staging'
         elif [[ $DISTRO_VERSION == *"Debian"*"12"* ]]; then
             echo "Installing Wine for Debian 12 ..."
@@ -607,7 +644,6 @@ function check_and_install_wine() {
                 apt-get update
                 apt-get remove wine* --purge
                 apt-get autoremove -y
-                apt-get install -y p7zip p7zip-full p7zip-rar winbind cabextract
                 apt-get install -y --install-recommends winehq-staging'
         elif [[ $DISTRO_VERSION == *"Debian"*"Testing"* ]] || [[ $DISTRO_VERSION == *"Debian"*"testing"* ]]; then
             echo "Installing Wine for Debian testing ..."
@@ -622,7 +658,6 @@ function check_and_install_wine() {
                 apt-get update
                 apt-get remove wine* --purge
                 apt-get autoremove -y
-                apt-get install -y p7zip p7zip-full p7zip-rar winbind cabextract
                 apt-get install -y --install-recommends winehq-staging'
         elif [[ $DISTRO_VERSION == *"Ubuntu"*"20.04"* ]] || [[ $DISTRO_VERSION == *"Linux"*"Mint"*"20"* ]] || [[ $DISTRO_VERSION == *"Pop"*"OS"*"20.04"* ]] || [[ $DISTRO_VERSION == *"pop"*"20.04"* ]]; then
             echo "Installing Wine for Ubuntu 20.04 ..."
@@ -636,7 +671,6 @@ function check_and_install_wine() {
                 apt-get update
                 apt-get remove wine* --purge
                 apt-get autoremove -y
-                apt-get install -y p7zip p7zip-full p7zip-rar winbind cabextract
                 apt-get install -y --install-recommends winehq-staging'
         elif [[ $DISTRO_VERSION == *"Ubuntu"*"22.04"* ]] || [[ $DISTRO_VERSION == *"Linux"*"Mint"*"21"* ]] || [[ $DISTRO_VERSION == *"Pop"*"22.04"* ]]; then
             echo "Installing Wine for Ubuntu 22.04 ..."
@@ -650,7 +684,6 @@ function check_and_install_wine() {
                 apt-get update
                 apt-get remove wine* --purge
                 apt-get autoremove -y
-                apt-get install -y p7zip p7zip-full p7zip-rar winbind cabextract
                 apt-get install -y --install-recommends winehq-staging'
         elif [[ $DISTRO_VERSION == *"Ubuntu"*"24.04"* ]] || [[ $DISTRO_VERSION == *"Linux"*"Mint"*"22"* ]] || [[ $DISTRO_VERSION == *"Pop"*"24.04"* ]]; then
             echo "Installing Wine for Ubuntu 24.04 ..."
@@ -664,23 +697,46 @@ function check_and_install_wine() {
                 apt-get update
                 apt-get remove wine* --purge
                 apt-get autoremove -y
-                apt-get install -y p7zip p7zip-full p7zip-rar winbind cabextract
                 apt-get install -y --install-recommends winehq-staging'
-        elif [[ $DISTRO_VERSION == *"Fedora"*"40"* ]]; then
+        elif [[ $DISTRO_VERSION == *"Fedora"* && $DISTRO_VERSION == *"40"* ]]; then
             echo "Installing Wine for Fedora 40 ..."
-            pkexec bash -c '
-                dnf config-manager --add-repo https://download.opensuse.org/repositories/Emulators:/Wine:/Fedora/Fedora_40/
-                dnf remove wine wine-*
-                dnf install -y p7zip p7zip-plugins winehq-staging cabextract'
+            echo -e "$(gettext "${YELLOW}Multiple Wine repos detected. Please choose which to use:${NOCOLOR}")"
+            echo "1) WineHQ Repository"
+            echo "2) openSUSE-Wine-OBS Repository"
+            read -p "Enter your choice (1 or 2): " wine_repo_choice
+
+            case $wine_repo_choice in
+                1)
+                    echo -e "$(gettext "${GREEN}WineHQ Repository selected. The WineHQ Repository will be used for the installation.${NOCOLOR}")"
+                    pkexec bash -c '
+                        dnf config-manager --add-repo https://dl.winehq.org/wine-builds/fedora/40/winehq.repo
+                        dnf remove -y wine wine-*
+                        dnf install -y winehq-staging'
+                    ;;
+                2)
+                    echo -e "$(gettext "${GREEN}openSUSE-Wine-OBS Repository selected. The openSUSE-Wine-OBS Repository will be used for the installation.${NOCOLOR}")"
+                    pkexec bash -c '
+                        dnf config-manager --add-repo https://download.opensuse.org/repositories/Emulators:/Wine:/Fedora/Fedora_40/
+                        dnf remove -y wine wine-*
+                        dnf install -y winehq-staging'
+                    ;;
+                *)
+                    echo -e "$(gettext "${RED}Invalid choice. The WineHQ Repository will be used for the installation.${NOCOLOR}")"
+                    pkexec bash -c '
+                        dnf config-manager --add-repo https://dl.winehq.org/wine-builds/fedora/40/winehq.repo
+                        dnf remove -y wine wine-*
+                        dnf install -y winehq-staging'
+                    ;;
+            esac
         elif [[ $DISTRO_VERSION == *"Fedora"*"Rawhide"* ]]; then
             echo "Installing Wine for Fedora rawhide ..."
             pkexec bash -c '
                 dnf config-manager --add-repo https://download.opensuse.org/repositories/Emulators:/Wine:/Fedora/Fedora_Rawhide/
                 dnf remove wine wine-*
-                dnf install -y p7zip p7zip-plugins winehq-staging cabextract'
+                dnf install -y winehq-staging'
         elif [[ $DISTRO_VERSION == *"Gentoo"* ]]; then
             echo "Installing Wine for Gentoo ..."
-            pkexec emerge -av p7zip wine cabextract
+            pkexec emerge -av app-emulation/wine
         elif [[ $DISTRO_VERSION == *"openSUSE"*"15.6"* ]]; then
             echo "Installing Wine for openSUSE 15.6 ..."
             pkexec bash -c '
@@ -693,7 +749,7 @@ function check_and_install_wine() {
                 zypper addrepo -cfp 90 "https://download.opensuse.org/repositories/Emulators:/Wine/15.6/" wine
                 zypper refresh
                 zypper remove wine wine-* winetricks --no-confirm
-                zypper install -y p7zip-full wine cabextract'
+                zypper install -y wine'
         elif [[ $DISTRO_VERSION == *"openSUSE"*"Tumbleweed"* ]]; then
             echo "Installing Wine for openSUSE tumbleweed ..."
             pkexec bash -c '
@@ -706,7 +762,7 @@ function check_and_install_wine() {
                 zypper addrepo -cfp 90 "https://download.opensuse.org/repositories/Emulators:/Wine/openSUSE_Tumbleweed/" wine
                 zypper refresh
                 zypper remove wine wine-* winetricks --no-confirm
-                zypper install -y p7zip-full wine cabextract'
+                zypper install -y wine'
         elif [[ $DISTRO_VERSION == *"Red"*"Hat"*"Enterprise"*"Linux"*"8"* ]]; then
             echo "Installing Wine for RHEL 8 ..."
             pkexec bash -c '
@@ -714,7 +770,7 @@ function check_and_install_wine() {
                 rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
                 dnf upgrade
                 dnf remove wine wine-*
-                dnf install -y p7zip p7zip-plugins winehq-staging cabextract'
+                dnf install -y winehq-staging'
         elif [[ $DISTRO_VERSION == *"Red"*"Hat"*"Enterprise"*"Linux"*"9"* ]]; then
             echo "Installing Wine for RHEL 9 ..."
             pkexec bash -c '
@@ -722,16 +778,16 @@ function check_and_install_wine() {
                 rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
                 dnf upgrade
                 dnf remove wine wine-*
-                dnf install -y p7zip p7zip-plugins winehq-staging cabextract'
+                dnf install -y winehq-staging'
         elif [[ $DISTRO_VERSION == *"Solus"* ]]; then
             echo "Installing Wine for Solus ..."
-            pkexec eopkg install -y p7zip p7zip-plugins winehq-staging cabextract
+            pkexec eopkg install -y winehq-staging
         elif [[ $DISTRO_VERSION == *"Void"* ]]; then
             echo "Installing Wine for Void Linux ..."
-            pkexec xbps-install -Syu --yes p7zip p7zip-plugins wine cabextract
+            pkexec xbps-install -Syu --yes wine
         elif [[ $DISTRO_VERSION == *"NixOS"* ]] || [[ $DISTRO_VERSION == *"nixos"* ]]; then
             echo "Installing Wine for NixOS ..."
-            pkexec nix-env -iA nixos.p7zip nixos.wine nixos.cabextract nixos.samba nixos.ppp nixos.winetricks --yes
+            pkexec nix-env -iA nixos.wine nixos.winetricks --yes
         # Add more distributions and versions here ...
         # elif ...
         else
