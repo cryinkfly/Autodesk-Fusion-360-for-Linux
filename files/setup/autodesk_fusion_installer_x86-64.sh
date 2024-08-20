@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2024                                                                          #
-# Time/Date:    10:30/19.08.2024                                                                   #
+# Time/Date:    20:45/20.08.2024                                                                   #
 # Version:      2.0.0-Alpha                                                                        #
 ####################################################################################################
 
@@ -151,14 +151,14 @@ function install_required_packages {
         if [[ $DISTRO_VERSION == *"arch"* ]] || [[ $DISTRO_VERSION == *"manjaro"* ]] || [[ $DISTRO_VERSION == *"endeavouros"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
-            sudo pacman -S awk cabextract coreutils curl lsb-release mesa-demos p7zip polkit samba winbind wget xdg-utils --noconfirm
+            sudo pacman -S gawk cabextract coreutils curl lsb-release mesa-demos p7zip polkit samba winbind wget xdg-utils --noconfirm
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
             sleep 2
         elif [[ $DISTRO_VERSION == *"debian"* ]] || [[ $DISTRO_VERSION == *"ubuntu"* ]] \
         || [[ $DISTRO_VERSION == *"mint"* ]] || [[ $DISTRO_VERSION == *"pop"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
-            sudo apt-get install -y awk cabextract coreutils curl lsb-release mesa-utils p7zip p7zip-full p7zip-rar policykit-1 samba winbind wget xdg-utils
+            sudo apt-get install -y gawk cabextract coreutils curl lsb-release mesa-utils p7zip p7zip-full p7zip-rar policykit-1 samba winbind wget xdg-utils
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
             sleep 2
         elif [[ $DISTRO_VERSION == *"fedora"* ]]; then
@@ -198,13 +198,13 @@ function install_required_packages {
         elif [[ $DISTRO_VERSION == *"solus"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
-            sudo eopkg -y install awk cabextract coreutils curl lsb-release mesa-utils p7zip p7zip-plugins polkit wget winbind xdg-utils
+            sudo eopkg -y install gawk cabextract coreutils curl lsb-release mesa-utils p7zip p7zip-plugins polkit wget winbind xdg-utils
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
             sleep 2
         elif [[ $DISTRO_VERSION == *"void"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
-            sudo xbps-install -Sy awk cabextract coreutils curl lsb-release mesa-demos p7zip-full polkit samba-winbind wget xdg-utils
+            sudo xbps-install -Sy gawk cabextract coreutils curl lsb-release mesa-demos p7zip-full polkit samba-winbind wget xdg-utils
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
             sleep 2
         else
