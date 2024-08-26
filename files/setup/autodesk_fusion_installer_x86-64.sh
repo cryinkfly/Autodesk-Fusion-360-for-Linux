@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2024                                                                          #
-# Time/Date:    20:45/20.08.2024                                                                   #
+# Time/Date:    18:15/26.08.2024                                                                   #
 # Version:      2.0.0-Alpha                                                                        #
 ####################################################################################################
 
@@ -138,6 +138,12 @@ check_required_packages() {
     else
         echo -e "${GREEN}All required commands are available!${NOCOLOR}"
     fi
+
+    # Check if Firefox is installed
+    firefox_version=$(get_firefox_version)
+
+    # Check if Firefox is installed via Snap and prompt user to install DEB version
+    check_install_firefox_deb
 }
 
 ##############################################################################################################################################################################
@@ -500,6 +506,75 @@ function check_disk_space {
         echo -e "$(gettext "${YELLOW}Make more space in your selected disk or select a different hard drive.${NOCOLOR}")"
         echo -e "$(gettext "${RED}The installer has been terminated!${NOCOLOR}")"
         exit;
+    fi
+}
+
+##############################################################################################################################################################################
+# CHECK FIREFOX VERSION FOR THE INSTALLER:                                                                                                                                   #
+##############################################################################################################################################################################
+
+function get_firefox_version {
+    if command -v firefox &>/dev/null; then
+        firefox --version | grep -oP '\d+\.\d+(\.\d+)?'
+    else
+        echo "Firefox is not installed."
+    fi
+}
+
+function is_snap_firefox_installed {
+    if snap list | grep -q firefox; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+function check_install_firefox_deb {
+    # Function to check if Firefox is installed via Snap
+    function is_snap_firefox_installed {
+        snap list firefox &> /dev/null
+        return $?
+    }
+
+    # Check if Firefox is installed via Snap
+    if is_snap_firefox_installed; then
+        echo "The installed version of Firefox is from Snap."
+        echo "It is recommended to install the DEB version for better performance and compatibility."
+
+        # Prompt user for action
+        read -p "Do you want to uninstall the Snap version of Firefox and install the DEB version? (y/n): " choice
+
+        if [[ "$choice" =~ ^[Yy]$ ]]; then
+            echo "Proceeding with the uninstallation of the Snap version and installation of the DEB version..."
+
+            # Uninstall Firefox Snap
+            sudo snap remove firefox
+
+            # Create an APT keyring directory if it doesn't exist
+            sudo install -d -m 0755 /etc/apt/keyrings
+
+            # Import the Mozilla APT repo signing key
+            wget -q https://packages.mozilla.org/apt/repo-signing-key.gpg -O- | sudo tee /etc/apt/keyrings/packages.mozilla.org.asc > /dev/null
+
+            # Add Mozilla APT repo to sources.list
+            echo "deb [signed-by=/etc/apt/keyrings/packages.mozilla.org.asc] https://packages.mozilla.org/apt mozilla main" | sudo tee /etc/apt/sources.list.d/mozilla.list > /dev/null
+
+            # Set package priority to ensure DEB version is default
+            echo '
+Package: *
+Pin: origin packages.mozilla.org
+Pin-Priority: 1000
+' | sudo tee /etc/apt/preferences.d/mozilla
+
+            # Update and install Firefox DEB version
+            sudo apt update && sudo apt install firefox
+
+            echo "Firefox DEB version installed successfully."
+        else
+            echo "No changes made. Firefox Snap version remains installed."
+        fi
+    else
+        echo "The installed version of Firefox is not from Snap."
     fi
 }
 
