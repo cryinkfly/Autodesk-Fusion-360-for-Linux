@@ -330,7 +330,7 @@ function check_option() {
             autodesk_fusion_shortcuts_load
             autodesk_fusion_safe_logfile
             reset_window_not_responding_dialog
-            xdg-open "https://cryinkfly.com/sponsoring/"
+            xdg-open "https://cryinkfly.de/sponsoren-und-helfer/"
             run_wine_autodesk_fusion
             exit;;
         *)
