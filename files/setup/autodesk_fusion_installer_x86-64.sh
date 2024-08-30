@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2024                                                                          #
-# Time/Date:    18:15/26.08.2024                                                                   #
+# Time/Date:    20:25/30.08.2024                                                                   #
 # Version:      2.0.0-Alpha                                                                        #
 ####################################################################################################
 
@@ -69,6 +69,9 @@ WEBVIEW2_INSTALLER_URL="https://github.com/aedancullen/webview2-evergreen-standa
 # URL to download the patched Qt6WebEngineCore.dll file
 QT6_WEBENGINECORE_URL="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/extras/patched-dlls/Qt6WebEngineCore.dll.7z"
 
+# URL to download the patched siappdll.dll file
+SIAPPDLL_URL="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/extras/patched-dlls/siappdll.dll"
+
 ##############################################################################################################################################################################
 # CHECK THE REQUIRED PACKAGES FOR THE INSTALLER:                                                                                                                             #
 ##############################################################################################################################################################################
@@ -80,7 +83,7 @@ check_required_packages() {
     DISTRO_VERSION="$DISTRO $VERSION"
 
     # Example required commands
-    REQUIRED_COMMANDS=("curl" "lsb_release" "glxinfo" "pkexec" "wget" "xdg-open" "ls" "cat" "echo" "awk" "7z" "cabextract" "samba" "wbinfo")
+    REQUIRED_COMMANDS=("curl" "lsb_release" "glxinfo" "pkexec" "wget" "xdg-open" "ls" "cat" "echo" "awk" "7z" "cabextract" "samba" "wbinfo" "systemctl")
 
     # Array to store missing commands
     MISSING_COMMANDS=()
@@ -122,6 +125,14 @@ check_required_packages() {
                         echo -e "${GREEN}The required command (${cmd}) is available!${NOCOLOR}"
                     fi
                     ;;
+                systemctl)
+                    if ! systemctl is-active --quiet spacenavd; then
+                        echo -e "${RED}The service spacenavd is not active!${NOCOLOR}"
+                        MISSING_COMMANDS+=("spacenavd (service)")
+                    else
+                        echo -e "${GREEN}The service spacenavd is active!${NOCOLOR}"
+                    fi
+                    ;;
                 *)
                     echo -e "${GREEN}The required command (${cmd}) is available!${NOCOLOR}"
                     ;;
@@ -144,6 +155,100 @@ check_required_packages() {
 
     # Check if Firefox is installed via Snap and prompt user to install DEB version
     check_install_firefox_deb
+}
+
+##############################################################################################################################################################################
+# INSTALLATION OF THE REQUIRED PACKAGES FOR THE INSTALLER:                                                                                                                   #
+##############################################################################################################################################################################
+
+function install_required_packages {
+    echo -e "$(gettext "${YELLOW}The installer will install the required packages for the installation!")${NOCOLOR}"
+    echo -e "$(gettext "${RED}Missing package: ${cmd}")${NOCOLOR}"
+    sleep 2
+        if [[ $DISTRO_VERSION == *"arch"* ]] || [[ $DISTRO_VERSION == *"manjaro"* ]] || [[ $DISTRO_VERSION == *"endeavouros"* ]]; then
+            echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
+            sleep 2
+            sudo pacman -S gawk cabextract coreutils curl lsb-release mesa-demos p7zip polkit samba spacenavd winbind wget xdg-utils --noconfirm
+            sudo systemctl enable spacenavd
+            sudo systemctl start spacenavd
+            echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
+            sleep 2
+        elif [[ $DISTRO_VERSION == *"debian"* ]] || [[ $DISTRO_VERSION == *"ubuntu"* ]] \
+        || [[ $DISTRO_VERSION == *"mint"* ]] || [[ $DISTRO_VERSION == *"pop"* ]]; then
+            echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
+            sleep 2
+            sudo apt-get install -y gawk cabextract coreutils curl lsb-release mesa-utils p7zip p7zip-full p7zip-rar policykit-1 samba spacenavd winbind wget xdg-utils
+            sudo systemctl enable spacenavd
+            sudo systemctl start spacenavd
+            echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
+            sleep 2
+        elif [[ $DISTRO_VERSION == *"fedora"* ]]; then
+            echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
+            sleep 2
+            sudo dnf install -y cabextract coreutils curl gawk lsb_release mesa-demos p7zip p7zip-plugins polkit samba-dc samba-winbind samba-winbind-clients spacenavd wget xdg-utils
+            sudo systemctl enable spacenavd
+            sudo systemctl start spacenavd
+            echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
+            sleep 2
+        elif [[ $DISTRO_VERSION == *"gentoo"* ]]; then
+            echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
+            sleep 2
+            sudo emerge -q app-admin/samba app-misc/spacenavd app-arch/cabextract app-arch/p7zip net-misc/curl net-misc/wget sys-apps/coreutils sys-apps/gawk sys-apps/lsb-release sys-auth/polkit x11-apps/mesa-progs x11-misc/xdg-utils
+            sudo rc-update add spacenavd default
+            sudo /etc/init.d/spacenavd start
+            echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
+            sleep 2
+        elif [[ $DISTRO_VERSION == *"nixos"* ]]; then
+            echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
+            sleep 2
+            sudo nix-env -iA gawk nixos.cabextract nixos.coreutils nixos.curl nixos.lsb_release nixos.mesa-utils nixos.p7zip nixos.polkit nixos.samba nixos.spacenavd nixos.wget nixos.winbind nixos.xdg_utils
+            sudo systemctl enable spacenavd
+            sudo systemctl start spacenavd
+            echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
+            sleep 2
+        elif [[ $DISTRO_VERSION == *"opensuse"* ]]; then
+            echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
+            sleep 2
+            sudo zypper install -y cabextract coreutils curl gawk lsb-release Mesa-demo-x p7zip-full polkit samba samba-client samba-winbind spacenavd wget wine xdg-utils
+            sudo systemctl enable spacenavd
+            sudo systemctl start spacenavd
+            echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
+            sleep 2
+        elif [[ $DISTRO_VERSION == *"red"*"hat"*"enterprise"* ]] || [[ $DISTRO_VERSION == *"alma"* ]] || [[ $DISTRO_VERSION == *"rocky"* ]]; then
+            echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
+            sleep 2
+            if command -v dnf &> /dev/null; then # Use dnf for newer distributions
+                sudo dnf install -y cabextract coreutils curl gawk lsb_release mesa-demos p7zip p7zip-plugins polkit samba-dc samba-winbind samba-winbind-clients spacenavd wget xdg-utils
+            else  # Use yum for older distributions
+                sudo yum install -y cabextract coreutils curl gawk lsb_release mesa-demos p7zip p7zip-plugins polkit samba-dc samba-winbind samba-winbind-clients spacenavd wget xdg-utils
+            fi
+            sudo systemctl enable spacenavd
+            sudo systemctl start spacenavd
+            echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
+            sleep 2
+        elif [[ $DISTRO_VERSION == *"solus"* ]]; then
+            echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
+            sleep 2
+            sudo eopkg -y install gawk cabextract coreutils curl lsb-release mesa-utils p7zip p7zip-plugins spacenavd polkit wget winbind xdg-utils
+            sudo systemctl enable spacenavd
+            sudo systemctl start spacenavd
+            echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
+            sleep 2
+        elif [[ $DISTRO_VERSION == *"void"* ]]; then
+            echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
+            sleep 2
+            sudo xbps-install -Sy gawk cabextract coreutils curl lsb-release mesa-demos p7zip-full polkit samba-winbind spacenavd wget xdg-utils
+            sudo ln -s /usr/sbin/spacenavd /etc/sv/spacenavd
+            sudo sv enable spacenavd
+            sudo sv start spacenavd
+            echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
+            sleep 2
+        else
+            echo -e "$(gettext "${RED}The installer doesn't support your current Linux distribution $distro_version at this time!")${NOCOLOR}"; 
+            echo -e "$(gettext "${RED}The installer has been terminated!")${NOCOLOR}"
+            sleep 2
+            exit;
+        fi
 }
 
 ##############################################################################################################################################################################
@@ -326,11 +431,12 @@ function check_option() {
             check_and_install_wine
             wine_autodesk_fusion_install
             autodesk_fusion_patch_qt6webenginecore
+            autodesk_fusion_patch_siappdll
             wine_autodesk_fusion_install_extensions
             autodesk_fusion_shortcuts_load
             autodesk_fusion_safe_logfile
             reset_window_not_responding_dialog
-            xdg-open "https://cryinkfly.de/sponsoren-und-helfer/"
+            xdg-open "https://cryinkfly.com/sponsoring/"
             run_wine_autodesk_fusion
             exit;;
         *)
@@ -999,18 +1105,52 @@ function autodesk_fusion_run_install_client {
 # Patch the Qt6WebEngineCore.dll to fix the login issue and other issues
 function autodesk_fusion_patch_qt6webenginecore {
     # Find the Qt6WebEngineCore.dll file in the Autodesk Fusion directory
-    QT6_WEBENGINECORE=$(find "$SELECTED_DIRECTORY/wineprefixes/default" -name 'Qt6WebEngineCore.dll' -printf "%T+ %p\n" | sort -r 2>&1 | head -n 1 | sed -r 's/.+0000000000 (.+)/\1/')
-    echo -e "$(gettext "${YELLOW}The old Qt6WebEngineCore.dll file is located in the following directory: $QT6_WEBENGINECORE${NOCOLOR}")"
-    # Backup the Qt6WebEngineCore.dll file
-    cp "$QT6_WEBENGINECORE" "$QT6_WEBENGINECORE.bak"
-    echo -e "$(gettext "${GREEN}The Qt6WebEngineCore.dll file is backed up as Qt6WebEngineCore.dll.bak!${NOCOLOR}")"
+    QT6_WEBENGINECORE=$(find "$SELECTED_DIRECTORY/wineprefixes/default" -name 'Qt6WebEngineCore.dll' -printf "%T+ %p\n" | sort -r | head -n 1 | sed -r 's/^[^ ]+ //')
+    QT6_WEBENGINECORE_DIR=$(dirname "$QT6_WEBENGINECORE")
+    clear
+    echo "$QT6_WEBENGINECORE_DIR"
+
+    echo -e "${YELLOW}The old Qt6WebEngineCore.dll file is located in the following directory: $QT6_WEBENGINECORE_DIR${NOCOLOR}"
+
+    # Check if the Qt6WebEngineCore.dll file exists before attempting to backup
+    if [ -f "$QT6_WEBENGINECORE_DIR/Qt6WebEngineCore.dll" ]; then
+        # Backup the Qt6WebEngineCore.dll file
+        cp "$QT6_WEBENGINECORE_DIR/Qt6WebEngineCore.dll" "$QT6_WEBENGINECORE_DIR/Qt6WebEngineCore.dll.bak"
+        echo -e "${GREEN}The Qt6WebEngineCore.dll file is backed up as Qt6WebEngineCore.dll.bak!${NOCOLOR}"
+    else
+        echo -e "${RED}The Qt6WebEngineCore.dll file does not exist. No backup was made.${NOCOLOR}"
+    fi
+
     # Patch the Qt6WebEngineCore.dll file
-    echo -e "$(gettext "${YELLOW}Patching the Qt6WebEngineCore.dll file for Autodesk Fusion ...${NOCOLOR}")"
+    echo -e "${YELLOW}Patching the Qt6WebEngineCore.dll file for Autodesk Fusion ...${NOCOLOR}"
     sleep 2
+
     # Copy the patched Qt6WebEngineCore.dll file to the Autodesk Fusion directory
-    cp "$SELECTED_DIRECTORY/downloads/Qt6WebEngineCore.dll" "$QT6_WEBENGINECORE"
-    echo -e "$(gettext "${GREEN}The Qt6WebEngineCore.dll file is patched successfully!${NOCOLOR}")"
-}      
+    cp "$SELECTED_DIRECTORY/downloads/Qt6WebEngineCore.dll" "$QT6_WEBENGINECORE_DIR/Qt6WebEngineCore.dll"
+    echo -e "${GREEN}The Qt6WebEngineCore.dll file is patched successfully!${NOCOLOR}"
+}  
+
+###############################################################################################################################################################
+
+# Add/Patch the siappdll.dll to fix the SpaceMouse issue
+
+function autodesk_fusion_patch_siappdll {
+    echo -e "${YELLOW}Patching the siappdll.dll file for Autodesk Fusion ...${NOCOLOR}"
+    sleep 2
+    
+    # Check if the siappdll.dll file exists before attempting to backup
+    if [ -f "$QT6_WEBENGINECORE_DIR/siappdll.dll" ]; then
+        # Backup the siappdll.dll file
+        cp "$QT6_WEBENGINECORE_DIR/siappdll.dll" "$QT6_WEBENGINECORE_DIR/siappdll.dll.bak"
+        echo -e "${GREEN}The siappdll.dll file is backed up as siappdll.dll.bak!${NOCOLOR}"
+    else
+        echo -e "${RED}The siappdll.dll file does not exist. No backup was made.${NOCOLOR}"
+    fi
+
+    # Copy the patched siappdll.dll file to the Autodesk Fusion directory
+    cp "$SELECTED_DIRECTORY/downloads/siappdll.dll" "$QT6_WEBENGINECORE_DIR/siappdll.dll"
+    echo -e "${GREEN}The siappdll.dll file is patched successfully!${NOCOLOR}"
+}
 
 ###############################################################################################################################################################
 
