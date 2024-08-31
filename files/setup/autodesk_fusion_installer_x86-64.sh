@@ -658,8 +658,8 @@ function download_files() {
     download_extensions_files
     # Download the patched Qt6WebEngineCore.dll file
     curl -L "$QT6_WEBENGINECORE_URL" -o "$SELECTED_DIRECTORY/downloads/Qt6WebEngineCore.dll.7z"
-    # Extract the patched t6WebEngineCore.dll.7z file with overwrite option
-    7z x -y "$SELECTED_DIRECTORY/downloads/Qt6WebEngineCore.dll.7z" -o"$SELECTED_DIRECTORY/downloads/"
+    # Extract the patched the 6WebEngineCore.dll.7z file with overwrite option
+    7z x -y "$SELECTED_DIRECTORY/downloads/Qt6WebEngineCore.dll.7z" -o "$SELECTED_DIRECTORY/downloads/"
     # Download the patched siappdll.dll file
     curl -L "$QT6_WEBENGINECORE_URL" -o "$SELECTED_DIRECTORY/downloads/Qt6WebEngineCore.dll"
 }
