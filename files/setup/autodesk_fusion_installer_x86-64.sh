@@ -486,7 +486,7 @@ function check_gpu_driver {
     elif [[ $AMD_PRESENT ]]; then
         GPU_DRIVER="DXVK"
         GET_VRAM_MEGABYTES=$AMD_VRAM
-        echo -e "$(gettext "${GREEN}The OpenGL GPU driver will be used for the installation.${NOCOLOR}")"
+        echo -e "$(gettext "${GREEN}The DXVK GPU driver will be used for the installation.${NOCOLOR}")"
     elif [[ $INTEL_PRESENT ]]; then
         GPU_DRIVER="OpenGL"
         GET_VRAM_MEGABYTES=$INTEL_VRAM
