@@ -445,6 +445,7 @@ function check_gpu_driver {
     fi
 
     INTEL_AMD_GPU=$(glxinfo | grep "OpenGL vendor string" | cut -d: -f2 | tr -d ' ')
+    INTEL_AMD_VRAM=$(glxinfo | grep -i "Video memory" | grep -Eo '[0-9]+MB' | grep -Eo '[0-9]+' | head -n1)
 
     if [[ $INTEL_AMD_GPU == "AMD" ]]; then
         AMD_PRESENT=true
@@ -469,25 +470,13 @@ function check_gpu_driver {
                 echo -e "$(gettext "${GREEN}NVIDIA GPU selected. The DXVK GPU driver will be used for the installation.${NOCOLOR}")"
                 ;;
             2)
-                if [[ $AMD_PRESENT ]]; then
-                    GPU_DRIVER="DXVK"
-                    GET_VRAM_MEGABYTES=$AMD_VRAM
-                    echo -e "$(gettext "${GREEN}The OpenGL GPU driver will be used for the installation.${NOCOLOR}")"
-                elif [[ $INTEL_PRESENT ]]; then
-                    GPU_DRIVER="OpenGL"
-                    GET_VRAM_MEGABYTES=$INTEL_VRAM
-                    echo -e "$(gettext "${GREEN}The OpenGL GPU fallback driver will be used for the installation.${NOCOLOR}")"
-                fi
+                GPU_DRIVER="OpenGL"
+                GET_VRAM_MEGABYTES=$INTEL_AMD_VRAM
+                echo -e "$(gettext "${GREEN}The OpenGL GPU fallback driver will be used for the installation.${NOCOLOR}")"
                 ;;
             *)
-                echo -e "$(gettext "${RED}Invalid choice. Defaulting to ${INTEL_AMD_GPU} GPU.${NOCOLOR}")"
-                if [[ $AMD_PRESENT ]]; then
-                    GPU_DRIVER="DXVK"
-                    GET_VRAM_MEGABYTES=$AMD_VRAM
-                else
-                    GPU_DRIVER="OpenGL"
-                    GET_VRAM_MEGABYTES=$INTEL_VRAM
-                fi
+                GPU_DRIVER="OpenGL"
+                GET_VRAM_MEGABYTES=$INTEL_VRAM
                 ;;
         esac
     elif [[ $NVIDIA_PRESENT ]]; then
