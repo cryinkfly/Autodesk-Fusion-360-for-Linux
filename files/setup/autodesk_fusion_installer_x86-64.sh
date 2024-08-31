@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2024                                                                          #
-# Time/Date:    06:45/31.08.2024                                                                   #
+# Time/Date:    07:30/31.08.2024                                                                   #
 # Version:      2.0.0-Alpha                                                                        #
 ####################################################################################################
 
@@ -445,14 +445,23 @@ function check_gpu_driver {
     fi
 
     INTEL_AMD_GPU=$(glxinfo | grep "OpenGL vendor string" | cut -d: -f2 | tr -d ' ')
-    if [[ $INTEL_AMD_GPU == "Intel" || $INTEL_AMD_GPU == "AMD" ]]; then
-        INTEL_AMD_PRESENT=true
-        INTEL_AMD_VRAM=$(glxinfo | grep -i "Video memory" | grep -Eo '[0-9]+MB' | grep -Eo '[0-9]+' | head -n1)
-        echo -e "$(gettext "${GREEN}${INTEL_AMD_GPU} GPU detected with ${INTEL_AMD_VRAM}MB VRAM${NOCOLOR}")"
+
+    AMD_GPU=$(glxinfo | grep "OpenGL vendor string" | cut -d: -f2 | tr -d ' ')
+    if [[ $AMD_GPU == "AMD" ]]; then
+        AMD_PRESENT=true
+        AMD_VRAM=$(glxinfo | grep -i "Video memory" | grep -Eo '[0-9]+MB' | grep -Eo '[0-9]+' | head -n1)
+        echo -e "$(gettext "${GREEN}${AMD_GPU} GPU detected with ${AMD_VRAM}MB VRAM${NOCOLOR}")"
+    fi
+
+    INTEL_GPU=$(glxinfo | grep "OpenGL vendor string" | cut -d: -f2 | tr -d ' ')
+    if [[ $INTEL_GPU == "Intel" ]]; then
+        INTEL_PRESENT=true
+        INTEL_VRAM=$(glxinfo | grep -i "Video memory" | grep -Eo '[0-9]+MB' | grep -Eo '[0-9]+' | head -n1)
+        echo -e "$(gettext "${GREEN}${INTEL_GPU} GPU detected with ${INTEL_VRAM}MB VRAM${NOCOLOR}")"
     fi
 
     if [[ $NVIDIA_PRESENT && $INTEL_AMD_PRESENT ]]; then
-        echo -e "$(gettext "${YELLOW}Multiple GPUs detected. Please choose which to use:${NOCOLOR}")"
+        echo -e "$(gettext "${YELLOW}Multiple GPUs detected. Please choose which to use (Default is DXVK):${NOCOLOR}")"
         echo "1) NVIDIA"
         echo "2) ${INTEL_AMD_GPU}"
         read -p "Enter your choice (1 or 2): " gpu_choice
@@ -464,13 +473,20 @@ function check_gpu_driver {
                 echo -e "$(gettext "${GREEN}NVIDIA GPU selected. The DXVK GPU driver will be used for the installation.${NOCOLOR}")"
                 ;;
             2)
-                GPU_DRIVER="OpenGL"
-                GET_VRAM_MEGABYTES=$INTEL_AMD_VRAM
-                echo -e "$(gettext "${GREEN}${INTEL_AMD_GPU} GPU selected. The OpenGL GPU driver will be used for the installation.${NOCOLOR}")"
+                if [[ $AMD_PRESENT ]]; then
+                    GPU_DRIVER="DXVK"
+                    GET_VRAM_MEGABYTES=$AMD_VRAM
+                    echo -e "$(gettext "${GREEN}The OpenGL GPU driver will be used for the installation.${NOCOLOR}")"
+                else [[ $INTEL_PRESENT ]]; then
+                    GPU_DRIVER="OpenGL"
+                    GET_VRAM_MEGABYTES=$INTEL_VRAM
+                    echo -e "$(gettext "${GREEN}The OpenGL GPU fallback driver will be used for the installation.${NOCOLOR}")"
+                    GET_VRAM_MEGABYTES=$INTEL_VRAM    
+                fi
                 ;;
             *)
                 echo -e "$(gettext "${RED}Invalid choice. Defaulting to ${INTEL_AMD_GPU} GPU.${NOCOLOR}")"
-                GPU_DRIVER="OpenGL"
+                GPU_DRIVER="DXVK"
                 GET_VRAM_MEGABYTES=$INTEL_AMD_VRAM
                 ;;
         esac
@@ -478,13 +494,16 @@ function check_gpu_driver {
         GPU_DRIVER="DXVK"
         GET_VRAM_MEGABYTES=$NVIDIA_VRAM
         echo -e "$(gettext "${GREEN}The DXVK GPU driver will be used for the installation.${NOCOLOR}")"
-    elif [[ $INTEL_AMD_PRESENT ]]; then
-        GPU_DRIVER="OpenGL"
-        GET_VRAM_MEGABYTES=$INTEL_AMD_VRAM
+    elif [[ $AMD_PRESENT ]]; then
+        GPU_DRIVER="DXVK"
+        GET_VRAM_MEGABYTES=$AMD_VRAM
         echo -e "$(gettext "${GREEN}The OpenGL GPU driver will be used for the installation.${NOCOLOR}")"
+    elif [[ $INTEL_PRESENT ]]; then
+        GPU_DRIVER="OpenGL"
+        GET_VRAM_MEGABYTES=$INTEL_VRAM
+        echo -e "$(gettext "${GREEN}The OpenGL GPU fallback driver will be used for the installation.${NOCOLOR}")"
     else
         echo -e "$(gettext "${RED}No GPU driver detected on your system!${NOCOLOR}")"
-        GPU_DRIVER="OpenGL"
         GET_VRAM_MEGABYTES=0
     fi
 
