@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2024                                                                          #
-# Time/Date:    06:35/31.08.2024                                                                   #
+# Time/Date:    06:45/31.08.2024                                                                   #
 # Version:      2.0.0-Alpha                                                                        #
 ####################################################################################################
 
@@ -1042,7 +1042,7 @@ function autodesk_fusion_patch_qt6webenginecore {
     # Check if the Qt6WebEngineCore.dll file exists before attempting to backup
     if [ -f "$QT6_WEBENGINECORE_DIR/Qt6WebEngineCore.dll" ]; then
         # Backup the Qt6WebEngineCore.dll file
-        cp "$QT6_WEBENGINECORE_DIR/Qt6WebEngineCore.dll" "$QT6_WEBENGINECORE_DIR/Qt6WebEngineCore.dll.bak"
+        cp -f "$QT6_WEBENGINECORE_DIR/Qt6WebEngineCore.dll" "$QT6_WEBENGINECORE_DIR/Qt6WebEngineCore.dll.bak"
         echo -e "${GREEN}The Qt6WebEngineCore.dll file is backed up as Qt6WebEngineCore.dll.bak!${NOCOLOR}"
     else
         echo -e "${RED}The Qt6WebEngineCore.dll file does not exist. No backup was made.${NOCOLOR}"
@@ -1053,7 +1053,7 @@ function autodesk_fusion_patch_qt6webenginecore {
     sleep 2
 
     # Copy the patched Qt6WebEngineCore.dll file to the Autodesk Fusion directory
-    cp "$SELECTED_DIRECTORY/downloads/Qt6WebEngineCore.dll" "$QT6_WEBENGINECORE_DIR/Qt6WebEngineCore.dll"
+    cp -f "$SELECTED_DIRECTORY/downloads/Qt6WebEngineCore.dll" "$QT6_WEBENGINECORE_DIR/Qt6WebEngineCore.dll"
     echo -e "${GREEN}The Qt6WebEngineCore.dll file is patched successfully!${NOCOLOR}"
 }  
 
@@ -1068,14 +1068,14 @@ function autodesk_fusion_patch_siappdll {
     # Check if the siappdll.dll file exists before attempting to backup
     if [ -f "$QT6_WEBENGINECORE_DIR/siappdll.dll" ]; then
         # Backup the siappdll.dll file
-        cp "$QT6_WEBENGINECORE_DIR/siappdll.dll" "$QT6_WEBENGINECORE_DIR/siappdll.dll.bak"
+        cp -f "$QT6_WEBENGINECORE_DIR/siappdll.dll" "$QT6_WEBENGINECORE_DIR/siappdll.dll.bak"
         echo -e "${GREEN}The siappdll.dll file is backed up as siappdll.dll.bak!${NOCOLOR}"
     else
         echo -e "${RED}The siappdll.dll file does not exist. No backup was made.${NOCOLOR}"
     fi
 
     # Copy the patched siappdll.dll file to the Autodesk Fusion directory
-    cp "$SELECTED_DIRECTORY/downloads/siappdll.dll" "$QT6_WEBENGINECORE_DIR/siappdll.dll"
+    cp -f "$SELECTED_DIRECTORY/downloads/siappdll.dll" "$QT6_WEBENGINECORE_DIR/siappdll.dll"
     echo -e "${GREEN}The siappdll.dll file is patched successfully!${NOCOLOR}"
 }
 
