@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2024                                                                          #
-# Time/Date:    06:30/31.08.2024                                                                   #
+# Time/Date:    06:35/31.08.2024                                                                   #
 # Version:      2.0.0-Alpha                                                                        #
 ####################################################################################################
 
@@ -182,7 +182,7 @@ function install_required_packages {
             sudo systemctl start spacenavd
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
             sleep 2
-        elif [[ $DISTRO_VERSION == *"fedora"* ]]; then
+        elif [[ $DISTRO_VERSION == *"fedora"* ]] || [[ $DISTRO_VERSION == *"nobara"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
             sudo dnf install -y cabextract coreutils curl gawk lsb_release mesa-demos p7zip p7zip-plugins polkit samba-dc samba-winbind samba-winbind-clients spacenavd wget xdg-utils
@@ -241,81 +241,6 @@ function install_required_packages {
             sudo ln -s /usr/sbin/spacenavd /etc/sv/spacenavd
             sudo sv enable spacenavd
             sudo sv start spacenavd
-            echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
-            sleep 2
-        else
-            echo -e "$(gettext "${RED}The installer doesn't support your current Linux distribution $distro_version at this time!")${NOCOLOR}"; 
-            echo -e "$(gettext "${RED}The installer has been terminated!")${NOCOLOR}"
-            sleep 2
-            exit;
-        fi
-}
-
-##############################################################################################################################################################################
-# INSTALLATION OF THE REQUIRED PACKAGES FOR THE INSTALLER:                                                                                                                   #
-##############################################################################################################################################################################
-
-function install_required_packages {
-    echo -e "$(gettext "${YELLOW}The installer will install the required packages for the installation!")${NOCOLOR}"
-    echo -e "$(gettext "${RED}Missing package: ${cmd}")${NOCOLOR}"
-    sleep 2
-        if [[ $DISTRO_VERSION == *"arch"* ]] || [[ $DISTRO_VERSION == *"manjaro"* ]] || [[ $DISTRO_VERSION == *"endeavouros"* ]]; then
-            echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
-            sleep 2
-            sudo pacman -S gawk cabextract coreutils curl lsb-release mesa-demos p7zip polkit samba winbind wget xdg-utils --noconfirm
-            echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
-            sleep 2
-        elif [[ $DISTRO_VERSION == *"debian"* ]] || [[ $DISTRO_VERSION == *"ubuntu"* ]] \
-        || [[ $DISTRO_VERSION == *"mint"* ]] || [[ $DISTRO_VERSION == *"pop"* ]]; then
-            echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
-            sleep 2
-            sudo apt-get install -y gawk cabextract coreutils curl lsb-release mesa-utils p7zip p7zip-full p7zip-rar policykit-1 samba winbind wget xdg-utils
-            echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
-            sleep 2
-        elif [[ $DISTRO_VERSION == *"fedora"* ]]; then
-            echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
-            sleep 2
-            sudo dnf install -y cabextract coreutils curl gawk lsb_release mesa-demos p7zip p7zip-plugins polkit samba-dc samba-winbind samba-winbind-clients wget xdg-utils
-            echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
-            sleep 2
-        elif [[ $DISTRO_VERSION == *"gentoo"* ]]; then
-            echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
-            sleep 2
-            sudo emerge -q app-admin/samba app-arch/cabextract app-arch/p7zip net-misc/curl net-misc/wget sys-apps/coreutils sys-apps/gawk sys-apps/lsb-release sys-auth/polkit x11-apps/mesa-progs x11-misc/xdg-utils
-            echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
-            sleep 2
-        elif [[ $DISTRO_VERSION == *"nixos"* ]]; then
-            echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
-            sleep 2
-            sudo nix-env -iA gawk nixos.cabextract nixos.coreutils nixos.curl nixos.lsb_release nixos.mesa-utils nixos.p7zip nixos.polkit nixos.samba nixos.wget nixos.winbind nixos.xdg_utils
-            echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
-            sleep 2
-        elif [[ $DISTRO_VERSION == *"opensuse"* ]]; then
-            echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
-            sleep 2
-            sudo zypper install -y cabextract coreutils curl gawk lsb-release Mesa-demo-x p7zip-full polkit samba samba-client samba-winbind wget wine xdg-utils
-            echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
-            sleep 2
-        elif [[ $DISTRO_VERSION == *"red"*"hat"*"enterprise"* ]] || [[ $DISTRO_VERSION == *"alma"* ]] || [[ $DISTRO_VERSION == *"rocky"* ]]; then
-            echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
-            sleep 2
-            if command -v dnf &> /dev/null; then # Use dnf for newer distributions
-                sudo dnf install -y cabextract coreutils curl gawk lsb_release mesa-demos p7zip p7zip-plugins polkit samba-dc samba-winbind samba-winbind-clients wget xdg-utils
-            else  # Use yum for older distributions
-                sudo yum install -y cabextract coreutils curl gawk lsb_release mesa-demos p7zip p7zip-plugins polkit samba-dc samba-winbind samba-winbind-clients wget xdg-utils
-            fi
-            echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
-            sleep 2
-        elif [[ $DISTRO_VERSION == *"solus"* ]]; then
-            echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
-            sleep 2
-            sudo eopkg -y install gawk cabextract coreutils curl lsb-release mesa-utils p7zip p7zip-plugins polkit wget winbind xdg-utils
-            echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
-            sleep 2
-        elif [[ $DISTRO_VERSION == *"void"* ]]; then
-            echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
-            sleep 2
-            sudo xbps-install -Sy gawk cabextract coreutils curl lsb-release mesa-demos p7zip-full polkit samba-winbind wget xdg-utils
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
             sleep 2
         else
@@ -885,7 +810,7 @@ function check_and_install_wine() {
                 apt-get remove wine* --purge
                 apt-get autoremove -y
                 apt-get install -y --install-recommends winehq-staging'
-        elif [[ $DISTRO_VERSION == *"Fedora"* && $DISTRO_VERSION == *"40"* ]]; then
+        elif [[ $DISTRO_VERSION == *"Fedora"* && $DISTRO_VERSION == *"40"* ]] || [[ $DISTRO_VERSION == *"Nobara"* ]]; then
             echo "Installing Wine for Fedora 40 ..."
             echo -e "$(gettext "${YELLOW}Multiple Wine repos detected. Please choose which to use:${NOCOLOR}")"
             echo "1) WineHQ Repository"
