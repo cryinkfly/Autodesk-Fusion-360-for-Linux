@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2024                                                                          #
-# Time/Date:    20:25/30.08.2024                                                                   #
+# Time/Date:    06:30/31.08.2024                                                                   #
 # Version:      2.0.0-Alpha                                                                        #
 ####################################################################################################
 
@@ -727,6 +727,8 @@ function download_files() {
     curl -L "$QT6_WEBENGINECORE_URL" -o "$SELECTED_DIRECTORY/downloads/Qt6WebEngineCore.dll.7z"
     # Extract the patched t6WebEngineCore.dll.7z file with overwrite option
     7z x -y "$SELECTED_DIRECTORY/downloads/Qt6WebEngineCore.dll.7z" -o"$SELECTED_DIRECTORY/downloads/"
+    # Download the patched siappdll.dll file
+    curl -L "$QT6_WEBENGINECORE_URL" -o "$SELECTED_DIRECTORY/downloads/Qt6WebEngineCore.dll"
 }
 
 # Download an extension if it doesn't exist or is older than 7 days
