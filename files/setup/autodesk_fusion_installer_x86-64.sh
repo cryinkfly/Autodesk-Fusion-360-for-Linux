@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2024                                                                          #
-# Time/Date:    07:30/31.08.2024                                                                   #
+# Time/Date:    21:40/02.09.2024                                                                   #
 # Version:      2.0.0-Alpha                                                                        #
 ####################################################################################################
 
@@ -82,8 +82,8 @@ check_required_packages() {
     VERSION=$(grep "^VERSION_ID=" /etc/*-release | cut -d'=' -f2 | tr -d '"')
     DISTRO_VERSION="$DISTRO $VERSION"
 
-    # Example required commands
-    REQUIRED_COMMANDS=("curl" "lsb_release" "glxinfo" "pkexec" "wget" "xdg-open" "ls" "cat" "echo" "awk" "7z" "cabextract" "samba" "wbinfo" "systemctl")
+    # Example required commands, now including "bc"
+    REQUIRED_COMMANDS=("curl" "lsb_release" "glxinfo" "pkexec" "wget" "xdg-open" "ls" "cat" "echo" "awk" "7z" "cabextract" "samba" "wbinfo" "systemctl" "bc")
 
     # Array to store missing commands
     MISSING_COMMANDS=()
@@ -168,7 +168,7 @@ function install_required_packages {
         if [[ $DISTRO_VERSION == *"arch"* ]] || [[ $DISTRO_VERSION == *"manjaro"* ]] || [[ $DISTRO_VERSION == *"endeavouros"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
-            sudo pacman -S gawk cabextract coreutils curl lsb-release mesa-demos p7zip polkit samba spacenavd winbind wget xdg-utils --noconfirm
+            sudo pacman -S gawk cabextract coreutils curl lsb-release mesa-demos p7zip polkit samba spacenavd winbind wget xdg-utils bc --noconfirm
             sudo systemctl enable spacenavd
             sudo systemctl start spacenavd
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
@@ -177,7 +177,7 @@ function install_required_packages {
         || [[ $DISTRO_VERSION == *"mint"* ]] || [[ $DISTRO_VERSION == *"pop"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
-            sudo apt-get install -y gawk cabextract coreutils curl lsb-release mesa-utils p7zip p7zip-full p7zip-rar policykit-1 samba spacenavd winbind wget xdg-utils
+            sudo apt-get install -y gawk cabextract coreutils curl lsb-release mesa-utils p7zip p7zip-full p7zip-rar policykit-1 samba spacenavd winbind wget xdg-utils bc
             sudo systemctl enable spacenavd
             sudo systemctl start spacenavd
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
@@ -185,7 +185,7 @@ function install_required_packages {
         elif [[ $DISTRO_VERSION == *"fedora"* ]] || [[ $DISTRO_VERSION == *"nobara"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
-            sudo dnf install -y cabextract coreutils curl gawk lsb_release mesa-demos p7zip p7zip-plugins polkit samba-dc samba-winbind samba-winbind-clients spacenavd wget xdg-utils
+            sudo dnf install -y cabextract coreutils curl gawk lsb_release mesa-demos p7zip p7zip-plugins polkit samba-dc samba-winbind samba-winbind-clients spacenavd wget xdg-utils bc
             sudo systemctl enable spacenavd
             sudo systemctl start spacenavd
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
@@ -193,7 +193,7 @@ function install_required_packages {
         elif [[ $DISTRO_VERSION == *"gentoo"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
-            sudo emerge -q app-admin/samba app-misc/spacenavd app-arch/cabextract app-arch/p7zip net-misc/curl net-misc/wget sys-apps/coreutils sys-apps/gawk sys-apps/lsb-release sys-auth/polkit x11-apps/mesa-progs x11-misc/xdg-utils
+            sudo emerge -q app-admin/samba app-misc/spacenavd app-arch/cabextract app-arch/p7zip net-misc/curl net-misc/wget sys-apps/coreutils sys-apps/gawk sys-apps/lsb-release sys-auth/polkit x11-apps/mesa-progs x11-misc/xdg-utils sys-apps/bc
             sudo rc-update add spacenavd default
             sudo /etc/init.d/spacenavd start
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
@@ -201,7 +201,7 @@ function install_required_packages {
         elif [[ $DISTRO_VERSION == *"nixos"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
-            sudo nix-env -iA gawk nixos.cabextract nixos.coreutils nixos.curl nixos.lsb_release nixos.mesa-utils nixos.p7zip nixos.polkit nixos.samba nixos.spacenavd nixos.wget nixos.winbind nixos.xdg_utils
+            sudo nix-env -iA gawk nixos.cabextract nixos.coreutils nixos.curl nixos.lsb_release nixos.mesa-utils nixos.p7zip nixos.polkit nixos.samba nixos.spacenavd nixos.wget nixos.winbind nixos.xdg_utils nixos.bc
             sudo systemctl enable spacenavd
             sudo systemctl start spacenavd
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
@@ -209,7 +209,7 @@ function install_required_packages {
         elif [[ $DISTRO_VERSION == *"opensuse"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
-            sudo zypper install -y cabextract coreutils curl gawk lsb-release Mesa-demo-x p7zip-full polkit samba samba-client samba-winbind spacenavd wget wine xdg-utils
+            sudo zypper install -y cabextract coreutils curl gawk lsb-release Mesa-demo-x p7zip-full polkit samba samba-client samba-winbind spacenavd wget wine xdg-utils bc
             sudo systemctl enable spacenavd
             sudo systemctl start spacenavd
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
@@ -218,9 +218,9 @@ function install_required_packages {
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
             if command -v dnf &> /dev/null; then # Use dnf for newer distributions
-                sudo dnf install -y cabextract coreutils curl gawk lsb_release mesa-demos p7zip p7zip-plugins polkit samba-dc samba-winbind samba-winbind-clients spacenavd wget xdg-utils
+                sudo dnf install -y cabextract coreutils curl gawk lsb_release mesa-demos p7zip p7zip-plugins polkit samba-dc samba-winbind samba-winbind-clients spacenavd wget xdg-utils bc
             else  # Use yum for older distributions
-                sudo yum install -y cabextract coreutils curl gawk lsb_release mesa-demos p7zip p7zip-plugins polkit samba-dc samba-winbind samba-winbind-clients spacenavd wget xdg-utils
+                sudo yum install -y cabextract coreutils curl gawk lsb_release mesa-demos p7zip p7zip-plugins polkit samba-dc samba-winbind samba-winbind-clients spacenavd wget xdg-utils bc
             fi
             sudo systemctl enable spacenavd
             sudo systemctl start spacenavd
@@ -229,7 +229,7 @@ function install_required_packages {
         elif [[ $DISTRO_VERSION == *"solus"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
-            sudo eopkg -y install gawk cabextract coreutils curl lsb-release mesa-utils p7zip p7zip-plugins spacenavd polkit wget winbind xdg-utils
+            sudo eopkg -y install gawk cabextract coreutils curl lsb-release mesa-utils p7zip p7zip-plugins spacenavd polkit wget winbind xdg-utils bc
             sudo systemctl enable spacenavd
             sudo systemctl start spacenavd
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
@@ -237,7 +237,7 @@ function install_required_packages {
         elif [[ $DISTRO_VERSION == *"void"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
-            sudo xbps-install -Sy gawk cabextract coreutils curl lsb-release mesa-demos p7zip-full polkit samba-winbind spacenavd wget xdg-utils
+            sudo xbps-install -Sy gawk cabextract coreutils curl lsb-release mesa-demos p7zip-full polkit samba-winbind spacenavd wget xdg-utils bc
             sudo ln -s /usr/sbin/spacenavd /etc/sv/spacenavd
             sudo sv enable spacenavd
             sudo sv start spacenavd
@@ -535,10 +535,23 @@ function check_gpu_vram {
 ##############################################################################################################################################################################
 
 function check_disk_space {
-    # Get the free disk memory size in GB
+    # Get the free disk memory size in GB or MB
     GET_DISK_SPACE=$(df -h $SELECTED_DIRECTORY | awk '{print $4}' | tail -1)
     echo -e "$(gettext "${GREEN}The free disk memory size is: $GET_DISK_SPACE${NOCOLOR}")"
-    if [[ $GET_DISK_SPACE > 10G ]]; then # Check if the selected disk memory is greater than 10GB
+    
+    # Convert the size to a number without the unit
+    DISK_SPACE_NUM=${GET_DISK_SPACE%?}
+    
+    # Convert to gigabytes if necessary
+    if [[ $GET_DISK_SPACE == *G ]]; then
+        DISK_SPACE_GB=$DISK_SPACE_NUM
+    elif [[ $GET_DISK_SPACE == *M ]]; then
+        DISK_SPACE_GB=$(echo "scale=2; $DISK_SPACE_NUM / 1024" | bc)
+    else
+        DISK_SPACE_GB=0
+    fi
+
+    if (( $(echo "$DISK_SPACE_GB > 10" | bc -l) )); then
         echo -e "$(gettext "${GREEN}The free disk memory size is greater than 10GB.${NOCOLOR}")"
     else
         echo -e "$(gettext "${YELLOW}There is not enough disk free memory to continue installing Fusion on your system!${NOCOLOR}")"
@@ -587,7 +600,7 @@ function check_install_firefox_deb {
             echo "Proceeding with the uninstallation of the Snap version and installation of the DEB version..."
 
             # Uninstall Firefox Snap
-            sudo snap remove firefox
+            sudo snap remove -y firefox
 
             # Create an APT keyring directory if it doesn't exist
             sudo install -d -m 0755 /etc/apt/keyrings
@@ -606,7 +619,7 @@ Pin-Priority: 1000
 ' | sudo tee /etc/apt/preferences.d/mozilla
 
             # Update and install Firefox DEB version
-            sudo apt update && sudo apt install firefox
+            sudo apt update && sudo apt install -y firefox
 
             echo "Firefox DEB version installed successfully."
         else
