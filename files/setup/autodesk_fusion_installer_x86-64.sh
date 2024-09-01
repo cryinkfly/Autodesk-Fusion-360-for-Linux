@@ -535,10 +535,23 @@ function check_gpu_vram {
 ##############################################################################################################################################################################
 
 function check_disk_space {
-    # Get the free disk memory size in GB
+    # Get the free disk memory size in GB or MB
     GET_DISK_SPACE=$(df -h $SELECTED_DIRECTORY | awk '{print $4}' | tail -1)
     echo -e "$(gettext "${GREEN}The free disk memory size is: $GET_DISK_SPACE${NOCOLOR}")"
-    if [[ $GET_DISK_SPACE > 10G ]]; then # Check if the selected disk memory is greater than 10GB
+    
+    # Convert the size to a number without the unit
+    DISK_SPACE_NUM=${GET_DISK_SPACE%?}
+    
+    # Convert to gigabytes if necessary
+    if [[ $GET_DISK_SPACE == *G ]]; then
+        DISK_SPACE_GB=$DISK_SPACE_NUM
+    elif [[ $GET_DISK_SPACE == *M ]]; then
+        DISK_SPACE_GB=$(echo "scale=2; $DISK_SPACE_NUM / 1024" | bc)
+    else
+        DISK_SPACE_GB=0
+    fi
+
+    if (( $(echo "$DISK_SPACE_GB > 10" | bc -l) )); then
         echo -e "$(gettext "${GREEN}The free disk memory size is greater than 10GB.${NOCOLOR}")"
     else
         echo -e "$(gettext "${YELLOW}There is not enough disk free memory to continue installing Fusion on your system!${NOCOLOR}")"
