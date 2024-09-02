@@ -674,7 +674,7 @@ function download_files() {
     # Extract the patched the 6WebEngineCore.dll.7z file with overwrite option
     7za e -y "$SELECTED_DIRECTORY/downloads/Qt6WebEngineCore.dll.7z" -o"$SELECTED_DIRECTORY/downloads/"
     # Download the patched siappdll.dll file
-    curl -L "$QT6_WEBENGINECORE_URL" -o "$SELECTED_DIRECTORY/downloads/Qt6WebEngineCore.dll"
+    curl -L "$SIAPPDLL_URL" -o "$SELECTED_DIRECTORY/downloads/siappdll.dll"
 }
 
 # Download an extension if it doesn't exist or is older than 7 days
