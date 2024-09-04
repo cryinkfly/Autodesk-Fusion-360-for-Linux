@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2024                                                                          #
-# Time/Date:    21:45/02.09.2024                                                                   #
+# Time/Date:    20:30/04.09.2024                                                                   #
 # Version:      2.0.0-Alpha                                                                        #
 ####################################################################################################
 
@@ -348,6 +348,7 @@ function check_option() {
             sleep 2
             deactivate_window_not_responding_dialog
             create_data_structure
+            check_secure_boot
             check_ram
             check_gpu_driver
             check_gpu_vram
@@ -399,6 +400,30 @@ function create_data_structure() {
 }
 
 ##############################################################################################################################################################################
+# CHECK IF SECURE BOOT IS DEACTIVATED ON A LINUX SYSTEM FOR LOADING DRIVER MODULES (FOR EXAMPLE: NVIDIA GPU DRIVER):                                                          #
+##############################################################################################################################################################################
+
+# Function to check if Secure Boot is activated
+function check_secure_boot {
+    if ! command -v mokutil &> /dev/null; then
+        echo "mokutil command not found. Please install it to check Secure Boot status."
+        return 1
+    fi
+
+    # Check if Secure Boot is enabled
+    if mokutil --sb-state | grep -q 'Secure Boot enabled'; then
+        echo "Secure Boot is enabled."
+        SECURE_BOOT="1"
+    else
+        echo "Secure Boot is not enabled."
+        SECURE_BOOT="0"
+    fi
+}
+
+# Call the function
+check_secure_boot
+
+##############################################################################################################################################################################
 # CHECKING THE MINIMUM RAM (RANDOM ACCESS MEMORY) REQUIREMENT:                                                                                                               #
 ##############################################################################################################################################################################
 
@@ -436,12 +461,15 @@ function check_ram {
 ##############################################################################################################################################################################
 
 function check_gpu_driver {
-    echo -e "$(gettext "${YELLOW}Checking the GPU drivers for the installer ...${NOCOLOR}")"
+    echo -e "$(gettext "${YELLOW}Überprüfung der GPU-Treiber für den Installer ...${NOCOLOR}")"
     
-    if nvidia-smi &>/dev/null; then
-        NVIDIA_PRESENT=true
-        NVIDIA_VRAM=$(nvidia-smi --query-gpu=memory.total --format=csv,noheader,nounits | head -n1)
-        echo -e "$(gettext "${GREEN}NVIDIA GPU detected with ${NVIDIA_VRAM}MB VRAM${NOCOLOR}")"
+    if [[ $SECURE_BOOT == "0" ]]; then
+        # Wenn Secure Boot deaktiviert ist, NVIDIA GPU überprüfen
+        if nvidia-smi &>/dev/null; then
+            NVIDIA_PRESENT=true
+            NVIDIA_VRAM=$(nvidia-smi --query-gpu=memory.total --format=csv,noheader,nounits | head -n1)
+            echo -e "$(gettext "${GREEN}NVIDIA GPU erkannt mit ${NVIDIA_VRAM}MB VRAM${NOCOLOR}")"
+        fi
     fi
 
     INTEL_AMD_GPU=$(glxinfo | grep "OpenGL vendor string" | cut -d: -f2 | tr -d ' ')
@@ -450,49 +478,60 @@ function check_gpu_driver {
     if [[ $INTEL_AMD_GPU == "AMD" ]]; then
         AMD_PRESENT=true
         AMD_VRAM=$(glxinfo | grep -i "Video memory" | grep -Eo '[0-9]+MB' | grep -Eo '[0-9]+' | head -n1)
-        echo -e "$(gettext "${GREEN}${INTEL_AMD_GPU} GPU detected with ${AMD_VRAM}MB VRAM${NOCOLOR}")"
+        echo -e "$(gettext "${GREEN}${INTEL_AMD_GPU} GPU erkannt mit ${AMD_VRAM}MB VRAM${NOCOLOR}")"
     elif [[ $INTEL_AMD_GPU == "Intel" ]]; then
         INTEL_PRESENT=true
         INTEL_VRAM=$(glxinfo | grep -i "Video memory" | grep -Eo '[0-9]+MB' | grep -Eo '[0-9]+' | head -n1)
-        echo -e "$(gettext "${GREEN}${INTEL_AMD_GPU} GPU detected with ${INTEL_VRAM}MB VRAM${NOCOLOR}")"
+        echo -e "$(gettext "${GREEN}${INTEL_AMD_GPU} GPU erkannt mit ${INTEL_VRAM}MB VRAM${NOCOLOR}")"
     fi
 
-    if [[ $NVIDIA_PRESENT && ($INTEL_PRESENT || $AMD_PRESENT) ]]; then
-        echo -e "$(gettext "${YELLOW}Multiple GPUs detected. Please choose which to use (Default is DXVK):${NOCOLOR}")"
-        echo "1) NVIDIA"
-        echo "2) ${INTEL_AMD_GPU}"
-        read -p "Enter your choice (1 or 2): " gpu_choice
-        
-        case $gpu_choice in
-            1)
-                GPU_DRIVER="DXVK"
-                GET_VRAM_MEGABYTES=$NVIDIA_VRAM
-                echo -e "$(gettext "${GREEN}NVIDIA GPU selected. The DXVK GPU driver will be used for the installation.${NOCOLOR}")"
-                ;;
-            2)
-                GPU_DRIVER="OpenGL"
-                GET_VRAM_MEGABYTES=$INTEL_AMD_VRAM
-                echo -e "$(gettext "${GREEN}The OpenGL GPU fallback driver will be used for the installation.${NOCOLOR}")"
-                ;;
-            *)
-                GPU_DRIVER="OpenGL"
-                GET_VRAM_MEGABYTES=$INTEL_VRAM
-                ;;
-        esac
-    elif [[ $NVIDIA_PRESENT ]]; then
-        GPU_DRIVER="DXVK"
-        GET_VRAM_MEGABYTES=$NVIDIA_VRAM
-        echo -e "$(gettext "${GREEN}The DXVK GPU driver will be used for the installation.${NOCOLOR}")"
-    elif [[ $AMD_PRESENT ]]; then
-        GPU_DRIVER="DXVK"
-        GET_VRAM_MEGABYTES=$AMD_VRAM
-        echo -e "$(gettext "${GREEN}The DXVK GPU driver will be used for the installation.${NOCOLOR}")"
-    elif [[ $INTEL_PRESENT ]]; then
+    if [[ $SECURE_BOOT == "1" && $NVIDIA_PRESENT ]]; then
+        # Wenn Secure Boot aktiviert ist und NVIDIA GPU erkannt wurde, NVIDIA GPU sollte OpenGL verwenden
         GPU_DRIVER="OpenGL"
-        GET_VRAM_MEGABYTES=$INTEL_VRAM
-        echo -e "$(gettext "${GREEN}The OpenGL GPU fallback driver will be used for the installation.${NOCOLOR}")"
+        GET_VRAM_MEGABYTES=$NVIDIA_VRAM
+        echo -e "$(gettext "${GREEN}Secure Boot ist aktiviert. Der OpenGL-GPU-Treiber wird für die NVIDIA GPU verwendet.${NOCOLOR}")"
+    elif [[ $SECURE_BOOT == "0" ]]; then
+        # Wenn Secure Boot deaktiviert ist, handhabe die GPU-Auswahl
+        if [[ $NVIDIA_PRESENT && ($INTEL_PRESENT || $AMD_PRESENT) ]]; then
+            echo -e "$(gettext "${YELLOW}Mehrere GPUs erkannt. Bitte wählen Sie, welche verwendet werden soll (Standard ist DXVK):${NOCOLOR}")"
+            echo "1) NVIDIA"
+            echo "2) ${INTEL_AMD_GPU}"
+            read -p "Geben Sie Ihre Wahl ein (1 oder 2): " gpu_choice
+            
+            case $gpu_choice in
+                1)
+                    GPU_DRIVER="DXVK"
+                    GET_VRAM_MEGABYTES=$NVIDIA_VRAM
+                    echo -e "$(gettext "${GREEN}NVIDIA GPU ausgewählt. Der DXVK-GPU-Treiber wird für die Installation verwendet.${NOCOLOR}")"
+                    ;;
+                2)
+                    GPU_DRIVER="OpenGL"
+                    GET_VRAM_MEGABYTES=$INTEL_AMD_VRAM
+                    echo -e "$(gettext "${GREEN}Der OpenGL-GPU-Fallback-Treiber wird für die Installation verwendet.${NOCOLOR}")"
+                    ;;
+                *)
+                    GPU_DRIVER="OpenGL"
+                    GET_VRAM_MEGABYTES=$INTEL_VRAM
+                    ;;
+            esac
+        elif [[ $NVIDIA_PRESENT ]]; then
+            GPU_DRIVER="DXVK"
+            GET_VRAM_MEGABYTES=$NVIDIA_VRAM
+            echo -e "$(gettext "${GREEN}Der DXVK-GPU-Treiber wird für die Installation verwendet.${NOCOLOR}")"
+        elif [[ $AMD_PRESENT ]]; then
+            GPU_DRIVER="DXVK"
+            GET_VRAM_MEGABYTES=$AMD_VRAM
+            echo -e "$(gettext "${GREEN}Der DXVK-GPU-Treiber wird für die Installation verwendet.${NOCOLOR}")"
+        elif [[ $INTEL_PRESENT ]]; then
+            GPU_DRIVER="OpenGL"
+            GET_VRAM_MEGABYTES=$INTEL_VRAM
+            echo -e "$(gettext "${GREEN}Der OpenGL-GPU-Fallback-Treiber wird für die Installation verwendet.${NOCOLOR}")"
+        else
+            echo -e "$(gettext "${RED}Kein GPU-Treiber auf Ihrem System erkannt!${NOCOLOR}")"
+            GET_VRAM_MEGABYTES=0
+        fi
     else
-        echo -e "$(gettext "${RED}No GPU driver detected on your system!${NOCOLOR}")"
+        echo -e "$(gettext "${RED}Kein GPU-Treiber auf Ihrem System erkannt!${NOCOLOR}")"
         GET_VRAM_MEGABYTES=0
     fi
 
@@ -535,29 +574,36 @@ function check_gpu_vram {
 ##############################################################################################################################################################################
 
 function check_disk_space {
-    # Get the free disk memory size in GB or MB
-    GET_DISK_SPACE=$(df -h $SELECTED_DIRECTORY | awk '{print $4}' | tail -1)
-    echo -e "$(gettext "${GREEN}The free disk memory size is: $GET_DISK_SPACE${NOCOLOR}")"
-    
-    # Convert the size to a number without the unit
-    DISK_SPACE_NUM=${GET_DISK_SPACE%?}
-    
-    # Convert to gigabytes if necessary
-    if [[ $GET_DISK_SPACE == *G ]]; then
-        DISK_SPACE_GB=$DISK_SPACE_NUM
-    elif [[ $GET_DISK_SPACE == *M ]]; then
-        DISK_SPACE_GB=$(echo "scale=2; $DISK_SPACE_NUM / 1024" | bc)
-    else
-        DISK_SPACE_GB=0
+    # Get the free disk space in the selected directory
+    GET_DISK_SPACE=$(df -h "$SELECTED_DIRECTORY" 2>/dev/null | awk 'NR==2 {print $4}')
+
+    if [[ -z "$GET_DISK_SPACE" ]]; then
+        echo -e "${RED}Failed to retrieve disk space information. Ensure the directory exists and try again.${NOCOLOR}"
+        exit 1
     fi
 
+    echo -e "$(gettext "${GREEN}The free disk memory size is: $GET_DISK_SPACE${NOCOLOR}")"
+
+    # Extract numerical value and unit, and replace comma with dot
+    DISK_SPACE_NUM=$(echo "$GET_DISK_SPACE" | sed 's/[A-Za-z]//g' | sed 's/,/./g')
+    DISK_SPACE_UNIT=$(echo "$GET_DISK_SPACE" | sed 's/[0-9.,]//g')
+
+    # Convert to gigabytes
+    case $DISK_SPACE_UNIT in
+        G) DISK_SPACE_GB=$DISK_SPACE_NUM ;;
+        M) DISK_SPACE_GB=$(echo "scale=2; $DISK_SPACE_NUM / 1024" | bc) ;;
+        T) DISK_SPACE_GB=$(echo "scale=2; $DISK_SPACE_NUM * 1024" | bc) ;;
+        *) DISK_SPACE_GB=0 ;;
+    esac
+
+    # Check if the free disk space is greater than 10GB
     if (( $(echo "$DISK_SPACE_GB > 10" | bc -l) )); then
         echo -e "$(gettext "${GREEN}The free disk memory size is greater than 10GB.${NOCOLOR}")"
     else
         echo -e "$(gettext "${YELLOW}There is not enough disk free memory to continue installing Fusion on your system!${NOCOLOR}")"
         echo -e "$(gettext "${YELLOW}Make more space in your selected disk or select a different hard drive.${NOCOLOR}")"
         echo -e "$(gettext "${RED}The installer has been terminated!${NOCOLOR}")"
-        exit;
+        exit 1
     fi
 }
 
