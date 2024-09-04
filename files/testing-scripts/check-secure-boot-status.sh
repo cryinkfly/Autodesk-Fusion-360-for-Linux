@@ -1,27 +1,19 @@
 #!/bin/bash
 
+# Function to check if Secure Boot is activated
 check_secure_boot() {
-    # Check if the system supports Secure Boot
-    if [ ! -d "/sys/firmware/efi" ]; then
-        echo "EFI firmware is not detected. Secure Boot is not supported."
+    if ! command -v mokutil &> /dev/null; then
+        echo "mokutil command not found. Please install it to check Secure Boot status."
         return 1
     fi
 
-    # Check if the SecureBoot variable exists
-    if [ -f "/sys/firmware/efi/efivars/SecureBoot-*" ]; then
-        secure_boot_status=$(hexdump -v -e '/1 "%d"' /sys/firmware/efi/efivars/SecureBoot-*)
-        if [ "$secure_boot_status" -eq 1 ]; then
-            echo "Secure Boot is enabled."
-            return 0
-        else
-            echo "Secure Boot is disabled."
-            return 1
-        fi
+    # Check if Secure Boot is enabled
+    if mokutil --sb-state | grep -q 'Secure Boot enabled'; then
+        echo "Secure Boot is enabled."
     else
-        echo "Secure Boot variable not found. Secure Boot may not be supported."
-        return 1
+        echo "Secure Boot is not enabled."
     fi
 }
 
-# Call the function to check Secure Boot status
+# Call the function
 check_secure_boot
