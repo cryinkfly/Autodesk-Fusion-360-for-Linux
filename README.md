@@ -236,7 +236,9 @@
      <td><strong>Graphics Card</strong></td>
      <td>DirectX11 (Direct3D 10.1 or greater) = DXVK Mode <br> OpenGL (2.0 or greater) = OpenGL Mode <br> Dedicated GPU with 1 GB or more of VRAM<br> Integrated graphics with 6 GB or more of RAM
       <br><br>
-      <p><b>Note</b>: There is a <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/wiki/Supported-Graphics-Cards">list of tested graphics cards</a> that will work with Autodesk Fusion 360 on Linux!</p></td>
+      <p><b>Note 1</b>: There is a <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/wiki/Supported-Graphics-Cards">list of tested graphics cards</a> that will work with Autodesk Fusion 360 on Linux!</p>
+      <p><b>Note 2</b>: If you want to use DXVK with an NVIDIA graphics card, you must disable Secure Boot in the BIOS and ensure that the latest graphics drivers are installed. This is because the NVIDIA driver modules can only be loaded when Secure Boot is disabled!</p>
+     </td>
     </tr>
     <tr>
      <td><strong>Disk Space</strong></td>
