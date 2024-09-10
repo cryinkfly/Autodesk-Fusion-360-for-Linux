@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2024                                                                          #
-# Time/Date:    20:30/04.09.2024                                                                   #
+# Time/Date:    08:55/10.09.2024                                                                   #
 # Version:      2.0.0-Alpha                                                                        #
 ####################################################################################################
 
@@ -82,8 +82,8 @@ check_required_packages() {
     VERSION=$(grep "^VERSION_ID=" /etc/*-release | cut -d'=' -f2 | tr -d '"')
     DISTRO_VERSION="$DISTRO $VERSION"
 
-    # Example required commands, now including "bc"
-    REQUIRED_COMMANDS=("curl" "lsb_release" "glxinfo" "pkexec" "wget" "xdg-open" "ls" "cat" "echo" "awk" "7z" "cabextract" "samba" "wbinfo" "systemctl" "bc")
+    # Example required commands, now including "xrandr" and "bc"
+    REQUIRED_COMMANDS=("curl" "lsb_release" "glxinfo" "pkexec" "wget" "xdg-open" "ls" "cat" "echo" "awk" "7z" "cabextract" "samba" "wbinfo" "systemctl" "bc" "xrandr")
 
     # Array to store missing commands
     MISSING_COMMANDS=()
@@ -133,6 +133,14 @@ check_required_packages() {
                         echo -e "${GREEN}The service spacenavd is active!${NOCOLOR}"
                     fi
                     ;;
+                xrandr)
+                    if ! xrandr &>/dev/null; then
+                        echo -e "${RED}The required command (${cmd}) is not available!${NOCOLOR}"
+                        MISSING_COMMANDS+=("$cmd")
+                    else
+                        echo -e "${GREEN}The required command (${cmd}) is available!${NOCOLOR}"
+                    fi
+                    ;;
                 *)
                     echo -e "${GREEN}The required command (${cmd}) is available!${NOCOLOR}"
                     ;;
@@ -168,7 +176,7 @@ function install_required_packages {
         if [[ $DISTRO_VERSION == *"arch"* ]] || [[ $DISTRO_VERSION == *"manjaro"* ]] || [[ $DISTRO_VERSION == *"endeavouros"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
-            sudo pacman -S gawk cabextract coreutils curl lsb-release mesa-demos p7zip polkit samba spacenavd winbind wget xdg-utils bc --noconfirm
+            sudo pacman -S gawk cabextract coreutils curl lsb-release mesa-demos p7zip polkit samba spacenavd winbind wget xdg-utils bc xorg-xrandr --noconfirm
             sudo systemctl enable spacenavd
             sudo systemctl start spacenavd
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
@@ -177,7 +185,7 @@ function install_required_packages {
         || [[ $DISTRO_VERSION == *"mint"* ]] || [[ $DISTRO_VERSION == *"pop"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
-            sudo apt-get install -y gawk cabextract coreutils curl lsb-release mesa-utils p7zip p7zip-full p7zip-rar policykit-1 samba spacenavd winbind wget xdg-utils bc
+            sudo apt-get install -y gawk cabextract coreutils curl lsb-release mesa-utils p7zip p7zip-full p7zip-rar policykit-1 samba spacenavd winbind wget xdg-utils bc x11-xserver-utils
             sudo systemctl enable spacenavd
             sudo systemctl start spacenavd
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
@@ -185,7 +193,7 @@ function install_required_packages {
         elif [[ $DISTRO_VERSION == *"fedora"* ]] || [[ $DISTRO_VERSION == *"nobara"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
-            sudo dnf install -y cabextract coreutils curl gawk lsb_release mesa-demos p7zip p7zip-plugins polkit samba-dc samba-winbind samba-winbind-clients spacenavd wget xdg-utils bc
+            sudo dnf install -y cabextract coreutils curl gawk lsb_release mesa-demos p7zip p7zip-plugins polkit samba-dc samba-winbind samba-winbind-clients spacenavd wget xdg-utils bc xrandr
             sudo systemctl enable spacenavd
             sudo systemctl start spacenavd
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
@@ -193,7 +201,7 @@ function install_required_packages {
         elif [[ $DISTRO_VERSION == *"gentoo"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
-            sudo emerge -q app-admin/samba app-misc/spacenavd app-arch/cabextract app-arch/p7zip net-misc/curl net-misc/wget sys-apps/coreutils sys-apps/gawk sys-apps/lsb-release sys-auth/polkit x11-apps/mesa-progs x11-misc/xdg-utils sys-apps/bc
+            sudo emerge -q app-admin/samba app-misc/spacenavd app-arch/cabextract app-arch/p7zip net-misc/curl net-misc/wget sys-apps/coreutils sys-apps/gawk sys-apps/lsb-release sys-auth/polkit x11-apps/mesa-progs x11-misc/xdg-utils sys-apps/bc x11-apps/xrandr
             sudo rc-update add spacenavd default
             sudo /etc/init.d/spacenavd start
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
@@ -201,7 +209,7 @@ function install_required_packages {
         elif [[ $DISTRO_VERSION == *"nixos"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
-            sudo nix-env -iA gawk nixos.cabextract nixos.coreutils nixos.curl nixos.lsb_release nixos.mesa-utils nixos.p7zip nixos.polkit nixos.samba nixos.spacenavd nixos.wget nixos.winbind nixos.xdg_utils nixos.bc
+            sudo nix-env -iA gawk nixos.cabextract nixos.coreutils nixos.curl nixos.lsb_release nixos.mesa-utils nixos.p7zip nixos.polkit nixos.samba nixos.spacenavd nixos.wget nixos.winbind nixos.xdg_utils nixos.bc nixos.xrandr
             sudo systemctl enable spacenavd
             sudo systemctl start spacenavd
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
@@ -209,7 +217,7 @@ function install_required_packages {
         elif [[ $DISTRO_VERSION == *"opensuse"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
-            sudo zypper install -y cabextract coreutils curl gawk lsb-release Mesa-demo-x p7zip-full polkit samba samba-client samba-winbind spacenavd wget wine xdg-utils bc
+            sudo zypper install -y cabextract coreutils curl gawk lsb-release Mesa-demo-x p7zip-full polkit samba samba-client samba-winbind spacenavd wget wine xdg-utils bc xrandr
             sudo systemctl enable spacenavd
             sudo systemctl start spacenavd
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
@@ -218,9 +226,9 @@ function install_required_packages {
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
             if command -v dnf &> /dev/null; then # Use dnf for newer distributions
-                sudo dnf install -y cabextract coreutils curl gawk lsb_release mesa-demos p7zip p7zip-plugins polkit samba-dc samba-winbind samba-winbind-clients spacenavd wget xdg-utils bc
+                sudo dnf install -y cabextract coreutils curl gawk lsb_release mesa-demos p7zip p7zip-plugins polkit samba-dc samba-winbind samba-winbind-clients spacenavd wget xdg-utils bc xrandr
             else  # Use yum for older distributions
-                sudo yum install -y cabextract coreutils curl gawk lsb_release mesa-demos p7zip p7zip-plugins polkit samba-dc samba-winbind samba-winbind-clients spacenavd wget xdg-utils bc
+                sudo yum install -y cabextract coreutils curl gawk lsb_release mesa-demos p7zip p7zip-plugins polkit samba-dc samba-winbind samba-winbind-clients spacenavd wget xdg-utils bc xrandr
             fi
             sudo systemctl enable spacenavd
             sudo systemctl start spacenavd
@@ -229,7 +237,7 @@ function install_required_packages {
         elif [[ $DISTRO_VERSION == *"solus"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
-            sudo eopkg -y install gawk cabextract coreutils curl lsb-release mesa-utils p7zip p7zip-plugins spacenavd polkit wget winbind xdg-utils bc
+            sudo eopkg -y install gawk cabextract coreutils curl lsb-release mesa-utils p7zip p7zip-plugins spacenavd polkit wget winbind xdg-utils bc xrandr
             sudo systemctl enable spacenavd
             sudo systemctl start spacenavd
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
@@ -237,7 +245,7 @@ function install_required_packages {
         elif [[ $DISTRO_VERSION == *"void"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
-            sudo xbps-install -Sy gawk cabextract coreutils curl lsb-release mesa-demos p7zip-full polkit samba-winbind spacenavd wget xdg-utils bc
+            sudo xbps-install -Sy gawk cabextract coreutils curl lsb-release mesa-demos p7zip-full polkit samba-winbind spacenavd wget xdg-utils bc xrandr
             sudo ln -s /usr/sbin/spacenavd /etc/sv/spacenavd
             sudo sv enable spacenavd
             sudo sv start spacenavd
@@ -534,6 +542,19 @@ function check_gpu_driver {
         echo -e "$(gettext "${RED}Kein GPU-Treiber auf Ihrem System erkannt!${NOCOLOR}")"
         GET_VRAM_MEGABYTES=0
     fi
+
+    sleep 2
+
+    # Get the current display resolution of the main monitor if more than one is connected.
+    MONITOR_RESOLUTION=$(xrandr | grep '*' | awk '{print $1}')
+
+    # If the $MONITOR_RESOLUTION value is empty, set it to "1920x1080"
+    if [ -z "$MONITOR_RESOLUTION" ]; then
+        MONITOR_RESOLUTION="1920x1080"
+    fi
+
+    # Output the resolution
+    echo -e "$(gettext "${GREEN}Main monitor resolution: $MONITOR_RESOLUTION ${NOCOLOR}")"
 
     sleep 2
 }
@@ -1085,6 +1106,13 @@ function dxvk_opengl_2 {
 
 ###############################################################################################################################################################
 
+# Configure the correct virtual desktop resolution
+function virtual_desktop_config {
+    
+}
+
+###############################################################################################################################################################
+
 # Execute the installation of Autodesk Fusion
 function autodesk_fusion_run_install_client {
     cd "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Downloads"
@@ -1179,6 +1207,9 @@ function wine_autodesk_fusion_install() {
     WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine REG ADD "HKCU\Software\Wine\DllOverrides" /v "mfc140u" /t REG_SZ /d native /f
     # Fixed the problem with the bcp47langs issue and now the login works again!
     WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine reg add "HKCU\Software\Wine\DllOverrides" /v "bcp47langs" /t REG_SZ /d "" /f
+    sleep 5s
+    # Configure the correct virtual desktop resolution
+    WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" sh "$SELECTED_DIRECTORY/bin/winetricks" -q vd="$MONITOR_RESOLUTION"
     # Download and install WebView2 to handle Login attempts, required even though we redirect to your default browser
     sleep 5s
     cp "$SELECTED_DIRECTORY/downloads/WebView2installer.exe" "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Downloads/WebView2installer.exe"
