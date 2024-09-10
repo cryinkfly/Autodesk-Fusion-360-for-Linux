@@ -1106,13 +1106,6 @@ function dxvk_opengl_2 {
 
 ###############################################################################################################################################################
 
-# Configure the correct virtual desktop resolution
-function virtual_desktop_config {
-    
-}
-
-###############################################################################################################################################################
-
 # Execute the installation of Autodesk Fusion
 function autodesk_fusion_run_install_client {
     cd "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Downloads"
