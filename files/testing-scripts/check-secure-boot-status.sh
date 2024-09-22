@@ -3,7 +3,7 @@
 # Function to check if Secure Boot is activated
 check_secure_boot() {
     if ! command -v mokutil &> /dev/null; then
-        echo "emokutil command not found. Please install it to check Secure Boot status."
+        echo "mokutil command not found. Please install it to check Secure Boot status."
         exit 1
     fi
 
