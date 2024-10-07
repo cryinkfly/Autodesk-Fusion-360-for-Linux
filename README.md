@@ -336,6 +336,8 @@
 
      https://usebottles.com/app/#fusion360
 
+  For the SSO-Login bug use this Workaround: https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/issues/460#issuecomment-2315888332
+
 🔹 Now, You can <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues/44#issuecomment-890552181">use</a> Autodesk Fusion 360 on your Linux system!
  </br></br>
  <h3>📖 Which script releases are available?</h3>
