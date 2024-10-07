@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2024                                                                          #
-# Time/Date:    18:02/22.09.2024                                                                   #
+# Time/Date:    20:42/07.10.2024                                                                   #
 # Version:      2.0.1-Alpha                                                                        #
 ####################################################################################################
 
@@ -1056,7 +1056,7 @@ Comment[ko]=Autodesk Fusion 제품 설계 및 제조를 위한 클라우드 기�
 Comment[zh_CN]=Autodesk Fusion 是一个基于云的 3D 建模、CAD、CAM 和 PCB 软件平台，用于产品设计和制造。
 Exec=$SELECTED_DIRECTORY/bin/autodesk_fusion_launcher.sh
 Type=Application
-Categories=Education;Engineering;
+Categories=Education;Engineering;Graphics;Science
 StartupNotify=true
 Icon=$SELECTED_DIRECTORY/resources/graphics/autodesk_fusion.svg
 Terminal=false
@@ -1210,10 +1210,10 @@ function wine_autodesk_fusion_install() {
     # Fixed the problem with the bcp47langs issue and now the login works again!
     WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine reg add "HKCU\Software\Wine\DllOverrides" /v "bcp47langs" /t REG_SZ /d "" /f
     sleep 5s
-    # Configure the correct virtual desktop resolution
-    WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" sh "$SELECTED_DIRECTORY/bin/winetricks" -q vd="$MONITOR_RESOLUTION"
+    # Disabled by Default - Configure the correct virtual desktop resolution
+    # WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" sh "$SELECTED_DIRECTORY/bin/winetricks" -q vd="$MONITOR_RESOLUTION"
     # Download and install WebView2 to handle Login attempts, required even though we redirect to your default browser
-    sleep 5s
+    # sleep 5s
     cp "$SELECTED_DIRECTORY/downloads/WebView2installer.exe" "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Downloads/WebView2installer.exe"
     WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Downloads/WebView2installer.exe" /silent /install
     # Pre-create shortcut directory for latest re-branding Microsoft Edge WebView2
