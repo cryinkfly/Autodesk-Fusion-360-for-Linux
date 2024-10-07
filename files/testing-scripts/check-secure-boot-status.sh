@@ -4,7 +4,7 @@
 check_secure_boot() {
     if ! command -v mokutil &> /dev/null; then
         echo "mokutil command not found. Please install it to check Secure Boot status."
-        return 1
+        exit 1
     fi
 
     # Check if Secure Boot is enabled

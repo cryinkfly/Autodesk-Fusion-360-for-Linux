@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2024                                                                          #
-# Time/Date:    08:55/10.09.2024                                                                   #
-# Version:      2.0.0-Alpha                                                                        #
+# Time/Date:    18:02/22.09.2024                                                                   #
+# Version:      2.0.1-Alpha                                                                        #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -83,7 +83,7 @@ check_required_packages() {
     DISTRO_VERSION="$DISTRO $VERSION"
 
     # Example required commands, now including "xrandr" and "bc"
-    REQUIRED_COMMANDS=("curl" "lsb_release" "glxinfo" "pkexec" "wget" "xdg-open" "ls" "cat" "echo" "awk" "7z" "cabextract" "samba" "wbinfo" "systemctl" "bc" "xrandr")
+    REQUIRED_COMMANDS=("curl" "lsb_release" "glxinfo" "pkexec" "wget" "xdg-open" "ls" "cat" "echo" "awk" "7z" "cabextract" "samba" "wbinfo" "systemctl" "bc" "xrandr" "mokutil")
 
     # Array to store missing commands
     MISSING_COMMANDS=()
@@ -135,6 +135,15 @@ check_required_packages() {
                     ;;
                 xrandr)
                     if ! xrandr &>/dev/null; then
+                        echo -e "${RED}The required command (${cmd}) is not available!${NOCOLOR}"
+                        MISSING_COMMANDS+=("$cmd")
+                    else
+                        echo -e "${GREEN}The required command (${cmd}) is available!${NOCOLOR}"
+                    fi
+                    ;;
+
+                mokutil)
+                    if ! mokutil &>/dev/null; then
                         echo -e "${RED}The required command (${cmd}) is not available!${NOCOLOR}"
                         MISSING_COMMANDS+=("$cmd")
                     else
@@ -414,8 +423,8 @@ function create_data_structure() {
 # Function to check if Secure Boot is activated
 function check_secure_boot {
     if ! command -v mokutil &> /dev/null; then
-        echo "mokutil command not found. Please install it to check Secure Boot status."
-        return 1
+        echo "${RED} mokutil command not found. Please install it to check Secure Boot status."
+        exit 1
     fi
 
     # Check if Secure Boot is enabled
