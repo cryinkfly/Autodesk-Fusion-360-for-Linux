@@ -332,7 +332,7 @@
 
 🔹または、AutodeskFusion360をFlatpakアプリとしてインストールして使用します。
 
-     https://usebottles.com/app/#fusion360
+     https://usebottles.com/app/#fusion
 
 🔹これで、AutodeskFusion360を<a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues/44#issuecomment-890552181">使用</a>できるようになりました Linuxシステムで！
   </br> </br>
