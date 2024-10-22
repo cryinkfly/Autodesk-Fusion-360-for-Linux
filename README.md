@@ -334,7 +334,7 @@
 
 🔹 Or you install and use Autodesk Fusion 360 as a Flatpak app:
 
-     https://usebottles.com/app/#fusion360
+     https://usebottles.com/app/#fusion
 
   For the SSO-Login bug use this Workaround: https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/issues/460#issuecomment-2315888332
 
