@@ -332,7 +332,7 @@
 
 🔹  <del>또는 Autodesk Fusion 360을 Flatpak 앱으로 설치하여 사용합니다.</del> 
 
- <del>    https://usebottles.com/app/#fusion360 </del>
+ <del>    https://usebottles.com/app/#fusion </del>
 
 🔹 이제 Autodesk Fusion 360을 <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues/44#issuecomment-890552181">사용</a>할 수 있습니다. 당신의 리눅스 시스템에!
   </br></br>
