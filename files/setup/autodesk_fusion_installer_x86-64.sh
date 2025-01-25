@@ -143,7 +143,7 @@ check_required_packages() {
                     ;;
 
                 mokutil)
-                    if ! mokutil &>/dev/null; then
+                    if ! mokutil --list-enrolled &>/dev/null; then
                         echo -e "${RED}The required command (${cmd}) is not available!${NOCOLOR}"
                         MISSING_COMMANDS+=("$cmd")
                     else
