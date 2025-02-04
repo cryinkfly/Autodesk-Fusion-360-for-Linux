@@ -205,7 +205,7 @@
      <td>
      <u>Дистрибутивы Linux</u>
       <ul>
-       <li><p>Arch Linux, Manjaro Linux, EndeavourOS, ...</p></li>
+       <li><p>Arch Linux, Manjaro Linux, EndeavourOS, CachyOS, ...</p></li>
        <li><p>Debian 11, Raspberry Pi Desktop, ...</p></li>
        <li><p>Debian 12</p></li>
        <li><p>Debian Testing</p></li>

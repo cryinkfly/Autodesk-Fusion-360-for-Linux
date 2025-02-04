@@ -182,7 +182,7 @@ function install_required_packages {
     echo -e "$(gettext "${YELLOW}The installer will install the required packages for the installation!")${NOCOLOR}"
     echo -e "$(gettext "${RED}Missing package: ${cmd}")${NOCOLOR}"
     sleep 2
-        if [[ $DISTRO_VERSION == *"arch"* ]] || [[ $DISTRO_VERSION == *"manjaro"* ]] || [[ $DISTRO_VERSION == *"endeavouros"* ]]; then
+        if [[ $DISTRO_VERSION == *"arch"* ]] || [[ $DISTRO_VERSION == *"manjaro"* ]] || [[ $DISTRO_VERSION == *"endeavouros"* ]] || [[ $DISTRO_VERSION == *"cachyos"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
             sudo pacman -S gawk cabextract coreutils curl lsb-release mesa-demos p7zip polkit samba spacenavd winbind wget xdg-utils bc xorg-xrandr --noconfirm
@@ -812,7 +812,7 @@ function check_and_install_wine() {
     # Check wine status 0 and install Wine version 
     if [ "$WINE_STATUS" -eq 0 ]; then
         DISTRO_VERSION=$(lsb_release -ds) # Check which Linux Distro is used! <-- Still in progress!!!
-        if [[ $DISTRO_VERSION == *"Arch"*"Linux"* ]] || [[ $DISTRO_VERSION == *"Manjaro"*"Linux"* ]] || [[ $DISTRO_VERSION == *"EndeavourOS"* ]]; then
+        if [[ $DISTRO_VERSION == *"Arch"*"Linux"* ]] || [[ $DISTRO_VERSION == *"Manjaro"*"Linux"* ]] || [[ $DISTRO_VERSION == *"EndeavourOS"* ]] || [[ $DISTRO_VERSION == *"CachyOS"* ]]; then
             echo "Installing Wine for Arch Linux ..."
             if grep -q '^\[multilib\]$' /etc/pacman.conf; then
                 echo "Multilib is already enabled!"
