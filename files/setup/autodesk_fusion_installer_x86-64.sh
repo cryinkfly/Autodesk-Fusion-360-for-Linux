@@ -1098,9 +1098,9 @@ EOL
 function dxvk_opengl_1 {
     if [[ $GPU_DRIVER = "DXVK" ]]; then
         WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" sh "$SELECTED_DIRECTORY/bin/winetricks" -q dxvk
-        curl -L https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/resource/video_driver/dxvk/DXVK.reg -o "$SELECTED_DIRECTORY/drive_c/users/$USER/Downloads/DXVK.reg"
+        curl -L https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/resource/video_driver/dxvk/DXVK.reg -o "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Downloads/DXVK.reg"
         # Add the "return"-option. Here you can read more about it -> https://github.com/koalaman/shellcheck/issues/592
-        cd "$SELECTED_DIRECTORY/drive_c/users/$USER/Downloads" || return
+        cd "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Downloads" || return
         WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine regedit.exe DXVK.reg
     fi
 }
