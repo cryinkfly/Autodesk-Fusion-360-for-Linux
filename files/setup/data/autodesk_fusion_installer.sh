@@ -209,7 +209,7 @@ function check_and_install_wine() {
 
     # Check wine status 0 and install Wine version 
     if [ "$wine_status" -eq 0 ]; then
-        if [[ $distribution == "arch" || $distribution == "manjaro" || $distribution == "endeavouros" ]]; then
+        if [[ $distribution == "arch" || $distribution == "manjaro" || $distribution == "endeavouros" || $distribution == "cachyos" ]]; then
             echo "Installing Wine for Arch Linux ..."
             if grep -q '^\[multilib\]$' /etc/pacman.conf; then
                 echo "Multilib is already enabled!"

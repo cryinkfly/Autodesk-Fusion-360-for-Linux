@@ -1063,6 +1063,10 @@ case "$SP_OS" in
     echo "Arch Linux"
     OS_ARCHLINUX
     ;;
+  "CachyOS")
+    echo "CachyOS"
+    OS_ARCHLINUX
+    ;;
   "Debian 11")
     echo "Debian 11"
     DEBIAN_BASED_1
