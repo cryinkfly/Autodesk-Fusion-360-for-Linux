@@ -73,9 +73,9 @@ Download Size: 3.5 MB
 <br>
 Release Date: 08.02.2021
 <br>
-Last Updated: 24.05.2024
+Last Updated: 21.02.2025
 <br>
-Version Info: 8.9
+Version Info: 8.16
 <br>
 Link: [Czech localization for F360](https://apps.autodesk.com/FUSION/de/Detail/Index?id=9151466655844643882&appLang=en&os=Win64)
 
