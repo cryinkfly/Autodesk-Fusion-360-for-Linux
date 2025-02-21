@@ -6,9 +6,9 @@
 # Author:       Steve Zabka                                                                        #
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
-# Copyright (c) 2020-2024                                                                          #
-# Time/Date:    20:42/07.10.2024                                                                   #
-# Version:      2.0.1-Alpha                                                                        #
+# Copyright (c) 2020-2025                                                                          #
+# Time/Date:    20:30/21.02.2025                                                                   #
+# Version:      2.0.2-Alpha                                                                        #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -757,7 +757,7 @@ function download_files() {
 function download_extensions_files {
     echo -e "$(gettext "${YELLOW}Downloading the tested extensions for Autodesk Fusion on Linux ...${NOCOLOR}")"
     download_extension "Ceska_lokalizace_pro_Autodesk_Fusion.exe" \
-        "https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/Ceska_lokalizace_pro_Autodesk_Fusion.exe"
+        "https://www.cadstudio.cz/dl/Ceska_lokalizace_pro_Autodesk_Fusion_360.exe"
     download_extension "HP_3DPrinters_for_Fusion360-win64.msi" \
         "https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/HP_3DPrinters_for_Fusion360-win64.msi"
     download_extension "Markforged_for_Fusion360-win64.msi" \
