@@ -10,6 +10,11 @@ YELLOW=$'\033[0;33m'
 GREEN=$'\033[0;32m'
 NOCOLOR=$'\033[0m'
 
+# GET THE VALUES OF THE PASSED ARGUMENTS AND ASSIGN THEM TO VARIABLES:
+SELECTED_OPTION="$1"
+SELECTED_DRIVER="$2"
+SELECTED_EXTENSIONS="$3"
+
 SELECTED_DIRECTORY="$HOME/.autodesk/autodesk_fusion"
 
 # URL to download winetricks
@@ -158,6 +163,7 @@ function wineprefix_config() {
 
     cd "$SELECTED_DIRECTORY" || return
     WINEPREFIX="$SELECTED_DIRECTORY/wineprefix/autodesk_fusion" sh "winetricks" -q sandbox # Activate the Sandbox-Mode!
+    sleep 1s
     WINEPREFIX="$SELECTED_DIRECTORY/wineprefix/autodesk_fusion" sh "winetricks" -q atmlib gdiplus arial corefonts cjkfonts dotnet452 msxml4 msxml6 vcrun2017 fontsmooth=rgb winhttp win10
     # We must install cjkfonts again then sometimes it doesn't work in the first time!
     sleep 1s
@@ -166,7 +172,7 @@ function wineprefix_config() {
     sleep 1s
     WINEPREFIX="$SELECTED_DIRECTORY/wineprefix/autodesk_fusion" sh "winetricks" -q win10
     # Configuring some DLL-Overrides
-    WINEPREFIX="$SELECTED_DIRECTORY/wineprefix/autodesk_fusion" wine REG ADD "HKCU\Software\Wine\DllOverrides" /v "adpclientservice.exe" /t REG_SZ /d "" /f
+    WINEPREFIX="$SELECTED_DIRECTORY/wineprefix/autodesk_fusion" wine REG ADD "HKCU\Software\Wine\DllOverrides" /v "adpclientservice.exe" /t REG_SZ /d "" /f # Removed tracking metrics and disabled calling home!
     WINEPREFIX="$SELECTED_DIRECTORY/wineprefix/autodesk_fusion" wine REG ADD "HKCU\Software\Wine\DllOverrides" /v "AdCefWebBrowser.exe" /t REG_SZ /d builtin /f
     WINEPREFIX="$SELECTED_DIRECTORY/wineprefix/autodesk_fusion" wine REG ADD "HKCU\Software\Wine\DllOverrides" /v "msvcp140" /t REG_SZ /d native /f
     WINEPREFIX="$SELECTED_DIRECTORY/wineprefix/autodesk_fusion" wine REG ADD "HKCU\Software\Wine\DllOverrides" /v "mfc140u" /t REG_SZ /d native /f
@@ -178,8 +184,22 @@ function wineprefix_config() {
     WINEPREFIX="$SELECTED_DIRECTORY/wineprefix/autodesk_fusion" wine "$SELECTED_DIRECTORY/wineprefix/autodesk_fusion/drive_c/users/$USER/Downloads/WebView2installer.exe" /silent /install
     # Pre-create a shortcut directory for the latest re-branding Microsoft Edge WebView2
     mkdir -p "$SELECTED_DIRECTORY/wineprefix/autodesk_fusion/drive_c/users/$USER/AppData/Roaming/Microsoft/Internet Explorer/Quick Launch/User Pinned/"
-    # ...
+    sleep 1s
+    # Check the selected GPU driver (DXVK or OpenGL)
+    if [ "$SELECTED_DRIVER" = "dxvk" ]; then
+        WINEPREFIX="$SELECTED_DIRECTORY/wineprefix/autodesk_fusion" sh "winetricks" -q dxvk
+        sleep 1s
+        WINEPREFIX="$SELECTED_DIRECTORY/wineprefix/autodesk_fusion" wine REG ADD "HKCU\Software\Wine\DllOverrides" /v "d3d10core" /t REG_SZ /d native /f
+        WINEPREFIX="$SELECTED_DIRECTORY/wineprefix/autodesk_fusion" wine REG ADD "HKCU\Software\Wine\DllOverrides" /v "d3d11" /t REG_SZ /d native /f
+        WINEPREFIX="$SELECTED_DIRECTORY/wineprefix/autodesk_fusion" wine REG ADD "HKCU\Software\Wine\DllOverrides" /v "d3d9" /t REG_SZ /d builtin /f
+        WINEPREFIX="$SELECTED_DIRECTORY/wineprefix/autodesk_fusion" wine REG ADD "HKCU\Software\Wine\DllOverrides" /v "dxgi" /t REG_SZ /d native /f
+    else
+        curl -L https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/resource/video_driver/opengl/NMachineSpecificOptions.xml -o "$SELECTED_DIRECTORY/cache/NMachineSpecificOptions.xml"
+        mkdir -p "$SELECTED_DIRECTORY/wineprefix/autodesk_fusion/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options"
+        cp -f "$SELECTED_DIRECTORY/cache/NMachineSpecificOptions.xml" "$SELECTED_DIRECTORY/wineprefix/autodesk_fusion/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml"
 }
+
+# ...
 
 ###############################################################################################################################################################
 # THE PROGRAM STARTED HERE:                                                                                                                                  #
