@@ -14,6 +14,7 @@ NOCOLOR=$'\033[0m'
 SELECTED_OPTION="$1"
 SELECTED_DRIVER="$2"
 SELECTED_EXTENSIONS="$3"
+# For example: ./autodesk_fusion_installer_x86-64.sh --install --dxvk --full
 
 SELECTED_DIRECTORY="$HOME/.autodesk/autodesk_fusion"
 
