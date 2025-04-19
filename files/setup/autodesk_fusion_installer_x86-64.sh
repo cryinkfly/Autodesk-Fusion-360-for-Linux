@@ -1033,7 +1033,7 @@ function determine_variable_folder_name_for_identity_manager {
 function autodesk_fusion_shortcuts_load {
     # Create a .desktop file (launcher.sh) for Autodesk Fusion!
     curl -L https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/resource/graphics/autodesk_fusion.svg -o "$SELECTED_DIRECTORY/resources/graphics/autodesk_fusion.svg"
-    cat >> "$HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk Fusion.desktop" << EOF
+    cat > "$HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk Fusion.desktop" << EOF
 [Desktop Entry]
 Name=Autodesk Fusion
 GenericName=CAD Application
@@ -1070,7 +1070,7 @@ EOF
     determine_variable_folder_name_for_identity_manager
 
     #Create mimetype link to handle web login call backs to the Identity Manager
-    cat >> $HOME/.local/share/applications/adskidmgr-opener.desktop << EOL
+    cat > $HOME/.local/share/applications/adskidmgr-opener.desktop << EOL
 [Desktop Entry]
 Type=Application
 Name=adskidmgr Scheme Handler
