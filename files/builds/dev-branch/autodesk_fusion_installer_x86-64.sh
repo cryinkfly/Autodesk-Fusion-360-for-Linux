@@ -136,6 +136,51 @@ function download_files() {
     fi
 }
 
+function create_adskidmgr_opener() {
+    cat > "$HOME/.local/share/applications/adskidmgr-opener.desktop" << EOL
+[Desktop Entry]
+Type=Application
+Name=adskidmgr Scheme Handler
+Exec=sh -c 'env WINEPREFIX="$SELECTED_DIRECTORY/wineprefix/autodesk_fusion" wine "\$(find \$SELECTED_DIRECTORY/wineprefix/autodesk_fusion/ -name "AdskIdentityManager.exe" | head -1 | xargs -I "{}" echo {})" "%u"'
+StartupNotify=false
+MimeType=x-scheme-handler/adskidmgr;
+EOL
+
+    #Set the mimetype handler for the Identity Manager
+    xdg-mime default adskidmgr-opener.desktop x-scheme-handler/adskidmgr
+}
+
+function wine_install_config() {
+    # Note that the winetricks sandbox verb merely removes the desktop integration and Z: drive symlinks and is not a "true" sandbox.
+    # It protects against errors rather than malice. It's useful for, e.g., keeping games from saving their settings in random subdirectories of your home directory.
+    # But it still ensures that wine, for example, no longer has access permissions to Home!
+    # For this reason, the EXE files must be located directly in the Wineprefix folder!
+
+    cd "$SELECTED_DIRECTORY" || return
+    WINEPREFIX="$SELECTED_DIRECTORY/wineprefix/autodesk_fusion" sh "winetricks" -q sandbox # Activate the Sandbox-Mode!
+    WINEPREFIX="$SELECTED_DIRECTORY/wineprefix/autodesk_fusion" sh "winetricks" -q atmlib gdiplus arial corefonts cjkfonts dotnet452 msxml4 msxml6 vcrun2017 fontsmooth=rgb winhttp win10
+    # We must install cjkfonts again then sometimes it doesn't work in the first time!
+    sleep 1s
+    WINEPREFIX="$SELECTED_DIRECTORY/wineprefix/autodesk_fusion" sh "winetricks" -q cjkfonts
+    # We must set to Windows 10 again because sometimes winetricks set it back to Windows XP!
+    sleep 1s
+    WINEPREFIX="$SELECTED_DIRECTORY/wineprefix/autodesk_fusion" sh "winetricks" -q win10
+    # Configuring some DLL-Overrides
+    WINEPREFIX="$SELECTED_DIRECTORY/wineprefix/autodesk_fusion" wine REG ADD "HKCU\Software\Wine\DllOverrides" /v "adpclientservice.exe" /t REG_SZ /d "" /f
+    WINEPREFIX="$SELECTED_DIRECTORY/wineprefix/autodesk_fusion" wine REG ADD "HKCU\Software\Wine\DllOverrides" /v "AdCefWebBrowser.exe" /t REG_SZ /d builtin /f
+    WINEPREFIX="$SELECTED_DIRECTORY/wineprefix/autodesk_fusion" wine REG ADD "HKCU\Software\Wine\DllOverrides" /v "msvcp140" /t REG_SZ /d native /f
+    WINEPREFIX="$SELECTED_DIRECTORY/wineprefix/autodesk_fusion" wine REG ADD "HKCU\Software\Wine\DllOverrides" /v "mfc140u" /t REG_SZ /d native /f
+    WINEPREFIX="$SELECTED_DIRECTORY/wineprefix/autodesk_fusion" wine REG ADD "HKCU\Software\Wine\DllOverrides" /v "bcp47langs" /t REG_SZ /d "" /f # Fixed bcp47langs issue, login is working now!
+    # Optional - Configuring the correct virtual desktop resolution
+    # WINEPREFIX="$SELECTED_DIRECTORY/wineprefix/autodesk_fusion" sh "winetricks" -q vd="MONITOR_RESOLUTION" # For example: 1920x1080
+    # Install the latest version of WebView2 to handle Login attempts, required even though we redirect to your default browser!
+    cp "$SELECTED_DIRECTORY/cache/WebView2installer.exe" "$SELECTED_DIRECTORY/wineprefix/autodesk_fusion/drive_c/users/$USER/Downloads/WebView2installer.exe"
+    WINEPREFIX="$SELECTED_DIRECTORY/wineprefix/autodesk_fusion" wine "$SELECTED_DIRECTORY/wineprefix/autodesk_fusion/drive_c/users/$USER/Downloads/WebView2installer.exe" /silent /install
+    # Pre-create a shortcut directory for the latest re-branding Microsoft Edge WebView2
+    mkdir -p "$SELECTED_DIRECTORY/wineprefix/autodesk_fusion/drive_c/users/$USER/AppData/Roaming/Microsoft/Internet Explorer/Quick Launch/User Pinned/"
+    # ...
+}
+
 ###############################################################################################################################################################
 # THE PROGRAM STARTED HERE:                                                                                                                                  #
 ###############################################################################################################################################################
@@ -143,5 +188,7 @@ function download_files() {
 check_if_wine_exists
 create_data_structure
 download_files
+create_adskidmgr_opener
+
 
 
