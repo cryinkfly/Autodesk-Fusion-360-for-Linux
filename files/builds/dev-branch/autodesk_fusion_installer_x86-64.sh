@@ -150,7 +150,7 @@ EOL
     xdg-mime default adskidmgr-opener.desktop x-scheme-handler/adskidmgr
 }
 
-function wine_install_config() {
+function wineprefix_config() {
     # Note that the winetricks sandbox verb merely removes the desktop integration and Z: drive symlinks and is not a "true" sandbox.
     # It protects against errors rather than malice. It's useful for, e.g., keeping games from saving their settings in random subdirectories of your home directory.
     # But it still ensures that wine, for example, no longer has access permissions to Home!
@@ -189,6 +189,7 @@ check_if_wine_exists
 create_data_structure
 download_files
 create_adskidmgr_opener
+wineprefix_config
 
 
 
