@@ -40,7 +40,7 @@ SIAPPDLL_URL="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-fo
 # ALL FUNCTIONS ARE HERE:                                                                                                                                     #
 ###############################################################################################################################################################
 
-function check_if_wine_exists() {
+function check_if_wine_exists {
     if command -v wine &> /dev/null; then
         echo -e "$(gettext "${GREEN}✅ Wine is installed. The installer will be continued.${NOCOLOR}")"
     else
@@ -49,7 +49,7 @@ function check_if_wine_exists() {
     fi
 }
 
-function create_data_structure() {
+function create_data_structure {
     local dirs=(
         "$SELECTED_DIRECTORY"
         "$SELECTED_DIRECTORY/cache"
@@ -62,7 +62,7 @@ function create_data_structure() {
     mkdir -p "${dirs[@]}"
 }
 
-function download_files() {
+function download_files {
     # Download the newest winetricks version:
     echo -e "$(gettext "${YELLOW}Downloading the latest version of Winetricks...${NOCOLOR}")"
     curl -L "$WINETRICKS_URL" -o "$SELECTED_DIRECTORY/winetricks"
@@ -129,7 +129,7 @@ function download_files() {
     fi
         
     # Extract the patched the 6WebEngineCore.dll.7z file with overwrite option
-    7za e -y "$SELECTED_DIRECTORY/cache/DLLs/Qt6WebEngineCore.dll.7z" -o"$SELECTED_DIRECTORY/cache/DLLs/"
+    7za x -y -o"$SELECTED_DIRECTORY/cache/DLLs/" "$SELECTED_DIRECTORY/cache/DLLs/Qt6WebEngineCore.dll.7z"
 
     # Download the patched siappdll.dll file
     SIAPPDLL_DLL="$SELECTED_DIRECTORY/cache/DLLs/siappdll.dll"
@@ -142,7 +142,7 @@ function download_files() {
     fi
 }
 
-function create_adskidmgr_opener() {
+function create_adskidmgr_opener {
     cat > "$HOME/.local/share/applications/adskidmgr-opener.desktop" << EOL
 [Desktop Entry]
 Type=Application
@@ -156,7 +156,7 @@ EOL
     xdg-mime default adskidmgr-opener.desktop x-scheme-handler/adskidmgr
 }
 
-function wineprefix_config() {
+function wineprefix_config {
     # Note that the winetricks sandbox verb merely removes the desktop integration and Z: drive symlinks and is not a "true" sandbox.
     # It protects against errors rather than malice. It's useful for, e.g., keeping games from saving their settings in random subdirectories of your home directory.
     # But it still ensures that wine, for example, no longer has access permissions to Home!
@@ -181,7 +181,7 @@ function wineprefix_config() {
     # Optional - Configuring the correct virtual desktop resolution
     # WINEPREFIX="$SELECTED_DIRECTORY/wineprefix/autodesk_fusion" sh "winetricks" -q vd="MONITOR_RESOLUTION" # For example: 1920x1080
     # Install the latest version of WebView2 to handle Login attempts, required even though we redirect to your default browser!
-    cp "$SELECTED_DIRECTORY/cache/WebView2installer.exe" "$SELECTED_DIRECTORY/wineprefix/autodesk_fusion/drive_c/users/$USER/Downloads/WebView2installer.exe"
+    cp -f "$WEBVIEW2_INSTALLER" "$SELECTED_DIRECTORY/wineprefix/autodesk_fusion/drive_c/users/$USER/Downloads/WebView2installer.exe"
     WINEPREFIX="$SELECTED_DIRECTORY/wineprefix/autodesk_fusion" wine "$SELECTED_DIRECTORY/wineprefix/autodesk_fusion/drive_c/users/$USER/Downloads/WebView2installer.exe" /silent /install
     # Pre-create a shortcut directory for the latest re-branding Microsoft Edge WebView2
     mkdir -p "$SELECTED_DIRECTORY/wineprefix/autodesk_fusion/drive_c/users/$USER/AppData/Roaming/Microsoft/Internet Explorer/Quick Launch/User Pinned/"
@@ -200,10 +200,33 @@ function wineprefix_config() {
         cp -f "$SELECTED_DIRECTORY/cache/NMachineSpecificOptions.xml" "$SELECTED_DIRECTORY/wineprefix/autodesk_fusion/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml"
 }
 
-# ...
+function install_autodesk_fusion {
+    cp -f "$AUTODESK_FUSION_INSTALLER" "$SELECTED_DIRECTORY/wineprefix/autodesk_fusion/drive_c/users/$USER/Downloads/FusionClientInstaller.exe"
+    WINEPREFIX="$SELECTED_DIRECTORY/wineprefix/autodesk_fusion" wine "$SELECTED_DIRECTORY/wineprefix/autodesk_fusion/drive_c/users/$USER/Downloads/FusionClientInstaller.exe"  --quiet
+    sleep 1s
+    WINEPREFIX="$SELECTED_DIRECTORY/wineprefix/autodesk_fusion" wine "$SELECTED_DIRECTORY/wineprefix/autodesk_fusion/drive_c/users/$USER/Downloads/FusionClientInstaller.exe"  --quiet
+}
+
+function autodesk_fusion_dlls_config {
+    # Find the newest Qt6WebEngineCore.dll file
+    QT6_WEBENGINECORE=$(find "$SELECTED_DIRECTORY/wineprefix/autodesk_fusion" -type f -name 'Qt6WebEngineCore.dll' -printf '%T@ %p\n' 2>/dev/null | sort -nr | head -n1 | cut -d' ' -f2-)
+    # Get the directory of the Qt6WebEngineCore.dll file
+    QT6_WEBENGINECORE_DIR=$(dirname "$QT6_WEBENGINECORE")
+
+    # Check if the Qt6WebEngineCore.dll file actually exists before backing it up
+    if [ -f "$QT6_WEBENGINECORE" ]; then
+        # Backup the Qt6WebEngineCore.dll file
+        cp -f "$QT6_WEBENGINECORE" "$QT6_WEBENGINECORE_DIR/Qt6WebEngineCore.dll.bak"
+        # Override the original Qt6WebEngineCore.dll with the patched version
+        cp -f "$SELECTED_DIRECTORY/cache/DLLs/Qt6WebEngineCore.dll" "$QT6_WEBENGINECORE_DIR/Qt6WebEngineCore.dll"
+    else
+        # Override the original Qt6WebEngineCore.dll with the patched version
+        cp -f "$SELECTED_DIRECTORY/cache/DLLs/Qt6WebEngineCore.dll" "$QT6_WEBENGINECORE_DIR/Qt6WebEngineCore.dll"
+    fi
+}
 
 ###############################################################################################################################################################
-# THE PROGRAM STARTED HERE:                                                                                                                                  #
+# THE PROGRAM STARTED HERE:                                                                                                                                   #
 ###############################################################################################################################################################
 
 check_if_wine_exists
@@ -211,6 +234,8 @@ create_data_structure
 download_files
 create_adskidmgr_opener
 wineprefix_config
+install_autodesk_fusion
+autodesk_fusion_dlls_config
 
 
 
