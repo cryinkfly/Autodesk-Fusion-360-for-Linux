@@ -61,15 +61,14 @@ function check_options() {
                     rm -f "$HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk Fusion.desktop"
                     rm -f "$HOME/.local/share/applications/adskidmgr-opener.desktop"
                     echo -e "$(gettext "${GREEN}Autodesk Fusion has been uninstalled successfully!${NOCOLOR}")"
-                    ;;
+                    exit;;
                 [Nn]* )
                     echo -e "$(gettext "${GREEN}The uninstallation process has been canceled!${NOCOLOR}")"
-                    ;;
+                    exit;;
                 * )
                     echo -e "$(gettext "${YELLOW}Please answer with yes or no!${NOCOLOR}")"
-                    ;;
-            esac
-            ;;
+                    exit;;
+            esac;;
         "--install")
             echo -e "$(gettext "${GREEN}Starting the installation process ...${NOCOLOR}")"
             sleep 2
