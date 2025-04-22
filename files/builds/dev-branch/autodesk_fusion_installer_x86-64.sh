@@ -89,7 +89,7 @@ function check_options() {
                 exit;;
             fi
         *)
-            echo -e "$(gettext "${RED}Invalid option! Please use the --install or --uninstall flag!")${NOCOLOR}";
+            echo -e "$(gettext "${RED}❌ Invalid option! Please use the --install, --install-extension or --uninstall flag!")${NOCOLOR}";
             exit;;
     esac
 }
