@@ -18,6 +18,13 @@ SELECTED_EXTENSIONS="$3"
 
 SELECTED_DIRECTORY="$HOME/.autodesk/autodesk_fusion"
 
+# if selected_extensions is set to --full, then all extensions will be installed
+if [ "$SELECTED_EXTENSIONS" == "--full" ]; then
+    SELECTED_EXTENSIONS="CzechlocalizationforF360,HP3DPrintersforAutodesk®Fusion®,MarkforgedforAutodesk®Fusion®,OctoPrintforAutodesk®Fusion360™,UltimakerDigitalFactoryforAutodeskFusion360™"
+else
+    SELECTED_EXTENSIONS=""
+fi
+
 # URL to download winetricks
 WINETRICKS_URL="https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks"
 
@@ -40,7 +47,58 @@ SIAPPDLL_URL="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-fo
 # ALL FUNCTIONS ARE HERE:                                                                                                                                     #
 ###############################################################################################################################################################
 
-function check_if_wine_exists {
+function check_options() {
+    case "$1" in
+        "--uninstall")
+            clear
+            echo -e "$(gettext "${YELLOW}Starting the uninstallation process ...${NOCOLOR}")"
+            read -p "$(gettext "${GREEN}Do you really want to uninstall Autodesk Fusion?${NOCOLOR} [y/n] ")" yn
+
+            case "$yn" in
+                [Yy]* )
+                    echo -e "$(gettext "${RED}Uninstalling Autodesk Fusion with all Wineprefixes and components...${NOCOLOR}")"
+                    rm -rf "$SELECTED_DIRECTORY"
+                    rm -f "$HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk Fusion.desktop"
+                    rm -f "$HOME/.local/share/applications/adskidmgr-opener.desktop"
+                    echo -e "$(gettext "${GREEN}Autodesk Fusion has been uninstalled successfully!${NOCOLOR}")"
+                    ;;
+                [Nn]* )
+                    echo -e "$(gettext "${GREEN}The uninstallation process has been canceled!${NOCOLOR}")"
+                    ;;
+                * )
+                    echo -e "$(gettext "${YELLOW}Please answer with yes or no!${NOCOLOR}")"
+                    ;;
+            esac
+            ;;
+        "--install")
+            echo -e "$(gettext "${GREEN}Starting the installation process ...${NOCOLOR}")"
+            sleep 2
+            check_if_wine_exists
+            create_data_structure
+            download_files
+            create_adskidmgr_opener
+            wineprefix_config
+            install_autodesk_fusion
+            autodesk_fusion_dlls_config
+            install_autodesk_fusion_extensions
+            exit;;
+        "--install-extension")
+            if [ -f "$SELECTED_DIRECTORY" ]; then
+                install_autodesk_fusion_extensions
+            else
+                echo -e "$(gettext "${RED}❌ There is no a installation of Autodesk Fusion. The installer will be terminated.${NOCOLOR}")"
+                exit;;
+            fi
+        *)
+            echo -e "$(gettext "${RED}Invalid option! Please use the --install or --uninstall flag!")${NOCOLOR}";
+            exit;;
+    esac
+}
+
+###############################################################################################################################################################
+
+
+function check_if_wine_exists() {
     if command -v wine &> /dev/null; then
         echo -e "$(gettext "${GREEN}✅ Wine is installed. The installer will be continued.${NOCOLOR}")"
     else
@@ -49,7 +107,9 @@ function check_if_wine_exists {
     fi
 }
 
-function create_data_structure {
+###############################################################################################################################################################
+
+function create_data_structure() {
     local dirs=(
         "$SELECTED_DIRECTORY"
         "$SELECTED_DIRECTORY/cache"
@@ -62,7 +122,9 @@ function create_data_structure {
     mkdir -p "${dirs[@]}"
 }
 
-function download_files {
+###############################################################################################################################################################
+
+function download_files() {
     # Download the newest winetricks version:
     echo -e "$(gettext "${YELLOW}Downloading the latest version of Winetricks...${NOCOLOR}")"
     curl -L "$WINETRICKS_URL" -o "$SELECTED_DIRECTORY/winetricks"
@@ -142,7 +204,9 @@ function download_files {
     fi
 }
 
-function create_adskidmgr_opener {
+###############################################################################################################################################################
+
+function create_adskidmgr_opener() {
     cat > "$HOME/.local/share/applications/adskidmgr-opener.desktop" << EOL
 [Desktop Entry]
 Type=Application
@@ -156,7 +220,9 @@ EOL
     xdg-mime default adskidmgr-opener.desktop x-scheme-handler/adskidmgr
 }
 
-function wineprefix_config {
+###############################################################################################################################################################
+
+function wineprefix_config() {
     # Note that the winetricks sandbox verb merely removes the desktop integration and Z: drive symlinks and is not a "true" sandbox.
     # It protects against errors rather than malice. It's useful for, e.g., keeping games from saving their settings in random subdirectories of your home directory.
     # But it still ensures that wine, for example, no longer has access permissions to Home!
@@ -200,42 +266,81 @@ function wineprefix_config {
         cp -f "$SELECTED_DIRECTORY/cache/NMachineSpecificOptions.xml" "$SELECTED_DIRECTORY/wineprefix/autodesk_fusion/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml"
 }
 
-function install_autodesk_fusion {
+###############################################################################################################################################################
+
+function install_autodesk_fusion() {
     cp -f "$AUTODESK_FUSION_INSTALLER" "$SELECTED_DIRECTORY/wineprefix/autodesk_fusion/drive_c/users/$USER/Downloads/FusionClientInstaller.exe"
     WINEPREFIX="$SELECTED_DIRECTORY/wineprefix/autodesk_fusion" wine "$SELECTED_DIRECTORY/wineprefix/autodesk_fusion/drive_c/users/$USER/Downloads/FusionClientInstaller.exe"  --quiet
     sleep 1s
     WINEPREFIX="$SELECTED_DIRECTORY/wineprefix/autodesk_fusion" wine "$SELECTED_DIRECTORY/wineprefix/autodesk_fusion/drive_c/users/$USER/Downloads/FusionClientInstaller.exe"  --quiet
 }
 
-function autodesk_fusion_dlls_config {
+###############################################################################################################################################################
+
+function autodesk_fusion_dlls_config() {
     # Find the newest Qt6WebEngineCore.dll file
     QT6_WEBENGINECORE=$(find "$SELECTED_DIRECTORY/wineprefix/autodesk_fusion" -type f -name 'Qt6WebEngineCore.dll' -printf '%T@ %p\n' 2>/dev/null | sort -nr | head -n1 | cut -d' ' -f2-)
-    # Get the directory of the Qt6WebEngineCore.dll file
-    QT6_WEBENGINECORE_DIR=$(dirname "$QT6_WEBENGINECORE")
+    # Get the newest directory of the Qt6WebEngineCore.dll for overriding progress 
+    AUTODESK_FUSION_DIR=$(dirname "$QT6_WEBENGINECORE")
 
     # Check if the Qt6WebEngineCore.dll file actually exists before backing it up
     if [ -f "$QT6_WEBENGINECORE" ]; then
         # Backup the Qt6WebEngineCore.dll file
-        cp -f "$QT6_WEBENGINECORE" "$QT6_WEBENGINECORE_DIR/Qt6WebEngineCore.dll.bak"
+        cp -f "$QT6_WEBENGINECORE" "$AUTODESK_FUSION_DIR/Qt6WebEngineCore.dll.bak"
         # Override the original Qt6WebEngineCore.dll with the patched version
-        cp -f "$SELECTED_DIRECTORY/cache/DLLs/Qt6WebEngineCore.dll" "$QT6_WEBENGINECORE_DIR/Qt6WebEngineCore.dll"
+        cp -f "$SELECTED_DIRECTORY/cache/DLLs/Qt6WebEngineCore.dll" "$AUTODESK_FUSION_DIR/Qt6WebEngineCore.dll"
     else
         # Override the original Qt6WebEngineCore.dll with the patched version
-        cp -f "$SELECTED_DIRECTORY/cache/DLLs/Qt6WebEngineCore.dll" "$QT6_WEBENGINECORE_DIR/Qt6WebEngineCore.dll"
+        cp -f "$SELECTED_DIRECTORY/cache/DLLs/Qt6WebEngineCore.dll" "$AUTODESK_FUSION_DIR/Qt6WebEngineCore.dll"
+    fi
+
+    # Check if the siappdll.dll file actually exists before backing it up
+    if [ -f "$AUTODESK_FUSION_DIR/siappdll.dll" ]; then
+        # Backup the siappdll.dll file
+        cp -f "$AUTODESK_FUSION_DIR/siappdll.dll" "$AUTODESK_FUSION_DIR/siappdll.dll.bak"
+        # Override the original siappdll.dll with the patched version
+        cp -f "$SELECTED_DIRECTORY/cache/DLLs/siappdll.dll" "$AUTODESK_FUSION_DIR/siappdll.dll"
+    else
+        # Override the original siappdll.dll with the patched version
+        cp -f "$SELECTED_DIRECTORY/cache/DLLs/siappdll.dll" "$AUTODESK_FUSION_DIR/siappdll.dll"
     fi
 }
+
+###############################################################################################################################################################
+
+function install_autodesk_fusion_extensions() {
+    local run_install_extension_client() {
+        local EXTENSION_FILE="$1"
+        cp "$SELECTED_DIRECTORY/cache/extensions/$EXTENSION_FILE" "$SELECTED_DIRECTORY/wineprefix/autodesk_fusion/drive_c/users/$USER/Downloads"
+        if [[ "$EXTENSION_FILE" == *.msi ]]; then
+            WINEPREFIX="$SELECTED_DIRECTORY/wineprefix/autodesk_fusion" wine msiexec /i "$SELECTED_DIRECTORY/wineprefix/autodesk_fusion/drive_c/users/$USER/Downloads/$EXTENSION_FILE"
+        else
+            WINEPREFIX="$SELECTED_DIRECTORY/wineprefix/autodesk_fusion" wine "$SELECTED_DIRECTORY/wineprefix/autodesk_fusion/drive_c/users/$USER/Downloads/$EXTENSION_FILE"
+        fi
+    }
+
+    if [[ "$SELECTED_EXTENSIONS" == *"CzechlocalizationforF360"* ]]; then
+        run_install_extension_client "Ceska_lokalizace_pro_Autodesk_Fusion_360.exe"
+    fi
+    if [[ "$SELECTED_EXTENSIONS" == *"HP3DPrintersforAutodesk®Fusion®"* ]]; then
+        run_install_extension_client "HP_3DPrinters_for_Fusion360-win64.msi"
+    fi
+    if [[ "$SELECTED_EXTENSIONS" == *"MarkforgedforAutodesk®Fusion®"* ]]; then
+        run_install_extension_client "Markforged_for_Fusion360-win64.msi"
+    fi
+    if [[ "$SELECTED_EXTENSIONS" == *"OctoPrintforAutodesk®Fusion360™"* ]]; then
+        run_install_extension_client "OctoPrint_for_Fusion360-win64.msi"
+    fi
+    if [[ "$SELECTED_EXTENSIONS" == *"UltimakerDigitalFactoryforAutodeskFusion360™"* ]]; then
+        run_install_extension_client "Ultimaker_Digital_Factory-win64.msi"
+    fi
+}
+
 
 ###############################################################################################################################################################
 # THE PROGRAM STARTED HERE:                                                                                                                                   #
 ###############################################################################################################################################################
 
-check_if_wine_exists
-create_data_structure
-download_files
-create_adskidmgr_opener
-wineprefix_config
-install_autodesk_fusion
-autodesk_fusion_dlls_config
-
+check_options
 
 
