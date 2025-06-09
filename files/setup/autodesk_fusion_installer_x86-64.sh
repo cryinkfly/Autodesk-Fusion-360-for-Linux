@@ -796,7 +796,7 @@ function check_and_install_wine() {
         WINE_VERSION_MINOR_RELEASE="$(echo $WINE_VERSION | cut -d '.' -f2)"
         
         # Check if the installed wine version is at least 9.8 or higher (wine_version_series and wine_version_series_release)
-        if [ "$WINE_VERSION_MAJOR_RELEASE" -ge 9 ] && [ "$WINE_VERSION_MINOR_RELEASE" -ge 8 ]; then
+        if [ "$WINE_VERSION_MAJOR_RELEASE" -gt 9 ] || ([ "$WINE_VERSION_MAJOR_RELEASE" -eq 9 ] && [ "$WINE_VERSION_MINOR_RELEASE" -ge 8 ]); then
             echo "Wine version $WINE_VERSION is installed!"
             WINE_STATUS=1
         else
