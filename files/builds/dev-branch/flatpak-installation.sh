@@ -58,6 +58,9 @@ chmod 444 $HOME/.local/share/applications/adskidmgr-opener.desktop
 #Set the mimetype handler for the Identity Manager
 xdg-mime default adskidmgr-opener.desktop x-scheme-handler/adskidmgr
 
+flatpak run --env="WINEPREFIX=/home/$USER/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine reg add "HKCU\\Software\\Classes\\http\\shell\\open\\command" /ve /d "\"C:\\home\\$USER\\Downloads\\flatpak-spawn-firefox.sh\" \"%1\"" /f
+flatpak run --env="WINEPREFIX=/home/$USER/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine reg add "HKCU\\Software\\Classes\\https\\shell\\open\\command" /ve /d "\"C:\\home\\$USER\\Downloads\\flatpak-spawn-firefox.sh\" \"%1\"" /f
+
 curl -L "$AUTODESK_FUSION_INSTALLER_URL" -o "$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/users/steve/Downloads/Fusion360ClientInstaller.exe"
 flatpak run --env="WINEPREFIX=/home/$USER/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine $HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/users/steve/Downloads/Fusion360ClientInstaller.exe --quiet
 flatpak kill org.winehq.Wine
