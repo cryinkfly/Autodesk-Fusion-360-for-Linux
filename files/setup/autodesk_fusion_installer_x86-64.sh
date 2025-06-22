@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2025                                                                          #
-# Time/Date:    20:30/21.02.2025                                                                   #
-# Version:      2.0.2-Alpha                                                                        #
+# Time/Date:    10:12/22.06.2025                                                                   #
+# Version:      2.0.3-Alpha                                                                        #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -67,7 +67,7 @@ AUTODESK_FUSION_INSTALLER_URL="https://dl.appstreaming.autodesk.com/production/i
 WEBVIEW2_INSTALLER_URL="https://github.com/aedancullen/webview2-evergreen-standalone-installer-archive/releases/download/109.0.1518.78/MicrosoftEdgeWebView2RuntimeInstallerX64.exe"
 
 # URL to download the patched Qt6WebEngineCore.dll file
-QT6_WEBENGINECORE_URL="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/extras/patched-dlls/Qt6WebEngineCore.dll.7z"
+QT6_WEBENGINECORE_URL="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/extras/patched-dlls/Qt6WebEngineCore-06-2025.7z"
 
 # URL to download the patched siappdll.dll file
 SIAPPDLL_URL="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/extras/patched-dlls/siappdll.dll"
