@@ -63,4 +63,8 @@ flatpak run --env="WINEPREFIX=/home/$USER/.var/app/org.winehq.Wine/data/winepref
 flatpak kill org.winehq.Wine
 flatpak run --env="WINEPREFIX=/home/$USER/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine $HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/users/steve/Downloads/Fusion360ClientInstaller.exe --quiet
 
+cd $HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/Program Files/Autodesk/webdeploy/production/PRODUCTION-ID
+flatpak run --env=WINEDEBUG=-all --env=WINEPREFIX=/home/$USER/.var/app/org.winehq.Wine/data/wineprefixes/fusion360 org.winehq.Wine FusionLauncher.exe
+
+
 #Continue ...
