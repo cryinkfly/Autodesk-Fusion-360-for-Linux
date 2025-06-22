@@ -43,5 +43,24 @@ flatpak run --env="WINEPREFIX=/home/$USER/.var/app/org.winehq.Wine/data/winepref
 curl -L "$WEBVIEW2_INSTALLER_URL" -o "$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/users/steve/Downloads/MicrosoftEdgeWebView2RuntimeInstallerX64.exe"
 flatpak run --env="WINEPREFIX=/home/$USER/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine $HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/users/steve/Downloads/MicrosoftEdgeWebView2RuntimeInstallerX64.exe /silent /install
 
+cat > $HOME/.local/share/applications/adskidmgr-opener.desktop << EOL
+[Desktop Entry]
+Type=Application
+Name=adskidmgr Scheme Handler
+Exec=sh -c 'env WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine "$(find $HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/ -name "AdskIdentityManager.exe" | head -1 | xargs -I '{}' echo {})" "%u"'
+StartupNotify=false
+MimeType=x-scheme-handler/adskidmgr;
+EOL
+
+#Set the permissions for the .desktop file to read-only
+chmod 444 $HOME/.local/share/applications/adskidmgr-opener.desktop
+    
+#Set the mimetype handler for the Identity Manager
+xdg-mime default adskidmgr-opener.desktop x-scheme-handler/adskidmgr
+
+curl -L "$AUTODESK_FUSION_INSTALLER_URL" -o "$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/users/steve/Downloads/Fusion360ClientInstaller.exe"
+flatpak run --env="WINEPREFIX=/home/$USER/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine $HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/users/steve/Downloads/Fusion360ClientInstaller.exe --quiet
+flatpak kill org.winehq.Wine
+flatpak run --env="WINEPREFIX=/home/$USER/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine $HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/users/steve/Downloads/Fusion360ClientInstaller.exe --quiet
 
 #Continue ...
