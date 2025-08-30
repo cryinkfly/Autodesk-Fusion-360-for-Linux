@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2025                                                                          #
-# Time/Date:    11:15/30.08.2025                                                                   #
+# Time/Date:    13:15/30.08.2025                                                                   #
 # Version:      1.0.0-Alpha                                                                        #
 ####################################################################################################
 # Notes:
@@ -180,6 +180,13 @@ cp -f "$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/users/
 # Continue ... Plugins, ...
 
 ###############################################################################################################################################################
+
+# Issue with the FusionLauncher.exe.ini file! The FusionLauncher.exe.ini file must be copyed from the first generated folder in the latest folder, for examlpe:
+#$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/Program Files/Autodesk/webdeploy/production/old-folder
+#$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/Program Files/Autodesk/webdeploy/production/newer-folder
+
+# Web browser workaround ... installation directly a web browser in the wineprefix and configure so that Autodesk Fusion use this for the login part.
+# ...
 
 #cd $HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/Program Files/Autodesk/webdeploy/production/PRODUCTION-ID
 #flatpak run --env=WINEDEBUG=-all --env=WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360 org.winehq.Wine FusionLauncher.exe
