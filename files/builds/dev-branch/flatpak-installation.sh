@@ -112,7 +112,7 @@ cat > $HOME/.local/share/applications/adskidmgr-opener.desktop << EOL
 [Desktop Entry]
 Type=Application
 Name=adskidmgr Scheme Handler
-Exec=sh -c 'env WINEPREFIX="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" wine "$(find $HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/ -name "AdskIdentityManager.exe" | head -1 | xargs -I '{}' echo {})" "%u"'
+Exec=sh -c 'ADSK_EXE=$(find "$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/" -name "AdskIdentityManager.exe" | head -1); flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine "$ADSK_EXE" "%u"'
 StartupNotify=false
 MimeType=x-scheme-handler/adskidmgr;
 EOL
@@ -183,3 +183,7 @@ cp -f "$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/users/
 
 #cd $HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/Program Files/Autodesk/webdeploy/production/PRODUCTION-ID
 #flatpak run --env=WINEDEBUG=-all --env=WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360 org.winehq.Wine FusionLauncher.exe
+
+# Workaround after the login in the web browser your must copy the callback code an replace the XXXXXXXXXX with it and run this command in a seperate terminal window
+flatpak run --env="WINEPREFIX=/var/home/$USER/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine xdg-open "https://signin.autodesk.com/idmgr/callback#code=XXXXXXXXXX"
+
