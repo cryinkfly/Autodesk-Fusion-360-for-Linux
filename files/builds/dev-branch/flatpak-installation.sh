@@ -98,11 +98,6 @@ flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/f
 
 ###############################################################################################################################################################
 
-# Install 7zip inside the wineprefix fusion360
-flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" --command="winetricks" org.winehq.Wine -q 7zip
-
-###############################################################################################################################################################
-
 # Download and install WebView2 to handle Login attempts, required even though we redirect to your default browser
 curl -L "$WEBVIEW2_INSTALLER_URL" -o "$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/users/$USER/Downloads/MicrosoftEdgeWebView2RuntimeInstallerX64.exe"
 flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine $HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/users/$USER/Downloads/MicrosoftEdgeWebView2RuntimeInstallerX64.exe /silent /install
@@ -154,8 +149,16 @@ QT6_WEBENGINECORE_DIR=$(dirname "$QT6_WEBENGINECORE")
 # Download the patched Qt6WebEngineCore.dll
 curl -L "$QT6_WEBENGINECORE_URL" -o "$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/users/$USER/Downloads/Qt6WebEngineCore.dll.7z"
 
+# Old method required 7-Zip on the host system for extracting files.
+#7za e -y "$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/users/$USER/Downloads/Qt6WebEngineCore.dll.7z" -o"$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/users/$USER/Downloads/downloads/"
+
+# Install 7-Zip inside the Wine prefix via winetricks.
+# This method does NOT require 7-Zip on the host system and is more stable/reliable than previous approaches.
+flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" --command="winetricks" org.winehq.Wine -q 7zip
+
 # Excract the compressed Qt6WebEngineCore.dll.7z file
-7za e -y "$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/users/$USER/Downloads/Qt6WebEngineCore.dll.7z" -o"$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/users/$USER/Downloads/downloads/"
+flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine \
+    "$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/Program Files/7-Zip/7z.exe" x "C:\\users\\$USER\\Downloads\\Qt6WebEngineCore.dll.7z" -o"C:\\users\\$USER\\Downloads\\"
 
 # Backup the original Qt6WebEngineCore.dll file of Autodesk Fusion
 cp -f "$QT6_WEBENGINECORE_DIR/Qt6WebEngineCore.dll" "$QT6_WEBENGINECORE_DIR/Qt6WebEngineCore.dll.bak"
