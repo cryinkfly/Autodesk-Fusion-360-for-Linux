@@ -1,5 +1,7 @@
 # This script will install Autodesk Fusion in a Flatpak-Runtime!
 
+# ----------------------------------------------------------------------------------------------------------------- #
+
 # URL's to download Fusion360Installer.exe files
 #AUTODESK_FUSION_INSTALLER_URL="https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe" <-- Old Link!!!
 AUTODESK_FUSION_INSTALLER_URL="https://dl.appstreaming.autodesk.com/production/installers/Fusion%20Admin%20Install.exe"
@@ -10,18 +12,24 @@ WEBVIEW2_INSTALLER_URL="https://github.com/aedancullen/webview2-evergreen-standa
 
 # URL to download the patched Qt6WebEngineCore.dll file
 # QT6_WEBENGINECORE_URL="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/extras/patched-dlls/Qt6WebEngineCore.dll.7z" -> OLD Qt6WebEngineCore.dll
-T6_WEBENGINECORE_URL="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/extras/patched-dlls/Qt6WebEngineCore-06-2025.7z"
+QT6_WEBENGINECORE_URL="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/extras/patched-dlls/Qt6WebEngineCore-06-2025.7z"
 
 # URL to download the patched siappdll.dll file
 SIAPPDLL_URL="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/extras/patched-dlls/siappdll.dll"
 
+# ----------------------------------------------------------------------------------------------------------------- #
+
 # Debian based systems:
 # apt install p7zip-full cabextract winbind
+
+# ----------------------------------------------------------------------------------------------------------------- #
 
 flatpak install flathub org.winehq.Wine/x86_64/stable-24.08 -y # Issue solved: Similar refs found for ‘org.winehq.Wine’ in remote ‘flathub’ ...
 flatpak update org.winehq.Wine -y # Upgrade to the Latest Version 
 
 flatpak run org.winehq.Wine --version #Check version of wine
+
+# ----------------------------------------------------------------------------------------------------------------- #
 
 # Note: The winetricks "sandbox" verb only removes desktop integration (e.g. autostart entries, menu shortcuts) 
 # and the Z: drive symlink that normally maps your entire home directory. 
@@ -63,8 +71,12 @@ flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/f
 flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine reg add "HKCU\\Software\\Wine\\DllOverrides" /v "mfc140u" /t REG_SZ /d "native" /f
 flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine reg add "HKCU\\Software\\Wine\\DllOverrides" /v "bcp47langs" /t REG_SZ /d "" /f
 
+# ----------------------------------------------------------------------------------------------------------------- #
+
 # Install 7zip inside the wineprefix fusion360
 flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" --command="winetricks" org.winehq.Wine -q 7zip
+
+# ----------------------------------------------------------------------------------------------------------------- #
 
 # Download and install WebView2 to handle Login attempts, required even though we redirect to your default browser
 curl -L "$WEBVIEW2_INSTALLER_URL" -o "$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/users/$USER/Downloads/MicrosoftEdgeWebView2RuntimeInstallerX64.exe"
@@ -72,6 +84,8 @@ flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/f
 
 # Pre-create shortcut directory for latest re-branding Microsoft Edge WebView2
 mkdir -p "$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/users/$USER/AppData/Roaming/Microsoft/Internet Explorer/Quick Launch/User Pinned/"
+
+# ----------------------------------------------------------------------------------------------------------------- #
 
 # Create mimetype link to handle web login call backs to the Identity Manager
 cat > $HOME/.local/share/applications/adskidmgr-opener.desktop << EOL
@@ -89,13 +103,44 @@ chmod 444 $HOME/.local/share/applications/adskidmgr-opener.desktop
 # Set the mimetype handler for the Identity Manager
 xdg-mime default adskidmgr-opener.desktop x-scheme-handler/adskidmgr
 
+# ----------------------------------------------------------------------------------------------------------------- #
+
 # Installation of Autodesk Fusion
 curl -L "$AUTODESK_FUSION_INSTALLER_URL" -o "$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/users/$USER/Downloads/Fusion360ClientInstaller.exe"
 flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine $HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/users/$USER/Downloads/Fusion360ClientInstaller.exe --quiet
 flatpak kill org.winehq.Wine
 flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine $HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/users/$USER/Downloads/Fusion360ClientInstaller.exe --quiet
 
+# ----------------------------------------------------------------------------------------------------------------- #
+
+# Find the Qt6WebEngineCore.dll file in the Autodesk Fusion directory
+QT6_WEBENGINECORE=$(find "$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" -name 'Qt6WebEngineCore.dll' -printf "%T+ %p\n" | sort -r | head -n 1 | sed -r 's/^[^ ]+ //')
+QT6_WEBENGINECORE_DIR=$(dirname "$QT6_WEBENGINECORE")
+
+# Download the patched Qt6WebEngineCore.dll
+curl -L "$QT6_WEBENGINECORE_URL" -o "$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/users/$USER/Downloads/Qt6WebEngineCore.dll.7z"
+
+# Excract the compressed Qt6WebEngineCore.dll.7z file
+7za e -y "$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/users/$USER/Downloads/Qt6WebEngineCore.dll.7z" -o"$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/users/$USER/Downloads/downloads/"
+
+# Backup the original Qt6WebEngineCore.dll file of Autodesk Fusion
+cp -f "$QT6_WEBENGINECORE_DIR/Qt6WebEngineCore.dll" "$QT6_WEBENGINECORE_DIR/Qt6WebEngineCore.dll.bak"
+
+# Copy the patched Qt6WebEngineCore.dll file to the Autodesk Fusion directory
+cp -f "$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/users/$USER/Downloads/Qt6WebEngineCore.dll" "$QT6_WEBENGINECORE_DIR/Qt6WebEngineCore.dll"
+
+# Download the patched siappdll.dll file
+curl -L "$SIAPPDLL_URL" -o "$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/users/$USER/Downloads/siappdll.dll"
+
+# Backup the original siappdll.dll file of Autodesk Fusion
+cp -f "$QT6_WEBENGINECORE_DIR/siappdll.dll" "$QT6_WEBENGINECORE_DIR/siappdll.dll.bak"
+
+# Copy the patched siappdll.dll file to the Autodesk Fusion directory
+cp -f "$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/users/$USER/Downloads/siappdll.dll" "$QT6_WEBENGINECORE_DIR/siappdll.dll"
+
+# ----------------------------------------------------------------------------------------------------------------- #
+
 cd $HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/Program Files/Autodesk/webdeploy/production/PRODUCTION-ID
 flatpak run --env=WINEDEBUG=-all --env=WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360 org.winehq.Wine FusionLauncher.exe
 
-#Continue ...
+# Continue ...
