@@ -9,7 +9,8 @@ AUTODESK_FUSION_INSTALLER_URL="https://dl.appstreaming.autodesk.com/production/i
 WEBVIEW2_INSTALLER_URL="https://github.com/aedancullen/webview2-evergreen-standalone-installer-archive/releases/download/109.0.1518.78/MicrosoftEdgeWebView2RuntimeInstallerX64.exe"
 
 # URL to download the patched Qt6WebEngineCore.dll file
-QT6_WEBENGINECORE_URL="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/extras/patched-dlls/Qt6WebEngineCore.dll.7z"
+# QT6_WEBENGINECORE_URL="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/extras/patched-dlls/Qt6WebEngineCore.dll.7z" -> OLD Qt6WebEngineCore.dll
+T6_WEBENGINECORE_URL="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/extras/patched-dlls/Qt6WebEngineCore-06-2025.7z"
 
 # URL to download the patched siappdll.dll file
 SIAPPDLL_URL="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/extras/patched-dlls/siappdll.dll"
@@ -17,7 +18,8 @@ SIAPPDLL_URL="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-fo
 # Debian based systems:
 # apt install p7zip-full cabextract winbind
 
-flatpak install flathub org.winehq.Wine -y #OR: flatpak install --user flathub org.winehq.Wine -y
+flatpak install flathub org.winehq.Wine/x86_64/stable-24.08 -y # Issue solved: Similar refs found for ‘org.winehq.Wine’ in remote ‘flathub’ ...
+flatpak update org.winehq.Wine -y # Upgrade to the Latest Version 
 
 flatpak run org.winehq.Wine --version #Check version of wine
 
@@ -58,9 +60,6 @@ chmod 444 $HOME/.local/share/applications/adskidmgr-opener.desktop
 #Set the mimetype handler for the Identity Manager
 xdg-mime default adskidmgr-opener.desktop x-scheme-handler/adskidmgr
 
-flatpak run --env="WINEPREFIX=/home/$USER/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine reg add "HKCU\\Software\\Classes\\http\\shell\\open\\command" /ve /d "\"C:\\home\\$USER\\Downloads\\flatpak-spawn-firefox.sh\" \"%1\"" /f
-flatpak run --env="WINEPREFIX=/home/$USER/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine reg add "HKCU\\Software\\Classes\\https\\shell\\open\\command" /ve /d "\"C:\\home\\$USER\\Downloads\\flatpak-spawn-firefox.sh\" \"%1\"" /f
-
 curl -L "$AUTODESK_FUSION_INSTALLER_URL" -o "$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/users/steve/Downloads/Fusion360ClientInstaller.exe"
 flatpak run --env="WINEPREFIX=/home/$USER/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine $HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/users/steve/Downloads/Fusion360ClientInstaller.exe --quiet
 flatpak kill org.winehq.Wine
@@ -68,6 +67,5 @@ flatpak run --env="WINEPREFIX=/home/$USER/.var/app/org.winehq.Wine/data/winepref
 
 cd $HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/Program Files/Autodesk/webdeploy/production/PRODUCTION-ID
 flatpak run --env=WINEDEBUG=-all --env=WINEPREFIX=/home/$USER/.var/app/org.winehq.Wine/data/wineprefixes/fusion360 org.winehq.Wine FusionLauncher.exe
-
 
 #Continue ...
