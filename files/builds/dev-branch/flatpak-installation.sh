@@ -6,15 +6,16 @@
 # Author:       Steve Zabka                                                                        #
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
-# Copyright (c) 2025                                                                               # 
+# Copyright (c) 2020-2025                                                                          #
 # Time/Date:    11:15/30.08.2025                                                                   #
 # Version:      1.0.0-Alpha                                                                        #
 ####################################################################################################
-# Notes: 
-#   - Designed to run Fusion 360 within a Flatpak Wine sandbox for Linux.
-#   - Handles Wine prefix setup, required libraries (via winetricks), WebView2 runtime,
-#     and DLL overrides.
-#   - Ensures a double-sandbox environment: Flatpak + Wine sandbox.
+# Notes:
+#   - All commands and procedures are derived from my previous scripts and have been
+#     specifically adapted for execution within a Flatpak Wine environment.
+#   - Sets up Wine prefix, required libraries via winetricks, WebView2 runtime, DLL overrides,
+#     and handles Autodesk installer execution with appropriate timeouts.
+#   - Designed for a double-sandbox environment (Flatpak + Wine sandbox).
 #   - EXE files must be placed inside the Wine prefix, as Wine cannot access $HOME directly.
 ####################################################################################################
 
