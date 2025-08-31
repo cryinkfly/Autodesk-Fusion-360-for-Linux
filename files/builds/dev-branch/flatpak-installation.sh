@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2025                                                                          #
-# Time/Date:    09:30/31.08.2025                                                                   #
-# Version:      1.0.2-Alpha                                                                        #
+# Time/Date:    10:15/31.08.2025                                                                   #
+# Version:      1.0.3-Alpha                                                                        #
 ####################################################################################################
 # Notes:
 #   - All commands and procedures are derived from my previous scripts and have been
@@ -101,8 +101,8 @@ flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/f
 flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine reg add "HKCU\\Software\\Wine\\DllOverrides" /v "bcp47langs" /t REG_SZ /d "" /f
 
 # Disable window decorations / Issue solved: Wine windows are incorrectly decorated by GTK/Wayland or X11
-flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine reg add "HKCU\\Software\\Wine\\X11 Driver" /v Decorated /t REG_SZ /d N /f
-flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine reg add "HKCU\\Software\\Wine\\X11 Driver" /v Managed /t REG_SZ /d N /f
+#flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine reg add "HKCU\\Software\\Wine\\X11 Driver" /v Decorated /t REG_SZ /d N /f
+#flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine reg add "HKCU\\Software\\Wine\\X11 Driver" /v Managed /t REG_SZ /d N /f
 
 ###############################################################################################################################################################
 
@@ -251,6 +251,12 @@ else
     echo "Registry query result:"
     echo "$OUTPUT"
 fi
+
+# HTTP
+timeout 60 flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine reg add "HKCU\\Software\\Classes\\http\\shell\\open\\command" /ve /t REG_SZ /d "\"C:\\Program Files\\Mozilla Firefox\\firefox.exe\" \"%1\"" /f
+
+# HTTPS
+timeout 60 flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine reg add "HKCU\\Software\\Classes\\https\\shell\\open\\command" /ve /t REG_SZ /d "\"C:\\Program Files\\Mozilla Firefox\\firefox.exe\" \"%1\"" /f
 
 ###############################################################################################################################################################
 
