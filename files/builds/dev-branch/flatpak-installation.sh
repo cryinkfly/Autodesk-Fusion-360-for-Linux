@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2025                                                                          #
-# Time/Date:    13:15/30.08.2025                                                                   #
-# Version:      1.0.0-Alpha                                                                        #
+# Time/Date:    09:15/31.08.2025                                                                   #
+# Version:      1.0.1-Alpha                                                                        #
 ####################################################################################################
 # Notes:
 #   - All commands and procedures are derived from my previous scripts and have been
@@ -34,6 +34,10 @@ AUTODESK_FUSION_INSTALLER_URL="https://dl.appstreaming.autodesk.com/production/i
 
 # URL to download Microsoft Edge WebView2.Exec
 WEBVIEW2_INSTALLER_URL="https://github.com/aedancullen/webview2-evergreen-standalone-installer-archive/releases/download/109.0.1518.78/MicrosoftEdgeWebView2RuntimeInstallerX64.exe"
+
+# URL to download Firefox ESR
+# The newer Firefox versions have some DLL bugs and that's why the ESR version is used.
+FIREFOX_ESR_INSTALLER_URL="https://download.mozilla.org/?product=firefox-esr-latest-ssl&os=win64&lang=de"
 
 # URL to download the patched Qt6WebEngineCore.dll file
 # QT6_WEBENGINECORE_URL="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/extras/patched-dlls/Qt6WebEngineCore.dll.7z" -> OLD Qt6WebEngineCore.dll
@@ -95,6 +99,10 @@ flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/f
 flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine reg add "HKCU\\Software\\Wine\\DllOverrides" /v "msvcp140" /t REG_SZ /d "native" /f
 flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine reg add "HKCU\\Software\\Wine\\DllOverrides" /v "mfc140u" /t REG_SZ /d "native" /f
 flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine reg add "HKCU\\Software\\Wine\\DllOverrides" /v "bcp47langs" /t REG_SZ /d "" /f
+
+# Disable window decorations / Issue solved: Wine windows are incorrectly decorated by GTK/Wayland or X11
+flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine reg add "HKCU\\Software\\Wine\\X11 Driver" /v Decorated /t REG_SZ /d N /f
+flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine reg add "HKCU\\Software\\Wine\\X11 Driver" /v Managed /t REG_SZ /d N /f
 
 ###############################################################################################################################################################
 
@@ -179,18 +187,71 @@ cp -f "$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/users/
 
 # Continue ... Plugins, ...
 
+
+
+
 ###############################################################################################################################################################
 
-# Issue with the FusionLauncher.exe.ini file! The FusionLauncher.exe.ini file must be copyed from the first generated folder in the latest folder, for examlpe:
+# The FusionLauncher.exe.ini file is required in the latest production folder to start Autodesk Fusion.
+# If it is missing, an error will occur. Copy this file from the oldest generated folder to the newest folder.
+
+# For example:
 #$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/Program Files/Autodesk/webdeploy/production/old-folder
 #$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/Program Files/Autodesk/webdeploy/production/newer-folder
 
-# Web browser workaround ... installation directly a web browser in the wineprefix and configure so that Autodesk Fusion use this for the login part.
-# ...
+# Path to the production folders
+PROD_DIR="$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/Program Files/Autodesk/webdeploy/production"
+
+# List all production folders null-terminated, sort them, and write them to the array
+mapfile -d '' FOLDERS < <(find "$PROD_DIR" -maxdepth 1 -mindepth 1 -type d -print0 | sort -z)
+
+# Check if there are enough folders
+if [ "${#FOLDERS[@]}" -lt 2 ]; then
+    echo "Not enough production folders found."
+    exit 1
+fi
+
+# Oldest folder = first item, newest folder = last item
+OLD_FOLDER="${FOLDERS[0]}"
+NEW_FOLDER="${FOLDERS[-1]}"
+
+# Path to the .ini file
+INI_FILE="$OLD_FOLDER/FusionLauncher.exe.ini"
+
+# Check if the file exists
+if [ ! -f "$INI_FILE" ]; then
+    echo "FusionLauncher.exe.ini not found in $OLD_FOLDER"
+    exit 1
+fi
+
+# Copy file
+cp "$INI_FILE" "$NEW_FOLDER/"
+echo "Copied FusionLauncher.exe.ini from $OLD_FOLDER to $NEW_FOLDER"
+
+###############################################################################################################################################################
+
+# Download the Firefox ESR Installer
+curl -L "$FIREFOX_ESR_INSTALLER_URL" -o "$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/users/$USER/Downloads/FirefoxESRInstaller.exe"
+
+# --- Run of the installer: allow up to 2 minutes ---
+timeout 120 flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine $HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/users/$USER/Downloads/FirefoxESRInstaller.exe /silent /install
+
+###############################################################################################################################################################
 
 #cd $HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/Program Files/Autodesk/webdeploy/production/PRODUCTION-ID
 #flatpak run --env=WINEDEBUG=-all --env=WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360 org.winehq.Wine FusionLauncher.exe
 
-# Workaround after the login in the web browser your must copy the callback code an replace the XXXXXXXXXX with it and run this command in a seperate terminal window
-flatpak run --env="WINEPREFIX=/var/home/$USER/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine xdg-open "https://signin.autodesk.com/idmgr/callback#code=XXXXXXXXXX"
+# Path to FusionLauncher.exe
+FUSION_EXE="$NEW_FOLDER/FusionLauncher.exe"
 
+# Create a Desktop shortcut ...
+# ...
+
+
+# Optional: Run Fusion inside Flatpak Wine
+#flatpak run --env=WINEDEBUG=-all --env=WINEPREFIX="$WINEPREFIX" org.winehq.Wine "$FUSION_EXE"
+
+###############################################################################################################################################################
+
+# Workaround after the login in the web browser (installed on your Host system or as flatpak app) your must copy the callback code an replace the XXXXXXXXXX with it and run this command in a seperate terminal window
+# flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine xdg-open "https://signin.autodesk.com/idmgr/callback#code=XXXXXXXXXX"
