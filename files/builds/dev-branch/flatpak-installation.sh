@@ -118,6 +118,23 @@ mkdir -p "$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/use
 
 ###############################################################################################################################################################
 
+# Download the Autodesk Fusion Installer
+curl -L "$AUTODESK_FUSION_INSTALLER_URL" -o "$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/users/$USER/Downloads/Fusion360ClientInstaller.exe"
+
+# --- First run of the installer: allow up to 10 minutes ---
+timeout 600 flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine $HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/users/$USER/Downloads/Fusion360ClientInstaller.exe --quiet || echo "First run timed out."
+
+# Kill Wine to ensure clean state
+flatpak kill org.winehq.Wine
+
+# --- Second run of the installer: allow up to 1 minute ---
+timeout 60 flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine $HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/users/$USER/Downloads/Fusion360ClientInstaller.exe --quiet || echo "Second run timed out."
+
+# Kill Wine to ensure clean state
+flatpak kill org.winehq.Wine
+
+###############################################################################################################################################################
+
 # Create mimetype link to handle web login call backs to the Identity Manager
 cat > $HOME/.local/share/applications/adskidmgr-opener.desktop << EOL
 [Desktop Entry]
@@ -133,23 +150,6 @@ chmod 444 $HOME/.local/share/applications/adskidmgr-opener.desktop
     
 # Set the mimetype handler for the Identity Manager
 xdg-mime default adskidmgr-opener.desktop x-scheme-handler/adskidmgr
-
-###############################################################################################################################################################
-
-# Download the Autodesk Fusion Installer
-curl -L "$AUTODESK_FUSION_INSTALLER_URL" -o "$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/users/$USER/Downloads/Fusion360ClientInstaller.exe"
-
-# --- First run of the installer: allow up to 10 minutes ---
-timeout 600 flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine $HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/users/$USER/Downloads/Fusion360ClientInstaller.exe --quiet || echo "First run timed out."
-
-# Kill Wine to ensure clean state
-flatpak kill org.winehq.Wine
-
-# --- Second run of the installer: allow up to 1 minute ---
-timeout 60 flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine $HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/users/$USER/Downloads/Fusion360ClientInstaller.exe --quiet || echo "Second run timed out."
-
-# Kill Wine to ensure clean state
-flatpak kill org.winehq.Wine
 
 ###############################################################################################################################################################
 
