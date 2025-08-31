@@ -294,4 +294,5 @@ FUSION_EXE="$NEW_FOLDER/FusionLauncher.exe"
 flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "https://signin.autodesk.com/idmgr/login"
 
 # Workaround after the login in the web browser (installed on your Host system or as flatpak app) your must copy the callback code an replace the XXXXXXXXXX with it and run this command in a seperate terminal window
-# flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine xdg-open "https://signin.autodesk.com/idmgr/callback#code=XXXXXXXXXX"
+#flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360"   org.winehq.Wine "C:\\Program Files\\Autodesk\\webdeploy\\production\\7627f627889be835182cfc345110c3c9f5bc9cc3\\Autodesk Identity Manager\\AdskIdentityManager.exe" "https://signin.autodesk.com/idmgr/callback#code=XXXXXXXXXX"
+# Repeat the the command ...
