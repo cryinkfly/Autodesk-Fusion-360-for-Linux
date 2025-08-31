@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2025                                                                          #
-# Time/Date:    09:15/31.08.2025                                                                   #
-# Version:      1.0.1-Alpha                                                                        #
+# Time/Date:    09:30/31.08.2025                                                                   #
+# Version:      1.0.2-Alpha                                                                        #
 ####################################################################################################
 # Notes:
 #   - All commands and procedures are derived from my previous scripts and have been
@@ -236,6 +236,22 @@ curl -L "$FIREFOX_ESR_INSTALLER_URL" -o "$HOME/.var/app/org.winehq.Wine/data/win
 # --- Run of the installer: allow up to 2 minutes ---
 timeout 120 flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine $HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/users/$USER/Downloads/FirefoxESRInstaller.exe /silent /install
 
+# Change Registry: Set Firefox ESR as default browser in Wine Flatpak
+timeout 60 flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine reg add "HKCU\\Software\\Clients\\StartMenuInternet" /ve /d "Firefox" /f
+timeout 60 flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine reg add "HKCU\\Software\\Clients\\StartMenuInternet\\Firefox\\shell\\open\\command" /ve /d "\"$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/Program Files/Mozilla Firefox/firefox.exe\" \"%1\"" /f
+   
+# Optional: Check if Firefox is set correctly  
+# Execute the query with a timeout and save the output
+OUTPUT=$(timeout 60 flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine reg query "HKCU\\Software\\Clients\\StartMenuInternet")
+
+# Display the output in a controlled manner
+if [ $? -eq 124 ]; then
+    echo "Command timed out after 60 seconds."
+else
+    echo "Registry query result:"
+    echo "$OUTPUT"
+fi
+
 ###############################################################################################################################################################
 
 #cd $HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/Program Files/Autodesk/webdeploy/production/PRODUCTION-ID
@@ -252,6 +268,10 @@ FUSION_EXE="$NEW_FOLDER/FusionLauncher.exe"
 #flatpak run --env=WINEDEBUG=-all --env=WINEPREFIX="$WINEPREFIX" org.winehq.Wine "$FUSION_EXE"
 
 ###############################################################################################################################################################
+
+
+# Open the Autodesk Login Page in Firefox ESR (Flatpak Wine)
+flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "https://signin.autodesk.com/idmgr/login"
 
 # Workaround after the login in the web browser (installed on your Host system or as flatpak app) your must copy the callback code an replace the XXXXXXXXXX with it and run this command in a seperate terminal window
 # flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine xdg-open "https://signin.autodesk.com/idmgr/callback#code=XXXXXXXXXX"
