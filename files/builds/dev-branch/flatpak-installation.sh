@@ -237,8 +237,8 @@ curl -L "$FIREFOX_ESR_INSTALLER_URL" -o "$HOME/.var/app/org.winehq.Wine/data/win
 timeout 120 flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine $HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/users/$USER/Downloads/FirefoxESRInstaller.exe /silent /install
 
 # Change Registry: Set Firefox ESR as default browser in Wine Flatpak
-timeout 60 flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine reg add "HKCU\\Software\\Clients\\StartMenuInternet" /ve /d "Firefox" /f
-timeout 60 flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine reg add "HKCU\\Software\\Clients\\StartMenuInternet\\Firefox\\shell\\open\\command" /ve /d "\"$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/Program Files/Mozilla Firefox/firefox.exe\" \"%1\"" /f
+timeout 60 flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine reg add "HKLM\\Software\\Clients\\StartMenuInternet" /ve /d "Firefox" /f
+timeout 60 flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine reg add "HKLM\\Software\\Clients\\StartMenuInternet\\Firefox\\shell\\open\\command" /ve /d "\"$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360/drive_c/Program Files/Mozilla Firefox/firefox.exe\" \"%1\"" /f
    
 # Optional: Check if Firefox is set correctly  
 # Execute the query with a timeout and save the output
