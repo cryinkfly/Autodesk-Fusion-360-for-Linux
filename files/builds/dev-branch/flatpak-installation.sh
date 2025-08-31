@@ -252,11 +252,11 @@ else
     echo "$OUTPUT"
 fi
 
-# HTTP
-timeout 60 flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine reg add "HKCU\\Software\\Classes\\http\\shell\\open\\command" /ve /t REG_SZ /d "\"C:\\Program Files\\Mozilla Firefox\\firefox.exe\" \"%1\"" /f
+# HTTP global
+timeout 60 flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine reg add "HKLM\\Software\\Classes\\http\\shell\\open\\command" /ve /t REG_SZ /d "\"C:\\Program Files\\Mozilla Firefox\\firefox.exe\" \"%1\"" /f
 
-# HTTPS
-timeout 60 flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine reg add "HKCU\\Software\\Classes\\https\\shell\\open\\command" /ve /t REG_SZ /d "\"C:\\Program Files\\Mozilla Firefox\\firefox.exe\" \"%1\"" /f
+# HTTPS global
+timeout 60 flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine reg add "HKLM\\Software\\Classes\\https\\shell\\open\\command" /ve /t REG_SZ /d "\"C:\\Program Files\\Mozilla Firefox\\firefox.exe\" \"%1\"" /f
 
 ###############################################################################################################################################################
 
