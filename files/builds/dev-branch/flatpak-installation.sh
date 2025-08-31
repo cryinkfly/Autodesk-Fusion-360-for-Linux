@@ -252,11 +252,22 @@ else
     echo "$OUTPUT"
 fi
 
+# HTTP & HTTPS - When the user click on login in Autodesk Fusion > open the installed Firefox ESR Wine version ...
+
 # HTTP global
 timeout 60 flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine reg add "HKLM\\Software\\Classes\\http\\shell\\open\\command" /ve /t REG_SZ /d "\"C:\\Program Files\\Mozilla Firefox\\firefox.exe\" \"%1\"" /f
 
 # HTTPS global
 timeout 60 flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine reg add "HKLM\\Software\\Classes\\https\\shell\\open\\command" /ve /t REG_SZ /d "\"C:\\Program Files\\Mozilla Firefox\\firefox.exe\" \"%1\"" /f
+
+
+# Still in Progress ...
+# Register adskidmgr:// callback to AdskIdentityManager.exe
+#ADSK_EXE=$(find "$PROD_DIR" -maxdepth 1 -type d | sort | tail -1)/"Autodesk Identity Manager/AdskIdentityManager.exe"
+#flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine reg add  "HKLM\\Software\\Classes\\adskidmgr\\shell\\open\\command" /ve /t REG_SZ  /d "\"$ADSK_EXE\" \"%1\"" /f
+
+#flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine reg add "HKLM\\Software\\Classes\\adskidmgr" /ve /t REG_SZ /d "URL:adskidmgr Protocol" /f
+#flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine reg add "HKLM\\Software\\Classes\\adskidmgr" /v "URL Protocol" /t REG_SZ /d "" /f
 
 ###############################################################################################################################################################
 
