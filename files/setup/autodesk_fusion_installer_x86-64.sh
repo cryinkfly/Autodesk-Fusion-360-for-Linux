@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2025                                                                          #
-# Time/Date:    10:12/22.06.2025                                                                   #
-# Version:      2.0.3-Alpha                                                                        #
+# Time/Date:    15:15/31.08.2025                                                                   #
+# Version:      2.0.4-Alpha                                                                        #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -747,8 +747,6 @@ function download_files() {
     download_extensions_files
     # Download the patched Qt6WebEngineCore.dll file
     curl -L "$QT6_WEBENGINECORE_URL" -o "$SELECTED_DIRECTORY/downloads/Qt6WebEngineCore.dll.7z"
-    # Extract the patched the 6WebEngineCore.dll.7z file with overwrite option
-    7za e -y "$SELECTED_DIRECTORY/downloads/Qt6WebEngineCore.dll.7z" -o"$SELECTED_DIRECTORY/downloads/"
     # Download the patched siappdll.dll file
     curl -L "$SIAPPDLL_URL" -o "$SELECTED_DIRECTORY/downloads/siappdll.dll"
 }
@@ -1189,8 +1187,6 @@ function wine_autodesk_fusion_install() {
     cd "$SELECTED_DIRECTORY/wineprefixes/default" || return
     WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" sh "$SELECTED_DIRECTORY/bin/winetricks" -q sandbox
     sleep 5s
-    WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" sh "$SELECTED_DIRECTORY/bin/winetricks" -q sandbox
-    sleep 5s
     # We must install some packages!
     WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" sh "$SELECTED_DIRECTORY/bin/winetricks" -q atmlib gdiplus arial corefonts cjkfonts dotnet452 msxml4 msxml6 vcrun2017 fontsmooth=rgb winhttp win10
     # We must install cjkfonts again then sometimes it doesn't work in the first time!
@@ -1210,6 +1206,10 @@ function wine_autodesk_fusion_install() {
     # Fixed the problem with the bcp47langs issue and now the login works again!
     WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine reg add "HKCU\Software\Wine\DllOverrides" /v "bcp47langs" /t REG_SZ /d "" /f
     sleep 5s
+    # Install 7-Zip inside the Wine prefix via winetricks.
+    # This method does NOT require 7-Zip on the host system and is more stable/reliable than previous approaches.
+    WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" sh "$SELECTED_DIRECTORY/bin/winetricks" -q 7zip
+    WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/Program Files/7-Zip/7z.exe" x "C:\\users\\$USER\\Downloads\\Qt6WebEngineCore.dll.7z" -o"C:\\users\\$USER\\Downloads\\"
     # Disabled by Default - Configure the correct virtual desktop resolution
     # WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" sh "$SELECTED_DIRECTORY/bin/winetricks" -q vd="$MONITOR_RESOLUTION"
     # Download and install WebView2 to handle Login attempts, required even though we redirect to your default browser
