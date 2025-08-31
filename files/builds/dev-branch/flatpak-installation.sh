@@ -77,6 +77,9 @@ flatpak run org.winehq.Wine --version #Check version of wine
 # since Wine no longer has permissions to reach outside of that sandboxed environment.
 flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" --command="winetricks" org.winehq.Wine -q sandbox
 
+# Install wine gecko, ...
+yes | flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine wineboot --update
+
 # Install required libraries
 flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" --command="winetricks" org.winehq.Wine -q sandbox atmlib gdiplus arial corefonts cjkfonts dotnet452 msxml4 msxml6 vcrun2017 fontsmooth=rgb winhttp win10
 
