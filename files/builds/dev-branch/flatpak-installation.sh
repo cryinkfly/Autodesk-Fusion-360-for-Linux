@@ -242,7 +242,7 @@ timeout 60 flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/win
    
 # Optional: Check if Firefox is set correctly  
 # Execute the query with a timeout and save the output
-OUTPUT=$(timeout 60 flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine reg query "HKCU\\Software\\Clients\\StartMenuInternet")
+OUTPUT=$(timeout 60 flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine reg query "HKLM\\Software\\Clients\\StartMenuInternet")
 
 # Display the output in a controlled manner
 if [ $? -eq 124 ]; then
