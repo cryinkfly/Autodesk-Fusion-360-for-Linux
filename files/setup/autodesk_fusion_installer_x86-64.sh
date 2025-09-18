@@ -77,6 +77,7 @@ SIAPPDLL_URL="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-fo
 ##############################################################################################################################################################################
 
 check_required_packages() {
+    # TJM - Test commit by adding comment
     # Extracting the Linux distribution ID and version
     DISTRO=$(grep "^ID=" /etc/*-release | cut -d'=' -f2 | tr -d '"')
     VERSION=$(grep "^VERSION_ID=" /etc/*-release | cut -d'=' -f2 | tr -d '"')
