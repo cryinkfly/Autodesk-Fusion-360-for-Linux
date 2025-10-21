@@ -76,7 +76,7 @@ SIAPPDLL_URL="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-fo
 # CHECK THE REQUIRED PACKAGES FOR THE INSTALLER:                                                                                                                             #
 ##############################################################################################################################################################################
 
-check_required_packages() {
+function check_required_packages() {
     # Extracting the Linux distribution ID and version
     DISTRO=$(grep "^ID=" /etc/*-release | cut -d'=' -f2 | tr -d '"')
     VERSION=$(grep "^VERSION_ID=" /etc/*-release | cut -d'=' -f2 | tr -d '"')
@@ -185,7 +185,7 @@ function install_required_packages {
         if [[ $DISTRO_VERSION == *"arch"* ]] || [[ $DISTRO_VERSION == *"manjaro"* ]] || [[ $DISTRO_VERSION == *"endeavouros"* ]] || [[ $DISTRO_VERSION == *"cachyos"* ]]; then
             echo -e "$(gettext "${YELLOW}All required packages for the installer will be installed!")${NOCOLOR}"
             sleep 2
-            sudo pacman -S gawk cabextract coreutils curl lsb-release mesa-demos p7zip polkit samba spacenavd winbind wget xdg-utils bc xorg-xrandr --noconfirm
+            sudo pacman -S gawk cabextract coreutils curl lsb-release mesa-demos mesa-utils p7zip polkit samba wget libspnav xdg-utils bc xorg-xrandr mokutil --noconfirm
             sudo systemctl enable spacenavd
             sudo systemctl start spacenavd
             echo -e "$(gettext "${GREEN}All required packages for the installer are installed!")${NOCOLOR}"
@@ -423,7 +423,7 @@ function create_data_structure() {
 # Function to check if Secure Boot is activated
 function check_secure_boot {
     if ! command -v mokutil &> /dev/null; then
-        echo "${RED} mokutil command not found. Please install it to check Secure Boot status."
+        echo "${RED} mokutil command not found. Please install it to check Secure Boot status.${NOCOLOR}"
         exit 1
     fi
 
@@ -436,9 +436,6 @@ function check_secure_boot {
         SECURE_BOOT="0"
     fi
 }
-
-# Call the function
-check_secure_boot
 
 ##############################################################################################################################################################################
 # CHECKING THE MINIMUM RAM (RANDOM ACCESS MEMORY) REQUIREMENT:                                                                                                               #
