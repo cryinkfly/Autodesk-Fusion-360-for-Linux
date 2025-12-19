@@ -475,14 +475,14 @@ function check_ram {
 ##############################################################################################################################################################################
 
 function check_gpu_driver {
-    echo -e "$(gettext "${YELLOW}Überprüfung der GPU-Treiber für den Installer ...${NOCOLOR}")"
+    echo -e "$(gettext "${YELLOW}Checking the GPU drivers for the installer...${NOCOLOR}")"
     
     if [[ $SECURE_BOOT == "0" ]]; then
-        # Wenn Secure Boot deaktiviert ist, NVIDIA GPU überprüfen
+        # If Secure Boot is disabled, check NVIDIA GPU
         if nvidia-smi &>/dev/null; then
             NVIDIA_PRESENT=true
             NVIDIA_VRAM=$(nvidia-smi --query-gpu=memory.total --format=csv,noheader,nounits | head -n1)
-            echo -e "$(gettext "${GREEN}NVIDIA GPU erkannt mit ${NVIDIA_VRAM}MB VRAM${NOCOLOR}")"
+            echo -e "$(gettext "${GREEN}NVIDIA GPU detected with ${NVIDIA_VRAM}MB VRAM${NOCOLOR}")"
         fi
     fi
 
@@ -492,36 +492,36 @@ function check_gpu_driver {
     if [[ $INTEL_AMD_GPU == "AMD" ]]; then
         AMD_PRESENT=true
         AMD_VRAM=$(glxinfo | grep -i "Video memory" | grep -Eo '[0-9]+MB' | grep -Eo '[0-9]+' | head -n1)
-        echo -e "$(gettext "${GREEN}${INTEL_AMD_GPU} GPU erkannt mit ${AMD_VRAM}MB VRAM${NOCOLOR}")"
+        echo -e "$(gettext "${GREEN}${INTEL_AMD_GPU} GPU recognized with ${AMD_VRAM}MB VRAM${NOCOLOR}")"
     elif [[ $INTEL_AMD_GPU == "Intel" ]]; then
         INTEL_PRESENT=true
         INTEL_VRAM=$(glxinfo | grep -i "Video memory" | grep -Eo '[0-9]+MB' | grep -Eo '[0-9]+' | head -n1)
-        echo -e "$(gettext "${GREEN}${INTEL_AMD_GPU} GPU erkannt mit ${INTEL_VRAM}MB VRAM${NOCOLOR}")"
+        echo -e "$(gettext "${GREEN}${INTEL_AMD_GPU} GPU recognized with ${INTEL_VRAM}MB VRAM${NOCOLOR}")"
     fi
 
     if [[ $SECURE_BOOT == "1" && $NVIDIA_PRESENT ]]; then
-        # Wenn Secure Boot aktiviert ist und NVIDIA GPU erkannt wurde, NVIDIA GPU sollte OpenGL verwenden
+        # If Secure Boot is enabled and the NVIDIA GPU is detected, the NVIDIA GPU should use OpenGL.
         GPU_DRIVER="OpenGL"
         GET_VRAM_MEGABYTES=$NVIDIA_VRAM
-        echo -e "$(gettext "${GREEN}Secure Boot ist aktiviert. Der OpenGL-GPU-Treiber wird für die NVIDIA GPU verwendet.${NOCOLOR}")"
+        echo -e "$(gettext "${GREEN}Secure Boot is enabled. The OpenGL GPU driver is being used for the NVIDIA GPU.${NOCOLOR}")"
     elif [[ $SECURE_BOOT == "0" ]]; then
-        # Wenn Secure Boot deaktiviert ist, handhabe die GPU-Auswahl
+        # If Secure Boot is disabled, handle GPU selection
         if [[ $NVIDIA_PRESENT && ($INTEL_PRESENT || $AMD_PRESENT) ]]; then
-            echo -e "$(gettext "${YELLOW}Mehrere GPUs erkannt. Bitte wählen Sie, welche verwendet werden soll (Standard ist DXVK):${NOCOLOR}")"
+            echo -e "$(gettext "${YELLOW}MMultiple GPUs detected. Please select which one to use (default is DXVK):${NOCOLOR}")"
             echo "1) NVIDIA"
             echo "2) ${INTEL_AMD_GPU}"
-            read -p "Geben Sie Ihre Wahl ein (1 oder 2): " gpu_choice
+            read -p "Enter your choice (1 or 2): " gpu_choice
             
             case $gpu_choice in
                 1)
                     GPU_DRIVER="DXVK"
                     GET_VRAM_MEGABYTES=$NVIDIA_VRAM
-                    echo -e "$(gettext "${GREEN}NVIDIA GPU ausgewählt. Der DXVK-GPU-Treiber wird für die Installation verwendet.${NOCOLOR}")"
+                    echo -e "$(gettext "${GREEN}NVIDIA GPU selected. The DXVK GPU driver will be used for installation.${NOCOLOR}")"
                     ;;
                 2)
                     GPU_DRIVER="OpenGL"
                     GET_VRAM_MEGABYTES=$INTEL_AMD_VRAM
-                    echo -e "$(gettext "${GREEN}Der OpenGL-GPU-Fallback-Treiber wird für die Installation verwendet.${NOCOLOR}")"
+                    echo -e "$(gettext "${GREEN}The OpenGL GPU fallback driver is used for the installation.${NOCOLOR}")"
                     ;;
                 *)
                     GPU_DRIVER="OpenGL"
@@ -531,21 +531,21 @@ function check_gpu_driver {
         elif [[ $NVIDIA_PRESENT ]]; then
             GPU_DRIVER="DXVK"
             GET_VRAM_MEGABYTES=$NVIDIA_VRAM
-            echo -e "$(gettext "${GREEN}Der DXVK-GPU-Treiber wird für die Installation verwendet.${NOCOLOR}")"
+            echo -e "$(gettext "${GREEN}The DXVK GPU driver is used for the installation.${NOCOLOR}")"
         elif [[ $AMD_PRESENT ]]; then
             GPU_DRIVER="DXVK"
             GET_VRAM_MEGABYTES=$AMD_VRAM
-            echo -e "$(gettext "${GREEN}Der DXVK-GPU-Treiber wird für die Installation verwendet.${NOCOLOR}")"
+            echo -e "$(gettext "${GREEN}The DXVK GPU driver is used for the installation.${NOCOLOR}")"
         elif [[ $INTEL_PRESENT ]]; then
             GPU_DRIVER="OpenGL"
             GET_VRAM_MEGABYTES=$INTEL_VRAM
-            echo -e "$(gettext "${GREEN}Der OpenGL-GPU-Fallback-Treiber wird für die Installation verwendet.${NOCOLOR}")"
+            echo -e "$(gettext "${GREEN}The OpenGL GPU fallback driver is used for the installation.${NOCOLOR}")"
         else
-            echo -e "$(gettext "${RED}Kein GPU-Treiber auf Ihrem System erkannt!${NOCOLOR}")"
+            echo -e "$(gettext "${RED}No GPU driver detected on your system!${NOCOLOR}")"
             GET_VRAM_MEGABYTES=0
         fi
     else
-        echo -e "$(gettext "${RED}Kein GPU-Treiber auf Ihrem System erkannt!${NOCOLOR}")"
+        echo -e "$(gettext "${RED}No GPU driver detected on your system!${NOCOLOR}")"
         GET_VRAM_MEGABYTES=0
     fi
 
