@@ -1177,9 +1177,9 @@ function wine_autodesk_fusion_install() {
     # sleep 5s
     WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine "$SELECTED_DIRECTORY/downloads/WebView2installer.exe" /silent /install
     # Pre-create shortcut directory for latest re-branding Microsoft Edge WebView2
-    APPDATA_PATH="$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/AppData"
-    APPLICATION_DATA_PATH="$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Application Data"
-    mkdir -p "$APPDATA_PATH/Roaming/Microsoft/Internet Explorer/Quick Launch/User Pinned/"
+    APPDATA_DIRECTORY="$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/AppData"
+    APPLICATION_DATA_DIRECTORY="$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Application Data"
+    mkdir -p "$APPDATA_DIRECTORY/Roaming/Microsoft/Internet Explorer/Quick Launch/User Pinned/"
 
     if [[ $GPU_DRIVER = "DXVK" ]]; then
         WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" sh "$SELECTED_DIRECTORY/bin/winetricks" -q dxvk
@@ -1187,12 +1187,12 @@ function wine_autodesk_fusion_install() {
         WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine regedit.exe "C:\\users\\$USER\\Downloads\\DXVK.reg"
     fi
     autodesk_fusion_run_install_client
-    mkdir -p "$APPDATA_PATH/Roaming/Autodesk/Neutron Platform/Options"
-    mkdir -p "$APPDATA_PATH/Local/Autodesk/Neutron Platform/Options"
-    mkdir -p "$APPLICATION_DATA_PATH/Autodesk/Neutron Platform/Options"
-    cp "$SELECTED_DIRECTORY/downloads/NMachineSpecificOptions.xml" "$APPDATA_PATH/Roaming/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml" || return
-    cp "$SELECTED_DIRECTORY/downloads/NMachineSpecificOptions.xml" "$APPDATA_PATH/Local/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml" || return
-    cp "$SELECTED_DIRECTORY/downloads/NMachineSpecificOptions.xml" "$APPLICATION_DATA_PATH/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml" || return
+    mkdir -p "$APPDATA_DIRECTORY/Roaming/Autodesk/Neutron Platform/Options"
+    mkdir -p "$APPDATA_DIRECTORY/Local/Autodesk/Neutron Platform/Options"
+    mkdir -p "$APPLICATION_DATA_DIRECTORY/Autodesk/Neutron Platform/Options"
+    cp "$SELECTED_DIRECTORY/downloads/NMachineSpecificOptions.xml" "$APPDATA_DIRECTORY/Roaming/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml" || return
+    cp "$SELECTED_DIRECTORY/downloads/NMachineSpecificOptions.xml" "$APPDATA_DIRECTORY/Local/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml" || return
+    cp "$SELECTED_DIRECTORY/downloads/NMachineSpecificOptions.xml" "$APPLICATION_DATA_DIRECTORY/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml" || return
 }
 
 ###############################################################################################################################################################
@@ -1238,9 +1238,9 @@ function autodesk_fusion_extension_ultimaker_digital_factory {
 
 function run_install_extension_client {
     local EXTENSION_FILE="$1"
-    WIN_EXTENSION_PATH="C:\\users\\$USER\\Downloads\\extensions"
+    local WIN_EXTENSION_DIRECTORY="C:\\users\\$USER\\Downloads\\extensions"
     if [[ "$EXTENSION_FILE" == *.msi ]]; then
-        WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine msiexec /i "$WIN_EXTENSION_PATH\\$EXTENSION_FILE" /quiet
+        WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine msiexec /i "$WIN_EXTENSION_DIRECTORY\\$EXTENSION_FILE" /quiet
     else
         WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine "$SELECTED_DIRECTORY/downloads/$EXTENSION_FILE"
     fi
