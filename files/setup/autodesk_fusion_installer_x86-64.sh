@@ -757,7 +757,7 @@ function download_files() {
 
     # Download Autodesk Fusion SVG!
     curl -L "$REPO_URL/files/setup/resource/graphics/autodesk_fusion.svg" -o "$SELECTED_DIRECTORY/resources/graphics/autodesk_fusion.svg"
-    curl -L "$REPO_URL/files/setup/.desktop/Autodesk Fusion.desktop" -o "$SELECTED_DIRECTORY/.desktop/Autodesk Fusion.desktop"
+    curl -L "$REPO_URL/files/setup/.desktop/Autodesk%20Fusion.desktop" -o "$SELECTED_DIRECTORY/.desktop/Autodesk Fusion.desktop"
     curl -L "$REPO_URL/files/setup/.desktop/adskidmgr-opener.desktop" -o "$SELECTED_DIRECTORY/.desktop/adskidmgr-opener.desktop"
 
     # Download some script files for Autodesk Fusion 360!
@@ -1059,7 +1059,7 @@ function autodesk_fusion_shortcuts_load {
 
     #Create mimetype link to handle web login call backs to the Identity Manager
     cp "$SELECTED_DIRECTORY/.desktop/adskidmgr-opener.desktop" "$DESKTOP_DIRECTORY/adskidmgr-opener.desktop"
-    echo "Exec=sh -c 'env WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine "$(find $SELECTED_DIRECTORY/wineprefixes/default/ -name "AdskIdentityManager.exe" | head -1 | xargs -I '{}' echo {})" "%u"'"
+    echo "Exec=sh -c 'env WINEPREFIX=$SELECTED_DIRECTORY/wineprefixes/default wine \$(find $SELECTED_DIRECTORY/wineprefixes/default/ -name AdskIdentityManager.exe | head -1) %u'" >> "$DESKTOP_DIRECTORY/adskidmgr-opener.desktop"
 
     #Set the permissions for the .desktop file to read-only
     chmod 444 "$DESKTOP_DIRECTORY/adskidmgr-opener.desktop"
