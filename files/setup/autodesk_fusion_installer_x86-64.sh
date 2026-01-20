@@ -37,22 +37,24 @@ else
     SELECTED_EXTENSIONS=""
 fi
 
+REPO_URL="https://raw.githubusercontent.com/Lolig4/Autodesk-Fusion-360-for-Linux/main"
+
 # URL to download translations po. files <-- Still in progress!!!
-UPDATER_TRANSLATIONS_URL="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/locale/update-locale.sh"
+UPDATER_TRANSLATIONS_URL="$REPO_URL/files/setup/locale/update-locale.sh"
 declare -A TRANSLATION_URLS=(
-    ["cs_CZ"]="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/locale/cs_CZ/LC_MESSAGES/autodesk_fusion.po"
-    ["de_DE"]="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/locale/de_DE/LC_MESSAGES/autodesk_fusion.po"
-    ["en_US"]="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/locale/en_US/LC_MESSAGES/autodesk_fusion.po"
-    ["es_ES"]="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/locale/es_ES/LC_MESSAGES/autodesk_fusion.po"
-    ["fr_FR"]="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/locale/fr_FR/LC_MESSAGES/autodesk_fusion.po"
-    ["it_IT"]="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/locale/it_IT/LC_MESSAGES/autodesk_fusion.po"
-    ["ja_JP"]="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/locale/ja_JP/LC_MESSAGES/autodesk_fusion.po"
-    ["ko_KR"]="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/locale/ko_KR/LC_MESSAGES/autodesk_fusion.po"
-    ["pl_PL"]="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/locale/pl_PL/LC_MESSAGES/autodesk_fusion.po"
-    ["pt_BR"]="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/locale/pt_BR/LC_MESSAGES/autodesk_fusion.po"
-    ["tr_TR"]="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/locale/tr_TR/LC_MESSAGES/autodesk_fusion.po"
-    ["zh_CN"]="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/locale/zh_CN/LC_MESSAGES/autodesk_fusion.po"
-    ["zh_TW"]="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/locale/zh_TW/LC_MESSAGES/autodesk_fusion.po"
+    ["cs_CZ"]="$REPO_URL/files/setup/locale/cs_CZ/LC_MESSAGES/autodesk_fusion.po"
+    ["de_DE"]="$REPO_URL/files/setup/locale/de_DE/LC_MESSAGES/autodesk_fusion.po"
+    ["en_US"]="$REPO_URL/files/setup/locale/en_US/LC_MESSAGES/autodesk_fusion.po"
+    ["es_ES"]="$REPO_URL/files/setup/locale/es_ES/LC_MESSAGES/autodesk_fusion.po"
+    ["fr_FR"]="$REPO_URL/files/setup/locale/fr_FR/LC_MESSAGES/autodesk_fusion.po"
+    ["it_IT"]="$REPO_URL/files/setup/locale/it_IT/LC_MESSAGES/autodesk_fusion.po"
+    ["ja_JP"]="$REPO_URL/files/setup/locale/ja_JP/LC_MESSAGES/autodesk_fusion.po"
+    ["ko_KR"]="$REPO_URL/files/setup/locale/ko_KR/LC_MESSAGES/autodesk_fusion.po"
+    ["pl_PL"]="$REPO_URL/files/setup/locale/pl_PL/LC_MESSAGES/autodesk_fusion.po"
+    ["pt_BR"]="$REPO_URL/files/setup/locale/pt_BR/LC_MESSAGES/autodesk_fusion.po"
+    ["tr_TR"]="$REPO_URL/files/setup/locale/tr_TR/LC_MESSAGES/autodesk_fusion.po"
+    ["zh_CN"]="$REPO_URL/files/setup/locale/zh_CN/LC_MESSAGES/autodesk_fusion.po"
+    ["zh_TW"]="$REPO_URL/files/setup/locale/zh_TW/LC_MESSAGES/autodesk_fusion.po"
 )
 
 # URL to download winetricks
@@ -67,10 +69,10 @@ AUTODESK_FUSION_INSTALLER_URL="https://dl.appstreaming.autodesk.com/production/i
 WEBVIEW2_INSTALLER_URL="https://github.com/aedancullen/webview2-evergreen-standalone-installer-archive/releases/download/109.0.1518.78/MicrosoftEdgeWebView2RuntimeInstallerX64.exe"
 
 # URL to download the patched Qt6WebEngineCore.dll file
-QT6_WEBENGINECORE_URL="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/extras/patched-dlls/Qt6WebEngineCore-06-2025.7z"
+QT6_WEBENGINECORE_URL="$REPO_URL/files/extras/patched-dlls/Qt6WebEngineCore-06-2025.7z"
 
 # URL to download the patched siappdll.dll file
-SIAPPDLL_URL="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/extras/patched-dlls/siappdll.dll"
+SIAPPDLL_URL="$REPO_URL/files/extras/patched-dlls/siappdll.dll"
 
 ##############################################################################################################################################################################
 # CHECK THE REQUIRED PACKAGES FOR THE INSTALLER:                                                                                                                             #
@@ -1027,7 +1029,7 @@ function determine_variable_folder_name_for_identity_manager {
 # Load the icons and .desktop-files:
 function autodesk_fusion_shortcuts_load {
     # Create a .desktop file (launcher.sh) for Autodesk Fusion!
-    curl -L https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/resource/graphics/autodesk_fusion.svg -o "$SELECTED_DIRECTORY/resources/graphics/autodesk_fusion.svg"
+    curl -L $REPO_URL/files/setup/resource/graphics/autodesk_fusion.svg -o "$SELECTED_DIRECTORY/resources/graphics/autodesk_fusion.svg"
     cat > "$HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk Fusion.desktop" << EOF
 [Desktop Entry]
 Name=Autodesk Fusion
@@ -1084,7 +1086,7 @@ EOL
     sed -i 's/=env WINEPREFIX=/=env WINEDEBUG=-all env WINEPREFIX=/g' "$HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk Fusion.desktop"
 
     # Download some script files for Autodesk Fusion 360!
-    curl -L https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/data/autodesk_fusion_launcher.sh -o "$SELECTED_DIRECTORY/bin/autodesk_fusion_launcher.sh"
+    curl -L $REPO_URL/files/setup/data/autodesk_fusion_launcher.sh -o "$SELECTED_DIRECTORY/bin/autodesk_fusion_launcher.sh"
     chmod +x "$SELECTED_DIRECTORY/bin/autodesk_fusion_launcher.sh"
 }
 
@@ -1093,7 +1095,7 @@ EOL
 function dxvk_opengl_1 {
     if [[ $GPU_DRIVER = "DXVK" ]]; then
         WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" sh "$SELECTED_DIRECTORY/bin/winetricks" -q dxvk
-        curl -L https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/resource/video_driver/dxvk/DXVK.reg -o "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Downloads/DXVK.reg"
+        curl -L $REPO_URL/files/setup/resource/video_driver/dxvk/DXVK.reg -o "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Downloads/DXVK.reg"
         # Add the "return"-option. Here you can read more about it -> https://github.com/koalaman/shellcheck/issues/592
         cd "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Downloads" || return
         WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine regedit.exe DXVK.reg
@@ -1102,9 +1104,9 @@ function dxvk_opengl_1 {
 
 function dxvk_opengl_2 {
     if [[ $GPU_DRIVER = "DXVK" ]]; then
-        curl -L https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/resource/video_driver/dxvk/NMachineSpecificOptions.xml -o "NMachineSpecificOptions.xml"
+        curl -L $REPO_URL/files/setup/resource/video_driver/dxvk/NMachineSpecificOptions.xml -o "NMachineSpecificOptions.xml"
     else
-        curl -L https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/resource/video_driver/opengl/NMachineSpecificOptions.xml -o "NMachineSpecificOptions.xml"
+        curl -L $REPO_URL/files/setup/resource/video_driver/opengl/NMachineSpecificOptions.xml -o "NMachineSpecificOptions.xml"
     fi
 }
 
