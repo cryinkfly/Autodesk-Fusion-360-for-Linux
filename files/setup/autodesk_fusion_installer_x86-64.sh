@@ -1240,7 +1240,7 @@ function run_install_extension_client {
     local EXTENSION_FILE="$1"
     WIN_EXTENSION_PATH="C:\\users\\$USER\\Downloads\\extensions"
     if [[ "$EXTENSION_FILE" == *.msi ]]; then
-        WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine msiexec /i "$EXTENSION_PATH\\$EXTENSION_FILE" /quiet
+        WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine msiexec /i "$WIN_EXTENSION_PATH\\$EXTENSION_FILE" /quiet
     else
         WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine "$SELECTED_DIRECTORY/downloads/$EXTENSION_FILE"
     fi
@@ -1269,7 +1269,7 @@ function reset_window_not_responding_dialog() {
 }
 
 ##############################################################################################################################################################################
-# RUN AUTODESK FUSION:                                                                                                                                                       #
+# RUN AUTODESK FUSION        "$SELECTED_DIRECTORY/config" \:                                                                                                                                                       #
 ##############################################################################################################################################################################
 
 function run_wine_autodesk_fusion() {
