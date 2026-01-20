@@ -748,6 +748,14 @@ function download_files() {
     curl -L "$QT6_WEBENGINECORE_URL" -o "$SELECTED_DIRECTORY/downloads/Qt6WebEngineCore.dll.7z"
     # Download the patched siappdll.dll file
     curl -L "$SIAPPDLL_URL" -o "$SELECTED_DIRECTORY/downloads/siappdll.dll"
+    # Download the DXVK registry file if the DXVK GPU driver is selected
+    if [[ $GPU_DRIVER == "DXVK" ]]; then
+        curl -L "$REPO_URL/files/setup/resource/video_driver/dxvk/DXVK.reg" -o "$SELECTED_DIRECTORY/downloads/DXVK.reg"
+        curl -L "$REPO_URL/files/setup/resource/video_driver/dxvk/NMachineSpecificOptions.xml" -o "$SELECTED_DIRECTORY/downloads/NMachineSpecificOptions.xml"
+    else
+        curl -L "$REPO_URL/files/setup/resource/video_driver/opengl/NMachineSpecificOptions.xml" -o "$SELECTED_DIRECTORY/downloads/NMachineSpecificOptions.xml"
+    fi
+
 }
 
 # Download an extension if it doesn't exist or is older than 7 days
@@ -1061,7 +1069,7 @@ Path=$SELECTED_DIRECTORY/bin
 EOF
 
     # Set the permissions for the .desktop file to read-only
-    chmod 444 "$HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk Fusion.desktop"
+    chmod 744 "$HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk Fusion.desktop"
 
     # Execute function
     determine_variable_folder_name_for_identity_manager
@@ -1077,7 +1085,7 @@ MimeType=x-scheme-handler/adskidmgr;
 EOL
 
     #Set the permissions for the .desktop file to read-only
-    chmod 444 $HOME/.local/share/applications/adskidmgr-opener.desktop
+    chmod 744 $HOME/.local/share/applications/adskidmgr-opener.desktop
     
     #Set the mimetype handler for the Identity Manager
     xdg-mime default adskidmgr-opener.desktop x-scheme-handler/adskidmgr
@@ -1092,33 +1100,11 @@ EOL
 
 ###############################################################################################################################################################
 
-function dxvk_opengl_1 {
-    if [[ $GPU_DRIVER = "DXVK" ]]; then
-        WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" sh "$SELECTED_DIRECTORY/bin/winetricks" -q dxvk
-        curl -L $REPO_URL/files/setup/resource/video_driver/dxvk/DXVK.reg -o "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Downloads/DXVK.reg"
-        # Add the "return"-option. Here you can read more about it -> https://github.com/koalaman/shellcheck/issues/592
-        cd "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Downloads" || return
-        WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine regedit.exe DXVK.reg
-    fi
-}
-
-function dxvk_opengl_2 {
-    if [[ $GPU_DRIVER = "DXVK" ]]; then
-        curl -L $REPO_URL/files/setup/resource/video_driver/dxvk/NMachineSpecificOptions.xml -o "NMachineSpecificOptions.xml"
-    else
-        curl -L $REPO_URL/files/setup/resource/video_driver/opengl/NMachineSpecificOptions.xml -o "NMachineSpecificOptions.xml"
-    fi
-}
-
-###############################################################################################################################################################
-
 # Execute the installation of Autodesk Fusion
 function autodesk_fusion_run_install_client {
-    cd "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Downloads"
-    #WINEPREFIX="$selected_directory/wineprefixes/default" timeout -k 5m 1m wine "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/Fusion360Clientinstaller.exe" --quiet
-    WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" timeout -k 10m 9m wine "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Downloads/FusionClientInstaller.exe" --quiet
+    WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" timeout -k 10m 9m wine "$SELECTED_DIRECTORY/downloads/FusionClientInstaller.exe" --quiet
     sleep 5s
-    WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" timeout -k 5m 1m wine "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Downloads/FusionClientInstaller.exe" --quiet
+    WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" timeout -k 5m 1m wine "$SELECTED_DIRECTORY/downloads/FusionClientInstaller.exe" --quiet
 }
 
 ###############################################################################################################################################################
@@ -1183,8 +1169,11 @@ function wine_autodesk_fusion_install() {
     # For this reason, the EXE files must be located directly in the Wineprefix folder!
 
     mkdir -p "$SELECTED_DIRECTORY/wineprefixes/default"
-    cd "$SELECTED_DIRECTORY/wineprefixes/default" || return
     WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" sh "$SELECTED_DIRECTORY/bin/winetricks" -q sandbox
+
+    rm -r $SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Downloads
+    ln -s $SELECTED_DIRECTORY/downloads $SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Downloads
+
     sleep 5s
     # We must install some packages!
     WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" sh "$SELECTED_DIRECTORY/bin/winetricks" -q atmlib gdiplus arial corefonts cjkfonts dotnet452 msxml4 msxml6 vcrun2017 fontsmooth=rgb winhttp win10
@@ -1213,23 +1202,24 @@ function wine_autodesk_fusion_install() {
     # WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" sh "$SELECTED_DIRECTORY/bin/winetricks" -q vd="$MONITOR_RESOLUTION"
     # Download and install WebView2 to handle Login attempts, required even though we redirect to your default browser
     # sleep 5s
-    cp "$SELECTED_DIRECTORY/downloads/WebView2installer.exe" "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Downloads/WebView2installer.exe"
-    WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Downloads/WebView2installer.exe" /silent /install
+    WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine "$SELECTED_DIRECTORY/downloads/WebView2installer.exe" /silent /install
     # Pre-create shortcut directory for latest re-branding Microsoft Edge WebView2
-    mkdir -p "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/AppData/Roaming/Microsoft/Internet Explorer/Quick Launch/User Pinned/"
-    dxvk_opengl_1
-    cp "$SELECTED_DIRECTORY/downloads/FusionClientInstaller.exe" "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Downloads"
+    APPDATA_PATH="$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/AppData"
+    APPLICATION_DATA_PATH="$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Application Data"
+    mkdir -p "$APPDATA_PATH/Roaming/Microsoft/Internet Explorer/Quick Launch/User Pinned/"
+
+    if [[ $GPU_DRIVER = "DXVK" ]]; then
+        WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" sh "$SELECTED_DIRECTORY/bin/winetricks" -q dxvk
+        # Add the "return"-option. Here you can read more about it -> https://github.com/koalaman/shellcheck/issues/592
+        WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine regedit.exe "C:\\users\\$USER\\Downloads\\DXVK.reg"
+    fi
     autodesk_fusion_run_install_client
-    mkdir -p "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options"
-    cd "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options" || return
-    dxvk_opengl_2
-    mkdir -p "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/AppData/Local/Autodesk/Neutron Platform/Options"
-    cd "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/AppData/Local/Autodesk/Neutron Platform/Options" || return
-    dxvk_opengl_2
-    mkdir -p "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options"
-    cd "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options" || return
-    dxvk_opengl_2
-    cd "$SELECTED_DIRECTORY/bin" || return
+    mkdir -p "$APPDATA_PATH/Roaming/Autodesk/Neutron Platform/Options"
+    mkdir -p "$APPDATA_PATH/Local/Autodesk/Neutron Platform/Options"
+    mkdir -p "$APPLICATION_DATA_PATH/Autodesk/Neutron Platform/Options"
+    cp "$SELECTED_DIRECTORY/downloads/NMachineSpecificOptions.xml" "$APPDATA_PATH/Roaming/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml" || return
+    cp "$SELECTED_DIRECTORY/downloads/NMachineSpecificOptions.xml" "$APPDATA_PATH/Local/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml" || return
+    cp "$SELECTED_DIRECTORY/downloads/NMachineSpecificOptions.xml" "$APPLICATION_DATA_PATH/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml" || return
 }
 
 ###############################################################################################################################################################
@@ -1275,13 +1265,11 @@ function autodesk_fusion_extension_ultimaker_digital_factory {
 
 function run_install_extension_client {
     local EXTENSION_FILE="$1"
-    cp "$SELECTED_DIRECTORY/extensions/$EXTENSION_FILE" "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Downloads"
+    WIN_EXTENSION_PATH="C:\\users\\$USER\\Downloads\\extensions"
     if [[ "$EXTENSION_FILE" == *.msi ]]; then
-        cd "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Downloads" || return
-        WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine msiexec /i "$EXTENSION_FILE"
+        WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine msiexec /i "$EXTENSION_PATH\\$EXTENSION_FILE" /quiet
     else
-        cd "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Downloads" || return
-        WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine "$EXTENSION_FILE"
+        WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine "$SELECTED_DIRECTORY/downloads/$EXTENSION_FILE"
     fi
 }
 
