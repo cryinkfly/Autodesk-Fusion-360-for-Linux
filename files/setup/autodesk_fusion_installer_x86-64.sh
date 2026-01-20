@@ -409,10 +409,9 @@ function deactivate_window_not_responding_dialog() {
 
 function create_data_structure() {
     mkdir -p "$SELECTED_DIRECTORY/bin" \
-        "$SELECTED_DIRECTORY/config" \
         "$SELECTED_DIRECTORY/downloads/extensions" \
         "$SELECTED_DIRECTORY/logs" \
-        "$SELECTED_DIRECTORY/locale" \
+        "$SELECTED_DIRECTORY/.desktop" \
         "$SELECTED_DIRECTORY/resources/graphics" \
         "$SELECTED_DIRECTORY/resources/styles" \
         "$SELECTED_DIRECTORY/wineprefixes/default"
@@ -756,6 +755,14 @@ function download_files() {
         curl -L "$REPO_URL/files/setup/resource/video_driver/opengl/NMachineSpecificOptions.xml" -o "$SELECTED_DIRECTORY/downloads/NMachineSpecificOptions.xml"
     fi
 
+    # Download Autodesk Fusion SVG!
+    curl -L "$REPO_URL/files/setup/resource/graphics/autodesk_fusion.svg" -o "$SELECTED_DIRECTORY/resources/graphics/autodesk_fusion.svg"
+    curl -L "$REPO_URL/files/setup/.desktop/Autodesk Fusion.desktop" -o "$SELECTED_DIRECTORY/.desktop/Autodesk Fusion.desktop"
+    curl -L "$REPO_URL/files/setup/.desktop/adskidmgr-opener.desktop" -o "$SELECTED_DIRECTORY/.desktop/adskidmgr-opener.desktop"
+
+    # Download some script files for Autodesk Fusion 360!
+    curl -L $REPO_URL/files/setup/autodesk_fusion_launcher.sh -o "$SELECTED_DIRECTORY/bin/autodesk_fusion_launcher.sh"
+    chmod +x "$SELECTED_DIRECTORY/bin/autodesk_fusion_launcher.sh"
 }
 
 # Download an extension if it doesn't exist or is older than 7 days
@@ -1037,65 +1044,31 @@ function determine_variable_folder_name_for_identity_manager {
 # Load the icons and .desktop-files:
 function autodesk_fusion_shortcuts_load {
     # Create a .desktop file (launcher.sh) for Autodesk Fusion!
-    curl -L $REPO_URL/files/setup/resource/graphics/autodesk_fusion.svg -o "$SELECTED_DIRECTORY/resources/graphics/autodesk_fusion.svg"
-    cat > "$HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk Fusion.desktop" << EOF
-[Desktop Entry]
-Name=Autodesk Fusion
-GenericName=CAD Application
-GenericName[cs]=Aplikace CAD
-GenericName[de]=CAD-Anwendung
-GenericName[es]=Aplicación CAD
-GenericName[fr]=Application CAO
-GenericName[it]=Applicazione CAD
-GenericName[ja]=CADアプリケーション
-GenericName[ko]=CAD 응용
-GenericName[zh_CN]=计算机辅助设计应用
-Comment=Autodesk Fusion is a cloud-based 3D modeling, CAD, CAM, and PCB software platform for product design and manufacturing.
-Comment[cs]=Autodesk Fusion je cloudová platforma pro 3D modelování, CAD, CAM a PCB určená k navrhování a výrobě produktů.
-Comment[de]=Autodesk Fusion ist eine cloudbasierte Softwareplattform für Modellierung, CAD, CAM, CAE und Leiterplatten in 3D für Produktdesign und Fertigung.
-Comment[es]=Autodesk Fusion es una plataforma de software de modelado 3D, CAD, CAM y PCB basada en la nube destinada al diseño y la fabricación de productos.
-Comment[fr]=Autodesk Fusion est une plate-forme logicielle 3D cloud de modélisation, de CAO, de FAO, d’IAO et de conception de circuits imprimés destinée à la conception et à la fabrication de produits.
-Comment[it]=Autodesk Fusion è una piattaforma software di modellazione 3D, CAD, CAM, CAE e PCB basata sul cloud per la progettazione e la realizzazione di prodotti.
-Comment[ja]=Autodesk Fusion、製品の設計と製造のためのクラウドベースの3Dモデリング、CAD、CAM、およびPCBソフトウェアプラットフォームです。
-Comment[ko]=Autodesk Fusion 제품 설계 및 제조를 위한 클라우드 기반 3D 모델링, CAD, CAM 및 PCB 소프트웨어 플랫폼입니다.
-Comment[zh_CN]=Autodesk Fusion 是一个基于云的 3D 建模、CAD、CAM 和 PCB 软件平台，用于产品设计和制造。
-Exec=$SELECTED_DIRECTORY/bin/autodesk_fusion_launcher.sh
-Type=Application
-Categories=Education;Engineering;Graphics;Science
-StartupNotify=true
-Icon=$SELECTED_DIRECTORY/resources/graphics/autodesk_fusion.svg
-Terminal=false
-Path=$SELECTED_DIRECTORY/bin
-EOF
+    DESKTOP_DIRECTORY="$HOME/.local/share/applications/wine/Programs/Autodesk"
+    cp "$SELECTED_DIRECTORY/.desktop/Autodesk Fusion.desktop" "$DESKTOP_DIRECTORY/Autodesk Fusion.desktop"
+    echo "Exec=$SELECTED_DIRECTORY/bin/autodesk_fusion_launcher.sh" >> "$DESKTOP_DIRECTORY/Autodesk Fusion.desktop"
+    echo "Icon=$SELECTED_DIRECTORY/resources/graphics/autodesk_fusion.svg" >> "$DESKTOP_DIRECTORY/Autodesk Fusion.desktop"
+    echo "Path=$SELECTED_DIRECTORY/bin" >> "$DESKTOP_DIRECTORY/Autodesk Fusion.desktop"
 
     # Set the permissions for the .desktop file to read-only
-    chmod 744 "$HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk Fusion.desktop"
+    chmod 444 "$DESKTOP_DIRECTORY/Autodesk Fusion.desktop"
+
 
     # Execute function
     determine_variable_folder_name_for_identity_manager
 
     #Create mimetype link to handle web login call backs to the Identity Manager
-    cat > $HOME/.local/share/applications/adskidmgr-opener.desktop << EOL
-[Desktop Entry]
-Type=Application
-Name=adskidmgr Scheme Handler
-Exec=sh -c 'env WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine "$(find $SELECTED_DIRECTORY/wineprefixes/default/ -name "AdskIdentityManager.exe" | head -1 | xargs -I '{}' echo {})" "%u"'
-StartupNotify=false
-MimeType=x-scheme-handler/adskidmgr;
-EOL
+    cp "$SELECTED_DIRECTORY/.desktop/adskidmgr-opener.desktop" "$DESKTOP_DIRECTORY/adskidmgr-opener.desktop"
+    echo "Exec=sh -c 'env WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine "$(find $SELECTED_DIRECTORY/wineprefixes/default/ -name "AdskIdentityManager.exe" | head -1 | xargs -I '{}' echo {})" "%u"'"
 
     #Set the permissions for the .desktop file to read-only
-    chmod 744 $HOME/.local/share/applications/adskidmgr-opener.desktop
+    chmod 444 "$DESKTOP_DIRECTORY/adskidmgr-opener.desktop"
     
     #Set the mimetype handler for the Identity Manager
     xdg-mime default adskidmgr-opener.desktop x-scheme-handler/adskidmgr
 
     #Disable Debug messages on regular runs, we dont have a terminal, so speed up the system by not wasting time prining them into the Void
-    sed -i 's/=env WINEPREFIX=/=env WINEDEBUG=-all env WINEPREFIX=/g' "$HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk Fusion.desktop"
-
-    # Download some script files for Autodesk Fusion 360!
-    curl -L $REPO_URL/files/setup/autodesk_fusion_launcher.sh -o "$SELECTED_DIRECTORY/bin/autodesk_fusion_launcher.sh"
-    chmod +x "$SELECTED_DIRECTORY/bin/autodesk_fusion_launcher.sh"
+    sed -i 's/=env WINEPREFIX=/=env WINEDEBUG=-all env WINEPREFIX=/g' "$DESKTOP_DIRECTORY/Autodesk Fusion.desktop"
 }
 
 ###############################################################################################################################################################
