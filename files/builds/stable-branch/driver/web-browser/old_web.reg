@@ -1,7 +1,0 @@
-REGEDIT4
-
-[HKEY_CLASSES_ROOT\http\shell\open\command]
-""="/usr/bin/xdg-open %1"
-
-[HKEY_CLASSES_ROOT\https\shell\open\command]
-""="/usr/bin/xdg-open %1"
