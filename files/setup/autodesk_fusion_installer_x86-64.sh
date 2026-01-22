@@ -30,6 +30,7 @@ DOWNLOAD_EXTENSIONS=0
 if [ -z "$SELECTED_DIRECTORY" ] || [ "$SELECTED_DIRECTORY" == "--default" ]; then
     SELECTED_DIRECTORY="$HOME/.autodesk_fusion"
 fi
+WINE_PFX="$SELECTED_DIRECTORY/wineprefixes/default"
 
 # if selected_extensions is set to --full, then all extensions will be installed
 if [ "$SELECTED_EXTENSIONS" == "--full" ]; then
@@ -414,7 +415,7 @@ function create_data_structure() {
         "$SELECTED_DIRECTORY/.desktop" \
         "$SELECTED_DIRECTORY/resources/graphics" \
         "$SELECTED_DIRECTORY/resources/styles" \
-        "$SELECTED_DIRECTORY/wineprefixes/default"
+        "$WINE_PFX"
 }
 
 ##############################################################################################################################################################################
@@ -481,7 +482,7 @@ function check_gpu_driver() {
     if (( !SECURE_BOOT )); then
         # If Secure Boot is disabled, check NVIDIA GPU
         if nvidia-smi &>/dev/null; then
-            NVIDIA_PRESENT=true
+            NVIDIA_PRESENT=1
             NVIDIA_VRAM=$(nvidia-smi --query-gpu=memory.total --format=csv,noheader,nounits | head -n1)
             echo -e "$(gettext "${GREEN}NVIDIA GPU detected with ${NVIDIA_VRAM}MB VRAM${NOCOLOR}")"
         fi
@@ -491,24 +492,26 @@ function check_gpu_driver() {
     INTEL_AMD_VRAM=$(glxinfo | grep -i "Video memory" | grep -Eo '[0-9]+MB' | grep -Eo '[0-9]+' | head -n1)
 
     if [[ $INTEL_AMD_GPU == "AMD" ]]; then
-        AMD_PRESENT=true
+        AMD_PRESENT=1
         AMD_VRAM=$(glxinfo | grep -i "Video memory" | grep -Eo '[0-9]+MB' | grep -Eo '[0-9]+' | head -n1)
         echo -e "$(gettext "${GREEN}${INTEL_AMD_GPU} GPU recognized with ${AMD_VRAM}MB VRAM${NOCOLOR}")"
     elif [[ $INTEL_AMD_GPU == "Intel" ]]; then
-        INTEL_PRESENT=true
+        INTEL_PRESENT=1
         INTEL_VRAM=$(glxinfo | grep -i "Video memory" | grep -Eo '[0-9]+MB' | grep -Eo '[0-9]+' | head -n1)
         echo -e "$(gettext "${GREEN}${INTEL_AMD_GPU} GPU recognized with ${INTEL_VRAM}MB VRAM${NOCOLOR}")"
     fi
 
-    if (( SECURE_BOOT )) && [[ $NVIDIA_PRESENT ]]; then
+    if (( SECURE_BOOT && NVIDIA_PRESENT )); then
         # If Secure Boot is enabled and the NVIDIA GPU is detected, the NVIDIA GPU should use OpenGL.
         GPU_DRIVER="OpenGL"
-        GET_VRAM_MEGABYTES=$NVIDIA_VRAM
+        GET_VRAM_MEGABYTES="$NVIDIA_VRAM"
         echo -e "$(gettext "${GREEN}Secure Boot is enabled. The OpenGL GPU driver is being used for the NVIDIA GPU.${NOCOLOR}")"
-    elif (( !SECURE_BOOT )); then
+    #elif (( !SECURE_BOOT )); then # WHY????
+    else 
+        echo -e "$(gettext "${GREEN}Secure Boot is disabled. Checking available GPU drivers...${NOCOLOR}")"
         # If Secure Boot is disabled, handle GPU selection
-        if [[ $NVIDIA_PRESENT && ($INTEL_PRESENT || $AMD_PRESENT) ]]; then
-            echo -e "$(gettext "${YELLOW}MMultiple GPUs detected. Please select which one to use (default is DXVK):${NOCOLOR}")"
+        if (( NVIDIA_PRESENT && (INTEL_PRESENT || AMD_PRESENT) )); then
+            echo -e "$(gettext "${YELLOW}Multiple GPUs detected. Please select which one to use (default is DXVK):${NOCOLOR}")"
             echo "1) NVIDIA"
             echo "2) ${INTEL_AMD_GPU}"
             read -p "Enter your choice (1 or 2): " gpu_choice
@@ -516,38 +519,38 @@ function check_gpu_driver() {
             case $gpu_choice in
                 1)
                     GPU_DRIVER="DXVK"
-                    GET_VRAM_MEGABYTES=$NVIDIA_VRAM
+                    GET_VRAM_MEGABYTES="$NVIDIA_VRAM"
                     echo -e "$(gettext "${GREEN}NVIDIA GPU selected. The DXVK GPU driver will be used for installation.${NOCOLOR}")"
                     ;;
                 2)
                     GPU_DRIVER="OpenGL"
-                    GET_VRAM_MEGABYTES=$INTEL_AMD_VRAM
+                    GET_VRAM_MEGABYTES="$INTEL_AMD_VRAM"
                     echo -e "$(gettext "${GREEN}The OpenGL GPU fallback driver is used for the installation.${NOCOLOR}")"
                     ;;
                 *)
                     GPU_DRIVER="OpenGL"
-                    GET_VRAM_MEGABYTES=$INTEL_VRAM
+                    GET_VRAM_MEGABYTES="$INTEL_VRAM"
                     ;;
             esac
-        elif [[ $NVIDIA_PRESENT ]]; then
+        elif (( NVIDIA_PRESENT )); then
             GPU_DRIVER="DXVK"
-            GET_VRAM_MEGABYTES=$NVIDIA_VRAM
+            GET_VRAM_MEGABYTES="$NVIDIA_VRAM"
             echo -e "$(gettext "${GREEN}The DXVK GPU driver is used for the installation.${NOCOLOR}")"
-        elif [[ $AMD_PRESENT ]]; then
+        elif (( AMD_PRESENT )); then
             GPU_DRIVER="DXVK"
-            GET_VRAM_MEGABYTES=$AMD_VRAM
+            GET_VRAM_MEGABYTES="$AMD_VRAM"
             echo -e "$(gettext "${GREEN}The DXVK GPU driver is used for the installation.${NOCOLOR}")"
-        elif [[ $INTEL_PRESENT ]]; then
+        elif (( INTEL_PRESENT )); then
             GPU_DRIVER="OpenGL"
-            GET_VRAM_MEGABYTES=$INTEL_VRAM
+            GET_VRAM_MEGABYTES="$INTEL_VRAM"
             echo -e "$(gettext "${GREEN}The OpenGL GPU fallback driver is used for the installation.${NOCOLOR}")"
         else
             echo -e "$(gettext "${RED}No GPU driver detected on your system!${NOCOLOR}")"
             GET_VRAM_MEGABYTES=0
         fi
-    else
-        echo -e "$(gettext "${RED}No GPU driver detected on your system!${NOCOLOR}")"
-        GET_VRAM_MEGABYTES=0
+    #else
+    #    echo -e "$(gettext "${RED}No GPU driver detected on your system!${NOCOLOR}")"
+    #    GET_VRAM_MEGABYTES=0
     fi
 
     sleep 2
@@ -1030,7 +1033,7 @@ function check_and_install_wine() {
 # This function finds that folder alphanumeric folder name.
 function determine_variable_folder_name_for_identity_manager() {
     echo "Searching for the variable location of the Autodesk Fusion identity manager..."
-    IDENT_MAN_PATH=$(find "$SELECTED_DIRECTORY/wineprefixes/default" -name 'AdskIdentityManager.exe')
+    IDENT_MAN_PATH=$(find "$WINE_PFX" -name 'AdskIdentityManager.exe')
     # Get the dirname of the identity manager's alphanumeric folder.
     # With the full path of the identity manager, go 2 folders up and isolate the folder name.
     IDENT_MAN_VARIABLE_DIRECTORY=$(basename "$(dirname "$(dirname "$IDENT_MAN_PATH")")")
@@ -1056,7 +1059,7 @@ function autodesk_fusion_shortcuts_load() {
 
     #Create mimetype link to handle web login call backs to the Identity Manager
     cp "$SELECTED_DIRECTORY/.desktop/adskidmgr-opener.desktop" "$DESKTOP_DIRECTORY/adskidmgr-opener.desktop"
-    echo "Exec=sh -c 'env WINEPREFIX=$SELECTED_DIRECTORY/wineprefixes/default wine \$(find $SELECTED_DIRECTORY/wineprefixes/default/ -name AdskIdentityManager.exe | head -1) %u'" >> "$DESKTOP_DIRECTORY/adskidmgr-opener.desktop"
+    echo "Exec=sh -c 'env WINEPREFIX=$WINE_PFX wine \"\$(find $WINE_PFX -name AdskIdentityManager.exe | head -1)\" "%u"'" >> "$DESKTOP_DIRECTORY/adskidmgr-opener.desktop"
 
     #Set the permissions for the .desktop file to read-only
     chmod 444 "$DESKTOP_DIRECTORY/adskidmgr-opener.desktop"
@@ -1074,10 +1077,10 @@ function autodesk_fusion_shortcuts_load() {
 function autodesk_fusion_run_install_client() {
     echo -e "$(gettext "${YELLOW}Installing Autodesk Fusion 360 Client ...${NOCOLOR}")"
     sleep 1
-    WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" timeout -k 10m 9m wine "$SELECTED_DIRECTORY/downloads/FusionClientInstaller.exe" --quiet
+    WINEPREFIX="$WINE_PFX" timeout -k 10m 9m wine "$SELECTED_DIRECTORY/downloads/FusionClientInstaller.exe" --quiet 2>> "$SELECTED_DIRECTORY/logs/FusionClientInstaller_1.log"
     sleep 5s
     echo -e "$(gettext "${YELLOW}Finalizing Autodesk Fusion 360 installation...${NOCOLOR}")"
-    WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" timeout -k 5m 1m wine "$SELECTED_DIRECTORY/downloads/FusionClientInstaller.exe" --quiet
+    WINEPREFIX="$WINE_PFX" timeout -k 5m 1m wine "$SELECTED_DIRECTORY/downloads/FusionClientInstaller.exe" --quiet 2>> "$SELECTED_DIRECTORY/logs/FusionClientInstaller_2.log"
     echo -e "$(gettext "${GREEN}Autodesk Fusion 360 Client installation completed!${NOCOLOR}")"
 }
 
@@ -1086,9 +1089,9 @@ function autodesk_fusion_run_install_client() {
 # Patch the Qt6WebEngineCore.dll to fix the login issue and other issues
 function autodesk_fusion_patch_qt6webenginecore() {
     # Find the Qt6WebEngineCore.dll file in the Autodesk Fusion directory
-    QT6_WEBENGINECORE=$(find "$SELECTED_DIRECTORY/wineprefixes/default" -name 'Qt6WebEngineCore.dll' -printf "%T+ %p\n" | sort -r | head -n 1 | sed -r 's/^[^ ]+ //')
+    QT6_WEBENGINECORE=$(find "$WINE_PFX" -name 'Qt6WebEngineCore.dll' -printf "%T+ %p\n" | sort -r | head -n 1 | sed -r 's/^[^ ]+ //')
     QT6_WEBENGINECORE_DIR=$(dirname "$QT6_WEBENGINECORE")
-    clear
+
     echo "$QT6_WEBENGINECORE_DIR"
 
     echo -e "${YELLOW}The old Qt6WebEngineCore.dll file is located in the following directory: $QT6_WEBENGINECORE_DIR${NOCOLOR}"
@@ -1142,54 +1145,56 @@ function wine_autodesk_fusion_install() {
     # But it still ensures that wine, for example, no longer has access permissions to Home!
     # For this reason, the EXE files must be located directly in the Wineprefix folder!
 
-    mkdir -p "$SELECTED_DIRECTORY/wineprefixes/default"
-    echo -e "$(gettext "${YELLOW}Setting up the Wine prefix for Autodesk Fusion 360 in Sandbox...${NOCOLOR}")"
-    WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" sh "$SELECTED_DIRECTORY/bin/winetricks" -q sandbox
+    echo -e "$(gettext "${YELLOW}Setting up the Wine prefix for Autodesk Fusion 360 in Sandbox... (suppressed)${NOCOLOR}")"
+    WINEPREFIX="$WINE_PFX" sh "$SELECTED_DIRECTORY/bin/winetricks" -q sandbox >> "$SELECTED_DIRECTORY/logs/winetricks_sandbox.log" 2>&1
 
     echo -e "$(gettext "${YELLOW}Linking the downloads folder to the Wine prefix...${NOCOLOR}")"
-    rm -r $SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Downloads
-    ln -s $SELECTED_DIRECTORY/downloads $SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Downloads
+    rm -r "$WINE_PFX/drive_c/users/$USER/Downloads"
+    ln -s "$SELECTED_DIRECTORY/downloads" "$WINE_PFX/drive_c/users/$USER/Downloads"
 
+    echo -e "$(gettext "${YELLOW}Configuring the Wine prefix for Autodesk Fusion 360...${NOCOLOR}")"
     sleep 5s
     # We must install some packages!
-    WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" sh "$SELECTED_DIRECTORY/bin/winetricks" -q atmlib gdiplus arial corefonts cjkfonts dotnet452 msxml4 msxml6 vcrun2017 fontsmooth=rgb winhttp win10
+    WINEPREFIX="$WINE_PFX" sh "$SELECTED_DIRECTORY/bin/winetricks" -q atmlib gdiplus arial corefonts cjkfonts dotnet452 msxml4 msxml6 vcrun2017 fontsmooth=rgb winhttp win10 2>> "$SELECTED_DIRECTORY/logs/winetricks_dotnet452.log"
     # We must install cjkfonts again then sometimes it doesn't work in the first time!
+    echo -e "$(gettext "${YELLOW}Re-installing cjkfonts... (suppressed)${NOCOLOR}")"
     sleep 5s
-    WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" sh "$SELECTED_DIRECTORY/bin/winetricks" -q cjkfonts
+    WINEPREFIX="$WINE_PFX" sh "$SELECTED_DIRECTORY/bin/winetricks" -q cjkfonts >> "$SELECTED_DIRECTORY/logs/winetricks_cjkfonts_2.log" 2>&1
     # We must set to Windows 10 or 11 again because some other winetricks sometimes set it back to Windows XP!
+    echo -e "$(gettext "${YELLOW}Setting Windows 11 as the Windows version... (suppressed)${NOCOLOR}")"
     sleep 5s
-    WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" sh "$SELECTED_DIRECTORY/bin/winetricks" -q win11
+    WINEPREFIX="$WINE_PFX" sh "$SELECTED_DIRECTORY/bin/winetricks" -q win11 >> "$SELECTED_DIRECTORY/logs/winetricks_win11.log" 2>&1
     # Remove tracking metrics/calling home
     sleep 5s
-    WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine REG ADD "HKCU\Software\Wine\DllOverrides" /v "adpclientservice.exe" /t REG_SZ /d "" /f
+    WINEPREFIX="$WINE_PFX" wine REG ADD "HKCU\Software\Wine\DllOverrides" /v "adpclientservice.exe" /t REG_SZ /d "" /f
     # Navigation bar does not work well with anything other than the wine builtin DX9
-    WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine REG ADD "HKCU\Software\Wine\DllOverrides" /v "AdCefWebBrowser.exe" /t REG_SZ /d builtin /f
+    WINEPREFIX="$WINE_PFX" wine REG ADD "HKCU\Software\Wine\DllOverrides" /v "AdCefWebBrowser.exe" /t REG_SZ /d builtin /f
     # Use Visual Studio Redist that is bundled with the application
-    WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine REG ADD "HKCU\Software\Wine\DllOverrides" /v "msvcp140" /t REG_SZ /d native /f
-    WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine REG ADD "HKCU\Software\Wine\DllOverrides" /v "mfc140u" /t REG_SZ /d native /f
+    WINEPREFIX="$WINE_PFX" wine REG ADD "HKCU\Software\Wine\DllOverrides" /v "msvcp140" /t REG_SZ /d native /f
+    WINEPREFIX="$WINE_PFX" wine REG ADD "HKCU\Software\Wine\DllOverrides" /v "mfc140u" /t REG_SZ /d native /f
     # Fixed the problem with the bcp47langs issue and now the login works again!
-    WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine reg add "HKCU\Software\Wine\DllOverrides" /v "bcp47langs" /t REG_SZ /d "" /f
+    WINEPREFIX="$WINE_PFX" wine reg add "HKCU\Software\Wine\DllOverrides" /v "bcp47langs" /t REG_SZ /d "" /f
     sleep 5s
     # Install 7-Zip inside the Wine prefix via winetricks.
     # This method does NOT require 7-Zip on the host system and is more stable/reliable than previous approaches.
-    WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" sh "$SELECTED_DIRECTORY/bin/winetricks" -q 7zip
-    WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/Program Files/7-Zip/7z.exe" x "C:\\users\\$USER\\Downloads\\Qt6WebEngineCore.dll.7z" -o"C:\\users\\$USER\\Downloads\\"
+    WINEPREFIX="$WINE_PFX" sh "$SELECTED_DIRECTORY/bin/winetricks" -q 7zip >> "$SELECTED_DIRECTORY/logs/winetricks_7zip.log" 2>&1
+    WINEPREFIX="$WINE_PFX" wine "$WINE_PFX/drive_c/Program Files/7-Zip/7z.exe" x "C:\\users\\$USER\\Downloads\\Qt6WebEngineCore.dll.7z" -o"C:\\users\\$USER\\Downloads\\"
     # Disabled by Default - Configure the correct virtual desktop resolution
-    # WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" sh "$SELECTED_DIRECTORY/bin/winetricks" -q vd="$MONITOR_RESOLUTION"
+    # WINEPREFIX="$WINE_PFX" sh "$SELECTED_DIRECTORY/bin/winetricks" -q vd="$MONITOR_RESOLUTION"
     # Download and install WebView2 to handle Login attempts, required even though we redirect to your default browser
     echo -e "$(gettext "${YELLOW}Installing Microsoft Edge WebView2 Runtime for Autodesk Fusion ...${NOCOLOR}")"
     sleep 1s
-    WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine "$SELECTED_DIRECTORY/downloads/WebView2installer.exe" /silent /install
+    WINEPREFIX="$WINE_PFX" wine "$SELECTED_DIRECTORY/downloads/WebView2installer.exe" /silent /install 2>> "$SELECTED_DIRECTORY/logs/WebView2_install.log"
     echo -e "$(gettext "${GREEN}Microsoft Edge WebView2 Runtime installation completed!${NOCOLOR}")"
     # Pre-create shortcut directory for latest re-branding Microsoft Edge WebView2
-    APPDATA_DIRECTORY="$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/AppData"
-    APPLICATION_DATA_DIRECTORY="$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Application Data"
+    APPDATA_DIRECTORY="$WINE_PFX/drive_c/users/$USER/AppData"
+    APPLICATION_DATA_DIRECTORY="$WINE_PFX/drive_c/users/$USER/Application Data"
     mkdir -p "$APPDATA_DIRECTORY/Roaming/Microsoft/Internet Explorer/Quick Launch/User Pinned"
 
     if [[ $GPU_DRIVER = "DXVK" ]]; then
-        WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" sh "$SELECTED_DIRECTORY/bin/winetricks" -q dxvk
+        WINEPREFIX="$WINE_PFX" sh "$SELECTED_DIRECTORY/bin/winetricks" -q dxvk
         # Add the "return"-option. Here you can read more about it -> https://github.com/koalaman/shellcheck/issues/592
-        WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine regedit.exe "C:\\users\\$USER\\Downloads\\DXVK.reg"
+        WINEPREFIX="$WINE_PFX" wine regedit.exe "C:\\users\\$USER\\Downloads\\DXVK.reg"
     fi
     autodesk_fusion_run_install_client
     mkdir -p "$APPDATA_DIRECTORY/Roaming/Autodesk/Neutron Platform/Options"
@@ -1225,9 +1230,9 @@ function run_install_extension_client() {
     local EXTENSION_FILE="$1"
     local WIN_EXTENSION_DIRECTORY="C:\\users\\$USER\\Downloads\\extensions"
     if [[ "$EXTENSION_FILE" == *.msi ]]; then
-        WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine msiexec /i "$WIN_EXTENSION_DIRECTORY\\$EXTENSION_FILE" /quiet
+        WINEPREFIX="$WINE_PFX" wine msiexec /i "$WIN_EXTENSION_DIRECTORY\\$EXTENSION_FILE" /quiet
     else
-        WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine "$SELECTED_DIRECTORY/downloads/$EXTENSION_FILE"
+        WINEPREFIX="$WINE_PFX" wine "$SELECTED_DIRECTORY/downloads/$EXTENSION_FILE"
     fi
 }
 
@@ -1237,7 +1242,7 @@ function autodesk_fusion_safe_logfile() {
     # Log the Wineprefixes
     echo "$GPU_DRIVER" >> "$SELECTED_DIRECTORY/logs/wineprefixes.log"
     echo "$SELECTED_DIRECTORY" >> "$SELECTED_DIRECTORY/logs/wineprefixes.log"
-    echo "$SELECTED_DIRECTORY/wineprefixes/default" >> "$SELECTED_DIRECTORY/logs/wineprefixes.log"
+    echo "$WINE_PFX" >> "$SELECTED_DIRECTORY/logs/wineprefixes.log"
 }
 
 ##############################################################################################################################################################################
