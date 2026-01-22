@@ -1145,7 +1145,7 @@ function autodesk_fusion_patch_qt6webenginecore {
     sleep 2
 
     # Copy the patched Qt6WebEngineCore.dll file to the Autodesk Fusion directory
-    cp -f "$SELECTED_DIRECTORY/downloads/Qt6WebEngineCore.dll" "$QT6_WEBENGINECORE_DIR/Qt6WebEngineCore.dll"
+    cp -f "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Downloads/Qt6WebEngineCore.dll" "$QT6_WEBENGINECORE_DIR/Qt6WebEngineCore.dll"
     echo -e "${GREEN}The Qt6WebEngineCore.dll file is patched successfully!${NOCOLOR}"
 }  
 
@@ -1206,6 +1206,7 @@ function wine_autodesk_fusion_install() {
     # Install 7-Zip inside the Wine prefix via winetricks.
     # This method does NOT require 7-Zip on the host system and is more stable/reliable than previous approaches.
     WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" sh "$SELECTED_DIRECTORY/bin/winetricks" -q 7zip
+    cp "$SELECTED_DIRECTORY/downloads/Qt6WebEngineCore.dll.7z" "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Downloads/Qt6WebEngineCore.dll.7z"
     WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/Program Files/7-Zip/7z.exe" x "C:\\users\\$USER\\Downloads\\Qt6WebEngineCore.dll.7z" -o"C:\\users\\$USER\\Downloads\\"
     # Disabled by Default - Configure the correct virtual desktop resolution
     # WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" sh "$SELECTED_DIRECTORY/bin/winetricks" -q vd="$MONITOR_RESOLUTION"
