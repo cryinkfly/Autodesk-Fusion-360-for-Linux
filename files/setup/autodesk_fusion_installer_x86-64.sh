@@ -1142,8 +1142,10 @@ function wine_autodesk_fusion_install() {
     # For this reason, the EXE files must be located directly in the Wineprefix folder!
 
     mkdir -p "$SELECTED_DIRECTORY/wineprefixes/default"
+    echo -e "$(gettext "${YELLOW}Setting up the Wine prefix for Autodesk Fusion 360 in Sandbox...${NOCOLOR}")"
     WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" sh "$SELECTED_DIRECTORY/bin/winetricks" -q sandbox
 
+    echo -e "$(gettext "${YELLOW}Linking the downloads folder to the Wine prefix...${NOCOLOR}")"
     rm -r $SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Downloads
     ln -s $SELECTED_DIRECTORY/downloads $SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Downloads
 
@@ -1179,7 +1181,7 @@ function wine_autodesk_fusion_install() {
     # Pre-create shortcut directory for latest re-branding Microsoft Edge WebView2
     APPDATA_DIRECTORY="$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/AppData"
     APPLICATION_DATA_DIRECTORY="$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Application Data"
-    mkdir -p "$APPDATA_DIRECTORY/Roaming/Microsoft/Internet Explorer/Quick Launch/User Pinned/"
+    mkdir -p "$APPDATA_DIRECTORY/Roaming/Microsoft/Internet Explorer/Quick Launch/User Pinned"
 
     if [[ $GPU_DRIVER = "DXVK" ]]; then
         WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" sh "$SELECTED_DIRECTORY/bin/winetricks" -q dxvk
@@ -1200,40 +1202,20 @@ function wine_autodesk_fusion_install() {
 # Check and install the selected extensions
 function wine_autodesk_fusion_install_extensions() {
     if [[ "$SELECTED_EXTENSIONS" == *"CzechlocalizationforF360"* ]]; then
-        autodesk_fusion_extension_czech_locale
+        run_install_extension_client "Ceska_lokalizace_pro_Autodesk_Fusion.exe"
     fi
     if [[ "$SELECTED_EXTENSIONS" == *"HP3DPrintersforAutodesk®Fusion®"* ]]; then
-        autodesk_fusion_extension_hp_3dprinter_connector
+        run_install_extension_client "HP_3DPrinters_for_Fusion360-win64.msi"
     fi
     if [[ "$SELECTED_EXTENSIONS" == *"MarkforgedforAutodesk®Fusion®"* ]]; then
-        autodesk_fusion_extension_markforged
+        run_install_extension_client "Markforged_for_Fusion360-win64.msi"
     fi
     if [[ "$SELECTED_EXTENSIONS" == *"OctoPrintforAutodesk®Fusion360™"* ]]; then
-        autodesk_fusion_extension_octoprint
+        run_install_extension_client "OctoPrint_for_Fusion360-win64.msi"
     fi
     if [[ "$SELECTED_EXTENSIONS" == *"UltimakerDigitalFactoryforAutodeskFusion360™"* ]]; then
-        autodesk_fusion_extension_ultimaker_digital_factory
+        run_install_extension_client "Ultimaker_Digital_Factory-win64.msi"
     fi
-}
-
-function autodesk_fusion_extension_czech_locale {
-    run_install_extension_client "Ceska_lokalizace_pro_Autodesk_Fusion.exe"
-}
-
-function autodesk_fusion_extension_hp_3dprinter_connector {
-    run_install_extension_client "HP_3DPrinters_for_Fusion360-win64.msi"
-}
-
-function autodesk_fusion_extension_markforged {
-    run_install_extension_client "Markforged_for_Fusion360-win64.msi"
-}
-
-function autodesk_fusion_extension_octoprint {
-    run_install_extension_client "OctoPrint_for_Fusion360-win64.msi"
-}
-
-function autodesk_fusion_extension_ultimaker_digital_factory {
-    run_install_extension_client "Ultimaker_Digital_Factory-win64.msi"
 }
 
 function run_install_extension_client {
