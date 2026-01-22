@@ -429,7 +429,7 @@ function check_secure_boot() {
     fi
 
     # Check if Secure Boot is enabled
-    if mokutil --sb-state | grep -q 'Secure Boot enabled'; then
+    if mokutil --sb-state | grep -qE 'Secure Boot enabled|SecureBoot enabled'; then
         echo "Secure Boot is enabled."
         SECURE_BOOT="1"
     else
