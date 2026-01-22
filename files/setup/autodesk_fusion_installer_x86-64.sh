@@ -25,7 +25,7 @@ NOCOLOR=$'\033[0m'
 SELECTED_OPTION="$1"
 SELECTED_DIRECTORY="$2"
 SELECTED_EXTENSIONS="$3"
-DOWNLOAD_EXTENSIONS=false
+DOWNLOAD_EXTENSIONS=0
 
 if [ -z "$SELECTED_DIRECTORY" ] || [ "$SELECTED_DIRECTORY" == "--default" ]; then
     SELECTED_DIRECTORY="$HOME/.autodesk_fusion"
@@ -34,7 +34,7 @@ fi
 # if selected_extensions is set to --full, then all extensions will be installed
 if [ "$SELECTED_EXTENSIONS" == "--full" ]; then
     SELECTED_EXTENSIONS="CzechlocalizationforF360,HP3DPrintersforAutodesk®Fusion®,MarkforgedforAutodesk®Fusion®,OctoPrintforAutodesk®Fusion360™,UltimakerDigitalFactoryforAutodeskFusion360™"
-    DOWNLOAD_EXTENSIONS=true
+    DOWNLOAD_EXTENSIONS=1
 fi
 
 REPO_URL="https://raw.githubusercontent.com/Lolig4/Autodesk-Fusion-360-for-Linux/main"
@@ -431,10 +431,10 @@ function check_secure_boot() {
     # Check if Secure Boot is enabled
     if mokutil --sb-state | grep -qE 'Secure Boot enabled|SecureBoot enabled'; then
         echo "Secure Boot is enabled."
-        SECURE_BOOT="1"
+        SECURE_BOOT=1
     else
         echo "Secure Boot is not enabled."
-        SECURE_BOOT="0"
+        SECURE_BOOT=0
     fi
 }
 
@@ -478,7 +478,7 @@ function check_ram() {
 function check_gpu_driver() {
     echo -e "$(gettext "${YELLOW}Checking the GPU drivers for the installer...${NOCOLOR}")"
     
-    if [[ $SECURE_BOOT == "0" ]]; then
+    if (( !SECURE_BOOT )); then
         # If Secure Boot is disabled, check NVIDIA GPU
         if nvidia-smi &>/dev/null; then
             NVIDIA_PRESENT=true
@@ -500,12 +500,12 @@ function check_gpu_driver() {
         echo -e "$(gettext "${GREEN}${INTEL_AMD_GPU} GPU recognized with ${INTEL_VRAM}MB VRAM${NOCOLOR}")"
     fi
 
-    if [[ $SECURE_BOOT == "1" && $NVIDIA_PRESENT ]]; then
+    if (( SECURE_BOOT )) && [[ $NVIDIA_PRESENT ]]; then
         # If Secure Boot is enabled and the NVIDIA GPU is detected, the NVIDIA GPU should use OpenGL.
         GPU_DRIVER="OpenGL"
         GET_VRAM_MEGABYTES=$NVIDIA_VRAM
         echo -e "$(gettext "${GREEN}Secure Boot is enabled. The OpenGL GPU driver is being used for the NVIDIA GPU.${NOCOLOR}")"
-    elif [[ $SECURE_BOOT == "0" ]]; then
+    elif (( !SECURE_BOOT )); then
         # If Secure Boot is disabled, handle GPU selection
         if [[ $NVIDIA_PRESENT && ($INTEL_PRESENT || $AMD_PRESENT) ]]; then
             echo -e "$(gettext "${YELLOW}MMultiple GPUs detected. Please select which one to use (default is DXVK):${NOCOLOR}")"
@@ -722,7 +722,7 @@ function download_files() {
     download_file "WebView2installer.exe" "$WEBVIEW2_INSTALLER_URL"
  
     # Download all tested extensions for Autodesk Fusion 360 on Linux
-    if [[ $DOWNLOAD_EXTENSIONS ]]; then
+    if (( DOWNLOAD_EXTENSIONS )); then
         download_extensions_files
     fi
 
@@ -1072,9 +1072,13 @@ function autodesk_fusion_shortcuts_load() {
 
 # Execute the installation of Autodesk Fusion
 function autodesk_fusion_run_install_client() {
+    echo -e "$(gettext "${YELLOW}Installing Autodesk Fusion 360 Client ...${NOCOLOR}")"
+    sleep 1
     WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" timeout -k 10m 9m wine "$SELECTED_DIRECTORY/downloads/FusionClientInstaller.exe" --quiet
     sleep 5s
+    echo -e "$(gettext "${YELLOW}Finalizing Autodesk Fusion 360 installation...${NOCOLOR}")"
     WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" timeout -k 5m 1m wine "$SELECTED_DIRECTORY/downloads/FusionClientInstaller.exe" --quiet
+    echo -e "$(gettext "${GREEN}Autodesk Fusion 360 Client installation completed!${NOCOLOR}")"
 }
 
 ###############################################################################################################################################################
@@ -1100,7 +1104,7 @@ function autodesk_fusion_patch_qt6webenginecore() {
 
     # Patch the Qt6WebEngineCore.dll file
     echo -e "${YELLOW}Patching the Qt6WebEngineCore.dll file for Autodesk Fusion ...${NOCOLOR}"
-    sleep 2
+    sleep 1s
 
     # Copy the patched Qt6WebEngineCore.dll file to the Autodesk Fusion directory
     cp -f "$SELECTED_DIRECTORY/downloads/Qt6WebEngineCore.dll" "$QT6_WEBENGINECORE_DIR/Qt6WebEngineCore.dll"
@@ -1113,7 +1117,7 @@ function autodesk_fusion_patch_qt6webenginecore() {
 
 function autodesk_fusion_patch_siappdll() {
     echo -e "${YELLOW}Patching the siappdll.dll file for Autodesk Fusion ...${NOCOLOR}"
-    sleep 2
+    sleep 1s
     
     # Check if the siappdll.dll file exists before attempting to backup
     if [ -f "$QT6_WEBENGINECORE_DIR/siappdll.dll" ]; then
@@ -1173,8 +1177,10 @@ function wine_autodesk_fusion_install() {
     # Disabled by Default - Configure the correct virtual desktop resolution
     # WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" sh "$SELECTED_DIRECTORY/bin/winetricks" -q vd="$MONITOR_RESOLUTION"
     # Download and install WebView2 to handle Login attempts, required even though we redirect to your default browser
-    # sleep 5s
+    echo -e "$(gettext "${YELLOW}Installing Microsoft Edge WebView2 Runtime for Autodesk Fusion ...${NOCOLOR}")"
+    sleep 1s
     WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine "$SELECTED_DIRECTORY/downloads/WebView2installer.exe" /silent /install
+    echo -e "$(gettext "${GREEN}Microsoft Edge WebView2 Runtime installation completed!${NOCOLOR}")"
     # Pre-create shortcut directory for latest re-branding Microsoft Edge WebView2
     APPDATA_DIRECTORY="$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/AppData"
     APPLICATION_DATA_DIRECTORY="$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Application Data"
