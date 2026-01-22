@@ -553,7 +553,7 @@ function check_gpu_driver() {
     sleep 2
 
     # Get the current display resolution of the main monitor if more than one is connected.
-    MONITOR_RESOLUTION=$(xrandr | grep '*' | awk '{print $1}')
+    MONITOR_RESOLUTION=$(xrandr 2>/dev/null | grep 'primary' | awk '{print $4}' | cut -d'+' -f1)
 
     # If the $MONITOR_RESOLUTION value is empty, set it to "1920x1080"
     if [ -z "$MONITOR_RESOLUTION" ]; then
