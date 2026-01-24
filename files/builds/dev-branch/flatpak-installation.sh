@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2026                                                                          #
-# Time/Date:    23:05/24.01.2026                                                                   #
+# Time/Date:    23:45/24.01.2026                                                                   #
 # Version:      1.0.4-Alpha                                                                        #
 ####################################################################################################
 # Notes:
@@ -308,3 +308,8 @@ flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/f
 # Workaround after the login in the web browser (installed on your Host system or as flatpak app) your must copy the callback code an replace the XXXXXXXXXX with it and run this command in a seperate terminal window
 #flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360"   org.winehq.Wine "C:\\Program Files\\Autodesk\\webdeploy\\production\\7627f627889be835182cfc345110c3c9f5bc9cc3\\Autodesk Identity Manager\\AdskIdentityManager.exe" "https://signin.autodesk.com/idmgr/callback#code=XXXXXXXXXX"
 # Repeat the the command ...
+
+flatpak run \
+  --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" \
+  org.winehq.Wine "C:\\Program Files\\Autodesk\\webdeploy\\production\\c20471a4ae316e18725b0917d95e36d14575877a\\FusionLauncher.exe"
+
