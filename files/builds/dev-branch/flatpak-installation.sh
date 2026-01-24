@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2026                                                                          #
-# Time/Date:    22:21/24.01.2026                                                                   #
+# Time/Date:    23:05/24.01.2026                                                                   #
 # Version:      1.0.4-Alpha                                                                        #
 ####################################################################################################
 # Notes:
@@ -78,7 +78,8 @@ flatpak run org.winehq.Wine --version #Check version of wine
 flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" --command="winetricks" org.winehq.Wine -q sandbox
 
 # Install wine gecko, ...
-yes | flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine wineboot --update
+flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine control.exe appwiz.cpl install_mono
+flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine control.exe appwiz.cpl install_gecko
 
 # Install required libraries
 flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" --command="winetricks" org.winehq.Wine -q sandbox atmlib gdiplus arial corefonts cjkfonts dotnet452 msxml4 msxml6 vcrun2017 fontsmooth=rgb winhttp win10
