@@ -6,9 +6,9 @@
 # Author:       Steve Zabka                                                                        #
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
-# Copyright (c) 2020-2025                                                                          #
-# Time/Date:    10:15/31.08.2025                                                                   #
-# Version:      1.0.3-Alpha                                                                        #
+# Copyright (c) 2020-2026                                                                          #
+# Time/Date:    17:15/24.01.2026                                                                   #
+# Version:      1.0.4-Alpha                                                                        #
 ####################################################################################################
 # Notes:
 #   - All commands and procedures are derived from my previous scripts and have been
