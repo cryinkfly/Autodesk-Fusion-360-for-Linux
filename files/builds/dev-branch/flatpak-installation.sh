@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2026                                                                          #
-# Time/Date:    17:15/24.01.2026                                                                   #
+# Time/Date:    22:21/24.01.2026                                                                   #
 # Version:      1.0.4-Alpha                                                                        #
 ####################################################################################################
 # Notes:
@@ -53,7 +53,7 @@ SIAPPDLL_URL="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-fo
 
 ###############################################################################################################################################################
 
-flatpak install flathub org.winehq.Wine/x86_64/stable-24.08 -y # Issue solved: Similar refs found for ‘org.winehq.Wine’ in remote ‘flathub’ ...
+flatpak install flathub org.winehq.Wine//stable-25.08 -y # Issue solved: Similar refs found for ‘org.winehq.Wine’ in remote ‘flathub’ ...
 flatpak update org.winehq.Wine -y # Upgrade to the Latest Version 
 
 flatpak run org.winehq.Wine --version #Check version of wine
