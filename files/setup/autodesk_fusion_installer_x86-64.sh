@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2026                                                                          #
-# Time/Date:    17:15/24.01.2026                                                                   #
-# Version:      2.0.5-Alpha                                                                        #
+# Time/Date:    00:55/25.01.2026                                                                   #
+# Version:      2.0.6-Alpha                                                                        #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -65,6 +65,7 @@ AUTODESK_FUSION_INSTALLER_URL="https://dl.appstreaming.autodesk.com/production/i
 
 # URL to download Microsoft Edge WebView2.Exec
 WEBVIEW2_INSTALLER_URL="https://github.com/aedancullen/webview2-evergreen-standalone-installer-archive/releases/download/109.0.1518.78/MicrosoftEdgeWebView2RuntimeInstallerX64.exe"
+# Testing a newer version (144.0.3719.93): WEBVIEW2_INSTALLER_URL="https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservice/files/ba1bb4b1-79ea-47b5-a0e0-967253cd7900/MicrosoftEdgeWebView2RuntimeInstallerX64.exe"
 
 # URL to download the patched Qt6WebEngineCore.dll file
 QT6_WEBENGINECORE_URL="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/extras/patched-dlls/Qt6WebEngineCore-06-2025.7z"
@@ -821,20 +822,6 @@ function check_and_install_wine() {
                     pacman -R wine wine-mono wine_gecko winetricks --noconfirm
                     pacman -Syu --needed wine wine-mono wine_gecko winetricks'
             fi
-        elif [[ $DISTRO_VERSION == *"Debian"*"11"* ]]; then
-            echo "Installing Wine for Debian 11 ..."
-            pkexec bash -c '
-                apt-get --allow-releaseinfo-change update
-                dpkg --add-architecture i386
-                rm /etc/apt/sources.list.d/wine* /etc/apt/sources.list.d/*wine* 2>/dev/null
-                apt-key list | grep -A 2 "wine" | grep "pub" | awk "{print \$2}" | cut -d"/" -f2 | xargs -r apt-key del
-                mkdir -pm755 /etc/apt/keyrings
-                wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
-                wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/bullseye/winehq-bullseye.sources
-                apt-get update
-                apt-get remove wine* --purge
-                apt-get autoremove -y
-                apt-get install -y --install-recommends winehq-staging'
         elif [[ $DISTRO_VERSION == *"Debian"*"12"* ]]; then
             echo "Installing Wine for Debian 12 ..."
             pkexec bash -c '
@@ -845,6 +832,20 @@ function check_and_install_wine() {
                 mkdir -pm755 /etc/apt/keyrings
                 wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
                 wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/bookworm/winehq-bookworm.sources
+                apt-get update
+                apt-get remove wine* --purge
+                apt-get autoremove -y
+                apt-get install -y --install-recommends winehq-staging'
+        elif [[ $DISTRO_VERSION == *"Debian"*"13"* ]]; then
+            echo "Installing Wine for Debian 13 ..."
+            pkexec bash -c '
+                apt-get --allow-releaseinfo-change update
+                dpkg --add-architecture i386
+                rm /etc/apt/sources.list.d/wine* /etc/apt/sources.list.d/*wine* 2>/dev/null
+                apt-key list | grep -A 2 "wine" | grep "pub" | awk "{print \$2}" | cut -d"/" -f2 | xargs -r apt-key del
+                mkdir -pm755 /etc/apt/keyrings
+                wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
+                wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/trixie/winehq-trixie.sources
                 apt-get update
                 apt-get remove wine* --purge
                 apt-get autoremove -y
@@ -902,8 +903,21 @@ function check_and_install_wine() {
                 apt-get remove wine* --purge
                 apt-get autoremove -y
                 apt-get install -y --install-recommends winehq-staging'
-        elif [[ $DISTRO_VERSION == *"Fedora"* && $DISTRO_VERSION == *"40"* ]] || [[ $DISTRO_VERSION == *"Nobara"* ]]; then
-            echo "Installing Wine for Fedora 40 ..."
+        elif [[ $DISTRO_VERSION == *"Ubuntu"*"25.04"* ]]; then
+            echo "Installing Wine for Ubuntu 25.04 ..."
+            pkexec bash -c '
+                dpkg --add-architecture i386
+                rm /etc/apt/sources.list.d/wine* /etc/apt/sources.list.d/*wine* 2>/dev/null
+                apt-key list | grep -A 2 "wine" | grep "pub" | awk "{print \$2}" | cut -d"/" -f2 | xargs -r apt-key del
+                mkdir -pm755 /etc/apt/keyrings
+                wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
+                wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/plucky/winehq-plucky.sources
+                apt-get update
+                apt-get remove wine* --purge
+                apt-get autoremove -y
+                apt-get install -y --install-recommends winehq-staging'
+        elif [[ $DISTRO_VERSION == *"Fedora"* && $DISTRO_VERSION == *"43"* ]] || [[ $DISTRO_VERSION == *"Nobara"* ]]; then
+            echo "Installing Wine for Fedora 43 ..."
             echo -e "$(gettext "${YELLOW}Multiple Wine repos detected. Please choose which to use:${NOCOLOR}")"
             echo "1) WineHQ Repository"
             echo "2) openSUSE-Wine-OBS Repository"
@@ -913,22 +927,22 @@ function check_and_install_wine() {
                 1)
                     echo -e "$(gettext "${GREEN}WineHQ Repository selected. The WineHQ Repository will be used for the installation.${NOCOLOR}")"
                     pkexec bash -c '
-                        dnf config-manager --add-repo https://dl.winehq.org/wine-builds/fedora/40/winehq.repo
+                        dnf config-manager --add-repo https://dl.winehq.org/wine-builds/fedora/43/winehq.repo
                         dnf remove -y wine wine-*
                         dnf install -y winehq-staging'
                     ;;
                 2)
                     echo -e "$(gettext "${GREEN}openSUSE-Wine-OBS Repository selected. The openSUSE-Wine-OBS Repository will be used for the installation.${NOCOLOR}")"
                     pkexec bash -c '
-                        rpm --import https://download.opensuse.org/repositories/Emulators:/Wine:/Fedora/Fedora_40/repodata/repomd.xml.key
-                        dnf config-manager --add-repo https://download.opensuse.org/repositories/Emulators:/Wine:/Fedora/Fedora_40/
+                        rpm --import https://download.opensuse.org/repositories/Emulators:/Wine:/Fedora/Fedora_43/repodata/repomd.xml.key
+                        dnf config-manager --add-repo https://download.opensuse.org/repositories/Emulators:/Wine:/Fedora/Fedora_43/
                         dnf remove -y wine wine-*
                         dnf install -y winehq-staging'
                     ;;
                 *)
                     echo -e "$(gettext "${RED}Invalid choice. The WineHQ Repository will be used for the installation.${NOCOLOR}")"
                     pkexec bash -c '
-                        dnf config-manager --add-repo https://dl.winehq.org/wine-builds/fedora/40/winehq.repo
+                        dnf config-manager --add-repo https://dl.winehq.org/wine-builds/fedora/43/winehq.repo
                         dnf remove -y wine wine-*
                         dnf install -y winehq-staging'
                     ;;
@@ -955,6 +969,19 @@ function check_and_install_wine() {
                 zypper refresh
                 zypper remove wine wine-* winetricks --no-confirm
                 zypper install -y wine'
+        elif [[ $DISTRO_VERSION == *"openSUSE"*"16.0"* ]]; then
+            echo "Installing Wine for openSUSE 16.0 ..."
+            pkexec bash -c '
+                repos=$(zypper repos --uri | grep wine | awk '{print $1}')
+                # Remove each identified repository
+                for repo in $repos; do
+                    echo "Removing repository: $repo"
+                    zypper removerepo "$repo"
+                done
+                zypper addrepo -cfp 90 "https://download.opensuse.org/repositories/Emulators:/Wine/16.0/" wine
+                zypper refresh
+                zypper remove wine wine-* winetricks --no-confirm
+                zypper install -y wine'
         elif [[ $DISTRO_VERSION == *"openSUSE"*"Tumbleweed"* ]]; then
             echo "Installing Wine for openSUSE tumbleweed ..."
             pkexec bash -c '
@@ -969,25 +996,25 @@ function check_and_install_wine() {
                 zypper remove wine wine-* winetricks --no-confirm
                 zypper install -y wine'
         elif [[ $DISTRO_VERSION == *"Red"*"Hat"*"Enterprise"*"Linux"* ]] || [[ $DISTRO_VERSION == *"Alma"*"Linux"* ]] || [[ $DISTRO_VERSION == *"Rocky"*"Linux"* ]]; then
-            echo "Installing Wine for RHEL 8, 9, ..."
+            echo "Installing Wine for RHEL 9, 10, ..."
             if command -v dnf &> /dev/null; then # Use dnf for newer distributions
                 pkexec bash -c '
                     dnf -y groupinstall 'Development Tools'
                     dnf -y install gcc libX11-devel freetype-devel zlib-devel libxcb-devel libxslt-devel
-                    curl -L https://dl.winehq.org/wine/source/9.x/wine-9.15.tar.xz -o /tmp/wine-9.15.tar.xz
-                    tar -xvf /tmp/wine-9.15.tar.xz -C /tmp/
-                    ./tmp/wine-9.15/configure --enable-win64
-                    make -C /tmp/wine-9.15
-                    make -C /tmp/wine-9.15 install'
+                    curl -L https://dl.winehq.org/wine/source/11.x/wine-11.1.tar.xz -o /tmp/wine-11.1.tar.xz
+                    tar -xvf /tmp/wine-11.1.tar.xz -C /tmp/
+                    ./tmp/wine-11.1/configure --enable-win64
+                    make -C /tmp/wine-11.1
+                    make -C /tmp/wine-11.1 install'
             else  # Use yum for older distributions
                 pkexec bash -c '
                     yum -y groupinstall 'Development Tools'
                     yum install gcc libX11-devel freetype-devel zlib-devel libxcb-devel libxslt-devel
-                    curl -L https://dl.winehq.org/wine/source/9.x/wine-9.15.tar.xz -o /tmp/wine-9.15.tar.xz
-                    tar -xvf /tmp/wine-9.15.tar.xz -C /tmp/
-                    ./tmp/wine-9.15/configure --enable-win64
-                    make -C /tmp/wine-9.15
-                    make -C /tmp/wine-9.15 install'
+                    curl -L https://dl.winehq.org/wine/source/11.x/wine-11.1.tar.xz -o /tmp/wine-11.1.tar.xz
+                    tar -xvf /tmp/wine-11.1.tar.xz -C /tmp/
+                    ./tmp/wine-11.1/configure --enable-win64
+                    make -C /tmp/wine-11.1
+                    make -C /tmp/wine-11.1 install'
             fi
         elif [[ $DISTRO_VERSION == *"Solus"* ]]; then
             echo "Installing Wine for Solus ..."
@@ -1183,6 +1210,10 @@ function wine_autodesk_fusion_install() {
     mkdir -p "$SELECTED_DIRECTORY/wineprefixes/default"
     cd "$SELECTED_DIRECTORY/wineprefixes/default" || return
     WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" sh "$SELECTED_DIRECTORY/bin/winetricks" -q sandbox
+    sleep 5s
+    # If Mono or Gecko were not installed correctly in your Wine prefix:
+    WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine control.exe appwiz.cpl install_mono
+    WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine control.exe appwiz.cpl install_gecko
     sleep 5s
     # We must install some packages!
     WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" sh "$SELECTED_DIRECTORY/bin/winetricks" -q atmlib gdiplus arial corefonts cjkfonts dotnet452 msxml4 msxml6 vcrun2017 fontsmooth=rgb winhttp win10
