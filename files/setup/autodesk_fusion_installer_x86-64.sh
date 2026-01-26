@@ -739,7 +739,7 @@ function download_files() {
     mkdir -p "$SELECTED_DIRECTORY/downloads/$GPU_DRIVER"
     # Download the DXVK registry file if the DXVK GPU driver is selected
     if [[ $GPU_DRIVER == "DXVK" ]]; then
-        download_file "DXVK.reg" "$REPO_URL/files/setup/resource/video_driver/DXVK/DXVK.reg"
+        download_file "DXVK.reg" "$REPO_URL/files/setup/resource/video_driver/DXVK/DXVK.reg" "$SELECTED_DIRECTORY/downloads/DXVK"
     fi
     download_file "NMachineSpecificOptions.xml" "$REPO_URL/files/setup/resource/video_driver/$GPU_DRIVER/NMachineSpecificOptions.xml" "$SELECTED_DIRECTORY/downloads/$GPU_DRIVER"
 
