@@ -6,9 +6,9 @@
 # Author:       Steve Zabka                                                                        #
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
-# Copyright (c) 2020-2025                                                                          #
-# Time/Date:    10:15/31.08.2025                                                                   #
-# Version:      1.0.3-Alpha                                                                        #
+# Copyright (c) 2020-2026                                                                          #
+# Time/Date:    23:45/24.01.2026                                                                   #
+# Version:      1.0.4-Alpha                                                                        #
 ####################################################################################################
 # Notes:
 #   - All commands and procedures are derived from my previous scripts and have been
@@ -34,6 +34,7 @@ AUTODESK_FUSION_INSTALLER_URL="https://dl.appstreaming.autodesk.com/production/i
 
 # URL to download Microsoft Edge WebView2.Exec
 WEBVIEW2_INSTALLER_URL="https://github.com/aedancullen/webview2-evergreen-standalone-installer-archive/releases/download/109.0.1518.78/MicrosoftEdgeWebView2RuntimeInstallerX64.exe"
+# Testing a newer version: https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservice/files/ba1bb4b1-79ea-47b5-a0e0-967253cd7900/MicrosoftEdgeWebView2RuntimeInstallerX64.exe
 
 # URL to download Firefox ESR
 # The newer Firefox versions have some DLL bugs and that's why the ESR version is used.
@@ -53,7 +54,7 @@ SIAPPDLL_URL="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-fo
 
 ###############################################################################################################################################################
 
-flatpak install flathub org.winehq.Wine/x86_64/stable-24.08 -y # Issue solved: Similar refs found for ‘org.winehq.Wine’ in remote ‘flathub’ ...
+flatpak install flathub org.winehq.Wine//stable-25.08 -y # Issue solved: Similar refs found for ‘org.winehq.Wine’ in remote ‘flathub’ ...
 flatpak update org.winehq.Wine -y # Upgrade to the Latest Version 
 
 flatpak run org.winehq.Wine --version #Check version of wine
@@ -78,7 +79,8 @@ flatpak run org.winehq.Wine --version #Check version of wine
 flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" --command="winetricks" org.winehq.Wine -q sandbox
 
 # Install wine gecko, ...
-yes | flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine wineboot --update
+flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine control.exe appwiz.cpl install_mono
+flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" org.winehq.Wine control.exe appwiz.cpl install_gecko
 
 # Install required libraries
 flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" --command="winetricks" org.winehq.Wine -q sandbox atmlib gdiplus arial corefonts cjkfonts dotnet452 msxml4 msxml6 vcrun2017 fontsmooth=rgb winhttp win10
@@ -306,3 +308,8 @@ flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/f
 # Workaround after the login in the web browser (installed on your Host system or as flatpak app) your must copy the callback code an replace the XXXXXXXXXX with it and run this command in a seperate terminal window
 #flatpak run --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360"   org.winehq.Wine "C:\\Program Files\\Autodesk\\webdeploy\\production\\7627f627889be835182cfc345110c3c9f5bc9cc3\\Autodesk Identity Manager\\AdskIdentityManager.exe" "https://signin.autodesk.com/idmgr/callback#code=XXXXXXXXXX"
 # Repeat the the command ...
+
+flatpak run \
+  --env="WINEPREFIX=$HOME/.var/app/org.winehq.Wine/data/wineprefixes/fusion360" \
+  org.winehq.Wine "C:\\Program Files\\Autodesk\\webdeploy\\production\\c20471a4ae316e18725b0917d95e36d14575877a\\FusionLauncher.exe"
+
