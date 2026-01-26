@@ -736,14 +736,12 @@ function download_files() {
     # Download the patched siappdll.dll file
     download_file "siappdll.dll" "$SIAPPDLL_URL"
 
+    mkdir -p "$SELECTED_DIRECTORY/downloads/$GPU_DRIVER"
     # Download the DXVK registry file if the DXVK GPU driver is selected
     if [[ $GPU_DRIVER == "DXVK" ]]; then
-        download_file "DXVK.reg" "$REPO_URL/files/setup/resource/video_driver/dxvk/DXVK.reg"
-        download_file "NMachineSpecificOptions.xml" "$REPO_URL/files/setup/resource/video_driver/dxvk/NMachineSpecificOptions.xml"
-
-    else
-        download_file "NMachineSpecificOptions.xml" "$REPO_URL/files/setup/resource/video_driver/opengl/NMachineSpecificOptions.xml"
+        download_file "DXVK.reg" "$REPO_URL/files/setup/resource/video_driver/DXVK/DXVK.reg"
     fi
+    download_file "NMachineSpecificOptions.xml" "$REPO_URL/files/setup/resource/video_driver/$GPU_DRIVER/NMachineSpecificOptions.xml" "$SELECTED_DIRECTORY/downloads/$GPU_DRIVER"
 
     # Download Autodesk Fusion SVG!
     download_file "autodesk_fusion.svg" "$REPO_URL/files/setup/resource/graphics/autodesk_fusion.svg" "$SELECTED_DIRECTORY/resources/graphics"
@@ -1137,7 +1135,7 @@ function autodesk_fusion_patch_qt6webenginecore() {
     sleep 1s
 
     # Copy the patched Qt6WebEngineCore.dll file to the Autodesk Fusion directory
-    cp -f "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Downloads/Qt6WebEngineCore.dll" "$QT6_WEBENGINECORE_DIR/Qt6WebEngineCore.dll"
+    cp -f "$SELECTED_DIRECTORY/downloads/Qt6WebEngineCore.dll" "$QT6_WEBENGINECORE_DIR/Qt6WebEngineCore.dll"
     echo -e "${GREEN}The Qt6WebEngineCore.dll file is patched successfully!${NOCOLOR}"
 }  
 
@@ -1225,15 +1223,15 @@ function wine_autodesk_fusion_install() {
     if [[ $GPU_DRIVER = "DXVK" ]]; then
         WINEPREFIX="$WINE_PFX" sh "$SELECTED_DIRECTORY/bin/winetricks" -q dxvk
         # Add the "return"-option. Here you can read more about it -> https://github.com/koalaman/shellcheck/issues/592
-        WINEPREFIX="$WINE_PFX" wine regedit.exe "C:\\users\\$USER\\Downloads\\DXVK.reg"
+        WINEPREFIX="$WINE_PFX" wine regedit.exe "C:\\users\\$USER\\Downloads\\DXVK\\DXVK.reg"
     fi
     autodesk_fusion_run_install_client
     mkdir -p "$APPDATA_DIRECTORY/Roaming/Autodesk/Neutron Platform/Options"
     mkdir -p "$APPDATA_DIRECTORY/Local/Autodesk/Neutron Platform/Options"
     mkdir -p "$APPLICATION_DATA_DIRECTORY/Autodesk/Neutron Platform/Options"
-    cp "$SELECTED_DIRECTORY/downloads/NMachineSpecificOptions.xml" "$APPDATA_DIRECTORY/Roaming/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml" || return
-    cp "$SELECTED_DIRECTORY/downloads/NMachineSpecificOptions.xml" "$APPDATA_DIRECTORY/Local/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml" || return
-    cp "$SELECTED_DIRECTORY/downloads/NMachineSpecificOptions.xml" "$APPLICATION_DATA_DIRECTORY/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml" || return
+    cp "$SELECTED_DIRECTORY/downloads/$GPU_DRIVER/NMachineSpecificOptions.xml" "$APPDATA_DIRECTORY/Roaming/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml" || return
+    cp "$SELECTED_DIRECTORY/downloads/$GPU_DRIVER/NMachineSpecificOptions.xml" "$APPDATA_DIRECTORY/Local/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml" || return
+    cp "$SELECTED_DIRECTORY/downloads/$GPU_DRIVER/NMachineSpecificOptions.xml" "$APPLICATION_DATA_DIRECTORY/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml" || return
 }
 
 ###############################################################################################################################################################
