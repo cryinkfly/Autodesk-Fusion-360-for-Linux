@@ -1084,7 +1084,7 @@ function autodesk_fusion_shortcuts_load() {
 
     #Create mimetype link to handle web login call backs to the Identity Manager
     cp "$SELECTED_DIRECTORY/.desktop/adskidmgr-opener.desktop" "$DESKTOP_DIRECTORY/adskidmgr-opener.desktop"
-    echo "Exec=sh -c 'env WINEPREFIX=$WINE_PFX wine \"\$(find $WINE_PFX -name AdskIdentityManager.exe | head -1)\" "%u"'" >> "$DESKTOP_DIRECTORY/adskidmgr-opener.desktop"
+    echo "Exec=sh -c 'env WINEPREFIX=$WINE_PFX wine \"\$(find $WINE_PFX -name AdskIdentityManager.exe | head -1)\" \"%u\"'" >> "$DESKTOP_DIRECTORY/adskidmgr-opener.desktop"
 
     #Set the permissions for the .desktop file to read-only
     chmod 444 "$DESKTOP_DIRECTORY/adskidmgr-opener.desktop"
