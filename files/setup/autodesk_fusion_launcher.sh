@@ -28,7 +28,7 @@ WINEPREFIX_DIRECTORY=$(awk 'NR == 3' "$WINEPREFIX_LOG_FILE")
 
 # This feature will check if there is a new version of Autodesk Fusion 360.
 function check_autodesk_fusion_online_versions {
-    curl -o $HOME/.autodesk_fusion/logs/version.txt -L https://raw.githubusercontent.com/Lolig4/Autodesk-Fusion-360-for-Linux/main/files/setup/resource/build-version.txt
+    curl -o $HOME/.autodesk_fusion/logs/version.txt -L https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/resource/build-version.txt
     ONLINE_BUILD_VERSION=$(awk 'NR == 1' $AUTODESK_ROOT_DIRECTORY/logs/version.txt)
     ONLINE_INSIDER_BUILD_VERSION=$(awk 'NR == 2' $AUTODESK_ROOT_DIRECTORY/logs/version.txt)
     echo "Online Build-Version: $ONLINE_BUILD_VERSION"
