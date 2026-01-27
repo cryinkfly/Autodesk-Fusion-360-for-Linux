@@ -42,10 +42,10 @@ FIREFOX_ESR_INSTALLER_URL="https://download.mozilla.org/?product=firefox-esr-lat
 
 # URL to download the patched Qt6WebEngineCore.dll file
 # QT6_WEBENGINECORE_URL="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/extras/patched-dlls/Qt6WebEngineCore.dll.7z" -> OLD Qt6WebEngineCore.dll
-QT6_WEBENGINECORE_URL="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/extras/patched-dlls/Qt6WebEngineCore-06-2025.7z"
+QT6_WEBENGINECORE_URL="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/resource/patched-dlls/Qt6WebEngineCore-06-2025.7z"
 
 # URL to download the patched siappdll.dll file
-SIAPPDLL_URL="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/extras/patched-dlls/siappdll.dll"
+SIAPPDLL_URL="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/resource/patched-dlls/siappdll.dll"
 
 ###############################################################################################################################################################
 
