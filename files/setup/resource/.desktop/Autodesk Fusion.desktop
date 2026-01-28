@@ -1,0 +1,24 @@
+[Desktop Entry]
+Name=Autodesk Fusion
+GenericName=CAD Application
+GenericName[cs]=Aplikace CAD
+GenericName[de]=CAD-Anwendung
+GenericName[es]=Aplicación CAD
+GenericName[fr]=Application CAO
+GenericName[it]=Applicazione CAD
+GenericName[ja]=CADアプリケーション
+GenericName[ko]=CAD 응용
+GenericName[zh_CN]=计算机辅助设计应用
+Comment=Autodesk Fusion is a cloud-based 3D modeling, CAD, CAM, and PCB software platform for product design and manufacturing.
+Comment[cs]=Autodesk Fusion je cloudová platforma pro 3D modelování, CAD, CAM a PCB určená k navrhování a výrobě produktů.
+Comment[de]=Autodesk Fusion ist eine cloudbasierte Softwareplattform für Modellierung, CAD, CAM, CAE und Leiterplatten in 3D für Produktdesign und Fertigung.
+Comment[es]=Autodesk Fusion es una plataforma de software de modelado 3D, CAD, CAM y PCB basada en la nube destinada al diseño y la fabricación de productos.
+Comment[fr]=Autodesk Fusion est une plate-forme logicielle 3D cloud de modélisation, de CAO, de FAO, d’IAO et de conception de circuits imprimés destinée à la conception et à la fabrication de produits.
+Comment[it]=Autodesk Fusion è una piattaforma software di modellazione 3D, CAD, CAM, CAE e PCB basata sul cloud per la progettazione e la realizzazione di prodotti.
+Comment[ja]=Autodesk Fusion、製品の設計と製造のためのクラウドベースの3Dモデリング、CAD、CAM、およびPCBソフトウェアプラットフォームです。
+Comment[ko]=Autodesk Fusion 제품 설계 및 제조를 위한 클라우드 기반 3D 모델링, CAD, CAM 및 PCB 소프트웨어 플랫폼입니다.
+Comment[zh_CN]=Autodesk Fusion 是一个基于云的 3D 建模、CAD、CAM 和 PCB 软件平台，用于产品设计和制造。
+Type=Application
+Categories=Education;Engineering;Graphics;Science
+StartupNotify=true
+Terminal=false
