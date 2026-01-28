@@ -7,8 +7,8 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2026                                                                          #
-# Time/Date:    00:55/25.01.2026                                                                   #
-# Version:      2.0.6-Alpha                                                                        #
+# Time/Date:    11:48/27.01.2026                                                                   #
+# Version:      2.0.7-Alpha                                                                        #
 ####################################################################################################
 
 ###############################################################################################################################################################
@@ -25,53 +25,56 @@ NOCOLOR=$'\033[0m'
 SELECTED_OPTION="$1"
 SELECTED_DIRECTORY="$2"
 SELECTED_EXTENSIONS="$3"
+DOWNLOAD_EXTENSIONS=0
 
 if [ -z "$SELECTED_DIRECTORY" ] || [ "$SELECTED_DIRECTORY" == "--default" ]; then
     SELECTED_DIRECTORY="$HOME/.autodesk_fusion"
 fi
+WINE_PFX="$SELECTED_DIRECTORY/wineprefixes/default"
 
 # if selected_extensions is set to --full, then all extensions will be installed
 if [ "$SELECTED_EXTENSIONS" == "--full" ]; then
     SELECTED_EXTENSIONS="CzechlocalizationforF360,HP3DPrintersforAutodesk®Fusion®,MarkforgedforAutodesk®Fusion®,OctoPrintforAutodesk®Fusion360™,UltimakerDigitalFactoryforAutodeskFusion360™"
-else
-    SELECTED_EXTENSIONS=""
+    DOWNLOAD_EXTENSIONS=1
 fi
 
+REPO_URL="https://raw.githubusercontent.com/Lolig4/Autodesk-Fusion-360-for-Linux/main"
+
 # URL to download translations po. files <-- Still in progress!!!
-UPDATER_TRANSLATIONS_URL="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/locale/update-locale.sh"
+UPDATER_TRANSLATIONS_URL="$REPO_URL/files/setup/locale/update-locale.sh"
 declare -A TRANSLATION_URLS=(
-    ["cs_CZ"]="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/locale/cs_CZ/LC_MESSAGES/autodesk_fusion.po"
-    ["de_DE"]="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/locale/de_DE/LC_MESSAGES/autodesk_fusion.po"
-    ["en_US"]="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/locale/en_US/LC_MESSAGES/autodesk_fusion.po"
-    ["es_ES"]="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/locale/es_ES/LC_MESSAGES/autodesk_fusion.po"
-    ["fr_FR"]="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/locale/fr_FR/LC_MESSAGES/autodesk_fusion.po"
-    ["it_IT"]="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/locale/it_IT/LC_MESSAGES/autodesk_fusion.po"
-    ["ja_JP"]="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/locale/ja_JP/LC_MESSAGES/autodesk_fusion.po"
-    ["ko_KR"]="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/locale/ko_KR/LC_MESSAGES/autodesk_fusion.po"
-    ["pl_PL"]="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/locale/pl_PL/LC_MESSAGES/autodesk_fusion.po"
-    ["pt_BR"]="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/locale/pt_BR/LC_MESSAGES/autodesk_fusion.po"
-    ["tr_TR"]="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/locale/tr_TR/LC_MESSAGES/autodesk_fusion.po"
-    ["zh_CN"]="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/locale/zh_CN/LC_MESSAGES/autodesk_fusion.po"
-    ["zh_TW"]="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/locale/zh_TW/LC_MESSAGES/autodesk_fusion.po"
+    ["cs_CZ"]="$REPO_URL/files/setup/locale/cs_CZ/LC_MESSAGES/autodesk_fusion.po"
+    ["de_DE"]="$REPO_URL/files/setup/locale/de_DE/LC_MESSAGES/autodesk_fusion.po"
+    ["en_US"]="$REPO_URL/files/setup/locale/en_US/LC_MESSAGES/autodesk_fusion.po"
+    ["es_ES"]="$REPO_URL/files/setup/locale/es_ES/LC_MESSAGES/autodesk_fusion.po"
+    ["fr_FR"]="$REPO_URL/files/setup/locale/fr_FR/LC_MESSAGES/autodesk_fusion.po"
+    ["it_IT"]="$REPO_URL/files/setup/locale/it_IT/LC_MESSAGES/autodesk_fusion.po"
+    ["ja_JP"]="$REPO_URL/files/setup/locale/ja_JP/LC_MESSAGES/autodesk_fusion.po"
+    ["ko_KR"]="$REPO_URL/files/setup/locale/ko_KR/LC_MESSAGES/autodesk_fusion.po"
+    ["pl_PL"]="$REPO_URL/files/setup/locale/pl_PL/LC_MESSAGES/autodesk_fusion.po"
+    ["pt_BR"]="$REPO_URL/files/setup/locale/pt_BR/LC_MESSAGES/autodesk_fusion.po"
+    ["tr_TR"]="$REPO_URL/files/setup/locale/tr_TR/LC_MESSAGES/autodesk_fusion.po"
+    ["zh_CN"]="$REPO_URL/files/setup/locale/zh_CN/LC_MESSAGES/autodesk_fusion.po"
+    ["zh_TW"]="$REPO_URL/files/setup/locale/zh_TW/LC_MESSAGES/autodesk_fusion.po"
 )
 
 # URL to download winetricks
 WINETRICKS_URL="https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks"
 
 # URL to download Fusion360Installer.exe files
-#AUTODESK_FUSION_INSTALLER_URL="https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe" <-- Old Link!!!
 AUTODESK_FUSION_INSTALLER_URL="https://dl.appstreaming.autodesk.com/production/installers/Fusion%20Admin%20Install.exe"
 #AUTODESK_FUSION_INSTALLER_URL="https://dl.appstreaming.autodesk.com/production/installers/Fusion%20Client%20Downloader.exe"
+#AUTODESK_FUSION_INSTALLER_URL="https://dl.appstreaming.autodesk.com/production/installers/Fusion%20360%20Admin%20Install.exe" <-- Old Link!!!
 
 # URL to download Microsoft Edge WebView2.Exec
 WEBVIEW2_INSTALLER_URL="https://github.com/aedancullen/webview2-evergreen-standalone-installer-archive/releases/download/109.0.1518.78/MicrosoftEdgeWebView2RuntimeInstallerX64.exe"
 # Testing a newer version (144.0.3719.93): WEBVIEW2_INSTALLER_URL="https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservice/files/ba1bb4b1-79ea-47b5-a0e0-967253cd7900/MicrosoftEdgeWebView2RuntimeInstallerX64.exe"
 
 # URL to download the patched Qt6WebEngineCore.dll file
-QT6_WEBENGINECORE_URL="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/extras/patched-dlls/Qt6WebEngineCore-06-2025.7z"
+QT6_WEBENGINECORE_URL="$REPO_URL/files/extras/patched-dlls/Qt6WebEngineCore-06-2025.7z"
 
 # URL to download the patched siappdll.dll file
-SIAPPDLL_URL="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/extras/patched-dlls/siappdll.dll"
+SIAPPDLL_URL="$REPO_URL/files/extras/patched-dlls/siappdll.dll"
 
 ##############################################################################################################################################################################
 # CHECK THE REQUIRED PACKAGES FOR THE INSTALLER:                                                                                                                             #
@@ -179,7 +182,7 @@ function check_required_packages() {
 # INSTALLATION OF THE REQUIRED PACKAGES FOR THE INSTALLER:                                                                                                                   #
 ##############################################################################################################################################################################
 
-function install_required_packages {
+function install_required_packages() {
     echo -e "$(gettext "${YELLOW}The installer will install the required packages for the installation!")${NOCOLOR}"
     echo -e "$(gettext "${RED}Missing package: ${cmd}")${NOCOLOR}"
     sleep 2
@@ -274,7 +277,7 @@ function install_required_packages {
 ##############################################################################################################################################################################
 
 # <-- Still in progress!!!
-function download_translations {
+function download_translations() {
     curl -o "./locale/update-locale.sh" "$UPDATER_TRANSLATIONS_URL"
     chmod +x "./locale/update-locale.sh"
 
@@ -408,13 +411,12 @@ function deactivate_window_not_responding_dialog() {
 
 function create_data_structure() {
     mkdir -p "$SELECTED_DIRECTORY/bin" \
-        "$SELECTED_DIRECTORY/config" \
         "$SELECTED_DIRECTORY/downloads/extensions" \
         "$SELECTED_DIRECTORY/logs" \
-        "$SELECTED_DIRECTORY/locale" \
+        "$SELECTED_DIRECTORY/.desktop" \
         "$SELECTED_DIRECTORY/resources/graphics" \
         "$SELECTED_DIRECTORY/resources/styles" \
-        "$SELECTED_DIRECTORY/wineprefixes/default"
+        "$WINE_PFX"
 }
 
 ##############################################################################################################################################################################
@@ -422,19 +424,19 @@ function create_data_structure() {
 ##############################################################################################################################################################################
 
 # Function to check if Secure Boot is activated
-function check_secure_boot {
+function check_secure_boot() {
     if ! command -v mokutil &> /dev/null; then
         echo "${RED} mokutil command not found. Please install it to check Secure Boot status.${NOCOLOR}"
         exit 1
     fi
 
     # Check if Secure Boot is enabled
-    if mokutil --sb-state | grep -q 'Secure Boot enabled'; then
+    if mokutil --sb-state | grep -qE 'Secure Boot enabled|SecureBoot enabled'; then
         echo "Secure Boot is enabled."
-        SECURE_BOOT="1"
+        SECURE_BOOT=1
     else
         echo "Secure Boot is not enabled."
-        SECURE_BOOT="0"
+        SECURE_BOOT=0
     fi
 }
 
@@ -442,7 +444,7 @@ function check_secure_boot {
 # CHECKING THE MINIMUM RAM (RANDOM ACCESS MEMORY) REQUIREMENT:                                                                                                               #
 ##############################################################################################################################################################################
 
-function check_ram {
+function check_ram() {
     # Get total RAM space in kilobytes
     GET_RAM_KILOBYTES=$(grep MemTotal /proc/meminfo | awk '{print $2}')
     
@@ -475,13 +477,13 @@ function check_ram {
 # CHECK GPU DRIVER FOR THE INSTALLER:                                                                                                                                        #
 ##############################################################################################################################################################################
 
-function check_gpu_driver {
+function check_gpu_driver() {
     echo -e "$(gettext "${YELLOW}Checking the GPU drivers for the installer...${NOCOLOR}")"
     
-    if [[ $SECURE_BOOT == "0" ]]; then
+    if (( !SECURE_BOOT )); then
         # If Secure Boot is disabled, check NVIDIA GPU
         if nvidia-smi &>/dev/null; then
-            NVIDIA_PRESENT=true
+            NVIDIA_PRESENT=1
             NVIDIA_VRAM=$(nvidia-smi --query-gpu=memory.total --format=csv,noheader,nounits | head -n1)
             echo -e "$(gettext "${GREEN}NVIDIA GPU detected with ${NVIDIA_VRAM}MB VRAM${NOCOLOR}")"
         fi
@@ -491,24 +493,26 @@ function check_gpu_driver {
     INTEL_AMD_VRAM=$(glxinfo | grep -i "Video memory" | grep -Eo '[0-9]+MB' | grep -Eo '[0-9]+' | head -n1)
 
     if [[ $INTEL_AMD_GPU == "AMD" ]]; then
-        AMD_PRESENT=true
+        AMD_PRESENT=1
         AMD_VRAM=$(glxinfo | grep -i "Video memory" | grep -Eo '[0-9]+MB' | grep -Eo '[0-9]+' | head -n1)
         echo -e "$(gettext "${GREEN}${INTEL_AMD_GPU} GPU recognized with ${AMD_VRAM}MB VRAM${NOCOLOR}")"
     elif [[ $INTEL_AMD_GPU == "Intel" ]]; then
-        INTEL_PRESENT=true
+        INTEL_PRESENT=1
         INTEL_VRAM=$(glxinfo | grep -i "Video memory" | grep -Eo '[0-9]+MB' | grep -Eo '[0-9]+' | head -n1)
         echo -e "$(gettext "${GREEN}${INTEL_AMD_GPU} GPU recognized with ${INTEL_VRAM}MB VRAM${NOCOLOR}")"
     fi
 
-    if [[ $SECURE_BOOT == "1" && $NVIDIA_PRESENT ]]; then
+    if (( SECURE_BOOT && NVIDIA_PRESENT )); then
         # If Secure Boot is enabled and the NVIDIA GPU is detected, the NVIDIA GPU should use OpenGL.
         GPU_DRIVER="OpenGL"
-        GET_VRAM_MEGABYTES=$NVIDIA_VRAM
+        GET_VRAM_MEGABYTES="$NVIDIA_VRAM"
         echo -e "$(gettext "${GREEN}Secure Boot is enabled. The OpenGL GPU driver is being used for the NVIDIA GPU.${NOCOLOR}")"
-    elif [[ $SECURE_BOOT == "0" ]]; then
+    #elif (( !SECURE_BOOT )); then # WHY????
+    else 
+        echo -e "$(gettext "${GREEN}Secure Boot is disabled. Checking available GPU drivers...${NOCOLOR}")"
         # If Secure Boot is disabled, handle GPU selection
-        if [[ $NVIDIA_PRESENT && ($INTEL_PRESENT || $AMD_PRESENT) ]]; then
-            echo -e "$(gettext "${YELLOW}MMultiple GPUs detected. Please select which one to use (default is DXVK):${NOCOLOR}")"
+        if (( NVIDIA_PRESENT && (INTEL_PRESENT || AMD_PRESENT) )); then
+            echo -e "$(gettext "${YELLOW}Multiple GPUs detected. Please select which one to use (default is DXVK):${NOCOLOR}")"
             echo "1) NVIDIA"
             echo "2) ${INTEL_AMD_GPU}"
             read -p "Enter your choice (1 or 2): " gpu_choice
@@ -516,44 +520,44 @@ function check_gpu_driver {
             case $gpu_choice in
                 1)
                     GPU_DRIVER="DXVK"
-                    GET_VRAM_MEGABYTES=$NVIDIA_VRAM
+                    GET_VRAM_MEGABYTES="$NVIDIA_VRAM"
                     echo -e "$(gettext "${GREEN}NVIDIA GPU selected. The DXVK GPU driver will be used for installation.${NOCOLOR}")"
                     ;;
                 2)
                     GPU_DRIVER="OpenGL"
-                    GET_VRAM_MEGABYTES=$INTEL_AMD_VRAM
+                    GET_VRAM_MEGABYTES="$INTEL_AMD_VRAM"
                     echo -e "$(gettext "${GREEN}The OpenGL GPU fallback driver is used for the installation.${NOCOLOR}")"
                     ;;
                 *)
                     GPU_DRIVER="OpenGL"
-                    GET_VRAM_MEGABYTES=$INTEL_VRAM
+                    GET_VRAM_MEGABYTES="$INTEL_VRAM"
                     ;;
             esac
-        elif [[ $NVIDIA_PRESENT ]]; then
+        elif (( NVIDIA_PRESENT )); then
             GPU_DRIVER="DXVK"
-            GET_VRAM_MEGABYTES=$NVIDIA_VRAM
+            GET_VRAM_MEGABYTES="$NVIDIA_VRAM"
             echo -e "$(gettext "${GREEN}The DXVK GPU driver is used for the installation.${NOCOLOR}")"
-        elif [[ $AMD_PRESENT ]]; then
+        elif (( AMD_PRESENT )); then
             GPU_DRIVER="DXVK"
-            GET_VRAM_MEGABYTES=$AMD_VRAM
+            GET_VRAM_MEGABYTES="$AMD_VRAM"
             echo -e "$(gettext "${GREEN}The DXVK GPU driver is used for the installation.${NOCOLOR}")"
-        elif [[ $INTEL_PRESENT ]]; then
+        elif (( INTEL_PRESENT )); then
             GPU_DRIVER="OpenGL"
-            GET_VRAM_MEGABYTES=$INTEL_VRAM
+            GET_VRAM_MEGABYTES="$INTEL_VRAM"
             echo -e "$(gettext "${GREEN}The OpenGL GPU fallback driver is used for the installation.${NOCOLOR}")"
         else
             echo -e "$(gettext "${RED}No GPU driver detected on your system!${NOCOLOR}")"
             GET_VRAM_MEGABYTES=0
         fi
-    else
-        echo -e "$(gettext "${RED}No GPU driver detected on your system!${NOCOLOR}")"
-        GET_VRAM_MEGABYTES=0
+    #else
+    #    echo -e "$(gettext "${RED}No GPU driver detected on your system!${NOCOLOR}")"
+    #    GET_VRAM_MEGABYTES=0
     fi
 
     sleep 2
 
     # Get the current display resolution of the main monitor if more than one is connected.
-    MONITOR_RESOLUTION=$(xrandr | grep '*' | awk '{print $1}')
+    MONITOR_RESOLUTION=$(xrandr 2>/dev/null | grep 'primary' | awk '{print $4}' | cut -d'+' -f1)
 
     # If the $MONITOR_RESOLUTION value is empty, set it to "1920x1080"
     if [ -z "$MONITOR_RESOLUTION" ]; then
@@ -570,7 +574,7 @@ function check_gpu_driver {
 # CHECKING THE MINIMUM VRAM (VIDEO RAM) REQUIREMENT:                                                                                                                         #
 ##############################################################################################################################################################################
 
-function check_gpu_vram {
+function check_gpu_vram() {
     # Get the total memory of the graphics card in megabytes from check_gpu_driver
 
     if [ -z "$GET_VRAM_MEGABYTES" ]; then
@@ -601,7 +605,7 @@ function check_gpu_vram {
 # CHECKING THE MINIMUM DISK SPACE (DEFAULT: HOME-PARTITION) REQUIREMENT:                                                                                                     #
 ##############################################################################################################################################################################
 
-function check_disk_space {
+function check_disk_space() {
     # Get the free disk space in the selected directory
     GET_DISK_SPACE=$(df -h "$SELECTED_DIRECTORY" 2>/dev/null | awk 'NR==2 {print $4}')
 
@@ -639,7 +643,7 @@ function check_disk_space {
 # CHECK FIREFOX VERSION FOR THE INSTALLER:                                                                                                                                   #
 ##############################################################################################################################################################################
 
-function get_firefox_version {
+function get_firefox_version() {
     if command -v firefox &>/dev/null; then
         firefox --version | grep -oP '\d+\.\d+(\.\d+)?'
     else
@@ -647,7 +651,7 @@ function get_firefox_version {
     fi
 }
 
-function is_snap_firefox_installed {
+function is_snap_firefox_installed() {
     if snap list | grep -q firefox; then
         return 0
     else
@@ -655,7 +659,7 @@ function is_snap_firefox_installed {
     fi
 }
 
-function check_install_firefox_deb {
+function check_install_firefox_deb() {
     # Function to check if Firefox is installed via Snap
     function is_snap_firefox_installed {
         snap list firefox &> /dev/null
@@ -712,71 +716,82 @@ function download_files() {
     echo -e "$(gettext "${GREEN}Downloading the required files for the installation ...${NOCOLOR}")"
     sleep 2
     # Download the newest winetricks version:
-    echo -e "$(gettext "${YELLOW}Downloading the newest winetricks version ...${NOCOLOR}")"
-    curl -L "$WINETRICKS_URL" -o "$SELECTED_DIRECTORY/bin/winetricks"
+    download_file "winetricks" "$WINETRICKS_URL" "$SELECTED_DIRECTORY/bin"
     chmod +x "$SELECTED_DIRECTORY/bin/winetricks"
+
     # Search for an existing installer of Autodesk Fusion and download it if it doesn't exist or is older than 7 days
-    AUTODESK_FUSION_INSTALLER="$SELECTED_DIRECTORY/downloads/FusionClientInstaller.exe"
-    if [ -f "$AUTODESK_FUSION_INSTALLER" ]; then
-        echo -e "$(gettext "${GREEN}The Autodesk Fusion installer exists!${NOCOLOR}")"
-        if find "$AUTODESK_FUSION_INSTALLER" -mtime +7 | grep -q .; then
-            echo -e "$(gettext "${YELLOW}The Autodesk Fusion installer exists but is older than 7 days and will be updated!")${NOCOLOR}"
-            rm -rf "$AUTODESK_FUSION_INSTALLER"
-            curl -L "$AUTODESK_FUSION_INSTALLER_URL" -o "$AUTODESK_FUSION_INSTALLER"
-        fi
-    else
-        echo -e "$(gettext "${YELLOW}The Autodesk Fusion installer doesn't exist and will be downloaded for you!${NOCOLOR}")"
-        curl -L "$AUTODESK_FUSION_INSTALLER_URL" -o "$AUTODESK_FUSION_INSTALLER"
-    fi
+    download_file "FusionClientInstaller.exe" "$AUTODESK_FUSION_INSTALLER_URL"
+
     # Search for an existing installer of WEBVIEW2 and download it if it doesn't exist or is older than 7 days
-    WEBVIEW2_INSTALLER="$SELECTED_DIRECTORY/downloads/WebView2installer.exe"
-    if [ -f "$WEBVIEW2_INSTALLER" ]; then
-        echo -e "$(gettext "${GREEN}The WebView2installer installer exists!${NOCOLOR}")"
-        if find "$WEBVIEW2_INSTALLER" -mtime +7 | grep -q .; then
-            echo -e "$(gettext "${YELLOW}The WebView2installer installer exists but is older than 7 days and will be updated!")${NOCOLOR}"
-            rm -rf "$WEBVIEW2_INSTALLER"
-            curl -L "$WEBVIEW2_INSTALLER_URL" -o "$WEBVIEW2_INSTALLER"
-        fi
-    else
-        echo -e "$(gettext "${YELLOW}The WebView2installer installer doesn't exist and will be downloaded for you!${NOCOLOR}")"
-        curl -L "$WEBVIEW2_INSTALLER_URL" -o "$WEBVIEW2_INSTALLER"
-    fi
+    download_file "WebView2installer.exe" "$WEBVIEW2_INSTALLER_URL"
+ 
     # Download all tested extensions for Autodesk Fusion 360 on Linux
-    download_extensions_files
+    if (( DOWNLOAD_EXTENSIONS )); then
+        download_extensions_files
+    fi
+
     # Download the patched Qt6WebEngineCore.dll file
-    curl -L "$QT6_WEBENGINECORE_URL" -o "$SELECTED_DIRECTORY/downloads/Qt6WebEngineCore.dll.7z"
+    download_file "Qt6WebEngineCore.dll.7z" "$QT6_WEBENGINECORE_URL"
+
     # Download the patched siappdll.dll file
-    curl -L "$SIAPPDLL_URL" -o "$SELECTED_DIRECTORY/downloads/siappdll.dll"
+    download_file "siappdll.dll" "$SIAPPDLL_URL"
+
+    mkdir -p "$SELECTED_DIRECTORY/downloads/$GPU_DRIVER"
+    # Download the DXVK registry file if the DXVK GPU driver is selected
+    if [[ $GPU_DRIVER == "DXVK" ]]; then
+        download_file "DXVK.reg" "$REPO_URL/files/setup/resource/video_driver/DXVK/DXVK.reg" "$SELECTED_DIRECTORY/downloads/DXVK"
+    fi
+    download_file "NMachineSpecificOptions.xml" "$REPO_URL/files/setup/resource/video_driver/$GPU_DRIVER/NMachineSpecificOptions.xml" "$SELECTED_DIRECTORY/downloads/$GPU_DRIVER"
+
+    # Download Autodesk Fusion SVG!
+    download_file "autodesk_fusion.svg" "$REPO_URL/files/setup/resource/graphics/autodesk_fusion.svg" "$SELECTED_DIRECTORY/resources/graphics"
+    download_file "Autodesk Fusion.desktop" "$REPO_URL/files/setup/resource/.desktop/Autodesk%20Fusion.desktop" "$SELECTED_DIRECTORY/.desktop"
+    download_file "adskidmgr-opener.desktop" "$REPO_URL/files/setup/resource/.desktop/adskidmgr-opener.desktop" "$SELECTED_DIRECTORY/.desktop"
+
+    # Download some script files for Autodesk Fusion 360!
+    download_file "autodesk_fusion_launcher.sh" "$REPO_URL/files/setup/data/autodesk_fusion_launcher.sh" "$SELECTED_DIRECTORY/bin"
+    chmod +x "$SELECTED_DIRECTORY/bin/autodesk_fusion_launcher.sh"
 }
 
-# Download an extension if it doesn't exist or is older than 7 days
-function download_extensions_files {
+function download_extensions_files() {
     echo -e "$(gettext "${YELLOW}Downloading the tested extensions for Autodesk Fusion on Linux ...${NOCOLOR}")"
-    download_extension "Ceska_lokalizace_pro_Autodesk_Fusion.exe" \
-        "https://www.cadstudio.cz/dl/Ceska_lokalizace_pro_Autodesk_Fusion_360.exe"
-    download_extension "HP_3DPrinters_for_Fusion360-win64.msi" \
-        "https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/HP_3DPrinters_for_Fusion360-win64.msi"
-    download_extension "Markforged_for_Fusion360-win64.msi" \
-        "https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/Markforged_for_Fusion360-win64.msi"
-    download_extension "OctoPrint_for_Fusion360-win64.msi" \
-        "https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/OctoPrint_for_Fusion360-win64.msi"
-    download_extension "Ultimaker_Digital_Factory-win64.msi" \
-        "https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/Ultimaker_Digital_Factory-win64.msi"
+    EXTENSION_FILE_DIRECTORY="$SELECTED_DIRECTORY/downloads/extensions"
+    download_file "Ceska_lokalizace_pro_Autodesk_Fusion.exe" \
+        "https://www.cadstudio.cz/dl/Ceska_lokalizace_pro_Autodesk_Fusion_360.exe" \
+        "$EXTENSION_FILE_DIRECTORY"
+    download_file "HP_3DPrinters_for_Fusion360-win64.msi" \
+        "https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/HP_3DPrinters_for_Fusion360-win64.msi" \
+        "$EXTENSION_FILE_DIRECTORY"
+    download_file "Markforged_for_Fusion360-win64.msi" \
+        "https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/Markforged_for_Fusion360-win64.msi" \
+        "$EXTENSION_FILE_DIRECTORY"
+    download_file "OctoPrint_for_Fusion360-win64.msi" \
+        "https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/OctoPrint_for_Fusion360-win64.msi" \
+        "$EXTENSION_FILE_DIRECTORY"
+    download_file "Ultimaker_Digital_Factory-win64.msi" \
+        "https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/main/files/extensions/Ultimaker_Digital_Factory-win64.msi" \
+        "$EXTENSION_FILE_DIRECTORY"
     echo -e "$(gettext "${GREEN}All tested extensions for Autodesk Fusion on Linux are downloaded!${NOCOLOR}")"
 }
 
-function download_extension {
-    local EXTENSION_FILE_NAME="$1"
-    local EXTENSION_FILE_URL="$2"
-    local EXTENSION_FILE_DIRECTORY="$SELECTED_DIRECTORY/downloads/extensions/$EXTENSION_FILE_NAME"
-    
-    if [ -f "$EXTENSION_FILE_DIRECTORY" ]; then
-        if find "$EXTENSION_FILE_DIRECTORY" -mtime +7 | grep -q .; then
-            curl -L "$EXTENSION_FILE_URL" -o "$EXTENSION_FILE_DIRECTORY"
+function download_file() {
+    local FILE_NAME="$1"
+    local FILE_URL="$2"
+    local DESTINATION_DIRECTORY="${3:-$SELECTED_DIRECTORY/downloads/}"
+    local FILE="$DESTINATION_DIRECTORY/$FILE_NAME"
+
+    if [ -f "$FILE" ]; then
+        echo -e "$(gettext "${GREEN}$FILE_NAME exists!${NOCOLOR}")"
+        if find "$FILE" -mtime +7 | grep -q .; then
+            echo -e "$(gettext "${YELLOW}$FILE_NAME exists but is older than 7 days and will be updated!")${NOCOLOR}"
+            rm -rf "$FILE"
+            curl -L "$FILE_URL" -o "$FILE"
         fi
     else
-        curl -L "$EXTENSION_FILE_URL" -o "$EXTENSION_FILE_DIRECTORY"
+        echo -e "$(gettext "${YELLOW}$FILE_NAME doesn't exist and will be downloaded for you!${NOCOLOR}")"
+        curl -L "$FILE_URL" -o "$FILE"
     fi
+    
 }
 
 ##############################################################################################################################################################################
@@ -1041,9 +1056,9 @@ function check_and_install_wine() {
 # Helper function for the following function. The AdskIdentityManager.exe can be installed 
 # into a variable alphanumeric folder.
 # This function finds that folder alphanumeric folder name.
-function determine_variable_folder_name_for_identity_manager {
+function determine_variable_folder_name_for_identity_manager() {
     echo "Searching for the variable location of the Autodesk Fusion identity manager..."
-    IDENT_MAN_PATH=$(find "$SELECTED_DIRECTORY/wineprefixes/default" -name 'AdskIdentityManager.exe')
+    IDENT_MAN_PATH=$(find "$WINE_PFX" -name 'AdskIdentityManager.exe')
     # Get the dirname of the identity manager's alphanumeric folder.
     # With the full path of the identity manager, go 2 folders up and isolate the folder name.
     IDENT_MAN_VARIABLE_DIRECTORY=$(basename "$(dirname "$(dirname "$IDENT_MAN_PATH")")")
@@ -1052,108 +1067,56 @@ function determine_variable_folder_name_for_identity_manager {
 ########################################################################################
 
 # Load the icons and .desktop-files:
-function autodesk_fusion_shortcuts_load {
+function autodesk_fusion_shortcuts_load() {
     # Create a .desktop file (launcher.sh) for Autodesk Fusion!
-    curl -L https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/resource/graphics/autodesk_fusion.svg -o "$SELECTED_DIRECTORY/resources/graphics/autodesk_fusion.svg"
-    cat > "$HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk Fusion.desktop" << EOF
-[Desktop Entry]
-Name=Autodesk Fusion
-GenericName=CAD Application
-GenericName[cs]=Aplikace CAD
-GenericName[de]=CAD-Anwendung
-GenericName[es]=Aplicación CAD
-GenericName[fr]=Application CAO
-GenericName[it]=Applicazione CAD
-GenericName[ja]=CADアプリケーション
-GenericName[ko]=CAD 응용
-GenericName[zh_CN]=计算机辅助设计应用
-Comment=Autodesk Fusion is a cloud-based 3D modeling, CAD, CAM, and PCB software platform for product design and manufacturing.
-Comment[cs]=Autodesk Fusion je cloudová platforma pro 3D modelování, CAD, CAM a PCB určená k navrhování a výrobě produktů.
-Comment[de]=Autodesk Fusion ist eine cloudbasierte Softwareplattform für Modellierung, CAD, CAM, CAE und Leiterplatten in 3D für Produktdesign und Fertigung.
-Comment[es]=Autodesk Fusion es una plataforma de software de modelado 3D, CAD, CAM y PCB basada en la nube destinada al diseño y la fabricación de productos.
-Comment[fr]=Autodesk Fusion est une plate-forme logicielle 3D cloud de modélisation, de CAO, de FAO, d’IAO et de conception de circuits imprimés destinée à la conception et à la fabrication de produits.
-Comment[it]=Autodesk Fusion è una piattaforma software di modellazione 3D, CAD, CAM, CAE e PCB basata sul cloud per la progettazione e la realizzazione di prodotti.
-Comment[ja]=Autodesk Fusion、製品の設計と製造のためのクラウドベースの3Dモデリング、CAD、CAM、およびPCBソフトウェアプラットフォームです。
-Comment[ko]=Autodesk Fusion 제품 설계 및 제조를 위한 클라우드 기반 3D 모델링, CAD, CAM 및 PCB 소프트웨어 플랫폼입니다.
-Comment[zh_CN]=Autodesk Fusion 是一个基于云的 3D 建模、CAD、CAM 和 PCB 软件平台，用于产品设计和制造。
-Exec=$SELECTED_DIRECTORY/bin/autodesk_fusion_launcher.sh
-Type=Application
-Categories=Education;Engineering;Graphics;Science
-StartupNotify=true
-Icon=$SELECTED_DIRECTORY/resources/graphics/autodesk_fusion.svg
-Terminal=false
-Path=$SELECTED_DIRECTORY/bin
-EOF
+    DESKTOP_DIRECTORY="$HOME/.local/share/applications/wine/Programs/Autodesk"
+    cp "$SELECTED_DIRECTORY/.desktop/Autodesk Fusion.desktop" "$DESKTOP_DIRECTORY/Autodesk Fusion.desktop"
+    echo "Exec=$SELECTED_DIRECTORY/bin/autodesk_fusion_launcher.sh" >> "$DESKTOP_DIRECTORY/Autodesk Fusion.desktop"
+    echo "Icon=$SELECTED_DIRECTORY/resources/graphics/autodesk_fusion.svg" >> "$DESKTOP_DIRECTORY/Autodesk Fusion.desktop"
+    echo "Path=$SELECTED_DIRECTORY/bin" >> "$DESKTOP_DIRECTORY/Autodesk Fusion.desktop"
 
     # Set the permissions for the .desktop file to read-only
-    chmod 444 "$HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk Fusion.desktop"
+    chmod 444 "$DESKTOP_DIRECTORY/Autodesk Fusion.desktop"
+
 
     # Execute function
     determine_variable_folder_name_for_identity_manager
 
     #Create mimetype link to handle web login call backs to the Identity Manager
-    cat > $HOME/.local/share/applications/adskidmgr-opener.desktop << EOL
-[Desktop Entry]
-Type=Application
-Name=adskidmgr Scheme Handler
-Exec=sh -c 'env WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine "$(find $SELECTED_DIRECTORY/wineprefixes/default/ -name "AdskIdentityManager.exe" | head -1 | xargs -I '{}' echo {})" "%u"'
-StartupNotify=false
-MimeType=x-scheme-handler/adskidmgr;
-EOL
+    cp "$SELECTED_DIRECTORY/.desktop/adskidmgr-opener.desktop" "$DESKTOP_DIRECTORY/adskidmgr-opener.desktop"
+    echo "Exec=sh -c 'env WINEPREFIX=$WINE_PFX wine \"\$(find $WINE_PFX -name AdskIdentityManager.exe | head -1)\" \"%u\"'" >> "$DESKTOP_DIRECTORY/adskidmgr-opener.desktop"
 
     #Set the permissions for the .desktop file to read-only
-    chmod 444 $HOME/.local/share/applications/adskidmgr-opener.desktop
+    chmod 444 "$DESKTOP_DIRECTORY/adskidmgr-opener.desktop"
     
     #Set the mimetype handler for the Identity Manager
     xdg-mime default adskidmgr-opener.desktop x-scheme-handler/adskidmgr
 
     #Disable Debug messages on regular runs, we dont have a terminal, so speed up the system by not wasting time prining them into the Void
-    sed -i 's/=env WINEPREFIX=/=env WINEDEBUG=-all env WINEPREFIX=/g' "$HOME/.local/share/applications/wine/Programs/Autodesk/Autodesk Fusion.desktop"
-
-    # Download some script files for Autodesk Fusion 360!
-    curl -L https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/data/autodesk_fusion_launcher.sh -o "$SELECTED_DIRECTORY/bin/autodesk_fusion_launcher.sh"
-    chmod +x "$SELECTED_DIRECTORY/bin/autodesk_fusion_launcher.sh"
-}
-
-###############################################################################################################################################################
-
-function dxvk_opengl_1 {
-    if [[ $GPU_DRIVER = "DXVK" ]]; then
-        WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" sh "$SELECTED_DIRECTORY/bin/winetricks" -q dxvk
-        curl -L https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/resource/video_driver/dxvk/DXVK.reg -o "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Downloads/DXVK.reg"
-        # Add the "return"-option. Here you can read more about it -> https://github.com/koalaman/shellcheck/issues/592
-        cd "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Downloads" || return
-        WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine regedit.exe DXVK.reg
-    fi
-}
-
-function dxvk_opengl_2 {
-    if [[ $GPU_DRIVER = "DXVK" ]]; then
-        curl -L https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/resource/video_driver/dxvk/NMachineSpecificOptions.xml -o "NMachineSpecificOptions.xml"
-    else
-        curl -L https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/resource/video_driver/opengl/NMachineSpecificOptions.xml -o "NMachineSpecificOptions.xml"
-    fi
+    sed -i 's/=env WINEPREFIX=/=env WINEDEBUG=-all env WINEPREFIX=/g' "$DESKTOP_DIRECTORY/Autodesk Fusion.desktop"
 }
 
 ###############################################################################################################################################################
 
 # Execute the installation of Autodesk Fusion
-function autodesk_fusion_run_install_client {
-    cd "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Downloads"
-    #WINEPREFIX="$selected_directory/wineprefixes/default" timeout -k 5m 1m wine "$selected_directory/wineprefixes/default/drive_c/users/$USER/Downloads/Fusion360Clientinstaller.exe" --quiet
-    WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" timeout -k 10m 9m wine "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Downloads/FusionClientInstaller.exe" --quiet
+function autodesk_fusion_run_install_client() {
+    echo -e "$(gettext "${YELLOW}Installing Autodesk Fusion 360 Client ...${NOCOLOR}")"
+    sleep 1
+    WINEPREFIX="$WINE_PFX" timeout -k 10m 9m wine "$SELECTED_DIRECTORY/downloads/FusionClientInstaller.exe" --quiet 2>> "$SELECTED_DIRECTORY/logs/FusionClientInstaller_1.log"
     sleep 5s
-    WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" timeout -k 5m 1m wine "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Downloads/FusionClientInstaller.exe" --quiet
+    echo -e "$(gettext "${YELLOW}Finalizing Autodesk Fusion 360 installation...${NOCOLOR}")"
+    WINEPREFIX="$WINE_PFX" timeout -k 5m 1m wine "$SELECTED_DIRECTORY/downloads/FusionClientInstaller.exe" --quiet 2>> "$SELECTED_DIRECTORY/logs/FusionClientInstaller_2.log"
+    echo -e "$(gettext "${GREEN}Autodesk Fusion 360 Client installation completed!${NOCOLOR}")"
 }
 
 ###############################################################################################################################################################
 
 # Patch the Qt6WebEngineCore.dll to fix the login issue and other issues
-function autodesk_fusion_patch_qt6webenginecore {
+function autodesk_fusion_patch_qt6webenginecore() {
     # Find the Qt6WebEngineCore.dll file in the Autodesk Fusion directory
-    QT6_WEBENGINECORE=$(find "$SELECTED_DIRECTORY/wineprefixes/default" -name 'Qt6WebEngineCore.dll' -printf "%T+ %p\n" | sort -r | head -n 1 | sed -r 's/^[^ ]+ //')
+    QT6_WEBENGINECORE=$(find "$WINE_PFX" -name 'Qt6WebEngineCore.dll' -printf "%T+ %p\n" | sort -r | head -n 1 | sed -r 's/^[^ ]+ //')
     QT6_WEBENGINECORE_DIR=$(dirname "$QT6_WEBENGINECORE")
-    clear
+
     echo "$QT6_WEBENGINECORE_DIR"
 
     echo -e "${YELLOW}The old Qt6WebEngineCore.dll file is located in the following directory: $QT6_WEBENGINECORE_DIR${NOCOLOR}"
@@ -1169,10 +1132,10 @@ function autodesk_fusion_patch_qt6webenginecore {
 
     # Patch the Qt6WebEngineCore.dll file
     echo -e "${YELLOW}Patching the Qt6WebEngineCore.dll file for Autodesk Fusion ...${NOCOLOR}"
-    sleep 2
+    sleep 1s
 
     # Copy the patched Qt6WebEngineCore.dll file to the Autodesk Fusion directory
-    cp -f "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Downloads/Qt6WebEngineCore.dll" "$QT6_WEBENGINECORE_DIR/Qt6WebEngineCore.dll"
+    cp -f "$SELECTED_DIRECTORY/downloads/Qt6WebEngineCore.dll" "$QT6_WEBENGINECORE_DIR/Qt6WebEngineCore.dll"
     echo -e "${GREEN}The Qt6WebEngineCore.dll file is patched successfully!${NOCOLOR}"
 }  
 
@@ -1180,9 +1143,9 @@ function autodesk_fusion_patch_qt6webenginecore {
 
 # Add/Patch the siappdll.dll to fix the SpaceMouse issue
 
-function autodesk_fusion_patch_siappdll {
+function autodesk_fusion_patch_siappdll() {
     echo -e "${YELLOW}Patching the siappdll.dll file for Autodesk Fusion ...${NOCOLOR}"
-    sleep 2
+    sleep 1s
     
     # Check if the siappdll.dll file exists before attempting to backup
     if [ -f "$QT6_WEBENGINECORE_DIR/siappdll.dll" ]; then
@@ -1207,59 +1170,68 @@ function wine_autodesk_fusion_install() {
     # But it still ensures that wine, for example, no longer has access permissions to Home!
     # For this reason, the EXE files must be located directly in the Wineprefix folder!
 
-    mkdir -p "$SELECTED_DIRECTORY/wineprefixes/default"
-    cd "$SELECTED_DIRECTORY/wineprefixes/default" || return
-    WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" sh "$SELECTED_DIRECTORY/bin/winetricks" -q sandbox
+    echo -e "$(gettext "${YELLOW}Setting up the Wine prefix for Autodesk Fusion 360 in Sandbox... (suppressed)${NOCOLOR}")"
+    WINEPREFIX="$WINE_PFX" sh "$SELECTED_DIRECTORY/bin/winetricks" -q sandbox >> "$SELECTED_DIRECTORY/logs/winetricks_sandbox.log" 2>&1
+
+    echo -e "$(gettext "${YELLOW}Linking the downloads folder to the Wine prefix...${NOCOLOR}")"
+    rm -r "$WINE_PFX/drive_c/users/$USER/Downloads"
+    ln -s "$SELECTED_DIRECTORY/downloads" "$WINE_PFX/drive_c/users/$USER/Downloads"
+
+    echo -e "$(gettext "${YELLOW}Configuring the Wine prefix for Autodesk Fusion 360...${NOCOLOR}")"
     sleep 5s
     # If Mono or Gecko were not installed correctly in your Wine prefix:
-    WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine control.exe appwiz.cpl install_mono
-    WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine control.exe appwiz.cpl install_gecko
+    WINEPREFIX="$WINE_PFX" wine control.exe appwiz.cpl install_mono
+    WINEPREFIX="$WINE_PFX" wine control.exe appwiz.cpl install_gecko
     sleep 5s
     # We must install some packages!
-    WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" sh "$SELECTED_DIRECTORY/bin/winetricks" -q atmlib gdiplus arial corefonts cjkfonts dotnet452 msxml4 msxml6 vcrun2017 fontsmooth=rgb winhttp win10
+    WINEPREFIX="$WINE_PFX" sh "$SELECTED_DIRECTORY/bin/winetricks" -q atmlib gdiplus arial corefonts cjkfonts dotnet452 msxml4 msxml6 vcrun2017 fontsmooth=rgb winhttp win10 2>> "$SELECTED_DIRECTORY/logs/winetricks_dotnet452.log"
     # We must install cjkfonts again then sometimes it doesn't work in the first time!
+    echo -e "$(gettext "${YELLOW}Re-installing cjkfonts... (suppressed)${NOCOLOR}")"
     sleep 5s
-    WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" sh "$SELECTED_DIRECTORY/bin/winetricks" -q cjkfonts
+    WINEPREFIX="$WINE_PFX" sh "$SELECTED_DIRECTORY/bin/winetricks" -q cjkfonts >> "$SELECTED_DIRECTORY/logs/winetricks_cjkfonts_2.log" 2>&1
     # We must set to Windows 10 or 11 again because some other winetricks sometimes set it back to Windows XP!
+    echo -e "$(gettext "${YELLOW}Setting Windows 11 as the Windows version... (suppressed)${NOCOLOR}")"
     sleep 5s
-    WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" sh "$SELECTED_DIRECTORY/bin/winetricks" -q win11
+    WINEPREFIX="$WINE_PFX" sh "$SELECTED_DIRECTORY/bin/winetricks" -q win11 >> "$SELECTED_DIRECTORY/logs/winetricks_win11.log" 2>&1
     # Remove tracking metrics/calling home
     sleep 5s
-    WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine REG ADD "HKCU\Software\Wine\DllOverrides" /v "adpclientservice.exe" /t REG_SZ /d "" /f
+    WINEPREFIX="$WINE_PFX" wine REG ADD "HKCU\Software\Wine\DllOverrides" /v "adpclientservice.exe" /t REG_SZ /d "" /f
     # Navigation bar does not work well with anything other than the wine builtin DX9
-    WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine REG ADD "HKCU\Software\Wine\DllOverrides" /v "AdCefWebBrowser.exe" /t REG_SZ /d builtin /f
+    WINEPREFIX="$WINE_PFX" wine REG ADD "HKCU\Software\Wine\DllOverrides" /v "AdCefWebBrowser.exe" /t REG_SZ /d builtin /f
     # Use Visual Studio Redist that is bundled with the application
-    WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine REG ADD "HKCU\Software\Wine\DllOverrides" /v "msvcp140" /t REG_SZ /d native /f
-    WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine REG ADD "HKCU\Software\Wine\DllOverrides" /v "mfc140u" /t REG_SZ /d native /f
+    WINEPREFIX="$WINE_PFX" wine REG ADD "HKCU\Software\Wine\DllOverrides" /v "msvcp140" /t REG_SZ /d native /f
+    WINEPREFIX="$WINE_PFX" wine REG ADD "HKCU\Software\Wine\DllOverrides" /v "mfc140u" /t REG_SZ /d native /f
     # Fixed the problem with the bcp47langs issue and now the login works again!
-    WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine reg add "HKCU\Software\Wine\DllOverrides" /v "bcp47langs" /t REG_SZ /d "" /f
+    WINEPREFIX="$WINE_PFX" wine reg add "HKCU\Software\Wine\DllOverrides" /v "bcp47langs" /t REG_SZ /d "" /f
     sleep 5s
     # Install 7-Zip inside the Wine prefix via winetricks.
     # This method does NOT require 7-Zip on the host system and is more stable/reliable than previous approaches.
-    WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" sh "$SELECTED_DIRECTORY/bin/winetricks" -q 7zip
-    cp "$SELECTED_DIRECTORY/downloads/Qt6WebEngineCore.dll.7z" "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Downloads/Qt6WebEngineCore.dll.7z"
-    WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/Program Files/7-Zip/7z.exe" x "C:\\users\\$USER\\Downloads\\Qt6WebEngineCore.dll.7z" -o"C:\\users\\$USER\\Downloads\\"
+    WINEPREFIX="$WINE_PFX" sh "$SELECTED_DIRECTORY/bin/winetricks" -q 7zip >> "$SELECTED_DIRECTORY/logs/winetricks_7zip.log" 2>&1
+    WINEPREFIX="$WINE_PFX" wine "$WINE_PFX/drive_c/Program Files/7-Zip/7z.exe" x "C:\\users\\$USER\\Downloads\\Qt6WebEngineCore.dll.7z" -o"C:\\users\\$USER\\Downloads\\"
     # Disabled by Default - Configure the correct virtual desktop resolution
-    # WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" sh "$SELECTED_DIRECTORY/bin/winetricks" -q vd="$MONITOR_RESOLUTION"
+    # WINEPREFIX="$WINE_PFX" sh "$SELECTED_DIRECTORY/bin/winetricks" -q vd="$MONITOR_RESOLUTION"
     # Download and install WebView2 to handle Login attempts, required even though we redirect to your default browser
-    # sleep 5s
-    cp "$SELECTED_DIRECTORY/downloads/WebView2installer.exe" "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Downloads/WebView2installer.exe"
-    WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Downloads/WebView2installer.exe" /silent /install
+    echo -e "$(gettext "${YELLOW}Installing Microsoft Edge WebView2 Runtime for Autodesk Fusion ...${NOCOLOR}")"
+    sleep 1s
+    WINEPREFIX="$WINE_PFX" wine "$SELECTED_DIRECTORY/downloads/WebView2installer.exe" /silent /install 2>> "$SELECTED_DIRECTORY/logs/WebView2_install.log"
+    echo -e "$(gettext "${GREEN}Microsoft Edge WebView2 Runtime installation completed!${NOCOLOR}")"
     # Pre-create shortcut directory for latest re-branding Microsoft Edge WebView2
-    mkdir -p "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/AppData/Roaming/Microsoft/Internet Explorer/Quick Launch/User Pinned/"
-    dxvk_opengl_1
-    cp "$SELECTED_DIRECTORY/downloads/FusionClientInstaller.exe" "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Downloads"
+    APPDATA_DIRECTORY="$WINE_PFX/drive_c/users/$USER/AppData"
+    APPLICATION_DATA_DIRECTORY="$WINE_PFX/drive_c/users/$USER/Application Data"
+    mkdir -p "$APPDATA_DIRECTORY/Roaming/Microsoft/Internet Explorer/Quick Launch/User Pinned"
+
+    if [[ $GPU_DRIVER = "DXVK" ]]; then
+        WINEPREFIX="$WINE_PFX" sh "$SELECTED_DIRECTORY/bin/winetricks" -q dxvk
+        # Add the "return"-option. Here you can read more about it -> https://github.com/koalaman/shellcheck/issues/592
+        WINEPREFIX="$WINE_PFX" wine regedit.exe "C:\\users\\$USER\\Downloads\\DXVK\\DXVK.reg"
+    fi
     autodesk_fusion_run_install_client
-    mkdir -p "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options"
-    cd "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/AppData/Roaming/Autodesk/Neutron Platform/Options" || return
-    dxvk_opengl_2
-    mkdir -p "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/AppData/Local/Autodesk/Neutron Platform/Options"
-    cd "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/AppData/Local/Autodesk/Neutron Platform/Options" || return
-    dxvk_opengl_2
-    mkdir -p "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options"
-    cd "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Application Data/Autodesk/Neutron Platform/Options" || return
-    dxvk_opengl_2
-    cd "$SELECTED_DIRECTORY/bin" || return
+    mkdir -p "$APPDATA_DIRECTORY/Roaming/Autodesk/Neutron Platform/Options"
+    mkdir -p "$APPDATA_DIRECTORY/Local/Autodesk/Neutron Platform/Options"
+    mkdir -p "$APPLICATION_DATA_DIRECTORY/Autodesk/Neutron Platform/Options"
+    cp "$SELECTED_DIRECTORY/downloads/$GPU_DRIVER/NMachineSpecificOptions.xml" "$APPDATA_DIRECTORY/Roaming/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml" || return
+    cp "$SELECTED_DIRECTORY/downloads/$GPU_DRIVER/NMachineSpecificOptions.xml" "$APPDATA_DIRECTORY/Local/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml" || return
+    cp "$SELECTED_DIRECTORY/downloads/$GPU_DRIVER/NMachineSpecificOptions.xml" "$APPLICATION_DATA_DIRECTORY/Autodesk/Neutron Platform/Options/NMachineSpecificOptions.xml" || return
 }
 
 ###############################################################################################################################################################
@@ -1267,51 +1239,29 @@ function wine_autodesk_fusion_install() {
 # Check and install the selected extensions
 function wine_autodesk_fusion_install_extensions() {
     if [[ "$SELECTED_EXTENSIONS" == *"CzechlocalizationforF360"* ]]; then
-        autodesk_fusion_extension_czech_locale
+        run_install_extension_client "Ceska_lokalizace_pro_Autodesk_Fusion.exe"
     fi
     if [[ "$SELECTED_EXTENSIONS" == *"HP3DPrintersforAutodesk®Fusion®"* ]]; then
-        autodesk_fusion_extension_hp_3dprinter_connector
+        run_install_extension_client "HP_3DPrinters_for_Fusion360-win64.msi"
     fi
     if [[ "$SELECTED_EXTENSIONS" == *"MarkforgedforAutodesk®Fusion®"* ]]; then
-        autodesk_fusion_extension_markforged
+        run_install_extension_client "Markforged_for_Fusion360-win64.msi"
     fi
     if [[ "$SELECTED_EXTENSIONS" == *"OctoPrintforAutodesk®Fusion360™"* ]]; then
-        autodesk_fusion_extension_octoprint
+        run_install_extension_client "OctoPrint_for_Fusion360-win64.msi"
     fi
     if [[ "$SELECTED_EXTENSIONS" == *"UltimakerDigitalFactoryforAutodeskFusion360™"* ]]; then
-        autodesk_fusion_extension_ultimaker_digital_factory
+        run_install_extension_client "Ultimaker_Digital_Factory-win64.msi"
     fi
 }
 
-function autodesk_fusion_extension_czech_locale {
-    run_install_extension_client "Ceska_lokalizace_pro_Autodesk_Fusion.exe"
-}
-
-function autodesk_fusion_extension_hp_3dprinter_connector {
-    run_install_extension_client "HP_3DPrinters_for_Fusion360-win64.msi"
-}
-
-function autodesk_fusion_extension_markforged {
-    run_install_extension_client "Markforged_for_Fusion360-win64.msi"
-}
-
-function autodesk_fusion_extension_octoprint {
-    run_install_extension_client "OctoPrint_for_Fusion360-win64.msi"
-}
-
-function autodesk_fusion_extension_ultimaker_digital_factory {
-    run_install_extension_client "Ultimaker_Digital_Factory-win64.msi"
-}
-
-function run_install_extension_client {
+function run_install_extension_client() {
     local EXTENSION_FILE="$1"
-    cp "$SELECTED_DIRECTORY/extensions/$EXTENSION_FILE" "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Downloads"
+    local WIN_EXTENSION_DIRECTORY="C:\\users\\$USER\\Downloads\\extensions"
     if [[ "$EXTENSION_FILE" == *.msi ]]; then
-        cd "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Downloads" || return
-        WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine msiexec /i "$EXTENSION_FILE"
+        WINEPREFIX="$WINE_PFX" wine msiexec /i "$WIN_EXTENSION_DIRECTORY\\$EXTENSION_FILE" /quiet
     else
-        cd "$SELECTED_DIRECTORY/wineprefixes/default/drive_c/users/$USER/Downloads" || return
-        WINEPREFIX="$SELECTED_DIRECTORY/wineprefixes/default" wine "$EXTENSION_FILE"
+        WINEPREFIX="$WINE_PFX" wine "$SELECTED_DIRECTORY/downloads/$EXTENSION_FILE"
     fi
 }
 
@@ -1321,7 +1271,7 @@ function autodesk_fusion_safe_logfile() {
     # Log the Wineprefixes
     echo "$GPU_DRIVER" >> "$SELECTED_DIRECTORY/logs/wineprefixes.log"
     echo "$SELECTED_DIRECTORY" >> "$SELECTED_DIRECTORY/logs/wineprefixes.log"
-    echo "$SELECTED_DIRECTORY/wineprefixes/default" >> "$SELECTED_DIRECTORY/logs/wineprefixes.log"
+    echo "$WINE_PFX" >> "$SELECTED_DIRECTORY/logs/wineprefixes.log"
 }
 
 ##############################################################################################################################################################################
