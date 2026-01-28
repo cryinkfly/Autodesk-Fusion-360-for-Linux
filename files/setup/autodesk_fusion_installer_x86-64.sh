@@ -1101,9 +1101,9 @@ function autodesk_fusion_shortcuts_load() {
 # Execute the installation of Autodesk Fusion
 function autodesk_fusion_run_install_client() {
     echo -e "$(gettext "${YELLOW}Installing Autodesk Fusion 360 Client ...${NOCOLOR}")"
-    sleep 1
+    sleep 2
     WINEPREFIX="$WINE_PFX" timeout -k 10m 9m wine "$SELECTED_DIRECTORY/downloads/FusionClientInstaller.exe" --quiet 2>> "$SELECTED_DIRECTORY/logs/FusionClientInstaller_1.log"
-    sleep 5s
+    sleep 5
     echo -e "$(gettext "${YELLOW}Finalizing Autodesk Fusion 360 installation...${NOCOLOR}")"
     WINEPREFIX="$WINE_PFX" timeout -k 5m 1m wine "$SELECTED_DIRECTORY/downloads/FusionClientInstaller.exe" --quiet 2>> "$SELECTED_DIRECTORY/logs/FusionClientInstaller_2.log"
     echo -e "$(gettext "${GREEN}Autodesk Fusion 360 Client installation completed!${NOCOLOR}")"
@@ -1132,7 +1132,7 @@ function autodesk_fusion_patch_qt6webenginecore() {
 
     # Patch the Qt6WebEngineCore.dll file
     echo -e "${YELLOW}Patching the Qt6WebEngineCore.dll file for Autodesk Fusion ...${NOCOLOR}"
-    sleep 1s
+    sleep 2
 
     # Copy the patched Qt6WebEngineCore.dll file to the Autodesk Fusion directory
     cp -f "$SELECTED_DIRECTORY/downloads/Qt6WebEngineCore.dll" "$QT6_WEBENGINECORE_DIR/Qt6WebEngineCore.dll"
@@ -1145,7 +1145,7 @@ function autodesk_fusion_patch_qt6webenginecore() {
 
 function autodesk_fusion_patch_siappdll() {
     echo -e "${YELLOW}Patching the siappdll.dll file for Autodesk Fusion ...${NOCOLOR}"
-    sleep 1s
+    sleep 2
     
     # Check if the siappdll.dll file exists before attempting to backup
     if [ -f "$QT6_WEBENGINECORE_DIR/siappdll.dll" ]; then
@@ -1178,23 +1178,23 @@ function wine_autodesk_fusion_install() {
     ln -s "$SELECTED_DIRECTORY/downloads" "$WINE_PFX/drive_c/users/$USER/Downloads"
 
     echo -e "$(gettext "${YELLOW}Configuring the Wine prefix for Autodesk Fusion 360...${NOCOLOR}")"
-    sleep 5s
+    sleep 5
     # If Mono or Gecko were not installed correctly in your Wine prefix:
     WINEPREFIX="$WINE_PFX" wine control.exe appwiz.cpl install_mono
     WINEPREFIX="$WINE_PFX" wine control.exe appwiz.cpl install_gecko
-    sleep 5s
+    sleep 5
     # We must install some packages!
     WINEPREFIX="$WINE_PFX" sh "$SELECTED_DIRECTORY/bin/winetricks" -q atmlib gdiplus arial corefonts cjkfonts dotnet452 msxml4 msxml6 vcrun2017 fontsmooth=rgb winhttp win10 2>> "$SELECTED_DIRECTORY/logs/winetricks_dotnet452.log"
     # We must install cjkfonts again then sometimes it doesn't work in the first time!
     echo -e "$(gettext "${YELLOW}Re-installing cjkfonts... (suppressed)${NOCOLOR}")"
-    sleep 5s
+    sleep 5
     WINEPREFIX="$WINE_PFX" sh "$SELECTED_DIRECTORY/bin/winetricks" -q cjkfonts >> "$SELECTED_DIRECTORY/logs/winetricks_cjkfonts_2.log" 2>&1
     # We must set to Windows 10 or 11 again because some other winetricks sometimes set it back to Windows XP!
     echo -e "$(gettext "${YELLOW}Setting Windows 11 as the Windows version... (suppressed)${NOCOLOR}")"
-    sleep 5s
+    sleep 5
     WINEPREFIX="$WINE_PFX" sh "$SELECTED_DIRECTORY/bin/winetricks" -q win11 >> "$SELECTED_DIRECTORY/logs/winetricks_win11.log" 2>&1
     # Remove tracking metrics/calling home
-    sleep 5s
+    sleep 5
     WINEPREFIX="$WINE_PFX" wine REG ADD "HKCU\Software\Wine\DllOverrides" /v "adpclientservice.exe" /t REG_SZ /d "" /f
     # Navigation bar does not work well with anything other than the wine builtin DX9
     WINEPREFIX="$WINE_PFX" wine REG ADD "HKCU\Software\Wine\DllOverrides" /v "AdCefWebBrowser.exe" /t REG_SZ /d builtin /f
@@ -1203,7 +1203,7 @@ function wine_autodesk_fusion_install() {
     WINEPREFIX="$WINE_PFX" wine REG ADD "HKCU\Software\Wine\DllOverrides" /v "mfc140u" /t REG_SZ /d native /f
     # Fixed the problem with the bcp47langs issue and now the login works again!
     WINEPREFIX="$WINE_PFX" wine reg add "HKCU\Software\Wine\DllOverrides" /v "bcp47langs" /t REG_SZ /d "" /f
-    sleep 5s
+    sleep 5
     # Install 7-Zip inside the Wine prefix via winetricks.
     # This method does NOT require 7-Zip on the host system and is more stable/reliable than previous approaches.
     WINEPREFIX="$WINE_PFX" sh "$SELECTED_DIRECTORY/bin/winetricks" -q 7zip >> "$SELECTED_DIRECTORY/logs/winetricks_7zip.log" 2>&1
@@ -1212,7 +1212,7 @@ function wine_autodesk_fusion_install() {
     # WINEPREFIX="$WINE_PFX" sh "$SELECTED_DIRECTORY/bin/winetricks" -q vd="$MONITOR_RESOLUTION"
     # Download and install WebView2 to handle Login attempts, required even though we redirect to your default browser
     echo -e "$(gettext "${YELLOW}Installing Microsoft Edge WebView2 Runtime for Autodesk Fusion ...${NOCOLOR}")"
-    sleep 1s
+    sleep 2
     WINEPREFIX="$WINE_PFX" wine "$SELECTED_DIRECTORY/downloads/WebView2installer.exe" /silent /install 2>> "$SELECTED_DIRECTORY/logs/WebView2_install.log"
     echo -e "$(gettext "${GREEN}Microsoft Edge WebView2 Runtime installation completed!${NOCOLOR}")"
     # Pre-create shortcut directory for latest re-branding Microsoft Edge WebView2
