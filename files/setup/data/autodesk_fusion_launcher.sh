@@ -95,7 +95,7 @@ function update() {
 }
 
 function run_autodesk_fusion() {
-    if [ "$PROTON_VERSION" == "Wine"]; then
+    if [ "$PROTON_VERSION" == "Wine" ]; then
         run_autodesk_fusion_wine
     else
         run_autodesk_fusion_proton
@@ -121,7 +121,7 @@ function run_autodesk_fusion_proton() {
         sleep 5
     fi
 
-    echo $LAUNCHER && STEAM_COMPAT_CLIENT_INSTALL_PATH="$STEAM_DIRECTORY" STEAM_COMPAT_DATA_PATH="$WINEPREFIX_DIRECTORY" "$PROTON_DIRECTORY/proton" run "$LAUNCHER"
+    echo $LAUNCHER && STEAM_COMPAT_CLIENT_INSTALL_PATH="$STEAM_DIRECTORY" STEAM_COMPAT_DATA_PATH="$AUTODESK_ROOT_DIRECTORY/protonprefix" "$PROTON_DIRECTORY/proton" run "$LAUNCHER"
 }
 
 ###############################################################################################################################################################
