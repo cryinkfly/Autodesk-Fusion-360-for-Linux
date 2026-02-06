@@ -659,11 +659,11 @@ function check_steam_proton() {
     STEAM_DIRECTORY="$HOME/.local/share/Steam"
     PROTON_DIRECTORY="$STEAM_DIRECTORY/compatibilitytools.d/$PROTON_VERSION"
     if [ -d "$STEAM_DIRECTORY" ]; then
-        echo -e "$(gettext "${GREEN}"Steam is installed!"${NOCOLOR}")"
+        echo -e "$(gettext "${GREEN}Steam is installed!${NOCOLOR}")"
         if [ -d "$PROTON_DIRECTORY" ]; then
-            echo -e "$(gettext "${GREEN}"$PROTON_VERSION is installed!"${NOCOLOR}")"
+            echo -e "$(gettext "${GREEN}$PROTON_VERSION is installed!${NOCOLOR}")"
         else
-            echo -e "$(gettext "${RED}"$PROTON_VERSION is not installed!"${NOCOLOR}")"
+            echo -e "$(gettext "${RED}$PROTON_VERSION is not installed!${NOCOLOR}")"
             exit 1
         fi
     else
