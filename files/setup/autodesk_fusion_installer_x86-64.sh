@@ -1106,11 +1106,7 @@ function autodesk_fusion_shortcuts_load() {
     mkdir -p "$DESKTOP_DIRECTORY"
     rm -f "$DESKTOP_DIRECTORY/Autodesk Fusion.desktop"
     cp "$SELECTED_DIRECTORY/.desktop/Autodesk Fusion.desktop" "$DESKTOP_DIRECTORY/Autodesk Fusion.desktop"
-    if [ -n "$PROTON_VERSION" ]; then
-        echo "Exec=$SELECTED_DIRECTORY/bin/autodesk_fusion_launcher_proton.sh" >> "$DESKTOP_DIRECTORY/Autodesk Fusion.desktop"
-    else
-        echo "Exec=$SELECTED_DIRECTORY/bin/autodesk_fusion_launcher.sh" >> "$DESKTOP_DIRECTORY/Autodesk Fusion.desktop"
-    fi
+    echo "Exec=$SELECTED_DIRECTORY/bin/autodesk_fusion_launcher.sh" >> "$DESKTOP_DIRECTORY/Autodesk Fusion.desktop"
     echo "Icon=$SELECTED_DIRECTORY/resources/graphics/autodesk_fusion.svg" >> "$DESKTOP_DIRECTORY/Autodesk Fusion.desktop"
     echo "Path=$SELECTED_DIRECTORY/bin" >> "$DESKTOP_DIRECTORY/Autodesk Fusion.desktop"
 
@@ -1330,6 +1326,11 @@ function autodesk_fusion_safe_logfile() {
     echo "$GPU_DRIVER" >> "$SELECTED_DIRECTORY/logs/wineprefixes.log"
     echo "$SELECTED_DIRECTORY" >> "$SELECTED_DIRECTORY/logs/wineprefixes.log"
     echo "$WINE_PFX" >> "$SELECTED_DIRECTORY/logs/wineprefixes.log"
+    if [ -n "$PROTON_VERSION" ]; then
+        echo "$PROTON_VERSION" >> "$SELECTED_DIRECTORY/logs/wineprefixes.log"
+    else
+        echo "Wine" >> "$SELECTED_DIRECTORY/logs/wineprefixes.log"
+    fi
 }
 
 ##############################################################################################################################################################################
