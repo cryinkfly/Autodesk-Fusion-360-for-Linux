@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-16" standalone="no" ?>
 <OptionGroups>
   <BootstrapOptionsGroup SchemaVersion="2" ToolTip="Special preferences that require the application to be restarted after a change." UserName="Bootstrap">
-    <driverOptionId ToolTip="The driver used to display the graphics" UserName="Graphics driver" Value="VirtualDeviceGLCore"/></BootstrapOptionsGroup>
+    <driverOptionId ToolTip="The driver used to display the graphics" UserName="Graphics driver" Value="VirtualDeviceGLCore"/>
+    <WeaveTheme ToolTip="Changes the active theme used by Fusion UI." UserName="Theme" Value="weave-dark-blue"/>
+  </BootstrapOptionsGroup>
     <spacemouseDriverOptionId ToolTip="Changes the version of the SpaceMouse SDK used by Fusion. For unsupported devices, use the Older setting." UserName="SpaceMouse-Driver" Value="0"/>
   <NetworkOptionGroup SchemaVersion="2" ToolTip="This is a set of options used for network access." UserName="Network">
     <WindowsProxyOptionId ToolTip="Windows Network Proxy - Setting" UserName="Windows-Network-Proxy - Setting" Value="No Proxy"/>
