@@ -152,7 +152,7 @@ As a fan of both Fusion 360 and Linux, I'm excited to do my part in making this 
 
 ---
 
-<div id="fusion360-version-info" align="center">
+<div id="fusion360-version-info" align="left">
 <h2>What is the latest version of Fusion 360?</h2>
  <h4>Complete the following steps:</h4>
  🔹 Visit the <a href="https://www.autodesk.com/products/fusion-360/blog?s=what%27s+new">What's New in Fusion Blog</a> (where product updates for Fusion 360 are chronicled).
