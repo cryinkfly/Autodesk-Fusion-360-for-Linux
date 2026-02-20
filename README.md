@@ -1,4 +1,7 @@
-<div id="fusion360-about" align="center">
+<img align="center" src="https://codeberg.org/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/branch/main/files/images/autodesk-fusion-linux-logo.png" width="250px" height="250px">
+</br></br>
+
+<div id="locale-switch" align="left">
  <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/README-cs_CZ.md"><img src="https://img.shields.io/badge/CZ-lightgrey"></a>
  <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/README-zh_CN.md"><img src="https://img.shields.io/badge/CN-lightgrey"></a> 
  <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/README-de_DE.md"><img src="https://img.shields.io/badge/DE-lightgrey"></a> 
@@ -11,41 +14,28 @@
  <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/README-ru_RU.md"><img src="https://img.shields.io/badge/RU-lightgrey"></a>
   <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/README-tr_TR.md"><img src="https://img.shields.io/badge/TR-lightgrey"></a>
  </br>
- </br>
- <img align="center" src="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/assets/79079633/7d7a61c3-48c1-442a-b132-afbb7a40b7b4.png" width="250px" height="250px">
- </br>
- </br>
- <img align="center" src="https://img.shields.io/github/license/cryinkfly/Fusion-360---Linux-Wine-Version-?style=flat">
- <img align="center" src="https://img.shields.io/github/last-commit/cryinkfly/Fusion-360---Linux-Wine-Version-?style=flat">
- <img align="center" src="https://img.shields.io/github/issues-raw/cryinkfly/Fusion-360---Linux-Wine-Version-?style=flat"> 
- <img align="center" src="https://img.shields.io/github/stars/cryinkfly/Fusion-360---Linux-Wine-Version-?style=flat"> 
- <img align="center" src="https://img.shields.io/github/forks/cryinkfly/Fusion-360---Linux-Wine-Version-?style=flat"> 
-</br></br>
- <h2>🗒 What is Autodesk Fusion 360?</h2>
- <a href="https://www.autodesk.com/products/fusion-360/features">Autodesk Fusion 360</a> is a cloud-based 3D modeling, CAD, CAM, CAE, and PCB software platform for product design and manufacturing that offers an affordable, powerful alternative to other well-known solutions on the market. ⚗️ 🔭 🔬 🔩 🛠
- </br></br>
- ⚠️ But the problem is that it usually only works on systems that have Windows or macOS installed as the operating system. ⚠️
- </br></br>
- ⛔️ However, I do not use either of these two operating systems on my devices! ⛔️
- </br></br>
- 🐧 I'm using a Linux distribution such as openSUSE Tumbleweed and needed a solution to this problem. 🐧 
- </br></br>
- 🔍 I started looking at different tools, testing different approaches and ideas until I chose Wine. 🔍
- </br></br>
- 🍷 Wine (originally an acronym for "Wine Is Not an Emulator") is a compatibility layer capable of running Windows applications on several POSIX-compliant operating systems, such as Linux, macOS, & BSD. Instead of simulating internal Windows logic like a virtual machine or emulator, Wine translates Windows API calls into POSIX calls on-the-fly, eliminating the performance and memory penalties of other methods and allowing you to cleanly integrate Windows applications into your desktop. 🍷
- </br></br>
- 🪄 And so, with this nice tool, we no longer need two operating systems for Fusion 360 if you or I want to create an awesome project in the future. 🪄
- </br></br>
- 💡 Is this a good idea for the future of Autodesk Fusion 360? 💡
- </br></br> 
- 🚀 I personally like this idea and for that reason I will do my best to give you the possibility to use it on Linux too! 🚀
-  </br> </br>
- <h3>🪧 More information about this project:</h3>
- 🌍 Official member: <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/releases/tag/v5.1">Autodesk Group Network</a> & <a href="https://feedback.autodesk.com/key/Fusion360Insider">Autodesk Fusion 360 Insider program</a>! 🌍
- </br>
- 🍷 <a href="https://appdb.winehq.org/objectManager.php?sClass=application&iId=15617">Super Application Maintainer</a> (WineHQ) 🍷
-</br></br>
 </div>
+
+## What is Autodesk Fusion 360?</h2>
+
+<a href="https://www.autodesk.com/products/fusion-360/features">Autodesk Fusion 360</a> is a powerful, cloud-based platform that integrates 3D modeling, CAD, CAM, CAE, and PCB design in a single solution. However, for Linux users, accessing Fusion 360 can be a challenge, as it's primarily designed for Windows and macOS.
+
+This is where Wine comes in. 🍷 Wine (which stands for "Wine Is Not an Emulator") is a compatibility layer that allows Windows applications to run on Linux, macOS, and BSD systems. Unlike traditional virtual machines or emulators, Wine doesn't simulate Windows — it translates Windows API calls into POSIX calls in real-time, maintaining performance and reducing overhead. This allows Windows applications to run smoothly on Linux desktops without the performance penalties of virtual machines.
+
+🪄 Imagine running Autodesk Fusion 360 on Linux using Wine! 🪄
+
+This would mean no need for dual-booting between Windows and Linux to use Fusion 360. You’d be able to work seamlessly on your projects without switching operating systems. For Linux users, it could be a game-changer—making Fusion 360 fully accessible while staying within the Linux ecosystem. 🚀
+
+💡 Is this a good idea for the future of Autodesk Fusion 360? 💡
+
+I think it’s a brilliant idea! If Fusion 360 could run on Linux via Wine, it would expand accessibility to a wider audience—especially among open-source advocates and professionals who prefer Linux for their work.
+
+🪧 More information about this project:
+
+- 🌍 [Official member of Autodesk Group Network](https://codeberg.org/cryinkfly/Autodesk-Fusion-360-for-Linux/releases/tag/v5.1) & [Fusion 360 Insider Program](https://feedback.autodesk.com/key/Fusion360Insider) — I get the latest updates straight from Autodesk!
+- 🍷 [Super Application Maintainer](https://appdb.winehq.org/objectManager.php?sClass=application&iId=15617) at WineHQ—dedicated to ensuring Windows apps run smoothly on Linux.
+
+As a fan of both Fusion 360 and Linux, I'm excited to do my part in making this a reality. By making Fusion 360 accessible on Linux, we open up new possibilities for a lot of creators and engineers who prefer Linux as their primary platform.
 
 ---
 
@@ -454,33 +444,30 @@
 
 ---
 
-<div id="fusion360-contribute" align="center">
-<h2>📮 Would you like to contribute?</h2>
- Contributions of all kinds are welcome, not only in the form of code, but also in terms of the <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/wiki/Documentation">official documentation</a>, debugging help in the <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/issues">bug tracker</a>, support from other users in the <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/discussions">discussion section</a> here on GitHub or in the comments section of my published videos on my <a href="https://www.youtube.com/channel/UCJO-EOBPtlVv5OycHkFPcRg">official YouTube channel</a> and also <a href="https://cryinkfly.com/sponsoring/">financially</a>.
-</br></br>
-If you think something is bad about this project or its documentation, please <a href="https://cryinkfly.com/sponsoring/">help</a> in any way to make it better instead of just complaining about it - this is an open source project after all! 🎈
- </br></br>
- There is also a <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/.github/CODE_OF_CONDUCT.md">Contributor Covenant Code of Conduct</a>, which also provides additional information. 📚
-  </br></br>
-  <a href="https://www.amazon.de/hz/wishlist/ls/MOK18Y12W61L#"><img src="https://user-images.githubusercontent.com/79079633/189486813-a101df9f-35dd-4aaa-8724-dd9fd1e5e86c.png" /></a>
- </br>
-<p align="center">OR</>
-</br>
-<a href="https://www.paypal.com/donate/?hosted_button_id=TBVAGT45LMR6W"><img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-small.png" alt="Check out with PayPal" /></a>
-</div>
+### Support this project, share your ideas, and help our community thrive! ♥️ 
+
+If you enjoy my work and want to help me create more tutorials, guides, and open-source projects, you can **support me in multiple ways** — either as a sponsor or as an active helper!  
+
+**Ways to Support:**  
+- 💰 **Sponsors:** Contribute financially to help cover hosting costs, development time, and resources  
+- 🤝 **Supporters & Collaborators:** Share ideas, provide feedback, contribute tutorials or code, and help the community grow  
+
+**Benefits of Supporting:**  
+- 💡 Early access to new tutorials and resources  
+- 🔒 Exclusive updates and behind-the-scenes insights  
+- 🏅 Recognition on the website or in projects (optional)  
+- 🌱 Helping the community thrive and learn together
+
+**Support my work, contribute ideas, and help the community grow!**
+
+[![Become a Sponsor or Supporter](https://img.shields.io/badge/Become%20a%20Sponsor%20or%20Supporter-%23E34C4C?style=for-the-badge&logoColor=white)](https://cryinkfly.com/become-partner/)
 
 ---
 
-<div id="fusion360-notice" align="center">
-<h2>⚠️ Important Notice</h2>
+### Important Notice ⚠️ 
 With the help of my script, you get a way to install Autodesk Fusion 360 on your Linux system. Certain packages and programs that are required will be set up for you, but it's important to know, that my script only helps you to get the program to run and nothing more! And so, you must to purchase the licenses directly from the manufacturer of the program Autodesk Fusion 360!
-</br></br>
-</div>
 
 ---
 
-<div id="fusion360-license" align="center">
-<h2>📃 License</h2>
-All my scripts are released under the MIT license, see <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/blob/main/LICENSE.md">LICENSE.md</a> for full text.
- </br></br>
-</div>
+### License 📃
+All my scripts are released under the MIT license, see <a href="https://codeberg.org/cryinkfly/Autodesk-Fusion-360-for-Linux/src/branch/main/LICENSE.md">LICENSE.md</a> for full text.
