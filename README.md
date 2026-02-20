@@ -39,21 +39,19 @@ As a fan of both Fusion 360 and Linux, I'm excited to do my part in making this 
 
 ---
 
-<div id="fusion360-project-screenshots" align="center">
-<h2>🖼 Screenshots from this project:</h2>
+
+## Screenshots
 <img src="https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/images/workspaces/Manufacture/%231.1_adapter-plate.png" width="200px" height="150px">
 <img src="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/blob/main/files/images/workspaces/Design/MacMASTER-CARR.png?raw=true" width="200px" height="150px">
 <img src="https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/images/workspaces/Generative%20Design/%231.4_generative_design.png" width="200px" height="150px">
 <img src="https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/images/workspaces/Simulation/%231_study_displacement.png" width="200px" height="150px">
 <img src="https://raw.githubusercontent.com/cryinkfly/Fusion-360---Linux-Wine-Version-/main/files/images/workspaces/Drawing/drawing_oil_case.png" width="200px" height="150px">
 <img src="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/images/workspaces/Electronics/%231_air%20quality%20sensor.png" width="200px" height="150px">
- </br></br>
-</div>
 
 ---
 
-<div id="fusion360-features" align="center">
-<h2>📋 What can you do with Autodesk Fusion 360?</h2>
+## What can you do with Autodesk Fusion 360?
+
 <table>
  <thead>
   <tr>
@@ -112,21 +110,11 @@ As a fan of both Fusion 360 and Linux, I'm excited to do my part in making this 
  🔹 Then visit the official <a href="https://www.youtube.com/user/AutodeskFusion360">YouTube channel</a> where you you can watch many hours of free tutorials 
  </br>
  🔹 Or visit the <a href="https://www.autodesk.com/products/fusion-360/features">website</a> of Autodesk Fusion 360.
- </br></br>
- And you will also get all the news and information about this project through my channels:
- </br></br>
- <a href="https://cryinkfly.com/"><img src="https://img.shields.io/badge/Website-73ba25?style=for-the-badge&logo=website&logoColor=black" alt="Website Badge"/></a>
- <a href="https://www.facebook.com/cryinkfly/"><img src="https://img.shields.io/badge/Facebook-blue?style=for-the-badge&logo=facebook&logoColor=white" alt="Facebook Badge"/></a>
- <a href="https://instagram.com/cryinkfly"><img src="https://img.shields.io/badge/Instagram-purple?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram Badge"/></a>
- <a href="https://github.com/cryinkfly/"><img src="https://img.shields.io/badge/GitHub-black?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Badge"/></a>
- <a href="https://www.youtube.com/channel/UCJO-EOBPtlVv5OycHkFPcRg"><img src="https://img.shields.io/badge/YouTube-red?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube Badge"/></a>
- </br></br>
-</div> 
 
 ---
 
-<div id="fusion360-license-packs" align="center">
-<h2>💰 How much does Fusion 360 cost?</h2>
+<div id="fusion360-license-packs" align="left">
+<h2>How much does Fusion 360 cost?</h2>
  <table>
  <thead>
   <tr>
@@ -165,7 +153,7 @@ As a fan of both Fusion 360 and Linux, I'm excited to do my part in making this 
 ---
 
 <div id="fusion360-version-info" align="center">
-<h2>🕑 What is the latest version of Fusion 360?</h2>
+<h2>What is the latest version of Fusion 360?</h2>
  <h4>Complete the following steps:</h4>
  🔹 Visit the <a href="https://www.autodesk.com/products/fusion-360/blog?s=what%27s+new">What's New in Fusion Blog</a> (where product updates for Fusion 360 are chronicled).
  </br>
@@ -179,8 +167,8 @@ As a fan of both Fusion 360 and Linux, I'm excited to do my part in making this 
 
 ---
 
-<div id="fusion360-requirements-1" align="center">
-<h2>📑 What are the System requirements for Autodesk Fusion 360?</h2>
+<div id="fusion360-requirements-1" align="left">
+<h2>What are the System requirements for Autodesk Fusion 360?</h2>
 </div>
 <div id="fusion360-requirements-2" align="left">
  <table>
@@ -259,7 +247,7 @@ As a fan of both Fusion 360 and Linux, I'm excited to do my part in making this 
   </table>
  </br>
  
- <div id="fusion360-requirements-3" align="center">
+ <div id="fusion360-requirements-3" align="left">
  <table>
    <thead>
     <tr>
@@ -283,8 +271,8 @@ As a fan of both Fusion 360 and Linux, I'm excited to do my part in making this 
   </table>
 </div>
 
-<div id="fusion360-requirements-4" align="center">
-<h3>📖 What else is there to consider when it comes to the requirements?</h3>
+<div id="fusion360-requirements-4" align="left">
+<h3>What else is there to consider when it comes to the requirements?</h3>
  🔹 Check the <a href="https://health.autodesk.com/">Health Dashboard</a>!
  </br>
  🔹 You must have installed the <a href="https://github.com/lutris/docs/blob/master/InstallingDrivers.md">latest graphics driver</a>!
@@ -297,8 +285,8 @@ As a fan of both Fusion 360 and Linux, I'm excited to do my part in making this 
 
 ---
 
-<div id="fusion360-installation" align="center">
-<h2>⚙️ Getting Started</h3>
+<div id="fusion360-installation" align="left">
+<h2>Getting Started</h3>
 🔹 Check my <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/wiki/Documentation">GitHub-Documentation</a> & <a href="https://www.youtube.com/watch?v=-BktJspJKgs&list=PLzwMdS5iu_BIsO6RTy7Hy1MbzLMrQE2xe">Videos</a> before you install Autodesk Fusion 360 on your system!
 </br>
 🔹 Check, if your <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/extras/network/etc">network settings</a> are correctly configured!
@@ -341,8 +329,8 @@ As a fan of both Fusion 360 and Linux, I'm excited to do my part in making this 
 
 ---
 
-<div id="fusion360-tested-area" align="center">
-<h2>🧪 Which work areas and functions have I tested?</h3>
+<div id="fusion360-tested-area" align="left">
+<h2>Which work areas and functions have I tested?</h3>
 <table>
 <thead>
 <tr>
@@ -443,7 +431,7 @@ As a fan of both Fusion 360 and Linux, I'm excited to do my part in making this 
 
 ---
 
-### Support this project, share your ideas, and help our community thrive! ♥️ 
+## Support this project, share your ideas, and help our community thrive! ♥️ 
 
 If you enjoy my work and want to help me create more tutorials, guides, and open-source projects, you can **support me in multiple ways** — either as a sponsor or as an active helper!  
 
@@ -463,10 +451,10 @@ If you enjoy my work and want to help me create more tutorials, guides, and open
 
 ---
 
-### Important Notice
+## Important Notice
 With the help of my script, you get a way to install Autodesk Fusion 360 on your Linux system. Certain packages and programs that are required will be set up for you, but it's important to know, that my script only helps you to get the program to run and nothing more! And so, you must to purchase the licenses directly from the manufacturer of the program Autodesk Fusion 360!
 
 ---
 
-### License
+## License
 All my scripts are released under the MIT license, see <a href="https://codeberg.org/cryinkfly/Autodesk-Fusion-360-for-Linux/src/branch/main/LICENSE.md">LICENSE.md</a> for full text.
