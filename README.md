@@ -18,6 +18,8 @@
  </br>
 </div>
 
+---
+
 ## What is Autodesk Fusion 360?</h2>
 
 <a href="https://www.autodesk.com/products/fusion-360/features">Autodesk Fusion 360</a> is a powerful, cloud-based platform that integrates 3D modeling, CAD, CAM, CAE, and PCB design in a single solution. However, for Linux users, accessing Fusion 360 can be a challenge, as it's primarily designed for Windows and macOS.
