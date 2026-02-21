@@ -18,6 +18,11 @@
  </br>
 </div>
 
+
+<a href="https://example.com" style="display: inline-block; padding: 10px 20px; background-color: #007BFF; color: white; text-align: center; border-radius: 5px; text-decoration: none; font-size: 16px;">
+  Click Me
+</a>
+
 ---
 
 ## What is Autodesk Fusion 360?</h2>
@@ -453,10 +458,7 @@ If you enjoy my work and want to help me create more tutorials, guides, and open
 
 ---
 
-## Important Notice
-With the help of my script, you get a way to install Autodesk Fusion 360 on your Linux system. Certain packages and programs that are required will be set up for you, but it's important to know, that my script only helps you to get the program to run and nothing more! And so, you must to purchase the licenses directly from the manufacturer of the program Autodesk Fusion 360!
-
----
-
-## License
-All my scripts are released under the MIT license, see <a href="https://codeberg.org/cryinkfly/Autodesk-Fusion-360-for-Linux/src/branch/main/LICENSE.md">LICENSE.md</a> for full text.
+> [!IMPORTANT]
+>With the help of my script, you get a way to install Autodesk Fusion 360 on your Linux system. Certain packages and programs that are required will be set up for you, but it's important to know, that my script only helps you to get the program to run and nothing more! And so, you must to purchase the licenses directly from the manufacturer of the program Autodesk Fusion 360!
+> 
+>All my scripts are released under the MIT license, see <a href="https://codeberg.org/cryinkfly/Autodesk-Fusion-360-for-Linux/src/branch/main/LICENSE.md">LICENSE.md</a> for full text.
