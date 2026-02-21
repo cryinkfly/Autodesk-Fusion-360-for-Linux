@@ -218,7 +218,7 @@ As a fan of both Fusion 360 and Linux, I'm excited to do my part in making this 
      <td><strong>Graphics Card</strong></td>
      <td>DirectX11 (Direct3D 10.1 or greater) = DXVK Mode <br> OpenGL (2.0 or greater) = OpenGL Mode <br> Dedicated GPU with 1 GB or more of VRAM<br> Integrated graphics with 6 GB or more of RAM
       <br><br>
-      <p><b>Note 1</b>: There is a <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/wiki/Supported-Graphics-Cards">list of tested graphics cards</a> that will work with Autodesk Fusion 360 on Linux!</p>
+      <p><b>Note 1</b>: There is a <a href="https://codeberg.org/cryinkfly/Autodesk-Fusion-360-on-Linux/wiki/Supported-Graphics-Cards">list of tested graphics cards</a> that will work with Autodesk Fusion 360 on Linux!</p>
       <p><b>Note 2</b>: If you want to use DXVK with an NVIDIA graphics card, you must disable Secure Boot in the BIOS and ensure that the latest graphics drivers are installed. This is because the NVIDIA driver modules can only be loaded when Secure Boot is disabled!</p>
      </td>
     </tr>
@@ -274,7 +274,7 @@ As a fan of both Fusion 360 and Linux, I'm excited to do my part in making this 
 
 - Check the <a href="https://health.autodesk.com/">Health Dashboard</a>!
 - You must have installed the <a href="https://github.com/lutris/docs/blob/master/InstallingDrivers.md">latest graphics driver</a>!
-- You need the <a href="https://www.winehq.org/">latest version of wine (6.23 and newer)</a> and <a href="https://github.com/Winetricks/winetricks">winetricks</a>! <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/issues/244#issuecomment-1192513720">Installing yad </a> is also recomended to resolve potential instalation issues. 
+- You need the <a href="https://www.winehq.org/">latest version of wine (6.23 and newer)</a> and <a href="https://github.com/Winetricks/winetricks">winetricks</a>! <a href="https://codeberg.org/cryinkfly/Autodesk-Fusion-360-on-Linux/issues/244#issuecomment-1192513720">Installing yad </a> is also recomended to resolve potential instalation issues. 
 
 And would you like to use <a href="https://apps.autodesk.com/FUSION/de/Home/Index">extra functions</a> or languages as like the Czech language later in Autodesk Fusion 360, then you need a <a href="https://apps.autodesk.com/FUSION/en/Detail/Index?id=9151466655844643882">special extension</a> what you must have bought and downloaded before you can install this with my Setup Wizard! 🧩
 
@@ -282,10 +282,10 @@ And would you like to use <a href="https://apps.autodesk.com/FUSION/de/Home/Inde
 
 ## Getting Started
 
-- Check my <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/wiki/Documentation">GitHub-Documentation</a> & <a href="https://www.youtube.com/watch?v=-BktJspJKgs&list=PLzwMdS5iu_BIsO6RTy7Hy1MbzLMrQE2xe">Videos</a> before you install Autodesk Fusion 360 on your system!
-- Check, if your <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/extras/network/etc">network settings</a> are correctly configured!
-- Check, if your system meets all <a href="#fusion360-requirements-2">requirements</a>!
-- You need an active Fusion 360 <a href="#-how-much-does-fusion-360-cost">license</a>!
+- Check my <a href="https://codeberg.org/cryinkfly/Autodesk-Fusion-360-on-Linux/wiki/Documentation">GitHub-Documentation</a> & <a href="https://www.youtube.com/watch?v=-BktJspJKgs&list=PLzwMdS5iu_BIsO6RTy7Hy1MbzLMrQE2xe">Videos</a> before you install Autodesk Fusion 360 on your system!
+- Check, if your <a href="https://codeberg.org/cryinkfly/Autodesk-Fusion-360-on-Linux/src/branch/main/files/extras/network/etc">network settings</a> are correctly configured!
+- Check, if your system meets all requirements</a>!
+- You need an active Fusion 360 license</a>!
 
 Open a terminal and run this command to install the basic Autodesk Fusion:
  
@@ -408,7 +408,7 @@ There are some <a href="https://codeberg.org/cryinkfly/Autodesk-Fusion-360-on-Li
 <td style="text-align: center;">⚠️</td>
 </tr>
 <tr>
-<td><a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/issues/218">Sandbox-Mode</a>
+<td><a href="https://codeberg.org/cryinkfly/Autodesk-Fusion-360-on-Linux/issues/218">Sandbox-Mode</a>
 <td style="text-align: center;">❌</td>
 <td style="text-align: center;">❌</td>
 <td style="text-align: center;">✅</td>
