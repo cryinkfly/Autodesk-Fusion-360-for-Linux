@@ -6,7 +6,7 @@
 ---
 
 <div id="locale-switch" style="display: flex; align-items: center; justify-content: center;">
-  <img src="https://img.shields.io/badge/Please_choose_a_language:-f6f6fc?style=for-the-badge">
+  <img src="https://img.shields.io/badge/Please_choose_a_language:-ff6b00?style=for-the-badge">
   <a href="https://codeberg.org/cryinkfly/Autodesk-Fusion-360-on-Linux/src/branch/main/README-cs_CZ.md"><img src="https://img.shields.io/badge/CZ-36342c?style=for-the-badge"></a>
   <a href="https://codeberg.org/cryinkfly/Autodesk-Fusion-360-on-Linux/src/branch/main/README-zh_CN.md"><img src="https://img.shields.io/badge/CN-36342c?style=for-the-badge"></a> 
   <a href="https://codeberg.org/cryinkfly/Autodesk-Fusion-360-on-Linux/src/branch/main/README-de_DE.md"><img src="https://img.shields.io/badge/DE-36342c?style=for-the-badge"></a> 
