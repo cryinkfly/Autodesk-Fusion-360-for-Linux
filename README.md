@@ -18,11 +18,6 @@
  </br>
 </div>
 
-
-<a href="https://example.com" style="display: inline-block; padding: 10px 20px; background-color: #007BFF; color: white; text-align: center; border-radius: 5px; text-decoration: none; font-size: 16px;">
-  Click Me
-</a>
-
 ---
 
 ## What is Autodesk Fusion 360?</h2>
