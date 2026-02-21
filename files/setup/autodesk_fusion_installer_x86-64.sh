@@ -7,7 +7,7 @@
 # Author URI:   https://cryinkfly.com                                                              #
 # License:      MIT                                                                                #
 # Copyright (c) 2020-2026                                                                          #
-# Time/Date:    11:15/28.01.2026                                                                   #
+# Time/Date:    11:57/21.02.2026                                                                   #
 # Version:      2.0.7-Alpha                                                                        #
 ####################################################################################################
 
@@ -38,7 +38,7 @@ if [ "$SELECTED_EXTENSIONS" == "--full" ]; then
     DOWNLOAD_EXTENSIONS=1
 fi
 
-REPO_URL="https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main"
+REPO_URL="https://codeberg.org/cryinkfly/Autodesk-Fusion-360-on-Linux/raw/branch/main/"
 
 # URL to download translations po. files <-- Still in progress!!!
 UPDATER_TRANSLATIONS_URL="$REPO_URL/files/setup/locale/update-locale.sh"
@@ -80,7 +80,7 @@ SIAPPDLL_URL="$REPO_URL/files/extras/patched-dlls/siappdll.dll"
 # CHECK THE REQUIRED PACKAGES FOR THE INSTALLER:                                                                                                                             #
 ##############################################################################################################################################################################
 
-function check_required_packages() {
+check_required_packages() {
     # Extracting the Linux distribution ID and version
     DISTRO=$(grep "^ID=" /etc/*-release | cut -d'=' -f2 | tr -d '"')
     VERSION=$(grep "^VERSION_ID=" /etc/*-release | cut -d'=' -f2 | tr -d '"')
@@ -182,7 +182,7 @@ function check_required_packages() {
 # INSTALLATION OF THE REQUIRED PACKAGES FOR THE INSTALLER:                                                                                                                   #
 ##############################################################################################################################################################################
 
-function install_required_packages() {
+install_required_packages() {
     echo -e "$(gettext "${YELLOW}The installer will install the required packages for the installation!")${NOCOLOR}"
     echo -e "$(gettext "${RED}Missing package: ${cmd}")${NOCOLOR}"
     sleep 2
@@ -277,7 +277,7 @@ function install_required_packages() {
 ##############################################################################################################################################################################
 
 # <-- Still in progress!!!
-function download_translations() {
+download_translations() {
     curl -o "./locale/update-locale.sh" "$UPDATER_TRANSLATIONS_URL"
     chmod +x "./locale/update-locale.sh"
 
@@ -305,7 +305,7 @@ function download_translations() {
 # CHECK THE OPTIONS FOR THE INSTALLER:                                                                                                                                       #
 ##############################################################################################################################################################################
 
-function check_option() {
+check_option() {
     case "$1" in
         "--uninstall")
             clear
@@ -396,7 +396,7 @@ function check_option() {
 # DEACTIVATE THE WINDOW NOT RESPONDING DIALOG:                                                                                                                               #
 ##############################################################################################################################################################################
 
-function deactivate_window_not_responding_dialog() {
+deactivate_window_not_responding_dialog() {
     # Check if desktop environment is GNOME
     if [ "$XDG_CURRENT_DESKTOP" = "GNOME" ]; then
         # Disable the "Window not responding" Dialog in GNOME for 30 minutes:
@@ -409,7 +409,7 @@ function deactivate_window_not_responding_dialog() {
 # CREATE THE DATA STRUCTURE FOR THE INSTALLER:                                                                                                                               #
 ##############################################################################################################################################################################
 
-function create_data_structure() {
+create_data_structure() {
     mkdir -p "$SELECTED_DIRECTORY/bin" \
         "$SELECTED_DIRECTORY/downloads/extensions" \
         "$SELECTED_DIRECTORY/logs" \
@@ -424,7 +424,7 @@ function create_data_structure() {
 ##############################################################################################################################################################################
 
 # Function to check if Secure Boot is activated
-function check_secure_boot() {
+check_secure_boot() {
     if ! command -v mokutil &> /dev/null; then
         echo "${RED} mokutil command not found. Please install it to check Secure Boot status.${NOCOLOR}"
         exit 1
@@ -444,7 +444,7 @@ function check_secure_boot() {
 # CHECKING THE MINIMUM RAM (RANDOM ACCESS MEMORY) REQUIREMENT:                                                                                                               #
 ##############################################################################################################################################################################
 
-function check_ram() {
+check_ram() {
     # Get total RAM space in kilobytes
     GET_RAM_KILOBYTES=$(grep MemTotal /proc/meminfo | awk '{print $2}')
     
@@ -477,7 +477,7 @@ function check_ram() {
 # CHECK GPU DRIVER FOR THE INSTALLER:                                                                                                                                        #
 ##############################################################################################################################################################################
 
-function check_gpu_driver() {
+check_gpu_driver() {
     echo -e "$(gettext "${YELLOW}Checking the GPU drivers for the installer...${NOCOLOR}")"
     
     if (( !SECURE_BOOT )); then
@@ -574,7 +574,7 @@ function check_gpu_driver() {
 # CHECKING THE MINIMUM VRAM (VIDEO RAM) REQUIREMENT:                                                                                                                         #
 ##############################################################################################################################################################################
 
-function check_gpu_vram() {
+check_gpu_vram() {
     # Get the total memory of the graphics card in megabytes from check_gpu_driver
 
     if [ -z "$GET_VRAM_MEGABYTES" ]; then
@@ -605,7 +605,7 @@ function check_gpu_vram() {
 # CHECKING THE MINIMUM DISK SPACE (DEFAULT: HOME-PARTITION) REQUIREMENT:                                                                                                     #
 ##############################################################################################################################################################################
 
-function check_disk_space() {
+check_disk_space() {
     # Get the free disk space in the selected directory
     GET_DISK_SPACE=$(df -h "$SELECTED_DIRECTORY" 2>/dev/null | awk 'NR==2 {print $4}')
 
@@ -643,7 +643,7 @@ function check_disk_space() {
 # CHECK FIREFOX VERSION FOR THE INSTALLER:                                                                                                                                   #
 ##############################################################################################################################################################################
 
-function get_firefox_version() {
+get_firefox_version() {
     if command -v firefox &>/dev/null; then
         firefox --version | grep -oP '\d+\.\d+(\.\d+)?'
     else
@@ -651,7 +651,7 @@ function get_firefox_version() {
     fi
 }
 
-function is_snap_firefox_installed() {
+is_snap_firefox_installed() {
     if snap list | grep -q firefox; then
         return 0
     else
@@ -659,9 +659,9 @@ function is_snap_firefox_installed() {
     fi
 }
 
-function check_install_firefox_deb() {
+check_install_firefox_deb() {
     # Function to check if Firefox is installed via Snap
-    function is_snap_firefox_installed {
+    is_snap_firefox_installed {
         snap list firefox &> /dev/null
         return $?
     }
@@ -712,7 +712,7 @@ Pin-Priority: 1000
 # DOWNLOAD THE REQUIRED FILES FOR THE INSTALLER:                                                                                                                             #
 ##############################################################################################################################################################################
 
-function download_files() {
+download_files() {
     echo -e "$(gettext "${GREEN}Downloading the required files for the installation ...${NOCOLOR}")"
     sleep 2
     # Download the newest winetricks version:
@@ -753,7 +753,7 @@ function download_files() {
     chmod +x "$SELECTED_DIRECTORY/bin/autodesk_fusion_launcher.sh"
 }
 
-function download_extensions_files() {
+download_extensions_files() {
     echo -e "$(gettext "${YELLOW}Downloading the tested extensions for Autodesk Fusion on Linux ...${NOCOLOR}")"
     EXTENSION_FILE_DIRECTORY="$SELECTED_DIRECTORY/downloads/extensions"
     download_file "Ceska_lokalizace_pro_Autodesk_Fusion.exe" \
@@ -774,7 +774,7 @@ function download_extensions_files() {
     echo -e "$(gettext "${GREEN}All tested extensions for Autodesk Fusion on Linux are downloaded!${NOCOLOR}")"
 }
 
-function download_file() {
+download_file() {
     local FILE_NAME="$1"
     local FILE_URL="$2"
     local DESTINATION_DIRECTORY="${3:-$SELECTED_DIRECTORY/downloads/}"
@@ -798,7 +798,7 @@ function download_file() {
 # CHECK AND INSTALL WINE FOR THE INSTALLER:                                                                                                                                  #
 ##############################################################################################################################################################################
 
-function check_and_install_wine() {
+check_and_install_wine() {
     # Check if wine is installed
     if [ -x "$(command -v wine)" ]; then
         echo "Wine is installed!"
@@ -1056,7 +1056,7 @@ function check_and_install_wine() {
 # Helper function for the following function. The AdskIdentityManager.exe can be installed 
 # into a variable alphanumeric folder.
 # This function finds that folder alphanumeric folder name.
-function determine_variable_folder_name_for_identity_manager() {
+determine_variable_folder_name_for_identity_manager() {
     echo "Searching for the variable location of the Autodesk Fusion identity manager..."
     IDENT_MAN_PATH=$(find "$WINE_PFX" -name 'AdskIdentityManager.exe')
     # Get the dirname of the identity manager's alphanumeric folder.
@@ -1067,7 +1067,7 @@ function determine_variable_folder_name_for_identity_manager() {
 ########################################################################################
 
 # Load the icons and .desktop-files:
-function autodesk_fusion_shortcuts_load() {
+autodesk_fusion_shortcuts_load() {
     # Create a .desktop file (launcher.sh) for Autodesk Fusion!
     DESKTOP_DIRECTORY="$HOME/.local/share/applications/wine/Programs/Autodesk"
     mkdir -p "$DESKTOP_DIRECTORY"
@@ -1102,7 +1102,7 @@ function autodesk_fusion_shortcuts_load() {
 ###############################################################################################################################################################
 
 # Execute the installation of Autodesk Fusion
-function autodesk_fusion_run_install_client() {
+autodesk_fusion_run_install_client() {
     echo -e "$(gettext "${YELLOW}Installing Autodesk Fusion 360 Client ...${NOCOLOR}")"
     sleep 2
     WINEPREFIX="$WINE_PFX" timeout -k 10m 9m wine "$SELECTED_DIRECTORY/downloads/FusionClientInstaller.exe" --quiet 2>> "$SELECTED_DIRECTORY/logs/FusionClientInstaller_1.log"
@@ -1115,7 +1115,7 @@ function autodesk_fusion_run_install_client() {
 ###############################################################################################################################################################
 
 # Patch the Qt6WebEngineCore.dll to fix the login issue and other issues
-function autodesk_fusion_patch_qt6webenginecore() {
+autodesk_fusion_patch_qt6webenginecore() {
     # Find the Qt6WebEngineCore.dll file in the Autodesk Fusion directory
     QT6_WEBENGINECORE=$(find "$WINE_PFX" -name 'Qt6WebEngineCore.dll' -printf "%T+ %p\n" | sort -r | head -n 1 | sed -r 's/^[^ ]+ //')
     QT6_WEBENGINECORE_DIR=$(dirname "$QT6_WEBENGINECORE")
@@ -1146,7 +1146,7 @@ function autodesk_fusion_patch_qt6webenginecore() {
 
 # Add/Patch the siappdll.dll to fix the SpaceMouse issue
 
-function autodesk_fusion_patch_siappdll() {
+autodesk_fusion_patch_siappdll() {
     echo -e "${YELLOW}Patching the siappdll.dll file for Autodesk Fusion ...${NOCOLOR}"
     sleep 2
     
@@ -1167,7 +1167,7 @@ function autodesk_fusion_patch_siappdll() {
 ###############################################################################################################################################################
 
 # Wine configuration for Autodesk Fusion
-function wine_autodesk_fusion_install() {
+wine_autodesk_fusion_install() {
     # Note that the winetricks sandbox verb merely removes the desktop integration and Z: drive symlinks and is not a "true" sandbox.
     # It protects against errors rather than malice. It's useful for, e.g., keeping games from saving their settings in random subdirectories of your home directory.
     # But it still ensures that wine, for example, no longer has access permissions to Home!
@@ -1240,7 +1240,7 @@ function wine_autodesk_fusion_install() {
 ###############################################################################################################################################################
 
 # Check and install the selected extensions
-function wine_autodesk_fusion_install_extensions() {
+wine_autodesk_fusion_install_extensions() {
     if [[ "$SELECTED_EXTENSIONS" == *"CzechlocalizationforF360"* ]]; then
         run_install_extension_client "Ceska_lokalizace_pro_Autodesk_Fusion.exe"
     fi
@@ -1258,7 +1258,7 @@ function wine_autodesk_fusion_install_extensions() {
     fi
 }
 
-function run_install_extension_client() {
+run_install_extension_client() {
     local EXTENSION_FILE="$1"
     local WIN_EXTENSION_DIRECTORY="C:\\users\\$USER\\Downloads\\extensions"
     if [[ "$EXTENSION_FILE" == *.msi ]]; then
@@ -1270,7 +1270,7 @@ function run_install_extension_client() {
 
 ###############################################################################################################################################################
 
-function autodesk_fusion_safe_logfile() {
+autodesk_fusion_safe_logfile() {
     # Log the Wineprefixes
     echo "$GPU_DRIVER" >> "$SELECTED_DIRECTORY/logs/wineprefixes.log"
     echo "$SELECTED_DIRECTORY" >> "$SELECTED_DIRECTORY/logs/wineprefixes.log"
@@ -1281,7 +1281,7 @@ function autodesk_fusion_safe_logfile() {
 # ACTIVATE THE WINDOW NOT RESPONDING DIALOG:                                                                                                                                 #
 ##############################################################################################################################################################################
 
-function reset_window_not_responding_dialog() {
+reset_window_not_responding_dialog() {
     # Check if desktop environment is GNOME
     if [ "$XDG_CURRENT_DESKTOP" = "GNOME" ]; then
         # Reset the "Window not responding" Dialog in GNOME
@@ -1294,7 +1294,7 @@ function reset_window_not_responding_dialog() {
 # RUN AUTODESK FUSION:                                                                                                                                                       #
 ##############################################################################################################################################################################
 
-function run_wine_autodesk_fusion() {
+run_wine_autodesk_fusion() {
     # Execute the Autodesk Fusion 360
     echo -e "$(gettext "${GREEN}Starting Autodesk Fusion 360 ...${NOCOLOR}")"
     sleep 2
