@@ -3,19 +3,21 @@
 <img align="center" src="https://codeberg.org/cryinkfly/Autodesk-Fusion-360-for-Linux/raw/branch/main/files/images/autodesk-fusion-linux-logo.png" width="250px" height="250px">
 </br></br>
 
-<div id="locale-switch" align="left">
- <a href="https://codeberg.org/cryinkfly/Autodesk-Fusion-360-on-Linux/src/branch/main/README-cs_CZ.md"><img src="https://img.shields.io/badge/CZ-lightgrey"></a>
- <a href="https://codeberg.org/cryinkfly/Autodesk-Fusion-360-on-Linux/src/branch/main/README-zh_CN.md"><img src="https://img.shields.io/badge/CN-lightgrey"></a> 
- <a href="https://codeberg.org/cryinkfly/Autodesk-Fusion-360-on-Linux/src/branch/main/README-de_DE.md"><img src="https://img.shields.io/badge/DE-lightgrey"></a> 
- <a href="https://codeberg.org/cryinkfly/Autodesk-Fusion-360-on-Linux/src/branch/main/README.md"><img src="https://img.shields.io/badge/EN-brightgreen"></a> 
- <a href="https://codeberg.org/cryinkfly/Autodesk-Fusion-360-on-Linux/src/branch/main/README-es_ES.md"><img src="https://img.shields.io/badge/ES-lightgrey"></a> 
- <a href="https://codeberg.org/cryinkfly/Autodesk-Fusion-360-on-Linux/src/branch/main/README-fr_FR.md"><img src="https://img.shields.io/badge/FR-lightgrey"></a> 
- <a href="https://codeberg.org/cryinkfly/Autodesk-Fusion-360-on-Linux/src/branch/main/README-it_IT.md"><img src="https://img.shields.io/badge/IT-lightgrey"></a> 
- <a href="https://codeberg.org/cryinkfly/Autodesk-Fusion-360-on-Linux/src/branch/main/README-ja_JP.md"><img src="https://img.shields.io/badge/JP-lightgrey"></a> 
- <a href="https://codeberg.org/cryinkfly/Autodesk-Fusion-360-on-Linux/src/branch/main/README-ko_KR.md"><img src="https://img.shields.io/badge/KR-lightgrey"></a> 
- <a href="https://codeberg.org/cryinkfly/Autodesk-Fusion-360-on-Linux/src/branch/main/README-ru_RU.md"><img src="https://img.shields.io/badge/RU-lightgrey"></a>
-  <a href="https://codeberg.org/cryinkfly/Autodesk-Fusion-360-on-Linux/src/branch/main/README-tr_TR.md"><img src="https://img.shields.io/badge/TR-lightgrey"></a>
- </br>
+---
+
+<div id="locale-switch" style="display: flex; align-items: center; justify-content: center;">
+  <img src="https://img.shields.io/badge/Please_choose_a_language:-f6f6fc?style=for-the-badge">
+  <a href="https://codeberg.org/cryinkfly/Autodesk-Fusion-360-on-Linux/src/branch/main/README-cs_CZ.md"><img src="https://img.shields.io/badge/CZ-36342c?style=for-the-badge"></a>
+  <a href="https://codeberg.org/cryinkfly/Autodesk-Fusion-360-on-Linux/src/branch/main/README-zh_CN.md"><img src="https://img.shields.io/badge/CN-36342c?style=for-the-badge"></a> 
+  <a href="https://codeberg.org/cryinkfly/Autodesk-Fusion-360-on-Linux/src/branch/main/README-de_DE.md"><img src="https://img.shields.io/badge/DE-36342c?style=for-the-badge"></a> 
+  <a href="https://codeberg.org/cryinkfly/Autodesk-Fusion-360-on-Linux/src/branch/main/README.md"><img src="https://img.shields.io/badge/EN-ff6b00?style=for-the-badge"></a> 
+  <a href="https://codeberg.org/cryinkfly/Autodesk-Fusion-360-on-Linux/src/branch/main/README-es_ES.md"><img src="https://img.shields.io/badge/ES-36342c?style=for-the-badge"></a> 
+  <a href="https://codeberg.org/cryinkfly/Autodesk-Fusion-360-on-Linux/src/branch/main/README-fr_FR.md"><img src="https://img.shields.io/badge/FR-36342c?style=for-the-badge"></a> 
+  <a href="https://codeberg.org/cryinkfly/Autodesk-Fusion-360-on-Linux/src/branch/main/README-it_IT.md"><img src="https://img.shields.io/badge/IT-36342c?style=for-the-badge"></a> 
+  <a href="https://codeberg.org/cryinkfly/Autodesk-Fusion-360-on-Linux/src/branch/main/README-ja_JP.md"><img src="https://img.shields.io/badge/JP-36342c?style=for-the-badge"></a> 
+  <a href="https://codeberg.org/cryinkfly/Autodesk-Fusion-360-on-Linux/src/branch/main/README-ko_KR.md"><img src="https://img.shields.io/badge/KR-36342c?style=for-the-badge"></a> 
+  <a href="https://codeberg.org/cryinkfly/Autodesk-Fusion-360-on-Linux/src/branch/main/README-ru_RU.md"><img src="https://img.shields.io/badge/RU-36342c?style=for-the-badge"></a>
+  <a href="https://codeberg.org/cryinkfly/Autodesk-Fusion-360-on-Linux/src/branch/main/README-tr_TR.md"><img src="https://img.shields.io/badge/TR-36342c?style=for-the-badge"></a>
 </div>
 
 ---
