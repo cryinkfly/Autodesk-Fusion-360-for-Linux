@@ -110,16 +110,17 @@ As a fan of both Fusion 360 and Linux, I'm excited to do my part in making this 
   </tr>
  </tbody>
 </table>
-<h3>📖 Do you want to learn everything about the Autodesk Fusion 360 features?</h3>
- 🔹 Then visit the official <a href="https://www.youtube.com/user/AutodeskFusion360">YouTube channel</a> where you you can watch many hours of free tutorials 
- </br>
- 🔹 Or visit the <a href="https://www.autodesk.com/products/fusion-360/features">website</a> of Autodesk Fusion 360.
+
+### Do you want to learn everything about the Autodesk Fusion 360 features?
+
+- Then visit the official <a href="https://www.youtube.com/user/AutodeskFusion360">YouTube channel</a> where you you can watch many hours of free tutorials
+- Or visit the <a href="https://www.autodesk.com/products/fusion-360/features">website</a> of Autodesk Fusion 360.
 
 ---
 
-<div id="fusion360-license-packs" align="left">
-<h2>How much does Fusion 360 cost?</h2>
- <table>
+## How much does Fusion 360 cost?
+
+<table>
  <thead>
   <tr>
    <th>License</th>
@@ -149,33 +150,30 @@ As a fan of both Fusion 360 and Linux, I'm excited to do my part in making this 
   </tr>
  </tbody>
 </table>
- <h3>📖 Do you want to learn everything about the Autodesk Fusion 360 subscription options?</h3>
- 🔹 Then visit the <a href="https://www.autodesk.com/products/fusion-360/overview?term=1-MONTH&tab=subscription">website</a> of Autodesk Fusion 360.
- </br></br>
+
+### Do you want to learn everything about the Autodesk Fusion 360 subscription options?
+
+- Then visit the <a href="https://www.autodesk.com/products/fusion-360/overview?term=1-MONTH&tab=subscription">website</a> of Autodesk Fusion 360.
 </div>
 
 ---
 
-<div id="fusion360-version-info" align="left">
-<h2>What is the latest version of Fusion 360?</h2>
- <h4>Complete the following steps:</h4>
- 🔹 Visit the <a href="https://www.autodesk.com/products/fusion-360/blog?s=what%27s+new">What's New in Fusion Blog</a> (where product updates for Fusion 360 are chronicled).
- </br>
- 🔹 Click on the latest product update (the first item in the list).
- </br>
- 🔹 The version number* is documented here.
- </br></br>
- *Notice: How to check which <a href="https://knowledge.autodesk.com/support/fusion-360/troubleshooting/caas/sfdcarticles/sfdcarticles/How-to-check-what-version-of-Fusion-360-is-installed.html">version of Fusion 360</a> is being used on your system?
- </br></br>
-</div>
+## What is the latest version of Fusion 360?
+
+**Complete the following steps:**
+
+- Visit the <a href="https://www.autodesk.com/products/fusion-360/blog?s=what%27s+new">What's New in Fusion Blog</a> (where product updates for Fusion 360 are chronicled).
+- Click on the latest product update (the first item in the list).
+- The version number* is documented here.
+
+>[!NOTE]
+>How to check which <a href="https://knowledge.autodesk.com/support/fusion-360/troubleshooting/caas/sfdcarticles/sfdcarticles/How-to-check-what-version-of-Fusion-360-is-installed.html">version of Fusion 360</a> is being used on your system?
 
 ---
 
-<div id="fusion360-requirements-1" align="left">
-<h2>What are the System requirements for Autodesk Fusion 360?</h2>
-</div>
-<div id="fusion360-requirements-2" align="left">
- <table>
+## What are the System requirements for Autodesk Fusion 360?
+
+<table>
    <thead>
     <tr>
      <th colspan="2" rowspan="1"><b>System requirements for Autodesk Fusion 360</b></th>
@@ -248,11 +246,9 @@ As a fan of both Fusion 360 and Linux, I'm excited to do my part in making this 
      <td>SSL 3.0, TLS 1.2+,&nbsp; p7zip, p7zip-full, p7zip-rar, curl, wget, winbind, cabextract, wine, wine-mono, wine-gecko, winetricks; .NET Framework 4.5 (winetricks) or newer required to submit crash reports</td>
     </tr>
    </tbody>
-  </table>
- </br>
+</table>
  
- <div id="fusion360-requirements-3" align="left">
- <table>
+<table>
    <thead>
     <tr>
      <th colspan="2" rowspan="1"><b>Recommended specs for complex modeling and processing</b></th>
@@ -272,69 +268,58 @@ As a fan of both Fusion 360 and Linux, I'm excited to do my part in making this 
      <td>Dedicated GPU with 4 GB or more VRAM, DirectX11 (Direct3D 10.1 or greater) = DXVK Mode, OpenGL (2.0 or greater) = OpenGL Mode</td>
     </tr>
    </tbody>
-  </table>
-</div>
+</table>
 
-<div id="fusion360-requirements-4" align="left">
-<h3>What else is there to consider when it comes to the requirements?</h3>
- 🔹 Check the <a href="https://health.autodesk.com/">Health Dashboard</a>!
- </br>
- 🔹 You must have installed the <a href="https://github.com/lutris/docs/blob/master/InstallingDrivers.md">latest graphics driver</a>!
- </br>
- 🔹 You need the <a href="https://www.winehq.org/">latest version of wine (6.23 and newer)</a> and <a href="https://github.com/Winetricks/winetricks">winetricks</a>! <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/issues/244#issuecomment-1192513720">Installing yad </a> is also recomended to resolve potential instalation issues. 
- </br></br>
- 🧩 And would you like to use <a href="https://apps.autodesk.com/FUSION/de/Home/Index">extra functions</a> or languages as like the Czech language later in Autodesk Fusion 360, then you need a <a href="https://apps.autodesk.com/FUSION/en/Detail/Index?id=9151466655844643882">special extension</a> what you must have bought and downloaded before you can install this with my Setup Wizard! 🧩
- </br></br>
-</div>
+### What else is there to consider when it comes to the requirements?
+
+- Check the <a href="https://health.autodesk.com/">Health Dashboard</a>!
+- You must have installed the <a href="https://github.com/lutris/docs/blob/master/InstallingDrivers.md">latest graphics driver</a>!
+- You need the <a href="https://www.winehq.org/">latest version of wine (6.23 and newer)</a> and <a href="https://github.com/Winetricks/winetricks">winetricks</a>! <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/issues/244#issuecomment-1192513720">Installing yad </a> is also recomended to resolve potential instalation issues. 
+
+And would you like to use <a href="https://apps.autodesk.com/FUSION/de/Home/Index">extra functions</a> or languages as like the Czech language later in Autodesk Fusion 360, then you need a <a href="https://apps.autodesk.com/FUSION/en/Detail/Index?id=9151466655844643882">special extension</a> what you must have bought and downloaded before you can install this with my Setup Wizard! 🧩
 
 ---
 
-<div id="fusion360-installation" align="left">
-<h2>Getting Started</h3>
-🔹 Check my <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/wiki/Documentation">GitHub-Documentation</a> & <a href="https://www.youtube.com/watch?v=-BktJspJKgs&list=PLzwMdS5iu_BIsO6RTy7Hy1MbzLMrQE2xe">Videos</a> before you install Autodesk Fusion 360 on your system!
-</br>
-🔹 Check, if your <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/extras/network/etc">network settings</a> are correctly configured!
-</br>
-🔹 Check, if your system meets all <a href="#fusion360-requirements-2">requirements</a>!
-</br>
-🔹 You need an active Fusion 360 <a href="#-how-much-does-fusion-360-cost">license</a>!
-</br></br>
-🔹 Open a terminal and run this command to install the basic Autodesk Fusion:
-</br></br>
+## Getting Started
+
+- Check my <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/wiki/Documentation">GitHub-Documentation</a> & <a href="https://www.youtube.com/watch?v=-BktJspJKgs&list=PLzwMdS5iu_BIsO6RTy7Hy1MbzLMrQE2xe">Videos</a> before you install Autodesk Fusion 360 on your system!
+- Check, if your <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/extras/network/etc">network settings</a> are correctly configured!
+- Check, if your system meets all <a href="#fusion360-requirements-2">requirements</a>!
+- You need an active Fusion 360 <a href="#-how-much-does-fusion-360-cost">license</a>!
+
+Open a terminal and run this command to install the basic Autodesk Fusion:
  
-    curl -L https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/autodesk_fusion_installer_x86-64.sh -o "autodesk_fusion_installer_x86-64.sh" && chmod +x autodesk_fusion_installer_x86-64.sh && ./autodesk_fusion_installer_x86-64.sh --install --default
+```
+curl -L https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/autodesk_fusion_installer_x86-64.sh -o "autodesk_fusion_installer_x86-64.sh" && chmod +x autodesk_fusion_installer_x86-64.sh && ./autodesk_fusion_installer_x86-64.sh --install --default
+```
 
-🔹 Open a terminal and run this command to install Autodesk Fusion with all tested extensions:
-</br>
+Open a terminal and run this command to install Autodesk Fusion with all tested extensions:
 
-    curl -L https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/autodesk_fusion_installer_x86-64.sh -o "autodesk_fusion_installer_x86-64.sh" && chmod +x autodesk_fusion_installer_x86-64.sh && ./autodesk_fusion_installer_x86-64.sh --install --default --full
+```
+curl -L https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/autodesk_fusion_installer_x86-64.sh -o "autodesk_fusion_installer_x86-64.sh" && chmod +x autodesk_fusion_installer_x86-64.sh && ./autodesk_fusion_installer_x86-64.sh --install --default --full
+```
 
-🔹 Open a terminal and run this command to uninstall:
-</br>
- 
-    curl -L https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/autodesk_fusion_installer_x86-64.sh -o "autodesk_fusion_installer_x86-64.sh" && chmod +x autodesk_fusion_installer_x86-64.sh && ./autodesk_fusion_installer_x86-64.sh --uninstall
+- Open a terminal and run this command to uninstall:
 
-</br>
+```
+curl -L https://raw.githubusercontent.com/cryinkfly/Autodesk-Fusion-360-for-Linux/main/files/setup/autodesk_fusion_installer_x86-64.sh -o "autodesk_fusion_installer_x86-64.sh" && chmod +x autodesk_fusion_installer_x86-64.sh && ./autodesk_fusion_installer_x86-64.sh --uninstall
+```
 
-🔹 Or you install and use Autodesk Fusion 360 as a Flatpak app:
+Or you install and use Autodesk Fusion 360 as a Flatpak app: https://usebottles.com/app/#fusion
 
-     https://usebottles.com/app/#fusion
+For the SSO-Login bug use this Workaround: https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/issues/460#issuecomment-2315888332
 
-  For the SSO-Login bug use this Workaround: https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/issues/460#issuecomment-2315888332
+- Or installing Fusion360 via Distrobox on a Gnome Wayland Desktop: https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/issues/557
+- Now, You can <a href="https://codeberg.org/cryinkfly/Autodesk-Fusion-360-on-Linux/issues/44#issuecomment-890552181">use</a> Autodesk Fusion 360 on your Linux system!
 
-🔹 Or installing Fusion360 via Distrobox on a Gnome Wayland Desktop: https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/issues/557
+### Which script releases are available?
 
-🔹 Now, You can <a href="https://github.com/cryinkfly/Fusion-360---Linux-Wine-Version-/issues/44#issuecomment-890552181">use</a> Autodesk Fusion 360 on your Linux system!
- </br></br>
- <h3>📖 Which script releases are available?</h3>
- There are some <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/builds">script releases</a> available, built from the release targets. It's recommended that if you're new you start with the stable builds. Development builds are available here if you need it, but correspondingly may be less stable. In the <a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/builds/development-branch">development branch</a> you will find, for example, the upcoming versions of my setup wizard, as well as builds that run with the help of Flatpak or Docker/Podman.
- </br></br>
-</div>
+There are some <a href="https://codeberg.org/cryinkfly/Autodesk-Fusion-360-on-Linux/src/branch/main/files/builds">script releases</a> available, built from the release targets. It's recommended that if you're new you start with the stable builds. Development builds are available here if you need it, but correspondingly may be less stable. In the <a href="https://codeberg.org/cryinkfly/Autodesk-Fusion-360-on-Linux/src/branch/main/files/builds/dev-branch">development branch</a> you will find, for example, the upcoming versions of my setup wizard, as well as builds that run with the help of Flatpak or Docker/Podman.
 
 ---
 
-<div id="fusion360-tested-area" align="left">
-<h2>Which work areas and functions have I tested?</h3>
+## Which work areas and functions have I tested?
+
 <table>
 <thead>
 <tr>
@@ -411,7 +396,7 @@ As a fan of both Fusion 360 and Linux, I'm excited to do my part in making this 
 <td style="text-align: center;">✅</td>
 </tr>
 <tr>
-<td><a href="https://github.com/cryinkfly/Autodesk-Fusion-360-for-Linux/tree/main/files/docs/en-US/extensions">Scripts and additional modules</a></td>
+<td>Scripts and additional modules</td>
 <td style="text-align: center;">✅</td>
 <td style="text-align: center;">✅</td>
 <td style="text-align: center;">✅</td>
