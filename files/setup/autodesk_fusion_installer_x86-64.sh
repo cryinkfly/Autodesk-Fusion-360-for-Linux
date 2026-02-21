@@ -38,7 +38,7 @@ if [ "$SELECTED_EXTENSIONS" == "--full" ]; then
     DOWNLOAD_EXTENSIONS=1
 fi
 
-REPO_URL="https://codeberg.org/cryinkfly/Autodesk-Fusion-360-on-Linux/raw/branch/main/"
+REPO_URL="https://codeberg.org/cryinkfly/Autodesk-Fusion-360-on-Linux/raw/branch/main"
 
 # URL to download translations po. files <-- Still in progress!!!
 UPDATER_TRANSLATIONS_URL="$REPO_URL/files/setup/locale/update-locale.sh"
