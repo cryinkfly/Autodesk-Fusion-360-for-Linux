@@ -438,6 +438,13 @@ As a fan of both Fusion 360 and Linux, I'm excited to do my part in making this 
 
 ---
 
+> [!IMPORTANT]
+>With the help of my script, you get a way to install Autodesk Fusion 360 on your Linux system. Certain packages and programs that are required will be set up for you, but it's important to know, that my script only helps you to get the program to run and nothing more! And so, you must to purchase the licenses directly from the manufacturer of the program Autodesk Fusion 360!
+> 
+>All my scripts are released under the MIT license, see <a href="https://codeberg.org/cryinkfly/Autodesk-Fusion-360-for-Linux/src/branch/main/LICENSE.md">LICENSE.md</a> for full text.
+
+---
+
 ## Support this project, share your ideas, and help our community thrive! ♥️ 
 
 If you enjoy my work and want to help me create more tutorials, guides, and open-source projects, you can **support me in multiple ways** — either as a sponsor or as an active helper!  
@@ -455,10 +462,3 @@ If you enjoy my work and want to help me create more tutorials, guides, and open
 **Support my work, contribute ideas, and help the community grow!**
 
 [![Become a Sponsor or Supporter](https://img.shields.io/badge/Become%20a%20Sponsor%20or%20Supporter-%23E34C4C?style=for-the-badge&logoColor=white)](https://cryinkfly.com/become-partner/)
-
----
-
-> [!IMPORTANT]
->With the help of my script, you get a way to install Autodesk Fusion 360 on your Linux system. Certain packages and programs that are required will be set up for you, but it's important to know, that my script only helps you to get the program to run and nothing more! And so, you must to purchase the licenses directly from the manufacturer of the program Autodesk Fusion 360!
-> 
->All my scripts are released under the MIT license, see <a href="https://codeberg.org/cryinkfly/Autodesk-Fusion-360-for-Linux/src/branch/main/LICENSE.md">LICENSE.md</a> for full text.
